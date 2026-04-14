@@ -1,8 +1,8 @@
 # Template Tesi UNIPD
 
 <p align="center">
-  <img width="175" src="res/logo_unipd_white.png#gh-dark-mode-only">
-  <img width="175" src="res/logo_unipd.png#gh-light-mode-only">
+  <img width="175" src="res/unipd_pictogram_white.png#gh-dark-mode-only">
+  <img width="175" src="res/unipd_pictogram.png#gh-light-mode-only">
 </p>
 
 </br>
