@@ -1,0 +1,2921 @@
+    Specifiche tecniche di integrazione
+      tra sistemi Document Source e
+              Repository XValue
+
+
+Versione: 2.9
+Data ultima revisione: 05.08.2024
+Numero di pagine: 59
+SOMMARIO
+
+Informazioni preliminari                                                       3
+1.     Introduzione                                                            5
+2.     Attori e ruoli                                                           5
+3.     Descrizione dell’integrazione                                            6
+     3.1       Messaggistica HL7                                                6
+     3.2       Transazioni del profilo XDS.b                                   7
+4.     Messaggistica HL7                                                        8
+     4.1       Messaggi MDM^T02, MDM^T08, MDM^T10, MDM^T11                      8
+       4.1.1     Message semantics                                             8
+       4.1.2     MSH - Message Header                                          9
+       Message Profile Identifier                                              10
+       4.1.3     EVN - Event Type                                              10
+       4.1.4     PID - Patient Identification                                  11
+       4.1.5     PV1 - Patient Visit                                           14
+       4.1.6     ORC - Common Order                                            18
+       4.1.7     TQ1 - Timing/Quantity                                         22
+       4.1.8     OBR - Observation Request                                     22
+       4.1.9     TXA - Transcription Document Header                           24
+       4.1.10       OBX - Observation/Result                                   33
+     4.2       Esempi di messaggi HL7 MDM^T02                                  37
+       4.2.1     Referto di laboratorio analisi                                37
+       4.2.2     Referto di radiologia                                         38
+5.     Transazioni del profilo XDS.b                                           39
+     5.1       Transazioni utilizzate                                          39
+       5.1.1     Transazione [ITI-41] Provide and Register Document Set-b      39
+       5.1.2     Transazione [ITI-57] Update Document Set                      39
+       5.1.3     Transazione [ITI-62] Delete Document Set                      40
+     5.2       Metadati XDS                                                    40
+Appendice A                                                                    50
+Appendice B                                                                    54
+Appendice C – Adeguamento FSE2.0                                               55
+Appendice D – Gestione degli oid per la valorizzazione delle referenceIdList   58
+
+
+
+
+                                                  2
+Informazioni preliminari
+
+Nome documento:          Specifiche tecniche di integrazione tra sistemi Document Source e
+                         Repository XValue
+
+Versione:                2.9
+
+Data prima emissione:    10/02/2020
+
+Data ultima modifica:    05/08/2024
+
+Numero di pagine:        59
+
+
+
+Status del documento
+
+
+Versione    Data               Descrizione
+
+2.0         10/02/2020         Prima emissione del documento.
+
+2.1         22/06/2020         Aggiunto Identificativo PIN per scarico referti online
+
+2.2         27/08/2020         Sistemate le indicazioni per l’obbligatorietà dei campi nel messaggio
+                               HL7, con l’aggiunta del valore R2 in caso di segmento con condizione
+                               (es. Ripetizione OBX ove OBX.2=CE oppure ED)
+
+2.3         4/11/2020          Aggiunta valorizzazione referenceIdList per gestione tokenreferto
+
+2.4         09/05/2023         Sistemata valorizzazione tabella odiLoc e codifica strutture
+
+2.5         14/07/2023         ● Modificata valorizzazione OID per eventi di PS (Tabella A.2 -
+                                  valorizzazione delle componenti CX del campo PV1.19)
+                               ● Modificata Tabella A.5 - valorizzazione delle componenti CE del
+                                  campo OBX.3 per precisare la valorizzazione della versione del CVP
+                               ● Aggiunta Appendice C con indicazioni per gestione documenti
+                                  FSE2.0
+
+2.6         19/10/2023         ● Revisione gestione degli oid per la gestione delle referenceIdList.
+                                  Appendice D
+
+2.7         16/01/2024         ● Aggiunta della definizione dello slot patientClass nella sezione XDS,
+                                  riorganizzate le informazioni extra FSE (evidenziate in azzurro)
+                                  necessarie ad XValue
+
+2.8         18/07/2024         ● Aggiunta gestione del valore subjectApplication nell’EVN.5 per i
+                                  produttori accreditati FSE2.0
+
+2.9         05/08/2024         ● Aggiunta gestione per nuova tipologia Documentale AULSS3 per la
+
+
+
+
+                                                        3
+Lettera donatori (x1v1_tc_400010)
+
+
+
+
+                  4
+1. Introduzione
+Il presente documento si propone di illustrare nel dettaglio il flusso informativo per l’invio di
+documenti da parte degli applicativi dipartimentali al sistema repository dell’azienda
+sanitaria, costituito dal prodotto XValue della ditta Dedalus. Il documento si compone di 3
+sezioni che prevedono rispettivamente:
+
+
+    1. la descrizione funzionale dell’integrazione e dei possibili approcci perseguibili per la
+        realizzazione della stessa, con specifico riferimento agli attori coinvolti;
+    2. la descrizione tecnica dei messaggi caratterizzanti l’integrazione nel caso di utilizzo
+        della prima modalità basata sullo scambio di messaggi HL7 v2.5;
+    3. la descrizione tecnica delle transazioni caratterizzanti l’integrazione nel caso di utilizzo
+        della seconda modalità basata sull’uso del profilo IHE XDS.b (Cross-Enterprise
+        Document Sharing).
+
+
+
+2. Attori e ruoli
+Document Source:sistema produttore di documenti e responsabile della loro pubblicazione
+nel XDS Document Repository. Un sistema Document Source che implementa transazioni
+previste dal profilo di integrazione XDS è denominato XDS Document Source.
+
+
+XDS Document Repository:sistema che riceve i documenti dall’attore Document Source, li
+archivia e ne indicizza i metadati nel XDS Document Registry attraverso transazioni XDS.
+L’attore XDS Document Repository consente inoltre il recupero dei documenti da parte
+dell’attore XDS Document Consumer.
+
+
+XDS Document Registry:sistema che conserva i metadati relativi ai documenti prodotti dal
+Document Source ed indicizzati dal XDS Document Repository. Esso risponde all’attore XDS
+Document Consumer fornendo le informazioni relative ai documenti che corrispondono ai
+criteri di ricerca applicati.
+
+
+XDS Document Consumer:attore che interroga il XDS Document Registry per ottenere le
+informazioni coerenti con i parametri di ricerca applicati e recupera i documenti dal XDS
+Document Repository in cui sono conservati.
+
+
+
+
+                                                  5
+                     Figura 1 - diagramma del processo di condivisione documentale
+
+
+
+
+3. Descrizione dell’integrazione
+L’integrazione oggetto del presente documento è di tipo bidirezionale e coinvolge gli attori
+Document Source e XDS Document Repository. Ogni attore Document Source potrà
+scegliere tra due possibili approcci per la realizzazione dell’integrazione con l’attore XDS
+Document Repository. Le due modalità di integrazione, da intendersi mutuamente esclusive
+a parità di attore Document Source, sono descritte nei paragrafi successivi.
+
+
+
+3.1 Messaggistica HL7
+La pubblicazione dei documenti e delle informazioni ad essi associate (che saranno utilizzate
+dal XDS Document Repository per la creazione dei metadati di indicizzazione) può essere
+effettuata
+      uata attraverso l’uso dei messaggi previsti dallo standard HL7 v2.5 riportati in Tabella 1.
+
+
+  Tipo di
+                   Mittente            Destinatario                         Descrizione
+ messaggio
+
+ MDM^T02      Document Source      XDS Document           Primo invio di un documento con o senza
+                                   Repository             firma digitale.
+
+ MDM^T08      Document Source      XDS Document           Aggiornamento di uno o più metadati
+                                   Repository             dell’ultima versione di un documento
+                                                          precedentemente pubblicato (metadata
+                                                          update).
+
+ MDM^T10      Document Source      XDS Document           Replacement dell’ultima versione di un
+                                   Repository             documento precedentemente
+                                                          pubblicato.
+
+ MDM^T11      Document Source      XDS Document           Cancellazione dei metadati dell’ultima
+                                   Repository             versione di un documento
+
+
+
+
+                                                   6
+                                                                 precedentemente pubblicato.
+
+    ACK        XDS Document            Document Source           Notifica di avvenuta ricezione di un
+               Repository                                        documento, senza o con errore.
+
+                       Tabella 1 - tipologie di messaggi HL7 v2.5 ed relativi eventi trigger
+
+
+
+
+Le comunicazioni avvengono su canale SOCKET con protocollo TCP/IP tramite lo scambio di
+messaggi con sintassi pipe separated su porte concordate utilizzando MLLP (Minimal Lower
+Layer Protocol).
+N.B.:Per rispettare alcuni vincoli dell’HL7, alcune informazioni risultano volutamente ripetute
+tra i vari segmenti presenti nel messaggio, a differenza della transazione XDS.b dove le
+informazioni sono univoche.
+
+
+
+3.2 Transazioni del profilo XDS.b
+Nel caso in cui un attore Document Source opti per l’implementazione di transazioni XDS per
+l’invio al XDS Document Repository dei documenti e dei metadati ad essi associati, le
+transazioni di riferimento sono quelle riportate in Tabella 2.
+
+
+Transazione        Mittente                Destinatario                             Descrizione
+
+
+  RVE-1.b     XDS Document            IAP Aziendale              Transizione utilizzata per produrre Token
+              Source                                             SAML 2.0 necessario ad autenticarsi per
+                                                                 usufruire delle transizioni messe a
+                                                                 disposizone del XDS Document Repository
+                                                                 (Specifiche Tecniche: Infrastruttura di sicurezza
+                                                                 GDL-O Sicurezza di Arsenal)
+
+
+   ITI-41     XDS Document            XDS Document               Primo invio di un documento digitale e
+              Source                  Repository                 replace di un documento
+                                                                 precedentemente inviato
+
+   ITI-57     XDS Document            XDS Document               Aggiornamento di uno o più metadati
+              Source                  Repository                 dell’ultima versione di un documento
+                                                                 precedentemente pubblicato.
+
+   ITI-62     XDS Document            XDS Document               Cancellazione dei metadati di un
+              Source                  Repository                 documento precedentemente
+                                                                 pubblicato.
+
+                          Tabella 1 - tipologie di messaggi HL7 v2.5 ed eventi trigger
+
+
+
+
+                                                        7
+4. Messaggistica HL7
+In questa sezione viene descritta nel dettaglio tecnico la messaggistica che dev’essere
+utilizzata nel caso in cui l’attore Document Source opti per l’approccio basato sull’uso dello
+standard HL7 v2.5. Per ciascun tipo di messaggio sono indicati i segmenti obbligatori e le
+relative regole di valorizzazione.
+
+
+
+4.1 Messaggi MDM^T02, MDM^T08, MDM^T10, MDM^T11
+
+4.1.1 Message semantics
+La struttura del messaggio MDM secondo standard HL7 v2.5 è riportata in Tabella 3:
+
+
+Segmento                                                                 Cardinalità
+
+
+MSH - Message Header                                                       1,...,1
+
+EVN - Event Type                                                           1,...,1
+
+PID - Patient Identification                                               1,...,1
+
+PV1 - Patient Visit                                                        1,...,1
+
+[{ <COMMON ORDER>                                                          1,...,∞
+
+         ORC - Common Order                                                1,...,1
+
+         OBR - Observation Request                                         1,...,1
+
+</COMMON ORDER> ]}                                                            -
+
+TXA - Transcription Document Header                                        1,...,1
+
+{ <OBXNTE>                                                                 1,...,∞
+
+         OBX - Observation/Result                                          1,...,1
+
+</OBXNTE> }                                                                   -
+
+                               Tabella 3 - struttura del messaggio MDM
+
+
+
+
+                                                          8
+4.1.2 MSH - Message Header
+
+    SEQ   LEN   DT    OPT   RP/#   TBL/#        Element Name                  Valorizzazione
+
+
+MSH.1     1      ST   R                    Field Separator      “|”
+
+
+MSH.2     4      ST   R                    Encoding             “^~\&”
+                                           Characters
+
+MSH.3     180   HD    R                    Sending              Nome dell’applicativo Document
+                                           Application          Source.
+
+MSH.4     180   HD    R                    Sending Facility     Nome del fornitore dell’applicativo
+                                                                Document Source.
+
+MSH.5     180   HD    R                    Receiving            Nome del XDS Document
+                                           Application          Repository, i.e. “XVALUE”.
+
+MSH.6     180   HD    R                    Receiving Facility   Fornitore del XDS Document
+                                                                Repository, i.e. “DEDALUS”.
+
+MSH.7     26    TS    R                    Date/Time Of         Data e ora di generazione del
+                                           Message              messaggio nel formato
+                                                                yyyymmddhh24miss
+
+MSH.9     15    MSG   R                    Message Type         Contiene, in due componenti MSG.1
+                                                                e MSG.2, il tipo di messaggio come
+                                                                da standard, ad esempio:
+                                                                “MDM^T02”.
+
+MSH.10    20    ST    R                    Message Control      Identificativo univoco
+                                           ID                   dell’operazione stanziato dal
+                                                                Document Source. Il formato
+                                                                dev’essere:
+                                                                OIDloc.4.20.X, dove:
+
+
+                                                                      ●   per OIDloc1 dev’essere
+                                                                          utilizzato uno degli OID
+                                                                          riportati in Tabella A.1 in
+                                                                          Appendice A a seconda
+                                                                          del sistema produttore del
+                                                                          messaggio MDM;
+                                                                      ●   X è un id progressivo
+                                                                          univoco avente lunghezza
+                                                                          pari a 16 caratteri e
+
+
+1
+   Da questo momento in avanti “OIDloc” corrisponderà, per ciascun applicativo, ad uno degli OID
+riportati in Tabella A.1 in Appendice A.
+
+
+
+
+                                                    9
+                                                                        costituito dalla
+                                                                        concatenazione
+                                                                        dell’identificativo univoco
+                                                                        del Document Source,
+                                                                        denominato sourceId, con
+                                                                        un id numerico univoco di
+                                                                        12 caratteri auto-generato.
+                                                                        Per il sourceId da utilizzare,
+                                                                        ciascun fornitore dovrà fare
+                                                                        riferimento ai valori riportati
+                                                                        in Tabella A.1 in Appendice
+                                                                        A.
+
+                                                               Esempio:2.16.840.1.113883.2.9.2.50503.5.
+                                                               4.20.5012340000112233
+
+
+MSH.11   3     PT        R                   Processing ID     “P” per messaggi di produzione, “T”
+                                                               per messaggi di test.
+
+MSH.12   60    VID       R           0104    Version ID        Contiene la versione dello standard
+                                                               HL7 utilizzata, in questo caso “2.5”.
+
+MSH.21                                                         Contiene la versione delle
+                                             Message Profile   specifiche di riferimento AULSS3 per
+                                             Identifier        creare il messaggio
+
+
+
+
+4.1.3 EVN - Event Type
+
+
+ SEQ     LEN   DT    OPT     RP/#   TBL/#      Element Name                  Valorizzazione
+
+
+EVN.2    26    TS    R                      Recorder           Data e ora di invio del messaggio
+                                            Date/Time          nel formato yyyymmddhh24miss
+
+EVN.5    250   XC    RE                     OperatorID         Questo campo può contenere il
+               N                                               valore del SubjectApplication per gli
+                                                               applicativi che hanno superato
+                                                               l’accreditamento per FSE2.0
+                                                               Deve essere valorizzato nel seguente
+                                                               modo:
+                                                               EVN.5.1 = SubjectApplicationId
+                                                               EVN.5.2 = SubjectApplicationVendor
+                                                               EVN.5.3 = SubjectApplicationVersion
+                                                               I valori devono essere esattamente
+                                                               quelli comunicati e/o rilasciati in fase
+                                                               di accreditamento.
+
+
+
+
+                                                    10
+EVN.7   241   HD   R                    Event Facility     Questo campo deve contenere le
+                                                           seguenti componenti obbligatorie:
+
+                                                              ●   HD.1 valorizzato con
+                                                                  “<CODICE>#<DESCR>#<CO
+                                                                  DING_SCHEME>”, con il
+                                                                  seguente significato delle
+                                                                  variabili:
+                                                                    ○     <CODICE>
+                                                                          corrisponde al codice
+                                                                          dell’healthcareFacilityT
+                                                                          ypeCode e dev’essere
+                                                                          valorizzato secondo
+                                                                          specifiche tecniche di
+                                                                          Affinity Domain
+                                                                          Regione Veneto v.2.20
+                                                                          e successive versioni;
+                                                                    ○     <DESCR> è la
+                                                                          descrizione associata
+                                                                          al valore inserito in
+                                                                          <CODICE>;
+                                                                    ○     <CODING_SCHEME>
+                                                                          dev’essere valorizzato
+                                                                          con “regioneveneto
+                                                                          healthcareFacilityType
+                                                                          Codes v1”.
+                                                              ●   HD.2 deve contenere la
+                                                                  stringa
+                                                                  “2.16.840.1.113883.2.9.2.5050
+                                                                  3.4.5.1.XXXX”, dove “XXXX”
+                                                                  rappresenta il sourceId
+                                                                  associato all’applicativo
+                                                                  che ha generato il
+                                                                  messaggio (fare riferimento
+                                                                  alla Tabella A.1 in
+                                                                  Appendice A per i valori
+                                                                  ammessi);
+                                                              ●   HD.3 con l’acronimo “ISO”.
+
+
+
+
+4.1.4 PID - Patient Identification
+
+
+ SEQ    LEN   DT   OPT   RP/#   TBL/#       Element Name                Valorizzazione
+
+
+
+
+                                                 11
+PID.3   250   CX    R   Patient Identifier   Questo campo deve contenere due
+                        List                 ripetizioni obbligatorie così
+                                             valorizzate:
+
+                                                 1.   prima ripetizione: CX.1 con il
+                                                      codice univoco PK del
+                                                      paziente e, nella
+                                                      componente CX.4, il valore
+                                                      fisso “&PK&ISO”;
+                                                 2.   seconda ripetizione: CX.1
+                                                      con il CF del paziente e,
+                                                      nella componente CX.4, il
+                                                      valore fisso
+                                                      “&2.16.840.1.113883.2.9.4.3.2
+                                                      &ISO”.
+
+                                             Se il paziente è sprovvisto di CF (ad
+                                             esempio, se è straniero), nella
+                                             componente CX.1 della seconda
+                                             ripetizione dev’essere inserito il
+                                             codice STP o il codice ENI.
+
+                                             Possono essere inserite a discrezione
+                                             del Document Source ulteriori
+                                             ripetizioni opzionali, ad esempio:
+
+                                                 ●    CX.1 con il numero di
+                                                      Tessera Sanitaria del
+                                                      paziente e relativo CX.4
+                                                      valorizzato con “SS”;
+                                                 ●    CX.1 con il numero di TEAM
+                                                      del paziente e relativo CX.4
+                                                      valorizzato con “TEAM”.
+
+
+                                             Esempio paziente con MPI e CF:
+                                             123456^^^&PK&ISO~BRASFR88A11F383G^
+                                             ^^&2.16.840.1.113883.2.9.4.3.2&ISO
+
+
+PID.5   250   XPN   R   Patient Name         Questo campo dev’essere presente
+                                             in un’unica ripetizione. La
+                                             componente XPN.1 deve contenere
+                                             il cognome del paziente; la
+                                             componente XPN.2 il nome del
+                                             paziente.
+
+PID.7   26    TS    R   Date/Time of         Questo campo deve contenere,
+                        Birth                nella componente TS.1, la data di
+                                             nascita del paziente nel formato
+
+
+
+
+                                12
+                                                  yyyymmdd.
+
+
+PID.8    1     IS    R   0001   Administrative    Valorizzare con “M” per maschio,
+                                Sex               con “F” per femmina.
+
+PID.11   250   XAD   R          Patient Address   Questo campo può conteneretre
+                                                  ripetizioni, di cui “L” ed “N” devono
+                                                  essere presenti obbligatoriamente:
+
+
+                                                      1.   prima ripetizione: XAD.1 con
+                                                           l’indirizzo di residenza del
+                                                           paziente, XAD.3 con il nome
+                                                           del comune di residenza,
+                                                           XAD.4 con la sigla della
+                                                           provincia di residenza, XAD.5
+                                                           con il CAP del comune di
+                                                           residenza, XAD.7 con “L”;
+                                                      2.   seconda ripetizione: XAD.1
+                                                           con l’indirizzo di domicilio
+                                                           del paziente, XAD.3 con il
+                                                           nome del comune di
+                                                           domicilio, XAD.4 con la sigla
+                                                           della provincia di domicilio,
+                                                           XAD.5 con il CAP del
+                                                           comune di domicilio, XAD.7
+                                                           con “H”;
+                                                      3.   terza ripetizione: XAD.3 con il
+                                                           nome del comune di nascita
+                                                           del paziente, XAD.4 con la
+                                                           sigla della provincia di
+                                                           nascita del paziente, XAD.5
+                                                           con il codice ISTAT del
+                                                           comune di nascita, XAD.6
+                                                           con il codice ISO-3166 dello
+                                                           stato di nascita, XAD.7 con
+                                                           “N”.
+
+
+                                                  NB: in caso di paziente nato
+                                                  all’estero,nella terza ripetizione del
+                                                  segmento PID.3 relativa al luogo di
+                                                  nascita devono essere inserite solo le
+                                                  componenti XAD.6 e XAD.7.
+
+
+                                                  Esempio paziente NATO ITALIA:
+                                                  VIA ROMA, 2^^MASERA’ DI
+                                                  PADOVA^PD^35020^ITA^L~VIALE G.
+
+
+
+
+                                      13
+                                                            OBERDAN,
+                                                            80^^TREVISO^TV^31100^ITA^H~^^ROMA
+                                                            ^RM^058091^ITA^N
+
+
+                                                            Esempio paziente NATO ESTERO:
+                                                            VIA G. LEOPARDI,
+                                                            25^^PADOVA^PD^35100^ITA^L~VIALE G.
+                                                            OBERDAN,
+                                                            192^^TREVISO^TV^31100^ITA^H~^^^^^S
+                                                            WE^N
+
+
+PID.13   250   XTN    R                    Phone Number -   Questo campo deve contenere,
+                                           Home             nella componente XTN.3, uno dei
+                                                            codici di Tabella HL7 0202 a seconda
+                                                            della tipologia di apparecchio
+                                                            (telefono fisso, cellulare, fax etc.) e,
+                                                            nella componente XTN.12, il recapito
+                                                            del paziente (completo del prefisso).
+                                                            Nella componente XTN.2 può essere
+                                                            inserito uno dei codici di Tabella HL7
+                                                            0201 a seconda del contesto.
+                                                            L’eventuale indirizzo email del
+                                                            paziente, se noto, dev’essere inserito
+                                                            nella componente XTN.4.
+
+
+
+
+4.1.5 PV1 - Patient Visit
+
+
+ SEQ     LEN    DT   OPT   RP/#   TBL/#     Element Name                  Valorizzazione
+
+
+PV1.2    1      IS   R                    Patient Class     Questo campo deve indicare la
+                                                            tipologia di accesso del paziente al
+                                                            servizio sanitario da cui ha avuto
+                                                            origine il documento, nello specifico:
+
+                                                                ●    “O” per ambulatoriale SSN
+                                                                     (ovvero, con ricetta RUR,
+                                                                     DPCM o DEMA);
+                                                                ●    “I” se regime di ricovero SSN;
+                                                                ●    “E” per regime di
+                                                                     emergenza/urgenza o 118;
+                                                                ●    “S” per screening;
+                                                                ●    “L” per Libera Professione
+                                                                     (paziente pagante per
+                                                                     intero).
+
+
+
+
+                                                  14
+                                           ●    “D” per Day Service
+
+
+PV1.18   2     IS   R   Patient Type   Questo campo contiene
+                                       l’informazione relativa alla tipologia
+                                       di attività clinica che ha portato alla
+                                       condivisione del documento
+                                       (contentType). Dev’essere strutturato
+                                       nel modo seguente:
+
+                                       <CODICE>#<DESCRIZIONE>#<CODIN
+                                       G_SCHEME>
+
+                                       con il seguente significato dei
+                                       sottoelementi:
+
+                                           ●    <CODICE> deve veicolare
+                                                uno dei codici ammessi per il
+                                                SubmissionSet.contentTypeC
+                                                ode da specifiche tecniche
+                                                di Affinity Domain regionale
+                                                v.2.20 e successive versioni;
+                                           ●    <DESCRIZIONE> deve
+                                                contenere la descrizione
+                                                (displayName) associata al
+                                                codice utilizzato in
+                                                <CODICE>;
+                                           ●    <CODING_SCHEME>
+                                                dev’essere uguale a
+                                                “regioneveneto
+                                                contentTypeCodes v1”.
+
+
+                                       Esempio per referto ambulatoriale:
+                                       rv_ctc_0050#Attivita
+                                       Specialistica/Diagnostica per
+                                       Esterni#regioneveneto
+                                       contentTypeCodes v1
+
+
+PV1.19   250   CX   R   Visit Number   Questo campo deve contenere,
+                                       nella componente CX.1,
+                                       l’IDENTIFICATIVO UNIVOCO
+                                       DELL’EPISODIO (ID EPISODIO). Esso
+                                       costituisce l’identificativo di 1° livello
+                                       del servizio sanitario all’origine del
+                                       documento. L’ID episodio è
+                                       costituito da:
+
+                                           1.   nel caso di referto
+
+
+
+
+                               15
+              ambulatoriale o relativo a
+              servizi radiologia,
+              laboratorio, etc dall’ID
+              prenotazione univoco del
+              sistema di
+              prenotazione/accettazione,
+              che consente di aggregare
+              più richieste;
+         2.   nel caso di episodio di
+              emergenza/urgenza, dall’ID
+              episodio di Pronto Soccorso
+              (numero di accesso);
+         3.   nel caso di episodio di ADT,
+              dal numero nosologico del
+              ricovero;
+         4.   solo se non si ricade in uno
+              dei casi precedenti, da un
+              altro ID caratteristico
+              dell’episodio che raggruppi
+              le N richieste i cui
+              identificativi si trovano nei
+              campi ORC.2 del msg.
+
+     Il campo dev’essere sempre
+     strutturato nel modo seguente:
+
+         ●    CX.1 contenente il valore
+              dell’identificativo;
+         ●    CX.4 valorizzato con
+              “&<AssigningAuth>&ISO”,
+              dove <AssigningAuth>
+              rappresenta l’Assigning
+              Authority corrispondente al
+              tipo di identificativo
+              veicolato nella componente
+              CX.1 (fare riferimento alla
+              Tabella A.2 in Appendice A
+              per il valore corretto da
+              utilizzare per l’Assigning
+              Authority);
+         ●    CX.5 valorizzato con uno
+              degli identificativi di Tabella
+              A.2 in Appendice A a
+              seconda del tipo di
+              identificativo veicolato nella
+              componente CX.1.
+
+
+
+
+16
+                                     Esempio per numero nosologico:
+                                     201234567^^^&2.16.840.1.113883.2.9.2.50
+                                     503.17.4.6&ISO^urn:rve:2016:admissionNu
+                                     mber
+
+
+PV1.21   2   IS   R   Charge Price   Questo campo deve veicolare il
+                      Indicator      regime amministrativo dell’episodio
+                                     da cui ha avuto origine il
+                                     documento. Esso dev’essere così
+                                     valorizzato:
+
+                                     <CODE>#<DESCR>#ADMINISTRATIVE_
+                                     TYPE
+
+                                     con il seguente significato degli
+                                     elementi:
+
+                                         ●   <CODE> assume uno dei 3
+                                             valori seguenti:
+
+                                              ○     “SSN” se il documento è
+                                                    prodotto in regime SSN
+                                                    ambulatoriale o
+                                                    screening;
+                                              ○     “INPATIENT”se il
+                                                    documento è prodotto
+                                                    in regime di ricovero
+                                                    SSN o
+                                                    emergenza/urgenza
+                                                    SSN;
+                                              ○     “NOSSN” se il
+                                                    documento è prodotto
+                                                    in regime di Libera
+                                                    Professione oppure se il
+                                                    paziente che accede in
+                                                    emergenza/urgenza
+                                                    non è assistito SSN.
+
+                                         ●   <DESCR> assume uno dei 3
+                                             valori seguenti:
+
+                                              ○     “Regime SSN” se
+                                                    <CODE>=“SSN”;
+                                              ○     “Regime di Ricovero” se
+                                                    <CODE>=“INPATIENT”;
+                                              ○     “Regime privato” se
+                                                    <CODE>=“NOSSN”.
+
+
+
+
+                             17
+                                                                        Esempio per consulenza in regime di
+                                                                        ricovero ordinario:
+
+                                                                        INPATIENT#Regime di
+                                                                        Ricovero#ADMINISTRATIVE_TYPE
+
+
+PV1.22   2         IS        R                        Courtesy Code     Questo campo deve contenere il
+                                                                        codice PIN per lo scarico del referto
+                                                                        digitale da piattaforma web
+                                                                        aziendale, se presente.
+
+
+
+4.1.6 ORC - Common Order
+
+Deve comparire, all’interno del messaggio, una ripetizione del segmento ORC per ciascuna
+richiesta (identificata univocamente attraverso l’identificativo presente in ORC.2) refertata.
+
+  SEQ        LEN        DT       OPT   RP/#   TBL/#      Element Name                Valorizzazione
+
+ORC.1        2          ID       R                     Order Control    Questo campo contiene
+                                                                        un’indicazione del tipo di
+                                                                        evento.Dev’essere valorizzato con
+                                                                        “NW”.
+
+ORC.2        22         EI       R                     Placer Order     Questo campo deve contenere
+                                                       Number           un’unica ripetizione composta dalle
+                                                                        seguenti sottocomponenti:
+
+                                                                            ●   EI.1 contenente il valore
+                                                                                dell’IDENTIFICATIVO
+                                                                                UNIVOCO DELLA RICHIESTA
+                                                                                (ID RICHIESTA). Esso
+                                                                                costituisce l’identificativo di
+                                                                                2° livello del servizio sanitario
+                                                                                all’origine del documento.
+                                                                                L’ID richiesta è sempre
+                                                                                presente e può essere
+                                                                                generato:
+
+                                                                                 ○   dal sistema di
+                                                                                     prenotazione/accettazi
+                                                                                     one (per richieste
+                                                                                     specialistiche e di
+                                                                                     branca 3);
+                                                                                 ○   dal sistema Order Entry,
+                                                                                     nel caso di richiesta per
+                                                                                     interni;
+                                                                                 ○   dal Pronto Soccorso, nel
+                                                                                     caso di richiesta in
+
+
+
+
+                                                            18
+                                                         emergenza/urgenza;
+                                                  ○      dal dipartimentale
+                                                         stesso, in tutti gli altri
+                                                         casi.
+
+                                            ●    EI.2 valorizzato con
+                                                 “&<AssigningAuth>&ISO”,
+                                                 dove <AssigningAuth>
+                                                 rappresenta l’Assigning
+                                                 Authority corrispondente al
+                                                 tipo di identificativo
+                                                 veicolato nella componente
+                                                 CX.1 (fare riferimento alla
+                                                 Tabella A.3 in Appendice A
+                                                 per il valore corretto da
+                                                 utilizzare);
+                                            ●    EI.4 valorizzato con uno degli
+                                                 identificativi di Tabella A.3 in
+                                                 Appendice A a seconda del
+                                                 tipo di identificativo
+                                                 veicolato nella componente
+                                                 EI.1.
+
+                                        Esempio per ID RICHIESTA di referto
+                                        ambulatoriale:
+
+                                        20201603^\T\2.16.840.1.113883.2.9.2.5050
+                                        3.9.3.1\T\ISO^^urn:ihe:iti:xds:2013:order
+
+
+                                        La valorizzazione di questo campo è
+                                        Identica a quella del campo OBR.2.
+
+ORC.3    22    EI    O   Filler Order   Questo campo deve contenere
+                         Number         l’identificativo dell’attività del
+                                        sistema che ha generato la richiesta,
+                                        se presente. In caso contrario,
+                                        dev’essere lasciato vuoto.
+
+                                        La valorizzazione di questo campo è
+                                        Identica a quella del campo OBR.3.
+
+ORC.12   250   XCN   O   Ordering       Questo campo deve contenere le
+                         Provider       seguenti componenti:
+
+                                            ●    XCN.1 veicolante il CF del
+                                                 medico richiedente;
+                                            ●    XCN.2 veicolante il
+                                                 cognome del medico
+                                                 richiedente;
+
+
+
+
+                                19
+                                                 ●    XCN.3 veicolante il nome
+                                                      del medico richiedente;
+                                                 ●    XCN.4 con l’eventuale
+                                                      secondo nome del medico
+                                                      richiedente;
+                                                 ●    XCN.5 con l’acronimo “Dr”;
+                                                 ●    XCN.9 con sottoelemento
+                                                      HD.2 valorizzato con l’OID
+                                                      “2.16.840.1.113883.2.9.4.3.2”
+                                                      e HD.10 valorizzato con
+                                                      l’acronimo fisso “ISO”.
+
+
+                                             Se non noto si può lasciare vuoto
+
+ORC.17   250   CE    O   Entering            Questo campo dev’essere
+                         Organization        valorizzato solo se il servizio è stato
+                                             richiesto in service da un’azienda
+                                             sanitaria diversa da AULSS
+                                             3Serenissima (richieste in service).
+                                             Esso deve essere strutturato nel
+                                             modo seguente:
+
+                                                 ●    CE.1 con il codice FLS11 (es:
+                                                      “050501”) dell’azienda
+                                                      sanitaria che ha eseguito il
+                                                      servizio;
+                                                 ●    CE.2 con il nome
+                                                      dell’azienda sanitaria di cui
+                                                      alla componente CX.1 nella
+                                                      forma “AZIENDA ULSS n.
+                                                      <X><NOME>”;
+                                                 ●    CE.3 valorizzato con l’OID
+                                                      “2.16.840.1.113883.2.9.4.1.1”;
+                                                 ●    CE.6 con l’acronimo “ISO”.
+
+ORC.21   250   XON   R   Ordering Facility   Questo campo deve contenere
+                         Name                obbligatoriamente l’informazione
+                                             relativa all’unità richiedente.
+                                             Dev’essere così strutturato:
+
+                                                 ●    XON.1 con la descrizione
+                                                      dell’unità richiedente;
+                                                 ●    XON.6 valorizzato con
+                                                      l’assigning authority “AULSS3
+                                                      RequestingWards”
+                                                 ●    XON.10 veicolante la
+                                                      codifica univoca dell’unità
+
+
+
+
+                                20
+     richiedente (fare riferimento
+     ad ’Appendice B per i
+     codici da utilizzare per AULSS
+     3Serenissima).
+
+
+
+
+21
+4.1.7 TQ1 - Timing/Quantity
+
+Deve comparire, all’interno del messaggio, una ripetizione del segmento TQ1 per ogni
+ripetizione del segmento ORC.
+
+ SEQ    LEN    DT    OPT   RP/#   TBL/#      Element Name                    Valorizzazione
+
+TQ1.9   250   CWE     R                    Priority           Questo campo deve contenere
+                                                              obbligatoriamente l’informazione
+                                                              relativa all’urgenza della richiesta da
+                                                              cui è stato generato il referto
+                                                              Dev’essere così strutturato:
+
+                                                                   ●    CWE.1 con il codice che
+                                                                        rappresenta il livello di
+                                                                        priorità;
+                                                                   ●    CWE.2 valorizzato con la
+                                                                        descrizione del livello di
+                                                                        priotià
+                                                                   ●    CWE.3 valorizzato con il
+                                                                        valore fisso “AULSS3
+                                                                        priorityCodes”
+
+
+
+
+4.1.8 OBR - Observation Request
+
+Deve comparire, all’interno del messaggio, una ripetizione del segmento OBR per ogni
+ripetizione del segmento ORC.
+
+ SEQ    LEN    DT   OPT    RP/#   TBL/#     Element Name                     Valorizzazione
+
+OBR.2    22    EI    R                    Placer Order        La valorizzazione di questo campo è
+                                          Number              Identica a quella del campo ORC.2.
+
+OBR.3    22    EI    R                    Filler Order        La valorizzazione di questo campo è
+                                          Number              Identica a quella del campo ORC.3.
+
+OBR.4   250   CE     R                    Universal Service   Questo campo dev’essere così
+                                          Identifier          strutturato:
+
+                                                                  ●    CE.1 valorizzato con il
+                                                                       codice del
+                                                                       DocumentEntry.typeCode
+                                                                       corrispondente alla tipologia
+                                                                       di documento clinico
+                                                                       secondo specifiche
+                                                                       tecniche di Affinity Domain
+                                                                       Regione Veneto v.2.20 (e
+
+
+
+
+                                                  22
+                                             successive versioni) o
+                                             all’Appendice E (Tabella
+                                             A.8) di questo Documento
+                                             (e successive Versioni).
+                                        ●    CE.2 con la descrizione del
+                                             codice riportato in CE.1;
+                                        ●    CE.3 con il coding scheme
+                                             corrispondente al codice
+                                             riportato in CE.1.
+
+                                    Esempio per referto di laboratorio:
+                                    11502-2^Referto di
+                                    Laboratorio^2.16.840.1.113883.6.1
+
+
+OBR.7   26   TS   R   Observation   Questo campo deve contenere,
+                      Date/Time     nella componente TS.1 e secondo il
+                                    formato DTM, la data e ora UTC di
+                                    inizio dell’atto clinico che ha portato
+                                    alla produzione del documento. Il
+                                    formato è “YYYYMMDDhhmmss”,
+                                    dove “hh” è codificato sulle 24 ore.
+
+                                    Se il documento è una LDO, un
+                                    Verbale di Pronto Soccorso o un
+                                    Verbale Operatorio, il campo deve
+                                    veicolare rispettivamente la data di
+                                    inizio ricovero, la data di apertura
+                                    episodio e la data di inizio
+                                    intervento.
+                                    Se il documento è un CDA2 di
+                                    laboratorio, il campo deve veicolare
+                                    la data di accettazione della prima
+                                    prestazione refertata.
+
+OBR.8   26   TS   R   Observation   Questo campo deve contenere,
+                      Date/Time     nella componente TS.1 e secondo il
+                                    formato DTM, la data e ora UTC in cui
+                                    termina l’atto clinico che ha portato
+                                    alla produzione del documento. Il
+                                    formato è “YYYYMMDDhhmmss”,
+                                    dove “hh” è codificato sulle 24 ore.
+
+                                    Se il documento è una LDO, un
+                                    Verbale di Pronto Soccorso o un
+                                    Verbale Operatorio, il campo deve
+                                    veicolare rispettivamente la data di
+                                    dimissione, la data di chiusura
+
+
+
+
+                           23
+                                                             episodio e la data di fine intervento.
+                                                             Se il documento è un CDA2 di
+                                                             laboratorio, il campo deve veicolare
+                                                             la data di erogazione dell’ultima
+                                                             prestazione refertata.
+
+OBR.32   200   NDL    R                   Principal Result   Questo campo deve contenere una
+                                          Interpreter        componente NDL.7 composta da tre
+                                                             sotto-elementi:
+
+                                                                 ●    HD.1 contenente la
+                                                                      descrizione del
+                                                                      DocumentEntry.practiceSetti
+                                                                      ngCode secondo specifiche
+                                                                      tecniche di Affinity Domain
+                                                                      Regione Veneto v.2.20 e
+                                                                      successive versioni;
+                                                                 ●    HD.2 con il codice regionale
+                                                                      associato alla descrizione
+                                                                      presente in HD.1.
+                                                                 ●    HD.3 valorizzato con il
+                                                                      coding scheme costante
+                                                                      “regioneveneto
+                                                                      practiceSettingCodes v1”.
+
+                                                             Esempio per referto di laboratorio:
+                                                             Laboratorio Analisi Chimico
+                                                             Cliniche&100&regioneveneto
+                                                             practiceSettingCodes v1
+
+
+
+
+4.1.9 TXA - Transcription Document Header
+
+ SEQ     LEN   DT    OPT   RP/#   TBL/#     Element Name                   Valorizzazione
+
+TXA.2    4     IS    R                    Document Type      La valorizzazione di questo campo è
+                                                             Identica a quella del sottoelemento
+                                                             OBR.4.CE.1.
+
+TXA.3    2     ID    R                    Document           Questo campo deve contenere
+                                          Content            l’informazione relativa al metadato
+                                          Presentation       DocumentEntry.formatCode e
+                                                             dev’essere così strutturato:
+
+                                                             <CODICE>#<DESCRIZIONE>#<CODIN
+                                                             G_SCHEME>
+
+
+
+
+                                                 24
+                                      dove i valori delle variabili
+                                      <CODICE>, <DESCRIZIONE> e
+                                      <CODING_SCHEME> sono ottenuti
+                                      dal documento di specifiche
+                                      tecniche di Affinity Domain Regione
+                                      Veneto v.2.20 e successive versioni.
+
+                                      Esempio per referto CDA2 di
+                                      laboratorio:
+
+                                      urn:oid:2.16.840.1.1
+                                      13883.2.9.10.1.1.1#Referto di
+                                      Laboratorio#regioneveneto formatCodes
+                                      v1
+
+
+TXA.6   26    TS    R   Origination   Questo campo deve contenere,
+                        Date/Time     nella componente TS.1 e secondo il
+                                      formato DTM, la data e ora UTC di
+                                      generazione del documento. Il
+                                      formato è “YYYYMMDDhhmmss”,
+                                      dove “hh” è codificato sulle 24 ore.
+
+TXA.9   250   XCN   R   Originator    Questo campo permette di
+                        Code/Name     identificare l’autore del documento
+                                      (DocumentEntry.author) con tutte le
+                                      sue sub-componenti (authorPerson,
+                                      authorRole, authorSpecialty,
+                                      authorInstitution,
+                                      authorTelecommunication). Esso
+                                      deve presentare le seguenti
+                                      componenti:
+
+                                           ●   XCN.1 veicolante il CF
+                                               dell’autore del documento;
+                                           ●   XCN.2 con il cognome
+                                               dell’autore del documento;
+                                           ●   XCN.3 con il nome
+                                               dell’autore del documento;
+                                           ●   XCN.4 con l’eventuale
+                                               secondo nome dell’autore
+                                               del documento;
+                                           ●   XCN.5 con l’acronimo “Dr”
+                                               ad indicare che l’autore del
+                                               documento è un medico;
+                                           ●   XCN.6 con la data di
+                                               creazione del documento
+                                               nel formato
+                                               yyyymmddhh24miss;
+
+
+
+
+                               25
+     ●   XCN.7 con il ruolo LDAP
+         dell’autore del documento,
+         ovvero “R.1.1”;
+     ●   XCN.9 composto dalle
+         seguenti due sotto-
+         componenti:
+
+         ○    HD.2 contenente l’OID
+              “2.16.840.1.113883.2.9.4.
+              3.2”;
+         ○    HD.3 valorizzato con
+              “ISO”.
+
+     ●   XCN.14 riportante uno dei
+         valori ammessi per il sotto-
+         attributo authorSpecialty del
+         metadato
+         DocumentEntry.author
+         secondo specifiche
+         tecniche di Affinity Domain
+         Regione Veneto v.2.20 e
+         successive versioni;
+     ●   XCN.16 composto da tre
+         sotto-componenti:
+
+         ○    CE.1 contenente il
+              numero di telefono
+              dell’autore del
+              documento;
+         ○    CE.2 con l’indirizzo
+              email dell’autore del
+              documento;
+         ○    CE.4 con la pec
+              dell’autore del
+              documento.
+
+     ●   XCN.22 veicola la prima
+         ripetizione obbligatoria
+         relativa alla struttura di
+         appartenenza dell’autore
+         del documento
+         (DocumentEntry.authorInstit
+         ution). Essa, che è fissa per
+         tutti i documenti, dev’essere
+         composta dalle seguenti
+         componenti:
+
+         ○    CWE.1 contenente il
+              codice FLS11
+
+
+
+
+26
+                                                                                               dell’azienda sanitaria
+                                                                                               (“05050x”);
+                                                                                          ○    CWE.2 con la
+                                                                                               descrizione associata al
+                                                                                               codice FLS11 in CWE.1,
+                                                                                               ovvero “AZIENDA ULSS
+                                                                                               N. XXXX”;
+                                                                                          ○    CWE.3 con l’OID del
+                                                                                               sistema di codifica
+                                                                                               FLS11, ovvero
+                                                                                               “2.16.840.1.113883.2.9.4.
+                                                                                               1.1”;
+                                                                                          ○    CWE.7 con l’acronimo
+                                                                                               “ISO”.
+
+                                                                                    ●    XCN.23 veicola la seconda
+                                                                                         ripetizione obbligatoria
+                                                                                         relativa alla struttura di
+                                                                                         appartenenza dell’autore
+                                                                                         del documento
+                                                                                         (DocumentEntry.authorInstit
+                                                                                         ution). Essa è variabile e
+                                                                                         dev’essere composta dalle
+                                                                                         seguenti componenti:
+
+                                                                                          ○    CWE.1 contenente il
+                                                                                               codice STS11 o
+                                                                                               HSP11bis della struttura
+                                                                                               di appartenenza
+                                                                                               dell’autore del
+                                                                                               documento2;
+                                                                                          ○    CWE.2 con la
+                                                                                               descrizione associata al
+                                                                                               codice riportato in
+                                                                                               CWE.1;
+                                                                                          ○    CWE.3 con l’OID del
+                                                                                               sistema di codifica
+                                                                                               utilizzato (per gli OID
+                                                                                               fare riferimento alla
+                                                                                               Tabella A.4 in
+                                                                                               Appendice A);
+
+
+
+2
+ Si faccia riferimento alla Tabella A.4 in Appendice A. Il sistema di codifica HSP11bis dev’essere utilizzato quando la
+struttura di appartenenza dell’autore del documento è una struttura di ricovero (ad esempio un ospedale), mentre il
+sistema di codifica STS11 dev’essere adottato per identificare le strutture di assistenza territoriale (ad esempio,
+strutture residenziali per anziani, ambulatori, distretti, hospice etc.). Non si ravvisano casistiche in cui sia richiesto l’uso
+del sistema di codifica RIA11.
+
+
+
+
+                                                              27
+                                                   ○    CWE.7 valorizzato con
+                                                        l’acronimo “ISO”.
+
+TXA.12   30   EI   R   Unique Document   Questo campo deve contenere,
+                       Number            nella componente EI.1, lo uniqueId
+                                         del documento generato dal
+                                         Document Source
+                                         (DocumentEntry.uniqueId) strutturato
+                                         come segue:
+
+                                         <OIDdoc>\S\<extension>
+
+                                         dove:
+
+                                             ●    <OIDdoc> rappresenta l’OID
+                                                  che identifica la tipologia di
+                                                  documento ed è composto
+                                                  dalla concatenazione dell’
+                                                  OIDloc del sistema
+                                                  produttore (vedesi Tabella
+                                                  A.1 in Appendice A) con un
+                                                  suffisso a seconda del tipo di
+                                                  documento. Si faccia
+                                                  riferimento a Tabella A.6 in
+                                                  Appendice A per gli OIDdoc
+                                                  utilizzabili;
+                                             ●    <extension> è l’id univoco
+                                                  generato dal Document
+                                                  Source.
+
+                                         Esempio per referto di laboratorio:
+                                         OIDloc.4.4.1\S\1000001213_LAB152020
+
+
+                                         dove OIDloc è desumibile da Tabella A.1
+                                         in Appendice A a seconda del sistema
+                                         LIS produttore del referto.
+
+
+TXA.13   30   EI   C   Parent Document   Questo campo dev’essere
+                       Number            valorizzato solo nel caso di MDM^T10
+                                         e deve contenere
+                                         obbligatoriamente, nella
+                                         componente EI.1, lo uniqueId del
+                                         documento che ha subito il replace
+                                         formattato come per il campo
+                                         TXA.12
+
+TXA.14   22   EI   R   Placer Order      Questo campo deve contenere un
+                       Number            ulteriore identificativo della richiesta
+
+
+
+
+                              28
+     il cui identificativo univoco (ID
+     richiesta) è veicolato nel campo
+     ORC.2. Esso costituisce dunque
+     l’identificativo di 3° livello del servizio
+     sanitario all’origine del documento.
+     Questo campo dev’essere
+     valorizzato obbligatoriamente solo
+     nel caso di referto ambulatoriale SSN
+     (PV1.2 = “O”), in quanto è atteso
+     l’identificativo della ricetta.
+
+     Nel caso in cui ci siano più
+     impegnative associate al
+     documento (ad esempio, più
+     richieste raggruppate attraverso un
+     ID sessione), dev’essere inserita una
+     ripetizione del campo per ciascuna
+     di esse.
+
+     Ogni ripetizione di questo campo
+     dev’essere così strutturata:
+
+         ●      EI.1 contenente il valore
+                dell’identificativo. Nel caso
+                di referto ambulatoriale o di
+                branca 3, tale valore
+                coincide con il NRE (DEMA o
+                DPCM) o il RUR (ricetta
+                rossa); in tutti gli altri casi, il
+                Document Source può
+                inserire, se presente, un
+                ulteriore identificativo
+                interno associato alla
+                richiesta, purché univoco (il
+                RIS deve inserire l’ACN in
+                questo campo;
+         ●      EI.2 valorizzato con
+                “&<AssigningAuth>&ISO”,
+                dove <AssigningAuth>
+                rappresenta l’Assigning
+                Authority corrispondente al
+                tipo di identificativo
+                veicolato nella componente
+                CX.1 (fare riferimento alla
+                Tabella A.3 in Appendice A
+                per il valore corretto da
+                utilizzare);
+
+
+
+
+29
+                                               ●     EI.4 valorizzato con uno degli
+                                                     identificativi di Tabella A.3 in
+                                                     Appendice A a seconda del
+                                                     tipo di identificativo
+                                                     veicolato nella componente
+                                                     EI.1.
+
+                                           Esempio per referto del laboratorio
+                                           analisi associato a 3 ID richiesta,
+                                           ciascuno con una ricetta:
+
+                                           050A00524632401^\T\2.16.840.1.113883.2.
+                                           9.4.3.\T\ISO^^urn:ihe:iti:xds:2013:uniqueId
+                                           ~050A01827650990^\T\2.16.840.1.113883.
+                                           2.9.4.3.8\T\ISO^^urn:ihe:iti:xds:2013:uniqu
+                                           eId~060101987243100^\T\2.16.840.1.1138
+                                           83.2.9.2.50503.9.3.1\T\ISO^^urn:ihe:iti:xds:
+                                           2013:order
+
+
+TXA.16   30   ST   R   Unique Document     Questo campo deve contenere
+                       File Name           l’hash del documento calcolato dal
+                                           Document Source utilizzando
+                                           l’algoritmo SHA1.
+
+TXA.17   2    ID   R   Document            Questo campo de’ essere
+                       Completion Status   valorizzato con uno dei seguenti
+                                           valori:
+
+                                               ●     “AU” per referti non firmati;
+                                               ●     “LA” per referti firmati
+                                                     digitalmente.
+
+TXA.18   2    ID   R   Document            Il campo deve veicolare il valore del
+                       Confidentiality     confidentialityCodeassociato al
+                       Status              documento sia ai fini del DSE che del
+                                           FSE. Deve contenere un’unica
+                                           ripetizione così strutturata:
+
+                                           <CODICE>#<DESCR>#<CODING_SCH
+                                           EME>
+
+                                           dove:
+
+                                               ●     <CODICE> è una stringa di 4
+                                                     caratteri del tipo “ABCD” in
+                                                     cui:
+                                                     ○       “A” è il valore del
+                                                             confidentialityCode
+                                                             valido per il FSE;
+
+
+
+
+                                30
+              ○    “B” può contenere solo
+                   il valore “M”, valido per
+                   il FSE, nel caso in cui il
+                   documento sia da
+                   mediare;
+              ○    “C” è il valore del
+                   confidentialityCode
+                   valido per il DSE;
+              ○    “D” può contenere solo
+                   il valore “M”, valido per
+                   il DSE, nel caso in cui il
+                   documento sia da
+                   mediare.
+         ●    <DESCR> dev’essere lasciato
+              vuoto;
+         ●    <CODING_SCHEME>
+              dev’essere valorizzato con
+              l’assigning authority “AULSS3
+              ConfidentialityCode”.
+
+     I valori del confidentialityCode
+     ammessi per la valorizzazione dei
+     caratteri “A” e “C” sono quelli previsti
+     dal specifiche tecniche di Affinity
+     Domain Regione Veneto v.2.20 e
+     successive versioni, ovvero:
+
+         ●    “V” se il documento
+              contiene dati soggetti a
+              maggior tutela
+              dell’anonimato;
+         ●    “O” se il paziente ha
+              richiesto l’oscuramento del
+              documento;
+         ●    “S” se il paziente minorenne
+              ha richiesto l’oscuramento
+              del documento (e l’uso
+              della S è applicabile da
+              linee guida aziendali);
+         ●    “N” in tutti gli altri casi in cui
+              non sono richieste o non si
+              rendono necessarie
+              restrizioni a livello di policy di
+              visibilità del documento.
+
+     NB: I valori non espressi dovranno
+     essere riportati, all’interno della
+
+
+
+
+31
+                                                 sequenza “ABCD”, attraverso il
+                                                 carattere “-”. Nel caso in cui il
+                                                 documento non sia “da mediare”, i
+                                                 caratteri B e D dovranno essere
+                                                 entrambi valorizzati con “-”.
+
+
+                                                 Esempio per documento da mediare
+                                                 contenente dati soggetti a maggior
+                                                 tutela dell’anonimato:
+                                                 VMVM##AULSS3 ConfidentialityCode
+
+                                                 Esempio per documento
+                                                 contenente dati soggetti a maggior
+                                                 tutela dell’anonimato:
+                                                 V-V-##AULSS3 ConfidentialityCode
+
+TXA.20   2     ID    R   0275   Document         Questo campo dev’essere utilizzato
+                                Storage Status   dall’attore Document Source per
+                                                 comunicare al XDS Document
+                                                 Repository se il documento
+                                                 trasmesso deve o meno essere
+                                                 indicizzato nel FSE. I valori ammessi
+                                                 sono:
+
+                                                     ●    “AA” se il documento
+                                                          dev’essere indicizzato nel
+                                                          FSE;
+                                                     ●    “AR” se il documento NON
+                                                          dev’essere indicizzato nel
+                                                          FSE ma solo custodito
+                                                          localmente nel repository.
+
+                                                 La modalità di valorizzazione di
+                                                 questo campo dev’essere correlata
+                                                 alle linee guida definite dall’azienda
+                                                 AULSS 3Serenissima per i propri
+                                                 fornitori di Document Source.
+
+TXA.22   250   PPN   R          Authentication   Questo campo deve veicolare le
+                                Person, Time     informazioni relative al medico che
+                                Stamp            ha firmato digitalmente il
+                                                 documento (legalAuthenticator). Le
+                                                 componenti da utilizzare sono:
+
+                                                     ●    PPN.1 valorizzata con il CF
+                                                          del medico firmatario;
+                                                     ●    PPN.2 con il cognome;
+
+
+
+
+                                        32
+                                                                ●   PPN.3 con il nome;
+                                                                ●   PPN.4 con l’eventuale
+                                                                    secondo nome;
+                                                                ●   PPN.5 con la sigla “Dr”;
+                                                                ●   PPN.9 veicolante, nella
+                                                                    componente HD.2, l’OID
+                                                                    “2.16.840.1.113883.2.9.4.3.2”
+                                                                    e, nella componente HD.3,
+                                                                    la sigla “ISO;
+                                                                ●   PPN.15 con la data e ora di
+                                                                    firma del documento nel
+                                                                    formato
+                                                                    “YYYYMMDDhhmmss”, dove
+                                                                    “hh” è codificato sulle 24
+                                                                    ore” .
+
+a
+
+4.1.10 OBX - Observation/Result
+
+
+    SEQ   LEN   DT   OPT   RP/#   TBL/#      Element Name               Valorizzazione
+
+OBX.1     4     SI   R                    Set ID - OBX      Progressivo univoco del segmento.
+
+
+OBX.2     2     ID   R            0125    Value Type        Questo campo dev’essere
+                                                            valorizzato con uno dei valori
+                                                            seguenti:
+
+                                                                ●   “ED” per la prima ripetizione
+                                                                    del segmento che contiene
+                                                                    il documento codificato in
+                                                                    base64;
+                                                                ●   “CE” se si tratta di una
+                                                                    ripetizione del segmento
+                                                                    successiva alla prima
+                                                                    utilizzata per veicolare le
+                                                                    codifiche delle prestazioni
+                                                                    contenute nel documento
+                                                                    (es: CVP, ICD9-CM etc.).
+
+OBX.3     250   CE   R                    Observation       Se OBX.2 = “ED”, la valorizzazione di
+                                          Identifier        questo campo è Identica a quella
+                                                            del campo OBR.4.
+
+                                                            Se OBX.2 = “CE”, il campo deve
+                                                            prevedere le seguenti tre
+                                                            componenti:
+
+
+
+
+                                                   33
+                                                   ●    CE.1 veicolante un codice
+                                                        di interesse;
+                                                   ●    CE.2 con la relativa
+                                                        descrizione coerente con il
+                                                        sistema di codifica utilizzato;
+                                                   ●    CE.3 con il coding scheme
+                                                        relativo al sistema di
+                                                        codifica utilizzato.
+
+                                               La codifica veicolata varia a
+                                               seconda della tipologia di
+                                               documento e del contesto. Fare
+                                               riferimento a Tabella A.5 in
+                                               Appendice A per i sistemi di codifica
+                                               ammessi e i relativi coding scheme.
+
+OBX.4   20      ST    R2   Observation Sub-    Se OBX.2 = “ED”, questo campo
+                           ID                  dev’essere valorizzato
+                                               obbligatoriamente nel caso in cui il
+                                               documento sia un referto CDA2 e
+                                               deve contenere l’URL del foglio di
+                                               stile da utilizzare per effettuare il
+                                               rendering del referto strutturato.
+                                               Nel caso di CDA2 di laboratorio, il
+                                               valore di questo campo corrisponde
+                                               al contenuto del tag <href> del
+                                               CDA2.
+
+                                               Se OBX.2 = “CE”, questo campo va
+                                               lasciato vuoto.
+
+OBX.5   99999   VAR   R2   Observation Value   Se OBX.2 = “ED”, questo campo
+                IES
+                                               deve presentare le seguenti
+                                               componenti obbligatorie:
+
+                                                   ●    ED.2 valorizzato con
+                                                        “multipart”;
+                                                   ●    ED.3 contenente il
+                                                        mimeType del documento. I
+                                                        valori ammessi per questa
+                                                        componente, definiti da
+                                                        specifiche tecniche di
+                                                        Affinity Domain regionale,
+                                                        sono:
+                                                         ○    “application/xml” se il
+                                                              documento è un XML
+                                                              (es., CDA2 non firmato
+
+
+
+
+                                  34
+                                                           oppure XADES);
+                                                      ○    “application/pkcs7-
+                                                           mime” se il documento
+                                                           è imbustato p7m (es.,
+                                                           PDF firmato Cades);
+                                                      ○    “application/pdf” se il
+                                                           documento è un PDF
+                                                           non-firmato oppure
+                                                           PADES;
+                                                      ○    “application/dicom” se
+                                                           il documento è un file
+                                                           DICOM;
+                                                      ○    “application/json” se il
+                                                           documento è un file
+                                                           JSON;
+                                                      ○    “application/rtf” se il
+                                                           documento è un file rtf;
+                                                      ○    “text/plain” se si tratta
+                                                           di un testo non
+                                                           formattato XML.
+                                                 ●   ED.4 valorizzato con
+                                                     “Base64”;
+                                                 ●   ED.5 contenente il
+                                                     documento in base64.
+
+                                             Esempio per PDF firmato Cades:
+                                             multipart^application/pkcs7-
+                                             mime^Base64^MBAxy……zy5W
+
+
+                                             Se OBX.2 = “CE”, questo campo va
+                                             lasciato vuoto.
+
+
+                                             Se il messaggio è un MDM^T08 o un
+                                             MDM^T11, la componente ED.5
+                                             dev’essere lasciata vuota.
+
+OBX.11   1    ID   R2   Observation Result   Se OBX.2 = “ED”, questo campo
+                        Status               dev’essere valorizzato con il valore
+                                             costante “F”.
+                                             Se OBX.2 = “CE”, questo campo va
+                                             lasciato vuoto.
+
+OBX.13   20   ST   R2   User Defined         Se OBX.2 = “ED”, questo campo
+                        Access Checks        contiene la size del documento.
+                                             Se OBX.2 = “CE”, questo campo va
+                                             lasciato vuoto.
+
+
+
+
+                                 35
+OBX.15   250   CE   R2   Producer’s ID   Se OBX.2 = “ED”, questo campo
+                                         deve contenere l’informazione
+                                         sull’unità di produzione
+                                         (producerWard) del documento.
+                                         Esso deve presentare le seguenti tre
+                                         componenti obbligatorie:
+
+                                              ●   CE.1 valorizzato con il
+                                                  codice univoco a livello
+                                                  aziendale dell’unità di
+                                                  produzione secondo
+                                                  codifica condivisa con
+                                                  l’azienda sanitaria;
+                                              ●   CE.2 con la relativa
+                                                  descrizione breve;
+                                              ●   CE.3 con l’assigning
+                                                  authority “AULSS3
+                                                  ProducingWards”.
+
+                                         Se OBX.2 = “CE”, questo campo va
+                                         lasciato vuoto.
+
+OBX.17   250   CE   R2   Observation     Se OBX.2 = “ED”, questo campo
+                         Method          contiene l’informazione relativa alla
+                                         “classe” di appartenenza del
+                                         documento (classCode). Deve
+                                         presentare le seguenti tre
+                                         componenti obbligatorie:
+
+                                              ●   CE.1 veicolante il codice
+                                                  della classe. I valori sono
+                                                  quelli previsti da specifiche
+                                                  tecniche di Affinity Domain
+                                                  regionale v.2.20 e successive
+                                                  versioni;
+                                              ●    CE.2 con la descrizione
+                                                  relativa al codice in CE.1;
+                                              ●   CE.3 con il coding scheme
+                                                  “regioneveneto classCodes
+                                                  v1”.
+
+                                         Se OBX.2 = “CE”, questo campo va
+                                         lasciato vuoto.
+                                         Esempio
+                                         rv_cc_0001^Referto
+                                         (report)^regioneveneto classCodes
+                                         v1
+
+
+
+
+                                  36
+4.2 Esempi di messaggi HL7 MDM^T02
+Si riportano di seguito due messaggi MDM^T02 di esempio.
+
+
+4.2.1 Referto di laboratorio analisi
+
+MSH|^~\&|DNLAB|DEDALUS|XVALUE|DEDALUS|20200204151802||MDM^T02|2.16.840.1.113883.2.9.2.
+50506.9.4.20.5009123456789001|P|2.5
+EVN||20200204151805|||||Ospedale#Ospedale#regioneveneto healthcareFacilityTypeCodes
+v1^2.16.840.1.113883.2.9.2.50506.4.5.1.5009^ISO
+PID|||218990^^^&PK&ISO~PRGPRN90A05F382G^^^&2.16.840.1.113883.2.9.4.3.2&ISO~215643431^^^
+&SS&ISO||PROVA^PROVA||19900501|M|||VIA 4 NOVEMBRE^^PADOVA^PD^35020^ITA^L~VIA 4
+NOVEMBRE^^PADOVA^PD^35020^ITA^H
+~^^MONSELICE^PD^35043^ITA^N||^^CP^steber90@gmail.com^^^^^^^^
+3487136867
+PV1||O||||||||||||||||rv_ctc_0050#Attivita Specialistica/Diagnostica per
+Esterni#regioneveneto contentTypeCodes
+v1|10971736^^^&2.16.840.1.113883.2.9.2.50506.1.4.13.2&ISO^urn:xvalue:2020:sessionId||SSN#Regime
+SSN#ADMINISTRATIVE_TYPE|PIN04551628
+ORC|NW|202016031234^\T\2.16.840.1.113883.2.9.2.50506.1.3.1\T\ISO^^urn:ihe:iti:xds:2013:order|20207
+0522501|||||||||BPRFOR62A16F442G^MEDICO^PROVA^^^^^^^2.16.840.1.113883.2.9.4.3.2^ISO|
+||||||||Esterni^^^^^AULSS RequestingWards^^^^ES
+OBR||202016031234^\T\2.16.840.1.113883.2.9.2.50506.1.3.1\T\ISO^^urn:ihe:iti:xds:2013:order|20207052
+2501|11502-2^Referto di
+Laboratorio^2.16.840.1.113883.6.1|||20200204103023|20200204103720|||||||||||||||||||||||
+||^^^^^^Laboratorio Analisi Chimico Cliniche&100&regioneveneto practiceSettingCodes v1
+ORC|NW|202016051789^\T\2.16.840.1.113883.2.9.2.50506.1.3.1\T\ISO^^urn:ihe:iti:xds:2013:order|20207
+0522512||||||||||||||||BPRFOR62A16F442G ^ MEDICO ^
+PROVA^^^^^^^2.16.840.1.113883.2.9.4.
+3.2^ISO|||||||||ESTERNI LABORATORIO^^^^^AULSS RequestingWards^^^^ES
+OBR||202016051789^\T\2.16.840.1.113883.2.9.2.50506.1.3.1\T\ISO^^urn:ihe:iti:xds:2013:order|20207052
+2512|11502-2^Referto di
+Laboratorio^2.16.840.1.113883.6.1|||20200204103025|20200204103800|||||||||||||||||||||||
+||^^^^^^Laboratorio Analisi Chimico Cliniche&100&regioneveneto practiceSettingCodes v1
+TXA||11502-2|urn:oid:2.16.840.1.1 13883.2.9.10.1.1.1#Referto di Laboratorio#regioneveneto
+formatCodes
+v1|||20200204151757|||LXGJLT58A99L736V^LEXINGTON^JULIETTE^^Dr^20200204151731^R.1.1^^2.16.
+840.1.113883.2.9.4.3.2&ISO^^^^^Laboratorio Analisi Chimico
+Cliniche||0499424874&segreteria_lab_cit@aulss6.veneto.it&&protocollo.aulss6@pecveneto.it^^^^^^0
+5050X&AZIENDA ULSS N. X&2.16.840.1.113883.2.9.4.1.1&&&&ISO^05050X01&OSPEDALE DI
+X&2.16.840.1.113883.2.9.4.1.2&&&&ISO|2.16.840.1.113883.2.9.2.50506.9.4.4.1\S\102340100128_
+LABCI150113^2.16.840.1.113883.2.9.2.50506.4.5.3.1||050A00524632401^\T\2.16.840.1.113883.2.9.4.3.8\T
+
+
+
+                                                  37
+\ISO^^urn:ihe:iti:xds:2013:uniqueId~
+050A01827650990^\T\2.16.840.1.113883.2.9.4.3.8\T\ISO^^urn:ihe:iti:x
+ds:2013:uniqueId||sjrkfugow643kskxnalzzjk|LA|N-N-##AULSS
+ConfidentialityCode||AA||BPRFOR62A16F442G ^MEDICO^ PROVA ^^Dr^^^^&2.16.840.1.113883.2.9.
+4.3.2&ISO
+OBX|1|ED||http://fser.test.it/stylesheets/aulss/refertolaboratoriodnlab.v1.xsl
+|multipart^application/xml^Base64^MIjzt45BtD8kSqG........................idrHDkxbE80|||||||F|1654||CITL
+33AB^LABORATORIO ANALISI^AULSSProducingWards||rv_cc_0050^Referto
+(report)^regioneveneto classCodes v1
+OBX|2|CE|90.11.1_6^C PEPTIDE - URINE^CVP v1.4
+OBX|3|CE|90.11.5_2^CALCITONINA [S]^CVP v1.4
+OBX|4|CE|90.62.2_2^EMOCROMO (Hb, GR, GB, HCT, PLT, IND. DERIV., F. L.)^CVP v1.4
+OBX|5|CE|1524^MICROALBUMINURIA^codici DNLab
+OBX|6|CE|1622.0^CREATININA SIERICA^codici DNLab
+
+
+4.2.2 Referto di radiologia
+
+Referto PDF con firma CAdES per richiesta di consulenza da OE su paziente in regime di ricovero
+
+MSH|^~\&|CENTRICITY|GE|XVALUE|DEDALUS|20200309161000||MDM^T02|2.16.840.1.113883.2.9.2.5
+0506.4.4.20.5004106226179086|P|2.5
+EVN||20200309161002|||||Ospedale#Ospedale#regioneveneto healthcareFacilityTypeCodes
+v1^2.16.840.1.113883.2.9.2.50506.4.5.1.5004^ISO
+PID|||218990^^^&PK&ISO~PRGPRN90A05F382G^^^&2.16.840.1.113883.2.9.4.3.2&ISO~215643431^^^
+&SS&ISO||PROVA^PROVA||19900501|M|||VIA 4 NOVEMBRE^^PADOVA^PD^35020^ITA^L~VIA 4
+NOVEMBRE^^PADOVA^PD^35020^ITA^H
+~^^MONSELICE^PD^35043^ITA^N||^^CP^steber90@gmail.com^^^^^^^^
+3487136867
+PV1||I||||||||||||||||rv_ctc_0040#Attivita Specialistica/Diagnostica per Interni#regioneveneto
+contentTypeCodes
+v1|2020725476^^^&2.16.840.1.113883.2.9.2.50506.12.4.6&ISO^urn:rve:2016:admissionNumber||INPATIE
+NT#Regime di Ricovero#ADMINISTRATIVE_TYPE|
+ORC|NW|202019110653^\T\2.16.840.1.113883.2.9.2.50506.12.4.13.1\T\ISO^^urn:ihe:iti:xds:2013:order|2
+02050122740||||||||| BPRFOR62A16F442G ^ MEDICO ^ PROVA
+^^^^^^^2.16.840.1.113883.2.9.4.3.2^I
+SO|||||||||CARDIOLOGIA ^^^^^AULSS RequestingWards^^^^CS_CAR
+OBR||202019110653^\T\2.16.840.1.113883.2.9.2.50506.12.4.13.1\T\ISO^^urn:ihe:iti:xds:2013:order|20205
+0122740|68604-8^Referto
+radiologico^2.16.840.1.113883.6.1|||20200309152530|20200309160112|||||||||||||||||||||||
+||^^^^^^Radiologia&069&regioneveneto practiceSettingCodes v1
+ORC|NW|202019110654^\T\2.16.840.1.113883.2.9.2.50506.12.4.13.1\T\ISO^^urn:ihe:iti:xds:2013:order|2
+0207220856 BPRFOR62A16F442G ^ MEDICO ^ PROVA ^^^^^^^2.16.840.1.113883.2.9.4.3.2^IS
+O|||||||||CARDIOLOGIA ^^^^^AULSS RequestingWards^^^^CS_CAR
+OBR||202019110654^\T\2.16.840.1.113883.2.9.2.50506.12.4.13.1\T\ISO^^urn:ihe:iti:xds:2013:order|20207
+220856|68604-8^Referto
+radiologico^2.16.840.1.113883.6.1|||20200309152530|20200309160112|||||||||||||||||||||||
+||^^^^^^Radiologia&069&regioneveneto practiceSettingCodes v1
+
+
+
+                                                   38
+TXA||68604-8|urn:ad:rve:pdf#PDF#regioneveneto formatCodes
+v1|||20200309160959|||DNTMSM56E51H364E^DE
+ANTONI^MASSIMO^^Dr^20200309160959^R.1.1^^2.16.840.1.113883.2.9.4.3.2&ISO^^^^^Radiologia||04
+12224917&segreteria.radiologia@aulss.veneto.it&&protocollo.aulss@pecveneto.it^^^^^^05050X
+&AZIENDA ULSS N. X&2.16.840.1.113883.2.9.4.1.1&&&&ISO^05050X02&OSPEDALE DI
+X&2.16.840.1.113883.2.9.4.1.2&&&&ISO|2.16.840.1.113883.2.9.2.50506.4.4.4.6\S\271455
+2RIS5189^2.16.840.1.113883.2.9.2.50506.4.5.3.1||600141^\T\2.16.840.1.113883.2.9.2.50506.4.4.13.1\T\ISO
+^^urn:eu:dedalus:x1v1:2017:studyUUID~44002^\T\2.16.840.1.113883.2.9.2.50506.4.4.13.1\T\ISO^^urn:eu:
+dedalus:x1v1:2020:orderLocal~44003^\T\2.16.840.1.113883.2.9.2.50506.4.4.13.1\T\ISO^^urn:eu:dedalus:
+x1v1:2020:orderLocal||sj46sqiyi3or3nae539anlzkqjaimvbln28xnbvi9e|LA|N-N-##AULSS6
+34ConfidentialityCode||AA|| BPRFOR62A16F442G ^ MEDICO ^ PROVA
+^^Dr^^^^&2.16.840.1.113883.2.9.4.3.2&ISO
+OBX|1|ED|||multipart^application/pkcs7-mime^Base64^Mqwepn45x2Sqj.............................ywE74|||
+||||F|1902||RX001^RADIOLOGIA^AULSS ProducingWards||rv_cc_0050^Referto
+(report)^regioneveneto classCodes v1
+OBX|2|CE|301^RX TORACE DI CONTROLLO^codici Centricity
+OBX|3|CE|88.92.B_3^ANGIO RM CORONARICA - CONTROLLO^CVP v1.4
+
+
+
+5. Transazioni del profilo XDS.b
+In questa sezione viene descritta nel dettaglio tecnico la composizione dei metadati XDS.b
+nel caso in cui l’attore XDS Document Source opti per l’approccio basato sull’uso delle
+transazioni ITI previste dal profilo XDS.b.
+
+
+
+5.1 Transazioni utilizzate
+Le transizioni descritte in seguito vanno eseguite utilizzando il Token SAML 2.0
+precedentemente staccato attraverso asserzione [RVE-1.b] da IAP Aziendale AULSS 3
+secondo le specifiche tecniche “Infrastruttura di sicurezza GDL-O Sicurezza” messe a
+disposizione da Arsenal.
+
+
+5.1.1 Transazione [ITI-41] Provide and Register Document Set-b
+La transazione [ITI-41] Provide and Register Document Set-b è utilizzata per pubblicare un
+documento nel repository e trasmettere contestualmente i metadati ad esso associati.
+Per la struttura del messaggio di request si rimanda al documento di specifiche tecniche “IHE
+IT Infrastructure Technical Framework, Volume 2b (ITI TF-2b): Transactions Part B”.
+
+
+5.1.2 Transazione [ITI-57] Update Document Set
+La transazione [ITI-57] Update Document Set è utilizzata da un attore Document
+Administrator (in questo caso specifico il sistema XDS Document Source) per effettuare
+l’update di uno o più metadati associati ad un documento precedentemente inviato.
+
+
+
+
+                                                  39
+Per la struttura del messaggio di request si rimanda al documento di specifiche tecniche “IHE
+IT Infrastructure Technical Framework Supplement – XDS Metadata Update”.
+
+
+5.1.3 Transazione [ITI-62] Delete Document Set
+La transazione [ITI-62] Delete Document Set è utilizzata per eliminare un documento
+precedentemente inviato.
+Per la struttura del messaggio di request si rimanda al documento di specifiche tecniche “IHE
+ITI Technical Framework Supplement – Remove Metadata and Documents (RMD)”.
+
+
+
+5.2 Metadati XDS
+Nella tabella seguente sono riportati i metadati XDS.b richiesti ai fini dell’integrazione. Per la
+loro valorizzazione, ove non diversamente specificato, si faccia riferimento al documento di
+specifiche tecniche di Affinity Domain regionale v.2.20 e successive versioni. Sono stati inoltre
+aggiunti dei metadati “custom” non previsti da suddette specifiche, ma obbligatori per
+l’integrazione in oggetto (essi sono evidenziati in azzurro in tabella).
+Per ciascun metadato XDS è inoltre indicata la corrispondenza con il segmento HL7 v2.5 del
+messaggio di tipo MDM che veicola la medesima tipologia di informazione, stabilendo così
+un nesso logico e semantico tra i due approcci.
+
+
+            Metadato XDS                              Valorizzazione             Mapping su HL7
+
+DocumentEntry.creationTime            Data e ora UTC di generazione del              TXA.6
+                                      documento nel formato
+                                      “YYYYMMDDhhmmss”, dove “hh” è
+                                      codificato sulle 24 ore.
+
+DocumentEntry.languageCode            Costante: “it-IT”                               ---
+
+
+DocumentEntry.legalAuthenticator      XCN.1 veicolante il CF del medico         [TXA.22].[PPN.1]
+                                      firmatario del documento
+
+                                      XCN.2 con il cognome del medico           [TXA.22].[PPN.2]
+                                      firmatario del documento
+
+                                      XCN.3 con il nome del medico firmatario   [TXA.22].[PPN.3]
+                                      del documento
+
+                                      XCN.4 con l’eventuale secondo nome        [TXA.22].[PPN.4]
+                                      dell’autore del documento
+
+                                      XCN.5 con la costante “Dr”                [TXA.22].[PPN.5]
+
+
+
+
+                                                 40
+                                     XCN.9.HD.2 con l’OID                         [TXA.22].[PPN.9].[H
+                                     “2.16.840.1.113883.2.9.4.3.2”                       D.2]
+
+                                     XCN.9.HD.3 con la costante “ISO              [TXA.22].[PPN.3].[H
+                                                                                         D.3]
+
+DocumentEntry.legalAuthenticatorTi   Metadato custom. Veicola la data e ora       [TXA.22].[PPN.15]
+me                                   UTC di generazione del documento nel
+                                     formato “YYYYMMDDhhmmss”, dove
+                                     “hh” è codificato sulle 24 ore.
+
+DocumentEntry.mimeType               mimeType del documento                       [OBX.5].[ED.3], se
+                                                                                    OBX.2 = “ED”
+
+DocumentEntry.objectType             Valore costante “Stable Document                     --
+                                     Entry"
+
+DocumentEntry.patientId              Codice MPI del paziente, con                  Prima ripetizione
+                                     riferimento all’anagrafe aziendale                del PID.3
+
+DocumentEntry.practiceSettingCode    Pratica clinica o specialità che ha           [OBR.32].[NDL.7]
+                                     portato alla creazione del documento
+
+DocumentEntry.referenceIdList        CXi.1 contenente il valore                    [PV1.19].[CX.1]
+                                     dell’identificativo (vedesi Tabelle A.2 e            e
+                                     A.3)                                           [TXA.14].[EI.1]
+
+                                     CXi.4 veicolante l’Assigning Authority        [PV1.19].[CX.4]
+                                     coerente con l’identificativo in CXi.1               e
+                                     (vedesi Tabelle A.2 e A.3)                     [TXA.14].[EI.2]
+
+                                     CXi.5 contenente il tipo di identificativo    [PV1.19].[CX.5]
+                                     coerente con il valore in CXi.1 (vedesi              e
+                                     Tabelle A.2 e A.3)                             [TXA.14].[EI.4]
+
+                                     Se PV1.22 non è vuoto, gestire il token di         PV1.22
+                                     scarico referto coerentemente alle
+                                     indicazioni in tabella A.2 e A.3
+
+DocumentEntry.serviceStartTime       Istante di inizio dell’atto clinico cui fa         OBR.7
+                                     riferimento il documento nel formato
+                                     “YYYYMMDDhhmmss”, dove “hh” è
+                                     codificato sulle 24 ore.
+
+DocumentEntry.serviceStopTime        Istante di fine dell’atto clinico cui fa           OBR.8
+                                     riferimento il documento nel formato
+                                     “YYYYMMDDhhmmss”, dove “hh” è
+                                     codificato sulle 24 ore.
+
+
+
+
+                                                 41
+DocumentEntry.size                   Size del documento                                 OBX.13, se
+                                                                                       OBX.2=“ED”
+
+DocumentEntry.sourcePatientId        CF del paziente                                     Seconda
+                                                                                      ripetizione del
+                                                                                             PID.3
+
+DocumentEntry.sourcePatientInfo      PID-3 veicolante la lista degli                         PID.3
+                                     identificativi associati al paziente
+                                     (obbligatorio almeno CF o, in
+                                     sostituzione di quest’ultimo, STP o ENI)
+
+                                     PID-5 contenente cognome e nome del                     PID.5
+                                     paziente
+
+                                     PID-7 contenente la data di nascita del                 PID.7
+                                     paziente nel formato “YYYYMMDD”
+
+                                     PID-8 valorizzato con il sesso del paziente             PID.5
+
+
+                                     PID-11 contenente, in due ripetizioni,         Prima o seconda
+                                     l’indirizzo di residenza OPPURE domicilio      ripetizione + terza
+                                     del paziente e l’informazione sul luogo di     ripetizione del
+                                     nascita                                        PID.11
+
+                                     PID-13 con componenti XTN.2, XTN.3,                     PID.13
+                                     XTN.4, XTN.12 per veicolare le
+                                     informazioni di recapito del paziente
+
+DocumentEntry.title                  Metadato opzionale che può essere                         ---
+                                     utilizzato per veicolare un title di max 128
+                                     caratteri associato al documento
+
+DocumentEntry.typeCode               <nodeRepresentation> veicolante il               [OBR.4].[CE.1],
+                                     codice del tipo di documento                    [OBX.3].[CE.1] se
+                                                                                    OBX.2=“ED”, TXA.2
+
+                                     Slot con name “codingScheme”                     [OBR.4].[CE.2],
+                                     contenente in <ValueList> un <Value>            [OBX.3].[CE.2] se
+                                     con il coding scheme                              OBX.2=“ED”
+
+                                     <Name> con la descrizione del codice             [OBR.4].[CE.3],
+                                     del codice utilizzato in <LocalizedString>      [OBX.3].[CE.3] se
+                                                                                       OBX.2=“ED”
+
+DocumentEntry.uniqueId               Identificativo univoco del documento              [TXA.12].[EI.1]
+
+
+DocumentEntry.administrativeReques   CE.1 contenente il regime amministrativo                PV1.21
+
+
+
+
+                                                42
+t                                      entro cui il documento è stato prodotto
+
+
+DocumentEntry.renderingMethod          URL del foglio di stile nel caso di referto       OBX.4, se
+                                       CDA2 di laboratorio                             OBX.2=“ED”
+
+DocumentEntry.author.authorInstituti   XON.1 con la descrizione costante             [TXA.9].[XCN.22].[
+on                                     dell’azienda sanitaria, ovvero “AZIENDA            CWE.2]
+                                       ULSS N. 3 SERENISSIMA”
+*PRIMA RIPETIZIONE di <ValueList>
+                                       XON.6.2 con l’OID del sistema di codifica     [TXA.9].[XCN.22].[
+                                       FLS11, ovvero                                      CWE.3]
+                                       “2.16.840.1.113883.2.9.4.1.1”
+
+                                       XON.6.3 il valore costante “ISO”              [TXA.9].[XCN.22].[
+                                                                                          CWE.7]
+
+                                       XON.10 con il codice FLS11 costante           [TXA.9].[XCN.22].[
+                                       dell’azienda sanitaria, ovvero “050503”            CWE.1]
+
+DocumentEntry.author.authorInstituti   XON.1 con la descrizione costante della       [TXA.9].[XCN.23].[
+on                                     struttura                                          CWE.2]
+
+
+*SECONDA RIPETIZIONE di <ValueList>    XON.6.2 con l’OID del sistema di codifica     [TXA.9].[XCN.23].[
+                                       utilizzato (vedesi Tabella A.4 in                  CWE.3]
+                                       Appendice A per i sistemi di codifica
+                                       ammessi)
+
+                                       XON.6.3 il valore costante “ISO”              [TXA.9].[XCN.23].[
+                                                                                          CWE.7]
+
+                                       XON.10 con il codice della struttura          [TXA.9].[XCN.23].[
+                                       secondo codifica HSP11bis o STS11 (fare            CWE.1]
+                                       riferimento a Tabella A.4 in Appendice A
+                                       per i codici da utilizzare)
+
+DocumentEntry.serviceInstitution       XON.1 con la descrizione dell’azienda          [ORC.17].[CE.2]
+                                       sanitaria che ha prodotto il documento
+                                       in service
+
+                                       XON.6.2 con l’OID del sistema di codifica      [ORC.17].[CE.3]
+                                       FLS11, ovvero
+                                       “2.16.840.1.113883.2.9.4.1.1”
+
+                                       XON.6.3 il valore costante “ISO”               [ORC.17].[CE.6]
+
+
+                                       XON.10 con il codice FLS11 dell’azienda        [ORC.17].[CE.1]
+                                       sanitaria che ha prodotto il documento
+                                       in service
+
+
+
+
+                                                    43
+DocumentEntry.author.authorRole      Costante: “R.1.1” (ruolo “medico”)             [TXA.9].[XCN.7]
+
+
+DocumentEntry.author.authorPerson    XCN.1 veicolante il CF dell’autore del         [TXA.9].[XCN.1]
+                                     documento
+
+                                     XCN.2 con il cognome dell’autore del           [TXA.9].[XCN.2]
+                                     documento
+
+                                     XCN.3 con il nome dell’autore del              [TXA.9].[XCN.3]
+                                     documento
+
+                                     XCN.4 con l’eventuale secondo nome             [TXA.9].[XCN.4]
+                                     dell’autore del documento
+
+                                     XCN.5 con la costante “Dr”                     [TXA.9].[XCN.5]
+
+
+                                     XCN.9.HD.2 con l’OID                          [TXA.9].[XCN.9].[H
+                                     “2.16.840.1.113883.2.9.4.3.2”                        D.2]
+
+                                     XCN.9.HD.3 con la costante “ISO               [TXA.9].[XCN.9].[H
+                                                                                          D.3]
+
+DocumentEntry.author.authorSpecial   Specialità clinica dell’autore del            [TXA.9].[XCN.14].[H
+ty                                   documento                                            D.1]
+
+DocumentEntry.author.authorTeleco    XTN.2 con uno dei codici di Tabella HL7               ---
+mmunication                          0201 (tipologia di dato trasmesso)
+
+                                     XTN.3 con la codifica della tipologia di              ---
+                                     apparecchio secondo Tabella HL7 0202
+
+                                     XTN.4 con l’indirizzo email dell’autore del   [TXA.9].[XCN.16].[
+                                     documento, se noto                                  CE.2]
+
+                                     XTN.12 con il numero di telefono              [TXA.9].[XCN.16].[
+                                     completo del prefisso                               CE.1]
+
+DocumentEntry.classCode              Classe di appartenenza del documento               OBX.17
+
+
+DocumentEntry.confidentialityCode    Livello di riservatezza del documento.              TXA.18
+
+
+DocumentEntry.entryUUID              Id simbolico associato all’istanza                    ---
+                                     documentale
+
+DocumentEntry.eventCodeList          Questo metadato è composto da diversi         OBX.3, se OBX.2 =
+                                     codici a seconda della tipologia di                  “CE”
+                                     documento, ad esempio: codici CVP
+                                     per richieste ambulatoriali, codici
+
+
+
+
+                                                44
+                                         diagnosi/procedure ICD9-CM per LDO,
+                                         verbali di Pronto Soccorso e verbali
+                                         operatori. Si faccia riferimento alla
+                                         Tabella A.5 in Appendice A per le
+                                         tipologie di codifiche utilizzabili.
+
+DocumentEntry.formatCode                 Indica il formato del documento                   TXA.3
+
+
+DocumentEntry.hash                       Hash del documento calcolato usando              TXA.16
+                                         l’algoritmo SHA1 sul documento in
+                                         formato binario
+
+DocumentEntry.healthcareFacilityTyp      Modalità organizzativa dell’evento           [EVN.7].[HD.1]
+eCode                                    clinico che ha portato alla generazione
+                                         del documento.
+
+SubmissionSet.author.authorPerson        XCN.1 veicolante il CF dell’autore del       [TXA.9].[XCN.1]
+                                         documento
+
+                                         XCN.2 con il cognome dell’autore del         [TXA.9].[XCN.2]
+                                         documento
+
+                                         XCN.3 con il nome dell’autore del            [TXA.9].[XCN.3]
+                                         documento
+
+                                         XCN.4 con l’eventuale secondo nome           [TXA.9].[XCN.4]
+                                         dell’autore del documento
+
+                                         XCN.5 con la costante “Dr”                   [TXA.9].[XCN.5]
+
+
+                                         XCN.9.HD.2 con l’OID                        [TXA.9].[XCN.9].[H
+                                         “2.16.840.1.113883.2.9.4.3.2”                     D.2]
+
+                                         XCN.9.HD.3 con la costante “ISO             [TXA.9].[XCN.9].[H
+                                                                                           D.3]
+
+SubmissionSet.author.authorInstitution   XON.1 con la descrizione costante           [TXA.9].[XCN.22].[
+                                         dell’azienda sanitaria, ovvero “AZIENDA          CWE.2]
+*PRIMA RIPETIZIONE di <ValueList>        ULSS N. 3 SERENISSIMA”
+
+                                         XON.6.2 con l’OID del sistema di codifica   [TXA.9].[XCN.22].[
+                                         FLS11, ovvero                                    CWE.3]
+                                         “2.16.840.1.113883.2.9.4.1.1”
+
+                                         XON.6.3 il valore costante “ISO”            [TXA.9].[XCN.22].[
+                                                                                          CWE.7]
+
+                                         XON.10 con il codice FLS11 costante         [TXA.9].[XCN.22].[
+
+
+
+
+                                                     45
+                                         dell’azienda sanitaria, ovvero “050503”             CWE.1]
+
+
+SubmissionSet..author.authorInstitutio   XON.1 con la descrizione costante della        [TXA.9].[XCN.23].[
+n                                        struttura                                           CWE.2]
+
+
+*SECONDA RIPETIZIONE di <ValueList>      XON.6.2 con l’OID del sistema di codifica      [TXA.9].[XCN.23].[
+                                         utilizzato (vedesi Tabella A.4 in                   CWE.3]
+                                         Appendice A per i sistemi di codifica
+                                         ammessi)
+
+                                         XON.6.3 il valore costante “ISO”               [TXA.9].[XCN.23].[
+                                                                                             CWE.7]
+
+                                         XON.10 con il codice della struttura           [TXA.9].[XCN.23].[
+                                         secondo codifica HSP11bis o STS11 (fare             CWE.1]
+                                         riferimento a Tabella A.4 in Appendice A
+                                         per i codici da utilizzare)
+
+SubmissionSet.contentTypeCode            Tipologia di attività clinica che ha                PV1.18
+                                         portato alla condivisione del
+                                         documento.
+
+SubmissionSet.entryUUID                  Id simbolico associato all’istanza                    ---
+                                         documentale
+
+SubmissionSet.patientId                  Codice PK del paziente                          Ripetizione del
+                                                                                        PID.3 identificata
+                                                                                             con PK
+
+SubmissionSet.sourceId                   Identificativo univoco, a livello               [EVN.7].[HD.2]
+                                         aziendale, dell’attore XDS Document
+                                         Source che invia il documento
+
+SubmissionSet.submissionTime             Data e ora di spedizione della                      MSH.7
+                                         submission da parte del XDS Document
+                                         Source
+
+SubmissionSet.uniqueId                   Identificativo univoco della submission             MSH.10
+                                         assegnato dal XDS Document Source. Il
+                                         valore del metadato è nella forma
+                                         “OIDloc.4.20.X”, dove “OIDloc” è uno
+                                         degli OID di Tabella A.1 a seconda del
+                                         sistema produttore del documento e X è
+                                         una stringa di 16 caratteri costituita dalla
+                                         concatenazione del sourceId associato
+                                         al XDS Document Source (fare
+                                         riferimento alla Tabella A.1 per i valori da
+                                         utilizzare) con un progressivo univoco a
+
+
+
+
+                                                     46
+                                         12 cifre generato dal XDS Document
+                                         Source.
+
+Document                                 Documento                                         OBX.5, se
+                                                                                          OBX.2=“ED”
+
+DocumentEntry.patientClass               Un esempio è il seguente                            PV1.2
+
+
+Inserire uno slot denominato             <rim:Slot name="patientClass">
+patientClass                             <rim:ValueList>
+                                         <rim:Value>I</rim:Value>
+                                         </rim:ValueList>
+                                         </rim:Slot>
+
+
+                                         I valori previsti sono
+                                             ●     “O” per ambulatoriale SSN
+                                                   (ovvero, con ricetta RUR, DPCM
+                                                   o DEMA);
+                                             ●     “I” se regime di ricovero SSN;
+                                             ●     “E” per regime di
+                                                   emergenza/urgenza o 118;
+                                             ●     “S” per screening;
+                                             ●     “L” per Libera Professione
+                                                   (paziente pagante per intero).
+                                             ●     “D” per Day Service
+
+DocumentEntry.documentCompletio          Indica lo stato del documento. I valori            TXA.17
+nStatus                                  ammessi sono:
+
+
+*Inserire un nodo ebRIM Classification       ●     “AU” se il documento non è
+aggiuntivo all’interno                             firmato;
+dell’ExtrinsicObject con                     ●     “LA” se il documento è firmato
+classificationScheme=“urn:uuid:2e0f7               digitalmente.
+78c-12ec-413b-b54d-0993366d417c”
+
+DocumentEntry.orderPriority              Indica il livello di priorità del documento,        TQ1.9
+                                         ereditato dalla caratteristica di priorità
+*Inserire un nodo ebRIM Classification   della richiesta
+aggiuntivo all’interno
+dell’ExtrinsicObject con
+classificationScheme=“urn:uuid:04d5
+70ff-6bef-4734-9075-69c93d6f3998”
+
+DocumentEntry.requestingPerson           XCN.1 veicolante il CF del medico              [ORC.12].[XCN.1]
+                                         richiedente
+*Inserire un nodo ebRIM Classification
+aggiuntivo all’interno                   XCN.2 con il cognome del medico                [ORC.12].[XCN.2]
+                                         richiedente
+
+
+
+
+                                                     47
+dell’ExtrinsicObject e caratterizzato    XCN.3 con il nome del medico              [ORC.12].[XCN.3]
+da:                                      richiedente
+
+●     classificationScheme=“urn:uuid:    XCN.4 con l’eventuale secondo nome        [ORC.12].[XCN.4]
+      a35d5bbb-0a5d-40ea-b64d-           del medico richiedente
+      c25a0bf444a4”;
+uno slot avente <Slot                    XCN.5 con la costante “Dr”                [ORC.12].[XCN.5]
+name="wardContactPerson"> e
+contenente in <ValueList> un             XCN.9.HD.2 con l’OID                      [ORC.12].[XCN.9].[
+<Value> con il valore del metadato       “2.16.840.1.113883.2.9.4.3.2”                   HD.2]
+
+                                         XCN.9.HD.3 con la costante “ISO”          [ORC.12].[XCN.9].[
+                                                                                         HD.3]
+
+DocumentEntry.requestingWardCod          <nodeRepresentation> veicolante il        [ORC.21].[XON.10]
+e                                        codice dell’unità richiedente (vedesi
+                                         Appendice B)
+*Inserire un nodo ebRIM Classification
+aggiuntivo all’interno                   Slot con name “codingScheme”              [ORC.21].[XON.6]
+
+dell’ExtrinsicObject con                 contenente in <ValueList> un <Value>
+
+classificationScheme=“urn:uuid:f049c     con l’assigning authority “AULSS3
+
+ac7-8a07-4980-99d2-0db29f52991e”         RequestingWards”
+
+                                         <Name> con la descrizione del codice      [ORC.21].[XON.1]
+                                         dell’unità richiedente in
+                                         <LocalizedString>
+
+DocumentEntry.producerWardCode           <nodeRepresentation> veicolante il        [OBX.15].[CE.1], se
+                                         codice dell’unità di produzione (vedesi      OBX.2=“ED”
+*Inserire un nodo ebRIM Classification   Appendice B)
+aggiuntivo all’interno
+dell’ExtrinsicObject con                 Slot con name “codingScheme”              [OBX.15].[CE.3], se
+
+classificationScheme=“urn:uuid:22130     contenente in <ValueList> un <Value>         OBX.2=“ED”
+
+e88-0cab-4f64-8d28-bbef1d050e32”         con l’assigning authority “AULSS3
+                                         ProducingWards”
+
+                                         <Name> con la descrizione del codice      [OBX.15].[CE.2], se
+                                         dell’unità di produzione in                  OBX.2=“ED”
+                                         <LocalizedString>
+
+DocumentEntry.SubjectApplication         Questo metadato è un extra slot                 EVN.5
+                                         classificato con name:
+                                         urn:rve:2023:SubjectApplication.
+                                         Questo metadato riporta la
+                                         concatenazione dei valori
+                                         SubjectApplicationId^SubjectApplicatio
+                                         nVendor^SubjectApplicationVersion
+
+
+
+
+                                                    48
+DocumentEntry.ConservazioneANor   Questo metadato è utilizzato per
+ma                                indicare che il documento custodito in
+                                  un repository eindicizzato in un registry è
+                                  un duplicato informatico del documento
+                                  originale conservato a
+                                  norma Questo metadato è un extra slot
+                                  classificato con name:
+                                  urn:ita:2017:repository-type .
+                                  Esempio di valorizzazione del metadato:
+                                  CONS^^^&2.16.840.1.113883.2.9.3.3.6.1.7
+                                  &ISO
+
+
+
+DocumentEntry.documentSigned      Questo metadato deve essere utilizzato
+                                  per indicare se il documento associato
+                                  alDocumentEntry è firmato digitalmente
+                                  o meno.
+                                  Questo metadato è un extra slot
+                                  classificato con name:
+                                  urn:ita:2022:documentSigned.
+                                  Esempio di valorizzazione del metadata:
+                                  true^Documento firmato
+
+
+                                  Il metadata trova correlazione con la
+                                  valorizzazione di
+                                  DocumentEntry.documentCompletionSt
+                                  atus
+
+
+
+
+                                             49
+                                            Appendice A
+
+Tabella A.1 si riportano i valori del sourceId e di OIDloc per ciascun applicativo in uso presso l’azienda
+AULSS 3 Serenissima. Ogni applicativo presenta uno o più OIDloc a seconda del numero di “contesti”
+(ADT, emergenza/urgenza, ambulatoriale etc.) entro cui, potenzialmente, può generare richieste di
+servizi sanitari.
+
+
+  Applicativo         Fornitore                Funzione          SourceID                 OIDloc
+
+CUP Mestre          Sigma         CUP                             3001      2.16.840.1.113883.2.9.2.50112
+
+
+CUP Dolo            GPI           CUP                             3002      2.16.840.1.113883.2.9.2.50113
+
+
+CUP Chioggia        Intersystem   CUP                             3003      2.16.840.1.113883.2.9.2.50114
+
+
+RIS Mestre          Siemens       RIS                             3004      2.16.840.1.113883.2.9.2.50503.4
+
+
+RIS Chioggia        Agfa          RIS                             3005      2.16.840.1.113883.2.9.2.50503.5
+
+
+RIS Dolo            GE            RIS                             3006      2.16.840.1.113883.2.9.2.50503.6
+
+
+RIS Unico           Fuji          RIS                             3007      2.16.840.1.113883.2.9.2.50503.7
+
+
+Concerto            Dedalus       LIS                             3010      2.16.840.1.113883.2.9.2.50503.10
+
+
+Winlab              Tesi          LIS (per storico)               3011      2.16.840.1.113883.2.9.2.50503.11
+
+
+ADT                 GPI           ADT                             3013      2.16.840.1.113883.2.9.2.50113
+
+
+Aurora Mestre       Exprivia      Pronto Soccorso + ADT +         3014      2.16.840.1.113883.2.9.2.50112
+                                  consulenze
+
+
+PS Dolo FirstAid    Dedalus       Pronto Soccorso                 3015      2.16.840.1.113883.2.9.2.50113
+
+
+Trakcare            Intersystem   Pronto Soccorso + ADT           3016      2.16.840.1.113883.2.9.2.50114
+
+
+Pathox              Tesi          Anatomia Patologica             3017      2.16.840.1.113883.2.9.2.50503.17
+
+
+Emonet              GPI           SIT                             3026      2.16.840.1.113883.2.9.2.50503.26
+
+
+SuiteExtensa        Ebit          Cardiologia                     3032      2.16.840.1.113883.2.9.2.50503.32
+
+
+Ecoplus             Tesi                                          3033      2.16.840.1.113883.2.9.2.50503.33
+
+
+Pneumox             Tesi                                          3034      2.16.840.1.113883.2.9.2.50503.34
+
+
+Endox               Tesi                                          3035      2.16.840.1.113883.2.9.2.50503.35
+
+
+Meteda              Meteda        Meteda Venezia                  3036      2.16.840.1.113883.2.9.2.50503.36
+
+
+eVisit              Exprivia      Visite ambulatoriali            3037      2.16.840.1.113883.2.9.2.50503.37
+
+
+
+
+                                                            50
+Meteda              Meteda          Meteda Chioggia                         3038         2.16.840.1.113883.2.9.2.50503.38
+
+
+Emolife             GPI             SIT AULSS3                              3039         2.16.840.1.113883.2.9.2.50503.39
+
+
+Fertilab            Dedalus         PMA AULSS3                              3040         2.16.840.1.113883.2.9.2.50503.40
+
+
+LifeContinuity      Gruppo-         116117                                  3041         2.16.840.1.113883.2.9.2.50503.41
+                    Informatico
+
+
+                                       Tabella A.1 - sourceId e OIDloc per applicativi
+
+
+In Tabella A.2 si riportano le possibili valorizzazioni delle componenti CX del campo PV1.19 a seconda
+della tipologia di identificativo veicolato nel primo sottoelemento. Per i valori di OIDloc fare riferimento
+alla Tabella A.1.
+
+
+     Descrizione dell’identificativo in CX.1         Assigning Authority (CX.4)                        CX.5
+
+ID sessione                                          OIDloc.4.13.2                 urn:eu:dedalus:xvalue:2020:sessionId
+
+
+ID episodio di Pronto Soccorso                       OIDloc.4.16.2                 urn:ihe:iti:xds:2013:accession
+
+
+Numero nosologico del ricovero                       OIDloc.4.6                    urn:rve:2016:admissionNumber
+
+
+Altro identificativo                                 OIDloc.4.9                    urn:ihe:iti:xds:2013:order
+
+
+                           Tabella A.2 - valorizzazione delle componenti CX del campo PV1.19
+
+
+
+In Tabella A.3 si riportano le possibili valorizzazioni delle componenti EI dei campi ORC.2 e TXA.14 a
+seconda delle tipologie di identificativi veicolati nel primo sottoelemento. Per i valori di OIDloc fare
+riferimento alla Tabella A.1.
+
+
+              Tipo di identificativo in EI.1                         EI.2                                  EI.4
+
+Ricetta DEMA o DPCM                                      2.16.840.1.113883.2.9.4.3.8     urn:ihe:iti:xds:2013:uniqueId
+
+
+Ricetta rossa cartacea (RUR)                             2.16.840.1.113883.2.9.4.3.4     urn:ihe:iti:xds:2013:order
+
+
+Identificativo richiesta del CUP                         OIDloc.4.13.1                   urn:ihe:iti:xds:2013:order
+
+
+Identificativo richiesta da Order Entry                  OIDloc.4.13.1                   urn:ihe:iti:xds:2013:order
+
+
+Identificativo richiesta da Pronto Soccorso              OIDloc.4.13.1                   urn:ihe:iti:xds:2013:order
+
+
+Altro identificativo della richiesta (ad esempio, id     OIDloc.4.13.1                   urn:eu:dedalus:x1v1:2020:orderLocal
+auto-generato dal dipartimentale etc.)
+
+
+Identificativo Accession Number per immagini RIS         OIDloc.4.13.1                   urn:eu:dedalus:x1v1:2017:studyUUID
+
+
+
+Identificativo PIN per scarico referti online                                            urn:eu:dedalus:2020:tokenReport
+
+
+
+
+                                                             51
+                         Tabella A.3 - valorizzazione delle componenti CX del campo TXA.14
+
+
+
+
+In Tabella A.4 si riportano, per ciascuno dei 3 sistemi di codifica delle strutture ammessi ai fini della
+valorizzazione delle componenti XCN.22 e XCN.23 del campo TXA.11, i rispettivi OID nonché le
+descrizioni e i codici delle strutture.
+
+
+ Sistema di                Nome struttura                      Codice struttura                         OID
+  codifica
+
+   FLS11      AZIENDA ULSS N. 3SERENISSIMA            050503                               2.16.840.1.113883.2.9.4.1.1
+
+
+              OSPEDALE DI MESTRE                      05050301
+
+
+              OSPEDALE DI VENEZIA                     05050302
+
+
+              OSPEDALE DI DOLO                        05050303
+ HSP11bis                                                                                  2.16.840.1.113883.2.9.4.1.2
+
+              OSPEDALE DI MIRANO                      05050304
+
+
+              OSPEDALE DI CHIOGGIA                    05050306
+
+
+              Fare riferimento alla tabella           Fare riferimento alla tabella
+              regionale:                              regionale:
+              https://salute.regione.veneto.it/web/   https://salute.regione.veneto.it/
+              aziendazero/tabelle-di-riferimento-     web/aziendazero/tabelle-di-
+              generali                                riferimento-generali
+   STS11                                              (si riportano alcuni esempi non      2.16.840.1.113883.2.9.4.1.3
+                                                      esaustivi)
+
+
+              POLIAMB. OSPEDALE VENEZIA               050503400201
+
+
+              POLIAMB. OSPEDALE CHIOGGIA              050503520001
+
+
+              POLIAMB. OSPEDALE MESTRE                050503445400
+
+
+                 Tabella A.4 - valorizzazione delle componenti XCN.22 e XCN.23 del campo TXA.11
+
+
+
+
+In Tabella A.5 si riportano le possibili valorizzazioni della componente CE.3 del campo OBX.3 nel caso di
+ripetizione del segmento OBX successiva alla prima (OBX.2 = “CE”).
+
+
+                                  CE.1 e CE.2                                                    CE.3
+
+Codice CVP della prestazione e relativa descrizione                               CVP v1.4 (o eventuali versioni
+                                                                                  precendenti o successive es CVP
+                                                                                  v1.5)
+
+
+Codice diagnosi ICD9-CM e relativa descrizione                                    diagnosi ICD-9-CM
+
+
+
+
+                                                        52
+Codice procedura ICD9-CM e relativa descrizione                                     procedure ICD-9-CM
+
+
+Livello di appropriatezza dell’accesso al Pronto Soccorso e sua descrizione         regioneveneto eventCodeList v1
+
+
+Codice NAP della prestazione di anatomia patologica e relativa descrizione          codici NAP
+
+
+Codice prestazione locale di altro dipartimentale e relativa descrizione            codici locali
+
+
+                         Tabella A.5 - valorizzazione delle componenti CE del campo OBX.3
+
+
+
+
+In Tabella A.6 si riportano le possibili valorizzazioni della componente EI.1 dei campi TXA.12 e TXA.13 per
+la componente “OIDdoc”. Per gli OIDloc fare riferimento alla Tabella A.1.
+
+
+                                OIDdoc                        Tipologia di documento
+
+                         OIDloc.4.4.1                      Referto di laboratorio analisi
+
+
+                         OIDloc.4.4.3                    Lettera di dimissione ospedaliera
+
+
+                         OIDloc.4.4.5                      Referto di visita specialistica3
+
+
+                         OIDloc.4.4.6                          Referto di radiologia
+
+
+                         OIDloc.4.4.9                   Certificato di medicina dello sport
+
+
+                         OIDloc.4.4.12                   Referto di anatomia patologica
+
+
+                         OIDloc.4.4.13                          Verbale operatorio
+
+
+                         OIDloc.4.4.14                     Verbale di Pronto Soccorso
+
+
+                         OIDloc.4.4.15                        Referto di cardiologia
+
+
+                         OIDloc.4.4.16                         Referto di oncologia
+
+
+                         OIDloc.4.4.17                        Referto di diabetologia
+
+
+                         OIDloc.4.4.18                     Referto di gastroenterologia
+
+                              Tabella A.6 - OIDdoc delle diverse tipologie documentali
+
+
+
+
+3
+  Questo OIDdoc è da utilizzare limitatamente alle tipologie di documenti clinici prodotti in regime ambulatoriale
+che non rientrano tra le categorie provviste di un OIDdoc specifico (es: referti di urologia, di dermatologia, di
+ostetricia/ginecologia etc.)
+
+
+
+
+                                                         53
+                                        Appendice B
+
+
+                                          REQUESTER                                  PRODUCER
+
+          HL7                                ORC.21                                     OBX.15
+
+        XDS.b                 DocumentEntry.requestingWardCode            DocumentEntry.producerWardCode
+
+Tabella A.7 - localizzazione delle codifiche di richiedenti e produttori a seconda della tipologia di integrazione
+
+
+
+
+                                                       54
+             Appendice C – Adeguamento FSE2.0
+In relazione all’introduzione delle modifiche al formato documentale previsto per FSE 2.0 si riportano di
+seguito le indicazioni per la notifica dei documenti con il nuovo formato di tipo PDF/A-3 con CDA2
+iniettato.
+Per adeguarsi a questo nuovo formato, il repository adotta l’Affinity domain della Regione Veneto
+versione 2.26, esteso con le specifiche dell’Affinity Domain di XValue per i metadati aggiuntivi previsti
+per l’AULSS 3 Serenissima..
+In particolare i document source che, in fase pre-avvento del nuovo SIO Veneto, invieranno i
+documenti in questo nuovo formato, dovranno porre attenzione alla valorizzazione di questi campi
+
+
+        mimeType: il valore da utilizzare è application/pdf+text/x-cda-r2+xml che dovrà essere
+         riportato nei seguenti campi:
+             o    In caso di integrazione HL7: il campo da utilizzare è [OBX.5].[ED.3], se OBX.2 = “ED”
+                  (ovvero la ripetizione che riporta il documento)
+             o    In     caso   di    integrazione   XDS:     valorizzare   in    modo    opportuno   il   campo
+                  DocumentEntry.mimeType
+
+
+        formatCode: il valore deve essere scelto in modo opportuno tra i valori previsti dal nuovo AD,
+         adeguando la valorizzazione di codice, descrizione e codingScheme.
+         A titolo di esempio, il valore da utilizzare per l’invio di una Lettera di dimissione ospedaliera sarà
+         <Code         code="2.16.840.1.113883.2.9.10.1.5"      codingScheme="2.16.840.1.113883.2.9.3.3.6.1.6"
+         display = "Lettera di Dimissione Ospedaliera" />
+         Il valore andrà riportato nei seguenti campi:
+             o    In     caso    di   integrazione     HL7:   valorizzare    il   campo    TXA.3   nel     formato
+                  <CODICE>#<DESCRIZIONE>#<CODING_SCHEME>
+             o    In caso di integrazione XDS: valorizzare la classification DocumentEntry.formatCode
+
+
+        legalAuthenticator: si dovrà porre attenzione alla valorizzazione di questo slot in caso di
+         documento firmato digitalmente. In questo campo vanno riportati i dati (codice fiscale) del
+         medico firmatario del documento. Il valore andrà riportato nei seguenti campi
+             o    In caso di integrazione HL7: valorizzare il campo TXA.22, con la relativa valorizzazione
+                  dei sottocampi previsti
+             o    In caso di integrazione XDS: valorizzare lo slot DocumentEntry.legalAuthenticator
+
+
+Successivamente all’avvio del SIO, i documentSource dovranno adeguarsi a nuove specifiche che
+prevedono l’invio di nuovi metadati relativi al progetto FSE2.0.
+
+
+Come previsto da Affinity Domain Regiove Veneto, in ottica di adeguare completamente i metadati
+per FSE2.0 sono previsti i seguenti slot aggiuntivi:
+
+
+
+
+                                                         55
+   documentSigned: Questo metadato deve essere utilizzato per indicare se il documento
+    associato al DocumentEntry è firmato digitalmente o meno.
+    Questo metadato è un extra slot classificato con name: urn:ita:2022:documentSigned.
+    Esempio di valorizzazione del metadata:true^Documento firmato
+    Il       metadata           trova              correlazione           con             la          valorizzazione
+    diDocumentEntry.documentCompletionStatus.
+         o   In caso di integrazione HL7: il valore verrà interpretato a partire da quanto indicato nel
+             TXA.17
+         o   In caso di integrazione XDS: valorizzare lo slot DocumentEntry.documentSigned come
+             l’esempio seguente:
+             <rim:Slot name="urn:ita:2022:documentSigned">
+                      <rim:ValueList>
+                              <rim:Value>true^Documento firmato</rim:Value>
+                      </rim:ValueList>
+             </rim:Slot>
+
+
+   ConservazioneANorma: Questo metadato è utilizzato per indicare che il documento custodito
+    in un repository e indicizzato in un registry è un duplicato informatico del documento originale
+    conservato    anorma.     Questo        metadato       è     un   extra   slot   classificato      con    name:
+    urn:ita:2017:repository-type .
+    Esempio di valorizzazione del metadato:CONS^^^&2.16.840.1.113883.2.9.3.3.6.1.7&ISO
+         o   In caso di integrazione HL7: il valore verrà cablato nell’integrazione verso il repository
+         o   In caso di integrazione XDS: valorizzare lo slot DocumentEntry.ConservazioneANorma
+             come l’esempio seguente:
+             <rim:Slot name="urn:ita:2017:repository-type">
+                      <rim:ValueList>
+                              <rim:Value>CONS^^^&2.16.840.1.113883.2.9.3.3.6.1.7&ISO</rim:Value>
+                      </rim:ValueList>
+             </rim:Slot>
+
+
+   SubjectApplication:    Questo    metadato         rappresenta       l’identificativo       dell’applicativo   del
+    soggetto richiedente il servizio. Questo metadato è un extra slot classificato con name:
+    urn:rve:2023:SubjectApplication.Questo metadato riporta la concatenazione dei valori
+    SubjectApplicationId^SubjectApplicationVendor^SubjectApplicationVersion dove:
+         o   SubjectApplicationId       =   Esso     rappresenta       l’identificativo        dell’applicativo   del
+             soggettorichiedente il servizio rilasciato a seguito della fase di accreditamento come
+             previstoda LLGG FSE e https://developers.italia.it/it/fse/
+         o   SubjectApplicationVendor = Esso rappresenta il fornitore dell’applicativo utilizzato al
+             richiedente del servizio secondo quanto indicato in fase di accreditamento
+             comeprevisto da LLGG FSE e https://developers.italia.it/it/fse/
+         o   SubjectApplicationVersion        =     Esso       rappresenta    la     versione       dell’applicativo
+             utilizzatodall’utente secondo quanto indicato in fase di accreditamento
+
+
+
+                                                     56
+A livello di integrazione:
+    o    In caso di integrazione HL7: il valore deve essere riportato nel campo EVN.5
+    o    In caso di integrazione XDS: valorizzare lo slot DocumentEntry.SubjectApplication
+         come l’esempio seguente:
+    <rim:Slot name="urn:rve:2023:SubjectApplication">
+    <rim:ValueList>
+    <rim:Value>SubjectApplicationId^SubjectApplicationVendor^SubjectApplicationVersion</
+    rim:value>
+    </rim:ValueList>
+    </rim:Slot>
+
+
+
+
+                                           57
+        Appendice D – Gestione degli oid per la
+          valorizzazione delle referenceIdList
+In attesa dell’unificazione dei sistemi di accoglienza aziendali, per la valorizzazione degli oid
+relativamente alle referenceIdList le indicazioni sono quelle di utilizzare gli oid con i valori assegnati alle
+ex ULSS.
+Quindi gli oid saranno i seguenti:
+          2.16.840.1.113883.2.9.2.50112 per i sistemi di accoglienza della ex ULSS 12 Veneziana
+          2.16.840.1.113883.2.9.2.50113 per i sistemi di accoglienza della ex ULSS 13 Dolo-Mirano
+          2.16.840.1.113883.2.9.2.50114 per i sistemi di accoglienza della ex ULSS 14 Chioggia
+Tale valorizzazione riveste particolare importanza nella gestione delle prenotazioni, per gli eventi di
+ricovero e per gli accessi di pronto soccorso in quanto è fondamentale riuscire ad individuare qual è il
+sistema di accoglienza di riferimento per quell’evento.
+Quindi in caso di evento di ricovero effettuato avremo che tutti i documenti dovranno riportare
+almeno il seguente valore di referenceIdList
+
+
+Valore identificativo: numero di ricovero
+Assigning Authority oidAziendale+4.6
+Tipo identificativo: urn:rve:2016:admissionNumber
+
+
+Quindi nell’esempio di un ricovero presso la ex ULSS12, tutti i relativi documenti prodotti a seguito di
+quel ricovero dovranno avere il seguente valore:
+2023-12345^^^&2.16.840.1.113883.2.9.2.50112.4.6&ISO^urn:rve:2016:admissionNumber
+
+
+Per un accesso in Pronto soccorso invece avremo:
+
+
+Valore identificativo: numero di accesso in PS
+Assigning Authority oidAziendale+4.16.2
+Tipo identificativo: urn:ihe:iti:xds:2013:accession
+
+
+Quindi nell’esempio di un accesso in PS presso la ex ULSS13, tutti i relativi documenti prodotti a seguito
+di quell’accesso dovranno avere il seguente valore:
+PS202312345^^^&2.16.840.1.113883.2.9.2.50113.4.16.2&ISO^urn:ihe:iti:xds:2013:accession
+
+
+
+
+                                                      58
+ Appendice E – Tipologie Documentali proprie
+     dell’Azienda AULSS 3 Serenissima
+Le tipologie documentali non presenti nel documento di Affinity Domanin regionale e utilizzate
+dall’Azienda AULSS 3 Serenissima vengono riportate nella seguente tabella.
+
+
+                    Code                              CodingScheme                       DisplayName
+
+x1v1_tc_400010                                   X1V1 typeCodes v1           Lettera donatori
+
+
+                 Tabella A.8 - Tipologie documentali proprie dell’azienda AULSS3 Serenissima
+
+
+
+
+                                                     59
+

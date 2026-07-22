@@ -1,0 +1,1411 @@
+
+
+
+
+
+
+Progetto sistema di
+
+RISPOSTA SANITARIA 116117
+
+-
+
+Istituzione delle relative centrali operative
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sommario
+
+   TOC \h \u \z \t "Heading 1,1,Heading 2,2,Heading 3,3,"Acronimi 3
+
+  1. Introduzione e finalità del documento 4
+
+  2. Il Contesto di Regione Veneto 6
+
+  3. Obiettivi dell’attivazione del NEA 116117 in Regione Veneto 8
+
+  4. Modello di risposta sanitaria del NEA 116117 8
+
+  5. Modello organizzativo della centrale operativa 116117 11
+
+  6. Centrale Operativa 116117: modello operativo 12
+
+  6.1 Protocollo 2 - Risposta a bisogno sanitario 14
+
+  6.2  Protocollo 3 - Risposta a bisogno informativo 15
+
+  6.3  Protocollo 4 - Risposta a bisogno socio-sanitario 16
+
+  7. Il flusso di lavoro della CO 116117 18
+
+  7.1 Call Taking 18
+
+  7.2 Triage 19
+
+  7.3 Call Dispatching 19
+
+  7.4 Gestione dell’evento nelle fasce orarie di attività da parte del servizio di Continuità Assistenziale 19
+
+  7.5 Servizi aggiuntivi di supporto 20
+
+  8. Monitoraggio dei processi e performance 20
+
+  10. Il processo di cambiamento 21
+
+  10.1 Formazione del personale 21
+
+  10.2 Mappatura dei servizi 23
+
+  10.3 Infrastruttura tecnologica 23
+
+  10.3.1 Descrizione dell’infrastruttura 24
+
+  10.3.2 Dimensionamento delle tre CO 116117 25
+
+  10.3.3 Descrizione del Sistema Informativo 26
+
+  10.4 Percorso di comunicazione  PAGEREF _heading=h.2r0uhxc \h 27
+
+  10.5 Sperimentazione 27
+
+  10.5.1 Dimensionamento della CO 116117 per la sperimentazione 29
+
+
+
+
+
+
+
+
+Acronimi
+
+
+
+
+
+Acronimo
+
+
+Definizione
+
+
+ADI
+
+
+Assistenza Domiciliare Integrata
+
+
+CA
+
+
+Continuità Assistenziale
+
+
+CO
+
+
+Centrale Operativa
+
+
+COT
+
+
+Centrale Operativa Territoriale
+
+
+CUP
+
+
+Centro Unico di Prenotazione
+
+
+DEMA
+
+
+Dematerializzata
+
+
+DGR
+
+
+Deliberazione della Giunta Regionale
+
+
+DM
+
+
+Decreto Ministeriale
+
+
+EMS
+
+
+Emergenza Milano Soccorso
+
+
+FSE
+
+
+Fascicolo Sanitario Elettronico
+
+
+ICD
+
+
+Impegnative di Cura Domiciliari
+
+
+MMG
+
+
+Medico di Medicina Generale
+
+
+NEA
+
+
+Numero Europeo Armonizzato 
+
+
+PABX
+
+
+Private Automatic Branch Exchange
+
+
+PLS
+
+
+Pediatra di Libera Scelta
+
+
+PNRR
+
+
+Piano Nazionale di Ripresa e Resilienza
+
+
+PNT
+
+
+Piattaforma Nazionale Telemedicina
+
+
+PRIS
+
+
+Pronto Intervento Inclusione Sociale
+
+
+PUA
+
+
+Punto Unico di Accesso
+
+
+RSA
+
+
+Residenza Sanitaria Assistenziale
+
+
+SAD
+
+
+Servizio di Assistenza Domiciliare
+
+
+SER
+
+
+Servizio Epidemiologico Regionale
+
+
+URP
+
+
+Ufficio Relazioni con il Pubblico
+
+
+
+
+
+
+
+
+
+1. Introduzione e finalità del documento
+
+La Commissione europea con la decisione 2007/116/CE è intervenuta per la prima volta per disciplinare la riserva dell’arco di numerazione con radice 116 ai servizi armonizzati a valenza sociale. 
+
+Per «servizio armonizzato a valenza sociale» si intende un “servizio che risponde a una descrizione comune, al quale i singoli cittadini possono accedere attraverso un numero telefonico gratuito, che può essere utile ai visitatori di altri paesi e che risponde a esigenze sociali specifiche, che contribuisce in particolare al benessere o alla sicurezza dei cittadini o di gruppi specifici di cittadini o che aiuta i cittadini in difficoltà” (art.2). Tale decisione è stata presa avendo come linee guida i principi fondanti dell’Unione Europea che già si erano esplicitati in altri campi, in primis quelli economico e sociali, quali la libera circolazione dei cittadini e delle merci, al fine di contribuire a creare una nuova identità sovranazionale europea. La stessa logica è perciò stata applicata anche ai servizi di emergenza ed a valenza sociale. Una particolare rilevanza ha assunto la riconoscibilità di tali numeri per i cittadini dell’Unione che, anche in caso di spostamenti tra i territori nazionali, devono poter essere in grado di individuare agevolmente tali servizi (stesso numero=stesso servizio) seguendo lo stesso schema utilizzato nella quotidianità della propria esperienza nazionale. In tempi più recenti la Direttiva 2009/136/CE del 25 novembre 2009, all’articolo 27 bis, riporta quanto segue.
+
+Gli stati membri: 
+
+
+promuovono i numeri specifici nell’arco della numerazione che inizia con il “116” ed incoraggiano la prestazione nel loro territorio dei servizi per cui tali numeri sono riservati 
+
+
+provvedono affinché gli utenti finali disabili possano avere un accesso più ampio possibile ai servizi forniti nell’arco della numerazione che inizia con il “116” 
+
+
+provvedono ad informare i cittadini circa l’esistenza e le modalità di utilizzo dei servizi forniti con la numerazione “116”
+
+In Italia le indicazioni delle Direttive Europee sono state recepite all’interno dell’Accordo Stato Regioni del 24/11/2016, in cui viene esplicitata anche la necessità di un solido raccordo tra i servizi del 116117, il NUE 112 e l’Emergenza Sanitaria. Riprendendo da quanto riportato nell’Accordo Stato – Regioni: 
+
+“Il numero 116117 è un numero unico nazionale per l’accesso ai servizi di cure mediche non urgenti ed altri servizi sanitari; concorre alla gestione della domanda assistenziale a bassa intensità/priorità. L’attivazione del numero 116117 non è legata solo alla sostituzione dei numeri di Continuità Assistenziale, ma anche al raccordo con il servizio di emergenza-urgenza dalle ore 24 alle ore 8, in linea con il documento integrativo all’atto di indirizzo della medicina convenzionata approvato dal comitato di settore, comparto regioni sanità, nella riunione del 13 aprile 2016, e all’implementazione dei servizi h24 secondo i contenuti dell’Accordo Stato Regioni del 7 febbraio 2013 e del patto per la salute 2014-2016, con particolare riferimento alle funzioni in grado di assicurare la continuità delle cure e di intercettare prioritariamente la domanda a bassa intensità”
+
+Dal 2017 in Italia c’è quindi stato un lento percorso che ha portato le varie Regioni a potenziare l’assistenza territoriale, iniziando a centralizzare il servizio di continuità assistenziale presso delle centrali espressamente dedicate; Allo stato attuale le CO 116117 risultano pienamente attive nelle seguenti regioni: 
+
+Lombardia: il numero risponde alle chiamate rivolte alla continuità assistenziale e, a seconda delle diverse necessità, il medico o l’operatore valutano se è possibile rispondere direttamente o trasferire la richiesta al servizio di riferimento, compresa EMS o 112. Il servizio è attivo dal lunedì al venerdì dalle ore 20.00 alle ore 8.00, festivi e prefestivi H24.
+
+Piemonte: sono attivate 4 CO 116117. Il numero risponde alle chiamate rivolte alla continuità assistenziale, per informazioni sull’assistenza sanitaria e sociosanitaria ed altri servizi. Il servizio è attivo H24, 7 giorni a settimana. 
+
+P.A. di Trento: il numero risponde alle chiamate rivolte alla Continuità Assistenziale, per informazioni sull’assistenza sanitaria ai villeggianti (Ex guardia medica turistica) e per le prenotazioni dei trasporti sanitari in ambulanza. Il servizio è attivo H24, 7 giorni a settimana. 
+
+IL NEA 116117 risulta in fase di sperimentazione in Sardegna, Basilicata e Lazio. In particolare, il numero 116117 (Numero Europeo Armonizzato – NEA 116117) risponde alle seguenti caratteristiche: 
+
+è uno strumento di comunicazione che si rivolge a tutti i cittadini, italiani e stranieri, senza obbligo di registrazione preventiva; 
+
+il numero è unico in Italia ed in Europa; 
+
+è numero a chiamata rapida e non necessita di prefisso;
+
+il numero è disponibile H24 per 7 giorni alla settimana; nei casi in cui il servizio non sia disponibile senza soluzione di continuità, il fornitore del servizio deve garantire che le informazioni circa le disponibilità del servizio siano pubblicizzate e facilmente accessibili e che, nei periodi di indisponibilità, ai chiamanti venga comunicato quando il servizio sarà nuovamente disponibile. 
+
+fornisce assistenza e/o informazioni;
+
+il servizio non è limitato nel tempo;
+
+non è richiesto all’utente alcun pagamento per la chiamata;
+
+le chiamate possono essere effettuate da qualunque apparecchio i dati personali vengono trattati nel rispetto della privacy secondo la normativa vigente;
+
+la struttura organizzativa del servizio può avere delle variazioni da regione a regione.
+
+L’articolo 1, comma 8, del DL 34/2020, convertito dalla Legge 17 luglio 2020 n. 77, prevede che per garantire il coordinamento delle attività sanitarie e socio-sanitarie territoriali, così come implementate nei piani regionali, le Regioni e le Province Autonome provvedono all’attivazione di centrali operative regionali, che svolgono le funzioni di raccordo con tutti i servizi e con il sistema di emergenza-urgenza, anche mediante strumenti informativi e di telemedicina.
+
+La finalità del presente documento è dare risposta alle indicazioni della Commissione Europea e dei relativi recepimenti nazionali e regionali in merito all’attivazione di un unico Numero Europeo Armonizzato (NEA) a valenza sociale, il 116117. Lo sviluppo del sistema di risposta sanitaria 116117 riveste un ruolo prioritario per la connessione fra cittadini e servizi rispetto a patologie di bassa criticità e a bassa priorità. In armonia con quanto atteso dal documento nazionale relativamente alla gestione integrata delle cure mediche non urgenti, l’attivazione del progetto NEA116117 si pone come strumento cruciale nel raggiungimento degli obiettivi di programmazione regionale: attraverso la messa a disposizione di una rete di servizi territoriali  sanitari e socio-sanitari finalizzati ad introdurre percorsi virtuosi nell’ utilizzo dei servizi di continuità assistenziale con il modello di assistenza sanitaria integrata, il 116117 rappresenta il supporto per fornire  risposte appropriate.  L’intento finale è teso da un lato a mettere a disposizione dei cittadini un unico riferimento telefonico per tutte le attività territoriali a carattere sanitario, socio-sanitario e informativa di non urgenza, 24 ore su 24 e 7 giorni su 7, e dall’altro rappresentare il punto di contatto e integrazione con il sistema territoriale delle Cure Primarie. Ad avvenuta piena realizzazione della rete organizzativa delle Cure Primarie nelle ore diurne e notturne prefestive e festive, la Centrale Operativa del Numero Unico Armonizzato 116117 potrà favorire una più efficace ed integrata risposta alle diverse esigenze espresse dall’utenza.
+
+
+2. Il Contesto di Regione Veneto
+
+La stima della popolazione residente in Veneto al 01/01/2023 è di 4.838.253 abitanti di cui 2.377.688 maschi (49%) e 2.460.565 femmine (51%), con una diminuzione di 9.492 residenti rispetto all’anno precedente (Figura 1 - Fonte SER: Relazione Socio-Sanitaria 2023). La quota di popolazione anziana è in costante aumento: attualmente gli ultra 65enni sono circa 1.168.000 e i bambini di 0-14 anni 598.000, con un rapporto di 195 anziani ogni 100 bambini (Indice di Vecchiaia). In Tabella 1 (Fonte SER: Relazione Socio-Sanitaria 2023) si riporta la distribuzione della Popolazione residente in Veneto negli anni 2002-2023, suddivisa per sesso, indice di vecchiaia e percentuale di popolazione straniera. 
+
+Un altro dato da tenere in considerazione riguarda il sovraffollamento del Pronto Soccorso. L’analisi dei dati di accesso ai pronto soccorso consente di evidenziare che il 81.5% degli accessi avviene in autopresentazione; la restante parte (18.5%) con ambulanza del sistema di soccorso pre-ospedaliero (“118”). Il 81.3% dei cittadini che accedono autonomamente al pronto soccorso viene classificato come codice bianco o verde. Il 88% di questi non genera un ricovero ospedaliero e viene generalmente risolto con la prestazione di visita del medico senza ulteriore esecuzione di esami di laboratorio o radiologici. Si tratta in larga maggioranza di cittadini che possono trovare risposte ai loro bisogni in strutture a più bassa complessità organizzativa rispetto ad un DEA di I o II livello.
+
+Inoltre, è opportuno considerare che il NEA 116117 si inserisce in un contesto di consistenti investimenti per la sanità digitale che saranno fondamentali per il funzionamento del sistema:
+
+Fascicolo Sanitario Elettronico: piattaforma che abilita l’erogazione di servizi per i cittadini e i professionisti sanitari, gestisce dati e documenti; deve essere diffuso e uniforme su tutto il territorio nazionale.
+
+Telemedicina: sviluppo di un’infrastruttura nazionale (Piattaforma Nazionale di Telemedicina - PNT) e di servizi regionali di telemedicina con l’obiettivo di assicurare che l’erogazione dei servizi attraverso la telemedicina avvenga in modo più equo e uniforme sul territorio nazionale.
+
+Sviluppo e adozione di nuovi flussi informativi nazionali (consultori familiari, Ospedali di Comunità, servizi di riabilitazione territoriale, servizi di cure primarie).
+
+Rafforzamento delle infrastrutture e degli strumenti di data analysis a livello del Ministero della Salute.
+
+
+
+
+
+Figura 1
+
+
+
+Tabella 1 
+
+
+3. Obiettivi dell’attivazione del NEA 116117 in Regione Veneto
+
+L’attivazione del NEA 116117 rappresenta uno dei cardini attraverso cui passa un progetto più ampio riguardante la riorganizzazione sul territorio regionale veneto dell’attività del ruolo unico di assistenza primaria a ciclo orario di cui fa parte il percorso finalizzato all’attivazione del numero europeo armonizzato a valenza sociale 116117. 
+
+Con l’introduzione del NEA 116117, la Regione Veneto si pone l’obiettivo di fornire un sistema di accesso facilitato alle cure mediche non urgenti, ai servizi sanitari territoriali a bassa intensità/priorità di cura, alle informazioni e ai servizi socio-sanitari raccordandosi con tutta la rete territoriale dei servizi presenti. In questo modo, ci si aspetta di ridurre il fenomeno del sovraffollamento in pronto soccorso, indirizzando verso il setting più appropriato gli utenti con bisogni a bassa intensità. In particolare, attraverso il NEA 116117 si intende garantire alla popolazione una presa in carico certa, migliorando, in termini di efficienza ed efficacia, il percorso assistenziale attraverso un sistema di accesso facilitato rispetto a:
+
+
+
+cure mediche non urgenti, ai servizi sanitari territoriali a bassa intensità/priorità di cura;
+
+
+
+informazioni e ai servizi socio-sanitari raccordandosi con tutta la rete Territoriale dei servizi presenti tramite il PUA (Punto Unico di Accesso);
+
+
+
+servizi sociali ATS (Ambiti Territoriali Sociali);
+
+
+
+servizi del SERD (Servizio Dipendenze) e DSM (Dipartimento Salute Mentale);
+
+
+
+servizi Sanitari da parte del Turista;
+
+
+
+numero unico per tutte le chiamate verso le Continuità Assistenziali del Veneto;
+
+
+4. Modello di risposta sanitaria del NEA 116117 
+
+La centrale operativa 116117 si inserisce in un contesto organizzativo che prevede la definizione di un nuovo modello della rete di Assistenza Sanitaria Territoriale secondo le indicazioni del DM n. 77 del 23 maggio 2022 Pubblicato in G.U. - n. 144 del 22/06/2022. Il dettaglio dei servizi erogabili dalla centrale NEA 116117 e della loro suddivisione è stato definito da AGENAS nel documento “Quaderno di Monitor 2022”, su elaborazione Accordo Stato Regioni del 24 novembre 2016. In particolare, al fine di uniformare, a livello nazionale, la risposta del NEA 116117 alla popolazione, sono state individuate le attività e quindi i “servizi erogabili obbligatori” e “servizi erogabili aggiuntivi opzionali”. I servizi obbligatori a loro volta sono distinti in due tipologie a seconda del tipo di risposta: informativa o operativa. Sono da considerarsi risposte di tipo informativo sia quelle in cui è prevista la mera informazione del chiamante sia un eventuale trasferimento di chiamata al servizio che è in grado di trasmettere l’informazione. Sono invece da considerarsi risposte di tipo operativo quelle risposte che, direttamente o tramite il trasferimento di chiamata, sono in grado di erogare la prestazione.
+
+La Centrale Operativa NEA 116117 (CO 116117) offre concretamente il servizio di front desk permettendo agli utenti chiamanti di entrare in contatto con un operatore 24 ore al giorno e 7 giorni su 7, sanitario o laico opportunamente formato, che possa fornire assistenza, direttamente o attraverso il trasferimento di chiamata al servizio competente, a valenza sociosanitaria. Risulta importante che:
+
+la risposta all’utente che chiama il numero 116117, in modo diretto o per trasferimento dalla centrale 118, sia garantita da un operatore in grado di valutare la richiesta di assistenza e, successivamente, instradata verso i servizi in grado di soddisfare il bisogno. Verrà dunque definito il requisito minimo di risposta tecnico/operativo mediante la mappatura dettagliata di tutti i servizi della rete territoriale coinvolti. I centri di risposta 116117 devono disporre dei dati anagrafici regionali aggiornati degli assistiti residenti e dei software di supporto alla valutazione del bisogno espresso;
+
+la capacità di risposta del servizio 116117 (in termini di numero di operatori) e le risorse fisiche di rete dovranno essere dimensionate in base al traffico rilevato e alla qualità del servizio atteso: ad es. il numero di chiamate/ora, la durata media della chiamata, il tempo di attesa accettabile, la percentuale di perdita del traffico accettabile. Le risorse fisiche di rete dovranno anche tener conto di un certo numero di canali per le chiamate uscenti. Le valutazioni per il numero di postazioni/linee sono state fatte in base alla note formule Erlang tenendo conto anche della stagionalità (In periodi particolari es malattie stagionali è sensato considerare volumi superiori di alcune decine di punti percentuali) e a regime di eventi eccezionali;
+
+il numero 116117 non preveda sistemi di risposta automatica, ogni utente verrà messo in una coda di attesa per poi parlare con un operatore;
+
+il sistema che risponde al numero 116117 dovrà garantire a tutti i cittadini di idiomi differenti dall’italiano di comprendere e di comunicare con l’operatore. Viene quindi data la possibilità di fare una chiamata tra operatore, chiamante e traduttore; 
+
+la CO 116117 dovrà predisporre di un sistema di gestione informatizzata delle attività e garantire la registrazione vocale delle chiamate sia in entrata che in uscita oltre che la loro archiviazione. Il resoconto della chiamata seguirà le stesse disposizioni di sicurezza relative alla consultazione della documentazione clinica secondo la normativa vigente.
+
+Di seguito si riporta lo schema rappresentativo relativo al documento “Quaderno di Monitor 2022” Agenas (Figura 3).
+
+
+
+Figura 3
+
+Il modello di risposta della CO 116117, sopra descritto, potrà essere garantito solo attraverso la realizzazione di alcune condizioni abilitanti: 
+
+
+
+integrazione nativa con la centrale operativa 118 per garantire un governo degli accessi appropriato e la sicurezza dell’utente che, laddove necessario, sarà reindirizzato da una centrale all’altra;
+
+
+
+interoperabilità o integrazione nativa dei sistemi informativi con la continuità assistenziale, con il punto unico di accesso (PUA), con la centrale operativa territoriale (COT), con la piattaforma regionale di telemedicina ed eventuali altri applicativi ospedalieri;
+
+
+
+attivazione di un sistema di notifiche verso le cartelle dei Medici di Medicina Generale (MMG) e Pediatri di Libera Scelta (PLS). 
+
+
+
+Soltanto in questo modo si potrà assicurare:
+
+solida interfaccia tra la richiesta, anche con servizio di interpretariato in caso di persone che non parlano italiano, e la struttura in grado di fornire la risposta, anche indiretta, alle esigenze dell’utente;
+
+possibilità di fornire una risposta sanitaria h24 e non solo limitata alle ore di presenza della continuità assistenziale; 
+
+sviluppo sinergico di collaborazione tra centrale operativa e medicina territoriale attraverso l’interfaccia del sistema 116117 con centrali operative territoriali (COT), Distretto e il Punto Unico di Accesso (PUA) basati su protocolli e procedure condivisi, tramite servizi di interoperabilità applicativa (come descritto nel Paragrafo 10); 
+
+sviluppo sinergico di collaborazione tra il sistema 116117 e le cartelle degli MMG e PLS tramite adeguato sistema di notifiche (come descritto nel Paragrafo 10);
+
+utilizzo di algoritmi di triage con un software certificato EN ISO 13485:2016 al fine di garantire una corretta analisi del bisogno sanitario a garanzia della sicurezza del cittadino;
+
+possibilità di sviluppare sistemi condivisione delle informazioni, nel rispetto della normativa vigente, a garanzia di una presa in carico certa ed efficace del cittadino;
+
+infrastruttura tecnologica telefonica e di registrazione comune alle centrali, disposta su due sedi al fine di garantire gli aspetti di sicurezza e continuità operativa;
+
+Infrastruttura software sarà ospitata in cloud qualificato;
+
+gli operatori delle centrali riceveranno le chiamate con tecnologia IP, grazie alla centralizzazione dell'infrastruttura telefonica, in modo che ogni centrale possa supportare le altre sia in caso di caduta di una sia in caso di picchi imprevisti.
+
+
+5. Modello organizzativo della centrale operativa 116117 
+
+Per l’attivazione del NEA 116117 nel territorio veneto è stata ritenuta necessaria l’individuazione di tre CO 116117 che saranno dislocate presso la AULSS 3 Serenissima, AULSS 6 Euganea e AULSS 9 Scaligera (Tabella).
+
+
+
+
+Localizzazione della CO 116117
+
+
+ Territorio di pertinenza della CO
+
+
+AULSS Regione Veneto
+
+
+ULSS 3 SERENISSIMA
+
+
+
+
+
+
+Popolazione gestita 1.907.569
+
+
+ULSS 1 Dolomiti
+
+
+ULSS 2 Marca Trevigiana
+
+
+ULSS 3 Serenissima
+
+
+ULSS 4 Veneto Orientale
+
+
+
+
+
+ULSS 6 EUGANEA
+
+
+
+
+Popolazione gestita 1.155.792
+
+
+ULSS 5 Polesana
+
+
+ULSS 6 Euganea
+
+
+
+
+
+
+ULSS 9 SCALIGERA
+
+
+
+
+Popolazione gestita 1.774.892
+
+
+ULSS 7 Pedemontana
+
+
+ULSS 8 Berica
+
+
+ULSS 9 Scaligera
+
+
+
+
+
+
+
+
+
+Ogni centrale dovrà essere dotata di un Responsabile di Centrale, dotato di autonomia tecnico professionale ed organizzativa a cui è affidata la gestione delle risorse umane e dell’organizzazione del servizio che farà riferimento alla Responsabile della COT e non si esclude che possa anche coincidere con questa figura. 
+
+Nell’ambito della CO 116117 sono previste le seguenti categorie di personale: operatore tecnico laico, infermiere, medico. Nella seguente tabella si riportano le competenze attese e le responsabilità/attività previste per ciascuno dei profili.
+
+Profilo 
+
+Competenze e formazione
+
+Responsabilità e attività
+
+Operatore tecnico di centrale
+
+
+
+svolgimento del percorso formativo regionale specifico per operatore 116117
+
+
+
+capacità di utilizzo degli strumenti informativi dedicati e conoscenza degli algoritmi di risposta predefiniti
+
+
+
+rispondere e gestire le richieste di accesso a prestazioni sanitarie e socio-sanitarie non urgenti attraverso l’utilizzo strumenti di triage e di algoritmi predefiniti su bisogni codificati
+
+
+
+inoltrare i casi al profilo infermieristico se poco chiari o non previsti dagli algoritmi
+
+Infermiere
+
+
+
+esperienza nel sistema di risposta di emergenza e conoscenza del sistema di offerta sanitario territoriale
+
+
+
+prestare consulenza all’operatore per gestire le richieste del cittadino che non trovano risposta da parte dell’operatore tecnico
+
+
+
+in casi di particolare complessità, l’infermiere si può avvalere del supporto del medico di centrale
+
+Medico
+
+
+
+esperienza e competenza nel settore della medicina territoriale e/o della continuità assistenziale
+
+
+
+la funzione medica è di supporto all'infermiere per casi a bassa incidenza che non trovano risposta nei passaggi precedenti
+
+
+
+Identifica quali servizi attivare per l'erogazione della risposta
+
+La modalità di coinvolgimento dei diversi profili avviene a “cascata”. Solo nel caso in cui l’operatore tecnico non è in grado di risolvere la richiesta, viene coinvolto il profilo infermieristico. Nel caso anche quest’ultimo non riesca a gestire la richiesta, viene coinvolto il profilo medico. L’operatore laico deve attenersi agli algoritmi pre-codificati per la gestione delle richieste.
+
+Per la CO 116117 si attiverà un percorso di certificazione per definire uno standard tecnico di servizio fin dalla sperimentazione al fine di garantire uniformità nell’avvio delle CO 116117 a regime e l’avvio dei processi di miglioramento necessari quando si parla di salute. 
+
+
+6. Centrale Operativa 116117: modello operativo
+
+In coerenza con quanto illustrato, si descrive il modello operativo della centrale 116117, con attenzione alle diverse funzioni che deve assolvere. 
+
+All’interno del contesto sopra espresso per le CO 116117 del Veneto è prevista una operatività H24, 7/7 già dalla loro apertura, secondo un cronoprogramma di attivazione da definirsi. I servizi che saranno forniti ai cittadini, già in fase di start up saranno: 
+
+una risposta di tipo informativo;
+
+una risposta di tipo sanitaria;
+
+una risposta di tipo socio-sanitaria.
+
+Le future CO 116117 saranno inoltre dimensionate su base regionale, come da raccomandazione del Decreto Min. Salute n.77 del 24 maggio 2022, all. 1 punto 9 in cui viene indicata la dimensione regionale come “minima”, anche al fine di migliorare l’efficienza e l’efficacia del servizio, favorendo una più stretta integrazione con l’offerta socio-sanitaria territoriale. Le centrali saranno ubicate in spazi attigui a quelli già utilizzati per la centrale operativa del 118 così da poter condividere le infrastrutture tecnologiche e di comunicazione utili all’integrazione dei servizi ed all’ottimizzazione dei costi auspicata nelle linee di indirizzo sui criteri e le modalità di attivazione del NEA 116117 all’Allegato “A” Accordo Stato Regioni del 24/11/2016.
+
+In Figura 4 si rappresenta lo schema generale di risposta della centrale operativa 116117 e di inoltro agli erogatori:
+
+
+
+Figura 4
+
+In particolare, il triage relativo alla chiamata del cittadino viene effettuato da un operatore laico che, attraverso un algoritmo di intervista definito con specifico protocollo, ne determina il bisogno e la tipologia di risposta per una presa in carico appropriata (Figura 5). Di seguito sono descritti i protocolli di gestione per i bisogni informativi, sanitari e socio-sanitari.
+
+
+
+Figura 5
+
+
+6.1 Protocollo 2 - Risposta a bisogno sanitario
+
+Come rappresentato in figura 6, in base al bisogno sanitario individuato dalla fase di triage con l’operatore tecnico potrà identificare il bisogno sanitario e verificare il grado di urgenza :
+
+
+avvio del triage guidato;
+
+
+passaggio alla centrale 118: rilevata situazione di emerge/urgenza;
+
+eventuale consulto con il personale infermieristico di CO 116117 per individuare il corretto instradamento del percorso;
+
+
+eventuale consulto con il personale medico di CO 116117 per il corretto instradamento del percorso;
+
+
+eventuale emissione di prescrizione DEMA per farmaci da parte del medico di centrale;
+
+
+passaggio alla Continuità Assistenziale (CA) con prenotazione di uno slot - Festivo e notturno - la CO 116117 diventa il numero unico per l’accesso alla CA;
+
+
+invio della Continuità Assistenziale (CA) presso il domicilio - Festivo e Notturno. La valutazione della centrale stabilisce il livello di urgenza, mentre il medico della CA stabilisce come ottemperare al bisogno;
+
+
+invio al medico curante o medicina di gruppo o Aggregazione Funzionale Territoriale (AFT) attiva, o Casa della Comunità in base al servizio attivo in quel momento sul territorio e opportunamente mappato nel sistema informativo della CO 116117;
+
+
+invio ADI con invio di un alert al sistema informativo del PUA in interoperabilità applicativa anche con il sistema informativo delle centrali ADI; 
+
+
+possibilità di offrire consultazione tra professionisti sanitari presenti in Residenza Sanitaria Assistenziale (RSA), medici di medicina generale, medico di Continuità Assistenziale con un medico di turno presso un Pronto Soccorso dedicato parzialmente a questa attività, sfruttando la piattaforma disponibile in CO 116117.
+
+
+
+
+ 552450609600
+
+Figura 6
+
+La circolazione delle informazioni sullo stato rilevato dalla Centrale 116117, relativamente al cittadino chiamante, risulta fondamentale per permettere una corretta presa in carico per la  soddisfazione del bisogno, qualsiasi sia la componente della rete dei servizi che saranno attivati dalla centrale medesima nel rispetto assoluto della normativa vigente. 
+
+
+
+
+
+6.2  Protocollo 3 - Risposta a bisogno informativo
+
+Viene fornita una risposta al bisogno informativo del cittadino, verificato che la domanda non possa avere carattere di urgenza, tramite la risposta diretta o previa verifica del sito dell’AULSS di competenza (Figura 7).
+
+
+
+Figura 7
+
+Per una comunicazione esaustiva, sarà necessario che le aziende sanitarie sviluppino nei loro siti internet un’area dedicata alla Centrale Operativa 116117, nella quale inserire le informazioni minime. A titolo esemplificativo e non esaustivo si riportano le principali informazioni richieste: 
+
+
+i numeri dei centralini h24 dei presidi ospedalieri e delle celle mortuarie;
+
+
+i numeri e gli orari dell’URP aziendale; 
+
+
+i numeri e gli orari del CUP aziendale.
+
+Questa area del sito dovrà essere implementata e sviluppata man mano che verranno mappate le richieste di informazione, in modo che la Centrale 116117 abbia a disposizione informazioni sempre più esaustive e aggiornate, così la CO sarà sempre più autonoma. Nel caso la Centrale 116117 non sia in grado di chiudere il bisogno informativo, tramite piattaforma software passerà la segnalazione ai servizi dell’Azienda ULSS di assistenza (URP, PUA, Distretto, centralini ospedale, Dipartimento di Prevenzione). Si chiederà ad ogni Azienda Sanitaria di fornire un numero unico e diretto per l’URP per ogni Azienda.
+
+
+
+
+
+6.3  Protocollo 4 - Risposta a bisogno socio-sanitario
+
+La risposta al bisogno socio-sanitario si differenzia in base alla necessità dell’utente di dover accedere ad un luogo fisico oppure di veder soddisfatto il proprio bisogno “a distanza”. La condivisione delle informazioni tra la Centrale 116117 e i servizi della rete territoriale coinvolti verrà garantita tramite cooperazione applicativa. In fase iniziale l’operatività sarà gestita in collaborazione diretta tra la Centrale 116117 e i vari Servizi coinvolti dei Distretti. Ad ogni azienda ULSS è stata richiesta una mappatura dettagliata della rete dei servizi del territorio coinvolti anche ai fini di analizzare al meglio il bisogno espresso dal cittadino mediante ricerche guidate.
+
+Come rappresentato in Figura 8, una volta attivati i Punti Unici di Accesso (PUA), sarà necessario differenziare il bisogno in modo che:
+
+il bisogno semplice sia gestito direttamente dal Distretto, tornando alla Centrale 116117 l’informazione dell’avvenuta presa in carico;
+
+il bisogno complesso sia coordinato e gestito sul territorio dal PUA stesso. Il PUA provvederà a smistare il bisogno ai diversi servizi, coinvolgendo i professionisti sul territorio, tornando alla Centrale 116117 l’informazione dell’avvenuta presa in carico; il bisogno esclusivamente sociale potrà essere preso in carico direttamente dalle nuove ATS che si stanno attivando e opportunamente monitorato dal PUA.
+
+La COT avrà il ruolo di vigilare e monitorare le prese in carico dei bisogni Socio-Sanitari.
+
+
+
+Figura 8
+
+I flussi saranno gestiti tramite interoperabilità applicativa in modo che anche con il sistema informativo sia agevole monitorare le effettive prese in carico e le tempistiche di erogazione al fine di attivare processi di miglioramento continui.
+
+I macro bisogni socio-sanitari individuati e non esaustivi sono:
+
+ADI;
+
+farmaci; 
+
+ausili;
+
+supporto al fine vita;
+
+salute mentale;
+
+disabilità e non autosufficienza;
+
+dipendenze;
+
+assistenza sanitaria a stranieri;
+
+infanzia e Neuro Psichiatria Infantile (NPI);
+
+tutela Minori;
+
+gravidanza e Contraccezione;
+
+violenza di genere.
+
+
+
+I macro bisogni sociali individuati sono:
+
+pasti a domicilio;
+
+contributo economico
+
+
+
+I macro bisogni che possono essere gestiti dai Comuni con la presenza dello Sportello Agenzia Coesione Sociale (per territorio) nel caso di comuni di medie e grandi dimensioni con eventuale passaggio di secondo livello verso il Distretto:
+
+accesso ICD;
+
+SAD (Servizio Assistenza Domiciliare);
+
+trasporto non sanitario;
+
+telesoccorso;
+
+aspetti economici (contributo affitti, bollette..) e abitativi (sfratti esecutivi:..);
+
+informazioni per nomina Amministratore di Sostegno;
+
+presentazione domanda di accesso alle strutture residenziali per anziani non autosufficienti;
+
+presentazione domanda di accesso alle strutture semiresidenziali per anziani non autosufficienti;
+
+PRIS (Pronto Intervento Inclusione Sociale) per:
+
+marginalità;
+
+senza dimora;
+
+immigrazione;
+
+residenti e non residenti
+
+
+
+
+7. Il flusso di lavoro della CO 116117 
+
+Si descrivono di seguito le specifiche fasi di lavoro della centrale 116117.
+
+
+7.1 Call Taking
+
+Questa fase è il punto di accesso del cittadino al servizio, e può essere riassunta nelle seguenti attività:
+
+
+accodamento e presa in carico della chiamata entrante. L'accodamento delle chiamate entranti viene effettuato dal PABX della centrale; l'operatore è abilitato alla presa in carico delle chiamate direttamente dall'applicativo. Opportuni messaggi informativi accoglieranno il cittadino fino all’effettiva presa in carico;
+
+
+localizzazione, identificazione e profilazione del cittadino con l’ausilio di:
+
+sistema informativo con integrato sistema cartografico;
+
+localizzazione dei Point of Interest (pre-sidi ospedalieri, COT, AFT, ASL, Case della Comunità, Ospedali di comunità, altro);
+
+inserimento, modifica e cancellazione di nuove categorie di punti personalizzati con l’associazione di un’anagrafica per ciascun punto, in modo da garantire sempre il perfetto allineamento tra CO 116117 e territorio;
+
+supporto multilingua;
+
+supporto per cittadini ipoudenti (SMS);
+
+integrazione con Anagrafe Regionale;
+
+identificazione del tipo di bisogno al fine di individuare l’opportuna risorsa da ingaggiare;
+
+compilazione, attraverso il supporto del sistema informativo, di una scheda contatto con i dati del paziente.
+
+
+
+
+7.2 Triage
+
+Come detto nei paragrafi precedenti, l'obiettivo primario non è quello di effettuare solo la risposta alla chiamata e l’instradamento verso i servizi di continuità assistenziale. Gli operatori laici che effettuano questo servizio saranno opportunamente formati per identificare il bisogno del cittadino ed indirizzarlo verso il servizio opportuno attraverso una procedura di filtro.
+
+Il risultato di questa operazione può essere:
+
+servizi informativi: la chiamata viene conclusa con delle informazioni;
+
+inoltro della chiamata e della scheda contatto verso i servizi di emergenza;
+
+attivazione della Centrale ADI;
+
+attivazione dell’MMG/PLS o Medicina di Gruppo o AFT attiva o Casa della Comunità;
+
+attivazione del sistema informativo PUA come snodo di tracciamento verso i servizi del territorio 
+
+attivazione dei servizi di continuità assistenziale .
+
+Gli operatori della CO 116117 lavoreranno su specifiche istruzioni operative A che saranno sempre disponibili in formato cartaceo e digitale. Gli operatori saranno guidati anche dal sistema informativo della CO 116117 con filtri ad albero o ricerche guidate, inoltre avranno a disposizione una piattaforma certificata EN ISO 13485:2016 per gli aspetti sanitari per svolgere un  triage guidato e determinare il grado di urgenza del bisogno.
+
+
+7.3 Call Dispatching
+
+L’operatore identifica quindi la risorsa necessaria all'utente. Nel caso di affidamento del cittadino ai professionisti di CA, questo avverrà tramite passaggio diretto della fonia e della scheda informatica precedentemente compilata, compresa la scheda del triage e relativo risultato. Tutte le fasi, comprese le chiamate tra medico e cittadino, saranno registrate su supporto informatico e correlate dal software gestionale. Nel caso la risorsa identificata sia verso la rete territoriale si utilizzerà la piattaforma del PUA tramite servizi di interoperabilità applicativa. La CO 116117 provvede a fare monitoraggi costanti dell'avvenuta o meno  presa in carico del servizio di destinazione. 
+
+
+7.4 Gestione dell’evento nelle fasce orarie di attività da parte del servizio di Continuità Assistenziale
+
+Il medico di CA riceverà le informazioni acquisite dalla CO 116117 e la scheda di triage con il livello di urgenza e valuterà le attività necessarie per assolvere il bisogno espresso:
+
+assistenza medica con consulenza medica telefonica diretta o tramite sistemi di teleconsulto;
+
+assistenza medica domiciliare;
+
+assistenza medica ambulatoriale in struttura adeguata;
+
+assistenza medica per paziente auto-presentatosi in ambulatorio.
+
+I medici di CA saranno dotati di dispositivi mobile connessi alla centrale NEA con cui potranno effettuare la gestione completa dell’evento. Tutte le informazioni riguardanti il servizio erogato saranno tracciate e archiviate sul software gestionale in uso dalla CA e trasmessi alla CO 116117.
+
+La gestione dell’evento si concluderà con la compilazione, da parte del medico di CA, di una scheda sanitaria. Il sistema informativo sarà integrato con i sistemi informativi regionali quali fascicolo sanitario elettronico e sistema di prescrizione delle ricette dematerializzate.
+
+
+7.5 Servizi aggiuntivi di supporto
+
+Sono previsti i seguenti servizi aggiuntivi di supporto per la gestione delle chiamate con il cittadino:
+
+servizio di interpretariato telefonico; 
+
+servizio per cittadini ipoudenti.
+
+
+8. Monitoraggio dei processi e performance
+
+L’attività della Centrale sarà oggetto di monitoraggio in modo da verificare l'efficienza della risposta fornita in termini di presa in carico del bisogno; soddisfazione del bisogno nel caso di gestione diretta da parte della Centrale 116117; tempistiche di gestione; tempi di attesa prima della presa in carico della chiamata; durata media delle chiamate; impegno degli operatori per fascia oraria. Dal Sistema Informativo della centrale 116117 sarà possibile recuperare le informazioni da analizzare.
+
+In particolare, al fine di monitorare e valutare efficacia ed efficienza del processo sopra descritto verranno stabiliti alcuni criteri di misurazione. A titolo esemplificativo e non esaustivo si riportano di seguito alcuni esempi di indicatori, che nel tempo potranno essere integrati e approfonditi.
+
+
+
+Processo:
+
+Numero di chiamate entranti al 116117
+
+Numero di chiamate entranti al 116117 per ora
+
+Numero di chiamate entranti al 116117 per 100.000 abitanti
+
+Numero di chiamate entranti al 116117 con risposta
+
+Numero di chiamate entranti al 116117 senza risposta
+
+
+
+Performance:
+
+Tempo di risposta per le chiamate entranti 
+
+Numero di chiamate entranti in attesa ≥ 40 secondi
+
+Numero di chiamate entranti in attesa > 1 minuto
+
+Numero di chiamate entranti con esito  'consulto telefonico'
+
+Numero di chiamate entranti con esito 'consulto telefonico' per 100.000 abitanti
+
+Numero di chiamate entranti con esito 'trasferimento al PUA'
+
+Numero di chiamate entranti con esito 'trasferimento al PUA' *100.000 abitanti
+
+Numero di chiamate entranti con esito 'informazioni sui servizi'
+
+Numero di chiamate entranti con esito 'informazioni sui servizi' * 100.000 abitanti
+
+Numero di chiamate entranti con esito 'trasferimento alla 118'
+
+Numero di chiamate entranti gestite con esito 'trasferimento alla 118' * 100.000
+
+Numero di chiamate entranti gestite con esito 'trasferimento ad altro servizio territoriale di ASL'
+
+Numero di chiamate entranti gestite con esito 'trasferimento ad altro servizio territoriale di ASL' * 100.000
+
+Numero di chiamate trasferite al Presidio Territoriale CA con esito 'consulto telefonico' da parte del Presidio
+
+Numero di chiamate trasferite al Presidio Territoriale CA con esito 'visita ambulatoriale in sede' da parte del Presidio
+
+Numero di chiamate trasferite al Presidio Territoriale CA con esito 'visita domiciliare' da parte del Presidio
+
+Numero di chiamate trasferite al Presidio Territoriale CA con esito 'richiesta di trasferimento al SET 118' da parte del Presidio
+
+Numero di chiamate trasferite al Presidio Territoriale CA con esito 'richiesta di trasferimento ad altro servizio di ASL' da parte del Presidio
+
+Numero di chiamate trasferite al MMG/PLS o alla medicina di gruppo tramite l’invio di notifiche
+
+
+
+
+10. Il processo di cambiamento
+
+Al fine di implementare il modello sopra descritto è necessario creare alcune pre-condizioni infrastrutturali e tecnologiche, ma anche assicurare la maturazione delle competenze necessarie del personale che lavorerà nelle CO 116117. Di seguito si descrivono alcune delle azioni imprescindibili per l’implementazione, ovvero:
+
+
+
+la formazione del personale nelle CO 116117 (§ 10.1);
+
+
+
+mappatura dei servizi a cui la CO fa riferimento per la presa in carico del bisogno (§10.2)
+
+
+
+la predisposizione dell’infrastruttura tecnologica (§ 10.3);
+
+
+
+la pianificazione di un percorso di comunicazione (§ 10.4).
+
+
+
+In aggiunta, si ritiene opportuno avviare una sperimentazione su un perimetro limitato del territorio veneto per testare, validare e migliorare il modello proposto (§ 10.5).
+
+
+
+
+10.1 Formazione del personale
+
+Il percorso formativo dovrà garantire l'acquisizione delle competenze necessarie per svolgere l’attività di operatore laico della CO 116117. In particolare, si identificano almeno tre aree del sapere:
+
+
+conoscenae approfondite sulle procedure e la strumentazione (sapere);
+
+
+capacità, abilità ed esperienze pratiche (saper fare);
+
+
+comportamenti, atteggiamenti e stili personali (saper essere)
+
+Dovranno essere previsti moduli formativi volti a trasferire le conoscenze di tipo teorico-organizzative prioritariamente sulle attività specifiche affidate all'operatore laico della CO 116117, riguardanti gli aspetti tecnologici delle telecomunicazioni, la conoscenza del territorio da servire, l’Accordo Stato Regioni del 24/11/2016 e relativi allegati, le specifiche istruzioni operative di centrale fornite dalla direzione.
+
+La formazione sarà svolta da formatori esperti, come avviene per la centrale 118. Per gli operatori della CO 116117 sarà fondamentale apprendere le tecniche per lo svolgimento del Triage e nozioni di medicina in considerazione del fatto che gli operatori in prima linea saranno laici. Si deve affiancare anche una formazione che permetta agli operatori di conoscere tutta l’organizzazione della rete territoriale sia in generale sia dettagliata per i singoli territori che la CO 116117 dovrà gestire come di seguito illustrato:
+
+
+
+Modulo I (100 ore) - Nozioni mediche di base: insegnamento delle nozioni mediche necessarie;
+
+
+
+Modulo II (50 ore) - Comunicazione al telefono: insegnare le basi e praticare le tecniche di conversazione telefonica;
+
+
+
+Modulo III (8 ore) - Piattaforma di Triage: applicazione pratica dell’uso del software;
+
+
+
+Modulo IV (50 ore)- Conoscenza della rete territoriale: illustrazione pratica da parte degli operatori del territorio delle organizzazioni in base alla mappatura dei servizi della rete territoriale di riferimento.
+
+Sarà prevista una formazione differenziata tra personale sanitario e personale laico per l’uso del software di triage in considerazione del fatto che non servirà il modulo I. 
+
+La formazione avverrà come segue adattando i contenuti alla platea di operatori che non hanno la laurea in Scienze Infermieristiche:
+
+
+formazione a Distanza (FAD): corso e-learning: Il triage bifasico: parte teorica– FAD;
+
+
+formazione Residenziale (RES): Il triage bifasico: approfondimenti e applicazione – RES;
+
+
+formazione tutorato in affiancamento con personale medico esperto;
+
+
+formazione tutorato in affiancamento con personale della COT esperto conoscitore della rete del territorio.
+
+
+
+
+Sarà prevista, inoltre, un addestramento pratico, il cui obiettivo formativo è l'acquisizione di competenze tecnico-pratiche specifiche in ordine all'utilizzo da parte dell'operatore tecnico della strumentazione della CO 116117 e del relativo software a supporto. Al fine di rendere gli operatori completamente autonomi, dovrà essere prevista una sessione di affiancamento in cui i nuovi operatori saranno seguiti “on the job” da personale qualificato nella gestione della chiamata vera e propria da parte dell’utente, in conformità con le procedure di gestione previste e dell’algoritmo di dispatch delle chiamate in arrivo.
+
+È prevista anche una fase iniziale di formazione specifica per i medici di CA, anche mediante formazione e-learning, al fine di comprendere i nuovi modelli sia organizzativi che operativi del progetto, e consentire loro di interagire correttamente con il software presente. Obiettivo primario è quello di fornire le competenze necessarie e acquisire le abilità nell’uso della infrastruttura tecnologica, nel corretto utilizzo del protocollo di intervista, e nelle tecniche per la gestione della comunicazione con l’utente, con un particolare riguardo all’utilizzo degli strumenti di telemedicina e di ingaggio della consulenza specialistica. 
+
+
+10.2 Mappatura dei servizi
+
+La mappatura dei servizi è fondamentale per l'attivazione del NUE 116117 in Regione Veneto poiché ogni territorio, AULSS e distretto presenta caratteristiche uniche. Una mappatura dettagliata della rete di offerta consente alla centrale operativa di indirizzare l'utente verso il setting di risposta più adeguato. Infatti, per uno stesso bisogno manifestato in territori diversi, il modello di presa in carico può variare, pur garantendo lo stesso esito. Inoltre, è essenziale prevedere un meccanismo di aggiornamento continuo per questa mappatura, dato che i servizi su cui atterreranno le chiamate sono in continua evoluzione. Questo garantisce che la risposta fornita sia sempre la più efficace e adeguata alle esigenze del momento.
+
+
+
+
+10.3 Infrastruttura tecnologica
+
+Al fine di rispondere alle funzioni sopra descritte, sarà necessario acquisire un unico sistema informativo regionale che sia in grado di soddisfare l’organizzazione delle centrali operative distribuite nel territorio della Regione Veneto basato sulla stessa piattaforma in uso alla CO 118. 
+
+Le CO 116117 saranno dotate delle postazioni di lavoro necessarie con le seguenti caratteristiche:
+
+computer con tastiera, mouse;
+
+
+
+n. 2/3 monitor (22’’/24’’) purché permettano le seguenti funzioni:
+
+
+
+la visualizzazione e compilazione della “scheda contatto” del chiamante, anagrafica, anamnesi, ecc; 
+
+
+
+la visualizzazione di una scheda operativa utile a guidare l’operatore nelle diverse fasi della chiamata;
+
+
+
+ interfaccia cartografica;
+
+
+
+
+
+
+
+n. 1 telefono digitale (a più linee);
+
+
+
+cuffie con microfono per garantire l’operatività a mani libere.
+
+L’infrastruttura tecnologica è composta da molteplici componenti, strettamente interconnesse tra di loro, le cui principali sono:
+
+impianto telefonico e di registrazione: comprende tutti gli elementi necessari alla gestione in senso stretto della chiamata, dalla ricezione alla registrazione; 
+
+sistema informativo: comprende il gestionale utilizzato per la gestione e la storicizzazione degli eventi, eventuali applicazioni mobile e un sistema di Business Intelligence per l’analisi e il miglioramento continuo del servizio;
+
+infrastruttura hardware di supporto: comprende tutti gli apparati e i sistemi necessari per l’erogazione dei servizi precedentemente descritti; 
+
+postazioni di lavoro come sopra descritte.
+
+Le infrastrutture tecnologiche a supporto del sistema, nonché tutte le componenti del sistema informativo dovranno essere adeguate sia in termini di capacità computazionale sia nei termini di sicurezza e resilienza, come recentemente definito anche dall’Agenzia Nazionale della Cyber Security. Nei sottoparagrafi che seguono si descrive in generale il sistema che sarà progettato nel dettaglio con successivi documenti.
+
+
+10.3.1 Descrizione dell’infrastruttura
+
+Le sedi identificate per le CO 116117 potrebbero coincidere con i locali delle centrali 118  o con quelli delle COT per sfruttare le sinergie tra le centrali e saranno valutati di volta in volta dall’organo Regionale preposto. Il progetto prevede la separazione fisica degli ambienti in esercizio con la creazione di postazioni in grado di gestire la numerazione futura della CO 116117. La nuova infrastruttura sarà dedicata esclusivamente ai servizi di ambito regionale.
+
+Al fine di realizzare quanto illustrato si ipotizza di centralizzare le funzioni relative al recepimento delle chiamate e alla loro registrazione su due sedi in modo da garantire la continuità di servizio e successivamente poter distribuire le chiamate alle tre CO 116117 permettendo alle centrali di operare sulle stesse code così da supportare vicendevolmente eventuali picchi e garantire la continuità di servizio anche a livello di operatori. Per quanto riguarda i sistemi informativi software saranno ospitati in cloud certificati secondo le direttive di ACN e di Agid. A tal fine si veda quanto illustrato di seguito (Figura 9 e Figura 10):
+
+
+
+
+
+Figura 9
+
+
+
+
+
+Figura 10
+
+
+
+
+
+
+10.3.2 Dimensionamento delle tre CO 116117
+
+Per il dimensionamento si sono utilizzati i seguenti elementi di progetto:
+
+
+
+numero di residenti in Veneto: 4.9 Mil;
+
+
+
+volume di 1000 chiamate/giorno per milione di abitanti nei weekend e festivi;
+
+
+
+3-400 chiamate per milione di abitante fuori dai weekend e festivi;
+
+
+
+1% di chiamate passate al CO 118;
+
+
+
+57% di chiamate passate per un consulto medico.
+
+
+
+
+
+Tempi di gestione delle chiamate target c.ca 3 minuti come primo livello, non tiene conto delle richiamate e consulti e del tempo di back off tra le chiamate. Si sono notati notati miglioramenti nel tempo di gestione dopo 6 mesi dalla partenza in base all’esperienza analizzata in Lombardia.
+
+
+
+Il numero di postazioni/linee è dimensionato in base alla note formule Erlang in base a quanto già espresso nel paragrafo 4.
+
+
+
+Il tempo di attesa non deve essere superiore i 2min nel 75% dei casi 
+
+
+
+Strutturazione in 3 centrali operative dove gli operatori possono tutti rispondere in caso di necessità, ma comunque le chiamate saranno segmentate per competenza territoriale.
+
+
+
+
+
+
+
+Canali PRI ISDN 180 solo entranti (Figura 9):
+
+
+
+45+45 su DC A;
+
+
+
+45+45 su DC B.
+
+Canali PRI ISDN 120 bidirezionali (uscenti e richiamata):
+
+60 su DC A;
+
+60 su DC B.
+
+
+
+Saranno registrati tutti i canali: 150 su DC A e 150 su DC B per un totale di 300 canali.
+
+
+
+Postazioni operatori:
+
+
+
+CO ULSS 3 Serenissima: 12;
+
+
+
+CO ULSS 6 Euganea: 8;
+
+
+
+CO ULSS 9 Scaligera: 10;
+
+
+
+
+
+
+
+Per la sopravvivenza locale so prevede quanto segue:
+
+
+
+canali PRI ISDN 30 solo entranti presso ULSS 3 Serenissima;
+
+
+
+canali PRI ISDN 30 bidirezionali (uscenti e richiamata) presso ULSS 3 Serenissima.
+
+
+
+
+
+
+
+Il dimensionamento si rivaluterà ulteriormente dopo la sperimentazione.
+
+
+
+
+
+
+10.3.3 Descrizione del Sistema Informativo
+
+Il Sistema Informativo della CO 116117 e di tutti gli elementi ad essa correlati deve garantire il raggiungere gli obiettivi previsti nella progettualità e di conseguente avere le seguenti caratteristiche:
+
+
+
+facilitare la gestione del processo di presa in carico e risoluzione del bisogno a vantaggio degli operatori e dei cittadini, tramite l’utilizzo di tecnologie atte a guidare l’operatore nella corretta analisi e identificazione del bisogno;
+
+
+
+cooperazione applicativa con la CA, il più nativa possibile, a garanzia della perfetta comunicazione con tale servizio negli orari della sua operatività affinché il cittadino non veda ritardare la presa in carico del suo bisogno sanitario;
+
+
+migliorare la gestione clinica-assistenziale del cittadino attraverso l’ottimizzazione e l’integrazione del processo di lavoro tra CO 116117 e:
+
+
+CO 118;  
+
+
+Medici di CA; 
+
+
+PUA come snodo di presa in carico verso la rete dei servizi territoriali;
+
+
+COT;
+
+
+Casa della Comunità;
+
+
+MMG/PLS.
+
+
+gestire il processo di presa in carico in un solo ambiente informativo in grado di supportare al meglio l’attività;
+
+
+Sistema di notifiche verso gli MMG/PLS;
+
+
+gestire la mappatura di tutti i servizi disponibili alla CO 116117 per facilitare la presa in carico del bisogno e l’eventuale passaggio verso le strutture di erogazione;
+
+
+permettere la cooperazione tra le tre CO 116117 della Regione Veneto;
+
+
+supportare la modellizzazione di algoritmi a supporto del processo di analisi del bisogno espresso dal cittadino;
+
+
+disporre di un sistema di triage sanitario certificato EN ISO 13485:2016;
+
+
+presentare una serie di cruscotti direzionali e di indicatori statistici in grado di fornire valide indicazioni riguardo i servizi forniti e permettere una pianificazione strategica degli stessi;
+
+
+gestire i flussi informativi del sistema 116117 che venissero richiesti verso la Regione Veneto o verso il Ministero della Salute.
+
+
+
+
+
+10.4 Percorso di comunicazione
+
+Sarà fondamentale studiare un percorso comunicativo alla cittadinanza per metterla a conoscenza del ruolo della CO 116117 e dei relativi servizi erogati, organizzato centralmente ed in maniera omogenea per tutta la popolazione della Regione Veneto. Altrettanto fondamentale sarà anche un analogo percorso di comunicazione rivolto agli operatori del Servizio Sanitario Regionale a garanzia di una corretta presa in carico del cittadino. 
+
+
+
+
+10.5 Sperimentazione
+
+
+
+Si valuta di avviare una prima sperimentazione su una sola centrale 116117 per la gestione delle chiamate su un unico distretto telefonico. La sperimentazione si svolgerà presso ULSS 3 Serenissima, dove verrà allestita la Centrale 116117 per la gestione del Distretto 1 di Bassano del Grappa presso Azienda ULSS 7 Pedemontana.  La sperimentazione si basa sul concetto di distretto telefonico in riferimento al prefisso 0424, pertanto i comuni interessati saranno i seguenti:
+
+
+
+Comune
+
+Popolazione
+
+Asiago
+
+6.429
+
+Cartigliano
+
+3.780
+
+Conco
+
+2.143
+
+Gallio
+
+2.390
+
+Mason Vicentino
+
+3.493
+
+Nove
+
+4.999
+
+Roana
+
+4.299
+
+Rossano Veneto
+
+8.096
+
+Solagna
+
+1.889
+
+Bassano Del Grappa
+
+43.395
+
+Cassola
+
+14.735
+
+Enego
+
+1.676
+
+Lusiana
+
+2.619
+
+Molvena
+
+2.570
+
+Pianezze
+
+2.173
+
+Romano D'ezzelino
+
+14.407
+
+Rotzo
+
+658
+
+Tezze Sul Brenta
+
+12.840
+
+Campolongo Sul Brenta
+
+815
+
+Cismon Del Grappa
+
+911
+
+Foza
+
+701
+
+Marostica
+
+14.008
+
+Mussolente
+
+7.630
+
+Pove Del Grappa
+
+3.093
+
+Rosa'
+
+14.444
+
+San Nazario
+
+1.691
+
+Valstagna
+
+1.827
+
+Valbrenta
+
+4.857
+
+ 
+
+La sperimentazione del numero 116117 nel distretto della regione Veneto ha l'obiettivo di testare il modello organizzativo (ad esempio, personale, responsabilità, dimensionamento), i meccanismi di funzionamento (come gli algoritmi di risposta) e le precondizioni operative (come la mappatura dei servizi territoriali). Questa fase di sperimentazione sarà avviata prima dell'implementazione ufficiale in tutto il territorio appunto per testarne la trasferibilità.
+
+I comuni interessati sono evidenziati in Figura 11 e comprendono una popolazione pari a circa 176.000 persone.
+
+
+
+
+
+
+
+Figura 11. Territorio del Distretto 1 di Bassano del Grappa
+
+
+10.5.1 Dimensionamento della CO 116117 per la sperimentazione
+
+Per l‘avvio della sperimentazione si è valutato di procedere in estensione all’attuale impianto utilizzato per CA dell’ULSS 3 Serenissima presso la CO 118 con i seguenti elementi:
+
+Nr.1 modulo VoiceBeat (30 canali)  - licenza Voice Recorder;
+
+Nr.1 modulo VoiceBeat -  licenza Medico/Paziente max numero utenze: 30);
+
+Nr. 5 Postazione operatore con PhoneBar su PC;
+
+Nr.2 Voice Gateway TE100 VoIP/ISDN 1PRI 
+
+Licenza VoiceBeat per la marcatura delle registrazioni con il numero di interno/username dell’operatore che ha risposto alla chiamata. La ricerca e riascolto delle registrazioni da parte di un operatore potrà essere limitata alle sole chiamate effettivamente gestite da quello specifico operatore;
+
+Nr5 telefoni Snom Voip D715 (incluso alimentatore) e nr.5 cuffie
+
+

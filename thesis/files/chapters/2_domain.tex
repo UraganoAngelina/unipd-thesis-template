@@ -1,0 +1,178 @@
+\chapter{Domain Context and Interoperability}
+\label{chap:domain}
+
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[alt={Testo alternativo dell'immagine}, height=5cm]{img/qubit.jpeg}
+%     \description[Rappresenzazione Qubit]{Long description}
+%     \caption{Lorem}
+%     \label{fig:qubit}
+% \end{figure}
+% \lipsum[1]
+
+% \begin{listing}[H]
+% \begin{minted}{c}
+% #include <stdio.h>
+% int main() {
+%     print("Hello, world!");
+%     return 0;
+% }
+% \end{minted}
+% \caption{Example of code}
+% \label{listing:b}
+% \end{listing}
+
+% Lorem ipsum:
+% \begin{listing}[H]
+% \begin{minted}{c}
+% #include <stdio.h>
+% int main() {
+%     print("Hello, world!");
+%     return 0;
+% }
+% \end{minted}
+% \caption{Example of code}
+% \label{listing:b-2}
+% \end{listing}
+
+% Lorem ipsum:
+% \begin{listing}[H]
+% \begin{minted}{c}
+% #include <stdio.h>
+% int main() {
+%     print("Hello, world!");
+%     return 0;
+% }
+% \end{minted}
+% \caption{Example of code}
+% \label{listing:b-3}
+% \end{listing}
+
+
+\section{Introduction}
+\noindent This chapter develops the domain background needed to understand the interoperability problem addressed by the thesis. Chapter 1 introduced the research setting and the dual analytical and technical contribution of the work; the present chapter focuses instead on the healthcare environment in which those contributions become necessary. The reference domain is territorial healthcare in the Veneto Region, where care continuity depends on the cooperation of organizational actors, clinical-care applications, regional platforms, authentication services, patient registries, document repositories, and integration middleware.
+The chapter first discusses territorial care and continuity of care, with particular attention to the organizational model defined by Ministerial Decree 77/2022. It then examines the problem of information fragmentation and the need for interoperability among heterogeneous systems. Finally, it identifies the main actors and integration components involved in the regional ecosystem, and introduces the normative, organizational, security, data-management, and auditability constraints that shape the design of healthcare integration flows.
+The purpose is not to provide a general description of the Italian healthcare system. Instead, the chapter isolates the elements that are relevant for the thesis: why territorial processes require information continuity, why healthcare systems cannot be treated as isolated applications, and why a controlled methodology for modelling and measuring interoperability flows is required.
+\subsection{Territorial Care and Continuity}
+\noindent Territorial care refers to the set of healthcare and social-health services delivered close to the patient’s living environment, outside or around the hospital setting. In this thesis, the concept is relevant because territorial care depends heavily on transitions: from hospital to home care, from access points to coordination units, from general practitioners to specialist or community services, and from clinical documentation to regional information systems.
+Continuity of care requires that information follows these transitions in a consistent and timely way. A patient taken in charge by a territorial service may need to be identified through a regional registry, associated with a care pathway, linked to documents in the Electronic Health Record, and managed by operators with different roles and authorizations. The domain therefore creates interoperability requirements before any technical implementation is considered.
+This section introduces the territorial structures defined by DM 77/2022, the role of Centrali Operative Territoriali, the actors involved in patient management, and the effect of digitalization on care-taking processes.
+\subsection{Territorial Structures and Organizational Models}
+\noindent Ministerial Decree 77/2022 defines models and standards for the development of territorial care in the Italian National Health Service. For the thesis, the relevant point is that territorial care is organized as a network of services and coordination structures rather than as a sequence of isolated encounters. The decree identifies entities such as the District, the Casa della Comunita, the Centrale Operativa Territoriale, the 116117 operational center, home care services, community hospitals, and telemedicine-supported services.
+The District represents a coordination level for territorial health and social-health services. The Casa della Comunita is conceived as a recognizable access point for citizens and as a place where multidisciplinary professionals can operate. The Centrale Operativa Territoriale, or COT, coordinates transitions across settings and supports the continuity of care. Home care and community hospitals represent further settings in which patient management depends on coordinated information exchange.
+The technological implications are substantial. The decree refers to systems for tracking transitions, managing and monitoring health data, accessing the Electronic Health Record, integrating with company applications, and supporting telemedicine. These requirements show that territorial care is not only an organizational reform; it also requires digital infrastructures capable of linking actors, applications, and information sources.
+The decree is therefore used in this chapter as the normative source for the organizational and technological rationale of territorial interoperability, especially for the district model, the COT, the 116117 operational center, home care, community hospitals, telemedicine, Electronic Health Record access, and information-system interconnection. [DATA MISSING: BibLaTeX entry and exact page references for the cited DM 77/2022 passages in the final bibliography.]
+\subsection{Role of the Centrale Operativa Territoriale}
+\noindent The Centrale Operativa Territoriale, abbreviated as COT, is central to the interoperability perspective of this thesis. Its function is not primarily to deliver a clinical service directly, but to coordinate the taking in charge of the person and to connect services and professionals across different care settings. In this sense, the COT is a coordination node where organizational continuity and information continuity meet.
+The COT needs access to updated patient information, care-transition data, and communication channels with other services. It may interact with hospital departments, home care services, general practitioners, territorial access points, and regional systems. The DM 77/2022 documentation explicitly associates COT activity with technological requirements such as tracking transitions, monitoring health data, accessing the Electronic Health Record, and integrating with company information systems.
+For interoperability, this means that the COT cannot be represented as a standalone application. It is part of a distributed process in which patient identity, clinical context, care assignment, and documentation must be made available across systems. Protected discharge and protected admission are therefore natural examples of COT-related processes: they involve transitions between hospital and territorial settings, require coordination among actors, and depend on reliable information exchange.
+\subsection{Other Actors and Roles}
+\noindent Territorial care involves several actors whose responsibilities are distinct but operationally connected. General practitioners, or Medici di Medicina Generale (MMG), represent a primary-care reference for patients. ULSS and other Healthcare Organizations provide organizational and operational structures for local services. Hospital departments generate or consume information related to admissions, discharges, and clinical events. Assistenza Domiciliare Integrata (ADI) provides integrated home care for patients requiring support at home.
+The relevance of these actors for the thesis lies in their information dependencies. A hospital department may trigger a discharge process that requires territorial follow-up. ADI may need patient data, care plans, clinical documentation, and coordination with the COT. MMG may need visibility over patient transitions and documents. Healthcare Organizations must manage local processes while also interoperating with regional systems and shared infrastructures.
+These interactions create the conditions for multi-actor flows. The information needed to manage a patient is not owned by a single system or actor. It is distributed across applications, registries, documents, and organizational responsibilities. As a result, interoperability becomes a prerequisite for continuity of care, and any experimental model of such flows must preserve the fact that several actors and systems contribute to one end-to-end process.
+\subsection{Digitalization Impact}
+\noindent Digitalization affects care-taking processes by making coordination more dependent on shared information systems. In territorial care, taking charge of a patient may involve patient identification, assessment, care-plan creation, assignment to a service, consultation of previous documents, production of new clinical documentation, and audit of operator actions. These steps are partly organizational and partly technical.
+The SI.Ter documentation describes a context in which territorial services are supported by application modules and by integration with regional or local systems. Digitalization therefore does not simply replace paper with electronic forms. It changes the way processes are coordinated: information can be routed, transformed, validated, logged, subscribed to, or made available through regional services. At the same time, digitalization introduces new constraints, because each step must respect authorization rules, data-protection requirements, interoperability specifications, and auditability needs.
+For this thesis, the impact of digitalization is relevant because it turns care pathways into measurable technical flows. Once a process is mediated by services, APIs, middleware, and logs, it becomes possible to model it as a sequence of steps and to evaluate properties such as latency, completion time, error rate, and concurrency. This is the conceptual link between the healthcare domain and the framework developed in the thesis.
+The available SI.Ter notes support two examples that can be used at an abstract, non-operational level. In a protected-discharge pattern, hospital-originated information can trigger COT evaluation, access to patient identity and clinical documentation, and assignment to an appropriate territorial setting. In a 116117/PUA/COT pattern, a citizen-facing access channel can route a socio-health need toward the PUA and then to the COT, where the process is managed through territorial-care applications. These examples are used only as workflow patterns: organization-specific names, local configurations, operational details, and endpoint-level information remain outside the scope of this chapter. [DATA MISSING: final disclosure validation for detailed SI.Ter workflow variants, operational names, and organization-specific examples.]
+\subsection{Information Fragmentation and Interoperability}
+Information fragmentation occurs when data required for a care process are distributed across systems that were not originally designed as a single application. In territorial healthcare, fragmentation may concern patient identity, clinical documentation, administrative records, prescriptions, workflow states, access rights, and audit information. The problem is not only technical: it reflects the organizational distribution of healthcare responsibilities.
+Interoperability is the response to this fragmentation. It enables heterogeneous systems to exchange information, preserve meaning across boundaries, and support continuity of care. However, interoperability also introduces complexity, because each integration flow must coordinate formats, protocols, identifiers, security mechanisms, routing rules, and error handling.
+This section discusses fragmentation from the perspective of application heterogeneity, architectural separation among layers, middleware orchestration, and the value of interoperability for care continuity and process governance.
+\subsection{Heterogeneity of Healthcare Application Systems}
+\noindent Healthcare application systems are heterogeneous because they serve different purposes and have evolved under different organizational and technical constraints. In the Veneto regional context described by the SI.Ter documentation, the ecosystem includes territorial-care modules, authentication systems, patient registry services, Electronic Health Record components, XDS repositories, prescription systems, CUP systems, ADT systems, digital signature services, and administrative platforms.
+Each system exposes a specific operational view of the patient or the process. A registry system focuses on patient identity and demographic information. A document infrastructure focuses on clinical documents and metadata. A workflow application focuses on care coordination. An authentication service focuses on identity, roles, and access context. Interoperability has to connect these views without assuming that they share the same internal model.
+This heterogeneity motivates the thesis. A performance or workload evaluation that treats all requests as equivalent would miss the fact that different transactions have different semantics, dependencies, and technical constraints. The framework therefore models traffic at the level of flows and transaction sequences, not only as isolated HTTP requests.
+\subsection{Separation of Concerns}
+\noindent Modern healthcare platforms are usually organized into layers. The SI.Ter technical documentation describes presentation components, backend services, interoperability components, workflow automation, persistence, monitoring, and external regional or local systems. This separation improves modularity and maintainability, but it also means that a user action may cross several layers before producing a completed business outcome.
+A frontend may initiate a request, but the relevant operation can involve backend services, middleware routing, transformation logic, regional APIs, registries, queues, or document repositories. From the user’s point of view, this may appear as a single workflow step. From an interoperability perspective, it is a chain of technical interactions.
+This separation is important for measurement. Client-observed latency, middleware processing time, backend execution time, and regional-service response time do not describe the same boundary. The thesis therefore avoids treating a single metric as if it represented the whole system. Instead, it motivates a layered interpretation of measurements, where framework-side observations and middleware-side observations remain distinct unless reliable correlation evidence is available.
+\subsection{Orchestration Routing and Application Decoupling}
+\noindent When several systems participate in a healthcare process, interoperability requires orchestration, routing, transformation, and decoupling. Orchestration defines how steps are coordinated. Routing determines where a message or request must be sent. Transformation adapts formats and data representations. Decoupling reduces direct dependencies among application components, often through APIs, queues, or middleware services.
+The SI.Ter documentation assigns a central role to the interoperability layer, including message orchestration, support for multiple formats and protocols, asynchronous messaging, and transformation logic. These components are not auxiliary details. They are what make it possible for applications developed for different purposes to participate in a shared care process.
+For the thesis, orchestration also has an experimental meaning. A workload should not only contain a number of requests; it should represent the order and dependency structure of a flow. If a token must be obtained before a context call, or if a patient query precedes a later operation, the benchmark must preserve that sequence. This is why the framework models step dependencies within flows and allows concurrency among independent flows rather than flattening all activity into unrelated requests.
+\subsection{Interoperability as Added Value}
+\noindent Interoperability adds value when it supports care continuity and process governance. From the care-continuity perspective, it enables information to follow the patient across settings and professionals. From the governance perspective, it makes processes more observable, traceable, and consistent with organizational rules. In territorial healthcare, both dimensions are necessary.
+A protected discharge process, for example, may require information from hospital systems, patient registry services, territorial coordination applications, and document infrastructures. If these systems do not interoperate, the process risks duplication, delays, manual reconciliation, or incomplete information. If they interoperate through controlled flows, the process can be more consistently represented, monitored, and audited.
+The thesis treats interoperability as a measurable property of process execution. It is not enough to state that systems are connected; it is also necessary to understand whether the resulting flows can be executed under defined workload conditions, whether failures are observable, and whether performance indicators can be computed at the appropriate level.
+\section{Actors and Integration Components}
+\noindent The interoperability ecosystem considered in the thesis includes both organizational actors and technical components. Organizational actors include Healthcare Organizations, territorial services, hospital departments, MMG, ADI, and coordination units such as the COT. Technical components include application modules, middleware, API gateways, identity providers, IAP services, patient registry systems, Electronic Health Record infrastructure, document repositories, context-call services, and prescription services.
+The purpose of this section is to identify these components only at the level needed for the thesis. Later chapters can then map them to standards, transactions, and executable flow models. This avoids turning the chapter into a catalogue of systems while still clarifying why healthcare interoperability requires careful architectural analysis.
+\subsection{Corporate and Regional Systems}
+\noindent Corporate and regional systems coexist in the Veneto healthcare ecosystem. Corporate systems are associated with the operations of individual Healthcare Organizations, such as local clinical applications, ADT systems, CUP systems, or document repositories. Regional systems provide shared services, such as identity infrastructure, patient registry functions, Electronic Health Record access, and regional interoperability specifications.
+This coexistence produces a distributed architecture of responsibility. Some information is managed locally, some is accessed through regional services, and some must be synchronized or referenced across boundaries. In such a context, a care process cannot be modelled as a single application transaction. It must be understood as an interaction among systems that differ in scope, ownership, and interface.
+For the thesis, this distinction matters because the framework simulates traffic that represents regional interoperability flows rather than only local application behavior. The modelled workload therefore reflects the existence of shared services and external dependencies.
+\subsection{API Gateway and Integration Middleware}
+\noindent API gateways and integration middleware act as mediation layers between clients, application services, and external systems. Their functions may include routing, protocol mediation, transformation, security enforcement, logging, error handling, and lifecycle management of APIs. The SI.Ter technical report describes an interoperability layer involving WSO2 Micro Integrator, microservices, RabbitMQ, transformation logic, and API management components.
+The middleware layer is particularly important for performance and observability. It can introduce processing time, retries, queues, transformations, or error-management behavior. At the same time, it can provide logs and metrics that are not visible from the client side. This dual role makes middleware both a functional enabler and a measurement boundary.
+The thesis therefore distinguishes framework-generated observations from middleware observations. A framework request can measure end-to-end client behavior, but middleware logs may be needed to understand gateway or upstream contributions. This distinction underlies the two-level grey-box methodology introduced in Chapter 1 and developed later in the thesis.
+\subsection{Identity Providers and Authentication Levels}
+\noindent Authentication and authorization are core constraints in healthcare interoperability. Operators must be identified, their roles must be known, and access to patient information must be limited to appropriate contexts. The documentation consulted for the thesis includes references to federated identity mechanisms, APMS, SAML, JWT, and Identity and Assertion Provider services.
+In the regional RVE flows considered by the framework, identity and assertion steps are not peripheral. They can be prerequisites for later transactions. For example, an assertion or token obtained in an earlier step may be required by a later service call. This makes security part of the execution logic of the flow rather than a separate configuration detail.
+From an experimental point of view, authentication-related steps affect both correctness and performance. A flow can fail if a token or assertion is missing, invalid, or not propagated correctly. A measurement framework must therefore model these dependencies explicitly, while avoiding any exposure of real credentials, certificates, or sensitive endpoint details.
+\subsection{Regional Health Registry and Anagrafe Zero}
+\noindent Anagrafe Zero represents a central component for patient identity and registry functions in the regional ecosystem. The consulted Anagrafe Zero specification refers to transactions such as RVE-54 Patient Query, RVE-55 Patient ID Assignment, RVE-57 Patient Info Updating, and RVE-100 Resource Subscription. These services are connected to the management, search, creation, update, and subscription of patient identity information.
+For the thesis, Anagrafe Zero is relevant because patient identity is a prerequisite for many care processes. A flow involving protected discharge, protected admission, or access to clinical documents requires a reliable patient context. If patient identity is uncertain or inconsistent, later steps may become impossible or unsafe.
+The framework reflects this relevance by generating synthetic FHIR Patient resources and by modelling patient-related RVE flows. In particular, the current codebase includes flow types involving RVE-54 and RVE-55. This supports experiments where patient identity operations are part of a broader workload rather than isolated examples.
+\subsection{Electronic Health Record and Document Infrastructure}
+\noindent The Electronic Health Record and document infrastructure provide access to clinical documentation across care settings. In the regional ecosystem, XDS-based document repositories and the Affinity Domain specifications are relevant to the publication, retrieval, and indexing of documents. The SI.Ter technical documentation also refers to integration with XDS repositories and the regional Electronic Health Record.
+Document interoperability differs from patient-registry interoperability because it deals not only with identity, but also with clinical documents, metadata, access rules, and document lifecycle. Transactions such as ITI-18 and ITI-43 are relevant to document query and retrieval in IHE XDS.b environments, while other transactions may be involved in publication or replacement.
+For the thesis, the document infrastructure is part of the broader interoperability scenario. The framework currently includes ITI-18 and ITI-43 flow types, allowing document-oriented traffic to be represented in the workload model. Final claims about document-publication behavior must remain limited to what is supported by the sources and the codebase.
+\subsection{ePersonam and Context Services}
+\noindent The SI.Ter technical documentation identifies ePersonam as one of the application suites involved in territorial care modules such as COT, home care, intermediate care, and hospice. In the thesis, ePersonam is relevant as an example of a clinical-care application environment that may need to interact with regional services and context mechanisms.
+Context services are important because some flows do not simply exchange data; they enable access to an application or service while carrying identity and patient context. The RVE context-call documentation describes a pattern involving RVE-121 for obtaining a JWT token and RVE-130 for carrying the context call. In such flows, the application context depends on values produced by previous authentication or token-exchange steps.
+The framework models this kind of dependency through FLOW\_CONTEXT\_CALL, which includes RVE-1.b, RVE-121, and RVE-130. This makes the context-call scenario a clear example of why sequential flow modelling is necessary
+\subsection{Dematerialized Electronic Prescription}
+\noindent Dematerialized electronic prescription services are part of the broader healthcare integration ecosystem. The SI.Ter technical report refers to integration with the regional prescription system and mentions MEF transactions such as prescription sending and cancellation. In territorial care, prescription functions may be relevant when clinical-care applications need to interact with regional or national prescription services.
+For this thesis, prescription services are introduced as part of the domain context rather than as a central implemented flow. The framework focus remains on RVE and related interoperability traffic.
+\section{Normative and Organizational Constraints}
+\noindent Healthcare interoperability is shaped by constraints that go beyond software architecture. National and regional regulation, identity and authorization rules, health-data management requirements, document handling, traceability, and auditability all influence how flows can be designed and evaluated.
+These constraints are relevant to the thesis because they explain why healthcare workloads cannot be generated as arbitrary traffic. Each flow must respect domain semantics, security requirements, and data-governance boundaries. Even in mock or simulation mode, the framework must preserve the logical structure of the process without exposing credentials, real patient data, or confidential operational details.
+This section summarizes the main constraint families relevant to the thesis and marks the areas where further documentary verification is required.
+\subsection{National and Regional}
+\noindent The national framework is represented in this thesis primarily by Ministerial Decree 77/2022, which defines models and standards for territorial care, and by the connection with Mission 6 of the National Recovery and Resilience Plan. The regional framework is represented by SI.Ter project documentation, regional interoperability specifications, and the governance role of Azienda Zero and the Veneto Healthcare Organizations.
+These sources impose constraints at different levels. Organizational standards define which structures and functions must exist in territorial care. Technological requirements indicate that systems must support information sharing, monitoring, Electronic Health Record access, and interconnection with existing applications. Project documentation defines architectural expectations such as microservices, API-based interoperability, integration components, and interaction with regional services.
+The current evidence is sufficient to identify the relevant families of constraints, but not to freeze the final legal apparatus of the thesis. The bibliography should distinguish at least between national territorial-care regulation, regional SI.Ter governance and project documentation, and technical interoperability specifications. [DATA MISSING: final list of national and regional legal references to cite in the thesis bibliography.] Until those references are finalized, this section avoids broad legal claims and remains focused on the constraints explicitly present in the consulted documents.
+\subsection{Identity and Authorization Management}
+\noindent Identity and authorization constraints are central in healthcare interoperability because access to patient information must be associated with authenticated operators, roles, structures, and operational contexts. The consulted documentation refers to authentication through APMS, federated identity providers, SAML-based mechanisms, JWT tokens, and identity/assertion services.
+For integration flows, identity management has two implications. First, authentication is often a prerequisite for accessing later services. Second, authorization context influences which data an operator or application can access. This means that identity cannot be treated as an external detail. It is part of the flow structure.
+The consulted sources support a non-sensitive architectural description: APMS, federated identity providers, Identity and Assertion Provider services, SAML assertions, JWT tokens, and token-exchange steps can be discussed as mechanisms for propagating authenticated context across flows. Exact attribute sets, authorization matrices, credential material, and payload examples are not required in this chapter. [DATA MISSING: final description of the exact identity attributes and authorization rules that can be disclosed in the thesis.] The text should avoid reproducing payload examples containing personal or sensitive data and should describe only the non-sensitive architectural role of identity and authorization mechanisms.
+\subsection{Document management}
+\noindent Health data and clinical documents are subject to stronger constraints than ordinary application data. They must be accurate, protected, traceable, and available only to authorized actors. In the interoperability flows considered by the thesis, this affects patient registry operations, Electronic Health Record access, XDS document exchange, clinical document production, and document lifecycle management.
+From a technical point of view, these constraints require consistent patient identifiers, correct metadata, controlled access, and reliable document exchange. From an experimental point of view, they imply that the framework must use synthetic patients and avoid real personal data. The goal is to preserve the structure of the flow without exposing real health information.
+The available documentation supports an architectural treatment of document governance through the Electronic Health Record, IHE XDS.b, Affinity Domain metadata, XDS Document Repository and Registry roles, and electronic-signature or seal mechanisms where applicable. This is sufficient to explain why document flows require controlled identifiers, metadata, access context, and lifecycle handling. [DATA MISSING: final citation for the data-protection and clinical-document governance rules to be included in the thesis.] Until then, the section remains at the architectural and methodological level.
+\subsection{Traceability and Audit}
+\noindent Traceability and auditability are essential in healthcare interoperability because systems must make it possible to reconstruct relevant actions, accesses, exchanges, and failures. The SI.Ter documentation refers to monitoring, logging, audit, and interoperability components capable of tracking messages and processing outcomes. IHE ATNA is also relevant in the broader healthcare interoperability domain when audit trails and node authentication are considered.
+For the thesis, traceability has a methodological meaning as well. The framework produces structured JSONL logs so that executions can be reconstructed and normalized for metric computation. This logging is not equivalent to a full production audit infrastructure, but it provides experimental traceability: generated flows, scheduled events, responses, failures, and completion status can be analyzed after execution.
+The consulted security and architecture sources support a high-level distinction between production audit infrastructure and experimental logging. Production systems may involve audit-log management and IHE ATNA-related events such as ITI-20, whereas the framework logs are designed for reconstructing experimental executions and computing metrics. [DATA MISSING: confirmation of which production audit requirements and ATNA-related details can be cited in the final thesis.] The chapter should therefore distinguish production auditability from experimental observability.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage

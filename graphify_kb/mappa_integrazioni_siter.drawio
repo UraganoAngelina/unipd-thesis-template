@@ -1,0 +1,300 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.1">
+  <diagram id="territorio-integrazioni" name="Strutture Territorio - Integrazioni SI.Ter">
+    <mxGraphModel dx="1488" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="3300" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" value="&lt;b&gt;MAPPA INTEGRAZIONI SI.Ter — REGIONE VENETO&lt;/b&gt;&lt;br&gt;Strutture Territoriali (DM 77/2022) → Aree Funzionali → Integrazioni → Sistemi" vertex="1">
+          <mxGeometry height="50" width="680" x="865" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" value="" vertex="1">
+          <mxGeometry height="160" width="420" x="1965" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_title" parent="1" style="text;html=1;align=left;fontSize=11;fillColor=none;strokeColor=none;" value="&lt;b&gt;LEGENDA&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="100" x="1975" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" parent="1" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="15" width="20" x="1975" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Strutture Fisiche Territorio (DM 77)" vertex="1">
+          <mxGeometry height="20" width="200" x="2005" y="77" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="15" width="20" x="1975" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Moduli Applicativi SI.Ter (Nuovi Servizi)" vertex="1">
+          <mxGeometry height="20" width="220" x="2005" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="15" width="20" x="1975" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Servizi Aziendali (per ES)" vertex="1">
+          <mxGeometry height="20" width="200" x="2005" y="127" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="15" width="20" x="1975" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Servizi Regionali (Azienda Zero)" vertex="1">
+          <mxGeometry height="20" width="200" x="2005" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" parent="1" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="15" width="20" x="1975" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5t" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;" value="Flussi Informativi NSIS (Debito Informativo)" vertex="1">
+          <mxGeometry height="20" width="250" x="2005" y="177" as="geometry" />
+        </mxCell>
+        <mxCell id="struct_label" parent="1" style="text;html=1;align=left;fontSize=13;fillColor=none;strokeColor=none;fontColor=#336699;" value="&lt;b&gt;STRUTTURE FISICHE DEL TERRITORIO (DM 77/2022)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="450" x="315" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="distretto" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="350" width="1150" x="285" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="distretto_label" parent="1" style="text;html=1;align=left;fontSize=11;fillColor=none;strokeColor=none;" value="&lt;b&gt;DISTRETTO&lt;/b&gt; (~100.000 ab.)&lt;br&gt;&lt;i&gt;Articolazione organizzativo-funzionale della ASL/AULSS&lt;/i&gt;" vertex="1">
+          <mxGeometry height="35" width="400" x="320" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="cdc_hub" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Casa della Comunità&lt;br&gt;HUB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;1 ogni 40-50.000 ab.&lt;br&gt;Medico H24/7&lt;br&gt;Infermiere H12-H24/7&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="305" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="pua" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=9;" value="&lt;b&gt;PUA&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Punto Unico&lt;br&gt;di Accesso&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="80" x="320" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="consultorio" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Consultorio&lt;br&gt;Familiare (IAF)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;1 ogni 20.000 ab.&lt;br&gt;Dentro o collegato a CdC&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="150" x="320" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="cdc_spoke" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Casa della Comunità&lt;br&gt;SPOKE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Secondo orografia&lt;br&gt;Medico H12/6gg&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="485" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="cot_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=0;" value="&lt;b&gt;COT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Centrale Operativa&lt;br&gt;Territoriale&lt;br&gt;1 ogni 100.000 ab.&lt;br&gt;7/7 — Back-office&lt;br&gt;Coord. Inf. + 3-5 Inf.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="150" x="655" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="odc_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Ospedale di&lt;br&gt;Comunità (ODC)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;20 PL ogni 100.000 ab.&lt;br&gt;Ricovero breve&lt;br&gt;post-acuzie&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="140" x="835" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="urt_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;URT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Unità Riabilitativa&lt;br&gt;Territoriale&lt;br&gt;Riab. estensiva/&lt;br&gt;mantenimento&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="140" x="835" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="hospice_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Hospice&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;8-10 PL ogni 100.000 ab.&lt;br&gt;Cure palliative&lt;br&gt;Fine vita&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="130" x="1005" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="adi_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Domicilio Paziente&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;ADI / Cure Palliative&lt;br&gt;Domiciliari (UCPDOM)&lt;br&gt;Target: 10% pop. &amp;gt;65aa&lt;br&gt;con patol. croniche&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="1005" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="csm_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Centro Salute&lt;br&gt;Mentale (CSM)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Coord. DSM&lt;br&gt;Ambulatoriale +&lt;br&gt;Residenziale/Semires.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="140" x="1185" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="npi_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;NPI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Neuropsichiatria&lt;br&gt;Infantile&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1185" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="usca_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;USCA&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Équipe mobile&lt;br&gt;1 ogni 100.000 ab.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="655" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="mmg_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;MMG / PLS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;AFT / UCCP&lt;br&gt;In CdC o collegati&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="130" x="485" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ifoc_struct" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;IFoC&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Inf. Famiglia/Comunità&lt;br&gt;1 ogni 3.000 ab.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="130" x="485" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ospedale" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontSize=10;strokeWidth=2;" value="&lt;b&gt;OSPEDALE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;DEA I/II livello&lt;br&gt;Reparti di degenza&lt;br&gt;Pronto Soccorso&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="140" x="1485" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="co116117" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;strokeWidth=2;" value="&lt;b&gt;CO 116117&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;3 Centrali Operative&lt;br&gt;(AULSS 3, 6, 9)&lt;br&gt;H24/7 — Front-office&lt;br&gt;Operatore + Inf. + Medico CA&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="170" x="1485" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="siter_label" parent="1" style="text;html=1;align=left;fontSize=13;fillColor=none;strokeColor=none;fontColor=#2D7600;" value="&lt;b&gt;MODULI SI.Ter — AREE FUNZIONALI&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="350" x="460" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="epersonam_block" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="200" width="680" x="285" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="epersonam_label" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;fontColor=#2D7600;" value="&lt;b&gt;ePersonam&lt;/b&gt; (Advenias/AlmavivA) — &lt;i&gt;Suite Governance Clinico-Amministrativa&lt;/i&gt;" vertex="1">
+          <mxGeometry height="20" width="450" x="295" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_cot" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo COT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Dimissione/Ammissione&lt;br&gt;protetta, SVAMA,&lt;br&gt;Workflow segnalazioni&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="130" x="300" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_adi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo ADI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Pianificatore, Agenda&lt;br&gt;PAI, VMD, Cartella&lt;br&gt;App Mobile, Geoloc.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="130" x="445" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_odc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo ODC/URT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;CCE, Diario, Terapia&lt;br&gt;Parametri vitali,&lt;br&gt;PAI, Fatturazione&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="130" x="590" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_hospice" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo Hospice&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;CCE Cure Palliative&lt;br&gt;Scale fine vita&lt;br&gt;RLCP&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="110" x="735" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_senior" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Senior&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Fatturazione&lt;br&gt;attiva/passiva&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="90" x="860" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_prescr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Prescrizione Elettronica&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Ricetta DEMA farm. + spec.&lt;br&gt;CVP, Farmadati, SAR&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="180" x="300" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="sister_block" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="200" width="530" x="985" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="sister_label" parent="1" style="text;html=1;align=left;fontSize=10;fillColor=none;strokeColor=none;fontColor=#2D7600;" value="&lt;b&gt;SisTer&lt;/b&gt; (GPI S.p.A.) — &lt;i&gt;Suite Servizi Territoriali CCE&lt;/i&gt;" vertex="1">
+          <mxGeometry height="20" width="350" x="995" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_consult" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo Consultori&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;IAF, Percorsi coppia&lt;br&gt;6 Aree Min. Salute&lt;br&gt;Schede specifiche&lt;/font&gt;" vertex="1">
+          <mxGeometry height="75" width="130" x="1000" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_npi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo NPI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Neuropsichiatria&lt;br&gt;Infantile / Età Evol.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="110" x="1145" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="mod_csm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9;" value="&lt;b&gt;Modulo CSM&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;DSM, DCA&lt;br&gt;Accoglienza → Esito&lt;br&gt;→ Trattamento&lt;br&gt;Terapia somm. diretta&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="130" x="1270" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="az_label" parent="1" style="text;html=1;align=left;fontSize=13;fillColor=none;strokeColor=none;fontColor=#B85450;" value="&lt;b&gt;SERVIZI AZIENDALI (per singolo ES)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="350" x="285" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_cup" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;CUP&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Prenotazione&lt;br&gt;Liste lavoro&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="90" x="300" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_adt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;ADT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Ammissione&lt;br&gt;Dimissione&lt;br&gt;Trasferimento&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="90" x="405" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_xds" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;XDS Repository&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Documenti clinici&lt;br&gt;Indicizzazione FSEr&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="110" x="510" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_firma" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;Firma Digitale&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Provider ES&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="90" x="635" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_lis" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;LIS / RIS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Laboratorio&lt;br&gt;Radiologia&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="80" x="740" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_ldap" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;LDAP / IAP&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Identity Provider&lt;br&gt;locale ES&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="90" x="835" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_magaz" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;Logistica&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Magazzino farmaci&lt;br&gt;DEA Logical&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="940" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_pag" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;Pagamenti&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Casse, MyPay&lt;br&gt;Amm.-Contabile&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="1055" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_spoc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;" value="&lt;b&gt;SPOC / HD&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Help Desk I livello&lt;br&gt;TTS locale&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="90" x="1170" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="reg_label" parent="1" style="text;html=1;align=left;fontSize=13;fillColor=none;strokeColor=none;fontColor=#7B3294;" value="&lt;b&gt;SERVIZI REGIONALI (Azienda Zero / Arsenàl IT)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="400" x="285" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_apms" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;APMS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Autenticazione&lt;br&gt;Federata (Cognito)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="300" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_anag" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;Anagrafe Zero&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;MPI Regionale&lt;br&gt;FHIR R4&lt;br&gt;RVE-54/55/57/100&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="415" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_fser" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;FSEr&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Fascicolo Sanitario&lt;br&gt;Elettronico Regionale&lt;br&gt;XDS Registry&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="550" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_sar" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;SAR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Sist. Accoglienza&lt;br&gt;Regionale&lt;br&gt;Ricetta DEMA&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="685" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_area" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;A.Re.A&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Attribute Provider&lt;br&gt;Organigramma&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="800" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_telemedicina" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;Telemedicina RVE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Piattaforma regionale&lt;br&gt;Teleconsulto&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="120" x="915" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_sio" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;dashed=1;" value="&lt;b&gt;SIO-RVE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Sistema Informativo&lt;br&gt;Ospedaliero Regionale&lt;br&gt;(in deployment)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="130" x="1050" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="srv_pua_sw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9;" value="&lt;b&gt;Software PUA&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Punto Unico Accesso&lt;br&gt;(AlmavivA)&lt;br&gt;Integrato nativamente&lt;br&gt;con ePersonam&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="130" x="1195" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="flussi_label" parent="1" style="text;html=1;align=left;fontSize=13;fillColor=none;strokeColor=none;fontColor=#B85450;" value="&lt;b&gt;FLUSSI INFORMATIVI NSIS (Debito Informativo)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="25" width="400" x="285" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_siad" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;SIAD&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Assist. Domiciliare&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="300" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_sioc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;SIOC&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Osp. Comunità&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="405" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_siar" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;SIAR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Riabilitazione&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="510" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_hospice" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;Hospice&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Flusso Hospice&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="615" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_sism" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;SISM&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Salute Mentale&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="720" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_sicof" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;SICOF&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Consultori&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="825" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_icr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;ICR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Centri Riab.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="930" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="fl_cot" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;" value="&lt;b&gt;Flusso COT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Sperimentale&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="1025" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" edge="1" parent="1" source="cot_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=2;" target="mod_cot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" edge="1" parent="1" source="adi_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_adi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" edge="1" parent="1" source="odc_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_odc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3b" edge="1" parent="1" source="urt_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_odc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" edge="1" parent="1" source="hospice_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_hospice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" edge="1" parent="1" source="consultorio" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_consult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" edge="1" parent="1" source="csm_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_csm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" edge="1" parent="1" source="npi_struct" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;" target="mod_npi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" edge="1" parent="1" source="ospedale" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF0000;strokeWidth=2;dashed=1;" target="cot_struct">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8_label" connectable="0" parent="c8" style="edgeLabel;html=1;align=center;verticalAlign=middle;" value="&lt;font style=&quot;font-size:8px;color:#FF0000&quot;&gt;Dimissione&lt;br&gt;protetta&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" edge="1" parent="1" source="co116117" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;dashed=1;" target="pua">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1570" y="490" />
+              <mxPoint x="360" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c9_label" connectable="0" parent="c9" style="edgeLabel;html=1;align=center;verticalAlign=middle;" value="&lt;font style=&quot;font-size:8px;color:#9673a6&quot;&gt;Alert bisogno&lt;br&gt;sociosanitario&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c10_label" parent="1" style="text;html=1;align=left;fontSize=8;fillColor=none;strokeColor=none;" value="&lt;font style=&quot;font-size:8px;color:#B85450&quot;&gt;← → Bidirezionale con SUEM 118&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="180" x="1490" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" edge="1" parent="1" source="mod_adi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_siad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" edge="1" parent="1" source="mod_odc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_sioc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2b" edge="1" parent="1" source="mod_odc" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_siar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" edge="1" parent="1" source="mod_hospice" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_hospice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" edge="1" parent="1" source="mod_csm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_sism">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" edge="1" parent="1" source="mod_consult" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_sicof">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" edge="1" parent="1" source="mod_cot" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" target="fl_cot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Oiv7fIIo3eEeB2Ct0SP_-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="IL PUA SI METTE IN CONTATTO CON LA COT CHE SCEGLIE IL SETTING DEFINITIVO E ASSEGNA IL PAZIENTE ALLA LDA DELLA STRUTTURA DESIGNATA" vertex="1">
+          <mxGeometry height="120" width="410" x="-200" y="250" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

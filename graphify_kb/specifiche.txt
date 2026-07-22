@@ -1,0 +1,7 @@
+nome certificato client ambiente test: labeling_client_test
+psw certificato client ambiente test: NDXsKyRh
+username: mmgprova2
+applicationID test: 11111111-1111-1111-1111-111111111111
+iap-endpoint: https://trustapp-lab.azero.veneto.it/ws
+RequestContext abilitati: C.4, C.6.3, C.1
+auth-context: A.1.1

@@ -1,0 +1,574 @@
+DECRETO N.         11922         DEL            16/03/2026
+
+STRUTTURA AREA SANITA' E SOCIALE
+
+                                                  OGGETTO
+Modello di Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter) nelle Aziende ed Enti del
+Servizio Sanitario Regionale della Regione del Veneto.
+
+
+
+ NOTE PER LA TRASPARENZA:
+ Con il presente provvedimento si approva il Modello di Governo regionale per l’implementazione del Sistema
+ Informativo Territoriale (SI.Ter) nelle Aziende ed Enti del Servizio Sanitario Regionale della Regione del
+ Veneto, organizzato secondo l’architettura definita nel documento “Sistema Informativo Territoriale (SI.Ter)”
+ nella quale sono stati individuati anche i soggetti partecipanti e i compiti attribuiti agli stessi.
+
+
+                                            IL DIRETTORE GENERALE
+VISTO il Decreto del Ministro della Salute 23 maggio 2022, n. 77, recante “Regolamento per la definizione di
+modelli e standard per lo sviluppo dell’assistenza territoriale nel Servizio sanitario nazionale” e, in particolare, il
+Capitolo 16 “Sistemi Informativi e di Qualità”, il quale dispone che tutte le unità operative del Distretto siano dotate
+di soluzioni digitali idonee a garantire la produzione nativa della documentazione sanitaria in formato digitale nonché
+la piena condivisione dei dati tra i professionisti e la produzione dei dati necessari al monitoraggio a livello nazionale
+dell’assistenza territoriale;
+
+VISTA la Decisione di esecuzione del 13 luglio 2021, successivamente aggiornata con Decisione del 27 novembre
+2023, con la quale il Consiglio dell’Unione Europea ha approvato il Piano Nazionale di Ripresa e Resilienza (PNRR),
+che, nell’ambito della Missione 6 – Salute, Componente 2 “Innovazione, ricerca e digitalizzazione del Servizio
+Sanitario Nazionale”, promuove rilevanti interventi di natura organizzativa e tecnologica finalizzati allo sviluppo di
+un nuovo modello di gestione dei servizi socio-sanitari, prevedendo, tra l’altro, l’Investimento 1.3 concernente il
+“Rafforzamento dell'infrastruttura tecnologica e degli strumenti per la raccolta, l'elaborazione, l'analisi dei dati e la
+simulazione”;
+
+VISTA la Deliberazione della Giunta regionale n. 72 del 29 gennaio 2024, con la quale sono stati individuati, per
+l’anno 2024, gli obiettivi di salute e di funzionamento dei servizi assegnati ad Azienda Zero, tra cui l’obiettivo “Q.8.3
+Analisi e proposta del sistema informativo territoriale”, finalizzato all’efficientamento dei processi amministrativi
+mediante l’implementazione di sistemi informativi centralizzati;
+
+VISTA la Deliberazione del Direttore Generale di Azienda Zero n. 13820 del 4 giugno 2024, avente ad oggetto la
+“Nomina Gruppo di Lavoro Sistema Informativo Territoriale (SIT)”, cui è stato attribuito il compito di svolgere le
+attività di analisi e di elaborazione della proposta progettuale per lo sviluppo di un sistema in grado di garantire
+integrazione, interoperabilità e inclusione delle soluzioni di Telemedicina;
+
+VISTO il Vademecum Versione 2.0 del 30 giugno 2025, trasmesso alle Aziende ed Enti del SSR con nota prot. n.
+18127 del 4 luglio 2025, concernente gli obiettivi delle Aziende del SSR per l’anno 2025, che individua, tra gli
+indicatori oggetto di valutazione, l’indicatore “25.S.S.04.2 Sistema Informativo Territoriale”, finalizzato alla verifica
+del rispetto delle indicazioni relative all’attuazione del cronoprogramma regionale di implementazione del SIT;
+    VISTO il parere favorevole espresso dalla Commissione Regionale per l’Investimento in Tecnologia ed Edilizia
+    (CRITE) nelle sedute del 26 maggio e del 4 giugno 2025, acquisito da Azienda Zero con protocollo n. 18628/2025,
+    in ordine al progetto regionale di sviluppo del Sistema Informativo Territoriale a valenza regionale;
+
+    VISTA la Deliberazione del Direttore Generale di Azienda Zero n. 499 del 14 luglio 2025, con la quale è stata indetta
+    la procedura di gara mediante Appalto Specifico in adesione all’Accordo Quadro Consip “Sanità Digitale – Lotto 3”,
+    per la realizzazione del Sistema Informativo Territoriale regionale denominato “SI.Ter”;
+    VISTA la Deliberazione del Direttore Generale di Azienda Zero n. 708 del 02 ottobre 2025, con la quale è stata
+    nominata la Commissione Giudicatrice per la valutazione tecnica ed economica delle offerte pervenute nell’ambito
+    dell’Appalto Specifico per la realizzazione di un Sistema Informativo Territoriale (SI.Ter);
+
+    VISTA la Deliberazione del Direttore Generale di Azienda Zero n. 820 del 19 novembre 2025 (ovvero atto
+    equivalente di aggiudicazione), con la quale è stata disposta l’aggiudicazione della gara per la realizzazione del
+    sistema “SI.Ter” in favore dell’operatore economico individuato, autorizzandone l’esecuzione in via d’urgenza, al
+    fine di garantire il rispetto delle milestone previste dal PNRR;
+
+    CONSIDERATO che l’intervento in parola è finalizzato al superamento della frammentazione dei sistemi informativi
+    attualmente in uso a livello locale, mediante la realizzazione di un’architettura unitaria a valenza regionale, funzionale
+    al rafforzamento della governance del sistema sanitario e al miglioramento continuo dei percorsi di presa in carico,
+    attraverso la digitalizzazione nativa dei processi;
+
+    RITENUTO, pertanto, necessario adottare un Modello di Governo regionale per l’implementazione del Sistema
+    Informativo Territoriale (SI.Ter) nelle Aziende ed Enti del Servizio Sanitario Regionale della Regione del Veneto,
+    organizzato secondo l’architettura di seguito riportata in quanto funzionale a garantire la partecipazione di tutti i
+    professionisti esperti interessati dall’avvio e implementazione del Sistema Informativo Territoriale (SI.Ter):
+
+    RESPONSABILE UNICO PROCEDIMENTO (RUP)
+    - Ing. Luca Giobelli, Azienda Zero;
+
+    GRUPPO DI COORDINAMENTO
+    - Ing. Roberto Da Dalt, Azienda ULSS n. 2 Marca Trevigiana;
+    - Dott. Manuel Zorzi, Azienda Zero;
+    - Ing. Silvia Rizzato, Azienda Zero;
+
+    CABINA DI REGIA
+    - Dott.ssa Romina Cazzaro, Regione del Veneto;
+    - Dott.ssa Gemma Capano, Regione del Veneto;
+    - Dott. Marco Nardin, Regione del Veneto, in qualità di referente esperto di ambito per il Numero Unico Europeo
+      116117;
+    - Dott.ssa Rossana Salata, Regione del Veneto;
+    - Ing. Claudio Beltrami, Azienda Zero, in qualità di responsabile dell’Infrastruttura ICT;
+    - Dott. Stefano Nicola, Azienda Zero, in qualità di responsabile del controllo di gestione;
+    - Avv. Fabio De Luzio, Azienda Zero, in qualità di esperto privacy;
+    - Dott.ssa Marzia Volpato, Azienda ULSS n. 1 Dolomiti, in qualità di responsabile privacy;
+    - Dott.ssa Lucia Dalla Torre, Azienda ULSS n. 1 Dolomiti, in qualità di referente aziendale esperto di ambito per
+      le Cure Domiciliari;
+    - Dott. Vincenzo Barra, Azienda ULSS n. 2 Marca Trevigiana, in qualità di referente aziendale esperto di ambito
+      per la Centrale Operativa Territoriale (COT);
+    - Dott. Dario Filippo, Azienda ULSS n. 3 Serenissima, in qualità di referente aziendale esperto di ambito per la
+      Salute Mentale;
+    - Dott. Andrea Rosin, Azienda ULSS n. 3 Serenissima, in rappresentanza dei sistemi informativi regionali
+    - Dott.ssa Francesca Tiozzo, Azienda ULSS n. 3 Serenissima, in qualità di referente aziendale esperto di ambito
+      per le Strutture Intermedie;
+
+
+
+
+Ddr n. 11922 del 16/03/2026                                                                                              pag. 2 di 5
+    - Dott. Marco Artico, Azienda ULSS n. 4 Veneto Orientale, in qualità di referente aziendale esperto di ambito per
+      le Cure Domiciliari;
+    - Dott.ssa Michela Fasolato, Azienda ULSS n. 5 Polesana, in qualità di referente aziendale esperto di ambito per il
+      Consultorio;
+    - Dott.ssa Marta Macchi, Azienza ULSS n. 6 Euganea, in qualità di referente aziendale esperto di ambito per il
+      Consultorio;
+    - Dott. Emanuele Barbierato, Azienda ULSS n. 7 Pedemontana, in qualità di referente aziendale esperto relativo
+      alle tematiche del Punto Unico di Accesso (PUA);
+    - Dott.ssa Marilena Agresta, Azienda ULSS n. 8 Berica, in qualità di referente aziendale esperto di ambito per la
+      Salute Mentale;
+    - Dott. Francesco Rossi, Azienda ULSS n. 8 Berica, in qualità di referente aziendale esperto di ambito per le
+      Strutture Intermedie;
+    - Dott.ssa Simonetta Pellini, Azienda ULSS n. 9 Scaligera, in qualità di referente aziendale esperto di ambito per
+      la Centrale Operativa Territoriale (COT);
+    - Ing. Samantha De Biasio, Consorzio Arsenàl.IT;
+
+    RITENUTO inoltre opportuno, per garantire la piena operabilità del SI.Ter a livello aziendale, che le Aziende ULSS,
+    l’Azienda Ospedaliera Universitaria Integrata di Verona, l’Azienda Ospedale-Università di Padova e l’Istituto
+    Oncologico Veneto IRCCS provvedano a designare:
+    - un referente aziendale di profilo clinico-organizzativo per ciascuno dei seguenti ambiti: Cure domiciliari, Salute
+        mentale, Strutture intermedie e Consultorio;
+    - un referente aziendale per lo sviluppo progettuale nel proprio Ente, di profilo clinico-organizzativo, a cui fanno
+        riferimento i referenti aziendali dei vari ambiti;
+    - un referente informatico per l’implementazione del SI.Ter a livello aziendale;
+    i cui nominativi devono essere comunicati al Gruppo di Coordinamento;
+
+    CONSIDERATO che il summenzionato Modello di Governo per l’implementazione del Sistema Informativo
+    Territoriale (SI.Ter) è stato descritto nel documento "Sistema Informativo Territoriale (SI.Ter)”, che costituisce
+    l’Allegato A parte integrante e sostanziale del presente provvedimento, nel quale sono stati individuati anche il
+    funzionamento e i compiti attribuiti alle diverse articolazioni del Modello medesimo;
+
+    RILEVATO che non è previsto alcun compenso per la partecipazione alle attività per il Modello di Governo per
+    l’implementazione del Sistema Informativo Territoriale (SI.Ter) e che gli eventuali rimborsi delle spese sono a carico
+    delle amministrazioni di appartenenza;
+
+    VALUTATA la complessità e varietà delle attività da svolgere, si ritiene possibile integrare la composizione delle
+    strutture in cui è articolato il Modello di Governo con la partecipazione di ulteriori professionalità e specialisti;
+
+    RILEVATO che la cessazione del rapporto di lavoro con il SSR da parte di un partecipante al Modello di Governo
+    regionale per l’implementazione del Sistema Informativo Territoriale (SI.Ter) determina la decadenza automatica
+    dalla nomina;
+
+                                                         DECRETA
+    1.   di approvare le premesse quale parte integrante e sostanziale del presente decreto;
+
+    2.   di adottare il Modello di Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter) nelle
+         Aziende ed Enti del Servizio Sanitario Regionale della Regione del Veneto organizzato secondo l’architettura
+         contenuta nel documento "Sistema Informativo Territoriale (SI.Ter)”, che costituisce l’Allegato A parte
+         integrante e sostanziale del presente provvedimento, nel quale sono stati individuati anche il funzionamento e i
+         compiti attribuiti alle diverse articolazioni del Modello medesimo;
+
+    3.   di definire il Modello di Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter) nelle
+         Aziende sanitarie della Regione del Veneto ed istituire il Gruppo di Lavoro per l’implementazione del Sistema
+         Informativo Territoriale (SI.Ter);
+
+
+
+
+Ddr n. 11922 del 16/03/2026                                                                                          pag. 3 di 5
+    4.   di stabilire che il Modello di Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter) nelle
+         Aziende ed Enti del Servizio Sanitario Regionale della Regione del Veneto, sia organizzato secondo
+         l’architettura di seguito riportata in quanto funzionale a garantire la partecipazione di tutti i professionisti esperti
+         interessati dall’avvio e implementazione del Sistema Informativo Territoriale (SI.Ter):
+
+         RESPONSABILE UNICO PROCEDIMENTO (RUP)
+         - Ing. Luca Giobelli, Azienda Zero;
+
+         GRUPPO DI COORDINAMENTO
+         - Ing. Roberto Da Dalt, Azienda ULSS n. 2 Marca Trevigiana;
+         - Dott. Manuel Zorzi, Azienda Zero;
+         - Ing. Silvia Rizzato, Azienda Zero;
+
+         CABINA DI REGIA
+         - Dott.ssa Romina Cazzaro, Regione del Veneto;
+         - Dott.ssa Gemma Capano, Regione del Veneto;
+         - Dott. Marco Nardin, Regione del Veneto, in qualità di referente esperto di ambito per il Numero Unico
+           Europeo 116117;
+         - Dott.ssa Rossana Salata, Regione del Veneto;
+         - Ing. Claudio Beltrami, Azienda Zero, in qualità di responsabile dell’Infrastruttura ICT;
+         - Dott. Stefano Nicola, Azienda Zero, in qualità di responsabile del controllo di gestione;
+         - Avv. Fabio De Luzio, Azienda Zero, in qualità di esperto privacy;
+         - Dott.ssa Marzia Volpato, Azienda ULSS n. 1 Dolomiti, in qualità di responsabile privacy;
+         - Dott.ssa Lucia Dalla Torre, Azienda ULSS n. 1 Dolomiti, in qualità di referente aziendale esperto di ambito
+           per le Cure Domiciliari;
+         - Dott. Vincenzo Barra, Azienda ULSS n. 2 Marca Trevigiana, in qualità di referente aziendale esperto di
+           ambito per la Centrale Operativa Territoriale (COT);
+         - Dott. Dario Filippo, Azienda ULSS n. 3 Serenissima, in qualità di referente aziendale esperto di ambito per
+           la Salute Mentale;
+         - Dott. Andrea Rosin, Azienda ULSS n. 3 Serenissima, in rappresentanza dei sistemi informativi regionali
+         - Dott.ssa Francesca Tiozzo, Azienda ULSS n. 3 Serenissima, in qualità di referente aziendale esperto di
+           ambito per le Strutture Intermedie;
+         - Dott. Marco Artico, Azienda ULSS n. 4 Veneto Orientale, in qualità di referente aziendale esperto di ambito
+           per le Cure Domiciliari;
+         - Dott.ssa Michela Fasolato, Azienda ULSS n. 5 Polesana, in qualità di referente aziendale esperto di ambito
+           per il Consultorio;
+         - Dott.ssa Marta Macchi, Azienza ULSS n. 6 Euganea, in qualità di referente aziendale esperto di ambito per
+           il Consultorio;
+         - Dott. Emanuele Barbierato, Azienda ULSS n. 7 Pedemontana, in qualità di referente aziendale esperto
+           relativo alle tematiche del Punto Unico di Accesso (PUA);
+         - Dott.ssa Marilena Agresta, Azienda ULSS n. 8 Berica, in qualità di referente aziendale esperto di ambito per
+           la Salute Mentale;
+         - Dott. Francesco Rossi, Azienda ULSS n. 8 Berica, in qualità di referente aziendale esperto di ambito per le
+           Strutture Intermedie;
+         - Dott.ssa Simonetta Pellini, Azienda ULSS n. 9 Scaligera, in qualità di referente aziendale esperto di ambito
+           per la Centrale Operativa Territoriale (COT);
+         - Ing. Samantha De Biasio, Consorzio Arsenàl.IT;
+
+    5.   di stabilire che le Aziende ULSS, l’Azienda Ospedaliera Universitaria Integrata di Verona, l’Azienda Ospedale-
+         Università di Padova e l’Istituto Oncologico Veneto IRCCS provvedano a designare:
+         - un referente aziendale di profilo clinico-organizzativo per ciascuno dei seguenti ambiti: Cure domiciliari,
+         Salute mentale, Strutture intermedie e Consultorio;
+         - un referente aziendale per lo sviluppo progettuale nel proprio Ente, di profilo clinico-organizzativo, a cui
+         fanno riferimento i referenti aziendali dei vari ambiti;
+
+
+
+
+Ddr n. 11922 del 16/03/2026                                                                                                 pag. 4 di 5
+         - un referente informatico per l’implementazione del SI.Ter a livello aziendale;
+         i cui nominativi devono essere comunicati al Gruppo di Coordinamento;
+
+    6.   di individuare l’Ing. Roberto Da Dalt, Azienda ULSS 2 – Marca Trevigiana quale Coordinatore del Gruppo di
+         Coordinamento descritto al punto 4;
+
+    7.   di individuare la Dr.ssa Romina Cazzaro, Direttore della Direzione Programmazione Sanitaria della Regione del
+         Veneto quale Coordinatore della Cabina di Regia descritto al punto 4;
+
+    8.   di approvare il documento "Sistema Informativo Territoriale (SI.Ter) – Gruppo di Lavoro" che costituisce
+         l'Allegato A parte integrante e sostanziale del presente provvedimento, nel quale viene descritta l’architettura
+         del Modello di Governo, oltre al funzionamento e ai compiti attribuiti allo stesso;
+
+    9.   di stabilire che non è previsto alcun compenso per la partecipazione alle attività per il Modello di Governo per
+         l’implementazione del Sistema Informativo Territoriale (SI.Ter) e che gli eventuali rimborsi delle spese sono a
+         carico delle amministrazioni di appartenenza;
+
+    10. di prevedere la possibilità di avvalersi della partecipazione di ulteriori professionalità e specialisti in
+        considerazione della complessità e varietà delle attività da svolgere;
+
+    11. di stabilire che la cessazione del rapporto di lavoro con il SSR da parte di un partecipante al Modello di Governo
+        regionale per l’implementazione del Sistema Informativo Territoriale (SI.Ter) determina la decadenza
+        automatica dalla nomina;
+
+    12. di incaricare la Direzione Programmazione Sanitaria dell’esecuzione del presente atto, inclusa la correzione di
+        eventuali errori materiali, nonché l’aggiornamento del Modello di Governo l’implementazione del Sistema
+        Informativo Territoriale (SI.Ter);
+
+    13. di dare atto che il presente provvedimento non comporta ulteriori oneri a carico del Bilancio regionale;
+
+    14. di pubblicare integralmente il presente decreto nel Bollettino Ufficiale della Regione.
+
+
+                                                                             Massimo Annicchiarico
+
+
+
+
+                                                 Firma ANNICCHIARICO MASSIMO
+                                                 Data 16-03-2026
+Ddr n. 11922 del 16/03/2026                                                                                          pag. 5 di 5
+        giunta regionale
+
+Allegato A           al Decreto n.            11922      del     16/03/2026                          pag. 1 di 6
+
+
+
+
+                             SISTEMA INFORMATIVO TERRITORIALE (SI.TER)
+
+    Con il presente documento si definiscono la composizione, il funzionamento e i compiti del Modello di
+    Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter) nelle Aziende ed Enti del
+    Servizio Sanitario Regionale della Regione del Veneto.
+
+
+
+    1. Adozione del Modello di Governo per l’implementazione del Sistema Informativo Territoriale (SI.Ter)
+
+    La Regione del Veneto ha previsto l’adozione del Modello di Governo per l’implementazione del Sistema
+    Informativo Territoriale (SI.Ter) nelle Aziende ed Enti del Servizio Sanitario Regionale, composto da un
+    Responsabile Unico Procedimento (RUP), un Gruppo di Coordinamento e una Cabina di regia.
+
+    I partecipanti alle diverse articolazioni del Modello di Governo sono tenuti ad assicurare il massimo impegno
+    e la piena collaborazione nello svolgimento delle attività progettuali loro attribuite, garantendone
+    l’espletamento con la dovuta diligenza e nel rispetto delle tempistiche previste.
+
+
+
+    2. Composizione del Modello di Governo per l’implementazione del Sistema Informativo Territoriale
+    (SI.Ter)
+
+    Il Modello di Governo è organizzato secondo l’architettura di seguito riportata in quanto funzionale a garantire
+    la partecipazione di tutti i professionisti esperti interessati dall’avvio e implementazione del Sistema
+    Informativo Territoriale (SI.Ter):
+
+     Responsabile Unico Procedimento (RUP) per la fase di esecuzione del contratto di fornitura.
+     Gruppo di coordinamento:
+          Il Direttore Esecutivo del Contratto (DEC) di fornitura, individuato dall'Area Sanità e Sociale della
+             Regione del Veneto, con funzioni di Coordinatore responsabile del Gruppo di Lavoro;
+          Il Direttore della UOC Servizio Epidemiologico Regionale (SER) di Azienda Zero e un referente
+             con funzioni di coordinamento e di supporto al DEC.
+     Cabina di Regia:
+          Il Direttore della Programmazione Sanitaria o suo delegato;
+          Un referente per la U.O. Cure Primarie o suo delegato, afferente alla Direzione Programmazione
+             Sanitaria, Area Sanità e Sociale, in qualità di esperto di ambito per il Numero Unico Europeo
+             116117;
+          Un referente per la U.O. Assistenza ospedaliera, ambulatoriale e cure intermedie o suo delegato,
+             afferente alla Direzione Programmazione Sanitaria, Area Sanità e Sociale;
+          Il Direttore della U.O. Salute mentale e sanità penitenziaria o suo delegato, afferente alla Direzione
+             Programmazione Sanitaria, Area Sanità e Sociale;
+          Due referenti aziendali in qualità di esperti di ambito per ognuno dei seguenti ambiti: Centrale
+             Operativa Territoriale (COT), Cure Domiciliari, Strutture Intermedie, Consultorio e Salute
+             Mentale;
+          Un referente aziendale in qualità di esperto relativo alle tematiche del Punto Unico di Accesso
+             (PUA);
+          Il Responsabile della U.O.S. Controllo di Gestione, afferente alla U.O.C. Contabilità e Controlli
+             Gestionali di Azienda Zero, per le attività di controllo di gestione, di monitoraggio del flusso dati
+             e di supporto all’identificazione di adeguati indicatori di attività e di performance;
+          Un referente della U.O.C. Sistemi Informativi di Azienda Zero, per il presidio delle attività inerenti
+             all’infrastruttura ICT;
+ALLEGATO A al Decreto n. 11922 del 16/03/2026                                                              pag. 2 di 6
+
+
+
+
+                   Un referente della U.O.C. Affari Generali di Azienda Zero competente per gli adempimenti in
+                    materia di privacy;
+                   Un referente aziendale in rappresentanza dei sistemi informativi regionali;
+                   Un referente aziendale competente per gli adempimenti in materia di privacy;
+                   Un referente del Consorzio Arsenàl.IT per il coordinamento delle integrazioni applicative, la
+                    definizione delle specifiche tecniche, nonché per il presidio dell’interoperabilità con l’ecosistema
+                    dei sistemi informativi regionali.
+
+       È possibile la partecipazione di ulteriori professionalità e specialisti, di volta in volta ritenuti utili al
+       perseguimento degli obiettivi assegnati.
+
+
+
+       3. Referenti Aziendali
+
+       Le Direzioni Generali delle Aziende ULSS del territorio regionale, dell’Azienda Ospedaliera Universitaria
+       Integrata di Verona, dell’Azienda Ospedale - Università di Padova e dell’Istituto Oncologico Veneto IRCCS
+       designano un referente aziendale di profilo clinico-organizzativo per ciascuno dei seguenti ambiti: Cure
+       domiciliari, Salute mentale, Strutture intermedie e Consultorio.
+
+       Inoltre, sono tenute a designare un referente aziendale per lo sviluppo progettuale nel proprio Ente, di profilo
+       clinico-organizzativo, a cui fanno riferimento i referenti aziendali dei vari ambiti.
+
+       Infine, devono nominare un referente informatico per l’implementazione del SI.Ter a livello aziendale.
+
+       I nominativi di tutti i professionisti designati devono essere comunicati al Gruppo di Coordinamento.
+
+
+       4. Linee di intervento
+
+       Si identificano cinque linee di intervento come di seguito articolate:
+
+       A. Funzioni, processi e integrazioni per la validazione clinico-organizzativa di ciascun modulo SI.Ter,
+          assicurando uniformità di utilizzo e coerenza dei modelli organizzativi adottati a livello regionale;
+       B. Flussi NSIS e indicatori gestionali per il raggiungimento degli obiettivi PNRR, alimentando i flussi
+          NSIS, nonché individuando gli indicatori gestionali e di monitoraggio necessari al governo del sistema;
+       C. Infrastruttura ICT, per la realizzazione e gestione dell’infrastruttura tecnologica necessaria
+          all’erogazione dei servizi applicativi, mediante l’implementazione di una piattaforma centralizzata multi-
+          tenant;
+       D. Privacy e DPIA, per ottemperare ai principi e alle normative vigenti in materia di protezione dei dati e
+          per la redazione e validazione delle DPIA;
+       E. Diffusione nelle Aziende, per l’avvio della soluzione nelle Aziende Sanitarie del territorio regionale (ivi
+          comprese le Aziende Ospedaliere di Padova e Verona e lo IOV).
+          per il Numero Unico Europeo 116117;
+
+
+       5. Compiti
+
+       I Si definiscono le attività di competenza e le relative linee di intervento di riferimento per i diversi componenti
+       del Modello di Governo
+
+        Gruppo di coordinamento
+
+            Linee di intervento presidiate:
+ALLEGATO A al Decreto n. 11922 del 16/03/2026                                                             pag. 3 di 6
+
+
+
+
+           A. Funzioni, processi e integrazioni
+           B. Flussi NSIS e indicatori gestionali
+           C. Infrastruttura ICT
+           D. Privacy e DPIA
+           E. Diffusione nelle Aziende Sanitarie
+           Compiti:
+
+           •   partecipa agli incontri della Cabina di Regia, assicurando il raccordo tra le dimensioni progettuale,
+               tecnica, amministrativa e di monitoraggio, ai fini del rispetto degli obblighi PNRR e dei connessi
+               adempimenti amministrativi;
+           •   presenta agli incontri della Cabina di Regia le progettualità e ne coordina l’avvio operativo con i
+               referenti dei singoli ambiti;
+           •   raccoglie la validazione clinica di ciascun modulo SI.Ter, sottoscritta dai referenti di ambito;
+           •   raccoglie la validazione tecnico-amministrativa relativa ai quattro flussi NSIS (Riabilitazione
+               Territoriale, Consultorio, Ospedale di Comunità, Cure Primarie, Salute Mentale);
+           •   definisce le regole inerenti agli aspetti amministrativo-contabili e alle modalità di fatturazione;
+           •   valida la documentazione tecnico-amministrativa ai fini della rendicontazione PNRR relativa ai flussi
+               NSIS, all’infrastruttura ICT e alle DPIA, nonché quella concernente il trasferimento dei contratti di
+               manutenzione da ciascuna Azienda Sanitaria ad Azienda Zero;
+           •   garantisce l’esecuzione del contratto con riferimento agli aspetti inerenti all’infrastruttura ICT e alla
+               diffusione e all’implementazione dei diversi moduli del progetto SI.Ter, mediante approvazione del
+               relativo cronoprogramma;
+           •   acquisisce l’asseverazione del responsabile in materia di protezione dei dati personali ai sensi del
+               GDPR.
+
+
+        Referenti aziendali esperti di ambito (Cabina di regia)
+
+           Linee di intervento presidiate:
+
+           A. Funzioni, processi e integrazioni
+           B. Flussi NSIS e indicatori gestionali
+           E. Diffusione nelle Aziende Sanitarie
+           Compiti:
+
+           •   partecipa agli incontri della Cabina di Regia, rappresentando lo stato di avanzamento delle attività,
+               eventuali criticità e proposte evolutive, nonché, in fase di diffusione dei moduli SI.Ter, il loro stato di
+               avanzamento;
+           •   assicura la rappresentazione dei processi caratteristici del proprio ambito clinico-organizzativo
+               all’interno del modulo SI.Ter di competenza, garantendone l’integrazione con gli altri moduli;
+           •   garantisce la presenza e la coerenza delle funzioni specifiche del proprio ambito all’interno del
+               modulo SI.Ter di competenza;
+           •   valida il modulo SI.Ter di competenza quale “Modulo Unico” regionale, ai fini della diffusione e
+               implementazione uniforme presso le Aziende Sanitarie del Veneto;
+           •   propone e collabora con il Responsabile del controllo di gestione per la definizione e il
+               consolidamento gli indicatori clinici, gestionali, di performance e di monitoraggio ritenuti rilevanti
+               per il proprio ambito, nonché ai fini dell’integrazione nei moduli SI.Ter e nei flussi NSIS;
+ALLEGATO A al Decreto n. 11922 del 16/03/2026                                                             pag. 4 di 6
+
+
+
+
+           •   assicura il dialogo con i referenti aziendali, fornendo chiarimenti e supporto sulle scelte strategiche e
+               operative adottate, al fine di consolidare una versione unica e approvata a livello regionale del modulo
+               SI.Ter di competenza.
+
+
+        Consorzio Arsenàl.IT (Cabina di regia)
+
+           Linee di intervento presidiate:
+
+           A. Funzioni, processi e integrazioni
+           B. Flussi NSIS e indicatori gestionali
+           C. Infrastruttura ICT
+           D. Privacy e DPIA
+           Compiti:
+
+           •   partecipa agli incontri della Cabina di Regia;
+           •   garantisce l’attuazione delle integrazioni tecniche previste dal capitolato, assicurandone la coerenza
+               con le funzionalità, i processi, i flussi NSIS e il sistema di indicatori definiti nel progetto, infine in
+               collaborazione con il responsabile dei sistemi informativi, assicura l’interoperabilità del sistema
+               SI.Ter con l’ecosistema digitale regionale;
+           •   in collaborazione con il responsabile per i sistemi informativi, garantisce l’applicazione delle
+               integrazioni tecniche in conformità ai decreti relativi al FSE e alla normativa sulla protezione dei dati
+               personali.
+
+
+        Responsabile del controllo di gestione (Cabina di regia)
+
+           Linee di intervento presidiate:
+
+           B. Flussi NSIS e indicatori gestionali
+           Compiti:
+
+           •   si avvale del supporto dei referenti aziendali per il controllo di gestione per ciascun flusso NSIS
+               (Riabilitazione Territoriale, Consultorio, Ospedale di Comunità, Cure Primarie, Salute Mentale), al
+               fine di garantirne la conformità formale agli obiettivi PNRR;
+           •   analizza e valida gli indicatori clinico-organizzativi, gestionali, di performance e di monitoraggio
+               proposti nell’ambito del progetto da parte degli esperti di ambito, nonché propone eventuali ulteriori
+               indicatori ritenuti necessari;
+           •   assicura la coerenza tra sistema di indicatori, flussi NSIS e obblighi di monitoraggio PNRR;
+           •   partecipa agli incontri della Cabina di Regia, rappresentando lo stato di avanzamento, eventuali
+               criticità e proposte di miglioramento.
+
+
+        Responsabile dell’Infrastruttura ICT (Cabina di regia)
+
+           Linee di intervento presidiate:
+
+           C. Infrastruttura ICT
+           Compiti:
+
+           •   garantisce il collaudo tecnico dell’installazione unica multi-tenant del sistema SI.Ter;
+ALLEGATO A al Decreto n. 11922 del 16/03/2026                                                              pag. 5 di 6
+
+
+
+
+            •   supervisiona gli interventi sistemistici assicurandone la coerenza con l’architettura infrastrutturale
+                regionale, con il supporto del responsabile dei sistemi informativi;
+            •   vigila sulla corretta implementazione dell’infrastruttura ICT, in conformità alla normativa vigente in
+                materia di cybersicurezza e alla Direttiva NIS2, validando la relativa asseverazione;
+            •   assicura il presidio tecnico-evolutivo dell’infrastruttura, segnalando eventuali criticità;
+            •   partecipa agli incontri della Cabina di Regia, rappresentando lo stato di avanzamento delle attività e
+                le eventuali esigenze di adeguamento.
+
+
+        Esperti Privacy (Cabina di regia)
+
+            Linee di intervento presidiate:
+
+            D. Privacy e DPIA
+            Compiti:
+
+            •   garantisce e certifica la progettazione secondo il principio di privacy by design e la conformità
+                dell’implementazione al GDPR e alla normativa vigente in materia di protezione dei dati personali;
+            •   coordina la redazione delle DPIA, coinvolgendo il fornitore, e con il supporto del responsabile per i
+                sistemi informativi;
+            •   partecipa agli incontri della Cabina di Regia, rappresentando lo stato di avanzamento e segnalando
+                eventuali proposte migliorative o criticità progettuali.
+
+
+
+       6. Compiti dei Referenti Aziendali
+
+            Linee di intervento presidiate:
+
+            E. Diffusione nelle Aziende ed Enti del SSR
+            Compiti:
+
+            •   Provvedono alla nomina, ovvero promuovono la nomina da parte del proprio Direttore Generale, del
+                gruppo aziendale di supporto;
+            •   Coordinano il gruppo aziendale di supporto e si interfacciano con ciascun esperto di ambito per il
+                modulo SI.Ter di riferimento;
+            •   Rappresentano il punto di contatto e l’interfaccia unica con la propria Azienda Sanitaria;
+            •   Garantiscono l’esecuzione delle attività di esportazione dei dati dagli applicativi dismessi o in fase di
+                sostituzione;
+            •   Garantiscono l’attuazione del piano formativo interno;
+            •   Certificano il collaudo propedeutico all’avvio dei diversi moduli SI.Ter.
+
+
+       7. Funzionamento e compiti della Cabina di Regia
+
+       La Cabina di Regia svolge funzioni di indirizzo strategico, coordinamento e presidio complessivo della
+       progettualità SI.Ter, assicurando l’allineamento tra le attività progettuali, gli indirizzi regionali e l’attuazione
+       del PNRR-DM77, nonché la coerenza complessiva del sistema a livello regionale.
+
+       In particolare, la Cabina di Regia:
+ALLEGATO A al Decreto n. 11922 del 16/03/2026                                                              pag. 6 di 6
+
+
+
+
+          assicura il raccordo strategico tra le diverse linee di intervento e i soggetti coinvolti, garantendo una
+           visione unitaria del progetto;
+          definisce e valida gli indirizzi di sviluppo e le principali scelte evolutive della progettualità SI.Ter, sulla
+           base delle proposte formulate dal Gruppo di Coordinamento;
+          verifica lo stato di avanzamento complessivo del progetto, con riferimento alle tempistiche, alle
+           interdipendenze progettuali, senza sovrapporsi alle funzioni operative;
+          rappresenta la sede di confronto e indirizzo per la gestione delle criticità di carattere trasversale o
+           sistemico, demandandone l’attuazione ai livelli competenti
+
+       La Cabina di Regia si riunisce con cadenza periodica, almeno una volta ogni due mesi, o su convocazione del
+       Gruppo di Coordinamento.
+
+
+
+       8. Durata
+
+       Il Modello di Governo mantiene l’assetto descritto fino a completamento dell’installazione e avvio di tutti i
+       moduli che compongono il Sistema Informativo Territoriale (SI.Ter) nelle Aziende Sanitarie della Regione del
+       Veneto.
+
+       I componenti del Modello di Governo possono approfondire eventuali ulteriori evoluzioni progettuali, anche
+       coinvolgendo altri professionisti regionali o aziendali, in merito alle seguenti tematiche: residenzialità extra-
+       ospedaliera, protesica, data platform.
+

@@ -1,0 +1,1080 @@
+                             Consorzio Arsenàl.IT
+            Centro Veneto Ricerca e Innovazione per la Sanità Digitale
+
+
+
+
+Specifiche tecniche chiamata di contesto RVE​
+
+…………………………………………………………………………………..
+                                        ​
+ Specificità chiamata di contesto Regione Veneto
+
+
+
+
+                                                                         1
+Documento di Specifiche Tecniche
+
+
+Specifiche tecniche chiamata di contesto RVE
+
+                                                                                   Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                   per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Informazioni preliminari
+…………………………………………….……
+
+Contatti
+
+Responsabile del documento:                      Gregorio Canal
+                                                 Ruolo: Responsabile Unità Testing&Standard
+                                                 Mail: gcanal@consorzioarsenal.it
+
+
+Informazioni generali
+
+Nome documento:                                  Specifiche tecniche chiamata di contesto RVE
+
+Stato di avanzamento:                            Definitiva
+
+Data di prima emissione:                         14/06/2021
+
+Ultimo aggiornamento:                            18/07/2025
+
+Versione:                                        1.3
+
+Numero di pagine:                                23
+
+Autori del documento:                            Gregorio Canal, Gianluca Pavan
+
+Documento verificato da:                         Gregorio Canal
+                                                 Ruolo: Responsabile Unità Testing&Standard
+                                                 Mail: gcanal@consorzioarsenal.it
+
+Data di verifica:                                18/07/2025
+
+Documento approvato da:                          Matteo Girardello
+                                                 Ruolo: Responsabile Servizi Tecnici
+                                                 Mail: mgirardello@consorzioarsenal.it
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                    2 di 23
+Documento di Specifiche Tecniche
+
+
+Specifiche tecniche chiamata di contesto RVE
+
+                                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Status del documento
+
+ Versione                    Status                Data                    Descrizione modifica
+
+1.0                 DEFINITIVA                  14/06/2021   Prima stesura delle specifiche.
+
+1.1                 DEFINITIVA                  16/09/2021   Corretto tipo dato in ‘number’ per gli elementi
+                                                             “nbf”, “exp” e “iat” ed esplicitata
+                                                             valorizzazione che indica il numero di
+                                                             secondi da 1970-01-01T00:00:00Z UTC.
+
+1.2                 DEFINTIVA                   21/03/2023   Correzione refuso OID per il codice fiscale.
+                                                             L’OID corretto è 2.16.840.1.113883.2.9.4.3.2
+                                                             quindi la valorizzazione dell’elemento system
+                                                             è urn:oid:2.16.840.1.113883.2.9.4.3.2
+
+
+1.3                 DEFINITIVA                  18/07/2025   Aggiornata tabella relativa al campo attribute
+                                                             in Sezione 1.5.3.2 per la gestione del caso di
+                                                             campi attributo ripetuti all’interno del token di
+                                                             asserzione in richiesta
+                                                             Aggiunto “Iter di approvazione documentale”
+                                                             Chiarita la coerenza dell’informazione sul
+                                                             PatientID nella transazione RVE-121.
+
+
+
+
+© 2025 Arsenàl.IT – Tutti i diritti riservati                                                                             3 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Indice del documento
+…………………………………………….……
+
+Acronimi e definizioni​                                                                          6
+Opens Issues​                                                                                    7
+Introduzione​                                                                                   12
+1. [RVE-121] GetAccessToken​                                                                    13
+    1.1. Scopo​                                                                                 13
+    1.2. Roles​                                                                                 13
+    1.3. Standard di riferimento​                                                               13
+    1.4. GetAccessToken Request​                                                                13
+        1.4.1. Trigger Events​                                                                  13
+        1.4.2. Message Semantics​                                                               13
+            1.4.2.1. Body​                                                                      14
+            1.4.2.2. Esempio​                                                                   15
+        1.4.3. Expected Action​                                                                 15
+    1.5. GetAccessToken response​                                                               15
+        1.5.1. Trigger Events​                                                                  15
+        1.5.2. Message Semantics​                                                               16
+            1.5.2.1. Esempio​                                                                   16
+        1.5.3. Token JWT​                                                                       17
+            1.5.3.1. Header​                                                                    17
+            1.5.3.2. Payload​                                                                   17
+            1.5.3.2.1. Esempio di Payload del token JWT​                                        19
+            1.5.3.3. Firma e creazione token​                                                   20
+            1.5.3.4. Verifica del token JWT​                                                    20
+        1.5.4. Expected action​                                                                 20
+2. [RVE-130] Chiamata Contesto​                                                                 21
+    2.1. Scopo​                                                                                 21
+    2.2. Roles​                                                                                 21
+    2.3. Standard di riferimento​                                                               21
+    2.4. [RVE-130] Chiamata Contesto request​                                                   21
+        2.4.1. Trigger Events​                                                                  22
+        2.4.2. Message Semantics​                                                               22
+        2.4.3. Esempio​                                                                         22
+        2.4.4. Expected Action​                                                                 23
+    2.5. [RVE-130] Chiamata Contesto response​                                                  23
+        2.5.1. Trigger Events​                                                                  23
+        2.5.2. Message Semantics​                                                               23
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                            4 di 23
+Documento di Specifiche Tecniche
+
+
+Specifiche tecniche chiamata di contesto RVE
+
+                                                Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+          2.5.3. Expected Action​                                                    23
+
+
+
+
+© 2025 Arsenàl.IT – Tutti i diritti riservati                                  5 di 23
+Documento di Specifiche Tecniche
+
+
+Specifiche tecniche chiamata di contesto RVE
+
+                                                                      Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                      per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Acronimi e definizioni
+…………………………………………….……
+
+
+
+
+IHE                      Integrating the Healthcare Enterprise
+
+SAR                      Servizio di Accoglienza Regionale
+
+FHIR                     Fast Healthcare Interoperability Resources
+
+FSSEzero                 Fascicolo Socio Sanitario Elettronico Zero
+
+CDA2                     Clinical Document Architecture
+
+SIO                      Sistema Informativo Ospedaliero
+
+HL7                      Health Level 7
+
+WD                       Workflow Document
+
+XDW                      Cross-Enterprise Document Workflow
+
+JWT                      JSON Web Token
+
+
+
+
+© 2025 Arsenàl.IT – Tutti i diritti riservati                                                        6 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                 Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                 per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Opens Issues
+…………………………………………….……
+
+
+
+Di seguito si riportano le problematiche in attesa di risoluzione/risolte riscontrate durante la
+stesura del presente documento.
+
+
+
+
+                                                                                       Data di ultimo
+    Open issue                                   Decisione / Soluzione   Stato
+                                                                                      aggiornamento
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                  7 di 23
+Documento di Specifiche Tecniche
+
+
+Specifiche tecniche chiamata di contesto RVE
+
+                                                Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Iter di approvazione documentale
+………………………………………………
+
+
+
+
+© 2025 Arsenàl.IT – Tutti i diritti riservati                                  8 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Descrizione dell’iter di approvazione documentale
+La sintassi ammessa per il versionamento dei documenti è la seguente:
+
+     ●​ Y.X dove
+            ○​ “Y” numero versione Major (da 0 a n)
+            ○​ “.” separatore
+            ○​ “X” numero versione Minor (da 0 a n)
+
+Versione “Bozza” (v0.X)
+Il documento è redatto all’interno del GDL di competenza, in questa fase il documento è in
+versione bozza (0.X).
+
+L’aggiornamento della versione bozza, al fine di tenere traccia delle modifiche, si ha
+incrementando la prima variabile dopo il separatore (X).
+
+Versione “Public Comment” (vY.0_PC) (OPZIONALE in base ai requisiti di progetto)
+Successivamente, se il progetto per il quale il deliverable è stato prodotto richiede una fase
+di public comment, il documento in formato PDF viene pubblicato su Drive e su Google
+Group dedicati ai public comment. In questa fase la versione passa a (Y.0_PC) con Y=1 per
+la prima versione del documento. Tutti gli stakeholder interessati possono lasciare un proprio
+commento al documento pubblicato. I commenti saranno rilasciati seguendo delle specifiche
+istruzioni, disponibili sul sito di Arsenàl.IT.
+
+Durante il periodo di public comment, della durata di 14 gg, Arsenàl.IT analizzerà i commenti
+rilasciati, proponendo una possibile soluzione. Ogni commento e la relativa risposta
+rimarranno visibili all’intera comunità che potrà intervenire nella discussione.
+
+Alla fine del periodo di public comment tutti i commenti analizzati da Arsenàl.IT verranno
+sottoposti al GDL di competenza. In caso di approvazione i cambiamenti verranno integrati
+nel documento di riferimento.
+
+L’iter di pubblicazione e revisione si conclude nel momento in cui non sono apportati
+cambiamenti sostanziali al documento secondo decisione del GDL di competenza.
+
+Versione “Pubblica” (VY.0)
+Una volta ottenuta una versione definitiva, essa andrà quindi in approvazione con le
+seguenti modalità:
+
+     ●​ se il documento deve essere inviato al cliente, la validazione è in carico al Dirigente
+        dell’Area Tecnica;
+     ●​ se il documento non deve essere inviato al cliente ma deve essere inoltrato ad un
+        altro gruppo di lavoro interno ad Arsenàl (es. per la produzione di altra
+        documentazione) l’approvazione deve avvenire da parte del Responsabile di Unità (o
+        dell’Ufficio) produttore del documento.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                            9 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                            Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                            per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Dopo l’approvazione si ha la pubblicazione della versione definitiva su Google Drive di
+Arsenàl.IT.
+
+In questa fase la versione passa a (Y.0) con Y=1 per la prima versione del documento.
+
+Dopo questa fase, se è necessaria la revisione del documento si possono seguire due
+percorsi: Revisione Major e Revisione Minor.
+
+Nel caso in cui sia necessario revisionare un documento interno condiviso con un’altra
+Unità/Ufficio del Consorzio, la definizione dell’entità dell’ aggiornamento (Minor / Major) deve
+essere concertata tra l’Unità/Ufficio inviante e l’Unità/Ufficio ricevente. In questo caso la
+nuova versione deve essere approvata da entrambi i referenti di Unità/Ufficio.
+
+Revisione Major
+La Revisione Major avviene quando si devono apportare modifiche sostanziali (ad esempio
+cambiamento dello standard utilizzato per le transazioni) al documento da parte del GDL, il
+percorso è il medesimo descritto precedentemente, con un eventuale periodo di public
+comment della durata di 14 gg.
+
+Durante l’eventuale periodo di public comment, Arsenàl.IT analizzerà i commenti rilasciati,
+proponendo una possibile soluzione. Ogni commento e la relativa risposta rimarranno visibili
+all’intera comunità che potrà intervenire nella discussione.
+
+Alla fine del periodo di public comment tutti i commenti analizzati da Arsenàl.IT verranno
+sottoposti al GDL di competenza. In caso di approvazione i cambiamenti verranno integrati
+nel documento di riferimento
+
+L’aggiornamento della versione si ha in questo caso, incrementando la parte intera (Y).
+
+Revisione Minor
+La Revisione Minor avviene quando si devono apportare modifiche di minore rilevanza al
+documento (ad esempio la modifica dell’obbligatorietà di un campo di un tracciato).
+
+Durante l’eventuale periodo di public comment, per le Revisioni Minor della durata di 7 gg,
+Arsenàl.IT analizzerà i commenti rilasciati, proponendo una possibile soluzione. Ogni
+commento e la relativa risposta rimarranno visibili all’intera comunità che potrà intervenire
+nella discussione.
+
+Alla fine del periodo di public comment tutti i commenti analizzati da Arsenàl.IT verranno
+sottoposti al GDL di competenza. In caso di approvazione i cambiamenti verranno integrati
+nel documento di riferimento.
+
+L’aggiornamento della versione si ha in questo caso, incrementando la prima cifra decimale
+(X).
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                           10 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+L’iter di condivisione documentale può subire delle leggere modifiche su richiesta del cliente,
+può quindi variare da un progetto all’altro. In caso di cambiamenti rispetto a quanto
+suesposto, l’iter deve essere stabilito con il cliente, approvato e allegato alla Scheda di
+Sviluppo Esecutivo del progetto in questione.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                          11 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                         Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                         per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+Introduzione
+…………………………………………….……
+
+
+Il presente documento di specifiche tecniche è stato redatto con l’obiettivo di descrivere le
+transazioni inerenti la chiamata di contesto in Regione Veneto.
+
+Il documento descrive le seguenti transazioni:
+
+     ●​ RVE-121 GetAccessToken: utilizzabile per ottenere il token JWT per accedere ad
+        un servizio;
+
+     ●​ RVE-130 Chiamata Contesto: utilizzabile per accedere ad un servizio, veicolando il
+        token JWT ed ulteriori parametri specifici del servizio..
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                        12 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                        Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                        per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+1.​ [RVE-121] GetAccessToken
+1.1.​         Scopo
+Questa transazione permette di ottenere un token JWT utilizzabile per l’accesso ad un
+servizio.
+
+
+1.2.​         Roles
+
+ Actor:                       AccessTokenRequester
+
+
+ Role:                        Invia la richiesta per ottenere un token di accesso JWT
+
+
+ Actor:                       AccessTokenManager
+
+
+ Role:                        Fornisce in risposta il token JWT
+
+
+
+1.3.​         Standard di riferimento
+ RFC2616                     IETF Hypertext Transfer Protocol - HTTP/1.1
+
+
+ RFC4627                     The application/json Media Type for JavaScript Object Notation (JSON)
+
+
+ RFC7519                     JSON Web Token (JWT)
+
+
+
+1.4.​         GetAccessToken Request
+
+1.4.1.​         Trigger Events
+Questo messaggio viene inviato quando un AccessTokenRequester vuole accede ad un
+servizio e deve ottenere dal AccessTokenManager un token JWT per l’accesso.
+
+1.4.2.​         Message Semantics
+
+Il messaggio GetAccessToken Request è una richiesta di tipo HTTP POST inviata dal client
+al Server.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                       13 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                          Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                          per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+La chiamata è formattata in questo modo:
+
+<scheme>://<authority>/<path>/AccessTokenManager
+Dove:
+
+     ●​ <scheme> deve essere di tipo http o https; in questo caso deve essere https;
+     ●​ <authority> deve essere rappresentato come un host (indirizzo IP o DNS) seguito
+        opzionalmente dalla porta;
+     ●​ <path> può essere valorizzato con il percorso attraverso cui è possibile raggiungere
+        il servizio.
+     ●​ “AccessTokenManager” è una parte obbligatoria dell’URL che indica la risorsa che
+        classifica il tipo di query;
+
+Il Client deve precisare nel messaggio di richiesta il Content-Type Header = application/json.
+
+1.4.2.1.​          Body
+
+Il payload della richiesta dev’essere un JSON strutturato nel seguente modo:
+
+
+Campo                                            Formato Descrizione
+
+
+asserzione                                       string   Deve veicolare l’asserzione di identità SAML 2.0
+                                                          codificata in base64.
+
+                                                          Per le specifiche riguardanti l’asserzione di
+                                                          identità fare riferimento alle specifiche di
+                                                          sicurezza per il FSEr contenute all’interno del
+                                                          documento: “Infrastruttura di sicurezza GDL-O
+                                                          Sicurezza versione 1.0” (e successive).
+
+
+patientId                                        string   Deve veicolare l’identificativo del paziente di tipo
+                                                          token costituito da due parametri separati da un
+                                                          pipe, ovvero strutturato [system]|[value] con:
+
+                                                             ●​ system:     OID    del    MPI    regionale
+                                                                (urn:oid:2.16.840.1.113883.2.9.2.50.4.1.2)
+                                                                o                  del                  CF
+                                                                (urn:oid:2.16.840.1.113883.2.9.4.3.2)
+                                                             ●​ value: contiene l’MPI regionale o il CF del
+                                                                paziente
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                         14 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                          Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                          per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+                                                         L’informazione deve essere coerente con
+                                                         l’attributo “PatientID” veicolato nell’Asserzione
+                                                         SAML 2.0 presente nel campo “asserzione”
+
+services                                         array   Array contenete la lista di stringhe che
+                                                         identificano la lista di servizi ai quali si richiede
+                                                         l’accesso.
+
+
+
+
+1.4.2.2.​          Esempio
+
+Di seguito si riporta un esempio del JSON di richiesta:
+
+ {
+         "asserzione": "Y2xpZW50VTpjbGllbnRQ\u2026.",
+         "patienId": "urn:oid:2.16.840.1.113883.2.9.4.3.2|XXXXXX90B22F964X",
+         "services": [
+             "https://sio.esempio.it/prescrittore",
+             "https://sio.esempio.it/orderentry"
+         ]
+ }
+
+
+
+
+1.4.3.​         Expected Action
+AccessTokenManager verifica se i dati forniti permettono l’accesso ai vari servizi e se
+l’asserzione di identità è valida. In caso positivo fornisce in risposta il token JWT.
+
+Se il patientId in richiesta è valorizzato con il CF o MPI:
+    ●​ Deve essere verificato che il valore di patientId in richiesta corrisponda al patientId
+        dell’asserzione.
+    ●​ La chiave per collegare token JWT e asserzione è il codice fiscale dell’utente.
+
+L’asserzione deve essere poi salvata in modo da essere utilizzata per le successive
+interazioni.
+
+
+
+
+1.5.​         GetAccessToken response
+
+1.5.1.​         Trigger Events
+AccessTokenManager crea questo messaggio quando riceve e processa un messaggio di
+tipo GetAccessToken Request.
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                         15 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+1.5.2.​         Message Semantics
+
+Se la richiesta effettuata non rispetta i requisiti identificati nel paragrafo 1.4.2 relativi
+all’asserzione di identità (non valida), il SIO deve ritornare uno status code HTTP di risposta
+uguale a 401 – Unauthorized e il body del messaggio vuoto. Il Content-Type associato alla
+risposta dovrà essere text/html.
+
+Se la richiesta effettuata non rispetta i requisiti identificati nel paragrafo 1.4.2 relativi ai
+parametri (mancanti o valorizzati in modo errato), il SIO deve ritornare uno status code
+HTTP di risposta uguale a 400 – Bad request e il body del messaggio vuoto. Il Content-Type
+associato alla risposta dovrà essere text/html.
+
+Se la query fornisce risultati, il SIO deve riportare lo status code HTTP della risposta pari a
+200 – OK, il Content-Type associato alla risposta dovrà essere application/json e nel body
+un JSON così strutturato:
+
+
+Campo                                            Formato   Descrizione
+
+
+jwt                                              string    Deve veicolare il token JWT.
+
+
+esito                                            number    Deve veicolare l’esito dell’operazione.
+
+                                                           Viene valorizzato con 0 se l’operazione è andata
+                                                           a buon fine, 1 altrimenti
+
+
+descrizioneEsito                                 string    Descrizione esito operazione.
+
+
+
+
+1.5.2.1.​          Esempio
+
+Di seguito si riporta un esempio del JSON di risposta andata a buon fine:
+
+ {
+
+ "jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmF
+ tZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6
+ yJVadQssw5c",
+ "esito": 0,
+ "descrizioneEsito": "OK"
+ }
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                          16 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+1.5.3.​         Token JWT
+Di seguito viene descritta la creazione del token JWT.
+
+1.5.3.1.​          Header
+
+L’header deve essere valorizzato con i seguenti parametri:
+
+Campo                                            Formato   Descrizione
+
+
+alg                                              string    Descrive il tipo di firma. Deve essere valorizzato
+                                                           con RS256
+
+
+typ                                              string    Deve essere valorizzato con JWT
+
+
+
+
+1.5.3.2.​          Payload
+
+Il payload deve essere valorizzato con i seguenti campi:
+
+Campo                                            Formato   Descrizione
+
+
+jti                                              string    Id del token jwt. Deve coincidere con l’id
+                                                           presente nell’asserzione d’identità in richiesta
+
+
+iss                                              string    Deve essere valorizzato con l’issuer estratto
+                                                           dall’issuer presente nell’asserzione d’identità in
+                                                           richiesta
+
+
+sub                                              string    Deve essere valorizzato con il subject estratto
+                                                           dal subject presente nell’asserzione d’identità in
+                                                           richiesta
+
+
+nbf                                              number    NotBefore: indica l’istante in UTC oltre il quale il
+                                                           token JWT è valido. Deve essere valorizzato con
+                                                           il numero di secondi da 1970-01-01T00:00:00Z
+                                                           UTC.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                          17 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                             Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                             per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+exp                                              number    Expiration Time: indica l’istante UTC oltre il
+                                                           quale il token JWT non è più valido. Coincide
+                                                           con la scadenza dell’asserzione di identità in
+                                                           richiesta. Deve essere valorizzato con il numero
+                                                           di secondi da 1970-01-01T00:00:00Z UTC.
+
+
+iat                                              number    Issued At: indica l’istante UTC di creazione del
+                                                           token JWT. Deve essere valorizzato con il
+                                                           numero di secondi da 1970-01-01T00:00:00Z
+                                                           UTC.
+
+
+attribute                                        array     Lista di attributi estratti dall’asserzione di identità
+                                                           presente        in      richiesta      nel      campo
+                                                           AttributeStatement
+
+
+aud                                              array     Array contenete la lista di stringhe che
+                                                           identificano la lista dei servizi per cui si richiede
+                                                           l’accesso. Coincide con la lista services
+                                                           presente in richiesta.
+
+
+
+
+Di seguito viene descritto il campo attribute:
+
+Campo                                            Formato   Descrizione
+
+
+name                                             string    Coincide con il nome del campo attributo
+                                                           presente nell’asserzione d’identità in richiesta.
+
+
+value                                            string    Coincide con il valore del campo attributo
+                                                           presente nell’asserzione d’identità in richiesta.
+
+                                                           Nel caso in cui il particolare campo attributo
+                                                           nell’asserzione di identità in richiesta sia ripetuto
+                                                           l’elemento value dovrà essere un Array le cui
+                                                           entry coincideranno con le diverse occorrenze
+                                                           dell’attributo in oggetto
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                            18 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                       Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                       per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+1.5.3.2.1.​             Esempio di Payload del token JWT
+
+Di seguito si riporta un esempio del JSON del Payload del token JWT:
+
+ {
+         "iss": "http://127.0.0.1",
+         "sub": "GBNLNZ70A22H816D",
+         "nbf": "1627919217",
+         "exp": "1627919218",
+         "iat": "1627919219",
+         "attribute": [
+             {
+                 "name": "UserClientAuthentication",
+                 "value": "A.1"
+             },
+             {
+                 "name": "ApplicationID",
+                 "value": "2.16.840.1.113883.2.9.2.50.4.5.9000"
+             },
+             {
+                 "name": "RequestContext",
+                 "value": "C.10"
+             },
+             {
+                 "name": "PatientID",
+                 "value": "GBNLNZ70A22H816D"
+             },
+             {
+                 "name": "Role",
+                 "value": "R.5"
+             },
+             {
+                 "name": "ResponsibleParty",
+                 "value": "GBNLNZ70A22H816D"
+             }
+             {
+                "name": "codUO",
+                "value": [
+                 "UO1",
+                 "UO2",
+                 "UO3"
+                ]
+             }
+
+         ],
+         "aud": [
+             "http://regione.veneto.it/viewer",
+             "http://sio.veneto.it/prescrittore"
+         ]
+ }
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                      19 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                              Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                              per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+1.5.3.3.​          Firma e creazione token
+L’header e il payload creati nei passi precedenti devono essere poi elaborati secondo i
+seguenti passi:
+    1)​ Calcolo base64 dell’header
+    2)​ Calcolo base64 del payload
+    3)​ Calcolo del valore di RSASHA256 con input:
+           a)​ Concatenazione: base64(header) + “.” + base64(payload)
+           b)​ Chiave privata
+    4)​ Concatenazione dei risultati dei punti 1) 2) 3) separati dal carattere “.”
+
+Di seguito viene riportato un esempio di token JWT:
+ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xIiwic3
+ ViIjoiR0JOTE5aNzBBMjJIODE2RCIsIm5iZiI6IjIwMTktMDQtMjlUMTI6NTE6MzJaIiwiZXh0I
+ joiMjAxOS0wNC0yOVQxNjo1MTozMloiLCJpYXQiOiIyMDE5LTA0LTI5VDEyOjUxOjMyWiIsImF0
+ dHJpYnV0ZSI6W3sibmFtZSI6IlVzZXJDbGllbnRBdXRoZW50aWNhdGlvbiIsInZhbHVlIjoiQS4
+ xIn0seyJuYW1lIjoiQXBwbGljYXRpb25JRCIsInZhbHVlIjoiMi4xNi44NDAuMS4xMTM4ODMuMi
+ 45LjIuNTAuNC41LjkwMDAifSx7Im5hbWUiOiJSZXF1ZXN0Q29udGV4dCIsInZhbHVlIjoiQy4xM
+ CJ9LHsibmFtZSI6IlBhdGllbnRJRCIsInZhbHVlIjoiR0JOTE5aNzBBMjJIODE2RCJ9LHsibmFt
+ ZSI6IlJvbGUiLCJ2YWx1ZSI6IlIuNSJ9LHsibmFtZSI6IlJlc3BvbnNpYmxlUGFydHkiLCJ2YWx
+ 1ZSI6IkdCTkxOWjcwQTIySDgxNkQifV0sImF1ZCI6WyJodHRwOi8vcmVnaW9uZS52ZW5ldG8uaX
+ Qvdmlld2VyIiwiaHR0cDovL2FsdHJvIl19.TLbaUI_V4fzKKu__646X2W4h1Kn5Y89VHpZoRKLJ
+ _0LBHmAZZ9xWgaStRIXg8nWq07R7kk6wsmP_UFa12Q81kN50_r1iCN-f46s4TqrK7GfdO58Tv18
+ fJirbK9cS4SshhRhWw9LShN63SXaJMaupq_Ib9RvyyG6qSvPB0GYT2Io
+
+
+
+1.5.3.4.​          Verifica del token JWT
+Per effettuare la verifica del token devono essere eseguiti i seguenti passi:
+   1.​ Estrazione del valore di base64(header) + “.” + base64(payload)
+   2.​ Verifica della firma con la chiave pubblica
+   3.​ Il token è quindi considerato valido se:
+            a.​ La firma è valida
+            b.​ L’ora di validazione è compresa tra nbf e exp
+            c.​ Il servizio a cui si richiede l’accesso è compreso nella lista di aud
+
+1.5.4.​         Expected action
+Il client deve memorizzare il token JWT in caso di esito positivo o in caso di errore,
+ricominciare la transazione dopo le correzioni, se necessarie.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                             20 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                                     Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                                     per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+2.​ [RVE-130] Chiamata Contesto
+Le specifiche per questa transazione possono essere ampliate a seconda del servizio per
+cui viene richiesto l’accesso, per il quale possono essere richieste maggiori specificità.
+
+
+2.1.​         Scopo
+Questa transazione viene effettuata per ottenere l’accesso ad un servizio, veicolando il
+token JWT precedentemente richiesto con una transazione [RVE-121] GetAccessToken.
+
+
+2.2.​         Roles
+
+ Actor:                       Service Requester
+
+
+ Role:                        Invia la query per ottenere l’accesso ad un servizio
+
+
+ Actor:                       Service Manager
+
+
+ Role:                        Riceve la query e fornisce le informazioni per usufruire del servizio per
+                              cui è richiesto l’accesso
+
+
+
+
+2.3.​         Standard di riferimento
+
+
+ RFC2616                     IETF Hypertext Transfer Protocol - HTTP/1.1
+
+
+ RFC4627                     The application/json Media Type for JavaScript Object Notation (JSON)
+
+
+ RFC7519                     JSON Web Token (JWT)
+
+
+
+
+2.4.​         [RVE-130] Chiamata Contesto request
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                                    21 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                           Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                           per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+2.4.1.​         Trigger Events
+Questo messaggio di richiesta viene inviato dal Service Requester al Service Manager,
+veicolando il token JWT ottenuto precedentemente da una transazione [RVE-121]
+GetAccessToken, quando deve ottenere l’accesso ad un servizio.
+
+2.4.2.​         Message Semantics
+
+Il messaggio [RVE-130] Chiamata Contesto è una richiesta di tipo HTTP GET inviata dal
+Service Requester al Service Manager.
+
+La chiamata è formattata in questo modo:
+
+<scheme>://<authority>/<path>/<resource>?<parametri>
+
+Dove:
+
+     ●​ <scheme> deve essere di tipo http o https; in questo caso deve essere https;
+     ●​ <authority> deve essere rappresentato come un host (indirizzo IP o DNS) seguito
+        opzionalmente dalla porta;
+     ●​ <path> può essere valorizzato con il percorso attraverso cui è possibile raggiungere
+        il servizio.
+     ●​ <resource> è una parte obbligatoria dell’URL che indica la risorsa che classifica il
+        tipo di query; viene definita specificatamente per il servizio a cui si vuole accedere
+     ●​ <parametri>
+             ○​ token: (obbligatorio) parametro NON ripetibile che veicola il JWT token
+                 in base64 ottenuto precedentemente da una transazione [RVE-121]
+                 GetAccessionToken;
+             ○​ ulteriori parametri possono essere aggiunti specificatamente in
+                 funzione del servizio per cui si richiede l’accesso.
+     ●​ “&” deve essere indicata se vengono elencati più parametri;
+     ●​ “,” deve essere indicata se vengono elencati più valori per lo stesso parametro.
+
+Dev’essere effettuato l’URL encode della query string.
+
+2.4.3.​         Esempio
+
+Di seguito si riporta un esempio di richiesta dopo l’URL encode in cui si richiede l’accesso al
+service:
+
+ GET
+ https://www.server.esempio.it/serviceA?token=eyJhbGciOiJIUzI1NiIsInR5cCI6Ik
+ pXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5
+ MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJVadQssw5c
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                          22 di 23
+ Documento di Specifiche Tecniche
+
+
+ Specifiche tecniche chiamata di contesto RVE
+
+                                                                               Centro‌‌Veneto‌Ricerca‌‌e‌Innovazione‌
+                                                                                               per‌‌la‌‌Sanità‌‌Digitale‌
+
+
+
+
+2.4.4.​         Expected Action
+Il Service Manager che riceve questo messaggio deve analizzarne il contenuto secondo le
+proprio capacità, compresa la verifica del JWT token, ed inviare un messaggio di risposta al
+Service Requester, permettendo, in caso positivo, l’accesso al servizio richiesto.
+
+
+2.5.​         [RVE-130] Chiamata Contesto response
+
+2.5.1.​         Trigger Events
+Dopo aver ricevuto ed analizzato il messaggio di richiesta, il Service Manager invia un
+messaggio di risposta al Service Requester.
+
+2.5.2.​         Message Semantics
+Se la richiesta effettuata non rispetta i requisiti identificati nel paragrafo 2.4.2 e nel paragrafo
+1.4.2 relativi al token JWT, il Service Manager deve ritornare uno status code HTTP di
+risposta uguale a 401 – Unauthorized.
+
+Se la richiesta effettuata non rispetta i requisiti identificati nel paragrafo 2.4.2 relativi ai
+parametri, considerando anche i parametri aggiuntivi che possono essere aggiunti per far
+fronte alle specificità del servizio, il Service Manager deve ritornare uno status code HTTP di
+risposta uguale a 400 – Bad request.
+
+Se la query fornisce risultati, il Service Manager deve riportare lo status code HTTP della
+risposta pari a 200 – OK e la pagina HTML a cui accedere al servizio.
+
+2.5.3.​         Expected Action
+Il Service Requester deve recepire le informazioni contenute nel messaggio di risposta:
+    ●​ se di esito negativo, deve analizzarne gli errori ed effettuare una nuova transazione
+        dopo aver corretto il messaggio di richiesta, se necessario;
+    ●​ se di esito positivo, può utilizzare il servizio per cui ha ottenuto l’accesso.
+
+
+
+
+ © 2025 Arsenàl.IT – Tutti i diritti riservati                                                              23 di 23
+

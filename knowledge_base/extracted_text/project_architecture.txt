@@ -1,0 +1,96 @@
+request-dataset-generator is a script-oriented Python system for simulating Regione Veneto RVE transaction traffic end to end. Architecturally, it has two coupled halves:
+
+Generation/execution: synthetic FHIR patient generation, multi-step RVE flow assembly, stochastic traffic scheduling, and mock/live execution.
+Observability/analytics: execution log normalization, optional middleware-log enrichment, and KPI/report computation.
+The primary orchestrator is main.py (line 192), which can run single stages or the full pipeline from config.
+
+Architecture Style
+
+The repository is not a package-heavy application; it is a layered, pipeline-style script system with one small domain package:
+
+CLI/orchestration layer: main.py (line 79), traffic_exec_engine.py (line 663), log_collector.py (line 260), metric_engine.py (line 109).
+Domain generation layer: fhir_patient_generator.py (line 235), request_dataset_generator.py (line 56), timeline_generator.py (line 177).
+Transaction-definition layer: rve_transactions/flow_orchestrator.py (line 79) plus one module per RVE transaction.
+Analytics layer: normalized dataset construction in log_collector.py (line 132) and metric families in metric_engine.py (line 151).
+This is best described as a modular pipeline/assembly architecture rather than a monolith with long-lived services.
+
+Project Structure
+
+config.json (line 1): single source of configuration for command selection, endpoints, auth, flow mix, execution, and timeline profile.
+main.py (line 24): top-level entry point; merges defaults with JSON config and dispatches patients, requests, timeline, or execute.
+fhir_patient_generator.py (line 235): synthetic Patient resource generation, RVE-55 Bundle generation, JSON/XML serialization.
+request_dataset_generator.py (line 56): builds a workload of complete RVE flows.
+timeline_generator.py (line 22): traffic profiles, non-stationary Poisson arrival generation, burst injection, timeline building.
+traffic_exec_engine.py (line 417): async flow execution engine, placeholder resolution, live/mock execution, JSONL logging.
+rve_transactions/ (line 1): reusable transaction-step builders and flow composition.
+mock_middleware_log.py (line 48): synthesizes gateway-side logs from engine output.
+log_collector.py (line 38): joins framework and middleware logs into a normalized dataset.
+metric_engine.py (line 113): computes performance/reliability/resilience/scalability/observability metrics and renders reports.
+Entry points are CLI scripts, not package console entrypoints: main.py (line 306), traffic_exec_engine.py (line 721), log_collector.py (line 451), metric_engine.py (line 758), mock_middleware_log.py (line 326).
+
+Core Components
+
+FlowOrchestrator.build_flow() in rve_transactions/flow_orchestrator.py (line 105): central composition unit. It maps a flow type to an ordered list of transaction modules and enriches each step with runtime metadata.
+Transaction modules:
+rve_1b.py (line 188): SOAP auth/assertion issuance.
+rve_121.py (line 32): SAML-to-JWT exchange.
+rve_130.py (line 27): context-call using JWT in query string.
+rve_54.py (line 28): patient query using SAML in Authorization.
+rve_55.py (line 32): patient creation with FHIR XML bundle.
+build_workload() in request_dataset_generator.py (line 56): chooses flow types by weighted mix, generates one synthetic patient per flow, and delegates flow construction.
+build_timeline() in timeline_generator.py (line 177): converts a pool of flows into timestamped events using Poisson arrivals and optional bursts.
+execute_flow() and run() in traffic_exec_engine.py (line 417): execute steps sequentially within a flow, concurrently across flows, with structured logging.
+LogJoiner and TimeseriesAggregator in log_collector.py (line 132) and log_collector.py (line 264): turn raw JSONL into a normalized analytical dataset.
+MetricsCalculator in metric_engine.py (line 113): computes 18 derived metrics grouped by concern.
+Data Flow
+
+Config is loaded and merged with built-in defaults in main.py (line 79).
+If generating flows, build_workload() samples a flow type from flow_mix, generates a Patient, and calls FlowOrchestrator.build_flow() for each item (request_dataset_generator.py (line 125)).
+The orchestrator walks the module sequence defined in _FLOW_MODULES and asks each transaction module to emit a step dict with depends_on, output_extract, and optional mock_response (flow_orchestrator.py (line 61), flow_orchestrator.py (line 163)).
+In mock mode, outputs are propagated during generation; in live mode, placeholders like {{step_0.saml_assertion_b64}} remain embedded in step definitions (rve_121.py (line 29), rve_130.py (line 24)).
+build_timeline() generates arrival timestamps, injects bursts, then selects flows from the dataset according to their top-level method field, which is repurposed to store flow_type for compatibility (timeline_generator.py (line 218), flow_orchestrator.py (line 188)).
+traffic_exec_engine.run() schedules each timeline event at its target timestamp and launches execute_flow() under a semaphore (traffic_exec_engine.py (line 520)).
+execute_flow() deep-copies the flow, resolves placeholders from prior step outputs, executes or simulates the request, extracts outputs, stops on the first failing step, and emits request_sent, response_received, and flow_completed events (traffic_exec_engine.py (line 435)).
+log_collector.py parses engine logs, optionally joins middleware logs by synthetic occurrence key, builds normalized requests, flows, and timeseries sections, and writes a unified JSON dataset (log_collector.py (line 139), log_collector.py (line 376)).
+metric_engine.py computes metric families from that dataset and emits JSON plus optional Markdown reporting (metric_engine.py (line 127)).
+Dependencies
+
+Stdlib-heavy by design: argparse, asyncio, json, random, xml.etree, uuid, datetime, math, collections.
+
+Non-stdlib/runtime-optional dependencies:
+
+aiohttp for live HTTP execution, imported lazily in traffic_exec_engine.py (line 242) and traffic_exec_engine.py (line 605).
+lxml for XPath-based XML extraction in traffic_exec_engine.py (line 135).
+External interfaces configured in config.json (line 7):
+
+SOAP IAP endpoint.
+Access Token Manager REST endpoint.
+FHIR PatientQuery endpoint.
+FHIR PatientIDAssignment endpoint.
+Context-call service.
+Optional proxy/gateway URL via execution.proxy_url.
+Design Patterns
+
+Pipeline/staged processing: patient generation -> flow generation -> timeline -> execution -> normalization -> metrics.
+Builder pattern: each rve_* module builds a step object; FlowOrchestrator builds a composite flow.
+Strategy pattern: traffic profile functions (constant_rate, daily_clinical_profile, step_profile) are passed as callables to the timeline builder.
+Template resolution/runtime composition: live-mode placeholders are materialized just before execution.
+Protocol-based module contract: RveTransactionModule in flow_orchestrator.py (line 30) defines the expected module surface without requiring classes.
+Event sourcing style for analytics: execution state is reconstructed from append-only JSONL events rather than shared state objects.
+Strengths
+
+Clear end-to-end separation between synthesis, scheduling, execution, and analytics.
+Domain transaction logic is isolated per RVE module, which keeps protocol-specific request construction readable.
+Mock/live dual-mode is a strong architectural choice: the same flow model supports offline simulation and real execution.
+Configuration is centralized and human-readable, with main.py applying defaults consistently.
+The engine preserves an important domain invariant: steps are sequential inside a flow, while concurrency is only across flows.
+Observability is first-class rather than bolted on later; the analytics half is a real subsystem, not a couple of helper scripts.
+Weaknesses
+
+The codebase is modular but not packaged as an installable library; reuse is driven by scripts and direct module imports rather than formal package boundaries.
+There is a lot of dict-shaped implicit schema passing between layers. That keeps things flexible, but many contracts are informal and validated only by convention.
+timeline_generator uses the top-level method field to mean flow type, which is a compatibility shortcut rather than a semantically clean model (flow_orchestrator.py (line 188), timeline_generator.py (line 231)).
+The engine logs request_sent after the step is executed/simulated, so the event represents completion of send initiation rather than a pre-send hook in strict terms (traffic_exec_engine.py (line 451), traffic_exec_engine.py (line 480)).
+Output extraction, step contracts, and config schemas are rich but not backed by typed models or schema validation.
+The repository mixes concerns at the top level; only rve_transactions is a true package, while the rest remains flat script modules.
+Overall, the repository is a domain-focused simulation and benchmarking pipeline with good stage separation, strong execution/observability coupling, and lightweight modularity centered on flow composition rather than on a large object model.

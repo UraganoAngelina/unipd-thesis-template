@@ -1,0 +1,114 @@
+               Integrazione tra Advenias e Paymed - Rendicontazione
+               Accessi
+
+               Work ow Operativo
+
+               1. Inserimento prestazioni
+               Le prestazioni dei medici verranno (momentaneamente, no all'introduzione di Advenias anche per
+               i MMG) caricate nel piani catore da personale amministrativo ULSS, indicando le giornate effettive
+               previste.
+
+               2. Lettura piani cazioni da parte di Paymed
+               Paymed leggerà le piani cazioni tramite l'endpoint GET accessi (vedi speci che sotto).
+
+               3. Veri ca e autorizzazione degli accessi MMG
+               Paymed effettuerà i controlli e le autorizzazioni degli accessi dei MMG, considerando una
+               tolleranza di ±3 giorni rispetto alla data piani cata.
+
+               4. Invio accessi autorizzati e aggiuntivi ad Advenias
+               Paymed invierà ad Advenias, tramite l'endpoint POST accessi, gli accessi autorizzati e quelli
+               eventualmente aggiuntivi:
+               - Gli accessi autorizzati rientrano nella tolleranza.
+               - Gli accessi aggiuntivi sono tutti gli accesso gestiti in maniera differente da Paymed (fuori
+                  tolleranza, durante festivi, ecc.).
+               In Advenias verranno registrati con i seguenti valori prede niti:
+               - tipo_prestazione: Visita domiciliare (prestazione 1 del disciplinare).
+               - tipo_accesso: programmato per gli autorizzati, non programmato per gli aggiuntivi.
+               - sede_accesso: domicilio.
+               - gura_professionale: determinata in base all'operatore assegnato.
+               - tipo_accessi: de nito dall'attività stessa.
+               Tutti gli accessi e le relative prestazioni verranno gestite in maniera coerente con il disciplinare
+               regionale all’interno del usso ADI e delle relative PIC in fase di rendicontazione verso la Regione.
+
+               5. Allineamento stato accessi in Advenias
+               Advenias riceverà i dati degli accessi e li confronterà con quelli presenti nel piani catore:
+               - Gli accessi autorizzati e aggiuntivi verranno marcati come eseguiti.
+               - Gli accessi piani cati ma non ricevuti da Paymed saranno marcati come non eseguiti.
+
+               6. Filtro per veri ca accessi
+               Nella schermata del piani catore sarà presente un ltro dedicato per visualizzare solo gli accessi
+               ricevuti da Paymed, al ne di agevolare i controlli.
+fi
+     fi
+          fl
+                  fi
+                       fi
+                            fi
+                             fi
+                                  fi
+                                       fl
+                                            fi
+                                                 fi
+                                                      fi
+                                                           fi
+                                                                fi
+                                                                     fi
+                                                                          fi
+                                                                                 fi
+                                                                                       fi
+     Speci che Tecniche
+     Endpoint GET accessi
+
+     Per ogni MMG (identi cato da CF) verrà inviato l’elenco delle prestazioni piani cate in Advenias
+     per i propri assistiti, con la relativa tipologia (ADP, ADIMED).
+
+     Parametri obbligatori: business_unit_id
+     Parametri opzionali: mese, anno, cf_paziente, cf_mmg
+
+     Nota: la frequenza di lettura e la gestione dei dati letti (conservazione temporanea o meno)
+     saranno de nite da Paymed, in base alle indicazioni del coordinamento ULSS riguardo alla
+     possibilità di modi ca delle piani cazioni all’interno di Advenias.
+
+     Esempio body:
+
+
+
+
+     Endpoint POST accessi
+
+     Per ogni MMG presente nell’end point GET ACCESSI verranno inviati verso Advenias gli accessi
+     autorizzati ed eventuali accessi aggiuntivi, con la relativa tipologia (ADP, ADIMED). Gli accessi
+     possono essere inviati in momenti diversi a seconda del momento di validazione in Paymed, non
+     necessariamente tutti insieme o nella sequenza indicata dalla GET.
+
+     Parametro obbligatorio: business_unit_id
+     Esempio body:
+fi
+     fi
+           fi
+                fi
+                         fi
+                                                                        fi
+Esiti e reinvio accessi in errore:
+
+Ogni accesso trasmesso riceverà un campo "esito" che potrà essere:
+- "successo" -> accesso correttamente registrato in Advenias.
+- "errore" -> accesso non registrato, con speci ca motivazione nel campo "motivo".
+Gli accessi con esito di errore possono essere reinviati in un secondo momento, sempre tramite lo
+stesso endpoint POST, una volta corretti gli eventuali problemi.
+
+Esempio di risposta POST accessi con esiti elaborazione:
+
+
+
+
+Note Finali
+- Gli accessi aggiuntivi saranno valutati da Paymed in accordo con il coordinamento ULSS.
+- La gestione degli errori (accessi ri utati, duplicazioni su date o prestazioni segnate come
+  accessi aggiuntivi, ecc.) non ricade attualmente sotto la responsabilità di Advenias.
+
+- Gli accessi aggiuntivi passati saranno registrati nella struttura MMG ADP ADIMED del distretto
+corrispondente con tipo_accesso = 9 - Altro.
+                           fi
+                                     fi
+

@@ -1,0 +1,2794 @@
+
+## ppt/slides/slide1.xml
+
+
+
+
+Funzioni direttive dei servizi sanitari e formazione manageriale per le direzioni generali
+
+
+
+Architettura di un Sistema Informativo Sanitario (SIS), con focus particolare su sistemi di Datawarehouse e flussi informativi
+
+
+
+
+
+Docente: Stefano Bergamasco
+
+
+
+Bologna, 21 maggio 2025
+
+
+
+
+
+## ppt/slides/slide2.xml
+
+
+
+Sistema Informativo Sanitario (SIS)
+
+
+
+Che cos’è un Sistema Informativo Sanitario (SIS)?
+
+
+## ppt/slides/slide3.xml
+
+
+
+Sistema Informativo Sanitario (SIS)
+
+
+Il Sistema Informativo Aziendale (SIA) di un’Azienda Sanitaria viene comunemente chiamato ‘’Sistema Informativo Sanitario (SIS)’’. Un SIS è l’insieme di persone, procedure e attrezzature che acquisiscono, archiviano, elaborano, validano e distribuiscono dati ed ha lo scopo di gestire in modo unitario le informazioni necessarie per i vari aspetti della vita di un’azienda sanitaria.
+
+Gli elementi fondamentali che costituiscono un SIS sono i seguenti:
+
+
+
+Dati:
+
+relativi ai pazienti (anagrafica, anamnesi, storia clinica, referti, immagini etc.);
+
+relativi alle attività (servizi che la struttura ospedaliera fornisce: esami diagnostici, prestazioni specialistiche etc.);
+
+relativi alle risorse (personale, attrezzature, risorse finanziarie etc.);
+
+
+
+Persone: chi si occupa di raccogliere e catalogare i dati di interesse (opportunamente registrati), affinché possano essere poi elaborati dalle strutture competenti. Sono anche destinatari delle informazioni già manipolate;
+
+
+
+Processi: processi che comportano il trattamento e la gestione dei dati (ad es., migrazione di un’infrastruttura tecnologica su nuovo data center etc.)
+
+
+
+Strumenti: attrezzature impiegate per gestire i dati (ad es., dotazioni hardware, smartphone, infrastrutture tecnologiche utilizzate dalle applicazioni software etc.)
+
+
+## ppt/slides/slide4.xml
+
+
+
+Sistema Informativo Sanitario (SIS): un esempio di Sistema Distribuito
+
+
+Un SIS è composto da una serie di nodi applicativi indipendenti che collaborano per ottenere obiettivi comuni attraverso un’infrastruttura di comunicazione hardware e software.
+
+
+
+Un SIS consta dunque:
+
+
+
+di nodi applicativi indipendenti tra loro e che possono essere ubicati in sedi geografiche differenti;
+
+ogni nodo applicativi prende i dati da archivi di supporto locali;
+
+ogni nodo applicativo prevede dei sistemi terminali per interfacciarsi con gli utenti del SIS.
+
+
+
+Le interconnessioni tra i diversi nodi applicativi avvengono mediante scambio di dati via rete.
+
+
+
+
+## ppt/slides/slide5.xml
+
+
+
+Sistema Informatico – Glossario
+
+
+Un Sistema Informatico è invece l’insieme degli strumenti e/o attrezzature (dotazioni hardware, server, database etc.) deputate all’acquisizione, gestione, elaborazione, archiviazione e distribuzione dei dati all’interno di un SIS. Esso comprende:
+
+
+
+Hardware: componente fisica e tangibile di un qualsiasi sistema informatico, ad es. un PC fisso o portatile;
+
+Software: programma che fa svolgere al computer determinate funzioni;
+
+Database: sistema di archiviazione strutturato ed organizzato di dati depositati in tabelle; 
+
+Client: risorsa informatica, hardware o software, che impiega determinati servizi erogati da altre risorse informatiche (ad es., posta elettronica, portale intranet, accesso a determinati software etc.);
+
+Server: risorsa informatica, fisica o virtuale, che eroga determinati servizi. In base al contesto, il termine "server" può indicare quindi:
+
+un computer "ordinario" utilizzato per fornire servizi ad altri computer;
+
+un computer specifico, appartenente alla fascia di mercato dedicata all'uso come server, caratterizzato da alta affidabilità, maggiori prestazioni e funzioni aggiuntive;
+
+Firewall: dispositivo hardware e software per la sicurezza della rete che permette di monitorare il traffico in entrata e in uscita utilizzando una serie predefinita di regole di sicurezza per consentire o bloccare gli accessi;
+
+Router: dispositivo di rete che consente lo scambio di pacchetti di dati tra reti informatiche;
+
+Switch: risorsa hardware che mette in comunicazione più elementi della stessa rete (ad es., client e server).
+
+
+## ppt/slides/slide6.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sistema Informatico – Architettura tipica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Client
+
+
+
+Laptop & Mobile
+
+
+Network Policy Server (NPS)
+
+
+
+Switch
+
+
+Active Directory
+
+
+Access Point
+
+
+
+Server & Database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Virtual Private Network (VPN)
+
+
+Local Area Network (LAN)
+
+
+Wide Area Network (WAN)
+
+
+Internet
+
+
+
+
+
+
+
+
+
+
+
+Firewall
+
+
+Router
+
+
+
+
+
+Client
+
+
+
+
+
+
+## ppt/slides/slide7.xml
+
+
+
+Cyber Security
+
+
+E’ l’insieme dei mezzi, delle tecnologie e delle procedure finalizzate alla salvaguardia dei sistemi informatici in termini di integrità, confidenzialità e disponibilità.
+
+
+
+Un sistema informatico è tanto più sicuro quanto minori sono le probabilità che si verifichi un guasto e quanto minore è la gravità del danno conseguente al guasto stesso. La sicurezza è imprescindibile dall’operatività . Essa è garantita dal connubio dell’architettura infrastrutturale e applicativa, definita dall’azienda (nella fattispecie la UO Sistemi Informativi), nonché dal comportamento degli operatori, sanitari e amministrativi.
+
+
+
+
+
+
+
+
+A livello aziendale viene redatto il Documento Programmatico sulla Sicurezza (DPS), ossia un manuale per la pianificazione della sicurezza dei dati in azienda che descrive come si tutelano i dati personali di dipendenti, collaboratori, clienti, fornitori, pazienti. Il DPS si focalizza prevalentemente sull’analisi delle misure di sicurezza con le seguenti finalità:
+
+
+
+per rappresentare il loro livello di maturità rispetto alle necessità del GDPR e alle prescrizioni di AgID;
+
+per pianificare il loro adeguamento e continuo perfezionamento nell’arco di validità del documento stesso che, da prassi aziendale, ha respiro triennale anche se ne è prevista una revisione annuale.
+## ppt/slides/slide8.xml
+
+
+
+Attacchi tipici
+
+
+Nell’ambito di un SIS, le tipologie di minacce più frequenti sono costituite da:
+
+
+
+Virus informatici (malware), componenti software che si integrano nel codice eseguibile del sistema informatico vittima, propagandosi nel momento in cui esso viene eseguito, inficiandone e/o limitandone le funzionalità.
+
+
+
+Il ransomware è un tipo specifico di malware che infetta un dispositivo digitale (PC, tablet, smartphone), bloccando l’accesso a tutti o ad alcuni dei suoi contenuti (foto, video, file etc.) per poi chiedere un riscatto (in inglese, “ransom”) da pagare per “liberarli”. La richiesta di pagamento, con le relative istruzioni, compare di solito in una finestra che si apre automaticamente sullo schermo del dispositivo infettato. All’utente viene minacciosamente comunicato che ha poche ore o pochi giorni per effettuare il versamento del riscatto, altrimenti il blocco dei contenuti diventerà definitivo.
+
+
+
+Il phishing è una tecnica illecita utilizzata per appropriarsi di informazioni riservate relative ad una persona o ad un’azienda - username e password, codici di accesso (come il PIN del cellulare), numeri di conto corrente, dati del bancomat e della carta di credito – con l’intento di compiere operazioni fraudolente. La truffa avviene di solito via email, ma possono essere utilizzati anche sms, chat e social media.
+
+
+
+L’hacking è l'insieme dei metodi, delle tecniche e delle operazioni volte a conoscere, accedere e modificare un sistema informatico hardware o software.
+
+
+
+
+
+
+
+
+
+
+## ppt/slides/slide9.xml
+
+
+
+Contromisure di sicurezza informatica
+
+
+Tra le contromisure più comuni per salvaguardare la sicurezza informatica di un SIS troviamo:
+
+
+
+Antivirus, software installato su un computer e/o server finalizzato a prevenire, rilevare e rendere inoffensivi programmi dannosi e malware
+
+Sistema di autenticazione: software per l'autenticazione sicura multi-fattore;
+
+gestione dinamica degli utenti e dei relativi permessi;
+
+Mandatory Access Control (MAC), tipologia di controllo di accesso a un sistema informatico;
+
+Firewall: se installato e ben configurato, un firewall garantisce un sistema di controllo dei flussi, verificando tutto il traffico che lo attraversa. Protegge sia da accessi dall’esterno che da tentativi di accesso ad Internet da parte dei client in uso da parte degli utenti;
+
+Intrusion Detection System (IDS): è un dispositivo software e hardware (a volte la combinazione di tutti e due) utilizzato per identificare accessi non autorizzati ai computer. Le intrusioni rilevate possono essere quelle prodotte da cracker esperti, da tool automatici o da utenti inesperti che utilizzano programmi semiautomatici. Gli IDS vengono utilizzati per rilevare tutti gli attacchi alle reti informatiche e ai computer. Il motore di analisi si appoggia a un database ove sono memorizzate una serie di regole utilizzate per identificare violazioni della sicurezza;
+
+Honeypot: letteralmente ‘’barattolo del miele’’, è un sistema usato come trappola o esca a fini di protezione contro gli attacchi di pirati informatici. Solitamente consiste in un computer o un sito che sembra essere parte della rete e contenere informazioni preziose, ma che in realtà è ben isolato e non ha contenuti sensibili o critici; potrebbe anche essere un file, un record DNS o un indirizzo IP non utilizzato;
+
+Gestione dei Backup: si tratta di un metodo per recuperare dati persi o danneggiati e, quindi, di una strategia di Disaster Recovery. Il backup consiste nell'esecuzione di una o più copie di sicurezza dei dati di un sistema informatico, o comunque di dati considerati importanti, onde evitare che vadano perduti o diventino illeggibili.
+
+
+
+
+
+
+
+
+
+
+## ppt/slides/slide10.xml
+
+
+
+Business Continuity vs Disaster Recovery
+
+
+Business Continuity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Resilienza, ovvero capacità di rispondere ad un evento critico salvaguardando gli interessi degli stakeholder chiave, la reputazione e le attività che creano valore per l’azienda.
+
+
+
+Business Continuity Plan (BCP) – raccoglie un insieme di procedure documentate che guidano un'organizzazione a rispondere, recuperare, riprendere e ripristinare un livello di operatività predefinito in seguito a un'interruzione del servizio causata, ad esempio, da un guasto informatico o da un attacco hacker
+
+
+Disaster Recovery
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ha l’obiettivo principale di ripristinare le normali operazioni in seguito alla compromissione dei sistemi per un periodo di tempo prolungato.
+
+
+
+Disaster Recovery Plan (DRP) – è un piano scritto per il ripristino di uno o più sistemi informatici in risposta a un grave guasto hardware o software o alla distruzione delle infrastrutture. Esso descrive l’insieme delle procedure atte a ripristinare i sistemi compromessi e le “operations” in modo sicuro ed efficiente.
+
+
+## ppt/slides/slide11.xml
+
+
+
+Sistema Informativo Sanitario (SIS)
+
+
+Un SIS si può analizzare attraverso la scomposizione delle attività aziendali in cinque macroaree:
+
+
+
+
+
+Area Amministrativa
+
+
+
+Area Ospedaliera
+
+
+
+Area Territoriale
+
+
+
+Area Direzionale
+
+
+
+Area delle Relazioni Esterne
+
+
+
+
+
+Tali macro-aree devono essere profondamente integrate ed interconnesse ai fini di un maggior efficientamento organizzativo e dei processi.
+
+
+## ppt/slides/slide12.xml
+
+
+
+
+
+
+
+Sistema Informativo Sanitario (SIS) - Architettura
+
+
+AREA AMMINISTRATIVA
+
+
+
+
+
+
+
+
+
+AREA AMMINISTRATIVA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AREA OSPEDALIERA (SIO)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AREA TERRITORIALE (SIT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gestione amministrativa:
+
+∙ Contabilità generale (economico-patrimoniale);
+∙ Contabilità analitica;
+∙ Acquisto di Beni e Servizi;
+∙ Gestione Ciclo Attivo e Passivo;
+∙ Gestione Cespiti;
+∙ Gestione del Magazzino;
+∙ Gestione del Personale;
+∙ Gestione delle Casse.
+
+
+
+
+
+Sistema Amministrativo-Contabile
+
+Gestione ospedaliera:
+
+∙ Gestione Laboratorio Analisi;
+∙ Gestione Servizi di Diagnostica;
+∙ Gestione Pronto Soccorso;
+∙ Gestione Ricoveri;
+∙ Gestione Dipartimentali;
+∙ Gestione Farmacia/UFA;
+∙ Gestione Percorsi di accettazione del paziente.
+
+
+
+
+
+Anagrafe degli assistiti
+
+Gestione del territorio:
+
+∙ Gestione Servizi Ambulatoriali;
+∙ Gestione Medicina Convenzionata;
+∙ Centrale Operativa Territoriale (COT);
+∙ Gestione Igiene e Prevenzione;
+∙ Gestione Veterinaria;
+∙ Gestione Farmacia Territoriale;
+∙ Gestione percorsi assistenziali del paziente.
+
+AREA RELAZIONI ESTERNE
+
+
+
+
+URP
+
+
+
+
+CUP
+
+
+
+
+E-Procurement
+
+
+
+
+Servizi al Cittadino
+
+
+
+
+E-Government
+
+
+
+
+E-Decision
+
+
+
+
+…
+
+
+
+
+…
+
+
+AREA DIREZIONALE
+
+
+## ppt/slides/slide13.xml
+
+
+
+
+
+
+
+
+
+
+Il SIO (Sistema Informativo Ospedaliero) è un “sistema integrato” che consente l’elaborazione, l’archiviazione, la consultazione e la condivisione delle informazioni inerenti al paziente che accede in contesto ospedaliero. Il SIO è composto da sistemi fortemente specializzati che rendono il processo di condivisione dell’informazione estremamente complesso ed oneroso.
+
+Il SIO deve poter supportare lo scambio di dati fra sistemi che implementano aspetti tecnici differenti (differenti architetture).
+
+Il SIO deve adeguarsi all’evoluzione dei processi e deve essere costruito attorno a soluzioni e protocolli affidabili e sicuri.
+
+Il SIO non deve presuppone a priori una particolare architettura tecnologica ma deve essere versatile e estendibile data la complessità crescente dei sistemi sanitari e l’evoluzione del mercato ICT.
+
+Sistema Informativo Ospedaliero (SIO) – Definizione e funzioni
+
+
+
+
+## ppt/slides/slide14.xml
+
+
+
+Sistema Informativo Ospedaliero (SIO) – Sistemi applicativi costituenti
+
+
+In particolare nell’Area Ospedaliera rientrano aspetti legati alla gestione dei processi assistenziali nell'ambito della degenza, della specialistica ambulatoriale e dell’attività chirurgica:
+
+
+
+
+
+ Sistema ADT (Accettazione Dimissione Trasferimento)
+
+ Sistema Cartella Clinica Elettronica (Ricovero e Ambulatoriale);
+
+ Sistema Blocco Operatorio;
+
+ Sistema Order Entry (per le richieste di esami e/o consulenze nei regime di ricovero ed emergenza/urgenza);
+
+ Sistema di Emergenza/Urgenza (Pronto Soccorso);
+
+ RIS (Radiology Information System);
+
+ LIS (Laboratory Information System);
+
+ Altri sistemi dipartimentali e/o verticali (ad es., CIS, Anatomia Patologica, Endoscopia Digestiva etc.)
+
+ Sistema Logistica delle prestazioni e dei prodotti - Farmaci e Materiali sanitari (esempio Armadietto di Reparto).
+
+
+Questi sistemi sono fortemente integrati allo scopo di rendere il percorso clinico-assistenziale del paziente il più armonico e fluido possibile, contenendo al contempo il dispendio di tempo da parte dell’operatore sanitario. L’integrazione tra i blocchi applicativi costituenti il SIO avviene normalmente mediante standard di interoperabilità universalmente riconosciuti ed accreditati dall’organizzazione internazionale no-profit IHE (Integrating the Healthcare Enterprise), un’organizzazione che si prefigge di promuovere l’uso di standard e protocolli diffusi in ambito medicale per supportare lo scambio e la condivisione di dati e informazioni. Tra questi standard si citano, a titolo esemplificativo e non esaustivo: HL7, XDS.b, XDS.I, DICOM.
+
+
+
+
+## ppt/slides/slide15.xml
+
+
+
+Sistema Informativo Ospedaliero (SIO) – Sistemi trasversali
+
+
+Nell’ambito di un SIO si possono identificare dei 
+
+sistemi trasversali, ovvero comuni a tutti i blocchi
+
+verticali e/o dipartimentali costituenti, le cui funzionalità
+
+arricchiscono la qualità dei processi di presa in carico 
+
+e gestione del percorso clinico-assistenziale del
+
+paziente.
+
+
+
+ Sistema CUP;
+
+ Anagrafe aziendale dei pazienti;
+
+ Dossier Sanitario Elettronico (DSE) e FSE/SOLE;
+
+ Repository Clinico-Documentale;
+
+ Modulo di prescrizione elettronica;
+
+ Sistema ADT (Accettazione Dimissione 
+
+Trasferimento), condiviso da tutte le unità operative che eseguono ricoveri diurni e/o ordinari;
+
+ Sistema Cartella Clinica Elettronica (Ricovero e Ambulatoriale), condiviso da tutte le unità operative che gestiscono prestazioni di ricovero e/o in regime ambulatoriale;
+
+ Sistema Order Entry, condiviso da tutte le unità operative che richiedono esami e/o prestazioni in regime di ricovero;
+
+ Sistema di Gestione Liste di Attesa (LDA), comune a tutti i servizi di area chirurgica e medica che necessitano di programmare interventi nei regimi di ricovero e/o ambulatoriale;
+
+ Provider di Firma Digitale, per l’apposizione della firma digitale sui referti;
+
+ Eventuali Middleware (ESB).
+
+
+
+
+## ppt/slides/slide16.xml
+
+
+
+Che cos’è un ESB?
+
+
+
+
+Per ESB o Middleware si intende qualsiasi sistema in grado di favorire, standardizzare e semplificare la comunicazione e l’interscambio di dati tra due sistemi nativamente indipendenti all’interno di un’architettura di tipo distribuito. 
+
+
+
+L’utilizzo di un ESB consente di disaccoppiare le funzionalità di sistemi applicativi diversi e di centralizzare l’adozione di logiche e/o regole che permettano di far comunicare suddetti nodi applicativi.
+
+
+
+Non esiste SIO che non preveda l’utilizzo di almeno un sistema di ESB!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nodo 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nodo 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ESB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Trasformazione
+## ppt/slides/slide17.xml
+
+
+
+Interoperabilità nell’ambito del SIO
+
+
+L’interoperabilità tra i sistemi che compongono un SIO garantisce efficacia, sicurezza e tempestività nella condivisione di dati clinici e informazioni, riducendo al contempo il rischio di errori dovuti all’inserimento manuale di tali informazioni. L’efficienza dei processi di gestione delle informazioni e di interscambio dei dati clinico-sanitari è un prerequisito fondamentale e non derogabile affinché il funzionamento di una struttura sanitaria possa essere considerato conforme ad elevati standard di qualità.
+
+
+
+
+L’interoperabilità viene spesso realizzata mediante la giustapposizione di differenti approcci tecnologici:
+
+
+
+Standard HL7: rappresenta una delle modalità più diffuse per la condivisione di dati da un sistema all’altro. E’ basata sull’uso di messaggi conformi allo standard internazionale HL7, un linguaggio di comunicazione vero e proprio tra sistemi informativi sanitari. A seconda del tipo di dato e/o informazioni che si desidera condividere, HL7 mette a disposizione una specifica tipologia di messaggio;
+
+DICOM: è lo standard universale di riferimento per quanto riguarda la generazione, condivisione, archiviazione e distribuzione in alta definizione di immagini radiodiagnostiche prodotte dalle diverse modalità (US, TC, RMN, RX, OPT etc.);
+
+Viste e/o tabelle di frontiera: è l’approccio più vetusto e meno evoluto; prevede che un sistema comunichi con un altro non in modo diretto (comunicazione point-to-point), ma attingendo/scrivendo le informazioni da/in apposite tabelle condivise all’interno di un database accessibile ad ambedue le parti;
+
+Chiamata di contesto: prevede che un applicativo generi una sessione automatica all’interno di un secondo sistema per consultarne e/o gestirne i dati, senza che vi sia alcun trasferimento di informazioni;
+
+Web Service: prevede il trasferimento di dati/informazioni via web tra due sistemi che si trovano all’interno di un contesto distribuito. E’ un’interfaccia software che permette di far cooperare due sistemi diversi.
+
+
+## ppt/slides/slide18.xml
+
+
+
+Use Case – Interoperabilità in Radiologia (1di2)
+
+
+Descrizione scenario: il reparto di Medicina Generale invia una richiesta di esame diagnostico per un paziente al servizio di Radiologia. Qual è il flusso di interscambio dei dati e quali sono le modalità di generazione e condivisione delle informazioni?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+
+
+2
+
+
+3
+
+
+4
+
+
+
+
+Il medico accede alla CCE di reparto ed inserisce la richiesta di esame per il paziente nel sistema di Order Entry. L’Order Entry invia la richiesta al RIS mediante standard HL7 con uso di un msg di tipo OMG^O19 
+
+
+Il radiologo visualizza la richiesta all’interno del RIS e la pianifica per il giorno successivo. Il RIS invia alla CCE di reparto la programmazione della prestazione via HL7 con un msg OMG^O19. Il medico di reparto prende visione della programmazione dell’esame
+
+
+Nella data/ora dell’esame, il paziente arriva in Radiologia. Il radiologo eroga la prestazione e la modalità diagnostica archivia le immagini all’interno del PACS attraverso lo standard DICOM. Il radiologo produce il referto che viene firmato digitalmente ed inviato al Repository mediante standard HL7 con un msg di tipo MDM
+
+
+Il medico di reparto visualizza il referto nel Repository attraverso lo standard FHIR e, accedendo al Visualizzatore del PACS attraverso una chiamata di contesto, consulta le immagini digitali. Prende quindi la decisione clinico-terapeutica per il paziente più opportuna.
+
+
+## ppt/slides/slide19.xml
+
+
+
+Use Case – Interoperabilità in Radiologia (2di2)
+
+
+La figura seguente descrive il processo orientato alla gestione delle immagini digitali 
+
+
+
+
+## ppt/slides/slide20.xml
+
+
+
+Data Warehouse
+
+
+## ppt/slides/slide21.xml
+
+
+
+Sistema Informativo di Area Direzionale
+
+
+Gli strumenti a supporto dell’Area Direzionale devono combinare vari aspetti:
+
+
+
+aspetti per la gestione dei sistemi di controllo direzionale e di supporto alle decisioni;
+
+
+
+aspetti orientati alla programmazione, all’attuazione e al monitoraggio della pratica assistenziale in ambito ospedaliero e territoriale;
+
+
+
+aspetti di governo del rischio clinico (Risk Management);
+
+
+
+aspetti legati all’arricchimento e al miglioramento continui della qualità del dato.
+
+I flussi informativi di dati che concorrono allo svolgimento delle attività di questa area  sono molteplici e generati da tutte le aree. L’area include strumenti a supporto dei processi di pianificazione, di budget, di revisione e di controllo degli scostamenti (strumenti di reporting, data mining, dashboard, OLAP etc.).
+
+
+
+
+
+## ppt/slides/slide22.xml
+
+
+
+Sistema Informativo di Area Direzionale
+
+
+
+
+## ppt/slides/slide23.xml
+
+
+
+Datawarehouse - Definizione
+
+
+L'esigenza di un’azienda sanitaria è di avere a disposizione un insieme di strumenti di analisi per il controllo di gestione che, attraverso l'elaborazione di notevoli volumi di informazioni, consentano ai “decision makers" di concentrarsi maggiormente sul contenuto dei dati piuttosto che sulla loro raccolta ed elaborazione. Si ritiene pertanto necessario dotarsi di una soluzione che sia in grado di fornire una serie di strumenti per accedere, analizzare, distribuire e rappresentare, anche in veste grafica, i dati aziendali, accrescendo in tal modo la qualità dei processi decisionali interni.
+
+
+Il Datawarehouse (DWH) è il sistema informatico adibito ai processi di acquisizione, trasformazione e distribuzione dei dati generati da diverse sorgenti informative e che fornisce strumenti di supporto ai decision makers dell’azienda. 
+
+Gli obiettivi della messa a disposizione di un DWH sono:
+
+
+
+la creazione di un ecosistema sicuro ed affidabile di dati sanitari ricco ed integrato;
+
+la pronta disponibilità e condivisione delle informazioni;
+
+la fruibilità dei dati via web per finalità di budgeting e reporting.
+
+
+
+
+## ppt/slides/slide24.xml
+
+
+
+Datawarehouse – Architettura tipica
+
+
+ETL
+
+Procedure informatiche deputate all’ingestion dei dati all’interno della base dati di riferimento del DWH
+
+
+Data Warehouse
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLAP
+
+Tecniche di analisi complesse di ingenti volumi di dati per finalità di analisi 
+
+
+
+
+
+
+
+
+
+
+
+Presentazione
+
+
+Analisi
+
+
+Statistiche
+
+
+
+
+
+OLTP
+
+
+
+
+
+
+Controllo qualità
+
+Quality check dei dati caricati al fine dell’ottimizzazione della qualità dei medesimi
+
+
+
+
+
+Log
+
+
+Fonti alimentanti 
+
+(CUP, ADT, PS etc.): producono i dati conformemente agli standard richiesti a livello aziendale (es: .csv, .txt, caricamento su vista db etc.)
+
+
+Tipo di elaborazione diretta e veloce per dati di pronto consumo
+
+
+Dashboarding e Cruscotti
+
+Distribuzione dei dati agli stakeholders aziendali
+
+
+## ppt/slides/slide25.xml
+
+
+
+Datawarehouse – Processi
+
+
+Le macro-fasi deputate alla gestione dei dati che concorrono all’alimentazione di un DWH, dalla loro acquisizione fino al consolidamento per le successive fasi di analisi, sono tre:
+
+
+
+Estrazione, ovvero fase iniziale che comprende la messa a disposizione dei dati da parte dei soggetti alimentanti (vedasi slide precedenti) e la loro acquisizione all’interno del Server Bridge e, successivamente, all’interno dell’Area di Staging;
+
+
+
+Trasformazione, ovvero fase intermedia che include, dapprima, attività di filtraggio, pulizia, duplicazione dei dati e attività di controllo della qualità e verifica della conformità dei dati e, in seconda istanza, operazioni di matching dei dati con le tabelle di dominio e le fonti dati interne ed esterne;
+
+
+
+Caricamento, ovvero fase finale in cui i dati trasformati vengono trasferiti nell’area permanente del DWH. Il risultato è la costruzione degli Star Schemas, ovvero modelli di rappresentazione dei dati basati su tabelle dei fatti e tabelle delle dimensioni. 
+
+
+
+
+## ppt/slides/slide26.xml
+
+
+
+Datawarehouse – Focus Area di Ingestion dei Dati (1di2)
+
+
+ETL
+
+Procedure informatiche deputate all’ingestion dei dati all’interno della base dati di riferimento del DWH
+
+
+Data Warehouse
+
+
+
+
+
+
+Fonti alimentanti 
+
+(CUP, ADT, PS etc.): producono i dati conformemente agli standard richiesti a livello aziendale (es: .csv, .txt, caricamento su vista db etc.)
+
+
+
+
+
+Comunemente, anche al fine di disaccoppiare l’area di persistenza dei dati da quella in gestione ai soggetti alimentanti, un sistema di DWH consta di due componenti:
+
+
+
+Server Bridge, ovvero area in cui vengono caricati i dati con cadenza e logiche concordate con ciascun fornitore (fonte alimentante)
+
+Area di Staging, ovvero area del DWH deputata al caricamento dei dati in tabelle per le successive finalità di analisi.
+
+
+Per procedure ETL (Extract, Transform, Load) si intendono tutti i processi automatici che estraggono il dato dalla fonte alimentante, lo trasformano e lo caricano, in ultima istanza, all’interno dell’Area di Staging. Una tipica procedura ETL può essere basata sull’alimentazione di apposite viste su database distinte per fornitore, dalle quali stored procedures attingono i dati per alimentare le tabelle dell’Area di Staging. Si specifica che un approccio orientato alla ‘’sostituzione’’ dei dati di interesse (cancello i dati precedenti e ricarico la versione aggiornata) è preferibile ad un approccio orientato al ‘’merge’’ delle informazioni (aggiungo incrementalmente nuove informazioni a quelle già disponibili nel DWH).
+
+
+## ppt/slides/slide27.xml
+
+
+
+Datawarehouse – Focus Area di Ingestion dei Dati (2di2)
+
+
+ETL
+
+
+
+
+
+
+Server Bridge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Schema Fornitore 1
+
+
+Schema Fornitore 2
+
+
+Schema Fornitore 3
+
+
+Area di Staging
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tabelle Ricoveri
+
+
+Tabelle Accessi PS
+
+
+Tabelle Accessi Ambulatoriali
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fornitore 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fornitore 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fornitore 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ETL
+
+
+
+
+
+
+Procedure di inserimento dati su viste personalizzate
+
+
+Stored Procedures per import dati
+
+
+## ppt/slides/slide28.xml
+
+
+
+Datawarehouse – Estrazione, Trasformazione, Caricamento
+
+
+
+
+① Ingestion: i dati prodotti dalle fonti alimentanti vengono acquisiti in apposite tabelle all’interno della base dati del DWH, anche chiamata ‘’area di staging’’. Vengono create delle copie integrali di tali tabelle chiamate ‘’Operational Data Store (ODS)’’. Su di esse vengono applicate tecniche di Quality Check;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+③ Trasformazione e Caricamento: consiste nella trasformazione dei dati delle tabelle di cui al pt precedente mediante operazioni di matching con le tabelle di dominio e le fonti dati interne ed esterne. Il risultato ultimo è la creazione di un ‘’data mart de-normalizzato’’ costituito da tabelle planari. A partire da esso vengono costruiti gli Star Schemas
+
+
+
+
+
+
+
+
+② Accodamento e Storicizzazione: tale fase prevede l'alimentazione delle tabelle dell'area permanente del DWH a partire dai dati che hanno superato i controlli di qualità di cui al punto precedente;
+
+
+## ppt/slides/slide29.xml
+
+
+
+Datawarehouse – Un esempio di Star Schema
+
+
+
+
+Eventi di Ricovero
+
+
+
+
+
+ID Paziente
+
+Data di nascita
+
+Codice Nosologico
+
+Data ammissione
+
+Data dimissione
+
+Struttura
+
+Reparto giuridico
+
+Reparto di appoggio
+
+Diagnosi
+
+Procedure
+
+[…]
+
+
+
+
+
+
+
+
+Strutture
+
+
+
+ID Struttura (HSP11bis)
+
+Descrizione Struttura
+
+
+
+
+
+
+
+
+Reparti
+
+
+
+ID Reparto
+
+Descrizione Reparto
+
+
+
+
+
+
+
+
+Procedure
+
+
+
+Cod Procedura (ICD9)
+
+Descrizione Procedura
+
+
+
+
+
+
+
+
+Diagnosi
+
+
+
+Cod Diagnosi (ICD9)
+
+Descrizione Diagnosi
+
+
+
+
+
+
+
+
+
+
+FACT TABLE: è il ‘’centro stella’’ e permette di rappresentare gli eventi di interesse (ad es., un record per ogni evento di ricovero)
+
+
+
+
+
+DIMENSION TABLES: presenti in numero indefinito, consentono di rappresentare i dati  corollari ma necessari per la specificazione degli eventi modellati nella Fact Table (ad es., può comparire una Tabella Dimensionale per ogni catalogo o dizionario di codifiche)
+## ppt/slides/slide30.xml
+
+
+
+Datawarehouse – Analisi e Distribuzione
+
+
+Report mediante tecniche OLAP: tale fase prevede l'implementazione di report strutturati sui cubi OLAP costruiti a partire dagli star schemas;
+
+
+
+
+
+Report mediante tecniche OLTP: tale fase prevede l'implementazione di report ottenuti mediante query dirette sulle tabelle de-normalizzate o sulle fact tables;
+
+
+
+
+
+Distribuzione: questa fase consiste nell’implementazione dei cruscotti e delle dashboard per la navigazione dei dati del DWH e il monitoraggio di indicatori e KPI.
+
+
+
+
+
+BI Tool
+
+
+
+
+
+
+
+
+
+
+
+OLTP
+
+
+
+
+
+Accesso a strumento di BI
+
+
+## ppt/slides/slide31.xml
+
+
+
+Data Mart
+
+
+Un Data Mart è un database strutturato in base allo specifico argomento trattato che contiene, pertanto, un sottoinsieme di dati coerenti con lo scopo di analisi che si desidera perseguire.
+
+
+
+E’ prassi comune strutturare l’area di staging di un DWH, ovvero l’area destinata ad accogliere i dati provenienti dalle fonti alimentanti, in più Data Mart, ciascuno contenente una porzione di dati dedicata ad uno specifico ‘’argomento’’ (ad es., ricoveri, accessi di Pronto Soccorso, accessi ambulatoriali etc.). Questa strategia consente di raggiungere alcuni obiettivi:
+
+
+
+cadenza di aggiornamento dei dati più fitta (ad es., una volta al die)
+
+maggior livello di dettaglio
+
+possibilità di gestione di informazioni e/o dati di natura sensibile
+
+
+
+Normalmente, nella sua versione baseline, un sistema di DWH non prevede la gestione di dati personali e/o sensibili, esulando questi dalle finalità della produzione di report di natura aggregata.
+
+
+Area di staging classica
+
+
+
+
+
+
+
+
+
+
+
+
+Area di staging con Data Mart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ricoveri
+
+
+Ricoveri Osp. 1
+
+
+Ricoveri Osp. 2
+
+
+Ricoveri Osp. 3
+
+
+## ppt/slides/slide32.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Implementato su DBMS Microsoft SQL Server, con creazione dei report in Microsoft Power BI, gestisce i flussi provenienti da 6 sorgenti informative:
+
+
+
+
+Ricoveri e SDO; 
+
+Pronto Soccorso (PS); 
+
+Specialistica ambulatoriale (SPA); 
+
+Magazzino; 
+
+Personale; 
+
+Assistenza Domiciliare.
+
+
+
+
+Area di staging
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ricoveri e SDO
+
+
+Pronto Soccorso
+
+
+Specialistica ambulatoriale
+
+
+Magazzino
+
+
+HR
+
+
+Assistenza domiciliare
+
+
+## ppt/slides/slide33.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Sono stati implementati i tracciati record per la creazione delle tabelle dell’Area di Staging:
+
+
+
+
+## ppt/slides/slide34.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Sono stati implementati i tracciati record per la creazione delle (numerose) tabelle dimensionali:
+
+
+
+
+## ppt/slides/slide35.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Sono stati implementati i tracciati record per la creazione delle (numerose) tabelle dimensionali:
+
+
+
+
+## ppt/slides/slide36.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Sono stati implementati i tracciati record per la creazione delle (numerose) tabelle dimensionali:
+
+
+
+
+## ppt/slides/slide37.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Si sono definiti, in sinergia con i referenti dell’area direzionale, le formule di calcolo per gli indicatori e i KPI di interesse:
+
+
+
+
+## ppt/slides/slide38.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Si sono definiti, quindi, dei data mart ‘’de-normalizzati’’ e, da questi, gli star schema di riferimento…
+
+
+
+
+
+……………….
+## ppt/slides/slide39.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+
+Mediante strumenti e tecniche di BI sul contenuto degli star schema si sono implementati cruscotti per gli utenti finali in MS Power BI…
+
+
+
+
+
+
+
+
+
+
+Nelle slides successive, alcuni esempi di dashboard di monitoraggio
+## ppt/slides/slide40.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+Ricoveri e SDO
+
+
+
+
+## ppt/slides/slide41.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+DRG
+
+
+
+
+## ppt/slides/slide42.xml
+
+
+
+Use Case - Sistema DWH dell’Azienda Sanitaria dell’Alto Adige
+Personale
+
+
+
+
+## ppt/slides/slide43.xml
+
+
+
+Flussi Informativi
+
+
+## ppt/slides/slide44.xml
+
+
+
+Flussi Informativi – Macro-aree
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+41  
+
+
+
+Flussi Sanitari e Socio-Sanitari
+
+
+21  
+
+
+
+Flussi di Mobilità Interregionale
+
+
+4  
+
+
+
+Anagrafi di riferimento
+
+
+18  
+
+
+
+Applicativi
+
+I flussi informativi in ambito sanitario, socio-sanitario e sociale di Regione Emilia-Romagna possono essere suddivisi nelle seguenti quattro macro-aree:
+
+
+## ppt/slides/slide45.xml
+
+
+
+Gestione Flussi Informativi: diagramma di processo
+
+
+Aziende 
+
+Sanitarie
+
+
+Referenti 
+
+Regionali
+
+
+Repository e archiviazione dei dati
+
+
+Organi 
+
+Centrali
+
+
+Business 
+
+Intelligence
+
+
+1. Definizione scadenze flussi
+
+
+Inizio
+
+
+2. Invio dati xml/txt
+
+
+3. Simulazione dati
+
+
+4. Conferma dati inviati
+
+
+5. Autorizzazione caricamento dati
+
+
+
+
+
+
+
+
+
+
+6. Caricamento dati
+
+
+
+
+Oracle/
+
+SAS
+
+Esito KO
+
+Esito OK
+
+
+7. Generazione e pubblicazione ritorno informativo
+
+
+
+Produzione archivi statistici
+
+
+Produzione reportistica
+
+
+
+8. Produzione debito informativo/correzione scarti
+
+
+Presa visione e valutazione ritorno informativo
+
+
+Repository flussi 
+
+
+Oracle
+
+
+DB Portale Flussi
+
+
+
+
+
+
+9. Invio debito informativo/scarti
+
+
+10. Elaborazione invio 
+
+
+
+Esito OK
+
+
+
+
+
+
+
+Fine
+
+
+Oracle/
+
+SAS
+
+
+DB debiti informativi
+
+
+
+Esito KO
+
+
+
+
+
+SISEPS
+
+
+## ppt/slides/slide46.xml
+
+
+
+Flussi Informativi di Area Sanità
+
+
+
+
+## ppt/slides/slide47.xml
+
+
+
+Flussi Informativi di Area Politiche Sociali e Integrazione Socio-Sanitaria
+
+
+
+
+## ppt/slides/slide48.xml
+
+
+
+Flussi Informativi di Area Anagrafiche
+
+
+
+Flussi Informativi di Area Economico-Finanziaria e Mobilità
+
+
+
+
+## ppt/slides/slide49.xml
+
+
+
+Flussi Informativi di Area Applicativa
+
+
+
+
+## ppt/slides/slide50.xml
+
+
+
+Gestione Flussi Informativi: Destinatari
+
+
+NSIS (Nuovo Sistema Informativo Sanitario): AFO, FED, PS, 118, PANFLU, DiMe, ADI, FAR, GRAD, Hospice, SIAR, SICO, CedAP, Modelli ministeriali (HSP11-11bis-12-13, STS11)
+
+
+
+
+SOGEI: ASA, M730
+
+
+
+
+Istituto Superiore di Sanità (ISS): Covid-19
+
+
+
+     ISTAT: IVG, CAV, CR
+
+
+
+
+Co.Ge.A.P.S.: ECM
+
+
+
+
+
+
+
+
+
+
+
+
+## ppt/slides/slide51.xml
+
+
+
+SISEPS e ReportER
+
+
+SISEPS è il portale di Regione Emilia-Romagna che raccoglie i dati e le applicazioni in ambito sanitario, socio-sanitario e sociale. ReportER Open Data è il canale di accesso e di pubblicazione dei dati di SISEPS, ad uso degli utenti delle aziende sanitarie.
+
+
+
+
+ReportER è dunque una modalità di accesso ai dati dei flussi informativi regionali ed agevola gli utenti nella consultazione di dati in maniera autonoma e tempestiva, sicura e protetta. E’ presente sia una parte open, fruibile via Internet, che una parte ad accesso con credenziali. Offre svariate elaborazioni sui database della Sanità e dei Servizi Sociali.
+
+
+
+
+## ppt/slides/slide52.xml
+
+
+
+Accesso alle Banche Dati
+
+
+
+
+
+
+
+Tutte le banche dati della Sanità sono state implementate in ambiente SAS 9.3 e risiedono su di un server regionale con sistema operativo Windows. Per accedervi occorre essere collegati alla rete regionale, che è una rete privata avente un nodo di accesso in ogni capoluogo di provincia.
+
+
+
+L’accesso diretto ai dati avviene mediante SAS Enterprise Guide (in rete intranet con abilitazione specifica, nominativa), strumento che permette di sopperire alla scrittura diretta di codice SAS in quanto si tratta di un’interfaccia duttile e guidata, attraverso la quale è possibile effettuare operazioni di query e di reporting prescindendo dalla conoscenza del linguaggio SAS. SAS Enterprise Guide consente agli utenti di essere autonomi grazie a un'interfaccia Windows point-and-click per analizzare rapidamente i dati e pubblicare i risultati utilizzando il potente software SAS.
+
+
+Repository e archiviazione dei dati
+
+
+Oracle/SAS
+
+
+Repository flussi 
+
+
+Oracle
+
+
+DB Portale Flussi
+
+
+Oracle/SAS
+
+
+DB Debiti Informativi
+
+
+Business 
+
+Intelligence
+
+
+Produzione archivi statistici
+
+
+Produzione reportistica
+
+
+
+
+## ppt/slides/slide53.xml
+
+
+
+Focus Flusso ASA – Assistenza Specialistica Ambulatoriale (1di2)
+
+
+La banca dati regionale è alimentata da un flusso informativo a cadenza mensile e contiene le prestazioni individuali di specialistica ambulatoriale e di diagnostica strumentale e laboratorio erogate ai singoli pazienti esterni (non in regime di degenza), in ambito ospedaliero e territoriale, dagli erogatori pubblici e privati accreditati della Regione. Inoltre sono registrate le prestazioni erogate dalle strutture extraregionali nei confronti dei residenti emiliano-romagnoli (mobilità passiva interregionale). I dati dell’assistenza specialistica ambulatoriale sono disponibili dal 2002.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Informazioni raccolte e strutturate in maniera analitica:
+
+
+
+• Caratteristiche della prescrizione e del medico prescrittore;
+
+• Caratteristiche della struttura erogatrice;
+
+• Caratteristiche del paziente fruitore delle prestazioni;
+
+• Caratteristiche della prestazione erogata
+
+
+
+
+
+
+La banca dati è costituita dai seguenti dataset:
+
+
+
+• PRESCRIZxxxx: contiene le informazioni relative alle prescrizioni/ricette e al paziente fruitore della prestazione;
+
+• PRESTAZxxxx: contiene le informazioni relative alle prestazioni e alla struttura erogante;
+
+• ERRORIxxxx: contiene l’elenco degli errori di compilazione dei campi (scartanti e segnalazioni);
+
+• NOMENxxxx: contiene le informazioni relative alle prestazioni riconducibili al NTR; • NOMENPxxxx: contiene le informazioni relative alle prestazioni riconducibili al nomenclatore tariffario extraregionale.
+
+
+
+1
+
+
+
+2
+
+
+
+3
+
+
+
+4
+
+
+Sono oggetto di rilevazione:
+
+
+
+• Prestazioni ambulatoriali previste dal NTR;
+
+• Prestazioni erogate nell’ambito dei programmi regionali di screening;
+
+• Prestazioni erogate in regime istituzionale, in regime di libera professione e a pagamento;
+
+• Prestazioni di ostetricia e ginecologia erogate dai consultori familiari.
+
+
+Non sono oggetto di rilevazione:
+
+
+
+• Altre prestazioni erogate dai consultori familiari;
+
+• Prestazioni ambulatoriali legate al ricovero;
+
+• Prestazioni ambulatoriali erogate dai SERT;
+
+• Prestazioni ambulatoriali erogate dai servizi di salute mentale;
+
+• Prestazioni ambulatoriali di neuropsichiatria infantile. 
+
+
+## ppt/slides/slide54.xml
+
+
+
+Focus Flusso ASA – Assistenza Specialistica Ambulatoriale (2di2)
+
+
+Lo schema seguente specifica le relazioni che intercorrono tra i dataset ed è utile per effettuare correttamente le operazioni di join (tramite la chiave primaria). La relazione principale evidenzia che ad ogni record dell’archivio prescrizioni possono corrispondere da 1 ad N record dell’archivio prestazioni (su una stessa ricetta possono infatti esistere più prestazioni). 
+
+
+
+
+## ppt/slides/slide55.xml
+
+
+
+Focus SDO – Scheda di Dimissione Ospedaliera (1di2)
+
+
+La banca dati regionale è alimentata da un flusso informativo a periodicità mensile e contiene i dati analitici di tutti i ricoveri ospedalieri (acuti e post-acuti) avvenuti negli Istituti di ricovero pubblici e privati della Regione. Dal 1998, la banca dati SDO contiene anche le prestazioni erogate dalle strutture extraregionali nei confronti dei residenti emiliano-romagnoli (mobilità passiva interregionale). Dal 2009 l’attività ex Art. 26 della legge 883/78, svolta dalle case di cura Don Gnocchi di Parma, Villa Salus e Luce sul Mare di Rimini, alimenta la nuova banca dati regionale SDRES.
+
+
+
+
+
+
+La banca dati è costituita dai seguenti dataset:
+
+
+
+• SDOxxxx: contiene la maggior parte delle informazioni sanitarie relative al ricovero dei pazienti dimessi nell’anno di competenza;
+
+• REPxxxx: contiene i dati relativi alla permanenza di ciascun paziente in uno specifico reparto;
+
+• PATxxxx: contiene le diagnosi segnalate in ciascuna scheda di dimissione;
+
+• INTxxxx: contiene gli interventi e le procedure chirurgiche segnalate in ciascuna scheda;
+
+• CONTROLLIxxxx: controlli interni ed esterni (disponibile dal 2017);
+
+• SCALExxxx: scale di valutazione (disponibile dal 2017);
+
+• DRGxxxx: dataset dei DRG. Contiene per ciascuno di essi il valore del Trim Point ed altri indicatori statistici relativi alla distribuzione delle giornate di degenza;
+
+• MADxxxx: dataset delle madri di neonati presenti nell’archivio SDO;
+
+• ERRORIxxxx: disponibile dal 2009, contiene l’elenco degli errori di compilazione dei campi (scartanti e segnalazioni) riscontrati sui file inviati dalle Aziende RER;
+
+• INT_MONITORATOxxxx: disponibile dal 2018, contiene le informazioni riguardo le tipologie di interventi monitorati;
+
+• SOVRAPPOSTIxxxx: disponibile dal 2022, le coppie di SDO che presentano intervalli ammissione – dimissione sovrapposti, nello stesso presidio e per lo stesso paziente.
+
+
+
+1
+
+
+## ppt/slides/slide56.xml
+
+
+
+Focus SDO – Scheda di Dimissione Ospedaliera (2di2)
+
+
+
+
+## ppt/slides/slide57.xml
+
+
+
+Focus 118 – Flusso Sistema 118
+
+
+La banca dati regionale è alimentata da un flusso informativo a cadenza mensile e contiene le informazioni relative alle prestazioni erogate nell’ambito dell’assistenza sanitaria di emergenza-urgenza da parte del Sistema 118. Le Centrali Operative 118 presenti sul territorio di Regione Emilia-Romagna sono tre:
+
+
+
+C.O. Parma;
+
+C.O. Bologna;
+
+C.O. Ravenna.
+
+
+
+
+
+
+La banca dati è costituita dai seguenti dataset:
+
+
+
+• SEGNALAZIONIxxxx: contiene le informazioni relative alla segnalazione di richiesta di soccorso al 118, ossia i dati delle chiamate telefoniche ricevute da una Centrale Operativa;
+
+• MISSIONIxxxx: contiene le informazioni relative all’intervento e alle missioni di soccorso associate, laddove attivato, a seguito di una segnalazione di richiesta di soccorso al 118;
+
+• ASSISTITIxxxx: contiene le informazioni relative agli assistiti durante la missione di soccorso (dati anagrafici, trattamenti di primo soccorso, esito complessivo dell’intervento)
+
+
+
+1
+
+
+
+
+## ppt/slides/slide58.xml
+
+
+
+Patient Reported Outcome Measures (PROMs)
+
+
+Uno dei requisiti da tenere sempre in considerazione è il parere del paziente sul trattamento e sull’evoluzione del percorso clinico-terapeutico: i PROMs, rispetto a questo punto, rappresentano senza dubbio lo strumento migliore e più riproducibile per poter richiedere il parere del paziente.
+
+
+
+Attraverso l’utilizzo di questi semplici e validati questionari, un professionista sanitario è in grado di capire, in misura abbastanza precisa, il punto di vista soggettivo del paziente riguardo al suo stato funzionale associato al suo problema.
+
+
+
+
+
+
+Nell’ambito del progetto REWINDER si è utilizzata una piattaforma tecnologica innovativa per l’acquisizione dei PROMs, con l’obiettivo di somministrare, in futuro, tali questionari di auto-valutazione direttamente al paziente attraverso canali sicuri (ad es., stampa del link per il collegamento nel piè di pagina del referto consegnato dal medico etc.)
+
+
+## ppt/slides/slide59.xml
+
+
+
+
+Funzioni direttive dei servizi sanitari e formazione manageriale per le direzioni generali
+
+
+
+Grazie per l’attenzione!
+
+
+
+
+
+Docente: Stefano Bergamasco
+
+
+
+Bologna, 21 maggio 2025
+
+
+
+

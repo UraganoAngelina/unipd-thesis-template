@@ -1,0 +1,6 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{T}\relax \glsresetentrylist %
+\glossentry{TermineSenzaAcronimo}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{78}}}%
+\end{theglossary}\glossarypostamble

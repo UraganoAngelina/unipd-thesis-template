@@ -1,0 +1,518 @@
+    Impact of Latency on Applications’ Performance
+                                 Rossen Dimitrov and Anthony Skjellum
+                                   {rossen, tony}@mpi-softtech.com
+
+                                      MPI Software Technology, Inc.
+                                      101 S. Lafayette Str,. Suite 33
+                                          Starkville, MS 39759
+                                           Tel.: (662) 320-4300
+                                      http://www.mpi-softtech.com
+                                                         introduced Virtual Interface (VI) Architecture [3]
+                     Abstract                            standard for high-speed interconnects makes another
+    This paper investigates the impact of point-to-      step toward facilitating high-performance parallel
+point latency on applications’ performance on clusters   processing on clusters. This standard allows for zero-
+of workstations interconnected with high-speed           copy, low latency message transfers between
+networks. At present, clusters are often evaluated       networked computers. In addition, VI Architecture
+through comparison of point-to-point latency and         network interface controllers can perform independent
+bandwidth obtained by ping-pong tests. This paper        message transmission, which reduces significantly the
+shows that this approach to performance evaluation of    CPU usage for communication and increases the
+clusters has limited validity and that latency has       sustainable peak bandwidth. The features of modern
+minimal impact on a large group of applications that     high-speed networks combined with the increasing
+use medium- to coarse-grain data-parallel algorithms.    floating-point performance of microprocessors make
+Message-passing systems with low latency often use       clusters a low cost alternative to supercomputers with
+polling for message completion, which leads to tight     comparable performance.
+synchronization between the communicating processes          The characteristics of VI Architecture networks
+and high CPU overhead. Systems with asynchronous         are a close match to the concepts of the Message-
+message completion have higher point-to-point            Passing Interface (MPI) [9]. These networks provide
+latency for short messages but offer a number of high-   reliable, ordered transports, which is the major low-
+performance mechanisms such as overlapping of            level service required by the MPI communication
+computation and communication, independent               subsystem. Such transports eliminate the need for
+message progress, efficient collective algorithms,       high-level reliability layers and simplify MPI
+asynchronous processing of communicating nodes,          implementations. MPI/Pro [5] is the first MPI
+and exploitation of temporal locality. These             implementation that provides specifically targeted
+mechanisms can be effectively implemented on current     optimizations for VI Architecture. Among the VI
+high-speed networks with intelligent interface           networks that MPI/Pro supports are Giganet cLAN
+controllers capable of bus-master transfers on host      and Compaq Servernet. In addition, MPI/Pro supports
+peripheral busses. Although message-passing systems      Myrinet, which is not VI Architecture compliant but
+that use asynchronous completion notification have       offers similar advanced mechanisms for efficient
+higher point-to-point latency than systems with          communication.
+polling, they can offer opportunities for performance        In this paper, a background of the growing use of
+gains with far greater overall impact.                   clusters for high-performance parallel computing is
+                                                         presented. Then, widely used models and metrics for
+1    Introduction                                        parallel processing are reviewed. Synchronous and
+    In recent years, clusters of workstations have       asynchronous modes for message completion are
+become the fastest growing choice for building           discussed, as are mechanisms used for implementation
+parallel platforms. The success of clusters has been     of these modes and their impact on point-top-point
+mainly facilitated by the rapid advancement of           latency and bandwidth, as well as on CPU overhead.
+microprocessor technologies and high-speed network       Then, results from experiments on a cluster with MPI
+interconnects, such as Myrinet [2] and Giganet [6].      using alternatively both modes of completion are
+The increased accessibility and low cost of these        presented. Tests from point-to-point latency and
+technologies are also important factors for the wide     bandwidth measurements and from the NAS Parallel
+acceptance of clusters among users. The recently         Benchmarks [1] are shown. Finally, conclusions about
+the impact of latency and message completion modes          applications reflect the specific characteristics of the
+on applications performance are drawn.                      MPP systems. Now, while moving to clusters, these
+                                                            organizations naturally use their long experience in
+2    Background                                             parallel processing not always realizing that clusters
+    At present, two major categories of organizations       have different characteristics than MPP. Well-
+build clusters for parallel processing. The first group     established procedures and test suites for performance
+includes national laboratories and large businesses.        evaluation are being reapplied to clusters. Second, the
+They have had long experience in parallel computing         organizations that are just building their first clusters
+on massively parallel processors (MPPs). Now, these         often do not have enough knowledge in parallel
+organizations view clusters as a low-cost path for          algorithms and evaluation of parallel platforms.
+upgrading their processing facilities. The second           Because ping-pong tests are easy to carry out and
+group of organizations, such as academic labs and           understand, they have attracted the attention of the
+small businesses, has been able to experience the           second category of organizations. The third factor for
+benefits of parallel processing for first time by the use   the emphasis on latency can be traced to some of the
+of clusters. Even though the two categories have            models for parallel computation, such as BSP [10] and
+different background, both of them meet the same            LogP [4]. These models use point-to-point latency and
+challenge of adjusting to a new environment.                bandwidth for expressing the overall performance of a
+    In general, clusters are just one representative        given algorithm on abstract parallel platforms. Each
+among parallel platforms. However, clusters have a          specific parallel platform presents the actual values for
+number of characteristics that need to be adequately        the parameters used by the models, which are then
+addressed for full understanding of the processes and       used for predicting the performance on this system.
+interactions between hardware and software as well as           This paper shows that under equivalent hardware
+their impact on performance and scalability. Clusters       and software conditions, a noticeable difference in
+differ substantially from MPP systems in several            point-to-point latency does not yield a corresponding
+aspects. Some of these aspects are interconnecting          increase of overall performance. The goal is to
+topologies, available bandwidth per node, type of           demonstrate that for a large group of parallel
+operating systems, degree of synchrony, and                 applications the overall impact of latency
+communication protocol stacks. Consequently,                optimizations may be minimal or even not existent.
+performance evaluation of clusters requires a different     Since the lowest possible latency is often achieved
+approach than the evaluation of MPP systems. In             through a specifically organized MPI middleware, a
+addition, the organizations that are new to parallel        number of performance optimizations with potentially
+processing are challenged by the transition from            far greater impact on performance can be missed.
+sequential to parallel systems.                             Some of these mechanisms are minimizing CPU
+    With the fast growth of cluster-based solutions and     overhead,     overlapping of computation             and
+the rapid increase of organizations that enter for first    communication, independent message progress, and
+time the area of parallel processing, a somewhat            asynchronous processing.
+simplistic approach to performance evaluation can be            The objective of this paper is to show that by using
+observed. The evaluation procedure is often reduced         software and hardware architectures that might lead to
+to measurements of point-to-point latency and               increase of point-to-point latency, potential for
+bandwidth with ping-pong tests. Since the asymptotic        significant performance improvements can be created.
+peak bandwidth of most high-speed networks is               Also, this paper shows that these potentials can be
+approximately the same and the message-passing              achieved at little or no expense to applications and
+middleware usually reaches this peak, the difference        algorithms that do not take use these mechanisms,
+between the various cluster solutions is expressed only     which is an important attribute of each technique used
+by the difference in latency. The results of these point-   for improving performance in general.
+to-point tests are then extrapolated to the entire
+cluster. As a result, conclusions about the performance     3    Models for Parallel Computing
+and scalability of the entire parallel system are made          Models for parallel computing aim to describe the
+based only on the latency numbers.                          interaction between software and hardware on parallel
+    There are several reasons for this simplistic           platforms through high-level abstractions. The goal of
+approach. First, the organizations with experience in       these models is to offer a representation of parallel
+parallel computing are used to certain type of behavior     algorithms independent of the specific characteristics
+and performance characteristics of MPP systems and          of a given architecture. This goal is usually achieved
+MPI implementations for these systems. Throughout           through expressing the performance of a parallel
+the years, a large number of legacy applications have       algorithm as a function of a number of basic
+been created for MPP environments. These                    parameters, which are empirically obtainable. Once
+the abstract performance expression for an algorithm       Throughout the years of theory and practice in parallel
+is derived, experimental tests on different platforms      processing, several collective metrics have received
+can be executed in order to obtain the values of these     the widest acknowledgement. Among these are the
+basic parameters. Then, their values are substituted in    following:
+the expression and an estimate about the overall               • Parallel execution time: Tp,
+performance of the algorithm on the specific platform          • Speedup: T1/Tp,
+is obtained.                                                   • Efficiency: T1/pTp,
+    Two of the most widely accepted models for                 • Performance: MFLOP/sec, and
+parallel processing on message-passing systems are             • Cost-efficiency: MFLOP/sec/$,
+BSP and LogP. BSP views the execution of a parallel        where T1 is the execution of the best known serial
+program as a series of super-steps [10]. In each           algorithm and p is the number of processors. The two
+superstep, processors perform local computation            most widely used point-to-point metrics are latency
+followed by communication. The superstep ends with         and bandwidth. These metrics are intended to reflect
+global synchronization. The time for each superstep is     the entire communication subsystem including the
+expressed as a function of two parameters – l and g,       physical and data-link layers of the interconnection
+which can be viewed as message passing latency and         network, the host operating system, the network
+bandwidth. The total execution time of the algorithms      drivers, and the message-passing middleware.
+is obtained by the sum of the superstep times.             Although point-to-point metrics reflect the
+    The LogP model goes a step further than BSP in         communication performance of a single link, it is
+describing the communication processes. Except             frequently assumed that the performance parameters
+parameterization of the network medium, LogP               of this link are preserved across the parallel system
+introduces a description of processor activities           during the execution of applications. This assumption
+associated with communication. This is achieved            is too optimistic for a large number of practical
+through the overhead o parameter. The model uses           systems because it ignores important scalability
+four parameters for deriving performance expressions       factors such as network contention, bisection
+of algorithms – L and g representing latency and           bandwidth, as well as communication and application
+bandwidth similarly to BSP, and o and P representing       software architectures. It is not the objective of this
+processor overhead and number of processors                paper to study the scaling properties of point-to-point
+involved in the computation. LogP provides for a           metrics. Rather, the paper attempts to analyze
+more precise description of the communication              specifically the affect of message-passing latency of a
+processes and allows for asynchronous processing by        cluster-based parallel system on the overall
+eliminating the global synchronization phase of BSP.       applications performance.
+However, the LogP model does not account for                   Traditionally, point-to-point measurements have
+overlapping of computation and communication,              been performed by ping-pong tests. This type of tests
+which can be a significant source of performance           with a little variation has also been accepted in the
+gains. As opposed to LogP, BSP allows for                  area of cluster computing as the predominant
+overlapping if the algorithm can schedule computation      benchmark for latency and bandwidth. Because the
+and communication activities simultaneously.               asymptotic peak bandwidth of high-speed networks is
+4    Parallel Performance Metrics                          usually similar - upper bounded by the I/O bus
+                                                           throughput, often the performance characteristics of
+    Metrics are necessary tools for evaluating any         the entire cluster are extrapolated solely from the
+physical process or phenomenon. Similarly,                 ping-pong latency numbers; the lower the latency is,
+evaluating performance of parallel algorithms and          the higher the performance of the cluster is. This
+platforms relies of metrics. Parallel performance          approach has limited validity for several reasons:
+metrics and evaluation methodologies have been             • Latency affects only the exchange of short
+subject to numerous research efforts [8, 11]. Metrics      messages. Typical parallel applications that are based
+can be effectively divided into two groups – metrics       on the message-passing paradigm use medium to
+that measure point-to-point performance and metrics        coarse grain data parallel algorithms and the messages
+that view the parallel system as a whole. In this paper,   that they generate are in the range of tens of kilobytes
+these two groups of metrics will be referred to as         to megabytes. Latency has a minimal impact on the
+point-to-point and collective metrics.                     transmission of such messages.
+    Collective metrics are based on applications
+                                                           • The ping-pong tests do not show any insights
+execution time and reflect the contribution of each
+                                                           about the costs paid by the system and applications
+processor. These metrics emphasize both performance
+                                                           software for achieving the lowest point-to-point
+and scalability, which makes them a powerful tool for
+                                                           latency. The message-passing middleware, such as
+studying the complex processes in a parallel system.
+MPI, inevitably makes architectural compromises in           Lrtt, Lowl and Brtt are used for evaluating point-to-
+order to reduce latency to a minimum. These               point performance.
+compromises are not revealed by the ping-pong test,
+so exaggerating the impact of point-to-point latency      5    Message Completion Modes
+disregards such sources of performance as overlapping         Communication between processes in message-
+of computation and communication, independent             passing systems requires explicit participation of both
+message progress, optimized collective algorithms,        the sender and the receiver. In order to free data
+and low CPU overhead. These mechanisms are                buffers for reuse, the message-passing middleware has
+usually sacrificed by MPI implementations that aim        to ensure completion of the transmission operation.
+solely at the lowest ping-pong latency.                   There are two forms of message completion –
+• Although parallel computation models use latency        synchronous and asynchronous. The synchronous
+and bandwidth for deriving expressions for the overall    form is usually implemented through the use of
+applications performance, it is hardly proven that the    polling. Depending on the underlying communication
+ping-pong tests actually reflect the latency and          layer, whether kernel-based such as TCP/IP or user
+bandwidth parameters that are meant in these parallel     level networking with operating system bypass, the
+models – the ones that will be experienced by the         completion can be performed by polling on a system
+applications. Also, it is not obvious that ping-pong      call or a flag in memory that is signaled by the
+latency will scale across the entire system under heavy   network controller through a system bus transaction.
+computation and communication loads. Therefore, in            Polling requires that user processes make frequent
+addition to ping-pong tests between two nodes, further    calls to the message-passing middleware so that
+and more elaborate collective tests are necessary.        timely progress of messages can be guaranteed.
+    There are a number of alternatives for measuring      Polling eliminates all unnecessary overhead from
+latency and bandwidth. Obviously, one of them is the      message completion, which is a prerequisite for
+ping-pong test, to which we have already alluded. This    achieving the lowest latency. However, the host CPU
+test subjects the system to highly synchronized and       is used for busy waiting and cannot perform any other
+regular communication traffic. Communication              computation while polling for message completion.
+patterns of real parallel applications are often          This eliminates the possibility of computation and
+asynchronous and they do not follow this ordered          communication overlapping and true asynchronous
+scheme according to which nodes send a message with       progress. Applications with highly synchronized
+a certain size and then wait for another message with     execution pattern that exchange predominately small
+the same size to arrive back. The ping-pong traffic       messages benefit most from polling. However, if the
+pattern can be viewed as one of the extreme boundary      execution lines of the communicating processes are
+points in a space describing the traffic patterns of      asynchronous, a significant portion of the CPU time is
+parallel application. The other extreme point in this     wasted on polling for completion. Evidently, because
+space is when one of the two communicating nodes          of its high degree of synchrony ping-pong tests favor
+sends consequently a large number of messages in one      systems with polling mode of completion. One typical
+direction and the other node only occasionally returns    representative of message-passing middleware that
+a message back. The test for measuring latency and        relies on polling for completion is MPICH [7].
+bandwidth with this pattern is the called streaming           The asynchronous method for message completion
+test. Using ping-pong and streaming tests, one can        is implemented through callback handlers or progress
+measure latency and bandwidth at the end points of        threads that block until a communication event is
+the traffic pattern space and obtain a more objective     completed. Since this method introduces an extra
+picture     of    the     point-to-point   performance    context switch, it increases the communication
+characteristics of the parallel system.                   overhead. Because of its traffic pattern, the ping-pong
+    Ping-pong latency is computed as a half of the        test mechanically adds this extra overhead to the
+message roundtrip time (RTT), while the streaming         measured latency. As a result, the asynchronous
+latency, referred to also as one-way-latency (OWL) is     method for completion shows higher latency than the
+computed by measuring the time for sending n              polling method. On the other hand, asynchronous
+messages in one direction followed by one message in      completion reduces CPU overhead – the time spent by
+the opposite direction divided by n + 1. Similarly,       the CPU for communication. The CPU is interrupted
+bandwidth is computed as the ratio of message size        only when a communication event associated with a
+and either RTT or OWL.                                    message completion is signaled. Thus, the CPU
+    • Lrtt = RTT/2                                        wastes minimum time on synchronization and can
+    • Lowl = (Tn + T1) / (n + 1)                          spend more cycles on useful computation. The
+    • Brtt = msg_size/Lrtt                                intelligent bus-master capable controllers of modern
+    • Bowl = msg_size/Lowl                                high-speed networks offer a number of mechanisms
+that further facilitate the asynchronous mode. These      For transmitting long messages, MPI/Pro uses the
+controllers perform a significant portion of the          remote DMA (RDMA) mechanism of Giganet’s
+message transmission. They can access user data           interface controllers. This reduces the CPU
+buffers across the peripheral bus and send/receive        involvement in communication activities. The CPU
+frames to/from the network without any involvement        utilization for messages larger than 32 kilobytes is in
+of the host CPU. The CPU is only interrupted to           the range of 5-6%. The rest of CPU’s time is available
+propagate the completion event to the user process.       for computation. In addition to asynchronous
+    Another important advantage of the asynchronous       notification, the device thread is also used to perform
+mode is that it provides for an optimal architecture of   independent progress of long messages. This ensures
+the message-passing middleware when supporting            timely delivery and results in a high utilization of the
+multiple simultaneous communication devices, such         physical bandwidth. The asynchronous mode provides
+as TCP/IP, shared memory, and high-speed network          a clear opportunity of overlapping of communication
+device. This architecture allows for independent          and computation. While the network controller is
+progress of messages on different devices without         processing a message, the user thread can perform
+causing an interference of slow devices into the          useful computation. When the controller finishes the
+operation of fast devices                                 operation, it interrupts the CPU and then the control is
+    Below, this paper compares two message-passing        transferred to the device thread that completes the
+systems with equivalent characteristics with the          transaction and propagates it to the user thread.
+exception of their message completion modes. The              The synchronous mode of MPI/Pro eliminates the
+goal is to investigate how the difference in latency      device thread from the reception of short messages.
+caused by the completion mode affects applications, in    When a process expects a message, it can poll for its
+this case represented by the NAS benchmarks. The          arrival. This excludes the overhead associated with the
+hypothesis is that for a large number of parallel         device thread context switch from the processing of
+applications latency has minimal or negligent impact      incoming messages. If the communicating processes
+on the overall performance and if a middleware that       are tightly synchronized, as in the ping-pong tests, the
+solely optimizes latency is used, clear opportunities     polling mode can significantly reduce the round-trip
+for achieving higher performance through alternative      time, at the expense of increased CPU usage. As
+mechanisms are missed. It is subject of further studies   opposed to most of the existing MPICH-based MPI
+to show the impact of these mechanisms on                 implementations that use exclusively polling, MPI/Pro
+performance.                                              continues to use the device thread even in the
+    MPI/Pro, an MPI implementation from MPI               synchronous mode of completion. The device thread is
+Software Technology, Inc, is selected for this study.     used for progress of long messages and also for
+MPI/Pro offers both modes of message completion           handling flow control traffic. Thus, MPI/Pro
+through a run-time choice. All other architectural        eliminates the deficiency of the MPI implementations
+characteristics of the two systems are the same. This     with pure polling architecture to require frequent calls
+allows for a fair comparison of the completion modes      to the library’s progress engine.
+and their impact on performance.
+                                                          7    Methodology
+6    MPI/Pro Architecture                                     The goal of the experiments presented here is to
+    MPI/Pro is a high-performance, multi-device MPI       establish a relationship or a lack thereof between
+implementation for clusters of Linux and Windows          point-to-point latency measured by ping-pong tests
+workstations with user-level thread safety [5].           and overall applications performance represented by
+MPI/Pro provides specific optimizations for high-         the NAS Parallel Benchmarks. The relationship is
+speed networks such as Giganet and Myrinet. The           revealed through a comparative analysis. Two systems
+discussion in this paper is concentrated on Giganet.      with different point-to-point latency attributes are
+This network provides both synchronous and                studied. The difference in latency is related only to the
+asynchronous methods for completion of send and           method of MPI message completion – synchronous
+receive operations. MPI/Pro propagates this capability    and asynchronous. All other components of the two
+to user processes by allowing them to specify which       systems are the same. In fact, the same message-
+mode of completion they prefer. A run-time flag           passing middleware – MPI/Pro is used in the two
+controls the choice between the two modes.                systems – once in blocking and once in polling mode.
+    The asynchronous mode of MPI/Pro uses a device        The two systems are subjected first to point-to-point
+thread that blocks on events associated with incoming     experiments for measuring latency and bandwidth.
+messages. This minimizes CPU time spent on                Ping-pong and streaming tests are used. Then, the
+communication and also provides for a greater degree      NAS benchmarks are executed and their results are
+of asynchrony between the communicating processes.        compared and related to the results from the point-to-
+point measurements. Because the difference between                  incoming message. Also, Giganet cLAN driver adds
+the two systems is only in their point-to-point latency,            about 15 microseconds overhead for completing a
+the difference in the NAS benchmarks runs is
+attributed to the impact of message-passing latency,                                                          Latency (OWL)
+and hence to the mode of message completion.                                                                  Blocking           Polling
+                                                                                         100
+8                     Experimental Results
+                                                                                          80
+    The experiments were carried out on clusters of
+
+
+
+
+                                                                    Latency [microsec]
+Windows NT workstations. One of the clusters was                                          60
+AC3 Velocity at the Theory Center at Cornell
+University. The other cluster is deployed at the offices
+                                                                                          40
+of MPI Software Technology. Both clusters are
+interconnected with Giganet cLAN. The AC3 nodes
+                                                                                          20
+are quad PowerEdge DELL servers with Intel Xeon
+500 MHz processors and 4 GB of RAM. The nodes of
+                                                                                              0
+the second cluster are SAG “white box” computers
+                                                                                                  0     8    32     128    512             2048
+equipped with a single Pentium II processor at 350                                                       Message size [bytes]
+MHz and 288 MB of RAM. MPI/Pro with switching
+between polling and blocking was used for providing                                      Figure 2. One-way latency on SAG cluster.
+message passing. All experimental results are
+                                                                    message in a blocking mode, which is caused by the
+averaged over three or more measurements. In future
+                                                                    interrupt handler. A detailed breakdown of the latency
+efforts, experiments on Linux clusters interconnected
+                                                                    components of MPI/Pro using blocking mode can be
+with Giganet and other high-speed networks will be
+                                                                    found in [12].
+conducted.
+                                                                        An interesting observation can be made on Figure
+8.1     Point-to-Point Performance                                  2, which represents one-way latency measured with a
+    Figures 1 trough 4 present the results from the
+tests for measuring roundtrip latency (Lrtt), one-way                                                         Bandw idth (RTT)
+latency (Lowl), and round-trip based bandwidth (Brtt) as                                                      Blocking           Polling
+described in section 4. Each graph presents numbers                                      80
+from experiments in both blocking and polling modes.                                     70
+Figure 1 demonstrates that the ping-pong latency of
+                                                                    Bandwidth [MB/sec]
+
+
+
+
+                                                                                         60
+the polling completion mode is more than two times
+better than the latency of the blocking mode on the                                      50
+SAG cluster. The zero-length latency in polling mode                                     40
+is 19 microseconds while in blocking mode it is 43                                       30
+microseconds. The difference can be attributed to the
+thread context switch that the asynchronous                                              20
+completion mode of MPI/Pro imposes on each                                               10
+                                                                                         0
+                                   Latency (RTT)                                          256         1024     4k    16k    64k   256k            1M
+                                                                                                             Message size [bytes]
+                                   Blocking        Polling
+                      140
+                                                                    Figure 3. Point-to-point bandwidth on SAG cluster
+                      120
+                                                                    steaming test. While the polling mode does not show
+ Latency [microsec]
+
+
+
+
+                      100                                           any improvement in comparison to ping-pong, the
+                      80                                            blocking mode performs almost as well as the polling
+                                                                    mode – reduction of more than two times. This shows
+                      60
+                                                                    that pipelining messages can hide the overhead
+                      40                                            associated with blocking mode. As was mentioned
+                                                                    earlier, realistic communication patterns of
+                      20
+                                                                    applications lie in the space defined by ping-pong and
+                       0                                            streaming and are a combination of them. So,
+                            0   8   32     128    512        2048   applications will not actually see the difference in
+                                Message size [bytes]
+                                                                    overhead of the two modes as measured by the ping-
+                       Figure 1. RTT latency on SAG cluster.        pong test.
+    The bandwidth curves on Figures 3 and 4 show               these systems. Specifically, NAS benchmarks rely on
+that for message sizes above 4 kilobytes the two               high degree of synchrony among the computing
+completion modes are equivalent. The difference in             processes, use primarily blocking and non-persistent
+short-message bandwidth is based on the fact that in           mode of communication, and do not make use of
+this size range the round-trip time is dominated by the        overlapping and temporal locality.
+latency and not by the time for actual message
+transmission across the network. Typical numerical                                                           CG Class A
+algorithms using use large data sets and exchange                                                           Blocking              Polling
+                                                                                        50
+predominantly messages with sizes greater than 4
+kilobytes. Evidently, applications using these
+
+
+
+
+                                                                 Execution time [sec]
+                                                                                        40
+algorithms will not benefit from the higher bandwidth
+for short messages resulting from the lower latency of                                  30
+polling.
+                                                                                        20
+                               Bandw idth (RTT)
+                                Blocking        Polling                                 10
+               110
+                                                                                         0
+               100
+                                                                                              1 2   3   4   5   6   7   8 9 10 11 12 13 14 15 16
+                90                                                                                      Num ber of processors
+                80
+ Bandwidth [MB/sec]
+
+
+
+
+                70                                                                       Figure 5. CG class A on DELL cluster.
+                60
+                                                                    The NAS CG and IS benchmarks were chosen for
+                50
+                                                               the experiments, both with class A data sets. The
+                40
+                                                               results on the DELL cluster are shown in Figures 5
+                30
+                                                               and 6. (The results for the SAG cluster are similar and
+                20
+                                                               can be found on MPI Software Technology’s web
+                10
+                                                               site.) The performance metric chosen for presenting
+                 0
+                                                               the cluster performance is parallel execution time. It
+                  256   1024     4k    16k    64k 256k    1M
+                                                               can be seen from the figures that the polling and
+                               Message sise [bytes]
+                                                               blocking performance curves differ with quantities
+Figure 4. Point-to-point bandwidth on DELL cluster.            smaller than the standard deviation and they almost
+                                                               completely overlap.
+    Polling bandwidth curves have a plateau around
+message sizes of 4 kilobytes. This plateau is caused by                                                         IS Class A
+the increasing overhead of the extra copy at the
+                                                                                                        Blocking              Polling
+receiver process used by the eager protocol of                                          25
+MPI/Pro. For larger sizes, the rendezvous protocol
+eliminates the extra copy and the curve rises again                                     20
+                                                                 Execution time [sec]
+
+
+
+
+afterwards. If the protocol switchover size is less than
+4 kilobytes, the overhead of the extra messages caused                                  15
+by the rendezvous protocol causes decline in polling
+bandwidth. The switchover size of MPI/Pro is chosen                                     10
+to offer an optimal balance for transmission of both
+short and long messages.                                                                5
+
+8.2     NAS Benchmarks Performance                                                      0
+    NAS Parallel Benchmarks are used to demonstrate                                          1 2    3   4   5   6   7   8   9 10 11 12 13 14 15 16
+                                                                                                        Num ber of processors
+how the difference in latency of the two completion
+modes affects real applications. NAS benchmarks are                                          Figure 6. IS class A on DELL cluster
+a well-established collection of applications and
+kernel benchmarks for testing performance and                      A conclusion can be drawn that the difference in
+scalability of parallel systems. NAS benchmarks are            latency of the two systems under investigation has no
+based on medium- to coarse-grain data parallel                 impact on the overall applications performance. This
+algorithms implemented with MPI. They have been                fact can be explained with the communication pattern
+originally written for MPP systems and naturally               and message sizes of the two benchmarks presented
+reflect the specifics of the MPI implementations for           here. Figures 7 and 8 show the number and size of
+ Processors        2        4         8         16        for improving performance, such as overlapping of
+ send/recv     104x28k   104x28k   156x14k   156x14k      computation and communication, independent
+ send/recv     104x4B    104x4B    208x4B    208x4B       message progress, high sustainable bandwidth,
+Figure 7. Communication pattern of CG innermost           optimized collective operations, and asynchronous
+         loop. The loop is executed 15 times.             processing. Medium to coarse grain data-parallel
+                                                          algorithms with regular communication pattern can
+messages exchanged in the innermost loops of CG and       significantly benefit from these mechanisms. Future
+IS respectively. It is clear that the bulk of data is     work will demonstrate how applications that use these
+transmitted by relatively few medium or large size        mechanisms achieve higher performance than
+messages. Consequently, CG and IS are bandwidth           applications that do not use them, even though the
+dependent, not latency dependent.                         latter may be run on message-passing systems with
+                                                          lower point-to-point latency.
+  Processors       2        4         8         16
+ allreduce       4 kB     4 kB      4 kB       4 kB
+ alltoall         4B       4B       4B         4B
+                                                          References
+ alltoallv       8 MB     2 MB     512 kB     128 kB      [1] D. Bailey, E. Barszcz, J. Barton, D. Browning, R. Carter,
+Figure 8. Communication pattern of IS innermost               L. Darum, R. Fatoohi, P. Frederickson, T. Lasinski, R.
+         loop. The loop is executed 10 times.                 Schreiber, H. Simon, and V. Venkatakrisham. The NAS
+                                                              Parallel Benchmarks, International Journal of
+                                                              Supercomputer Applications, 5 (3): 63-73, 1991.
+9    Conclusions                                          [2] N. Boden, D. Cohen, R. Felderman, A. Kulawik, C.
+    At present, clusters of workstations interconnected       Seitz, J. Seizovic, and W. Su. Myrinet: A Gigabit-per-
+with high-speed networks are becoming the                     second Local Area Network. IEEE Micro, 15 (1): 29-36,
+                                                              February 1995.
+predominant choice for building parallel systems.
+                                                          [3] Compaq, Intel, and Microsoft. Virtual Interface
+Often, their performance evaluation is based on               Architecture Interface Specification, Version 1.0.
+limited scope ping-pong tests that measure point-to-          December 1997, http://www.viarch.org.
+point latency and bandwidth. Most message-passing         [4] D. Culler, R. Karp, D. Patterson, A. Sahay, K. Schauser,
+systems that use zero-copy transfers reach the peak           E. Santos, R. Subramonian, and T. Eicken. LogP:
+link bandwidth. Consequently, the evaluation                  Towards a Realistic Model of Parallel Computation. In
+procedure is further reduced to comparison of latency.        Proc. Of the 4th ACM Symp. On Principles and Practice
+In addition to the capabilities of network hardware,          of Parallel Programming: 1-12, San Diego, California,
+latency is significantly affected by the method of            May 1993.
+                                                          [5] R. Dimitrov and A Skjellum. Efficient MPI for Virtual
+message completion. The synchronous method uses
+                                                              Interface (VI) Architecture. In Proc. of the 1999 Int.
+polling and achieves low latency at the expense of            Conf. on Parallel and Distributed Processing
+CPU overhead. The asynchronous method uses                    Techniques and Applications, vol. 6: 3094-3100, Las
+blocking system calls and threads or callbacks.               Vegas, Nevada, 1999.
+Blocking leads to higher latency, but on the other        [6] Giganet, Inc. Giganet cLAN Family of Products,
+hand, it reduces CPU time spent on communication              http://www.giganet.com/products, 1999.
+and allows for overlapping of computation and             [7] W. Gropp, E. Lusk, N. Doss, and A. Skjellum. A High-
+communication.                                                performance, Portable Implementation of the MPI
+    The experiments presented in this paper show that         Message Passing Interface Standard. Parallel
+                                                              Computing, 22 (6): 789-828, September 1996.
+the lower latency of polling in comparison to blocking
+                                                          [8] A. Gupta and V. Kumar. Performance Properties of
+does not lead to an improvement of the overall                Large Scale Parallel Systems, Journal of Parallel and
+performance of medium to coarse grain data-parallel           Distributed Computing, 19: 234-244, 1999.
+applications represented by the NAS benchmarks. The       [9] Message Passing Interface Forum. MPI: A Message-
+algorithms presented in these benchmarks exchange a           Passing Interface Standard. International Journal of
+small number of large-size messages. Therefore, the           Supercomputer Applications, 8 (3/4): 165-414, 1994.
+communication bandwidth has a stronger impact on          [10] L. Valiant. A Bridgin Model for Parallel Computation,
+the overall performance than latency. Although                Communications of the ACM, 33 (8):103-111, August
+systems that use asynchronous completion have higher          1990.
+                                                          [11] D. Eager, J. Zahorjan, and E. Lazowska. Speedup
+latency than systems with synchronous completion,
+                                                              versus Efficiency in Parallel Systems, IEEE
+they impose only minimal or no loss application               Transactions on Computers, 38 (3): 408-423, 1989.
+performance. Polling used in synchronous completion       [12] R. Dimitrov and A. Skjellum. An Efficient MPI
+systems results in tight synchronization between the          Implementation for collective Virtual Interface
+communicating processes and uses CPU cycles for               Architecture – Enabled Cluster Computing, In Proc. of
+communication. As opposed to that, asynchronous               the Third MPI Developer’s and User’s Conf.: 15-24,
+completion offers a number of alternative mechanisms          Atlanta, Georgia, 1999.
+

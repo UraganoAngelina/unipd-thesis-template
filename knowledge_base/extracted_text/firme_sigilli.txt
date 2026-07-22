@@ -1,0 +1,143 @@
+Firme e sigilli elettronici
+Guida sintetica
+Normative e Standard
+Area di applicazione
+Regolamento (UE) n. 910/2014 (eIDAS)
+Quadro giuridico europeo per firme elettroniche, identificazione digitale e servizi fiduciari. Definisce FEA,
+FEQ, sigilli, marche temporali e QTSP. Garantisce interoperabilità tra Stati membri.
+
+AgID – Linee guida su FEQ e servizi fiduciari
+Regole tecniche italiane per firme elettroniche qualificate, certificati, sigilli e validazioni temporali. Stabilisce
+requisiti per QTSP e formati di firma (PAdES, CAdES, XAdES).
+
+ETSI TS 119 431-1
+Policy e requisiti di sicurezza per QTSP che gestiscono dispositivi di firma remoti (remote QSCD). Include
+SAP/SAM per controllo esclusivo del firmatario e certificazione dei servizi.
+
+CEN EN 419 241-2
+Protection Profile per QSCD lato server. Basato su Common Criteria (EAL4+) per garantire protezione delle
+chiavi e controllo esclusivo tramite SAD. Usato per certificare firme remote qualificate.
+
+
+                                                                                                                        2
+Normative e Standard
+Glossario acronimi
+
+
+Regolamento (UE) n. 910/2014 (eIDAS)                                    ETSI TS 119 431-1
+
+eIDAS = electronic IDentification, Authentication and trust Services;   ETSI = European Telecommunications Standards Institute;
+FEA = Firma Elettronica Avanzata;                                       QSCD = Qualified Signature Creation Device;
+FEQ = Firma Elettronica Qualificata;                                    SAP = Signature Activation Protocol;
+QTSP = Qualified Trust Service Provider                                 SAM = Signature Activation Module;
+                                                                        SSAS = Server Signing Application Service
+
+
+
+AgID                                                                    CEN EN 419 241-2
+
+AgID = Agenzia per l’Italia Digitale                                    CEN = European Committee for Standardization;
+
+CAD = Codice dell’Amministrazione Digitale                              SAD = Signature Activation Data;
+
+PAdES/CAdES/XAdES = Standard di firma elettronica per PDF,              EAL4+ = Evaluation Assurance Level 4;
+
+CMS, XML                                                                PP = Protection Profile
+
+
+                                                                                                                                  3
+  Firme certificate / 1
+    Tipologia          Titolare          Owner/         Dove sta la chiave     Autenticazione richiesta       Controllo esclusivo             Casi d'uso
+                                       Responsabile
+Firma locale con   Persona fisica    Medico /          Su smartcard/token PIN (più possesso fisico del     Garantito dal dispositivoFirme puntuali in
+smartcard                            Professionista    USB del firmatario dispositivo)                     fisico (QSCD locale)     contesti tradizionali o
+                                                                                                                                    con postazioni fisse
+Firma remota       Persona fisica    Medico /          Su HSM/QSCD           Autenticazione forte per ogni Tramite meccanismo di    Firme singole in
+classica                             Professionista    gestito dal QTSP      firma: PIN + OTP/SPID/CIE     Signature Activation     workflow con intervento
+                                                       (cloud o on-prem)                                   (SAP/SAM) per operazione umano (contratti, atti)
+Firma remota       Persona fisica    Medico /          Su HSM/QSCD del       Un'unica autenticazione       Controllo valido per la     Firme multiple in
+batch                                Professionista    QTSP                  forte per lotto (PIN +        sessione/lotto di firma     un'unica operazione
+                                                                             OTP/SPID/CIE)                                             (lotti documentali)
+Firma automatica Persona fisica      Owner          Su HSM/QSCD del          Autenticazione solo iniziale La delega è circoscritta ad Processi
+                                     applicativo +  QTSP (cloud o            (delega); poi nessun OTP/PIN atti privi di valutazione   massivi/time-critical;
+                                     DPO/Compliance on-prem)                 per ogni firma               personale del medico.       integrazioni applicative
+                                                                                                                                      server-side
+Sigillo elettronico Persona          IT/Legal dell'Ente Su HSM/QSCD          Gestita dal sistema (non dal Controlli di sistema e      Fatture, attestazioni,
+qualificato         giuridica                           dell'organizzazione/ singolo individuo)           policy organizzative        referti già validati dal
+                    (ente/azienda)                      QTSP                                                                          workflow, certificazioni
+                                                                                                                                      di sistema
+Firma elettronica Persona fisica     Medico /           Su QSCD (locale con Autenticazione forte (varia Richiesto controllo           Qualsiasi documento
+qualificata (FEQ)                    Professionista     smartcard o remoto per modello: PIN; PIN+OTP; esclusivo del firmatario con pieno valore legale
+                                                        su HSM)              SPID/CIE)                    (dispositivo o SAP/SAM) (equivalente firma
+                                                                                                                                      autografa)
+                                                                                                                                                           4
+  Firme certificate / 2
+     Tipologia            Conformità normativa                Note sui rischi                       Esempi                            SLA suggerito
+
+Firma locale con    FEQ (eIDAS/CAD), se il           Perdita/furto del dispositivo; PIN Firma di referto/atto singolo alla Revoca/blocco dispositivo entro 24h;
+smartcard           dispositivo è certificato QSCD   scritto o condiviso                postazione con lettore smartcard cambio PIN secondo policy
+Firma remota        FEQ (se QTSP e QSCD conformi Phishing/compromissione               Firma singola di contratto/referto Reset credenziali in 4h; OTP time-
+classica            ETSI/AgID)                   secondo fattore; social               con OTP per operazione             based; audit giornaliero
+                                                 engineering
+Firma remota        FEQ (stesse condizioni della     Errore di selezione nel lotto;  Firma di un lotto di fatture o       Verifica contenuto lotto prima della
+batch               remota classica)                 firma indesiderata di documenti referti in un'unica sessione         firma; log per lotto; audit 24h
+                                                     inclusi
+Firma automatica FEQ (se implementata secondo Uso improprio se deleghe troppo Emissione massiva di                        Revisione deleghe settimanale; alert
+                 ETSI EN 419241 e regole AgID) ampie; necessarie policy e audit referti/fatture via applicativo           in tempo reale; revoca immediata
+                                               rigorosi                         integrato
+
+Sigillo elettronico Sigillo qualificato (eIDAS)      Serve a garantire integrità,      Sigillatura automatica di fatture, Monitoraggio HSM 24/7; piani di
+qualificato                                          provenienza e responsabilità      attestazioni, certificazioni di    continuità; revoca certificato in 4h
+                                                     dell’ente, non dell'individuo.    sistema
+
+Firma elettronica FEQ (eIDAS/CAD)                    Rischi e misure dipendono dal     N/A (categoria trasversale)        Secondo il modello adottato
+qualificata (FEQ)                                    modello (locale, remoto,                                             (locale/remoto/automatico)
+                                                     automatico)
+
+
+                                                                                                                                                           5
+  Firme non certificate / 1
+    Tipologia          Titolare        Owner/         Dove sta la chiave     Autenticazione richiesta      Controllo esclusivo           Casi d'uso
+                                     Responsabile
+Firma Elettronica Persona fisica   Utente + IT locale Nessuna chiave di Firma grafometrica su tablet Garantito tramite raccolta Consenso informato,
+Avanzata (FEA) –                                      firma; hash e         con identificazione visiva e biometrica e               accettazione documenti
+grafometrica                                          container cifrato per documentale del firmatario. identificazione             sanitari
+                                                      dati biometrici.
+Firma Elettronica Persona fisica   Utente + IT locale Nessuna chiave        User + Password + OTP via Garantito tramite secondo Firma documenti in
+Avanzata (FEA) –                                      crittografica; OTP    SMS/App                      fattore dinamico           workflow con conferma
+OTP-based                                             generato                                                                      utente
+                                                      dinamicamente
+Firma Elettronica Persona fisica   Utente + IT locale Nessuna chiave        Impronta digitale o          Garantito tramite          Accesso e firma
+Avanzata (FEA) –                                      crittografica; dati   riconoscimento facciale      identificazione biometrica documenti in ambienti
+biometrica fisica                                     biometrici fisici                                                             protetti
+Firma Elettronica Persona fisica   Utente + IT locale Nessuna chiave       User + Password + PIN        Parziale; assente secondo Workflow interni con
+Avanzata (FEA) –                                      crittografica;       statico                      fattore dinamico          conferma utente
+password-based                                        autenticazione
+                                                      locale
+
+
+
+
+                                                                                                                                                      6
+  Firme non certificate / 2
+    Tipologia           Conformità normativa                 Note sui rischi                       Esempi                            SLA suggerito
+
+Firma Elettronica   FEA (eIDAS/CAD); valida come    Dipende dalla qualità della       Firma del paziente su tablet per   Verifica dispositivi biometrici; audit
+Avanzata (FEA) –    scrittura privata se conforme   raccolta e conservazione          consenso informato                 mensile; conservazione sicura
+grafometrica                                        biometrica
+Firma Elettronica   FEA (eIDAS/CAD); valida come    Phishing sul secondo fattore; OTP Firma di contratto con OTP via     OTP time-based; audit settimanale;
+Avanzata (FEA) –    scrittura privata se conforme   intercettato                      SMS                                alert su anomalie
+OTP-based
+Firma Elettronica FEA (eIDAS/CAD); valida come      Falsificazione biometrica; errori Firma con impronta digitale su     Verifica dispositivi biometrici; audit
+Avanzata (FEA) – scrittura privata se conforme      di riconoscimento                 terminale sicuro                   mensile; backup identità
+biometrica fisica
+Firma Elettronica FEA (eIDAS/CAD); valida come      Password condivisa; assenza di    Firma di documenti interni con     Introdurre OTP entro 90 giorni; audit
+Avanzata (FEA) – scrittura privata se conforme      secondo fattore                   user/password                      settimanale
+password-based
+
+
+
+
+                                                                                                                                                           7
+Grazie
+

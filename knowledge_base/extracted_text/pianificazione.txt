@@ -1,0 +1,349 @@
+Ogni microservizio del DIH che riceve una richiesta può estrarre dal token:
+- **Chi è** l'utente (CF)
+- **Di quale AULSS** fa parte (codice_struttura) — fondamentale per la multitenancy
+- **Che ruoli ha** nell'applicazione (apms:gruppi)
+- **Da quale IdP** si è autenticato (per audit e per il logout federato)
+
+Il `codice_struttura: "050511"` è il codice ISTAT/ministeriale della struttura. Nel contesto SI.Ter questo è la chiave che determina quale tenant vedere nei dati.
+
+---
+
+## Dominio Clinico ↔ Tecnologico: il legame completo
+
+Ora costruiamo il collegamento sistematico tra ogni flusso clinico del DM 77 e la sua implementazione tecnologica nel SI.Ter.
+
+---
+
+### COT — Centrale Operativa Territoriale
+
+**Cos'è clinicamente:** La COT è il nodo di coordinamento del distretto. Non eroga prestazioni direttamente ma gestisce la continuità assistenziale: riceve le segnalazioni (da reparti ospedalieri, MMG, PUA, 116117), valuta il setting appropriato, attiva il servizio giusto, monitora la presa in carico.
+
+Standard DM 77: 1 COT ogni 100.000 abitanti, operativa 7/7, personale minimo 1 coordinatore infermieristico + 3-5 infermieri.
+
+**Il flusso operativo in ePersonam:**
+```
+SEGNALAZIONE IN INGRESSO
+        │
+        ├── da Reparto Ospedaliero (ADT → SIO-ADT → ms-pazienti)
+        ├── da MMG (accesso diretto applicazione)
+        ├── da PUA (integrazione nativa ePersonam)
+        └── da CO 116117 (integrazione nativa ePersonam)
+        │
+        ▼
+TRIAGE COT
+Operatore COT visualizza:
+  - Dati anagrafici (ms-anagrafica → Anagrafe Zero RVE-54)
+  - Storico clinico (FSEr → ms-fse → Visualizzatore Fascicolo)
+  - Eventuali prescrizioni attive (E-prescribe → SAR)
+        │
+        ▼
+VALUTAZIONE MULTIDIMENSIONALE
+  - Scale di valutazione (BRASS per dimissione protetta,
+    Barthel per autonomia, SPMSQ per cognitivo)
+  - Compilate direttamente in ePersonam
+  - Workflow BPMN Camunda: 
+    "se BRASS ≥ 10 → setting ADI obbligatorio"
+        │
+        ▼
+ASSEGNAZIONE SETTING
+  ├── ADI (domiciliare intensivo)
+  ├── ODC/URT (residenziale)
+  ├── Hospice (cure palliative)
+  ├── Ambulatoriale (CUP → ms-CUP)
+  └── Solo MMG (chiusura segnalazione)
+        │
+        ▼
+NOTIFICA AL SERVIZIO RICEVENTE
+  RabbitMQ → Queue assegnazioni-{setting}-{aulss}
+```
+
+**Transazioni RVE coinvolte:** RVE-142 (Initialize Authentication Flow), RVE-54 (Patient Query), RVE-100 (Resource Subscription per aggiornamenti anagrafe), ITI-41 (pubblicazione report valutazione su FSEr).
+
+---
+
+### ADI — Assistenza Domiciliare Integrata
+
+**Cos'è clinicamente:** L'ADI eroga cure a domicilio per pazienti non autosufficienti o con patologie croniche. È strutturata in livelli di intensità (ADI 1/2/3) in base alla complessità del caso. L'obiettivo PNRR è prendere in carico il 10% degli over 65 con patologie croniche — circa 1,5 milioni di persone al 2026.
+
+**Il flusso operativo in ePersonam:**
+```
+ATTIVAZIONE (da COT)
+        │
+        ▼
+CARTELLA ADI
+  Struttura dati:
+  ├── Piano Assistenziale Individuale (PAI)
+  │   - obiettivi assistenziali
+  │   - frequenza accessi
+  │   - figure professionali coinvolte
+  │   - durata prevista
+  ├── Diario delle visite (ogni accesso domiciliare)
+  ├── Terapia farmacologica (integrata con E-prescribe)
+  ├── Scale di valutazione periodiche
+  └── Documentazione clinica (pubblicata su FSEr ITI-41)
+        │
+        ▼
+GESTIONE ACCESSI DOMICILIARI
+  - Infermiere/fisioterapista apre app mobile (client mobile ePersonam)
+  - Autenticazione APMS: Utente Federato via IdP AULSS
+    (stesso flusso OIDC ma su client mobile)
+  - Geolocalizzazione accesso (timestamp + GPS)
+  - Compilazione diario su tablet/smartphone
+  - Firma digitale del documento
+        │
+        ▼
+PRESCRIZIONE E FARMACI
+  E-prescribe (GPI) → integrazione SAR (MEF-1)
+  - Prescrizioni di farmaci a carico SSN
+  - Prescrizioni di dispositivi medici
+  - Ricette dematerializzate (NRE)
+        │
+        ▼
+CHIUSURA ADI
+  ├── Dimissione (paziente stabilizzato)
+  ├── Trasferimento setting (es. → ODC)
+  └── Decesso
+  
+  In tutti i casi: documento di chiusura → ITI-41 FSEr
+```
+
+**Peculiarità tecnica rilevante:** Il documento APMS specifica che un'applicazione può avere più client (es. desktop amministrativo + mobile per operatori domiciliari). Nel contesto ADI questo è essenziale: l'infermiere che va a domicilio usa un client mobile con autenticazione APMS separata ma stesso User Pool. Il `codice_struttura` nel token identifica il distretto ADI di appartenenza.
+
+---
+
+### Dimissione Protetta: il flusso più critico end-to-end
+
+Questo è il flusso che attraversa più sistemi e che nel documento è descritto come caso d'uso principale. Ecco la ricostruzione completa integrando tutte le specifiche:
+```
+TRIGGER: paziente anziano ricoverato in Geriatria AULSS3
+         medico reparto decide la dimissione
+
+STEP 1 — NOTIFICA DALL'ADT OSPEDALIERO
+  ADT AULSS3 (sistema legacy)
+        │ messaggio HL7 v2.5 ADT^A03 (dimissione)
+        ▼
+  WSO2 Micro Integrator
+        │ trasformazione HL7 → JSON
+        │ Drools: "ADT^A03 + età>65 → notifica COT obbligatoria"
+        ▼
+  RabbitMQ Queue: dimissioni-protette-aulss3
+
+STEP 2 — RICEZIONE IN ePersonam COT
+  Operatore COT autenticato (token APMS con apms:gruppi="op_COT")
+        │
+        ▼
+  ePersonam mostra alert nuova segnalazione
+  Operatore apre scheda paziente:
+    - ms-anagrafica → GET Anagrafe Zero RVE-54 (dati anagrafici)
+    - ms-fse → GET FSEr Visualizzatore (storico clinico)
+    - ms-pazienti → GET SIO-ADT (ricoveri precedenti)
+
+STEP 3 — VALUTAZIONE COT
+  Operatore compila:
+    - Scheda BRASS (rischio dimissione difficile)
+      se score ≥ 10 → Camunda BPMN: task "Attiva ADI"
+    - Scheda SVAMA (valutazione multidimensionale anziani)
+    - Piano di dimissione
+
+STEP 4 — ATTIVAZIONE ADI
+  COT assegna a "ADI Distretto 2 - Favaro Veneto"
+        │
+        ▼
+  RabbitMQ Queue: assegnazioni-adi-aulss3-distretto2
+        │
+        ▼
+  ePersonam ADI riceve notifica
+  Responsabile ADI accetta la presa in carico
+  Apre cartella ADI con PAI iniziale
+
+STEP 5 — PUBBLICAZIONE DOCUMENTI SUL FSEr
+  ePersonam → ms-fse
+        │ ITI-41 Provide & Register Document
+        ▼
+  XDS Document Repository
+  Documenti pubblicati:
+    - Lettera di dimissione ospedaliera
+    - Scheda di valutazione COT
+    - PAI ADI iniziale
+  Tutti indicizzati sul FSEr del paziente
+
+STEP 6 — COINVOLGIMENTO MMG
+  COT notifica il MMG del paziente
+  (integrazione con sistema messaging regionale)
+  MMG può visualizzare tutta la documentazione
+  via Fascicolo Sanitario
+
+STEP 7 — FIRMA DIGITALE
+  Ogni documento clinico rilevante
+        │ Firma Digitale (servizio AULSS locale, vedi diagramma)
+        ▼
+  Documento firmato → ri-pubblicato su FSEr (ITI-57 Replace)
+```
+
+---
+
+### FSEr: il layer documentale trasversale
+
+Il Fascicolo Sanitario Elettronico regionale è il repository di tutti i documenti clinici. Nel SI.Ter ogni evento clinico rilevante genera un documento che viene pubblicato sul FSEr.
+
+**Tipi di documenti pubblicati dal SI.Ter:**
+```
+Da ePersonam-COT:
+  - Scheda di valutazione COT
+  - Piano di presa in carico
+
+Da ePersonam-ADI:
+  - PAI (Piano Assistenziale Individuale)
+  - Diario infermieristico
+  - Relazione di chiusura ADI
+
+Da ePersonam-ODC:
+  - Scheda di ammissione
+  - Documentazione clinica ricovero
+  - Lettera di dimissione ODC
+
+Da SisTer-CSM:
+  - Relazione psichiatra
+  - Piano terapeutico farmacologico
+  - Documentazione follow-up
+
+Da SisTer-Consultori:
+  - Referto visita ostetrica/ginecologica
+  - Certificati (es. interruzione volontaria di gravidanza)
+```
+
+**Il meccanismo tecnico XDS:**
+```
+Pubblicazione (ITI-41):
+  ePersonam crea documento CDA2 (Clinical Document Architecture)
+        │
+        ▼
+  ms-fse esegue ITI-41 verso XDS Repository
+  Include:
+    - Documento CDA2 (base64)
+    - Metadati XDS:
+      patientId (CF + dominio AULSS)
+      classCode (tipo documento)
+      practiceSettingCode (setting clinico)
+      confidentialityCode (livello accesso)
+        │
+        ▼
+  XDS Registry aggiorna indice del paziente
+        │
+        ▼
+  Documento visibile nel Fascicolo del paziente
+
+Recupero (Chiamata di Contesto RVE-130):
+  Operatore in ePersonam clicca "Apri Fascicolo"
+        │ deep link contestuale (bypass DIH-Router)
+        ▼
+  Visualizzatore "Sanità km Zero Fascicolo"
+  Pre-caricato con dati paziente corrente
+  Mostra tutti i documenti indicizzati (non solo SI.Ter)
+```
+
+---
+
+### ODC e Hospice: setting residenziali
+
+**ODC — Ospedale di Comunità** (20 PL ogni 100.000 ab, DM 77):
+Gestito in ePersonam. Il flusso tipico è: ammissione da COT o da PS ospedaliero → cartella clinica ODC → rivalutazione periodica → dimissione verso ADI o domicilio o RSA. Tecnicamente simile all'ADI ma con gestione del posto letto (worklist infermieristica, diario medico, gestione farmaci reparto).
+
+**Hospice** (8-10 PL ogni 100.000 ab, DM 77):
+Le cure palliative hanno specificità normative (D.Lgs. 38/2010). In ePersonam l'Hospice ha moduli dedicati per: Piano di cura palliativa, Valutazione del dolore (scala NRS/VAS), Gestione oppioidi (con integrazione particolare su E-prescribe per i farmaci stupefacenti), Coinvolgimento dei familiari, Documentazione per la morte del paziente.
+
+---
+
+### SisTer — CSM e Consultori: il dominio specialistico
+
+**CSM — Centro di Salute Mentale:**
+
+Il CSM gestisce percorsi psichiatrici che hanno vincoli normativi specifici (L. 180/1978, DPR 309/1990 per le dipendenze). In SisTer il modulo CSM gestisce:
+```
+PRESA IN CARICO
+  - Visita di primo accesso (psichiatra)
+  - Diagnosi ICD-10
+  - Piano Terapeutico Individuale (PTI)
+  
+FOLLOW-UP
+  - Visite ambulatoriali (integrate con CUP → ms-CUP)
+  - Prescrizioni farmacologiche (E-prescribe, con attenzione
+    ai farmaci in fascia H e agli stupefacenti)
+  - Interventi psicologici
+  - Inserimenti lavorativi/sociali (integrazione servizi sociali)
+
+RICOVERI PSICHIATRICI
+  - TSO (Trattamento Sanitario Obbligatorio):
+    flusso speciale con notifica al Sindaco e al giudice
+    (integrazione con sistemi amministrativi comunali)
+  - SPDC (Servizio Psichiatrico Diagnosi e Cura):
+    integrazione ADT ospedaliero
+
+FLUSSI INFORMATIVI
+  - SISM (Sistema Informativo Salute Mentale) al Ministero
+    → SisTer estrae i dati e li invia tramite 
+      Helios.Data (BI Almaviva)
+```
+
+**Consultori Familiari** (1 ogni 20.000 ab, DM 77):
+```
+AREE DI ATTIVITÀ IN SisTer:
+  - Salute riproduttiva (contraccezione, infertilità)
+  - Gravidanza (percorso nascita, corsi preparto)
+  - IVG (interruzione volontaria di gravidanza):
+    flusso con certificazione medica, rispetto tempi L.194/78
+  - Pediatria e adolescenza
+  - Violenza di genere:
+    percorso codice rosa, integrazione con Centri Antiviolenza
+  - Menopausa
+  - Sessualità e coppia
+
+FLUSSI INFORMATIVI:
+  - Cedap (Certificato di Assistenza al Parto)
+  - IVG (flusso ministeriale)
+```
+
+---
+
+### La mappa completa: tutto collegato
+```
+DOMINIO CLINICO (DM 77)          APPLICAZIONE         TECNOLOGIA
+═══════════════════════════════════════════════════════════════════
+
+COT (coordinamento)              ePersonam-COT        Camunda BPMN
+  ├─ Ricezione segnalazioni                           RabbitMQ queue
+  ├─ Valutazione setting                              Drools rules
+  └─ Attivazione servizi                              WSO2 routing
+
+ADI (domicilio)                  ePersonam-ADI        Client mobile
+  ├─ PAI                                              E-prescribe/SAR
+  ├─ Accessi domiciliari                              APMS multi-client
+  └─ Prescrizioni                                     ITI-41 FSEr
+
+ODC (residenziale)               ePersonam-ODC        HL7 ADT
+  ├─ Ammissione/dimissione                            ITI-41 FSEr
+  └─ Cartella clinica                                 Firma digitale
+
+Hospice                          ePersonam-Hospice    E-prescribe
+  ├─ Cure palliative                                  (farmaci stupefacenti)
+  └─ Piano di cura                                    ITI-41 FSEr
+
+CSM (salute mentale)             SisTer-CSM           CUP/ms-CUP
+  ├─ Presa in carico                                  E-prescribe
+  ├─ Follow-up ambulatoriale                          SISM → Helios.Data
+  └─ TSO                                              ITI-41 FSEr
+
+Consultori                       SisTer-IAF           CUP/ms-CUP
+  ├─ Percorso nascita                                 Cedap/IVG flussi
+  └─ IVG                                              ITI-41 FSEr
+
+═══════════════════════════════════════════════════════════════════
+TRASVERSALI A TUTTO:
+
+Autenticazione                   ms-autenticazione    APMS/Cognito/OIDC
+Anagrafe paziente                ms-anagrafica        Anagrafe Zero RVE-54..62
+Fascicolo sanitario              ms-fse               XDS ITI-41/FSEr
+Prenotazioni                     ms-CUP               SIO-CUP
+Ricoveri/dimissioni              ms-pazienti          SIO-ADT HL7
+Prescrizioni                     E-prescribe          SAR MEF-1/MEF-6
+Business Intelligence            Helios.Data          Flussi SISM/SICOF/LEA

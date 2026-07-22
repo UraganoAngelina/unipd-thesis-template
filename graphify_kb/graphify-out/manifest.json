@@ -1,0 +1,147 @@
+{
+  "analisi_completa.md": {
+    "mtime": 1784296310.5879107,
+    "ast_hash": "ef61c49435d20a85536ced0a3c6145c0",
+    "semantic_hash": "ef61c49435d20a85536ced0a3c6145c0"
+  },
+  "pianificazione.txt": {
+    "mtime": 1784296310.8952296,
+    "ast_hash": "14412bb778ed145dbc3049ccc5127244",
+    "semantic_hash": "14412bb778ed145dbc3049ccc5127244"
+  },
+  "specifiche.txt": {
+    "mtime": 1784296310.9967358,
+    "ast_hash": "4245cadcb8780091487cfcd75a50dfff",
+    "semantic_hash": "4245cadcb8780091487cfcd75a50dfff"
+  },
+  "3503954.3503956.pdf": {
+    "mtime": 1784296310.5461104,
+    "ast_hash": "e2f6e7db804de76784af379048fbc726",
+    "semantic_hash": "e2f6e7db804de76784af379048fbc726"
+  },
+  "AQ2365-L3 _Si.Ter_DIMENSIONAMENTO INFRASTRUTTURA_V1.4.pdf": {
+    "mtime": 1784296310.602985,
+    "ast_hash": "04ab1b70f0251cc514dd8c6df26b51e4",
+    "semantic_hash": "04ab1b70f0251cc514dd8c6df26b51e4"
+  },
+  "All. 2 Capitolato Tecnico 3.pdf": {
+    "mtime": 1784296310.5634985,
+    "ast_hash": "7dc2da3b85f472cbab61cb2a5e63690d",
+    "semantic_hash": "7dc2da3b85f472cbab61cb2a5e63690d"
+  },
+  "DDR 11922 del 16.03.2026_SITER.pdf": {
+    "mtime": 1784296310.6622856,
+    "ast_hash": "e2d79f0a4fc6e50870a59cf463fa75c6",
+    "semantic_hash": "e2d79f0a4fc6e50870a59cf463fa75c6"
+  },
+  "DDR 13745 17-12-2025_SIOC.pdf": {
+    "mtime": 1784296310.6769118,
+    "ast_hash": "f70c60d688c4329d95130d3fcda4aee4",
+    "semantic_hash": "f70c60d688c4329d95130d3fcda4aee4"
+  },
+  "DM_77_2022.pdf": {
+    "mtime": 1784296310.729218,
+    "ast_hash": "75edad9d0a43458fa81fd9c99ac4a11e",
+    "semantic_hash": "75edad9d0a43458fa81fd9c99ac4a11e"
+  },
+  "Data Reference Architecture-v1.1-Nuova.pdf": {
+    "mtime": 1784296310.6482399,
+    "ast_hash": "f5397d0b83ec50fd6ffc210f6b661179",
+    "semantic_hash": "f5397d0b83ec50fd6ffc210f6b661179"
+  },
+  "Decreto-Ministro-della-salute-772022-.pdf": {
+    "mtime": 1784296310.6950424,
+    "ast_hash": "9af19941e552af3f5166384876a80526",
+    "semantic_hash": "9af19941e552af3f5166384876a80526"
+  },
+  "Firme e sigilli elettronici 1.pdf": {
+    "mtime": 1784296310.745697,
+    "ast_hash": "e230a3d6086fc055a56a1f3b8cea9206",
+    "semantic_hash": "e230a3d6086fc055a56a1f3b8cea9206"
+  },
+  "Infrastructure Reference Architecture-v1.1.0.pdf": {
+    "mtime": 1784296310.816428,
+    "ast_hash": "b7d77f3d998d8166b14bcd78457a6306",
+    "semantic_hash": "b7d77f3d998d8166b14bcd78457a6306"
+  },
+  "Infrastruttura di sicurezza GDL-O Sicurezza v2.14.pdf": {
+    "mtime": 1784296310.8288395,
+    "ast_hash": "0cba43dbef55c46a8939fa7147c546c4",
+    "semantic_hash": "0cba43dbef55c46a8939fa7147c546c4"
+  },
+  "MANUALE PROTOCOLLO 2_116117.docx 1.pdf": {
+    "mtime": 1784296310.8432403,
+    "ast_hash": "53e8eeb03f054ab8d1c10d2a8e9da883",
+    "semantic_hash": "53e8eeb03f054ab8d1c10d2a8e9da883"
+  },
+  "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf": {
+    "mtime": 1784296310.8632975,
+    "ast_hash": "f9cdd74ceaa3ed0c8d0fd023836f4734",
+    "semantic_hash": "f9cdd74ceaa3ed0c8d0fd023836f4734"
+  },
+  "Percorsi, Sistemi e Flussi Sanitari dei Servizi Territoriali_v3.0.pdf": {
+    "mtime": 1784296310.8831353,
+    "ast_hash": "6b3a21e89fcb092b14c96079a28836ed",
+    "semantic_hash": "6b3a21e89fcb092b14c96079a28836ed"
+  },
+  "RTI AlmavivA Relazione Tecnica Sanit\u00e0 digitale ID 2365 Lotto 3 - Azienda Zero Veneto SIT _RdO 5521029 1.pdf": {
+    "mtime": 1784296310.9269154,
+    "ast_hash": "68fcb6375c92ee6981c547861531d046",
+    "semantic_hash": "68fcb6375c92ee6981c547861531d046"
+  },
+  "SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf": {
+    "mtime": 1784296310.9419386,
+    "ast_hash": "4c4c248c288583efa4d90e2c15b81805",
+    "semantic_hash": "4c4c248c288583efa4d90e2c15b81805"
+  },
+  "SITER_presentazione alla Cabina di Regia_25 marzo 2026.pdf": {
+    "mtime": 1784296310.9722471,
+    "ast_hash": "17fede2cd965de828c11084ba3a98111",
+    "semantic_hash": "17fede2cd965de828c11084ba3a98111"
+  },
+  "SITer - Dimensionamento infrastruttura.pdf": {
+    "mtime": 1784296310.951933,
+    "ast_hash": "1434446ec87af2dc70a0f7a6d43cf242",
+    "semantic_hash": "1434446ec87af2dc70a0f7a6d43cf242"
+  },
+  "Specifiche tecniche - Anagrafe Zero v2.6.pdf": {
+    "mtime": 1784296311.0099976,
+    "ast_hash": "9a730139b937f6d6792506e1caaf508d",
+    "semantic_hash": "9a730139b937f6d6792506e1caaf508d"
+  },
+  "Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf": {
+    "mtime": 1784296311.044753,
+    "ast_hash": "2dadbea19c60885469211186fa310354",
+    "semantic_hash": "2dadbea19c60885469211186fa310354"
+  },
+  "Specifiche tecniche RTI - Anagrafica.pdf": {
+    "mtime": 1784296311.0858974,
+    "ast_hash": "84efc4c8871c011c8023cd2f0917f054",
+    "semantic_hash": "84efc4c8871c011c8023cd2f0917f054"
+  },
+  "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf": {
+    "mtime": 1784296311.0270064,
+    "ast_hash": "c008d0ebaf2a8b5f43d3a154689fcad1",
+    "semantic_hash": "c008d0ebaf2a8b5f43d3a154689fcad1"
+  },
+  "Specifiche tecniche per l\u2019interoperabilit\u00e0 2.6.3 - Affinity Domain.pdf": {
+    "mtime": 1784296311.0665972,
+    "ast_hash": "9425819470774497b0c92cdaab5ac502",
+    "semantic_hash": "9425819470774497b0c92cdaab5ac502"
+  },
+  "ULSS 3 Serenissima - Specifiche tecniche di integrazione con XValue v2.10.pdf": {
+    "mtime": 1784296311.1301916,
+    "ast_hash": "bcad16abeafefbb45408d89e281c8a8f",
+    "semantic_hash": "bcad16abeafefbb45408d89e281c8a8f"
+  },
+  "paymed_analisi3.pdf": {
+    "mtime": 1784296310.8756874,
+    "ast_hash": "9e607cd58a53a5f1a20c746c0e7d7ac7",
+    "semantic_hash": "9e607cd58a53a5f1a20c746c0e7d7ac7"
+  },
+  "srg_2.pdf": {
+    "mtime": 1784296311.0981102,
+    "ast_hash": "14d7ca0d4775dbe3d41fb58601481517",
+    "semantic_hash": "14d7ca0d4775dbe3d41fb58601481517"
+  }
+}

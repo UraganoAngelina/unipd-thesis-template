@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Request-Dataset-Generator"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+			"latex-workshop.latex.tools": [
+				{
+					"name": "latexmk-shell-escape",
+					"command": "latexmk",
+					"args": [
+						"-pdf",
+						"-shell-escape",
+						"-synctex=1",
+						"-interaction=nonstopmode",
+						"-file-line-error",
+						"%DOC%"
+					]
+				}
+			],
+
+			"latex-workshop.latex.recipes": [
+				{
+					"name": "latexmk with shell escape",
+					"tools": [
+						"latexmk-shell-escape"
+					]
+				}
+			],
+
+			"latex-workshop.latex.recipe.default": "first"
+	}
+}

@@ -1,0 +1,777 @@
+REGIONE DEL VENETO
+       116117
+     MANUALE
+  -PROTOCOLLO 2-
+
+
+
+
+        1
+GRUPPO TECNICO DI LAVORO
+
+ Adriano Valerio                 Direttore CO SUEM 118 AOUIVR
+
+ Andrea Favaro                   Direttore Dipartimento Emergenza e Area Critica AULSS 7
+                                 Coordinatore Co.Re. Triage
+
+ Marta Zanovello                 UOC Governo Clinico Azienda Zero
+
+ Elena Vecchiato                 Dirigente Medico DEA AULSS 7
+
+ Thomas Matteazzi                Dirigente Medico DEA AULSS 7
+
+ Denis Granzotto                 Coordinatore DEA AULSS 2
+
+ Andrea Favaretto                Coordinatore CO SUEM 118 AOPD
+
+ Marco Manzini                   Coordinatore CO SUEM 118 AOUIVR
+
+
+PREMESSA
+Il Ministero della Salute nel 2016 ha emanato le ‘Linee di indirizzo sui criteri e le modalità di
+attivazione del Numero Europeo Armonizzato a valenza sociale 116117’ esplicitando che, il
+suddetto numero non costituisce una mera sostituzione dei numeri dell’attuale servizio di Continuità
+assistenziale (CA) ma rappresenta un’opportunità per il miglioramento dell’assistenza sanitaria che
+può essere inserita nel contesto della rimodulazione delle attività delle cure primarie che le regioni
+stanno avviando o si accingono a riorganizzare, per gli aspetti di loro competenza. Il numero
+116117, numero unico nazionale per l’accesso ai servizi di cure mediche non urgenti e altri servizi
+sanitari concorre alla gestione della domanda assistenziale a bassa intensità/priorità e la sua
+attivazione ha l’obiettivo di mettere in contatto l’utente con un operatore competente oppure con un
+medico per assicurare assistenza o consulenza sanitaria, in questo modo i cittadini dovranno
+ricordare un solo numero per poter ricevere risposta relativamente a problemi differenti di salute.
+(1)
+
+Con il decreto n. 32 del 4 aprile 2023 e successivo n. 86 del 19/6/23 il Direttore Generale dell’Area
+Sanità e Sociale della Regione Veneto ha istituito un gruppo di lavoro regionale (CO 116-117) per
+lo sviluppo operativo del modello della Centrale Operativa 116117.
+Obiettivi primari che si è posto il gruppo di lavoro sono: rendere facilmente fruibile ai cittadini una
+risposta basata su livelli di cura appropriati, identificare dei percorsi che permettano di ridurre
+l'overcrowding dei servizi di emergenza ed urgenza (SUEM-118 e DEA-Pronto Soccorso). Il
+gruppo tecnico ha effettuato un'indagine su flusso EMUR PS (2022) che attraverso il calcolo di
+indicatori NO CORE D05C, D06C, D07Ca, D07Cb del sistema di garanzia, ha evidenziato un
+possibile bacino di utenza al numero armonizzato pari a circa il 30% degli accessi ai servizi di
+emergenza (SUEM-118 e DEA-Pronto Soccorso)
+
+Coordinato dal gruppo di lavoro 116-117 è stato composto un gruppo tecnico formato da medici e
+infermieri del SUEM-118 e del Coordinamento Regionale Triage formatori del DiRe e Triage
+Ospedaliero. È stata fatta una revisione della letteratura disponibile sui sistemi analoghi in uso in
+diverse realtà nazionali ed internazionali.
+
+Al fine di rendere il processo di risposta 116-117 omogeneo, integrato e sinergico con i sistemi
+DiRe del SUEM 118 e CoRe del Triage ospedaliero già in uso in Regione Veneto, si è deciso di
+partire dall'analisi delle schede dei due sistemi per estrapolare le categorie di bisogni sanitari per cui
+                                                    2
+l’utente potrebbe interrogare l’operatore del 116-117 e per ciascuno definito il processo operativo
+decisionale.
+
+RISPOSTA OPERATIVA 116-117
+
+Alla chiamata dell’utente, l’operatore tecnico della centrale 116-117 procede con le seguenti fasi.
+
+FASE 1 - Identificazione del chiamante
+Dati anagrafici
+Chi chiama (tabella I)
+Dati per la reperibilità
+
+Tabella I: classificazione dei chiamanti
+                   Denominazione                                            Definizione
+ Paziente                                              chi chiama per sè stesso
+ Caregiver/familiare/assistente                        chi chiama per un assistito prossimo (lo vede)
+                                                       chi chiama per un soggetto che necessita di assistenza ma
+ Altro                                                 non ha legami assistenziali continuativi (es: vicino di
+                                                       casa)
+
+FASE 2 - Esclusione di un problema emergente
+L’operatore procede alla esclusione di alterazioni del livello di coscienza (Airway), respiro
+(Breathing) e C ( Circulation) che identificano criteri di attivazione del SUEM-118, la loro
+identificazione comporta il trasferimento della chiamata.
+
+FASE 3. Definizione del problema di salute motivo della chiamata
+L'operatore classifica il/i problemi di salute riferiti con la ricerca gerarchica attraverso schede e
+parole TAG.
+Una volta identificato il problema principale della chiamata, l’operatore procede con l'applicazione
+della flow chart relativa.
+Ogni scheda prevede la descrizione dei criteri di accesso alla scheda e l'elenco delle parole di
+"entrata" (TAG), sinonimi, talvolta anche popolari, del sintomo /problema stesso.
+
+FASE 3. Definizione del percorso
+L’operatore procede, sulla base del protocollo descritto sulle schede, ad attivare la risposta prevista.
+
+
+
+
+                                                   3
+            Figura 1: flow chart di indagine delle problematiche legate a livello di coscienza, A, B e C.
+
+Se l’operatore rileverà l’assenza di segni suggestivi di problematica emergente procederà con
+l’indagine della problematica per cui avviene il contatto con la centrale 116117 come riportato in
+figura 2.
+
+
+
+
+                                                         4
+                               Figura 2: Flow Chart del percorso di chiamata.
+
+
+
+
+Sulla base delle schede fornite, da utilizzare secondo gerarchia, l’operatore tecnico sarà in grado di
+(Figura 2):
+    - Deviare la chiamata al SUEM 118 se il paziente riferisce la presenza di sintomi codificati
+       come ‘parole alert’ nel manuale,
+                                                     5
+   -   Deviare la chiamata ai medici di CA disponibili per la ricezione;
+   -   Prenotare una visita presso gli ambulatori della CA (prenotazione SLOT di visita): gli SLOT
+       saranno proposti in base alla disponibilità nel territorio di residenza del soggetto;
+   -   Deviare la chiamata all’infermiere di centrale operativa: in base alle procedure attribuite al
+       personale infermieristico; l’infermiere di centrale potrà poi procedere con le medesime
+       modalità di deviazione o risoluzione della chiamata;
+   -   Consultare il medico di centrale per situazioni non risolvibili o complesse
+   -   Deviare la chiamata alla Centrale ADI se il paziente è in carico;
+   -   Prenotare una visita con un medico specialista per i casi previsti per telemedicina:
+       prenotazione di una visita online con specialista disponibile sul territorio regionale.
+
+Il medico di CA che prende in carico la chiamata potrà:
+    - risolverla con consiglio
+    - rinviare al MMG o PLS per programmazione di visita
+    - fissando un appuntamento di visita presso gli ambulatori di CA (prenotazione SLOT di
+       visita)
+    - inviare il soggetto in PS
+    - consultare online il medico di PS per il case management di situazioni particolari secondo
+       specifiche procedure
+    - attivare COT
+
+La gerarchia da utilizzare per la selezione delle ‘schede problema’ è la seguente:
+
+   -   Scheda LOC, ABC
+   -   Febbre
+   -   Dolore addominale
+   -   Disturbi neurologici
+   -   Vertigini
+   -   Cefalea
+   -   Dolore collo schiena
+   -   Disturbi psichici
+   -   Intossicazione
+   -   Dermatologico
+   -   Emorragie non traumatiche
+   -   Astenia
+   -   Odontalgia
+   -   Dolore arti
+   -   Problemi ostetrico/ginecologico
+   -   Oculistico
+   -   Orecchio
+   -   Bocca
+   -   Urologico
+   -   Trauma minore
+   -   Pressione alta/bassa
+   -   Dolore non riconducibile ad altra scheda specifica
+   -   Corpo estraneo
+   -   Vomito/diarrea
+   -   Problematica non altrimenti classificabile in altra scheda
+   -   Procedure
+
+
+                                                  6
+L’operatore dovrà chiudere la chiamata seguendo le indicazioni date dalla relativa flow chart
+(Figura 2) con i seguenti esiti:
+    - deviazione della chiamata al 118
+    - deviazione della chiamata all’infermiere
+    - deviazione della chiamata al medico di continuità assistenziale
+    - deviazione alla centrale ADI
+    - prenotazione di uno slot di visita
+    - prenotazione di un teleconsulto con specialista
+    - chiusura diretta (chiamata non pertinente)
+
+Il consulto telefonico con il medico di continuità assistenziale (Figura 2) potrà esitare in:
+    - chiusura della cartella con consiglio telefonico,
+    - chiusura della cartella con invio al MMG o PLS
+    - chiusura della cartella con invio in PS con mezzi propri,
+    - chiusura della cartella come non pertinente,
+    - chiusura della cartella con deviazione al 118,
+    - chiusura della cartella dopo consulto con specialista e dopo aver richiamato il paziente,
+    - attivazione di un teleconsulto con specialista (ginecologo, CAV, pediatra, PS online),
+    - deviazione della chiamata all’infermiere di centrale,
+    - deviazione della chiamata all’operatore per prenotazione di slot di visita.
+
+Di seguito vengono riportate le schede problema.
+Le problematiche verranno descritte in tabelle in cui sono riportati:
+    - titolo scheda: denominazione della scheda,
+    - definizione: rappresenta la chiave di ingresso alla scheda e definisce quale deve essere la
+       problematica presentata,
+    - parole di entrata: raggruppa tutte le parole che esprimono la problematica specifica,
+    - parole alert: raggruppamento di tutte le parole che, se dichiarate in associazione alla
+       problematica specifica, devono far attivare la deviazione di chiamata al SUEM 118
+    - flow chart: percorso grafico di sviluppo della problematica specifica
+
+
+
+
+                                                 7
+                       Problematiche della scheda LOC, ABC
+Titolo scheda                               Sincope
+                                            Perdita di coscienza di breve durata (a rapida
+Definizione
+                                            risoluzione)
+                                            Non rispondeva più, non dava segni di vita, ha
+Parole di entrata                           perso coscienza, ha perso i sensi, è collassato, è
+                                            svenuto, è sincopato,
+Parole alert per 118                        Tutte le parole di entrata
+Flowchart                                   Vedi figura 1
+
+
+Titolo scheda                               Dispnea
+Definizione                                 Mancanza di respiro riferita
+Parole di entrata                           Mancanza di respiro, affanno, respiro corto,
+                                            mancanza di fiato, mancanza di aria, fame
+                                            d’aria
+Parole alert per 118                        Tutte le parole di entrata
+Flowchart                                   Vedi figura 1
+
+
+Titolo scheda                               Cardiopalmo
+Definizione                                 Riferito battito cardiaco alterato
+Parole di entrata                           Battito cardiaco accelerato, cuore che batte
+                                            veloce, tachicardia, pulsazioni rapide, aumento
+                                            della frequenza cardiaca, cuore in iperattività,
+                                            battarella, cuore che salta un battito, cuore che
+                                            si ferma, sentire il cuore nelle orecchie,
+                                            bradicardia, cuore che salta in gola.
+Parole alert per 118                        Tutte le parole di entrata
+Flowchart                                   Vedi figura 1
+
+
+Titolo scheda                               Dolore toracico
+Definizione                                 Dolore al torace di origine non traumatica
+Parole di entrata                           Mal di stomaco, male al torace,
+Parole alert per 118                        Tutte le parole di entrata
+Flowchart                                   Vedi figura 1
+
+
+Titolo scheda                               Trauma capo/collo/torace/addome
+Definizione                                 Traumatismi di qualsiasi natura a capo, collo,
+                                            torace e addome
+Parole di entrata                           Ho sbattuto/mi sono ferito/ho un trauma/ho
+                                            colpito il capo/collo/torace/addome
+Parole alert per 118                        Tutte le parole di entrata
+Flowchart                                   Vedi figura 1
+
+
+                                        8
+                               SCHEDA FEBBRE
+
+Titolo scheda          Febbre
+Definizione            Temperatura Corporea ≥ 37,5°C
+                       Febbre, ipertermia, iperpiressia, brividi, ‘è tanto caldo’, ho i
+Parole di entrata
+                       brividi a freddo, tremori, temperatura elevata
+Parole alert per 118   Confusione mentale, sincope, dispnea, cardiopalmo
+Flowchart
+
+
+
+
+                                         9
+                       SCHEDA DOLORE ADDOMINALE
+
+Titolo scheda          Dolore addominale
+Definizione            Dolore all’addome di origine non traumatica
+                       Dolore all’addome, dolore alla pancia, mal di stomaco (tra lo sterno
+                       e l’ombelico), crampi addominali, dolore gastrico, dolore al ventre,
+                       fastidio alla pancia, dolore al fianco, dolore sopra al pube, dolore in
+Parole di entrata
+                       basso, dolore attorno all’ombelico, pancia gonfia, indigestione,
+                       bruciore allo stomaco
+
+                       Aneurisma, aneurisma aorta, stomaco, dolore sopra ombelico (?),
+Parole alert per 118
+                       sudato, ferita, vomito con sangue, assunzione di sostanze
+Flowchart
+
+
+
+
+                                          10
+                                              DISTURBO NEUROLOGICO
+
+Titolo scheda                                            Disturbo neurologico
+                                                         In assenza di traumi , alterazione della forza ( perdita
+                                                         parziale o completa) o della sensibilità agli arti ( dal
+Definizione                                              formicolio sino all'insensibilità), alterazioni del campo
+                                                         visivo, della parola
+                                                         Fa fatica a parlare, fa fatica a deglutire, perdita di forza
+                                                         ad un arto, sorride con metà bocca, metà faccia è
+                                                         immobile, non riesce a muovere gli arti, non alza un
+                                                         braccio, non muove una gamba, trascina una gamba,
+                                                         vede doppio, intorpidimento, formicolio, vede male
+Parole di entrata
+                                                         (non vede una parte del campo visivo, vede un pezzo del
+                                                         campo visivo nero, vede una macchia nera), non riesce a
+                                                         chiudere un occhio, cammina male, non riesce a
+                                                         deglutire, non parla bene, parla male, disturbo
+                                                         dell’equilibrio, sbandamento
+Parole alert per 118                                     Indipendentemente dal tempo di insorgenza: Sincope,
+(devono contenere il fattore tempo, eccezion fatta per
+l’associazione di disturbo neurologico con sincope,      cefalea, disturbi psichici.
+cefalea e disturbi psichici che sono indipendenti dal    Se il disturbo è presente da meno di 24 ore
+tempo)
+Flowchart
+
+
+
+
+                                                                11
+                                         VERTIGINI
+
+Titolo scheda          Vertigini
+                       Sensazione soggettiva di movimento rotatorio, oscillatorio pur
+Definizione
+                       rimanendo fermi
+                       Vertigini, capogiro, il mondo gira, continuo a girare, gira tutto, vedo
+Parole di entrata
+                       tutto girare, la stanza gira, mi sento girare, se mi muovo gira tutto,
+                       Indipendentemente dal tempo di insorgenza se associata a cefalea.
+Parole alert per 118   Se non riesce a camminare e stare in piedi
+                       Se il disturbo è presente da meno di 12 ore.
+Flowchart
+
+
+
+
+                                              12
+                                     CEFALEA
+
+
+Titolo scheda           Cefalea
+Definizione             Dolore al capo di origine non traumatica
+                        Mal di testa, cefalea, emicrania, aura, testa pesante, sensazione di
+Parole di entrata
+                        pressione in testa, cefalalgico,
+                        Indipendentemente dal tempo di insorgenza se associata a vertigine,
+Parole alert per 118    disturbo neurologico, disturbo psichico.
+                        Se il disturbo è presente da meno di 12 ore.
+Percorso della scheda
+
+
+
+
+                                          13
+                          DOLORE COLLO/SCHIENA
+
+Titolo scheda          Dolore collo schiena
+                       Dolore, di origine non traumatica, localizzata alla regione posteriore
+Definizione
+                       del torace
+                       Mal di schiena, schiena bloccata, colpo della strega, dolore ai lombi,
+                       contrattura alla schiena, sensazione di tensione alla schiena, dolore
+Parole di entrata
+                       dorsale, dolore lombare, dolore cervicale, cervicali, dolore al collo,
+                       male al collo, dolore ai reni
+                       Se associata a perdita di coscienza, dolore toracico, noto aneurisma
+Parole alert per 118
+                       dell’aorta, perdita di sensibilità agli arti
+Flowchart
+
+
+
+
+                                         14
+                                DISTURBO PSICHICO
+
+Titolo scheda          Disturbo psichico
+                       Alterazione dello stato cognitivo (paziente confuso, agitato, allucinato,
+Definizione
+                       disorientato, aggressivo), paziente con problematica psichiatrica noto
+                       Confusione mentale, soggetto agitato, soggetto allucinato, soggetto
+                       disorientato, soggetto aggressivo, soggetto psichiatrico, ansia,
+Parole di entrata
+                       depressione, giù di morale, ho voglia di parlare, mi sento solo, sono
+                       triste, mi sento nervoso, rifiuta di alimentarsi,
+                       Indipendentemente dal tempo se associato a disturbo neurologico,
+                       cefalea, febbre, paziente in grave agitazione psicomotoria/aggressivo
+Parole alert per 118   (anche nei confronti degli altri), minaccia di uccidersi, minaccia di
+                       uccidere qualcuno
+                       Se il disturbo è presente da meno di 24 ore.
+Flowchart
+
+
+
+
+                                            15
+                                 INTOSSICAZIONE
+Titolo scheda           Intossicazione
+                        Assunzione, contatto o inalazione di sostanze potenzialmente
+Definizione
+                        dannose. Assunzione incongrua di farmaci.
+                        Ho sbagliato ad assumere un farmaco che prendo abitualmente (es:
+                        più volte la pastiglia), contatto cutaneo con sostanza x, ho
+Parole di entrata
+                        mangiato/bevuto/inalato/fumato una sostanza x (potenzialmente
+                        dannosa)
+                        Incosciente, difficoltà a parlare, a deglutire, a respirare, esce bava
+Parole alert per 118    dalla bocca, bruciore alla gola, capogiro, rossore cutaneo, dolore
+                        addominale, presenza di vomito/diarrea
+Percorso della scheda
+
+
+
+
+                                           16
+                                  DERMATOLOGICO
+
+Titolo scheda          Dermatologico
+                       Reazione cutanea comprese anche le reazioni dopo puntura di insetto o
+Definizione
+                       morso di animale
+                       Eruzione cutanea, rossore, presenza di bollicine sulla pelle, pomfi,
+                       nuove lesioni sulla pelle, presenza di chiazze, prurito, presenza di
+Parole di entrata
+                       macchie, segni di morso di animale, zecca, insetto, presenza di puntini,
+                       vescicole, presenza di croste, puntura da insetto/animali,
+                       Dispnea (fatica a respirare), fatica a parlare, fatica a deglutire,
+Parole alert per 118   alterazione del suono della voce, gonfiore, arrossamento dal collo in
+                       su, capogiro, presenza di vomito/diarrea
+Flowchart
+
+
+
+
+                                            17
+18
+                       EMORRAGIA NON TRAUMATICA
+
+Titolo scheda          Emorragie non traumatiche
+Definizione            Perdita di sangue senza traumatismi associati
+                       Perdita di sangue, emorragia, scarica sangue, vomita sangue, fa pipì
+                       rossa/con sangue, epistassi, perdita di sangue dal naso, feci striate di
+Parole di entrata      rosso, sangue nel water, ematuria, sangue sul fazzoletto,
+                       tosse/catarro con sangue, feci scure/nere, sangue dalle gengive,
+                       sangue dall’orecchio, sangue dalla bocca,
+                       Perdita di coscienza, difficoltà a respirare, capogiro, vomita sangue,
+Parole alert per 118
+                       tossisce sangue, scarica sangue, cacca nera
+Flowchart
+
+
+
+
+                                          19
+                                          ASTENIA
+
+Titolo scheda          Astenia
+Definizione            Mancanza di forze
+                       Sentirsi fiacco, senso di spossatezza, mancanza di forza, debolezza,
+Parole di entrata
+                       debilitato, sfinito, astenico, sentirsi spossato, sentirsi stanco, stufo
+                       Svenimento/perdita di coscienza, cardiopalmo, difficoltà a respirare,
+                       confusione mentale, Fa fatica a parlare, fa fatica a deglutire, perdita di
+                       forza ad un arto, sorride con metà bocca, metà faccia è immobile, non
+                       riesce a muovere gli arti, non alza un braccio, non muove una gamba,
+Parole alert per 118   trascina una gamba, vede doppio, diplopia, intorpidimento, formicolio,
+                       vede male (non vede una parte del campo visivo, vede un pezzo del
+                       campo visivo nero, vede una macchia nera), non riesce a chiudere un
+                       occhio, cammina male, non riesce a deglutire, non parla bene, parla
+                       male, disturbo dell’equilibrio, sbandamento
+Flowchart
+
+
+
+
+                                              20
+                                     ODONTALGIA
+Titolo scheda          Odontalgia
+Definizione            Problematiche relative ai denti
+                       Odontalgia, mal di denti, dente rotto, distacco di protesi, denti caduti a
+Parole di entrata
+                       seguito di traumi isolati
+Parole alert per 118   Dolore mandibola, mal di denti irradiato ad altre parti del corpo
+Flowchart
+
+
+
+
+                                             21
+                                    DOLORE AGLI ARTI
+
+Titolo scheda          Dolore arti
+                       Dolore agli arti e alle articolazioni comprese nell’arto di origine non
+Definizione
+                       traumatica
+                       Male al ginocchio, male alla caviglia, male alle anche, male alla mano,
+                       male alle dita della mano, male al polso, male all’avambraccio, male al
+                       gomito, gomito da tennista, gonfiore alle articolazioni, male alla spalla,
+Parole di entrata      periartrite, male alla palpazione di un arto, male al braccio, male alla
+                       coscia, male al ginocchio, ginocchio gonfio, dolore alla gamba,
+                       articolazione gonfia e rossa, dolore alla caviglia, male al piede, male alle
+                       dita del piede
+Parole alert per 118   Perdita di coscienza, dolore toracico, dolore allo stomaco
+Flowchart
+
+
+
+
+                                                22
+                           OSTERICO/GINECOLOGICO
+
+Titolo scheda          Ostetrico/ginecologico
+Definizione            Problematiche riguardanti l’apparato genitale femminile
+                       Metrorragia, sanguinamento vaginale, peso al basso ventre, dolore
+                       vaginale, prurito/bruciore, perdite vaginali, pillola del giorno dopo,
+                       anticoncezionale, interruzione volontaria di gravidanza (IVG),
+Parole di entrata
+                       rapporto a rischio, gravidanza, contrazioni uterine, allattamento,
+                       perdite ematiche in donna gravida, mestruazione abbondante,
+                       mestruazione dolorosa, assenza di mestruazioni
+                       Emorragia in atto dopo 20 settimana, parto imminente, contrazioni
+Parole alert per 118
+                       ravvicinate, trauma addominale in gravida
+Flowchart
+
+
+
+
+                                           23
+                                     OCULISTICO
+Titolo scheda          Oculistico
+Definizione            Problemi alla vista di origine non traumatica
+                       Vedo male, fatico a vedere, vedo sfuocato, vedo le luci, vedo ragnatela,
+Parole di entrata
+                       occhio rosso, mi lacrima l’occhio, occhio dolente, secrezioni all’occhio
+                       Vedo una macchia nera, vedo metà campo visivo nero, rossore
+Parole alert per 118
+                       periorbitario, occhio tanto rosso e tanto dolente, vedo doppio
+Flowchart
+
+
+
+
+                                            24
+                                     ORECCHIO
+
+Titolo scheda          Orecchio
+Definizione            Problematiche relative all’organo orecchio
+                       Male alle orecchie, acufeni, sento poco, non sento da un orecchio,
+Parole di entrata      sento un fischio continuo, sento ovattato (come sott’acqua), ho le
+                       orecchie tappate,
+Parole alert per 118   Otorragia con trauma cranico
+Flowchart
+
+
+
+
+                                          25
+                       BOCCA
+
+Titolo scheda             Bocca
+Definizione               Problematiche relative all’organo bocca
+                          Male alla bocca, male alla lingua, male alle
+Parole di entrata         gengive, herpes, micosi, afte, mughetto, bocca
+                          bianca, lesioni in bocca
+                          Non riesce a parlare, non riesce a deglutire,
+Parole alert per 118
+                          difficoltà a respirare
+Flowchart
+
+
+
+
+                        26
+                                    UROLOGICO
+
+Titolo scheda           Urologico
+Definizione             Problematiche dell’apparato genitourinario
+Parole di entrata       Dolore al testicolo, dolore al pene, non riesce a fare pipì, bruciore
+                        minzionale, difficoltà ad urinare, sangue nelle urine, ematuria,
+                        secrezioni dal pene,
+Parole alert per 118    /
+Percorso della scheda
+
+
+
+
+                                           27
+                                        TRAUMA
+
+Titolo scheda          Trauma
+Definizione            Traumatismi di qualsiasi natura e in qualsiasi sede
+                       Ho preso una botta/storta/ in qualche parte del corpo, scivolato,
+Parole di entrata      inciampato, sbattuto, ferite, tagliato, incidente, tamponato, colpo di
+                       frusta, stiramento, distrazione cervicale,
+Parole alert per 118   Sincope, difficoltà respiratoria
+Flowchart
+
+
+
+
+                                             28
+PRESSIONE ALTA/BASSA
+
+Titolo scheda          Pressione alta/bassa
+Definizione            Dichiarazione di pressione alta o bassa
+Parole di entrata      Pressione alta, ipertensione, pressione, pressione bassa, ipotensione
+                       Fatica a parlare, perdita di forza ad un arto, non riesce a muovere gli
+Parole alert per 118   arti, sorriso asimmetrico, cardiopalmo, episodio di perdita di
+                       coscienza, dolore toracico, pressione bassa, ipotensione
+Flowchart
+
+
+
+
+                                           29
+                DOLORE NON RICONDUCIBILE AD ALTRA SCHEDA
+
+Titolo scheda          Dolore non riconducibile ad altra scheda specifica
+                       Dolore di origine non traumatica in sedi del corpo non identificate
+Definizione
+                       con altre schede
+Parole di entrata      Dolore, male, malessere generalizzato, ho male dappertutto
+Parole alert per 118   /
+Flowchart
+
+
+
+
+                                         30
+                CORPO ESTRANEO NON INGERITO, NON INALATO
+
+Titolo scheda           Corpo estraneo non ingerito, non inalato
+                        Presenza di oggetti (anche piccoli) estraneo al corpo in qualsiasi parte
+Definizione
+                        del corpo non ingerito e non inalato [intossicazioni]
+Parole di entrata       Spina, scheggia, corpo estraneo,
+Parole alert per 118    Fa fatica a deglutire, fa fatica a respirare
+Percorso della scheda
+
+
+
+
+                                            31
+                                 VOMITO/DIARREA
+
+Titolo scheda          Vomito/diarrea
+Definizione            Vomito o diarrea
+                       Vomito, diarrea, scarica feci liquide, dissenteria, rimettere, rigurgito,
+Parole di entrata
+                       rigettare, mi è venuto su,
+Parole alert per 118   Reazione cutanea, contatto/ingestione di sostanze
+Flowchart
+
+
+
+
+                                            32
+                PROBLEMATICA NON ALTRIMENTI CLASSIFICABILE
+
+
+
+
+                        Problematica non altrimenti classificabile in altra scheda
+Titolo scheda           [ATTENZIONE!!! SPECIFICARE, IN UN CAMPO LIBERO, IL
+                        MOTIVO DELLA CHIAMATA]
+Definizione             Tutte le problematiche non comprese nelle schede precedenti
+Parole di entrata       /
+Parole alert per 118    /
+Flowchart
+
+
+
+
+                                        33
+                                      PROCEDURE
+
+Sono state individuate delle procedure specifiche per la figura del medico e per la figura
+dell’infermiere di centrale operativa.
+
+      Professionista                                      Procedure
+                              -   Certificazioni malattia
+                              -   Prescrizione/informazione farmaci o esami strumentali urgenti
+Medico                        -   Constatazione decesso
+                              -   ASO
+                              -   Informazioni/visione esami ematochimici
+                              -   Somministrazione terapia già prescritta
+                              -   Gestione di catetere vascolare
+                              -   Gestione di catetere vescicale
+                              -   Gestione di stomie
+                              -   Gestione di tracheo
+                              -   Gestione di sondini naso gastrici
+                              -   Gestione di nutrizione parenterale
+Infermiere                    -   Gestione di PEG
+                              -   Medicazioni
+                              -   Rimozione punti
+                              -   Suture semplici?
+                              -   Vaccinazioni antitetaniche
+                              -   Gestione del soggetto con stipsi senza dolore addominale
+                              -   Rimozione zecche
+
+
+
+
+                                              34
+                PAROLE ALERT PER DEVIAZIONE CHIAMATA A SUEM 118
+
+Di seguito vengono riportate tutte le parole comprese nelle diverse schede che devono allertare
+l’operatore e per le quali deve essere attivato il servizio SUEM 118.
+
+ Parole alert     Sincope
+                  Dispnea
+                  Cardiopalmo
+                  Dolore Toracico
+                  Disturbo Neurologico <24h
+                  Emorragia in Atto Dopo 20 Settimane
+                  Parto Imminente
+                  Contrazioni Ravvicinate
+                  Confusione Mentale
+                  Fa Fatica A Parlare
+                  Fa Fatica A Deglutire
+                  Perdita Di Forza Ad Un Arto, Non Riesce A Muovere Gli Arti
+                  Sorriso Asimmetrico
+                  Disturbo Psichico Da Più Di 24 H
+                  Pz In Grave Agitazione Psicomotoria/Aggressivo
+                  Vuole Uccidersi
+                  Dolore Mandibola O Odontalgia Irradiate Ad Altre Parti Del Corpo
+                  Aneurisma
+                  Aneurisma Aorta
+                  Stomaco
+                  Dolore Sopra Ombelico
+                  Sudato
+                  Ferita
+                  Vomito Con Sangue
+                  Assunzione Sostanze
+                  Gonfiore
+                  Arrossamento Dal Collo In Su
+                  Vede Una Macchia Nera
+                  Vede Doppio
+                  Alterazione Del Campo Visivo Con O Senza Trauma
+                  Otorragia Con Trauma Cranico
+                  Perdita Di Coscienza
+                  Vertigini
+                  Vomita Sangue
+                  Tossisce Sangue
+                  Scarica Sangue
+
+
+
+
+                                                    35
+QUESITI APERTI:
+  - Questo numero come si interfaccerà con le attività assistenziali già in essere?
+  - Pediatra è uno specialista online?
+
+PROPOSTE
+  - Attivazione di un pool di ambulanze deputate al trasporto in PS dei soggetti impossibilitati a
+     recarsi in ospedale in autonomia ma che presentano problematiche che non richiedono
+     l’attivazione del 118
+  - Consulente pediatrico per la costruzione di alcune schede specifiche
+
+
+Tutte le chiamate saranno notificate ai MMG e PLS curanti.
+Per ogni AULSS/distretto dovranno essere disponibili e consultabili online sul sito aziendale gli
+orari di accesso alle strutture ambulatoriali per accessi U specialistici preferibilmente con
+impegnativa CA/curante o in alternativa in fast-track. Di conseguenza questa potrebbe diventare
+una soluzione per vari problemi
+
+
+
+
+                                                 36
+

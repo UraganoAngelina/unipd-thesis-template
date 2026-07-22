@@ -1,0 +1,555 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{akram-numerical-latency}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f3832f494d492f8c4986003b177e69cb}{%
+           family={Akram},
+           familyi={A\bibinitperiod},
+           given={Saira},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c6c7b4deafbfef7c1da07e8ba1fb99f3}{%
+           family={Akram},
+           familyi={A\bibinitperiod},
+           given={Muhammad\bibnamedelima Asim},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=1ee524c4f7c1b0b42f84217529ec0c90}{%
+           family={Rehman},
+           familyi={R\bibinitperiod},
+           given={Fattah\bibnamedelima UR},
+           giveni={F\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+      }
+      \strng{namehash}{efd6db90b3bed3db421543769d566ad1}
+      \strng{fullhash}{efd6db90b3bed3db421543769d566ad1}
+      \strng{bibnamehash}{efd6db90b3bed3db421543769d566ad1}
+      \strng{authorbibnamehash}{efd6db90b3bed3db421543769d566ad1}
+      \strng{authornamehash}{efd6db90b3bed3db421543769d566ad1}
+      \strng{authorfullhash}{efd6db90b3bed3db421543769d566ad1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Science Post}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{Numerical Evaluation of Network Latency and Throughput in Distributed Systems}
+      \field{volume}{1}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.5281/zenodo.18012513
+      \endverb
+    \endentry
+    \entry{ulss3-xvalue-v29}{report}{}
+      \name{author}{1}{}{%
+        {{hash=5beeb5ae99620c9413d2b3638dba7b00}{%
+           family={{Azienda ULSS 3 Serenissima}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \strng{fullhash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \strng{bibnamehash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \strng{authorbibnamehash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \strng{authornamehash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \strng{authorfullhash}{5beeb5ae99620c9413d2b3638dba7b00}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{5}
+      \field{month}{8}
+      \field{title}{Specifiche tecniche di integrazione tra sistemi Document Source e Repository XValue}
+      \field{version}{2.9}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{arsenal-context-rve-v13}{report}{}
+      \name{author}{2}{}{%
+        {{hash=dba377c67e476b8d7e0db3a1cfb5897d}{%
+           family={Canal},
+           familyi={C\bibinitperiod},
+           given={Gregorio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e6d14d2106330d780e749c1838b3822e}{%
+           family={Pavan},
+           familyi={P\bibinitperiod},
+           given={Gianluca},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Consorzio Arsenal.IT}%
+      }
+      \strng{namehash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \strng{fullhash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \strng{bibnamehash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \strng{authorbibnamehash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \strng{authornamehash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \strng{authorfullhash}{19cadf457e7ea62a73345b78cd5c3cb5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{18}
+      \field{month}{7}
+      \field{title}{Specifiche tecniche chiamata di contesto {RVE}}
+      \field{version}{1.3}
+      \field{year}{2025}
+      \field{dateera}{ce}
+    \endentry
+    \entry{affinity-domain-italia-v263}{report}{}
+      \name{author}{1}{}{%
+        {{hash=ce90f95ffef9ab63a71dc6218a0d6dac}{%
+           family={{CNR (ICAR) e Dipartimento per la Trasformazione Digitale}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \strng{fullhash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \strng{bibnamehash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \strng{authorbibnamehash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \strng{authornamehash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \strng{authorfullhash}{ce90f95ffef9ab63a71dc6218a0d6dac}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{31}
+      \field{month}{10}
+      \field{title}{Specifiche tecniche per l'interoperabilita tra i sistemi regionali di {FSE}: Affinity Domain Italia}
+      \field{version}{2.6.3}
+      \field{year}{2025}
+      \field{dateera}{ce}
+    \endentry
+    \entry{dimitrov-latency-applications}{unpublished}{}
+      \name{author}{2}{}{%
+        {{hash=709589cabe735d75e00dc6cba21400c9}{%
+           family={Dimitrov},
+           familyi={D\bibinitperiod},
+           given={Rossen},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9647a2df682f3a88f0f36dc0c58aa860}{%
+           family={Skjellum},
+           familyi={S\bibinitperiod},
+           given={Anthony},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f21e7d457b5e27a1e14337289340c69e}
+      \strng{fullhash}{f21e7d457b5e27a1e14337289340c69e}
+      \strng{bibnamehash}{f21e7d457b5e27a1e14337289340c69e}
+      \strng{authorbibnamehash}{f21e7d457b5e27a1e14337289340c69e}
+      \strng{authornamehash}{f21e7d457b5e27a1e14337289340c69e}
+      \strng{authorfullhash}{f21e7d457b5e27a1e14337289340c69e}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Manoscritto consultato nel corpus documentale}
+      \field{title}{Impact of Latency on Applications' Performance}
+    \endentry
+    \entry{article:spooky}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3ebf53e52a3ce84f0ffb8553200a6a63}{%
+           family={Einstein},
+           familyi={E\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=19dc919856626ef90dab285f889c3b78}{%
+           family={Podolsky},
+           familyi={P\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fc8bb495c63cdab3ba6923db2097e4c7}{%
+           family={Rosen},
+           familyi={R\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7a7dfe41768036d77a53afecb936f4e}
+      \strng{fullhash}{d7a7dfe41768036d77a53afecb936f4e}
+      \strng{bibnamehash}{d7a7dfe41768036d77a53afecb936f4e}
+      \strng{authorbibnamehash}{d7a7dfe41768036d77a53afecb936f4e}
+      \strng{authornamehash}{d7a7dfe41768036d77a53afecb936f4e}
+      \strng{authorfullhash}{d7a7dfe41768036d77a53afecb936f4e}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{10}
+      \field{title}{Can Quantum-Mechanical Description of Physical Reality be Considered Complete?}
+      \field{volume}{47}
+      \field{year}{1935}
+      \true{nocite}
+      \field{pages}{777\bibrangedash 780}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRev.47.777
+      \endverb
+    \endentry
+    \entry{hl7-fhir-r4}{online}{}
+      \name{author}{1}{}{%
+        {{hash=f05e794fd26811501f96c23af98463f8}{%
+           family={{HL7 International}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{fullhash}{f05e794fd26811501f96c23af98463f8}
+      \strng{bibnamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authorbibnamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authornamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authorfullhash}{f05e794fd26811501f96c23af98463f8}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{FHIR} Release 4 (Version 4.0.1): Overview}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://hl7.org/fhir/R4/overview.html
+      \endverb
+      \verb{url}
+      \verb https://hl7.org/fhir/R4/overview.html
+      \endverb
+    \endentry
+    \entry{hl7-fhir-r4-bundle}{online}{}
+      \name{author}{1}{}{%
+        {{hash=f05e794fd26811501f96c23af98463f8}{%
+           family={{HL7 International}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{fullhash}{f05e794fd26811501f96c23af98463f8}
+      \strng{bibnamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authorbibnamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authornamehash}{f05e794fd26811501f96c23af98463f8}
+      \strng{authorfullhash}{f05e794fd26811501f96c23af98463f8}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{FHIR} Release 4 (Version 4.0.1): Resource Bundle}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://hl7.org/fhir/R4/bundle.html
+      \endverb
+      \verb{url}
+      \verb https://hl7.org/fhir/R4/bundle.html
+      \endverb
+    \endentry
+    \entry{ihe-xdsb}{online}{}
+      \name{author}{1}{}{%
+        {{hash=558a8f2deb91085535be87d1580b69fe}{%
+           family={{IHE International}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{fullhash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{bibnamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authorbibnamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authornamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authorfullhash}{558a8f2deb91085535be87d1580b69fe}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cross-Enterprise Document Sharing ({XDS.b})}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html
+      \endverb
+      \verb{url}
+      \verb https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html
+      \endverb
+    \endentry
+    \entry{ihe-iua}{online}{}
+      \name{author}{1}{}{%
+        {{hash=558a8f2deb91085535be87d1580b69fe}{%
+           family={{IHE International}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{fullhash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{bibnamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authorbibnamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authornamehash}{558a8f2deb91085535be87d1580b69fe}
+      \strng{authorfullhash}{558a8f2deb91085535be87d1580b69fe}
+      \field{extraname}{2}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Internet User Authorization ({IUA})}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://profiles.ihe.net/ITI/IUA/
+      \endverb
+      \verb{url}
+      \verb https://profiles.ihe.net/ITI/IUA/
+      \endverb
+    \endentry
+    \entry{iorio-when-latency-matters}{article}{}
+      \name{author}{3}{}{%
+        {{hash=da24a8d97a7cdda782a14c8118ad3c2e}{%
+           family={Iorio},
+           familyi={I\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e5b4c0ff5d267573271e9b14aeb05113}{%
+           family={Risso},
+           familyi={R\bibinitperiod},
+           given={Fulvio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=8439d2f8ebe6bca9cd9636dda3625753}{%
+           family={Casetti},
+           familyi={C\bibinitperiod},
+           given={Claudio},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d96ff36328cd90febd9ea59f82471038}
+      \strng{fullhash}{d96ff36328cd90febd9ea59f82471038}
+      \strng{bibnamehash}{d96ff36328cd90febd9ea59f82471038}
+      \strng{authorbibnamehash}{d96ff36328cd90febd9ea59f82471038}
+      \strng{authornamehash}{d96ff36328cd90febd9ea59f82471038}
+      \strng{authorfullhash}{d96ff36328cd90febd9ea59f82471038}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{ACM SIGCOMM} Computer Communication Review}
+      \field{month}{10}
+      \field{number}{4}
+      \field{title}{When Latency Matters: Measurements and Lessons Learned}
+      \field{volume}{51}
+      \field{year}{2021}
+      \field{dateera}{ce}
+    \endentry
+    \entry{womak:lean-thinking}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e476de67e57454852ad240f1ba5e23ca}{%
+           family={James\bibnamedelimb P.\bibnamedelimi Womack},
+           familyi={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Daniel\bibnamedelimb T.\bibnamedelimi Jones},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Simon \& Schuster, Inc.}%
+      }
+      \strng{namehash}{e476de67e57454852ad240f1ba5e23ca}
+      \strng{fullhash}{e476de67e57454852ad240f1ba5e23ca}
+      \strng{bibnamehash}{e476de67e57454852ad240f1ba5e23ca}
+      \strng{authorbibnamehash}{e476de67e57454852ad240f1ba5e23ca}
+      \strng{authornamehash}{e476de67e57454852ad240f1ba5e23ca}
+      \strng{authorfullhash}{e476de67e57454852ad240f1ba5e23ca}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lean Thinking, Second Editon}
+      \field{year}{2010}
+      \true{nocite}
+    \endentry
+    \entry{oasis-soa-rm}{report}{}
+      \name{author}{5}{}{%
+        {{hash=da5371826fe64b0774fa89c90b40e262}{%
+           family={MacKenzie},
+           familyi={M\bibinitperiod},
+           given={C.\bibnamedelimi Matthew},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=56230f5acfa82ab1dc41d7be6176e848}{%
+           family={Laskey},
+           familyi={L\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1da984e5f4f56f086b4344d79afa7c6b}{%
+           family={McCabe},
+           familyi={M\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b269d63ed0974176f251e8034564855e}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Peter\bibnamedelima F.},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=8315d82811e399d20ac58ea66a4bd070}{%
+           family={Metz},
+           familyi={M\bibinitperiod},
+           given={Rebekah},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {OASIS}%
+      }
+      \strng{namehash}{554c3165df3335313b938771e126ddd7}
+      \strng{fullhash}{45571e6218cbdf5b017117ca2241daa4}
+      \strng{bibnamehash}{554c3165df3335313b938771e126ddd7}
+      \strng{authorbibnamehash}{554c3165df3335313b938771e126ddd7}
+      \strng{authornamehash}{554c3165df3335313b938771e126ddd7}
+      \strng{authorfullhash}{45571e6218cbdf5b017117ca2241daa4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{12}
+      \field{month}{10}
+      \field{title}{Reference Model for Service Oriented Architecture 1.0}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
+      \endverb
+      \verb{url}
+      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
+      \endverb
+    \endentry
+    \entry{site:agile-manifesto}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{Manifesto Agile}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://agilemanifesto.org/iso/it/
+      \endverb
+      \verb{url}
+      \verb http://agilemanifesto.org/iso/it/
+      \endverb
+    \endentry
+    \entry{apms-auth-v141}{report}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{note}{Documento tecnico di progetto consultato nel corpus documentale}
+      \field{title}{Specifiche di integrazione autenticazione {APMS}}
+      \field{version}{1.4.1}
+    \endentry
+    \entry{arsenal-anagrafe-zero-v26}{report}{}
+      \name{author}{4}{}{%
+        {{hash=3c18cf6cb51693cbd9d377a54d169ac7}{%
+           family={Vio},
+           familyi={V\bibinitperiod},
+           given={Elena},
+           giveni={E\bibinitperiod}}}%
+        {{hash=34cebfdf02730fabc607fbd5fbdddb1b}{%
+           family={Zanardini},
+           familyi={Z\bibinitperiod},
+           given={Mauro},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e6d14d2106330d780e749c1838b3822e}{%
+           family={Pavan},
+           familyi={P\bibinitperiod},
+           given={Gianluca},
+           giveni={G\bibinitperiod}}}%
+        {{hash=716abaadb09da464c10b8c3413152a9b}{%
+           family={Zanin},
+           familyi={Z\bibinitperiod},
+           given={Cristina},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Consorzio Arsenal.IT}%
+      }
+      \strng{namehash}{113bd41c827a09627be20ce551ea1c72}
+      \strng{fullhash}{a0496f4d6d73a4102d4c5e3469ba55ed}
+      \strng{bibnamehash}{113bd41c827a09627be20ce551ea1c72}
+      \strng{authorbibnamehash}{113bd41c827a09627be20ce551ea1c72}
+      \strng{authornamehash}{113bd41c827a09627be20ce551ea1c72}
+      \strng{authorfullhash}{a0496f4d6d73a4102d4c5e3469ba55ed}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{1}
+      \field{title}{Specifiche tecniche -- Anagrafe Zero}
+      \field{version}{2.6}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{arsenal-security-v214}{report}{}
+      \name{author}{5}{}{%
+        {{hash=34cebfdf02730fabc607fbd5fbdddb1b}{%
+           family={Zanardini},
+           familyi={Z\bibinitperiod},
+           given={Mauro},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2c2143be17ddd0cd2a394cc471c64eab}{%
+           family={Girardello},
+           familyi={G\bibinitperiod},
+           given={Matteo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9750d90b91c063e909bc6e3a7da3feef}{%
+           family={Volpini},
+           familyi={V\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6553fe9c1143cc32b3f4b2aec9e04a18}{%
+           family={Sgro},
+           familyi={S\bibinitperiod},
+           given={Isabella},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e89499064023a2c85d9982974bbd61db}{%
+           family={Favero},
+           familyi={F\bibinitperiod},
+           given={Alessia},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Consorzio Arsenal.IT}%
+      }
+      \strng{namehash}{462e0ae1e39417b29d3db9c0c4e972b5}
+      \strng{fullhash}{46e8266a4c7ef19385bdc47dc1839594}
+      \strng{bibnamehash}{462e0ae1e39417b29d3db9c0c4e972b5}
+      \strng{authorbibnamehash}{462e0ae1e39417b29d3db9c0c4e972b5}
+      \strng{authornamehash}{462e0ae1e39417b29d3db9c0c4e972b5}
+      \strng{authorfullhash}{46e8266a4c7ef19385bdc47dc1839594}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{6}
+      \field{title}{Infrastruttura di sicurezza {GDL-O} Sicurezza}
+      \field{version}{2.14}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

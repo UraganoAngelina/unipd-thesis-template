@@ -1,0 +1,918 @@
+                                Public Review for
+         When Latency Matters: Measurements
+                and Lessons Learned
+                     Marco Iorio, Fulvio Risso, Claudio Casetti
+       This paper evaluates the ”latency argument” for edge computing, i.e., that
+       placing elastic computing and storage platforms in close proximity to end-
+       users makes sense for latency-critical applications. The paper evaluates sev-
+       eral sources of latency, including latency induced by core network routing
+       inefficiencies, wired and wireless access network, transport protocol and ap-
+       plication protocol. The paper concludes that moving data-centers close to
+       the users is only a small part of the latency problems, and that solving it
+       requires a more careful coordination of efforts across the network stack.
+       The reviewers appreciated that the experiments were performed with clear
+       take-away messages drawn after each experiment. They also found the paper
+       well-written, and most important, fully reproducible.
+
+
+
+
+                                                           Public review written by
+                                                             Bhaskaran Raman
+                                                                       IIT Bombay
+
+
+
+
+ACM SIGCOMM Computer Communication Review                   Volume 51 Issue 4, October 2021
+                                                2
+     When Latency Matters: Measurements and Lessons Learned
+                  Marco Iorio                                      Fulvio Risso                                   Claudio Casetti
+        Politecnico di Torino (DAUIN)                    Politecnico di Torino (DAUIN)                       Politecnico di Torino (DAUIN)
+                 Torino, Italy                                     Torino, Italy                                      Torino, Italy
+             marco.iorio@polito.it                            fulvio.risso@polito.it                            claudio.casetti@polito.it
+
+ABSTRACT                                                                        algorithms leveraged by the TCP protocol to modulate the trans-
+Several emerging classes of interactive applications are demanding              mission rate. Third, the design of the (likely distributed) application,
+for extremely low-latency to be fully unleashed, with edge comput-              including the high-level communication protocols (e.g. HTTP, Web-
+ing generally regarded as a key enabler thanks to reduced delays.               Sockets [10], MQTT [2], . . . ), security, as well as the impact of the
+This paper presents the outcome of a large-scale end-to-end mea-                complex orchestration platforms, such as OpenStack and Kuber-
+surement campaign focusing on task-offloading scenarios, showing                netes, which are becoming the de-facto standard inside data-centers
+that moving the computation closer to the end-users, alone, may                 of any sizes [8]. Although bringing the isolation and the agility
+turn out not to be enough. Indeed, the complexity associated with               typical of the cloud-native world, these orchestrators come along
+modern networks, both at the access and in the core, the behavior of            with various abstractions (e.g. in terms of service exposition), which
+the protocols at different levels of the stack, as well as the orchestra-       could impact the communication latency. Forth, the computation
+tion platforms used in data-centers hide a set of pitfalls potentially          time, i.e. the actual time spent by the back-end server to execute
+reverting the benefits introduced by low propagation delays. In                 the desired task and generate the results returned to the client.
+short, we highlight how ensuring good QoS to latency-sensitive                  Although completely independent from the network performance
+applications is definitely a multi-dimensional problem, requiring to            and strictly related to the business logic of the specific application,
+cope with a great deal of customization and cooperation to get the              it nonetheless accounts in the total latency budget. To this end, it
+best from the underlying network.                                               is worth remembering that offloaded computations are typically
+                                                                                resource-intensive (e.g. machine-learning oriented), hence requir-
+CCS CONCEPTS                                                                    ing non-negligible time even if specialized hardware, such as GPUs,
+                                                                                is available [5]. Table 1 summarizes the main factors contributing
+• Networks → Network measurement; Network performance
+                                                                                to the E2E latency, assessing to what extent each one is expected to
+analysis;
+                                                                                be influenced by different network and application-related aspects.
+                                                                                   In this paper we perform a wide range of latency measurements
+KEYWORDS                                                                        to comprehensively assess whether the edge-computing promises
+Network Measurement, End-to-end Performance, Latency, TCP,                      of extremely low network latency do actually translate into similar
+Edge computing                                                                  application-level performance (i.e. whether the propagation delay
+                                                                                dominates the other latency factors), hence meeting the stringent
+1    INTRODUCTION                                                               requirements set forth for computation offloading. Unlike most pre-
+To face the increasing demands for low-latency communication,                   vious investigations (e.g. [4, 7]), which compared the performance
+the edge computing paradigm, which brings powerful, cloud-like                  of cloud and edge computing in terms of network latency only (i.e.
+infrastructure closer to the end-users, is gaining momentum. Simi-              by means of pings), we focus on the E2E transaction time. In other
+larly to the driving reasons for the deployment of Content Delivery             words, we consider the entire task offloading process, i.e., from
+Networks (CDN), this paradigm allows to keep the traffic local,                 the transmission of the request message to the reception of the
+reducing the physical distance that needs to be traveled by network             corresponding results, to get a broader picture of how much the dif-
+packets [11, 20]. Still, the ongoing shift from cloud to edge comput-           ferent components in the communication chain impact on the final
+ing mostly targets only one of the many components of the overall               performance. Overall, this paper makes two major contributions.
+E2E latency, the propagation delay, as it is strictly proportional to
+the proximity between the two endpoints. While being definitely
+a necessary precondition to meet strict latency goals, potentially              Table 1: The degree of influence of different network and
+decreasing also the probability of packet congestion and the pro-               application aspects on the various latency components.
+cessing overhead introduced by routers along the path, this E2E
+distance shortening, alone, may turn out not to be sufficient.
+                                                                                                               Network     Network     Msg.    App
+   Indeed, focusing on the bigger picture, it is possible to pinpoint              Delay factor   Distance
+                                                                                                               topology   bandwidth    size   design
+four additional classes of overhead to be considered. First, the com-
+plementary components of the network latency, mainly including                    Propagation       high        high        low        low     low
+transmission, forwarding (classical switches and routers, as well as              Transmission      low         low         high       high    low
+more complex middle-boxes such as load balancers and firewalls)                   Forwarding        med         high        low        med     low
+                                                                                  Queuing           med         high        high       med     low
+and queuing delays, both in case of wired and wireless access net-
+                                                                                  TCP-related       high        low         med        high    med
+works. Second, the overhead ascribable to the transport layers, and               App-related       low         low         low        med     high
+in particular to the behavior induced by the congestion control
+
+ACM SIGCOMM Computer Communication Review                                                                           Volume 51 Issue 4, October 2021
+
+
+                                                                            3
+First, it presents the main results of the latency investigation, ana-                 Table 2: An overview of approximate distance (as the crow
+lyzing the E2E latency while changing multiple variables, including                    flies) between the client and server locations considered.
+application behavior, access network, servers location and service
+exposition. Second, it shares the main lessons learned, describing                                   On-prem 1    AWS      AKS CH    AKS/AWS     AKS/AWS
+the unexpected pitfalls that can drastically reduce the overall per-                                   Turin      Milan     South     France     UK South
+formance and the possible solutions for each of them.                                    On-prem 1     <1 km      125 km    275 km     575 km      925 km
+   The remainder of the paper is organized as follows. Section 2 de-                     On-prem 2     5 km       125 km    275 km     575 km      925 km
+tails the experimental setup and motivates the metrics adopted for                       Home Net.     35 km      150 km    300 km     600 km      950 km
+the evaluation. Section 3 presents the outcome of the main measure-
+ments, highlighting the pitfalls possibly impairing the performance
+of delay-sensitive applications. Section 4 focuses on access net-                      and slow-paced requests. Second, in terms of message sizes, both
+works, evaluating buffering-related problems and the latency over-                     concerning the requests issued by the client and the responses re-
+head introduced by wireless networks. Section 5 reviews previous                       turned by the server. Sticking to the peculiarities of the scenario, we
+related investigations, while Section 6 draws the main conclusions.                    simulated asymmetric flows characterized by inputs bigger than the
+                                                                                       corresponding output [23]. Specifically, we considered the follow-
+2     MEASUREMENT SETUP                                                                ing three representative configurations: (i) Command and control,
+In this section, we describe the experimental setup leveraged for the                  characterized by symmetric 1 kB requests and responses. This setup
+measurements, detailing the considered task offloading scenario,                       simulates a remote control system and represents a lower bound in
+the characteristics of the test application and the different back-                    terms of latency, given that it introduces very limited transmission
+end locations. Second, we present the three main latency metrics                       delay due to the dispatch of a single packet per message. (ii) Teleme-
+considered during the evaluation, motivating the differences and                       try, encompassing 10 kB requests and 1 kB responses emulating the
+justifying the focus on the application-level flow completion time.                    periodic transmission of a set of sensor readings (e.g. originating
+Finally, we show a comparison between stateless and persistent                         from radars and lidars 2D) to the back-end. (iii) Image recognition,
+connections, and briefly analyze the MQTT messaging protocol.                          considering 100 kB requests and 1 kB responses to represent the
+                                                                                       cyclical dispatch of camera frames for processing.
+2.1     Scenario                                                                          Although the precise numbers can definitely vary based on the
+                                                                                       specific situation, these arrangements are deemed to represent the
+In our investigation, we focused on a classical computation of-
+                                                                                       three main classes of frame sizes, hence achieving the desired cov-
+floading scenario characterized by a client/server architecture. The
+                                                                                       erage during the investigation to assess the effects of message size
+former, as an example, may represent an autonomous robot, which
+                                                                                       variations on the E2E latency. Bigger message sizes have not been
+periodically sends messages, including sensor readings and camera
+                                                                                       considered as, complemented with fast sending intervals, would
+frames, to a back-end server. This, in turn, performs the appropri-
+                                                                                       lead to extremely high bandwidth requirements (e.g., 1 MB frames
+ate computations and returns the results to the requester. In order
+                                                                                       sent every 10 ms would roughly correspond to 1 Gbps), as well as
+to evaluate the latency in a wide range of situations, as well as
+                                                                                       the total latency would be dominated by the transmission delay.
+simplify the configuration and the reproducibility of the measure-
+                                                                                          Focusing on the actual deployments, to probe the different factors
+ments, we developed a custom application1 that periodically sends
+                                                                                       influencing the communication latency, we repeated the measure-
+ping-pong frames over a WebSocket and performs the appropriate
+                                                                                       ments considering multiple configurations summarized in Table 2.
+measurements. We leveraged WebSockets as they provide persis-
+                                                                                       As for the server, we leveraged a lightly-loaded Kubernetes cluster
+tent, full-duplex communication channels compatible with the tra-
+                                                                                       located at the university premises (Turin, Italy), as well as a sub-
+ditional HTTP protocol, hence passing through reverse proxies (i.e.
+                                                                                       set of popular cloud providers. More in detail, we selected three
+L7 load-balancers), which are increasingly common in data-centers.
+                                                                                       increasingly distant Microsoft AKS instances (Switzerland North,
+At the same time, we selected Protocol Buffers2 as data serialization
+                                                                                       France Central and UK South), and three Amazon EC2 instances
+mechanism, since they experimentally proved to introduce lower
+                                                                                       (Milan, Paris and London). Although farther data-centers may not
+overhead compared to classical solutions such as XML and JSON
+                                                                                       be appropriate to fulfill very strict latency requirements, they have
+(Section 2.3). Although focusing on the E2E transaction time, the
+                                                                                       nonetheless been considered to assess whether the performance
+application does not simulate the actual computation, as dependant
+                                                                                       could be acceptable in case of less demanding applications. On the
+on the specific task and unrelated from the network performance. In
+                                                                                       other hand, the client-side of the measurement tool has been hosted
+other words, as soon as the server receives a request, it immediately
+                                                                                       first on one server at the university premises (located in a differ-
+replies back with a response of the proper size.
+                                                                                       ent part of the campus with respect to the Kubernetes cluster), as
+   The test application is characterized by two main degrees of
+                                                                                       well as another one inside the corporate network of a partner com-
+configuration. First, in terms of transmission interval, i.e., the time
+                                                                                       pany also based in Turin. Both represent best-case access networks
+elapsing between the dispatch of two subsequent requests. In our
+                                                                                       for task offloading, being characterized by wired connections and
+evaluation, we mainly experimented with intervals ranging from
+                                                                                       1 Gbps links. Second, we hosted the client on a laptop connected
+10 ms to 1 s, hence considering both high-frequency transmissions
+                                                                                       to a domestic network served by a broadband, fiber-to-the-cabinet
+1 The latency-tester developed for these measurements is open-source, and freely       (FTTC) Internet access (100 Mbps / 20 Mbps). This fostered the in-
+available on GitHub: https://github.com/richiMarchi/latency-tester                     vestigation of issues afflicting less performing networks, as well as
+2 https://developers.google.com/protocol-buffers
+                                                                                       the impact of wireless access. Although the various deployments
+
+ACM SIGCOMM Computer Communication Review                                                                                  Volume 51 Issue 4, October 2021
+
+
+                                                                                   4
+                                                                                                        Net RTT (Node)         TCP RTT (1 kB)       TCP RTT (100 kB)
+                                                                                                       Net RTT (Gateway)       App FCT (1 kB)       App FCT (100 kB)
+                                                                                              1
+                                                                                             0.8
+                            Edge                 Edge                                        0.6
+
+
+
+
+                                                                                       CDF
+                             DC                   DC
+              Edge                                               Edge                        0.4
+               DC                                                 DC                         0.2
+                                                                                              0
+                                                                                                   0           0.5         1        1.5         2        2.5           3
+                       Regional DC               Regional DC                                                                    Time (ms)
+                     1 M – 5 M users           1 M – 5 M users
+                        < 150 km                  < 150 km                           Figure 2: Latency distribution at network, TCP and app-level,
+                                                                                     considering the dispatch of 1 kB and 100 kB requests.
+           Antenna                                              Edge DC
+        1 k – 5 k users             National DC            100 k – 200 k users
+           < 10 km                                              < 50 km
+                                 10 M – 20 M users                                   latency measure (e.g., in case a reverse proxy is used, which termi-
+                                    < 1000 km
+                                                                                     nates the client TCP connection), as well as it has to deal with the
+                                                                                     TCP optimizations, such as delayed ACKs, which may slightly alter
+Figure 1: A schematic abstracting a possible organization of                         the outcome. Still, it proved to be of extreme value to discern TCP-
+the data-centers leveraged by a telecom operator.                                    level (e.g. buffering-related) issues from application-level latency.
+                                                                                     Third, application-level RTT, to assess the entire flow completion
+                                                                                     time (FCT) from the beginning of the request transmission to the
+are possibly characterized by different computing power, they are                    complete reception of the corresponding response from the server.
+deemed not to significantly impact the measurements, as no re-                       Unlike previous metrics, this E2E measurement includes both the
+source intensive task is performed by the end-points.                                network delays strictly speaking, as well as the time required to
+   The matrix of client and server locations, complemented by                        transmit the messages. Yet, it allows to evaluate the actual QoS
+the different combinations of parameters, is expected to reflect                     that is perceived by the final application, taking into account also
+the wide range of scenarios that can be encountered in the task-                     the specificity of the infrastructure and the effects of middle-boxes
+offloading landscape. To this end, Fig. 1 presents an abstraction of                 such as load balancers and proxies. It is worth noting that all the
+the possible topology of the data-centers leveraged by a telecom                     three previously mentioned metrics represent RTT measurements,
+operator, characterizing for each one the range of users and the                     as they relax the requirement for precisely synchronized clocks
+expected E2E distance. Our measurements exploiting public cloud                      imposed by the evaluation of one-way delays.
+data-centers definitely fall between the regional and the national                       Fig. 2 presents a two-hour long evaluation of the latency distri-
+DC distance range, while the on-premise tests represent a lower                      bution considering the three previously mentioned metrics. Client
+bound for the edge data-center scenario. All measurements were                       and server are located in distant areas of the campus network and
+repeated multiple times, to obtain statistically relevant results and                interconnected by means of a 1 Gbps L3 network. Request messages
+evaluate the latency stability during the day and across multiple                    are dispatched every 10 ms, while pings are issued every 1 s. The
+days. All in all, we gathered hundreds of hours of measurements,                     Nagle’s algorithm is enabled (although we obtained equivalent re-
+corresponding to millions of raw latency samples, thus paving the                    sults regardless of its status) and the application sets the PSH TCP
+way for accurate analysis even when focusing on high percentiles.                    flag. Looking first at the ping results, it is possible to observe two
+                                                                                     main aspects: first, the extremely good performance achieved at
+2.2    Latency Metrics                                                               the network level, with the median latency (P50) equal to 0.47 ms
+Three main metrics can be considered with respect to latency mea-                    and the 99th percentile (P99) at 0.62 ms only. Second, the relevant
+surements. First, the network-level round-trip-time (RTT), which is                  divergence between the responses from a physical server and those
+typically evaluated by means of the ping or traceroute tools. Ex-                    returned by its preceding router (i.e., its default gateway), with the
+tremely simple, this measurement represents an estimation of the                     latter reporting twice as much delay. Focusing now on 1 kB applica-
+bare performance of the underlying network, thus without includ-                     tion messages, the bare network performance is mostly translated
+ing the overhead introduced by higher-level protocols and transport                  into the actual flow completion time (P50 = 0.95 ms, P99 = 1.13 ms),
+delays. Still, it is associated with different caveats, as ICMP and UDP              with a limited overhead introduced both at TCP and application-
+probes are often blocked by the firewalls of corporate networks and                  level. Finally, considering the Image recognition scenario (i.e. 100 kB
+cloud providers, as well as they may be discarded by data-center                     requests), it becomes evident the latency contribution ascribable
+load balancers. Additionally, these probes are typically character-                  to the transmission of the messages (even though relatively small),
+ized by lower forwarding priority compared to other traffic, hence                   and theoretically accounting for approx. 0.85 ms. Although intu-
+leading to possibly inconsistent results [15]. Second, the transport-                itive, this aspect needs obviously to be considered when designing
+level RTT, hence focusing on the performance of the actual TCP                       latency-sensitive applications, given also the resulting longer tail
+stream, in terms of the time required to send one segment and re-                    at higher percentiles, which makes it harder to provide QoS guar-
+ceive the corresponding acknowledgement. This metric, which can                      antees. At the same time, the TCP-level RTT is lower than in the
+be evaluated using the analysis tools provided by network sniffers                   1 kB message case, given the mitigation of the effect introduced by
+such as tskark and wireshark, may not represent a complete E2E                       delayed ACKs due to the transmission of multiple network packets.
+
+ACM SIGCOMM Computer Communication Review                                                                                          Volume 51 Issue 4, October 2021
+
+
+                                                                                 5
+          1 kB Pers. (TLS)         1 kB Stateless (no TLS)          1 kB Stateless (TLS)                        WebSocket          MQTT QoS 0       MQTT QoS 1     MQTT QoS 2
+         100 kB Pers. (TLS)       100 kB Stateless (no TLS)        100 kB Stateless (TLS)                      15
+          1
+                                                                                                               10
+
+
+
+
+                                                                                                    FCT (ms)
+         0.8
+         0.6
+   CDF
+
+
+
+
+         0.4                                                                                                    5
+
+         0.2
+                                                                                                                0
+          0                                                                                                                 1 kB                10 kB            100 kB
+               0        10        20           30             40       50           60
+                                          Time (ms)
+                                                                                                Figure 4: App-level FCT comparison between WebSocket and
+Figure 3: App-level FCT comparison between stateless (w/                                        MQTT-based communication, for a client hosted on-premise
+and w/o TLS) and persistent connections (w/ TLS). Solid lines                                   and a server (along with the broker), on AWS Milan.
+refer to 1 kB messages, while dashed ones to 100 kB requests.
+
+                                                                                                   This result justifies the adoption of persistent connections for the
+2.3       Stateless vs Persistent Connections                                                   rest of the evaluation. Similarly, switching from JSON to Protocol
+Let focus now on a preliminary comparison between two widely                                    Buffers for payload serialization reduced the associated transmis-
+adopted communication approaches for HTTP-based distributed ap-                                 sion and reception processing overhead by 1 ms to 2 ms in case of
+plications. First, we consider a completely stateless approach, char-                           100 kB messages, complemented by a more compact FCT distribu-
+acterized by the establishment of a new connection for each differ-                             tion even with smaller sizes. All in all, this highlights how every
+ent transaction.3 Second, we use a single, persistent, and full-duplex                          single design choice can have an extremely significant impact on
+communication channel, as the one provided by the WebSocket                                     the QoS offered by the application. Hence, raising the need for
+abstraction. Hence, avoiding the overhead required to re-establish                              cautious decisions throughout the entire development of latency-
+a new TCP connection for each request.                                                          sensitive applications, to avoid impairing the underlying network
+   Fig. 3 presents the distribution of the application-level FCT in                             and losing the advantages offered by close-by data-centers.
+these two situations, simulating a task offloading scenario from the                               Learning 2: When dealing with low-latency requirements, it
+on-premise client to an AKS instance located in North Switzerland,                              is necessary to adopt efficient data serialization mechanisms and
+and characterized by a median TCP-level RTT (P50) of 7.2 ms. It                                 libraries, to achieve good performance both in terms of resulting
+is evident at a first glance the significant difference in terms of                             message size and, most importantly, encoding/decoding time.
+performance. Focusing on 1 kB frames, the FCT is dominated by
+the propagation time, accounting for a single RTT in case of per-                               2.4            Publish/Subscribe IoT Messaging Transport
+sistent channels (P50 ≈ 7.9 ms). Yet, stateless interactions are more
+demanding, requiring an additional iteration to complete the TCP                                Concluding our preliminary analysis, we now focus on a brief com-
+handshake (P50 ≈ 17.7 ms) and, if security is required, one more to                             parison between persistent WebSocket connections and MQTT, a
+setup the TLS session4 (P50 ≈ 28.0 ms). Moreover, new connections                               lightweight publish/subscribe messaging transport that is becom-
+need to be established through L7 proxies, if any, further increasing                           ing increasingly common in many industrial and IoT scenarios [17].
+the perceived latency. Still, even more relevant differences emerge                             As for the latter, we leveraged once more a ping-pong approach,
+when considering bigger request sizes, a fact boiling down to the                               with a client publishing to a first topic and measuring the delay
+underlying behavior of the TCP protocol. Indeed, newly established                              before the response is echoed back by the server on a second one.
+TCP connections incur in the slow start phase, hence progressively                                 Fig. 4 presents the results of the evaluation, considering a client
+probing for the bandwidth available by sending increasing amounts                               deployed on-premise and the server on AWS Milan. For the sake of
+of segments. In turn, this causes the 100 kB message to require mul-                            fairness between the two approaches, we co-located the message
+tiple RTTs to be transmitted, compared to the single iteration when                             broker (Eclipse Mosquitto5 ) along with the server, hence avoiding
+the congestion window (cwnd) has already reached the steady-state.                              the introduction of additional network overhead. Furthermore, we
+Finally, it is worth noting that the additional latency associated                              evaluated all three QoS levels supported by the MQTT specifications
+with the stateless approach is proportional to the network-level                                about message delivery [2], namely at most once (0), at least once (1)
+RTT, hence increasing the farther the two endpoints are.                                        and exactly once (2). Focusing on the actual numbers, it is possible
+                                                                                                to draw two main observations. First, the relatively limited latency
+   Learning 1: Latency-sensitive distributed applications should                                difference between WebSocket and MQTT-based communication
+leverage persistent connections as much as possible, to avoid the                               (QoS 0 and 1), with the latter abstraction accounting from 0.3 ms
+establishment overhead of stateless TCP and benefit from the in-                                up to 1 ms in case of bigger request sizes. Second, the twice as
+creased TCP cwnd values and throughput at steady state.                                         much delay associated with MQTT QoS 2, given the more complex
+3 To fully highlight the connection establishment overhead, we disabled HTTP keep-              interaction required to ensure the desired guarantees. Finally, it
+alive, hence effectively leveraging different underlying TCP connections.                       is worth mentioning we needed to explicitly disable the Nagle’s
+4 The interactions necessary to establish a TLS connection depend on the version of the
+                                                                                                algorithm on the message broker, to prevent high latency issues
+protocol: TLS 1.2 and earlier require two RTTs, while TLS 1.3 reduced the overhead to
+one RTT only. Furthermore, it also supports a 0-RTT configuration, to allow resumption          experienced with MQTT QoS 1 and 2.
+of existing connections with no additional latency [19]. Fig. 3 refers to TLS 1.3 with a
+                                                                                                5 https://mosquitto.org/
+default configuration.
+
+ACM SIGCOMM Computer Communication Review                                                                                                       Volume 51 Issue 4, October 2021
+
+
+                                                                                            6
+   Learning 3: MQTT and the associated message broker introduce                                                   Bare server (w/o TLS)             k8s LB local (w/o TLS)
+
+limited overhead compared to TCP, at least when QoS 0 or QoS 1                                                    k8s LB local (w/ TLS)             k8s LB cluster (w/ TLS)
+                                                                                                                k8s reverse proxy (w/TLS)
+and the proper configuration are used. Conversely, the additional
+delay becomes relevant when the highest QoS is required.                                                  10
+                                                                                                           8
+   Learning 4: Latency-sensitive applications shall disable the Na-
+
+
+
+
+                                                                                               FCT (ms)
+                                                                                                           6
+gle’s algorithm to prevent unexpected delays if small packets, either
+data or control, are transmitted over a TCP connection.                                                    4
+                                                                                                           2
+                                                                                                           0
+3     LATENCY MEASUREMENTS AND PITFALLS                                                                          1 kB                       10 kB                     100 kB
+This section presents the outcome of a set of close-up investiga-                                         25
+
+tions analyzing specific aspects deemed to negatively influence the                                       20
+delays experienced by latency-sensitive applications, highlighting
+
+
+
+
+                                                                                               FCT (ms)
+                                                                                                          15
+at the same time the pitfalls encountered during the measurement                                          10
+campaign. Specifically, we start focusing on a comparison between                                          5
+different common approaches to host and expose a back-end service                                          0
+                                                                                                           P0           P 90                P 99             P 99.9            P 99.99
+in a data-center, before characterizing an application behavior that
+turned out to have unexpected effects on the FCT. Finally, we move
+on and analyze the impact of possible core-network inefficiencies.                            Figure 5: App-level FCT comparison varying the approach
+All the measurements refer to wired networks, while leaving for                               used to host and expose the back-end service. The box-plot
+the subsequent section the investigation in case of wireless access.                          refers to three scenarios characterized by increasing request
+                                                                                              sizes, while the lower graph represents a 110-hours long close-
+3.1      Hosting the Back-end Service                                                         up analysis at high percentiles in case of 10 kB frames.
+Focusing on a task offloading scenario, it is reasonable to assume
+the back-end computations to be performed in a data-center, either                            consists of an application-level load balancer in charge of termi-
+public or private. Still, multiple applications, or even instances                            nating the TCP and TLS connections, possibly exposed through
+of the same component, typically need to coexist on the same                                  a Kubernetes LoadBalancer service. This represents the single en-
+infrastructure, to better leverage the resources available and avoid                          try point for many services and it forwards each request to the
+reserving entire bare-metal servers to single tasks. Hence, raising                           appropriate back-end. In this study we selected the NGINX Ingress
+the need for orchestration solutions, which essentially take care of                          Controller (community edition – v0.44) with default settings, being
+the execution, resilience and isolation of multiple services.                                 it by far the most used solution in Kubernetes today [8].
+    Sticking to cloud-native, open-source solutions, Kubernetes is                                Fig. 5 presents the outcome of a twelve-hours long evaluation,
+gaining momentum and has therefore been chosen for our investi-                               comparing the three alternatives considered above (i.e. load bal-
+gation. Still, many choices are possible when it comes to make the                            ancer in Local and Cluster modes, and reverse proxy), comple-
+desired HTTP services reachable from the clients. Supposing an 𝑛                              mented by different combinations in terms of security. Finally, the
+nodes cluster, with the target application running in a container                             application is also hosted on a bare-metal server, to assess the over-
+hosted on node 𝑥, it is possible to consider two main alternatives.                           head introduced by the container abstraction and orchestration
+First, the back-end can be exposed leveraging a Kubernetes LoadBal-                           (i.e. Kubernetes). Client and server are both executed on-premise,
+ancer service6 , which takes care of assigning a routable IP address                          leveraging the low network latency offered by the campus network
+to the service and appropriately announcing it to the network in-                             to better highlight the actual differences. The box-plot represents
+frastructure (e.g. through the BGP protocol or gratuitous ARPs)7 .                            the extension of the quartiles, as well as of the 1st and the 99th
+If a specific flag of the service, namely ExternalTrafficPolicy, is set                       percentile (a representative set of outliers is shown as individual
+to Local, the incoming requests are directly forwarded to the node                            points) of the FCT for messages of three different sizes. Results are
+hosting the back-end, 𝑥 in this case. Conversely, when ExternalTraf-                          very similar both for the application executed on the bare-metal
+ficPolicy is set to Cluster (i.e., the default one), the traffic may incur                    server and the ones exposed through the load balancer, with no rel-
+in a second hop, reaching first node 𝑦 and then being forwarded                               evant variations introduced by TLS when the connection is already
+to node 𝑥, which actually hosts the application. This allows better                           established. Still, the load balancing Cluster policy is associated
+overall load-spreading in presence of multiple replicas, at the cost                          with slightly higher latency (0.1 ms – 0.2 ms), ascribable to the addi-
+of possibly increased latency. The same situations can also be repro-                         tional hop. Differently, the usage of a reverse proxy caused a more
+duced using a NodePort service (as done in these measurements for                             relevant overhead (0.5 ms – 1 ms at P99), confirming the impact
+additional control), though this requires the nodes to be assigned                            introduced by the additional software component.
+routable addresses and it imposes limitations on the ports that can
+                                                                                                 Learning 5: In the majority of cases, the different Kubernetes
+be used. The second alternative involves a reverse proxy, which
+                                                                                              service-exposition approaches introduce a negligible delay, thus
+6 https://kubernetes.io/docs/concepts/services-networking/service/                            requiring extremely low propagation delays to be of any relevance.
+7 It is worth noting the LoadBalancer service is a functionality that is either offered
+by the cloud provider hosting the Kubernetes cluster or enabled by an additional                Learning 6: The adoption of TLS to secure network traffic has
+component, such as MetalLB, in case of on-premise deployments.                                practically no impact at run-time with powerful enough devices,
+
+ACM SIGCOMM Computer Communication Review                                                                                                   Volume 51 Issue 4, October 2021
+
+
+                                                                                          7
+while it possibly introduces a significant overhead during the con-
+                                                                                                60
+
+nection establishment phase (Fig. 3).
+                                                                                                40
+   Moving on, the lower part of Fig. 5 shows a 110-hours long close-
+
+
+
+
+                                                                                     FCT (ms)
+up analysis of the results associated with 10 kB requests (although
+the trend is expected to be similar also in the other cases), focusing                          20
+
+on higher percentiles to better pinpoint the latency distribution in
+the context of strongly demanding scenarios. Indeed, mission and                                 0
+                                                                                                     25      100      200      300      500      1000     2000
+safety critical applications may definitely require extremely high
+                                                                                                                       Send Interval (ms)
+reliability [16], as missing even a single deadline could turn out to
+have catastrophic effects. In an effort to achieve high confidence,
+                                                                                 Figure 6: App-level FCT comparison varying the interval be-
+we collected almost 40 million latency samples: a new request is
+                                                                                 tween the dispatch of one 100 kB request and the subsequent,
+dispatched every 50 ms, and all the measurements are executed in
+                                                                                 while maintaining unchanged all the other variables.
+parallel to uniform the impact of possible temporary network prob-
+lems. In a nutshell, while the different alternatives are relatively
+aligned up to P90, and even P99, they start to diverge at higher                 remains idle for more than 1 s between two requests. In other words,
+percentiles. Given the definitely more stable results obtained in the            the duration of the application duty cycle is indirectly, as well as
+bare server scenario compared to the other cases, it looks like most             unexpectedly, impacting the offered QoS.
+of the overhead, especially at high percentiles, is related to the ap-              This three-fold latency increase is due to the algorithm suggested
+plication execution by the end-point devices, both client and server             in RFC 2861 [14], which aims at preventing the dispatch of exces-
+(e.g., temporary load bursts, job scheduling, interrupt handling, . . . ),       sive bursts of packets if the sender remains idle for relatively long
+likely due to the higher number of software components involved                  periods of time (i.e. higher than the retransmission timer — RTO —
+(e.g., application running in containers instead of bare hardware,               estimation), by progressively halving the TCP cwnd value. Although
+the introduction of the reverse proxy). Sure enough, part of the                 this behavior has been recognised to strongly damage the perfor-
+bare server outliers has also the same cause, albeit to a lesser extent          mance of periodic communications over persistent channels due to
+thanks to the reduced complexity.                                                cwnd shrinking and the above RFC is obsolete [9], it is nonetheless
+   Learning 7: Given the nature of the latency long tail measure-                currently enabled by default in Linux when CUBIC TCP is adopted.
+ments and the apparently underloaded conditions of the enterprise                Still, while this feature can be turned off modifying an appropriate
+network, the possible improvements that could be achieved by in-                 flag8 , as done in the measurements shown in this paper, as well
+troducing QoS/slicing technologies in the above infrastructure is                as adopting a congestion control algorithm which leverages differ-
+questionable. Similar results have been achieved also on some ISP                ent pacing techniques (e.g. BBR [3]), these modifications typically
+core networks, particularly when reaching the closest data-centers.              require the control of the operating system and may not be config-
+                                                                                 ured directly by orchestrators such as Kubernetes.9 Hence, raising
+   Learning 8: Distributed approaches leveraging shared infras-                  the need for careful pre-deployment analysis to ensure application
+tructure (both network and compute) are hardly applicable in mis-                performance is not impaired by incorrect settings, as well as for
+sion and safety critical scenarios due to the FCT rise after P99. Still,         collaboration between developers and system administrators, to
+more complex setups (i.e., based on containers and optionally re-                provide the best QoS possible for the given scenario.
+verse proxies) are characterized by worse performance, thus raising
+the need for careful analyses about trade-offs between simplicity                   Learning 9: Latency reduction requires the collaboration of
+and performance when requiring high reliability.                                 multiple actors, including network providers, data-center providers
+                                                                                 (e.g. to configure TCP parameters and tune reverse proxies behavior)
+                                                                                 and application developers. Hence, possibly involving different
+3.2    Slowed Down Low-Frequency Applications                                    people/teams, even when leveraging dynamic platforms such as
+Given the necessity to use persistent connections and the use-cases              Kubernetes. Indeed, application tuning, alone, is often not enough.
+considered during the measurements, the application, and so the
+underlying TCP connection, alternates active periods characterized
+                                                                                 3.3            Core Network Analysis
+by the actual transmission of request data and idle instants, i.e.
+waiting for the next sending slot. Although apparently irrelevant at             Up to now, our analysis focused on the impact of the application
+first sight, this aspect turned out to have devastating effects on the           behavior (i.e. client side), as well as the exposition of the back-end
+performance perceived by the application, as represented in Fig. 6.              service (i.e. server side). We present now different measurements
+    The graph compares the app-level FCT with the client deployed                to assess which characteristics of the core network could impact
+on-premise and the server hosted on AKS Switzerland North, con-                  the actual QoS, besides propagation and transmission delays.
+sidering 100 kB request messages to simulate the offloading of an                8 i.e., tcp_slow_start_after_idle, which is exposed through the /proc in-
+image recognition task. All parameters are kept constant between                 terface: https://man7.org/linux/man-pages/man7/tcp.7.html
+one measurement and the other, varying only the interval between                 9 At time of writing, the sysctl flags used to either disable the “slow start after idle”
+
+the transmission of subsequent messages. Numbers show how the                    behavior or change the congestion control algorithm are not included in the Kubernetes
+                                                                                 safe set, and need to be allowed by the cluster administrators on a per-node basis before
+FCT starts to grow as soon as the send interval exceeds 200 ms,                  being configurable when defining the application deployment (https://kubernetes.io/
+with the median value boosting from 9 to 31 ms if the application                docs/tasks/administer-cluster/sysctl-cluster/).
+
+ACM SIGCOMM Computer Communication Review                                                                                     Volume 51 Issue 4, October 2021
+
+
+                                                                             8
+              26                                                                          30
+
+              24
+   FCT (ms)
+
+
+
+
+                                                                               FCT (ms)
+                                                                                          20
+              22
+
+              20                                                                          10
+
+                   6 PM   12 AM            6 AM           12 PM                                0   5           10            15           20
+
+
+Figure 7: 24-hours app-level FCT evaluation between an on-                  Figure 8: 20-runs FCT evaluation between an on-premise
+premise client and AWS Paris, highlighting the stability of                 client and AKS Switzerland, showing the effect of inefficient
+the network over one day.                                                   ECMP routing performed by the core network and impacting
+                                                                            the path followed by packets of different sessions.
+
+   3.3.1 Temporal stability. We carried out multiple 24-hours long
+measurement campaigns to assess the stability of the backbone net-          (RM2). Then, the packets reach the corresponding Internet Ex-
+work performance between on-premise locations and data-centers,             change, MIX or NAMEX respectively, before entering the Azure
+as well as between multiple data-centers located in different re-           network. Still, two paths may be equivalent from the routers point
+gions. While constant and predictable communication delays are              of view (e.g. based on hop count or links speed), but character-
+fundamental for many latency-sensitive applications, it seemed              ized by completely different performance considering other metrics
+intuitive to observe varying behaviors due to possible congestion           (e.g. the E2E latency, which depends also on the physical distance).
+during rush hours. Fig. 7 presents the outcome of one of these eval-        ECMP routing is typically performed at session level, to prevent
+uations, showing the FCT experienced between a client deployed              the occurrence of packet reordering: indeed, configuring a fixed
+on-premise and a back-end service hosted on AWS Paris, while                source port (as the other network parameters are constant across
+exchanging 10 kB requests and 1 kB responses. To our surprise,              subsequent runs), this variability is no longer present and all runs
+all results showed extremely stable performance, and no relevant            stabilize around either one of the two values. We leveraged this pe-
+and consistent correlation appeared to exist between delay and              culiarity during the other evaluations to achieve consistent results,
+time of the day. Indeed, in all cases the medians of 24 runs were           forcing the packets to flow through the shorter path.
+contained in the 0.2 ms to 0.5 ms (≈ 1 % to 2 %) range, with only              Although these observations stem from a rather peculiar behav-
+slightly higher differences at P90 (≈ 1 ms). Additionally, inter-data       ior characteristic of a specific network, it is nonetheless reasonable
+center communications appeared to be even more stable, while                to assume similar problems to be present to different extents in
+on-premise networks introduced slightly higher variability. For the         a wide variety of scenarios, possibly impairing latency-sensitive
+sake of completeness, it is worth mentioning that during one very           applications. Additionally, being related to the core network, they
+specific measurement (i.e. client hosted on AKS London and server           fall outside the control of system administrators, hence raising the
+on AKS West US) we noticed an abrupt 5 ms FCT (and TCP-level                need for different solutions. Indeed, in presence of persistent con-
+RTT) drop at midnight GMT. Most probably, it depended on a sched-           nections and multiple unequal paths, it may be wise to leverage
+uled modification of some routing configuration, which caused a             helpers opening parallel channels to probe for the best available
+shorter path to be followed by the packets.                                 characteristics, and select the ones ensuring the desired QoS.
+   Learning 10: The latency between a given pair of endpoints is               Learning 11: Uncontrollable core-network routing configura-
+virtually constant throughout the day, and across multiple days.            tions can unexpectedly and dramatically influence the performance
+                                                                            of delay-sensitive applications. Continuous monitoring is funda-
+   3.3.2 Routing Instability. While showing stable performance,             mental to quickly detect modifications and, when possible, put in
+the long-run measurements uncovered at the same time a definitely           place countermeasures (e.g., forcing shortest path selection).
+less desirable behavior, which is graphically represented in Fig. 8.
+Specifically, the box-plot details the app-level FCT experienced by a           3.3.3 Routing Inefficiencies. We considered different close-by
+client located at the university premises communicating to a back-          locations suitable for the deployment of the client and server com-
+end server hosted on AKS Switzerland North (although a similar              ponents of an application with relatively loose latency requirements
+pattern reproduced also towards the other AKS regions considered).          (i.e. < 30 ms). Fig. 9 summarizes the outcome, considering two on-
+At a first sight, it is immediately evident the extreme difference          premise hosts located in Turin, respectively in our university and
+between multiple runs, with some sessions characterized by a me-            in a partner company, as well as back-ends deployed in Western
+dian around 8.5 ms and others almost twice as much, 16.25 ms. This          Europe public-cloud data-centers. Finally, we simulated an increas-
+specific behavior turned out to be caused by the network topol-             ingly common inter-cloud scenario, hosting the two components
+ogy10 and routing policies of the Consortium GARR (i.e. the Italian         of the application on different cloud providers, located in the same
+national network provider for universities and research centers).           region, accounting for resiliency and cost effectiveness demands.
+   In fact, the traffic coming from our university, located in Turin,           When talking about latency, one typical assumption regards two
+and directed to AKS data-centers gets forwarded by equal-cost               endpoints physically close-by being also characterized by extremely
+multi-path (ECMP) routing either towards Milan (MI2) or Rome                low propagation delays. Yet, this may not necessarily turn out to
+                                                                            be true in all situations, as the path followed by the packets may
+10 https://gins.garr.it/xWeathermap/mapgen.php?slice=garrx_top
+                                                                            be much longer due to the interconnection of different network
+
+ACM SIGCOMM Computer Communication Review                                                                      Volume 51 Issue 4, October 2021
+
+
+                                                                        9
+                                                                                                    AWS Milan       AKS CH North     AWS Paris
+      On-prem 1 – On-prem 2
+        On-prem 1 – AWS IT                                                                         AKS FR Central   AWS London      AKS UK South
+       On-prem 1 – AKS CH
+       On-prem 2 – AKS CH
+        On-prem 1 – AKS FR                                                                   100
+
+
+
+
+                                                                                  FCT (ms)
+        On-prem 1 – AWS FR
+       On-prem 1 – AWS UK
+       On-prem 2 – AWS UK                                                                     50
+         AKS UK – AWS UK
+
+                              0   10          20           30                                  0
+                                                                                                             1 kB                  100 kB
+                                        FCT (ms)
+                                                                                Figure 10: App-level FCT comparison between a domestic
+Figure 9: App-level FCT comparison focusing on different                        client and different servers hosted on public data-center lo-
+client-server locations, issuing 10 kB requests every 100 ms.                   cations, issuing either 1 kB or 100 kB requests every 100 ms.
+
+providers and possible routing inefficiencies. As a representative              achieved in corporate networks (Fig. 9), it is immediately evident
+example, the on-premise to on-premise evaluation displayed a me-                the latency difference, although the clients are close-by in terms of
+dian FCT close to 16 ms, although client and server were effectively            geographical distance (≈ 35 km). This factor, observed also in [13],
+located in the same city, only few kilometers apart. Conversely,                is most likely ascribed to the complexity of ISP access networks,
+much better performance has been achieved with the server hosted                introducing a relevant latency overhead due to complex forwarding
+on AWS Milan (IT), characterized by a P50 FCT as low as 3.5 ms,                 policies and invasive packet processing.
+thanks to the more direct core network interconnection. Even host-                 More in detail, considering 1 kB messages first, AKS CH is un-
+ing the server farther, on AKS Switzerland (CH), led to definitely              expectedly characterized by the lowest median latency (15.1 ms),
+better results; still, the two clients experienced quite different QoS,         being faster than the server hosted on AWS Milan, which is geo-
+with the former associated with a lower median and an overall more              graphically closer (𝑃50 = 20.3 ms). Similarly, it is possible to observe
+compact distribution. Both AKS Central France (FR) and AWS Paris                a relevant difference between the two close-by UK end-points, with
+(FR) showed stable performance, although with a relatively higher               AWS resulting 13 ms slower than AKS. Thus, showing a limited cor-
+base delay (≈ 20 ms) due to the increased physical distance. Moving             relation between the experienced latency and the geographical dis-
+to farther data-centers, AWS UK was characterized by a median FCT               tance. Additionally, it is also worth mentioning that in several cases,
+latency between 27 ms and 30 ms, once more with different stability             with AWS Paris being the most severe, we observed ECMP-related
+depending on the client access network. Finally, the inter-cloud                latency variations, hence requiring to select a fixed source port to
+scenario achieved definitely good results, although the packets had             achieve stable performance across multiple runs. Moving to the
+to go through the network of two different cloud-providers.                     analysis of the results associated with 100 kB messages, the trans-
+   Learning 12: Physical distance alone does not always represent               mission delay becomes clearly predominant, with approx. 60 ms
+a good approximation of the propagation delay, given the possible               added to the previous measurements, and corresponding to an
+effects of routing inefficiencies. This aspect becomes all the more rel-        upload throughput slightly greater than 14 Mbps.
+evant the more network providers are crossed, given the increased                  Given the unexpected results, we extended the evaluation to
+probability of distant interconnections for economic reasons.                   multiple clients located in the Turin area and served by different
+                                                                                ISPs, measuring the latency experienced towards the two close-by
+4     THE IMPACT OF THE ACCESS NETWORK                                          data-centers. The results are presented in Fig. 11, and elicit two main
+This section focuses explicitly on access networks, to present an               considerations. First, the relatively aligned performance towards
+overview of the overhead introduced by different alternatives. In-              AKS CH, with only the ISP 3 sample being characterized by lower
+deed, the previous measurements were carried out in the best case               latency. Second, the definitely strange behavior observed by ISP 1
+scenario, encompassing the 1 Gbps wired links typical of corporate              clients towards AWS Milan. Indeed, repeating the measurements
+networks. Still, task offloading is usually envisioned for mobile               a day apart (i.e. ISP 1‡ ), the delay decreased by almost an half.
+devices, hence leveraging less performing wireless networks and                 Still, all samples were in both cases consistent across consecutive
+leading to the Mobile Edge Computing (MEC) paradigm [1]. More                   repetitions (even spaced by different hours), as well as among the
+in detail, we initially consider a residential network served by a              different clients. No difference was observed either from other ISPs
+broadband, FTTC Internet access, measuring the latency towards                  or from the corporate network, hence confirming the unexpected
+different public data-centers and analyzing the effects of buffer-              variation to be related to some ISP 1 internal routing variation.
+ing and parallel transmissions on FCT. Then, we experiment with                 Finally, considering different clients located in central and southern
+wireless networks, to characterize the additional latency overhead.             Italy (not shown in Fig. 11), we also measured a median FCT in the
+                                                                                15 ms – 20 ms range (with limited dispersion) towards the same two
+4.1      The Latency towards Public Data-Centers                                data-centers, showing once more that the experienced E2E latency
+                                                                                is currently not dominated by the physical distance.
+Focusing on residential networks, Fig. 10 presents an FCT compari-
+son between a domestic client, served by an FTTC Internet access                   Learning 13: Residential networks are typically associated with
+(100 Mbps / 20 Mbps), and multiple servers hosted on public data-               higher base delays compared to corporate networks, due to the
+centers across Western Europe. Looking back at the performance                  complexity of the ISP access network and commercial policies. Still,
+
+ACM SIGCOMM Computer Communication Review                                                                              Volume 51 Issue 4, October 2021
+
+
+                                                                           10
+                      ISP 1       ISP 1‡   ISP 2     ISP 3                                                  CUBIC              BBR
+
+              30                                                                            300
+
+
+
+
+                                                                                 FCT (ms)
+                                                                                            200
+   FCT (ms)
+
+
+
+
+              20
+
+
+              10                                                                            100
+
+
+               0                                                                              0
+                      AWS Milan                    AKS CH                                         0    20            40              60      80
+                                                                                                                    Time (s)
+Figure 11: App-level FCT comparison between residential
+clients located in Turin and its province (served by different                 Figure 12: FCT comparison between a domestic client and
+ISPs) and close-by data-centers, issuing 1 kB requests.                        AKS CH, showing the effects of parallel transfers and buffer-
+                                                                               ing with two CC algorithms. The delay-sensitive stream is
+                                                                               characterized by 1 kB requests/responses exchanged every
+this additional overhead appears to be mostly independent from                 10 ms; the green (10 s – 40 s) and blue (50 s – 80 s) shaded areas
+the physical distance to the destination, hence limiting the possible          represent respectively parallel download and upload flows.
+advantages brought in by close-by data-centers. Additionally, the
+experienced latency can abruptly and inexplicably change com-                  slices to ensure the best performance in case of strict requirements,
+pletely, due to internal ISP routing variations.                               may be required particularly in the access network. However, this
+                                                                               requires a solution to the well-known problem of accurate classifica-
+4.2           When Packets get Stuck in Traffic                                tion of the incoming traffic, being able to distinguish a device when
+Access networks can also lead to subtler issues, especially when               involved in a real-time communication or in a bulk data transfer
+delay-sensitive applications and parallel, high-throughput, trans-             (e.g., firmware update), which may happen at any time.
+fers do coexist. Considering an automotive scenario, the latter may
+be represented by infotainment traffic or over-the-air updates, as             4.3           Wireless Access Links
+well as the transmission of diagnostic information. Fig. 12 exem-              Concluding our analysis, we finally experimented with wireless
+plifies this situation, encompassing periodic command and control              access links. Acknowledging the typical usage of low-end devices
+interactions towards a back-end hosted on AKS Switzerland and                  in many IoT applications, we leveraged a Raspberry Pi 3 Model
+characterized by a base latency of 16 ms. Small, 1 kB messages per-            B+ board to host the client. As for networking, it features both
+fectly reflect the TCP-level RTT induced by the parallel transfers,            1 Gbps Ethernet and dual band 802.11ac Wi-Fi, although the for-
+without being affected by the reduced bandwidth. Looking at the                mer is limited to ≈ 300 Mbps due to internal bus limitations. To
+graph, it is immediately evident how parallel file transfers, both             better highlight the differences, the server was executed by a laptop
+downstream and upstream, respectively represented by the green                 connected through a wired link to the access point, represented
+(10 s – 40 s) and blue (50 s – 80 s) shaded areas, can dramatically im-        by a high-end domestic modem/router (FRITZ!Box 7590). Without
+pact the application QoS. This delay increase boils down to the                claiming completeness, we believe these measurements to comple-
+behavior of TCP congestion control (CC) algorithms, which attempt              ment the rest of our analysis, giving an overview of the additional
+to maximize the throughput and speed-up file transfers.                        overhead introduced by wireless links.
+   To this end, classical loss-based approaches, such as CUBIC, have              Fig. 13 presents the outcome of the evaluation, leveraging both
+been shown long ago to badly interact with the buffers located be-             wired and wireless connections, the latter both close to the access
+fore bottleneck links, progressively increasing the queue length and           point (i.e. ≈ 1 m LOS) as well as relatively far (≈ 10 m NLOS), to
+leading, in the extreme cases, to the bufferbloat phenomenon [12].             account for different scenarios. Additionally, we considered three
+Fig. 12 shows precisely this behavior, with the FCT experienced by             incremental message sizes, highlighting both the overhead ascrib-
+the delay-sensitive application starting to grow immediately at the            able to the wireless medium and the effect related to the possible
+onset of the parallel download stream, reaching up to three times              bandwidth reduction. Finally, we disabled Wi-Fi power manage-
+the base latency and displaying extremely high variability. Still,             ment features, to prevent performance degradation. Focusing first
+much worse performance is undergone in case of parallel upload                 on 1 kB messages, it is immediately evident the latency difference
+streams, ascribable to the lower available bandwidth characteristic            between wired and wireless links, with the median value (P50)
+of asymmetric access links (i.e. about one fifth the downstream                boosting from as low as 1 ms in the first case, up to more than three
+direction) and the possibly bigger buffers featured by the home                times higher (3.4 ms) in the latter. Additionally, wireless samples
+gateway. Switching to BBR, a CC algorithm based on a different                 are associated with higher dispersion and worse performance at
+approach to estimate the available bandwidth and aiming at reduc-              high percentiles, hence being possibly inappropriate in case of strict
+ing the queuing pressure on bottleneck buffers, the measured FCT               reliability requirements. Moving to bigger sizes, the trend is con-
+definitely improves, although remaining three times as high as in              firmed and rather intensified, due to the additional impact of the
+absence of any parallel flow (50 s – 80 s).                                    lower bandwidth offered by the wireless medium (≈ 100 Mbps, as
+    Learning 14: Network-based bufferbloat mitigation techniques,              measured by the iperf3 tool). As for wireless measurements, the
+such as smart queue management algorithms to identify and prior-               physical distance from the access point turned out to have limited
+itize latency-oriented flows, as well as possibly dedicated network            impact on the P50 value, while displaying increased variability
+
+ACM SIGCOMM Computer Communication Review                                                                           Volume 51 Issue 4, October 2021
+
+
+                                                                          11
+                                                                               offloaded from a smartphone to edge and cloud back-ends, consid-
+                    Wired    Wireless (near)   Wireless (far)
+
+                                                                               ering both Wi-Fi and LTE access networks. They observed better
+                                                                               performance leveraging edge servers, thanks to the combination of
+               20
+    FCT (ms)
+
+
+
+
+                                                                               lower latency and higher bandwidth, overall speeding up the com-
+               10                                                              munication by 100 ms – 200 ms. Still, a 4G access network was asso-
+                                                                               ciated with higher latency, partially losing the advantages brought
+                0                                                              in by physical closeness. Additionally, most application-level FCTs
+                    1 kB              10 kB              100 kB
+                                                                               turned out to be dominated by the server-side processing time (i.e.
+Figure 13: On-LAN App-level FCT comparison switching be-                       accounting for hundreds of ms to even seconds in the worst case),
+tween wired and wireless access networks.                                      hence demanding for hardware accelerators and possibly reverting
+                                                                               the results in case of uneven computational power. Recently, Gorla-
+                                                                               tova et al. [13] measured the task completion latency of responsive
+at higher percentiles when moving the client farther. Still, during            IoT applications, considering on-premise, conventional and server-
+preliminary measurements (not presented in Fig. 13), we definitely             less cloud back-ends. Most notably, they observed definitely worse
+struggled more to achieve good performance in the latter case, due             performance associated with the latter approach, due to start-up
+to the higher sensitivity to external interference, causing latency            time and higher variability ascribable to prioritization. Generally
+spikes and accidental negotiation of lower data-rates, impairing the           speaking, as expected, conventional cloud execution points were
+performance especially in case of bigger message sizes.                        characterized by increased communication overhead with respect
+   Learning 15: Latency-sensitive applications should leverage                 to on-premise devices, although achieving lower FCTs in case of
+wired links, if possible. If wireless is required, it is necessary to          compute-intensive tasks, thanks to the increased available process-
+account for the additional delay (and greater dispersion), until low           ing power. Moving on, in [18], the authors evaluated the impact of
+latency medium will be fully available. Power management tuning                distributing the micro-services composing common applications,
+can improve the performance at the cost of higher consumption.                 such as e-commerce and social network platforms, partly at the
+                                                                               edge and partly in the cloud. They showed this approach to poten-
+                                                                               tially hide unexpected pitfalls if the components are not designed
+5          RELATED WORK                                                        properly, leading to worse performance than cloud-only deploy-
+The increasing prominence of latency-sensitive applications, as                ments. Indeed, response times can dramatically increase due to
+well as the rise of distributed paradigms such as cloud and edge               the interconnected nature of micro-services, requiring multiple
+computing, has undoubtedly fostered interest in the community to               communications back and forth between the edge and the cloud to
+evaluate the associated performance.                                           answer a single request and multiplying the actual network delay.
+   Back in 2012, Choy et al. [7] analysed the on-demand gaming                    Finally, Xu et al. [22] performed a wide-range measurement
+scenario, evaluating the delay experienced by 2500 US users to                 study to assess the performance of 5G, given its promises for high
+reach different AWS EC2 instances. They assumed 80 ms as an up-                bandwidth, ultra reliable and low latency communication. They
+per bound latency to ensure good QoS, showing less than 70 % of                evaluated physical layer QoS, E2E throughput and latency, as well
+the considered end-users could meet the target. Still, they argued             as smartphone energy consumption and they mostly experimented
+leveraging CDN edge servers equipped with additional processing                with the 5G base stations deployed in their campus, leveraging the
+units could allow 28 % more users to achieve the desired latency.              widely adopted Non-Standalone (NSA) mode: hence, reusing legacy
+In [21] the authors compared single-cloud and multi-cloud deploy-              4G infrastructure for the control-plane to reduce costs. The out-
+ments, showing 20 % – 50 % of IP prefixes would benefit from the               come of their analysis was characterized by both lights and shades:
+latter by more than 20 % in terms of lower latency, thanks to the              on the one hand, they observed increased bandwidth as well as re-
+reduced distance to the closest data-center. Yet, users in certain             duced latency, the latter mostly thanks to the flattened core network
+countries would still experience high RTT (i.e. > 100 ms) due to the           architecture. Still, they experienced coverage problems and sharp
+lack of near-by data-centers and the effects of routing inefficiencies.        degradation indoor, along with excessive handover delays due to
+Recently, Charyyev et al. [4] performed a large scale latency eval-            the shared control plane with 4G and high power consumption. Ad-
+uation between end-users, represented by Ripe Atlas nodes, and                 ditionally, traditional loss-based TCP congestion control algorithms
+cloud and edge locations, the latter constituted by Akamai servers.            turned out to lead to poor throughput (i.e. < 33 %) due to severe
+In the end, they observed 82 % of the users could reach the closest            packet losses they ascribed to small buffers in the wired network
+edge server in less than 20 ms, while only half obtained comparable            part. All in all, they concluded raising the need for optimizations in
+performance towards cloud data-centers. Interestingly, this differ-            the entire ecosystem, from the infrastructure to protocols, in order
+ence shrinks in Western Europe, given the widespread presence                  to fully unleash the potential of 5G for applications characterized
+of data-centers. These works strictly focused on the bare network              by extremely stringent bandwidth and latency requirements.
+latency measured by means of pings or TCP-level probes, showing
+the advantages of physical closeness in terms of reduced latency.
+Still, low propagation delays represent just one of the different              6   CONCLUSIONS
+factors influencing the application-level QoS.                                 Ensuring constrained latency to distributed applications is becom-
+   Switching to full-stack evaluations, in 2017, Chen et al. [6] as-           ing a mandatory requirement in a variety of scenarios, ranging from
+sessed the performance of different computer vision applications               automation to transportation, from medicine to entertainment.
+
+ACM SIGCOMM Computer Communication Review                                                                         Volume 51 Issue 4, October 2021
+
+
+                                                                          12
+   Learning 16: While edge computing is typically assumed as a                  ACKNOWLEDGMENTS
+viable solution to this need, moving data-centers close to the users            The authors would like to thank R. Marchi, for the development of
+turned out to be only a small part of a bigger picture and, probably,           the latency-tester tool and the support, together with N. Chiapello
+not even the most important one. In fact, considering the data-                 and F. Semeraro, during the data gathering phase, L. Camiciotti, F.
+center diffusion at least in Western Europe and the relatively low              Ciaccia, A. Doglioli, M. Longo, A. Manzalini, W. Palazzo, G. Perlo,
+propagation delays, it is currently questionable the race towards the           R. Procopio, R. Querio and M. Reineri for the inspiring discussions.
+edge if justified by latency reductions only. Indeed, in all non-trivial
+scenarios, the E2E delay would much likely be dominated by the
+computation and transmission time.
+                                                                                REFERENCES
+                                                                                 [1] N. Abbas, Y. Zhang, A. Taherkordi, and T. Skeie. 2018. Mobile Edge Computing:
+                                                                                     A Survey. IEEE Internet Things J. 5, 1 (Feb. 2018), 450–465. https://doi.org/10.
+   This paper highlights how guaranteeing good QoS to delay-                         1109/JIOT.2017.2750180
+sensitive applications is definitely a multi-dimensional problem,                [2] A. Banks, E. Briggs, K. Borgendale, and R. Gupta. 2019. MQTT Version 5.0. Tech-
+requiring to focus on the entire communication stack, from net-                      nical Report. OASIS Open. https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.
+                                                                                     0.pdf Accessed on: May 31, 2021.
+work parameters to transport and application-level aspects, as                   [3] N. Cardwell, Y. Cheng, C. S. Gunn, S. H. Yeganeh, and V. Jacobson. 2016. BBR:
+well as to carefully tune a series of system variables. Still, multi-                Congestion-Based Congestion Control: Measuring Bottleneck Bandwidth and
+dimensionality is associated with great complexity, since it requires                Round-Trip Propagation Time. Queue 14, 5 (Oct. 2016), 20–53. https://doi.org/10.
+                                                                                     1145/3012426.3022184
+the cooperation of multiple actors to achieve the best performance.              [4] B. Charyyev, E. Arslan, and M. H. Gunes. 2020. Latency Comparison of
+Indeed, even considering the extreme simplicity of our measure-                      Cloud Datacenters and Edge Servers. In Proc. 2020 IEEE Global Communica-
+                                                                                     tions Conf. (GLOBECOM). IEEE, New York, NY, USA, 1–6. https://doi.org/10.
+ment tool, apparently insignificant design choices turned out to                     1109/GLOBECOM42002.2020.9322406
+drastically impact the latency performance: hence, raising the need              [5] J. Chen and X. Ran. 2019. Deep Learning With Edge Computing: A Review. Proc.
+to thoroughly weight up every decision during the development                        IEEE 107, 8 (Aug. 2019), 1655–1674. https://doi.org/10.1109/JPROC.2019.2921977
+                                                                                 [6] Z. Chen et al. 2017. An Empirical Study of Latency in an Emerging Class of
+process. Focusing on the surrounding environment, the complexity                     Edge Computing Applications for Wearable Cognitive Assistance. In Proc. 2nd
+of modern networks, together with the interaction with transport                     ACM/IEEE Symp. on Edge Computing. ACM, New York, NY, USA, 1–14. https:
+protocols, can possibly conceal unexpected pitfalls dramatically im-                 //doi.org/10.1145/3132211.3134458
+                                                                                 [7] S. Choy, B. Wong, G. Simon, and C. Rosenberg. 2012. The brewing storm in cloud
+pairing the actual performance. This strongly highlights the impor-                  gaming: A measurement study on cloud to end-user latency. In Proc. 11th Annual
+tance of preliminary evaluations before deploying delay-sensitive                    Workshop on Network and Systems Support for Games (NetGames). IEEE, New
+                                                                                     York, NY, USA, 1–6. https://doi.org/10.1109/NetGames.2012.6404024
+distributed applications, anticipating possible problems and pre-                [8] CNCF Staff. 2020. CNCF Survey 2020. Technical Report. Cloud Native Computing
+venting issues from being unnoticed until the system is delivered to                 Foundation. https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_
+the final customers. At the same time, continuous and accurate per-                  Report_2020.pdf Accessed on: May 31, 2021.
+                                                                                 [9] G. Fairhurst, A. Sathiaseelan, and R. Secchi. 2015. Updating TCP to Support
+formance monitoring at multiple network levels is of fundamental                     Rate-Limited Traffic. RFC 7661. RFC Editor.
+relevance even after application deployment, to ensure consistent               [10] I. Fette and A. Melnikov. 2011. The WebSocket Protocol. RFC 6455. RFC Editor.
+QoS across time and quickly identify possible variations (e.g., rout-           [11] P Garcia Lopez et al. 2015. Edge-Centric Computing: Vision and Challenges.
+                                                                                     ACM SIGCOMM Comput. Commun. Rev. 45, 5 (Sept. 2015), 37–42. https://doi.org/
+ing) impairing the application latency.                                              10.1145/2831347.2831354
+                                                                                [12] J. Gettys and K. Nichols. 2011. Bufferbloat: Dark Buffers in the Internet: Networks
+   Learning 17: Given the number of involved actors and the diffi-                   without Effective AQM May Again Be Vulnerable to Congestion Collapse. ACM
+culties to reach stable numbers beyond P99, applications with strict                 Queue 9, 11 (Nov. 2011), 40–54. https://doi.org/10.1145/2063166.2071893
+                                                                                [13] M. Gorlatova, H. Inaltekin, and M. Chiang. 2020. Characterizing task completion
+latency requirements should be engineered to autonomously cope                       latencies in multi-point multi-quality fog computing systems. Comput. Netw. 181
+(reliably) with sudden variations and spikes, confirming once more                   (Nov. 2020), 1–11. https://doi.org/10.1016/j.comnet.2020.107526
+                                                                                [14] M. Handley, J. Padhye, and S. Floyd. 2000. TCP Congestion Window Validation.
+that building clever and robust applications is a better option than                 RFC 2861. RFC Editor.
+counting on a complex and unpredictable infrastructure substrate.               [15] G. Huston. 2003. Measuring IP Network Performance. The Internet Protocol J. 6,
+                                                                                     1 (March 2003), 2–19.
+   Concluding, we also highlight the difficulty of obtaining FCTs               [16] X. Jiang et al. 2019. Low-Latency Networking: Where Latency Lurks and How to
+< 10 ms, even considering only on-LAN communications and bare                        Tame It. Proc. IEEE 107, 2 (Feb. 2019), 280–306. https://doi.org/10.1109/JPROC.
+                                                                                     2018.2863960
+network RTTs of 1 ms or less, which is achievable e.g. in a produc-             [17] N. Naik. 2017. Choice of effective messaging protocols for IoT systems: MQTT,
+tion factory with proper infrastructure setup. First, even in ideal                  CoAP, AMQP and HTTP. In Proc. 2017 IEEE Int. Systems Engineering Symp. (ISSE).
+                                                                                     IEEE, New York, NY, USA, 1–7. https://doi.org/10.1109/SysEng.2017.8088251
+configurations, it is fundamental to take into account transmission             [18] C. Nguyen, A. Mehta, C. Klein, and E. Elmroth. 2019. Why Cloud Applications
+and processing delays, with the latter being particularly relevant                   Are Not Ready for the Edge (Yet). In Proc. 4th ACM/IEEE Symp. on Edge Computing.
+(and possibly variable) in case of non-trivial tasks. Second, applica-               ACM, New York, NY, USA, 250–263. https://doi.org/10.1145/3318216.3363298
+                                                                                [19] E. Rescorla. 2018. The Transport Layer Security (TLS) Protocol Version 1.3. RFC
+tions associated with those strict requirements are typically either                 8446. RFC Editor.
+mission or safety critical, hence demanding for extreme reliability             [20] W. Shi et al. 2016. Edge Computing: Vision and Challenges. IEEE Internet Things
+too. Still, our investigation showed how problems tend to emerge                     J. 3, 5 (Oct. 2016), 637–646. https://doi.org/10.1109/JIOT.2016.2579198
+                                                                                [21] Z. Wu and H. V. Madhyastha. 2013. Understanding the Latency Benefits of Multi-
+when focusing on P99 and higher, questioning the feasibility of                      Cloud Webservice Deployments. ACM SIGCOMM Comput. Commun. Rev. 43, 2
+leveraging shared infrastructure in these scenarios. Although better                 (April 2013), 13–20. https://doi.org/10.1145/2479957.2479960
+                                                                                [22] D. Xu et al. 2020. Understanding Operational 5G: A First Measurement Study on
+reliability could be certainly achieved exploiting isolated network                  Its Coverage, Performance and Energy Consumption. In Proc. Annu. Conf. ACM
+slices to prevent interference, complemented with real-time operat-                  SIGCOMM. ACM, New York, NY, USA, 479–494. https://doi.org/10.1145/3387514.
+ing systems to increase predictability, we still believe this goal to                3405882
+                                                                                [23] K. Zhang et al. 2017. Mobile-Edge Computing for Vehicular Networks: A Promis-
+be definitely challenging. Leave it alone meeting the 1 ms target,                   ing Network Paradigm with Predictive Off-Loading. IEEE Veh. Technol. Mag. 12,
+which would undoubtedly require a complete paradigm shift.                           2 (June 2017), 36–44. https://doi.org/10.1109/MVT.2017.2668838
+
+
+ACM SIGCOMM Computer Communication Review                                                                                   Volume 51 Issue 4, October 2021
+
+
+                                                                           13
+A     REPRODUCTION OF OUR RESEARCH
+We aim to enable reproducibility of our results. In the following,
+we discuss our study in terms of repeatability (i.e., the ability of
+the same team to obtain the same results upon running the same
+measurement), replicability (i.e., the research can be performed by a
+different team with the same experimental setup), and reproducibil-
+ity (i.e, the ability of independent teams to arrive at the same factual
+conclusion using their own tools and measurements).1
+
+A.1      Repeatability
+As the Internet is continuously evolving and data is gathered in
+live networks, repeated measurements may not necessarely yield
+the same results. Hence, introducing a natural limit for precise
+repeatability of our research. Nevertheless, to minimize the risk of
+errors and one-time effects, we repeated the measurements multiple
+times and over long periods, while explicitly highlighting in our
+paper as learnings the relevant and unexpected discrepancies.
+
+A.2      Replicability
+To make our research replicable, we release the source code of our
+measurement tools, our analysis scripts and the raw samples of the
+results presented in this paper on GitHub:
+           https://github.com/richiMarchi/latency-tester
+
+A.3      Reproducibility
+While strict reproduction of our results is difficult due to the rea-
+sons explained in Appendix A.1, as well as, in different cases, the
+dependency from the underlying network, an independent team is
+still able to obtain the same type of statistics presented in this work.
+Specifically, the paper describes the characteristics of the different
+scenarios considered and the configurations adopted for each mea-
+surement (e.g., endpoints distance, message size and frequency).
+As for the infrastructure, unless explicitly specified in the text, we
+always leveraged default configurations, both for the Linux Kernel
+(as supplied in Ubuntu 20.04 LTS), the Kubernetes clusters (version
+1.19 and newer) and the AWS EC2 instances.
+
+
+
+
+1 Dror G. Feitelson. 2015. From Repeatability to Reproducibility and Corroboration.
+SIGOPS Oper. Syst. Rev. 49, 1 (Jan. 2015), 3–11. https://doi.org/10.1145/2723872.2723875
+
+ACM SIGCOMM Computer Communication Review                                                       Volume 51 Issue 4, October 2021
+
+
+                                                                                           14
+

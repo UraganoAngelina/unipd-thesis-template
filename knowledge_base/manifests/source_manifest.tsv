@@ -1,0 +1,26 @@
+id	category	path	sensitivity	notes
+all_2_capitolato_tecnico	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/All. 2 Capitolato Tecnico 3.pdf	standard	Capitolato tecnico
+ddr_11922_siter	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/DDR 11922 del 16.03.2026_SITER.pdf	standard	DDR SI.Ter
+relazione_tecnica_siter	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/RTI AlmavivA Relazione Tecnica Sanità digitale ID 2365 Lotto 3 - Azienda Zero Veneto SIT _RdO 5521029 1.pdf	standard	Relazione tecnica RTI
+siter_dimensionamento	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/SITer - Dimensionamento infrastruttura.pdf	standard	Dimensionamento infrastruttura
+dm_77_2022	normative	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Decreto-Ministro-della-salute-772022-.pdf	standard	DM 77/2022
+cantiere_116117	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Cantiere 116117_ REV_18062024 1.docx	standard	Cantiere 116117
+manuale_protocollo_116117	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/MANUALE PROTOCOLLO 2_116117.docx 1.pdf	standard	Manuale protocollo 116117
+ddr_13745_sioc	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/DDR 13745 17-12-2025_SIOC.pdf	standard	DDR SIOC
+sicurezza_gdlo	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Infrastruttura di sicurezza GDL-O Sicurezza v2.14.pdf	standard	Infrastruttura di sicurezza
+apms_auth	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf	standard	Autenticazione APMS
+anagrafe_zero	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche - Anagrafe Zero v2.6.pdf	standard	Anagrafe Zero
+chiamata_contesto_rve	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf	standard	Chiamata di contesto RVE
+sottoscrizione_notifica	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf	standard	Gestione sottoscrizione/notifica
+affinity_domain	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf	standard	Affinity Domain
+ulss3_xvalue	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/ULSS 3 Serenissima - Specifiche tecniche di integrazione con XValue v2.10.pdf	standard	Integrazione XValue
+firme_sigilli	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Firme e sigilli elettronici 1.pdf	standard	Firme e sigilli elettronici
+paymed_analisi	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/paymed_analisi3.pdf	standard	Paymed analisi
+unibo_presentation	internal_project	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Unibo 1.pptx	standard	Presentazione disponibile nella cartella documentale
+analisi_completa	notes	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/analisi_completa.md	standard	Nota riassuntiva consultata
+pianificazione	notes	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/pianificazione.txt	standard	Roadmap/pianificazione
+specifiche_sensitive	notes	/home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/specifiche.txt	sensitive	Contains credentials/endpoints; not copied
+paper_latency_acm	academic	/home/alberto/Downloads/Accademic papers/Thesis paper/3503954.3503956.pdf	standard	Academic paper
+paper_numerical_latency_throughput	academic	/home/alberto/Downloads/Accademic papers/Thesis paper/Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf	standard	Academic paper
+paper_srg_2	academic	/home/alberto/Downloads/Accademic papers/Thesis paper/srg_2.pdf	standard	Academic paper
+project_architecture	architecture	/home/alberto/Downloads/project-architecture.txt	standard	Architecture snapshot

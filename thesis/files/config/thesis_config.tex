@@ -28,7 +28,7 @@
 \setlength{\footnotesep}{5mm}
 
 \setlength{\headheight}{14.5pt}
-\addtolength{\topmargin}{-2.45pt}
+% \addtolength{\topmargin}{-2.45pt}
 
 % Add a subscript G to a glossary entry
 \newcommand{\glox}{\textsubscript{\textbf{\textit{G}}}}
@@ -38,6 +38,31 @@
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Improvements the chapter section and sub commands
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}
+{\chaptertitlename\ \thechapter}
+{0.5ex}
+{\LARGE}
+\titlespacing*{\chapter}
+{0pt}{-20pt}{1.2ex}
+
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+{0pt}{2.5ex plus .8ex minus .2ex}{1.2ex plus .2ex}
+
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}
+{0pt}{2ex plus .6ex minus .2ex}{1ex plus .2ex}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}
+{0pt}{2ex plus .5ex minus .2ex}{.8ex plus .2ex}
+
 
 % Define use case environment
 \newcounter{usecasecounter} % define a counter
@@ -83,6 +108,12 @@
 \fancyhf{}
 \fancyhead[L]{\leftmark} % Places Chapter N. Chatper title on the top left
 \fancyfoot[C]{\thepage} % Page number in the center of the footer
+%Prima pagina dei chapter usa stile plain
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 % Adds a blank page while increasing the page number
 \newcommand\blankpage{ 

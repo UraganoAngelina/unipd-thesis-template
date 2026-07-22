@@ -1,0 +1,351 @@
+                          Decreto Ministro della salute 77/2022
+
+La definizione degli standard organizzativi, qualitativi e tecnologici
+dell’assistenza territoriale, costituisce la prima milestone, in qualità di Riforma,
+nell'ambito della Componente 1 Missione 6 del PNRR, ma anche il completamento
+della riforma dei servizi sanitari iniziata con il Regolamento di definizione degli
+standard qualitativi, strutturali, tecnologici e quantitativi relativi all’assistenza
+ospedaliera di cui al decreto 2 aprile 2015, n. 70.
+Dopo un iter accidentato 1, il decreto n. 77 del 23 maggio 2022 è stato pubblicato
+nella G.U. n.144 del 22 giugno 2022. Il decreto è composto da 4 articoli e tre
+Allegati: Allegato 1 - Modelli e standard per lo sviluppo dell'Assistenza Territoriale
+nel SSN; Allegato 2 - Ricognizione Standard; Allegato 3 – Glossario.
+L’articolo 1, rispondendo al parere n. 881 del 19 maggio 2022 del Consiglio di
+Stato, precisa che “Il modello per lo sviluppo dell'assistenza territoriale nel Servizio
+Sanitario nazionale e gli standard qualitativi, strutturali, tecnologici e quantitativi
+delle strutture dedicate all'assistenza territoriale e al sistema di prevenzione in
+ambito sanitario, ambientale e climatico sono individuati, rispettivamente, negli
+Allegati 1, avente valore descrittivo, e 2 avente valore prescrittivo, che
+costituiscono parte integrante del presente decreto”. Conseguentemente, le regioni
+e le province autonome sono tenute, entro 6 mesi dalla data di entrata in vigore del
+Regolamento, ad adottare un provvedimento generale di programmazione
+dell'Assistenza territoriale regionale coerente con quanto previsto nell’allegato 2 e
+con gli investimenti della Missione 6 Componente 1 del PNRR.
+Ai sensi del successivo articolo 2 il Monitoraggio degli standard viene effettuato
+all'Agenzia Nazionale per i Servizi Sanitari Regionali (Agenas), che è tenuta ad
+elaborare una relazione semestrale, da inviare al Ministero della salute, sullo stato
+di implementazione, in ogni singola regione e provincia autonoma, degli standard
+qualitativi, strutturali, tecnologici e quantitativi delle strutture dedicate
+all'assistenza territoriale e al sistema di prevenzione in ambito sanitario, ambientale
+e climatico. Il monitoraggio degli standard, relativamente ai LEA, è effettuato dal
+Comitato LEA 2. La verifica di attuazione del Regolamento costituisce
+adempimento ai fini dell'accesso al finanziamento integrativo del SSN.
+Gli articoli 3 e 4 riguardano, rispettivamente, l’applicabilità del decreto alle
+Regioni a statuto speciale ed alle province autonome, e la clausola di invarianza
+degli oneri finanziari.
+
+Gli allegati
+Allegato - 1 di valore descrittivo.
+
+
+1
+    Mancate intese espresse dalla Conferenza Stato- Regioni nelle sedute del 30 marzo e del 21 aprile
+    2022; attivazione della procedura di cui all'art. 3, comma 3, del D. Lgs. n. 281 del 1997, che
+    prevede il coinvolgimento del Consiglio dei ministri, che può intervenire con deliberazione
+    motivata, quando un'intesa espressamente prevista dalla legge non è raggiunta entro trenta giorni
+    dalla prima seduta della Conferenza Stato-regioni in cui l'oggetto è posto all'ordine del giorno.
+2
+    Si rinvia all'Allegato I del decreto Salute/MEF concernente il «Nuovo sistema di garanzia per il
+    monitoraggio dell'assistenza sanitaria» del 12 marzo 2019.
+In premessa, il documento dedica un paragrafo a “La stratificazione della
+popolazione e l'analisi del bisogno di salute” ricordando che la più recente
+normativa nazionale (art. 7 del decreto legge n. 34 del 2020), sulla base della
+crescente disponibilità di dati digitali, pone l'attenzione sulla possibilità di
+sviluppare modelli predittivi, che consentano la stratificazione della popolazione, il
+monitoraggio per fattori di rischio, la gestione integrata di patologie croniche e di
+situazioni complesse.
+Il documento passa poi alla descrizione delle articolazioni organizzativo funzionali
+dell'Azienda sanitaria locale (ASL) sul territorio. In prima istanza vengono elencate
+le funzioni e gli standard organizzativi del Distretto, che a differenza delle altre
+articolazioni, non è citato nell’Allegato 2 di valore prescrittivo. Pertanto il Distretto
+potrà essere variamente disegnato nelle diverse realtà regionali.
+
+Il Distretto.
+Il documento ricorda che il Distretto è un'articolazione organizzativo-funzionale
+dell'Azienda sanitaria locale (ASL). Come previsto dalla normativa vigente,
+l'articolazione in distretti della ASL è disciplinata dalla legge regionale, garantendo
+una popolazione minima di almeno sessantamila abitanti, salvo che la
+regione/provincia       autonoma,      in    considerazione delle caratteristiche
+geomorfologiche del territorio o della bassa densità della popolazione residente,
+disponga diversamente.
+Nel nuovo disegno dell’assistenza territoriale tracciato dall’Allegato 1 (come detto
+non prescrittivo), il Distretto costituisce il luogo privilegiato di gestione e di
+coordinamento funzionale ed organizzativo della rete dei servizi sociosanitari a
+valenza sanitaria e sanitari territoriali. Il Distretto è inoltre deputato, anche
+attraverso la Casa di Comunità, al perseguimento dell'integrazione tra le diverse
+strutture sanitarie, in modo da assicurare una risposta coordinata e continua ai
+bisogni della popolazione, l'uniformità dei livelli di assistenza e la pluralità
+dell'offerta. All'interno del Distretto possono essere presenti i Consultori familiari
+e le attività rivolte ai minori, ove esistenti, funzionalmente collegate con la Casa
+della Comunità hub (per le due tipologie di casa della Comunità hub e spoke si veda
+infra).
+Il Distretto garantisce inoltre una risposta assistenziale integrata sotto il profilo delle
+risorse, degli strumenti e delle competenze professionali per determinare una
+efficace presa in carico della popolazione di riferimento.
+
+Nel documento le funzioni e gli standard del Distretto vengono così riassunti:
+Distretto di circa 100.000 abitanti, con variabilità secondo criteri di densità di
+popolazione e caratteristiche orografiche del territorio.
+La programmazione deve prevedere i seguenti standard:
+o 1 Casa della Comunità hub ogni 40.000-50.000 abitanti;
+o Case della Comunità spoke e ambulatori di Medici di Medicina Generale
+   (MMG) e Pediatri di Libera Scelta (PLS) tenendo conto delle caratteristiche
+   orografiche e demografiche del territorio al fine di favorire la capillarità dei
+   servizi e maggiore equità di accesso, in particolare nelle aree interne e rurali.
+   Tutte le aggregazioni dei MMG e PLS (AFT e UCCP) sono ricomprese nelle
+  Case della Comunità avendone in esse la sede fisica oppure a queste collegate
+  funzionalmente;
+o 1 Infermiere di Famiglia o Comunità ogni 3.000 abitanti. Tale standard è da
+  intendersi come numero complessivo di Infermieri di Famiglia o Comunità
+  impiegati nei diversi setting assistenziali in cui l'assistenza territoriale si articola;
+o 1 Unità di Continuità Assistenziale (1 medico e 1 infermiere) ogni 100.000
+  abitanti;
+o 1 Centrale Operativa Territoriale ogni 100.000 abitanti o comunque a valenza
+  distrettuale, qualora il Distretto abbia un bacino di utenza maggiore;
+o 1 Ospedale di Comunità dotato di 20 posti letto ogni 100.000 abitanti.
+
+Allegato 2 di valore prescrittivo
+Il Documento è molto più snello dell’Allegato 1: rappresenta infatti una
+ricognizione puntuale degli standard.
+Casa della Comunità - CdC
+Si inizia con la Casa della Comunità (CdC) nella sua declinazione di CdC hub, a
+cui possono essere funzionalmente ricondotte CdC spoke presenti nello stesso
+Ambito Territoriale Sanitario (ATS).
+
+La CdC è il luogo fisico e di facile individuazione al quale i cittadini possono
+accedere per bisogni di assistenza sanitaria, socio-sanitaria a valenza sanitaria ed è
+il modello organizzativo dell'assistenza di prossimità per la popolazione di
+riferimento.
+Modalità di lavoro integrata e multidisciplinare dei professionisti presenti nelle
+CdC
+Per questo ambito, nella descrizione sintetica della CdC, si rinvia a quanto stabilito
+dalla legge di bilancio 2022 per l’assistenza rivolta alla non autosufficienza (art. 1,
+comma 163, della legge n. 234 del 2022), ovvero alla fascia di utenza maggiormente
+bisognosa di assistenza sociosanitaria integrata. Sul punto, la legge di bilancio 2022
+ribadisce l’importanza che i servizi siano erogati dal SSN e dagli Ambiti Territoriali
+Sociali (ATS) - mediante le risorse umane e strumentali di rispettiva competenza -
+attraverso punti unici di accesso (PUA), con sede operativa presso le Case della
+comunità. Affinché l’erogazione dei servizi e degli interventi sia puntuale viene
+ribadita l’importanza dell’utilizzo della valutazione multidimensionale (elemento
+centrale anche del D.P.C.M. 12 gennaio 2017 sui Nuovi Lea) effettuata dalle unità
+di valutazione multidimensionale: équipe integrate composte da personale - si
+specifica - adeguatamente formato e numericamente sufficiente appartenente al
+SSN e agli ATS per la valutazione del complesso dei bisogni di natura clinica,
+funzionale e sociale delle persone. La disposizione della legge di bilancio 2022
+disegna poi il percorso della presa in carico: sulla base della valutazione, con il
+coinvolgimento dell’utente e della sua famiglia o dell'amministratore di sostegno,
+l'équipe integrata procede alla definizione del progetto di assistenza individuale
+integrata (PAI), contenente l'indicazione degli interventi modulati secondo
+l'intensità del bisogno. Il PAI individua altresì le responsabilità, i compiti e le
+modalità di svolgimento dell'attività degli operatori sanitari, sociali e assistenziali
+che intervengono nella presa in carico della persona, nonché l'apporto della famiglia
+e degli altri soggetti che collaborano alla sua realizzazione. La programmazione
+degli interventi e la presa in carico si avvalgono del raccordo informativo, anche
+telematico, con l'INPS.
+Nella descrizione sintetica della CdC si rinvia ad atti di concertazione non
+ancora emanati:
+- l’Intesa prevista dal citato comma 163 della Legge di bilancio, di cui però non si
+   fa cenno nel testo della medesima disposizione. Il rinvio appare invece riferibile
+   all’Intesa in sede di Conferenza unificata prevista dal precedente comma 161, su
+   iniziativa dei ministri lavoro/salute/MEF, per la definizione delle linee guida
+   per l'attuazione degli interventi per la non autosufficienza e per l'adozione
+   di atti di programmazione integrata, garantendo l'omogeneità del modello
+   organizzativo degli ATS da assicurarsi medianti atti di programmazione
+   regionali o provinciali e la ripartizione delle risorse assegnate dallo Stato
+   per il finanziamento dei LEPS;
+- l’Accordo previsto dall’art. 21, comma 1, del D.P.C.M. sui Nuovi LEA
+   rispetto ai percorsi assistenziali domiciliari, territoriali, semi-residenziali e
+   residenziali che devono prevedere l'erogazione congiunta di attività e
+   prestazioni afferenti all'area sanitaria e all'area dei servizi sociali. In tal
+   senso, l’Accordo deve definire linee di indirizzo volte a garantire omogeneità
+   nei processi di integrazione istituzionale, professionale e organizzativa delle
+   suddette aree, anche con l'apporto delle autonomie locali, nonché modalità di
+   utilizzo delle risorse coerenti con l'obiettivo dell'integrazione, anche con
+   riferimento al Fondo per le non autosufficienze.
+
+Standard organizzativi: 1 CdC hub ogni 40.000-50.000 abitanti.
+Standard di personale per 1 Casa di Comunità hub: 7-11 Infermieri, 1 assistente
+sociale, 5-8 unità di Personale di Supporto (Sociosanitario, Amministrativo).
+Servizi presenti nella Casa di Comunità
+Obbligatori nelle CdC hub e spoke
+Servizi di cure primarie erogati attraverso équipe multiprofessionali (MMG, PLS,
+SAI, IFoC, ecc); Punto Unico di Accesso; Servizio di assistenza domiciliare;
+Servizi di specialistica ambulatoriale per le patologie ad elevata prevalenza; Servizi
+infermieristici; Sistema integrato di prenotazione collegato al CUP aziendale;
+Integrazione con i Servizi Sociali; Partecipazione della Comunità e valorizzazione
+della co-produzione; Collegamento con la Casa della Comunità hub di riferimento;
+Presenza medica H24, 7/7 gg per la CdC hub; H12, 6/7 gg. per la CdC spoke;
+Presenza infermieristica H12, 7/7 gg fortemente raccomandato H24, 7/7 gg per la
+CdC hub; H12, 6/7 gg per la CdC spoke;
+Obbligatori nelle CdC hub
+Servizi diagnostici di base; Continuità Assistenziale; Punto prelievi.
+Facoltativi nelle CdC hub e spoke
+Attività Consultoriali e attività rivolta ai minori; Interventi di Salute pubblica
+(incluse le vaccinazioni per la fascia 0-18); Programmi di screening.
+Raccomandati nelle CdC hub e spoke
+Servizi per la salute mentale, le dipendenze patologiche e la neuropsichiatria
+infantile e dell’adolescenza; Medicina dello sport
+Centrale operativa territoriale - COT
+La Centrale Operativa Territoriale (COT), attiva 7 giorni su 7, ha funzione di
+coordinamento della presa in carico della persona e raccordo tra servizi e
+professionisti coinvolti nei diversi setting assistenziali. Svolge attività territoriali,
+sanitarie, sociosanitarie ed ospedaliere ed è in contatto costate con la rete
+dell'emergenza-urgenza.
+Si prevede 1 Centrale Operativa Territoriale ogni 100.000 abitanti o comunque a
+valenza distrettuale, qualora il Distretto abbia un bacino di utenza maggiore.
+Standard di personale: Coordinatore Infermieristico, 3-5 Infermieri, 1-2 unità di
+personale di supporto in coerenza con quanto previsto nella RT di cui all'art. 1,
+comma 274, della legge n. 234 del 2021 (ex art. 93, comma 1, del disegno di legge
+originario, si veda quanto detto supra al proposito del personale).
+Standard tecnologici e strutturali
+Sistemi di tracciamento e monitoraggio delle transizioni da un luogo di cura all'altro
+o da un livello clinico assistenziale all'altro; sistemi di raccolta, gestione e
+monitoraggio dei dati di salute, anche attraverso strumenti di telemedicina;
+Infrastrutture tecnologiche ed informatiche integrate con i principali applicativi di
+gestione aziendale; software con accesso al Fascicolo Sanitario Elettronico (FSE) e
+ai principali database aziendali, software di registrazione delle chiamate; sistema
+informativo condiviso e interconnesso con la Centrale Operativa Regionale 116117.
+
+Centrale operativa 116117
+La Centrale Operativa 116117 sede del Numero Europeo Armonizzato (NEA) per
+le cure mediche non urgenti offre un servizio telefonico gratuito alla popolazione
+per tutte le prestazioni sanitarie e sociosanitarie a bassa intensità assistenziale in
+raccordo con strumenti nazionali e/o territoriali finalizzati alla presa in carico di
+persone con fragilità. Si prevede 1 Centrale Operativa NEA 116117 (CO 116117)
+ogni 1-2 milioni di abitanti o comunque a valenza regionale. Servizio aperto e
+gratuito e attivo 24h 7 giorni su 7 per le cure mediche non urgenti.
+
+Unità di Continuità Assistenziale (USCA)
+Viene confermata l'Unità di Continuità Assistenziale nel limite previsto ai sensi
+dell'art. 1, co. 274, della legge di bilancio 2022. L’USCA è un'équipe mobile
+distrettuale per la gestione e il supporto della presa in carico di individui, o di
+comunità, che versano in condizioni clinico-assistenziali di particolare complessità
+e che comportano una comprovata difficoltà operativa. 1 Unità di Continuità
+Assistenziale ogni 100.000 abitanti. Sede operativa: Casa della Comunità Hub.
+Standard di personale: -1 Medico e 1 Infermiere ogni 100.000 abitanti con
+l’integrazione di ulteriori figure professionali sanitarie nell'ambito delle
+professionalità disponibili a legislazione vigente anche attraverso interventi di
+riorganizzazione aziendale.
+Requisiti tecnologici e strutturali
+Strumenti di telemedicina (es. televisita e teleassistenza) e la collaborazione con
+MMG e PLS delle AFT/UCCP. Può usufruire del supporto a distanza (teleconsulto)
+di specialisti del territorio ed ospedalieri. Per questo l’USCA deve essere dotata di
+un sistema integrato comprendente una moderna infrastruttura di telemedicina
+collegata alle COT ed accessibile via internet al fine di            garantire anche in
+teleconsulto l'interoperabilità della rete di consulenti collegati. L’USCA deve essere
+inoltre dotata di strumentazione avanzata di primo livello e di una gamma completa
+di dispositivi medici portatili (anche diagnostici) in grado di acquisire informazioni
+e parametri necessari al monitoraggio delle condizioni cliniche del paziente.
+
+Assistenza Domiciliare
+Le Cure domiciliari sono un servizio a valenza distrettuale finalizzato all'erogazione
+al domicilio di interventi caratterizzati da un livello di intensità e complessità
+assistenziale variabile nell'ambito di specifici percorsi di cura e di un piano
+personalizzato di assistenza. L’obiettivo atteso è quello previsto dalla Componente
+1 della Missione 6 “Salute”, Casa come primo luogo di cura e telemedicina M6C1-
+I 1.2 - 4-9, finanziato con 4 miliardi (prestiti), di cui: 2.720 milioni connessi ai costi
+derivanti dal servire un numero crescente di pazienti con i servizi connessi
+all’assistenza domiciliare; 280 milioni per l'istituzione delle Centrali operative
+territoriali (COT); 1.000 milioni per la telemedicina. Il traguardo, fisato a T2 2026,
+è un aumento progressivo delle prestazioni rese in assistenza domiciliare in grado
+di prendere in carico fino al 10% della popolazione di età superiore ai 65 anni con
+una o più patologie croniche e/o non autosufficienti (1,5 milioni di persone stimate
+nel 2026). Per raggiungere tale obiettivo dovrà essere aumentato di almeno 800.000
+unità entro il 2026 il numero di persone di età superiore ai 65 anni che ricevono
+assistenza domiciliare.
+Gli standard organizzativi prevedono: continuità' assistenziale 7 giorni su 7 e 24
+ore su 24, nelle modalità indicate dalla normativa nazionale e regionale vigente, ivi
+compresi i servizi di telemedicina nelle modalità forme previste.
+Requisiti tecnologici e strutturali
+Alimentazione del Sistema Informativo Assistenza Domiciliare – SIAD; interfaccia
+e raccordo con la COT attraverso piattaforme digitali, che facilitino l'inserimento
+dei dati dell'assistito nel Fascicolo Sanitario Elettronico.
+Si veda inoltre l’Intesa Stato Regioni 4 agosto 2021 Atto rep. 151/2021 sul
+documento recante "Proposta di requisiti strutturali, tecnologici e organizzativi
+minimi per l'autorizzazione all'esercizio e requisiti ulteriori per l'accreditamento
+delle cure domiciliari, in attuazione dell'articolo 1, comma 406, della legge 30
+dicembre 2020, n. 178" e il D.P.R. recante Approvazione dell'atto di indirizzo e
+coordinamento alle regioni e alle province autonome di Trento e di Bolzano, in
+materia di requisiti strutturali, tecnologici ed organizzativi minimi per l'esercizio
+delle attività sanitarie da parte delle strutture pubbliche e private.
+
+Ospedale di Comunità
+L'Ospedale di Comunità (OdC), operativo 7 giorni su 7, è una struttura sanitaria di
+ricovero che afferisce alla rete di offerta dell'Assistenza Territoriale e svolge una
+funzione intermedia tra il domicilio e il ricovero ospedaliero, con la finalità di
+evitare ricoveri ospedalieri impropri o di favorire dimissioni protette in luoghi più
+idonei al prevalere di fabbisogni sociosanitari, di stabilizzazione clinica, di recupero
+funzionale e dell'autonomia e più prossimi al domicilio. L’obiettivo atteso è quello
+previsto dalla Componente 1 della Missione 6 “Salute” Rafforzamento
+dell’assistenza sanitaria intermedia e delle sue strutture (Ospedali di Comunità
+M6C1-I 1.3 – 10-11, finanziato con 1 miliardo. Gli standard organizzativi
+prevedono 1 Ospedale di Comunità dotato di 20 posti letto ogni 100.000 abitanti.
+Gli standard di personale per 1 di Comunità dotato di 20 posti letto sono: 7-9
+infermieri (di cui 1 Coordinatore infermieristico), 4-6 Operatori Sociosanitari, 1-2
+unità di altro personale sanitario con funzioni riabilitative e un Medico per 4,5 ore
+al giorno 6 giorni su 7. L’assistenza infermieristica è garantita nelle 24 ore 7 giorni
+su 7. L'assistenza medica è assicurata dai medici incaricati; nel turno diurno (8-20)
+deve essere garantita per 4,5 ore al giorno 6 giorni su 7 mentre nel turno notturno
+(20-8) e diurno festivo e prefestivo in forma di pronta disponibilità, anche
+organizzata per più strutture dello stesso territorio, con tempi di intervento conformi
+a quanto previsto dalle norme vigenti in materia. L'assistenza notturna è garantita
+anche da Medici della Continuità Assistenziale, in rapporto a specifici accordi
+locali, oppure da medici operanti nella struttura.
+Standard tecnologici e strutturali
+Sistemi di raccolta delle informazioni sanitarie attraverso la cartella clinico -
+assistenziale integrata, inserita in un processo di informatizzazione integrato con
+il FSE; sistemi di monitoraggio dei pazienti, in loco o in collegamento funzionale,
+anche attraverso servizi di telemedicina; flusso informativo per rilevare le
+prestazioni erogate dagli OdC; disponibilità di locali idonei attrezzati, destinati
+alle principali attività motorie e riabilitative nonché di locali ad uso
+amministrativo, cucina e            locali accessori, lavanderia e stireria, servizio
+mortuario. Tali servizi possono essere in comune e/o condivisi con altre strutture
+e/o unità di offerta.
+Per quanto non esplicitato si rimanda all'Intesa Stato-Regioni sancita il 20 febbraio
+2020 (Rep. Atti n.17/CSR) recante Requisiti strutturali, tecnologici ed
+organizzativi minimi dell'Ospedale di Comunità.
+
+Rete delle cure palliative
+La rete delle cure palliative è costituita da servizi e strutture in grado di garantire la
+presa in carico globale dell'assistito e del suo nucleo familiare, in ambito
+ospedaliero, con l'attività di consulenza a livello ospedaliero, ambulatoriale,
+domiciliare e in hospice. Le cure palliative sono rivolte a malati di qualunque età e
+non sono prerogativa della fase terminale della malattia. Possono infatti affiancarsi
+alle cure attive fin dalle fasi precoci della malattia cronico-degenerativa, controllare
+i sintomi durante le diverse traiettorie della malattia, prevenendo o attenuando gli
+effetti del declino funzionale.
+Standard strutturali: 1 di Cure Palliative Domiciliari (UCP - DOM) ogni 100.000
+abitanti e 1 Hospice, 8/10 posti letto ogni 100.000 abitanti.
+Standard di personale: nell'ambito delle risorse umane disponibili a legislazione
+vigente anche attraverso interventi di riorganizzazione aziendale, l'erogazione
+dell'assistenza è assicurata: nell'ambito di strutture di degenza ospedaliera da un
+equipe di cure palliative; nell'ambito ambulatoriale da equipe dedicate e
+specificatamente formate in cure palliative; a domicilio del paziente - attraverso il
+servizio di Cure Palliative Domiciliari(CPD) - da un'equipe assistenziale
+multiprofessionale dedicata o specificatamente formata (Unità di Cure Palliative -
+UCP), in ntegrazione con il medico di medicina generale per continuità
+assistenziale h 24 per 7 giorni su 7; all'interno delle strutture residenziali e degli
+Hospice di 8/10 posti letto ogni 100.000 abitanti
+Requisiti tecnologici e strutturali
+Definisce un sistema di erogazione di CP, per l'attuazione dei percorsi di presa in
+carico e di continuità delle cure e dell'assistenza favorendo l'integrazione dei servizi
+sanitari e sociali; adotta sistemi di valutazione, miglioramento della qualità e
+controllo dei percorsi di cura erogati; raccoglie e trasmette i dati al sistema
+informativo.
+
+Servizi per la salute dei minori, delle donne, delle coppie e delle famiglie
+Il Consultorio Familiare e l'attività rivolta ai minori, ove presenti, rappresentano la
+struttura aziendale a libero accesso e gratuita e sono deputati alla protezione,
+prevenzione, promozione della salute, consulenza e cura rivolte alla donna in tutto
+il suo |ciclo di vita (comprese quelle in gravidanza), minori, famiglie all'interno del
+contesto comunitario di riferimento.
+Standard strutturali: 1 consultorio familiare (CF) ogni 20.000 abitanti con la
+possibilità di 1 ogni 10.000 nelle aree interne e rurali. L'attività consultoriale può
+svolgersi all'interno delle Case della Comunità, privilegiando soluzioni logistiche
+che tutelino la riservatezza.
+Non sono elencati i requisiti tecnologici e strutturali, si rimanda al D.P.R. del 14
+gennaio 1997 recante Approvazione dell'atto di indirizzo e coordinamento alle
+regioni e alle province autonome di Trento e di Bolzano, in materia di requisiti
+strutturali, tecnologici ed organizzativi minimi per l'esercizio delle attività sanitarie
+da parte delle strutture pubbliche e private.
+

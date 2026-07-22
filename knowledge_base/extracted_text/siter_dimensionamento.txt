@@ -1,0 +1,169 @@
+                      Contratto Sanità Digitale ID 2365 Lotto 3
+
+
+
+
+Dimensionamento computazionale del Sistema
+Regionale SiTer
+                   Ambiente di                Nodi                 VRAM
+ Soluzione                                              vCPU               Disco (GB)      S.O.      Commenti/Note
+                   destinazione               (VM)                  (GB)
+                                                                                                     4 copie con
+                                                                                                     SISTER, report
+               Application Server                                                         RHEL       manager,
+                                                 4        4x8      4x16    4x(50+100)
+               Produzione                                                                 9.x        repository,
+                                                                                                     easyform,
+                                                                                                     calamaio
+                                                                                                     Oracle 19 PaaS
+               Database Produzione               1         16       128       1000        n.a.        (incremento
+                                                                                                     1TB per 4anni)
+                                                                                          RHEL
+                                                 2        2x2       2x4    2x(50+30)                 rev proxy (A/P)
+               Altri server                                                               9.x
+               Produzione                                                                 RHEL       mirth (A/P)
+  SisTer                                         2        2x4      2x16    2x(50+30)
+                                                                                          9.x        portale
+   (GPI)
+                                                                                                     2 copie con
+                                                                                                     SISTER, report
+               Application Server                                                         RHEL       manager,
+                                                 2        2x8      2x16    2x(50+100)
+               Test                                                                       9.x        repository,
+                                                                                                     easyform,
+                                                                                                     calamaio
+                                                                                                     Oracle 19
+               Database Test                     1        1x4       48        500         n.a.
+                                                                                                     PaaS
+                                                                                          RHEL
+                                                          1x2        4       50+30                   rev proxy
+                                                                                          9.x
+               Altri server Test                 2
+                                                                                          RHEL       mirth
+                                                          1x4       16       50+30
+                                                                                          9.x        portale
+                                                                               100
+                                                                           (Partizione               Application
+               Application Server
+                                                 1          8       32      OS) +500      W2022      server con
+               Produzione
+                                                                            Partizione               QlikView
+                                                                              Dati
+                                                                                          Red
+   Oslo
+                                                                                          Hat El/
+   (GPI)                                                                        50
+                                                                                          Oracle
+                                                                           partizione +              Database server
+                                                                                          Linux
+               Database Produzione               1          8       32         500                   Oracle OEM
+                                                                                          ver. “9”
+                                                                            Partizione               DWH
+                                                                                          con
+                                                                             Oracle
+                                                                                          Oracle
+                                                                                          19c
+
+
+
+
+                Ambiente di               Nodi                    VRAM     Disco
+Soluzione                                              vCPU                               S.O.       Commenti/Note
+                destinazione              (VM)                     (GB)    (GB)
+                                                                                     RedHat          Storage di rete
+              Control Plane k8s
+                                             1            4        16       100      Openshift       PV RWX
+    DIH       Test
+                                                                                                     (NFS/SAN): 1TB
+(Accenture)
+              Worker Nodes k8s                                                       RedHat
+                                             4           4x4      4x16     4x100
+              Test                                                                   Openshift
+                         Contratto Sanità Digitale ID 2365 Lotto 3
+
+
+
+                                                                                               RedHat       Licenza Mongo
+                 Database (Mongo
+                                               3            3x4        3x16          3x256     Openshift    DB (versione
+                 DB) Test
+                                                                                                            Enterprise >= 7.x
+                 Observability                                                                 RedHat
+                 (Prometheus +                                                                 Openshift
+                                               1              4         16           256
+                 Grafana) Server
+                 Test
+                 Control Plane k8s                                                           RedHat         Storage di rete
+                                                3          3x4         3x16          3x128   Openshift
+                 Produzione                                                                                 PV RWX
+                 Worker Nodes k8s                                                            RedHat         (NFS/SAN):
+                                                9           9x8        9x32          9x100                  2TB
+                 Produzione                                                                  Openshift
+                                                                                             RedHat          Licenza Mongo
+                 Database (Mongo
+                                               3            3x8        3x32        3x1000(*) Openshift      DB (versione
+                 DB) Produzione
+                                                                                                            Enterprise >= 7.x
+                 Observability                                                                 RedHat
+                 (Prometheus +                                                                 Openshift
+                                                1             8         32           512
+                 Grafana) server
+                 Produzione
+                 Log Analytics
+                                                                                               RedHat
+                 (ELK/Opensearch)               1             8         32            512
+                                                                                               Openshift
+                 server Produzione
+(*) IN FUNZIONE DI RETENTION E DIMENSIONE MEDIA DEI REFERTI; 8TB PER 4 ANNI, CON REPLICA+INDICI;
+CONSIGLIATA TIERING SU STORAGE
+
+
+
+                    Ambiente di         Nodi                 VRAM         Disco
+   Soluzione                                 vCPU                                               S.O.        Commenti/Note
+                    destinazione        (VM)                  (GB)        (GB)
+                                                                        300 in due
+    Business
+                   Microsoft                                            partizioni:
+  Intelligence                            2          2            16                          W2022
+                   Power BI                                             C: (100) e
+   (Almaviva)
+                                                                         D: (200)
+  Macchine di
+                   Macchine di
+   appoggio                               4          4            8           100             W2022
+                   appoggio
+  (Almaviva)
+                                                                                                            Postgres Primary
+                                                                                                             + replica. AWS
+                   Database Test          2         16         128            1000         Amazon Linux 2
+                                                                                                             Service: Aurora
+                                                                                                             RDS Postgresql
+                                                                                                              AWS Service:
+                   Redis Test             2          2            8           50           Amazon Linux 2
+                                                                                                            Elasticache redis
+                                                                                                              AWS Service:
+                   Memcached
+                                          4          2            4           50           Amazon Linux 2      Elasticache
+                   Test
+                                                                                                               memcache
+                   Backend Test           8          8            16          100          Amazon Linux 2   Deployted on EKS
+  ePersonam        Frontend Test                                              100          Amazon Linux 2       S3 Bucket
+  (Almaviva)                                                                                                Postgres Primary
+                                                                                                             + replica. AWS
+                   Database Prod          2         16         128            2000         Amazon Linux 2
+                                                                                                             Service: Aurora
+                                                                                                             RDS Postgresql
+                                                                                                              AWS Service:
+                   Redis Prod             2          2            8           50           Amazon Linux 2
+                                                                                                            Elasticache redis
+                                                                                                              AWS Service:
+                   Memcached
+                                          4          2            4           50           Amazon Linux 2      Elasticache
+                   Prod
+                                                                                                               memcache
+                   Backend Prod          16          8            16          100          Amazon Linux 2   Deployted on EKS
+                   Frontend Prod                                              100          Amazon Linux 2       S3 Bucket
+
+                                                    <FINE DOCUMENTO>
+

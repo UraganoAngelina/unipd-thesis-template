@@ -1,0 +1,714 @@
+    Specifiche tecniche - Gestione
+       sottoscrizione/notifica
+…………………………………………………………………………………..
+Informazioni preliminari
+…………………………………………….……
+
+
+Controllo del documento
+
+
+Nome documento:                                           Specifiche      tecniche      -     Gestione
+                                                          sottoscrizione/notifica
+
+Stato di avanzamento:                                     Approvato
+
+Data di prima emissione:                                  Maggio 2018
+
+Ultimo aggiornamento:                                     22/01/2021
+
+Versione:                                                 2.2
+
+Numero di pagine:                                         20
+
+Responsabile del documento:                               Mauro Zanardini
+
+Autori del documento:                                     Gregorio Canal, Matteo Cognolato
+
+Documento approvato da:                                   Mauro Zanardini
+
+Data di approvazione:                                     22/01/2021
+
+
+
+Status del documento
+
+Versione                        Status           Data           Descrizione modifica
+
+
+2.0                             Approvato        Maggio 2018    Capitolato tecnico     specifiche   SIO
+                                                                allegato 4.6
+
+2.1                             Approvato        22/01/2021     Modifica introduzione.
+                                                                Inserito Volume 1 con descrizione
+                                                                degli attori della transazione ed i casi
+                                                                d’uso.
+                                                                Aggiunto messaggio Unsubscribe
+                                                                request alla transazione RVE-100.
+                                                                Aggiunto l’elemento id alla tabella
+                                                                Elementi della risorsa Subscription.
+                                                                Aggiornata la sezione Resource
+                                                                Subscription response per chiarire
+                                                                come      dev’essere strutturata la
+                                                                risposta.
+
+
+
+
+ © 2021 Arsenàl.IT – Tutti i diritti riservati                                                            2
+                                                Modificata la descrizione e la
+                                                nomenclatura degli attori in Resource
+                                                Subscriber al posto di Generatore
+                                                Sottoscrizioni,   ed    in    Resource
+                                                Manager al posto di FSSEzero.
+                                                Corretto refuso relativo al riferimento
+                                                ad XUA nella sezione Security
+                                                Considerations,       inserendo       il
+                                                riferimento ad IUA.
+
+2.2                            Approvato        Correzione di un refuso in Tabella 1
+                                                circa la cardinalità dell’elemento
+                                                payload.
+                                                Inserito elemento end in Tabella 1
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                          3
+Indice del documento
+………………………………………………
+
+
+Acronimi e definizioni                                       6
+
+Open Issues                                                  7
+
+Iter di approvazione documentale                             8
+
+Introduzione                                                 11
+
+Volume 1                                                     12
+
+Attori                                                       12
+
+Casi d’uso                                                   12
+
+    Sottoscrizione                                           12
+
+          Diagramma di sequenza                              12
+
+    Annullamento sottoscrizione                              14
+
+          Diagramma di sequenza                              14
+
+Dettaglio transazioni - Gestione sottoscrizione e notifica   15
+
+    [RVE-100] Resource Subscription                          15
+
+          Scopo                                              15
+
+          Attori                                             15
+
+          Standard di riferimento                            15
+
+          Interaction diagram                                15
+
+          Subscribe request                                  16
+
+                 Trigger events                              16
+
+                 Message semantics                           16
+
+                 Esempio di Subscribe request                18
+
+                 Expected actions                            19
+
+          Unsubscribe request                                19
+
+                 Trigger events                              19
+
+                 Message semantics                           19
+
+                 Esempio di Unsubscribe request              20
+
+
+
+ © 2021 Arsenàl.IT – Tutti i diritti riservati                4
+                Expected actions                20
+
+         Resource Subscription response         20
+
+                Trigger events                  20
+
+                Message semantics               20
+
+                Expected actions                21
+
+         Security Considerations                22
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati    5
+Acronimi e definizioni
+………………………………………………
+
+
+
+IHE                     Integrating the Healthcare Enterprise
+
+SAR                     Servizio di Accoglienza Regionale
+
+FHIR                    Fast Healthcare Interoperability Resources
+
+FSSE Zero
+                        Fascicolo Socio Sanitario Elettronico Zero
+FSSE0
+
+CDA2                    Clinical Document Architecture
+
+LIS                     Laboratory Information System
+
+SIO                     Sistema Informativo Ospedaliero
+
+HL7                     Health Level 7
+
+WD                      Workflow Document
+
+XDW                     Cross-Enterprise Document Workflow
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                        6
+Open Issues
+………………………………………………
+
+
+Nessuna.
+
+
+
+
+ © 2021 Arsenàl.IT – Tutti i diritti riservati   7
+Introduzione
+………………………………………………
+
+
+Il seguento documento descrive le modalità con cui possono essere create ed annullate
+delle sottoscrizioni per ricevere delle notifiche relativamente a delle risorse FHIR®.
+
+Nell’ambito del FSEr il meccanismo di sottoscrizione e notifica per i documenti è basato
+sull’utilizzo del profilo IHE DSUB. Ciò nonostante, dato l’avvio del SIO e considerato il
+crescente utilizzo di risorse FHIR® per la condivisione di dati clinici all’interno dei processi
+definiti in regione Veneto, si rende necessario definire un meccanismo tramite cui si possano
+generare delle sottoscrizioni per ricevere notifiche relativamente a degli eventi di
+creazione/aggiornamento/cancellazione di risorse FHIR®.
+
+Tali specifiche sono basate sull’utilizzo e condivisione della risorsa Subscription definita da
+HL7® FHIR® STU 3.0 (vedi https://www.hl7.org/fhir/STU3/subscription.html )
+
+Il   meccanismo       di   notifica   è     basato    sulla     modalità     rest-hook    (vedi
+https://www.hl7.org/fhir/STU3/subscription.html#2.46.6.1 )
+
+
+
+
+ © 2021 Arsenàl.IT – Tutti i diritti riservati                                                8
+Volume 1
+………………………………………………
+
+
+1. Attori e transazioni
+
+Si riporta di seguito un diagramma relativo agli attori ed alle transazioni coinvolti nei processi
+di sottoscrizione e notifica per risorse FHIR®.
+
+
+
+
+                               Figura 1.         Diagramma sinottico degli attori e transazioni
+
+
+
+
+1.1.           Resource Subscriber
+L’attore Resource Subscriber si occupa di inviare richieste di creazione ed annullamento di
+sottoscrizioni all’attore Subscription Manager.
+
+
+1.2.           Subscription Manager
+L’attore Subscription Manager riceve ed elabora la richiesta di sottoscrizione ricevuta
+dall’attore Resource Subscriber. Quando sono rispettati i parametri definiti nella richiesta di
+sottoscrizione, invia una notifica al sistema specificato nella richiesta secondo quanto
+indicato in https://www.hl7.org/fhir/STU3/subscription.html#2.46.6.1.
+
+
+1.3.           Notification Recipient
+L’attore Notification Recipient riceve la notifica inviata dall’attore Subscription Manager.
+
+
+
+
+ © 2021 Arsenàl.IT – Tutti i diritti riservati                                                    9
+1.4.             [RVE-100] Resource Subscription
+La transazione [RVE-100] Resource Subscription viene utilizzata per la creazione o la
+annullamento di una sottoscrizione per una determinata risorsa FHIR®. Tale transazione
+presenta 3 tipologie di interazione fra gli attori Subscription Manager e Resource Subscriber:
+
+     ●      Subscribe request: messaggio di richiesta, inviato dall’attore Resource Subscriber
+            all’attore Subscription Manager, per richiedere la creazione di una nuova
+            sottoscrizione
+     ●      Unsubscribe request: messaggio di richiesta, inviato dall’attore Resource Subscriber
+            all’attore Subscription Manager, per richiedere la cancellazione di una sottoscrizione
+            precedentemente creata
+     ●      Resource Subscription Response: messaggio di risposta ai messaggi di richiesta di
+            creazione o annullamento di una sottoscrizione in stato attivo, inviato dall’attore
+            Subscription Manager all’attore Resource Subscriber.
+
+
+1.5.             Notifica
+Messaggio inviato dall’attore Subscription Manager all’attore Notification Recipient. Il
+messaggio di notifica è un HTTP POST senza body all’endpoint indicato nella risorsa
+Subscription, al quale l’attore Notification Recipient risponde con un appropriato codice di
+stato HTTP.
+
+Opzionalmente la notifica può presentare nel body la risorsa oggetto della notifica se
+indicato nell'elemento payload della risorsa Subscription.
+
+Per      dettagli     sulla    mdodalità      della    notifca          fare    riferimento     a
+https://www.hl7.org/fhir/STU3/subscription.html#2.46.6.1
+
+
+
+
+2. Casi d’uso
+
+2.1.             Sottoscrizione e notifica
+Il Resource Subscriber (e.g. SIO, cartella MMG/PLS) ha la necessità di essere notificato non
+appena avviene la creazione o modifica di determinate risorse d’interesse (e.g., modifica di
+dati anagrafici, modifica di una risorsa relativa all’anamnesi di un paziente, etc). L’attore
+Resource Subscriber invia il messaggio Subscribe request della transazione [RVE-100] al
+Subscription Manager. La richiesta di sottoscrizione veicola il criterio che deve essere
+verificato dal Subscription Manager per valutare se inviare o meno la notifica all’endpoint a
+cui il Subscription Manager invierà la notifica.
+Nel momento in cui viene soddisfatto il criterio della sottoscrizione l’attore Subscription
+manager invia la notifica all’endpoint del Notification Recipient.
+Qualora l’invio della notifica non vada a buon fine, il Subscribe Manager tenterà di re-inviare
+la notifica almeno altre 3 volte.
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                  10
+2.1.1.             Diagramma di sequenza
+
+
+
+
+                                 Figura 2.      Diagramma sinottico degli attori e transazioni
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                    11
+2.2.             Annullamento sottoscrizione
+Il Resource Subscriber (e.g. SIO, cartella MMG/PLS, Policy Manager) ha la necessità di
+annullare una sottoscrizione in stato attivo (ad esempio a seguito di un errore in fase di invio
+o modifica dell’endpoint). L’attore Resource Subscriber invia un messaggio [RVE-100]
+Unsubscribe request all’endpoint messo a disposizione dal servizio corrispondente, inviando
+la request con status valorizzato ad “off”. Il Subscription Manager si farà carico di verificare
+la correttezza ed appropriatezza della richiesta, e, in caso positivo, di annullare la
+sottoscrizione.
+
+
+2.2.1.             Diagramma di sequenza
+
+
+
+
+                                 Figura 3.      Diagramma sinottico degli attori e transazioni
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                    12
+Volume 2
+………………………………………………
+
+
+1. Dettaglio transazioni - Gestione
+   sottoscrizione e notifica
+
+1.1.             [RVE-100] Resource Subscription
+1.1.1.             Scopo
+Questa transazione permette di creare/aggiornare una sottoscrizione per la ricezione di
+notifiche riguardanti la creazione, l’aggiornamento di una risorsa specifica o l’aggiornamento
+di risorse che soddisfano determinate condizioni prestabilite.
+
+1.1.2.             Attori
+Attore: Resource Subscriber
+
+Ruolo: Invia richieste di creazione ed annullamento di sottoscrizioni all’attore Subscription
+Manager
+
+Attore: Subscription Manager
+
+Ruolo: Riceve ed elabora la richiesta di sottoscrizione ricevuta dall’attore Resource
+Subscriber. Quando sono rispettati i parametri definiti nella richiesta di sottoscrizione, invia
+una notifica al sistema specificato nella richiesta.
+
+
+
+1.1.3.             Standard di riferimento
+ RFC 2616                              IETF Hypertext Transfer Protocol – HTTP/1.1
+
+ IHE IUA                               Internet User Assertion - SAML Token Optio
+
+ HL7® FHIR® STU                        Fast Healthcare Interoperability Resources
+ 3.0
+
+
+
+1.1.4.             Interaction diagram
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                13
+                               Figura 4.        Interaction diagram della transazione [RVE-100]
+
+
+
+
+1.1.5.             Subscribe request
+1.1.5.1.              Trigger events
+Il messaggio Subscribe request viene inviato quando l’attore Resource Subscriber necessita
+di creare una sottoscrizione per la ricezione di notifiche relative ad una determinata risorsa
+e/o a determinati parametri di interesse.
+
+1.1.5.2.              Message semantics
+Il messaggio Subscribe request è basato sull’interaction create definita da HL7® FHIR®
+STU3 (https://www.hl7.org/fhir/STU3/http.html#create).
+
+Per semplicità di lettura si riporta di seguito una descrizione informativa di come dev’essere
+strutturato il messaggio.
+Il messaggio è quindi di tipo HTTP POST inviato all’indirizzo a cui è possibile inviare le
+risorse:
+
+POST <scheme>://<authority>/<path>/Subscription
+
+Di seguito si specificano gli elementi che lo compongono:
+
+     ●      <scheme>: dev’essere di tipo http o https. In questo caso verrà utilizzato https;
+     ●      <authority>: deve essere rappresentato come un host (indirizzo IP o DNS) seguito
+            opzionalmente dalla porta;
+     ●      <path>: parte opzionale che identifica il path del servizio;
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                     14
+                  ○      Subscription: è la parte obbligatoria del path che classifica il tipo di Risorsa.
+
+Il body della chiamata veicola la risorsa Subscription contenente le informazioni
+riguardanti la sottoscrizione.
+
+Dev’essere presente l’header authorization veicolante l’asserzione d’identità codificata in
+base64 (e.g., Authorization: IHE-SAML Pg3vbjj58xe= ).
+
+Nella tabella 1 si riportano gli elementi principali della risorsa Subscription.
+
+
+
+ Campo                              Obbligatorietà   Cardinalità Descrizione
+
+ id                                 C                0..1        Elemento che contiene l’identificativo
+                                                                 della risorsa. Da utilizzare in richiesta
+                                                                 solo nel caso in cui sia necessario
+                                                                 annullare una sottoscrizione attiva.
+
+ status                             R                1..1        Elemento di tipo code che veicola lo
+                                                                 stato   della    sottoscrizione.     Può
+                                                                 assumere i seguenti valori:
+                                                                     ● requested: la risorsa è stata
+                                                                       inviata. Questo valore viene
+                                                                       impostato ad ogni invio da
+                                                                       parte     dell’attore   Resource
+                                                                       Subscriber;
+                                                                     ● active: questo valore viene
+                                                                       impostato               dall’attore
+                                                                       Subscription Manager quando
+                                                                       la risorsa è stata correttamente
+                                                                       elaborata;
+                                                                     ● off:    questo     valore viene
+                                                                       impostato          quando         la
+                                                                       sottoscrizione non è più valida;
+
+ end                                O                0..1        Elemento di tipo instant che può
+                                                                 veicolare    l’istante in cui  la
+                                                                 sottoscrizione cesserà di essere
+                                                                 valida.
+
+ reason                             R                1..1        Elemento di tipo string che veicola una
+                                                                 descrizione testuale del motivo per cui
+                                                                 si sta inviando la richiesta di
+                                                                 sottoscrizione.
+
+ criteria                           R                1..1        Elemento di tipo string che veicola i
+                                                                 parametri di sottoscrizione che, se
+                                                                 rispettati, comportano l’invio della
+                                                                 notifica    da    parte    dell’attore
+                                                                 Subscription   Manager.    L’attributo
+                                                                 value di questo elemento conterrà il
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                                15
+                                                                     nome della risorsa seguito dai
+                                                                     parametri scelti, secondo gli stessi
+                                                                     criteri definiti da HL7® FHIR® per
+                                                                     l’operazione search.
+
+ channel                            R                 1..1           Elemento che specifica le informazioni
+                                                                     riguardanti il destinatario della notifica.
+
+           type                     R                 1..1           Elemento di tipo code che dev’essere
+                                                                     valorizzato con “rest-hook”.
+
+           endpoint                 R                 1..1           Elemento di tipo uri che veicola
+                                                                     l’endpoint del sistema che riceverà le
+                                                                     notifiche.   Tale     elemento   deve
+                                                                     identificare      univocamente      la
+                                                                     sottoscrizione effettuata.
+
+
+           payload                  O                 0..1           Elemento di tipo string che dev’essere
+                                                                     valorizzato con “application/fhir+xml”
+                                                                     per richiedere all’attore Subscription
+                                                                     Manager di inviare la risorsa su cui si
+                                                                     basa la notifica assieme alla notifica
+                                                                     stessa. Nel caso in cui l’attore
+                                                                     Resource       Subscriber   invii  una
+                                                                     sottoscrizione con payload valorizzato
+                                                                     per la quale non è possibile restituire
+                                                                     la    risorsa,   l’attore  Subscription
+                                                                     Manager rifiuterà la request.
+                                         Tabella 1.   Elementi della risorsa Subscription
+
+
+
+
+1.1.5.3.              Esempio di Subscribe request
+Di seguito si fornisce un esempio di richiesta di sottoscrizione per la ricezione di notifiche
+riguardanti il decesso di assistiti.
+
+ POST https://sar-test.regione.veneto.it/notification/resources/Subscription
+ HOST: sar-test.regione.veneto.it
+ Content-type: application/fhir+xml
+ Authorization: IHE SAML Pg3vbjj58xeadsfdry2345ty
+ Content-length: 1526
+
+ <Subscription xmlns="http://hl7.org/fhir">
+   <status value="requested"/>
+   <reason value="Sottoscrizione per notifica di decesso"/>
+   <criteria value="Patient?deceased:exists=true"/>
+   <channel>
+     <type value="rest-hook"/>
+     <endpoint value="https://subscriber.com/glezzy"/>
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                                 16
+   </channel>
+ </Subscription>
+
+
+
+
+1.1.5.4.              Expected actions
+L’attore Subscription Manager riceve ed elabora la richiesta di sottoscrizione ricevuta e
+genera un adeguato messaggio di risposta.
+
+Nel processare la richiesta, l’attore Subscription Manager deve validare il messaggio
+ricevuto per verificare che sia conforme con le specifiche HL7® FHIR® e con quanto definito
+all’interno di questo documento.
+
+Nel caso in cui il messaggio Subscribe request abbia esito positivo l’attore Subscription
+Manager modifica l’elemento status ad active ed assegna un id alla risorsa e procede a
+salvare la sottoscrizione.
+
+Nel caso in cui l’attore Resource Subscriber invii una sottoscrizione con l’elemento payload
+valorizzato per la quale non è possibile restituire la risorsa (e.g., a causa di restrizioni legate
+a dati sensibili o non accessibili dal richiedente), l’attore Subscription Manager rifiuterà la
+request.
+
+
+
+1.1.6.             Unsubscribe request
+1.1.6.1.              Trigger events
+il messaggio Unsubscribe request viene inviato quando l’attore Resource Subscriber
+necessita di cancellare una sottoscrizione in stato attivo precedentemente creata.
+
+1.1.6.2.              Message semantics
+il    messaggio      Unsubscribe      request     è     basato    sull’interaction        update
+(https://www.hl7.org/fhir/STU3/http.html#update ) definita HL7® FHIR® STU3.
+
+Per semplicità di lettura si riporta di seguito una descrizione informativa di come dev’essere
+strutturato il messaggio.
+ Il messaggio è quindi un HTTP PUT all’indirizzo a cui è possibile inviare le risorse:
+
+PUT <scheme>://<authority>/<path>/Subscription/<id>
+
+Di seguito si specificano gli elementi che lo compongono:
+
+     ●      <scheme>: dev’essere di tipo http o https. In questo caso verrà utilizzato https;
+     ●      <authority>: deve essere rappresentato come un host (indirizzo IP o DNS) seguito
+            opzionalmente dalla porta;
+     ●      <path>: parte opzionale che identifica il path del servizio;
+               ○ Subscription: è la parte obbligatoria del path che classifica il tipo di Risorsa.
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                   17
+                  ○      <id>: parte obbligatoria del path che veicola l’identificativo, assegnato dal
+                         Resource Manager, della risorsa Subscription di cui si richiede
+                         l’annullamento
+
+Il body della chiamata veicola la risorsa Subscription contenente le informazioni
+riguardanti la sottoscrizione.
+
+La risorsa Subscription deve essere conforme a quanto indicato in Tabella per Elementi
+della risorsa Subscription e l’elemento status deve essere valorizzato con off.
+
+Dev’essere presente l’header authorization veicolante l’asserzione d’identità codificata in
+base64. (e.g. Authorization: IHE-SAML Pg3vbjj58xe= )
+
+1.1.6.3.              Esempio di Unsubscribe request
+Di seguito si fornisce un esempio di richiesta di annullamento di una sottoscrizione.
+
+ PUT https://sar-test.regione.veneto.it/notification/resources/Subscription/1232145
+ HOST: sar-test.regione.veneto.it
+ Content-type: application/fhir+xml
+ Authorization: IHE SAML Pg3vbjj58xeadfsgdhkjqw45345zxc
+ Content-length: 1526
+
+ <Subscription xmlns="http://hl7.org/fhir">
+   <id value="1232145"/>
+   <status value="off"/>
+   <reason value="Sottoscrizione per notifica di decesso"/>
+   <criteria value="Patient?deceased:exists=true"/>
+   <channel>
+      <type value="rest-hook"/>
+      <endpoint value="https://subscriber.com/glezzy"/>
+   </channel>
+ </Subscription>
+
+
+
+
+1.1.6.4.              Expected actions
+L’attore Subscription Manager riceve ed elabora la richiesta di annullamento della
+sottoscrizione ed elabora un adeguato messaggio di risposta.
+
+Nel processare la richiesta, l’attore Subscription Manager deve validare il messaggio
+ricevuto per verificare che sia conforme con le specifiche HL7® FHIR® e con quanto definito
+all’interno di questo documento.
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                      18
+1.1.7.             Resource Subscription response
+
+1.1.7.1.              Trigger events
+il messaggio Resource Subscription response viene inviato a seguito della ricezione, da
+parte dell’attore Subscription Manager, del messaggio Subscribe request o Unsubscribe
+Request.
+
+1.1.7.2.              Message semantics
+L’attore Subscription Manager genera il messaggio di risposta secondo le seguenti regole:
+
+     ●      Se la richiesta ha dato esito negativo, perché il messaggio non è compliant con
+            quanto definito dallo standard HL7® FHIR® e/o dalle presenti specifiche, l’attore
+            Subscription Manager deve rispondere con un codice HTTP 4xx adeguato e una
+            risorsa OperationOutcome strutturata come definito in Tabella 2.
+     ●      Se la richiesta ha dato esito positivo dev’essere generato un messaggio di risposta in
+            accordo a quanto definito per le interaction create ed update. In particolare :
+                ○ Nel caso di risposta ula messaggio Subscribe request, l’attore Subscription
+                    Manager deve utilizzare in risposta un codice HTTP 201 Created e veicolare
+                    nel Body la risorsa creata.
+                ○ Nel caso di risposta ula messaggio Unsubscribe request, l’attore Subscription
+                    Manager deve utilizzare in risposta un codice HTTP 200 OK e veicolare nel
+                    Body la risorsa aggiornata.
+
+In tabella 2 si riportano gli elementi principali della risorsa OperationOutcome.
+
+
+
+
+ Campo                                 Obbligatorietà   Cardinalità   Descrizione
+
+ issue                                 R                1..*          Elemento        che       contiene
+                                                                      informazioni   sull’errore o sul
+                                                                      warning.
+
+         severity                      R                1..1          Elemento codificato che veicola
+                                                                      l’esito dell’operazione.
+                                                                      In caso di risposta HTTP 4xx, il
+                                                                      campo va valorizzato: “error” .
+                                                                      In caso di risposta HTTP 2xx, il
+                                                                      campo va valorizzato “warning”.
+                                                                      Per informazioni si rimanda alla
+                                                                      specificha        HL7®       FHIR®
+                                                                      http://hl7.org/fhir/issue-severity .
+
+         code                          R                1..1          Elemento codificato che contiene
+                                                                      una      descrizione     codificata
+                                                                      dell’errore    ottenuto.     Valori
+                                                                      ammessi: vedere tabella codici
+                                                                      HTTP
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                           19
+                                                                             http://hl7.org/fhir/issue-type .
+
+         diagnostics                   O                     0..1            Elemento di tipo string che
+                                                                             contiene una descrizione testuale
+                                                                             dell’esito dell’operazione.
+                                                Tabella 2.     Risorsa OperationOutcome
+
+
+
+
+1.1.7.3.              Expected actions
+L’attore Resource Subscriber dev’essere in grado di elaborare il messaggio ricevuto
+dall’attore Subscription Manager sia in caso di esito positivo che negativo.
+
+
+1.1.8.             Security Considerations
+L’attore Resource Subscriber ddeve supportare le funzionalità dell’attore Authorization Client
+come definito nelle linee guida IHE IUA (Internet User Assertion) e nell’ultima versione delle
+specifiche tecniche “Infrastruttura di Sicurezza GDL-O Sicurezza. L’attore Subscription
+Manager deve supportare le funzionalità dell’attore Resource Server.
+
+Di conseguenza:
+
+     ●      L’attore Resource Subscriber deve utilizzare asserzioni d’identità ricavate da un
+            sistema IAP (Identity and Assertion Provider) per poter accedere ai servizi dell’attore
+            Subscription Manager mediante l’utilizzo della transazione [ITI-72] Incorporate
+            Authorization Token;
+     ●      L’attore Subscription Manager deve verificare la presenza e la validità di
+            un’asserzione di identità SAML 2.0 prodotta in accordo alle specifiche tecniche di
+            riferimento “Insfrastruttura di Sicurezza GDL-O Sicurezza” v. 2.7 e successive.
+
+
+
+
+© 2021 Arsenàl.IT – Tutti i diritti riservati                                                                   20
+

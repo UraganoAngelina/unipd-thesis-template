@@ -1,0 +1,111 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {0.1}Results}{vi}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Conclusions}{vi}{section.0.2}%
+\contentsline {chapter}{Acronimi e abbreviazioni}{x}{section*.14}%
+\contentsline {chapter}{Glossario}{xi}{section*.16}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Reference Scenario}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Thesis Context}{1}{subsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.1}The internship in the Digital Healthcare Domain}{2}{subsubsection.1.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.2}System Integrators in Healthcare Interoperability Projects}{3}{subsubsection.1.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.1.3}Involvement in the RTI}{4}{subsubsection.1.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.2}Regional Healthcare Context}{5}{subsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.1}The Healthcare System of Regione Veneto}{6}{subsubsection.1.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.1.2.2}PNRR}{7}{subsubsection.1.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.3}Information Fragmentation in Territorial Healthcare}{9}{subsubsection.1.1.2.3}%
+\contentsline {subsection}{\numberline {1.1.3}SI.Ter: Territorial Information System of Regione Veneto}{9}{subsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.3.1}Overview}{10}{subsubsection.1.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.1.3.2}Functional Architecture}{11}{subsubsection.1.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.1.3.3}Technological Architecture}{12}{subsubsection.1.1.3.3}%
+\contentsline {subsubsection}{\numberline {1.1.3.4}Project Objectives and Milestones}{13}{subsubsection.1.1.3.4}%
+\contentsline {subsection}{\numberline {1.1.4}Research Problem}{13}{subsection.1.1.4}%
+\contentsline {subsubsection}{\numberline {1.1.4.1}Interoperability among Heterogeneous Healthcare Systems}{14}{subsubsection.1.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.1.4.2}Complexity of Multi-Actor and Multi-Protocol Flows}{15}{subsubsection.1.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.1.4.3}Absence of a Controlled Environment for Traffic Simulation}{15}{subsubsection.1.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.1.4.4}Limits of Correlation between Framework and Middleware side Observations}{16}{subsubsection.1.1.4.4}%
+\contentsline {subsection}{\numberline {1.1.5}Thesis Objectives}{17}{subsection.1.1.5}%
+\contentsline {subsubsection}{\numberline {1.1.5.1}Studying Standards Protocols and Interoperability Architectures}{17}{subsubsection.1.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.1.5.2}Translating Internship Experience into Academic Use Cases}{18}{subsubsection.1.1.5.2}%
+\contentsline {subsubsection}{\numberline {1.1.5.3}Designing and Implementing a Traffic Simulation Framework}{18}{subsubsection.1.1.5.3}%
+\contentsline {subsubsection}{\numberline {1.1.5.4}Defining a Measurement Methodology}{19}{subsubsection.1.1.5.4}%
+\contentsline {subsection}{\numberline {1.1.6}Main Contributions}{20}{subsection.1.1.6}%
+\contentsline {subsubsection}{\numberline {1.1.6.1}Analytical: Functional Study of Interoperability Flows}{20}{subsubsection.1.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.1.6.2}Technical: A Framework for Generating Scheduling Executing and Measuring RVE Workloads}{21}{subsubsection.1.1.6.2}%
+\contentsline {subsubsection}{\numberline {1.1.6.3}Methodological: A Two-Level Grey-Box Analysis Approach}{22}{subsubsection.1.1.6.3}%
+\contentsline {subsubsection}{\numberline {1.1.6.4}Experimental: Empirical Evidence on Performance and Robustness}{22}{subsubsection.1.1.6.4}%
+\contentsline {subsection}{\numberline {1.1.7}Structure of the Dissertation}{23}{subsection.1.1.7}%
+\contentsline {chapter}{\numberline {2}Domain Context and Interoperability}{24}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{24}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Territorial Care and Continuity}{24}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Territorial Structures and Organizational Models}{25}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Role of the Centrale Operativa Territoriale}{26}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Other Actors and Roles}{27}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Digitalization Impact}{27}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Information Fragmentation and Interoperability}{28}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Heterogeneity of Healthcare Application Systems}{29}{subsection.2.1.7}%
+\contentsline {subsection}{\numberline {2.1.8}Separation of Concerns}{29}{subsection.2.1.8}%
+\contentsline {subsection}{\numberline {2.1.9}Orchestration Routing and Application Decoupling}{30}{subsection.2.1.9}%
+\contentsline {subsection}{\numberline {2.1.10}Interoperability as Added Value}{31}{subsection.2.1.10}%
+\contentsline {section}{\numberline {2.2}Actors and Integration Components}{31}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Corporate and Regional Systems}{32}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}API Gateway and Integration Middleware}{32}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Identity Providers and Authentication Levels}{33}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Regional Health Registry and Anagrafe Zero}{33}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Electronic Health Record and Document Infrastructure}{34}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}ePersonam and Context Services}{35}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Dematerialized Electronic Prescription}{35}{subsection.2.2.7}%
+\contentsline {section}{\numberline {2.3}Normative and Organizational Constraints}{35}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}National and Regional}{36}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Identity and Authorization Management}{37}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Document management}{37}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Traceability and Audit}{38}{subsection.2.3.4}%
+\contentsline {chapter}{\numberline {3}State of the Art and Methodological Foundations}{40}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Software Integration Architectures}{41}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}SOA and Resource-Oriented Architecture}{41}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}API Gateways, Middleware, and Orchestration Patterns}{43}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Synchronous Communication and Multi-Step Flows}{45}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Decoupling Callers from Service Providers}{46}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Healthcare Standards and Protocols}{48}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}HL7 FHIR R4}{48}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}IHE IUA -- Internet User Authorization}{50}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}IHE XDS.b -- Cross-Enterprise Document Sharing}{51}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}ITI Transactions for Document Publication, Query, and Retrieval}{52}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}SOAP, REST, XML, JSON, and Interoperability Profiles}{54}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}SAML, JWT, and Token-Based Authorization}{55}{subsection.3.2.6}%
+\contentsline {section}{\numberline {3.3}Performance Measurement in Distributed Systems}{56}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Network Latency, Transport Latency, and Application-Level Flow Completion Time}{57}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Limitations of Point-to-Point Measurements and Ping-Pong Benchmarks}{58}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Throughput, Errors, Concurrency, and Execution Queues}{60}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Percentiles, Long Tails, and Temporal Stability of Measurements}{61}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Effects of Access Networks, Routing, Buffering, and Application Protocols}{62}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Workload and Traffic Models}{63}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Stochastic Arrival Processes and the Poisson Distribution}{64}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Non-Stationary Traffic Profiles}{65}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Probabilistic Bursts and Overload Scenarios}{66}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Synthetic Workloads for Distributed Systems}{66}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Literature on Latency, Throughput, and Scheduling}{67}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Effects of Latency on Transfer Effectiveness and Throughput}{68}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Load-Sharing Window, Transfer in Vain, and Transfer Unnecessary}{69}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Quantile-Based Decision Rules and the Risks of Simple Means}{70}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Local Latency Optimization and End-to-End Performance}{71}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6}Implications for Framework Design}{72}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Measuring Complete Flows Rather Than Individual Calls}{73}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Separating Measurement Levels Without Forcing Unsupported Correlations}{74}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Collecting Structured and Normalized Logs}{75}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Evaluating Behavior Under Realistic Loads, Bursts, and Flow Mixes}{76}{subsection.3.6.4}%
+\contentsline {chapter}{\numberline {4}Technical and Functional Analysis}{78}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Casi d'uso}{78}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Tracciamento dei requisiti}{79}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Tabelle dei requisiti}{80}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Architecture and Transactions}{82}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tecnologie e strumenti}{82}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ciclo di vita del software}{82}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Progettazione}{82}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Namespace 1}{82}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Design Pattern utilizzati}{82}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Codifica}{82}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Framework Design}{83}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Framework Implementation}{84}{chapter.7}%
+\contentsline {chapter}{Bibliografia}{i}{chapter*.19}%
+\contentsline {chapter}{Sitografia}{ii}{chapter*.20}%

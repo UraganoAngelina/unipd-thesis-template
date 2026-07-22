@@ -1,0 +1,31 @@
+# Source Checksums
+
+Generated: 2026-07-15T12:09:39+02:00
+
+```text
+7e485bee60f3d7b9cde4af5a0ffda539143c92f054709a6a273682e2505ffaa9  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/All. 2 Capitolato Tecnico 3.pdf
+377d86f87cebcc8719f68bc2f9e5881b51f081946be90b04982c7098167cf788  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/DDR 11922 del 16.03.2026_SITER.pdf
+52848406fda04d84ee486230fb20cafefbad3b212b41086bf0c7d50a4985ee25  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/RTI AlmavivA Relazione Tecnica Sanità digitale ID 2365 Lotto 3 - Azienda Zero Veneto SIT _RdO 5521029 1.pdf
+d0d40e070cbbd88ec726018d7f6e394e5428efc5e5e5a50dd566e57c8628e81c  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/SITer - Dimensionamento infrastruttura.pdf
+3f2feee600da45de43291172efedfaa529abb0e01c484742cdec1df3c4d70bed  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Decreto-Ministro-della-salute-772022-.pdf
+ec43740012e32db73a27325e5f3d1afb85adefef1a95cc6fe5445f92fb73ff19  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Cantiere 116117_ REV_18062024 1.docx
+a7a5f5b308954921f5e1d5615b3934be70f69e9e45ef7fd1348ae46e5999c626  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/MANUALE PROTOCOLLO 2_116117.docx 1.pdf
+7713edc190f443d6b45b2be3e5f78524e54c4922b1f52445086b84a4a02de0b7  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/DDR 13745 17-12-2025_SIOC.pdf
+3c9365fc4961f1a4c9cbdf9b434568da68a124b2aa731f69b0b491381aba1e37  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Infrastruttura di sicurezza GDL-O Sicurezza v2.14.pdf
+0d22940b547b3bea6bddc21bf1251d5bb492985bc4d5cf081944902d7ccc93c5  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf
+14509957dcc24cbdbe8f34d1f728b8355dcb51a735918fb96c1fbff9fd6d33ec  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche - Anagrafe Zero v2.6.pdf
+12554c28eb80c98d430980aa054e0285ce1bde4ef5ece3a0ef774f691693c0db  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf
+ed338a05bf861c7894e1f21bd64b50555ae89b332ee5c76f16bac2b9d98d4446  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf
+8ffa0f0b9c2782bc23057edd240e0b029a488f395c4b1edeebba63b1b3ef946f  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf
+02e7e2b0c4ee02a1119d1541aeaba8f12eba726b52fdc2f02f0d8bd928f8acf3  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/ULSS 3 Serenissima - Specifiche tecniche di integrazione con XValue v2.10.pdf
+13303c3225ef089a40eff277640d43b033d8175ffa3f3a9921e99515dfa228dc  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Firme e sigilli elettronici 1.pdf
+5c5a582f5d767deab72a974b81fe016bce4e76144b0eea0c7abb1cdf7c716420  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/paymed_analisi3.pdf
+38a436d80cf6998832b36d5ddc6568aa442bcf5814fafaa6fa9521f53178ce5a  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/Unibo 1.pptx
+280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/analisi_completa.md
+64aee3477af344f55713ab54747a934f8f21d35442df30300b51211d2fc6bf85  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/pianificazione.txt
+cf2805e4048c1319de7171c75726212e9cb0fed413e4bd6ad743d060aea2847a  /home/alberto/Downloads/Documentazione Almaviva/Documentazione Almaviva/specifiche.txt
+20cfd1e43429979fece60a9d21e11e3548746bddadd3f6c4f15b0ec129323908  /home/alberto/Downloads/Accademic papers/Thesis paper/3503954.3503956.pdf
+e79d5197a38abbd8a8728be6c79eca0d479639ca4b2989e63b6bac7f3d1ae5ff  /home/alberto/Downloads/Accademic papers/Thesis paper/Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf
+6b6d969532eb2436726a12825f4c535f7ff03ab3dd7ff252b33dd67a06ec922c  /home/alberto/Downloads/Accademic papers/Thesis paper/srg_2.pdf
+d04bfa8fe0ffe4c570bda64181e79fe46fe00eb4aec6bf72f166ddd2e538035a  /home/alberto/Downloads/project-architecture.txt
+```
