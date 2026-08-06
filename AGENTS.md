@@ -18,8 +18,13 @@ quando hai bisogno di dettagli poco chiari su codice o teoria:
   (architettura, classi, pipeline, esperimenti)
 - `/home/alberto/Desktop/unipd-thesis-template/graphify_kb/graphify-out/` — knowledge estratta dalla documentazione di tesi 
   (standard IHE/FHIR/HL7, interoperabilità sanitaria, concetti teorici)
+- `/home/alberto/unipd-thesis-template/knowledge_base/unified_graph/graphify-out/`
+  — grafo unificato con codice RDG, documentazione tecnica e risultati
+  sperimentali sanitizzati.
 
 **Quando consultarle:**
 - Prima di fare assunzioni su come è strutturato il codice RDG → consulta code_kb
 - Prima di usare terminologia tecnica su standard sanitari/interoperabilità → consulta doc_kb
 - Se un termine appare in entrambe, verifica la coerenza tra le due prima di rispondere
+- Prima di formulare ipotesi sui risultati live o scrivere il capitolo
+  sperimentale, interrogare il grafo unificato e risalire ai file di evidenza.

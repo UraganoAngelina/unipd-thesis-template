@@ -1,170 +1,477 @@
-\chapter{Introduction}
+\chapter{Problem Statement}
 \label{chap:introduction}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[alt={Testo alternativo dell'immagine}, width=1\columnwidth]{img/quantum_entanglement.jpeg}
-%     \caption{Lorem}
-%     \label{fig:entanglement}
-% \end{figure}
+\begingroup
+\setlength{\emergencystretch}{2em}
 
-%Lorem Figure \ref{fig:entanglement}
-%Esempio di utilizzo di un termine nel glossario \gls{api}.
+\section{Regulatory and Technical Context}
+\label{sec:regulatory-technical-context}
 
-%Esempio di citazione direttamente nel testo \cite{site:agile-manifesto}.
+\subsection{Territorial Coordination}
+\label{chap:domain}
+\label{sec:territorial-regulatory}
 
-%Esempio di citazione nel piè di pagina \footcite{womak:lean-thinking}.
+\noindent DM (Decreto Ministeriale) 77/2022 defines territorial care as a
+coordinated network of services rather than as a collection of isolated clinical
+encounters. Its organisational model includes the District, the Casa della
+Comunità, the COT (Centrale Operativa Territoriale)\glsadd{cot}\glsadd{cotg}, the 116117 operational
+centre, home-care services, community hospitals, and telemedicine-supported
+services \footcite[Allegato~1, pp.~12, 20--21]{dm-77-2022}. The decree therefore
+assigns digital information exchange an operational role: coordination across
+care settings depends on information that remains available when responsibility
+for a patient moves between hospital departments, territorial services, general
+practitioners, and home care. The COT makes this dependency explicit because it coordinates transitions among
+care settings and connects actors that belong to different organisational and
+technical domains. Its work requires current patient-identification data,
+care-transition information, clinical documentation, and communication with
+local and regional services \footcite[Allegato~1,
+pp.~20--21]{dm-77-2022}. A protected discharge, for example, does not end when a
+hospital records the discharge decision: it continues through the transmission,
+assessment, assignment, and activation activities that make territorial care
+effective. The organisational process is consequently continuous even when the
+supporting applications are not.
 
-%Esempio di visualizzazione script codice
-% \begin{listing}[H]
-%\begin{minted}{c}
-%#include <stdio.h>
-%int main() {
-%    print("Hello, world!");
-%    return 0;
-%}
-%\end{minted}
-%\caption{Example of code}
-%\label{listing:a}
-%\end{listing}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/territorial_care_operating_model.pdf}
+    \caption[Territorial-care operating model]{Concept of the territorial-care operating model defined
+    by DM~77/2022.}
+    \label{fig:territorial-care-operating-model}
+\end{figure}
 
-\section{Reference Scenario}
-\noindent Healthcare information systems increasingly support care processes that cross organizational, technological, and clinical boundaries. This is especially relevant in community-based healthcare, where continuity of care depends on the coordinated exchange of administrative, clinical, and operational information among heterogeneous applications. In the Veneto Region, this need is framed by the reorganization of territorial care promoted by Ministerial Decree 77/2022 and by the development of the Territorial Information System for regional Healthcare Organizations. 
-In this context, interoperability is not only a technical problem of connecting services. It also requires interpretation of healthcare processes, the alignment of regional specifications, the use of national and international standards, and the ability to observe how integration flows behave under realistic workload conditions. This thesis therefore follows a dual track. The first track is analytical and functional: it studies the healthcare domain, the actors involved, and the integration flows relevant to community care. The second track is technical and experimental: it designs a framework for modelling, executing, and measuring end-to-end RVE application traffic in a controlled environment. 
-This chapter introduces the healthcare, industrial, and research context of the work. It presents the internship setting, the regional SI.Ter initiative, the research problem, the thesis objectives, the main contributions, and the structure of the dissertation, without anticipating the detailed design, implementation, or experimental results developed in later chapters. 
-\subsection{Thesis Context}
-\noindent The thesis originates from an industrial internship carried out at Almaviva in the digital healthcare domain. The internship provided access to a project context in which software integration, regional healthcare specifications, and organizational requirements are closely connected. The work is therefore positioned at the intersection between applied system integration and academic research on interoperability and performance evaluation. 
-The central observation behind the thesis is that healthcare interoperability cannot be understood only by reading protocol specifications or only by testing isolated endpoints. In regional healthcare systems, each application flow is embedded in a broader organizational process and often involves authentication, patient identification, document exchange, middleware mediation, and application-specific business logic. For this reason, the thesis combines technical-functional analysis with the design of an executable simulation framework. 
-This section introduces the industrial and methodological background of the work. It first frames the internship experience, then clarifies the role of the system integrator, and finally identifies the available evidence about the involvement in the RTI team and in the technical-functional analysis activities. 
-\subsubsection{The internship in the Digital Healthcare Domain}
-\noindent The thesis was developed from an internship at Almaviva, in a professional context related to digital healthcare and system integration. The work was connected to the broader SI.Ter initiative, the Territorial Information System for the Healthcare Organizations of the Veneto Region. The project documentation describes SI.Ter as a regional initiative involving clinical-care modules, interoperability services, authentication mechanisms, patient registry services, document repositories, and integration with external systems. This setting provided a concrete environment in which to observe how healthcare processes are translated into software integration requirements. 
-The internship did not consist only in the study of generic healthcare standards. Its relevance for the thesis lies in the exposure to a real interoperability ecosystem, where technical specifications have to be interpreted in relation to organizational processes and application constraints. The documents consulted during the work include the SI.Ter technical tender documentation, the RTI technical report, regional specifications for Anagrafe Zero, context-call mechanisms, security infrastructure, and interoperability profiles. These sources show that the regional healthcare environment combines multiple interaction styles, including REST APIs, SOAP-based services, FHIR resources, XDS.b document exchange, SAML assertions, and JWT-based access tokens. 
-Within this context, the thesis focuses on the parts of the internship that are academically relevant: the analysis of integration flows and the design of a framework capable of reproducing their execution logic in a controlled setting. This choice avoids treating the internship as a descriptive account of company activity and instead uses it as the starting point for a research and engineering problem: how to represent healthcare interoperability flows as executable, observable, and measurable workloads. 
-Some details of the personal internship activity still require direct confirmation before being used as final thesis evidence. (DATA MISSING: precise internship dates, formal role title, team name, internal deliverables produced, and activities validated by company tutor.) Until these details are confirmed, this section should remain focused on the documented project context and on the thesis work that can be verified through available documentation and the current codebase.
-\subsubsection{System Integrators in Healthcare Interoperability Projects}
-\noindent In healthcare interoperability projects, the system integrator operates between organizational requirements, existing applications, external suppliers, regional specifications, and technical infrastructure. This role is not equivalent to the ownership of a single product module, nor to the operational management of the whole production environment. Its central task is to make heterogeneous systems cooperate according to shared interfaces, security constraints, data models, and process requirements. 
-The SI.Ter documentation makes this role particularly visible. The proposed solution is described as a multi-layer architecture in which application modules, interoperability components, workflow automation, persistence, monitoring, and external systems cooperate through APIs, web services, message queues, and transformation logic. The integration layer is responsible for coordinating flows between internal modules and external systems, supporting standards and formats such as REST, HL7, FHIR, JSON, XML, and XDS.b. This makes interoperability a mediation activity: it requires routing, transformation, validation, error handling, traceability, and alignment with the semantics of the healthcare process. 
-From the thesis point of view, the system integrator’s role is important because it exposes the gap between formal specifications and executable behavior. A transaction specification can define the expected structure of a request or response, but a real flow often depends on a sequence of steps: authentication, retrieval or generation of patient context, invocation of an application service, possible document publication, and logging or audit. The integrator must therefore reason about dependencies between systems and about the operational consequences of failures, timeouts, incomplete data, or inconsistent identifiers. 
-This perspective motivates the technical contribution of the thesis. If interoperability is mediated by multiple layers, then performance evaluation cannot be reduced to a single endpoint measurement. It requires a model of the flow, its dependencies, its workload composition, and the observability points available at different architectural levels. 
-\subsubsection{Involvement in the RTI}
-\noindent The SI.Ter project documentation identifies the RTI as the organizational context responsible for the proposed solution and describes the coexistence of several application modules, suppliers, and integration components. The available evidence supports the statement that the thesis work was developed in relation to this project environment and that the analysis concerned technical-functional aspects of healthcare interoperability. However, the exact operational involvement of the student within the RTI team is not fully documented in the sources currently available. 
-For this reason, this section must remain controlled. It can state that the thesis builds on the study of project documentation, regional specifications, and implementation evidence from the developed framework. It can also state that the analysis of flows contributed to the identification of use cases such as protected discharge and protected admission, where patient identification, care-setting transitions, access to clinical information, and integration with regional services become relevant. What cannot yet be stated without further evidence is the precise set of meetings attended, internal artefacts produced, responsibilities assigned, or interactions with specific RTI members. 
-(DATA MISSING: documented description of the student\textquoteright s activities in the RTI team, validated by tutor or company documentation.) The question to resolve before finalizing this section is: which concrete technical-functional analysis activities were carried out during the internship, and which of them can be described in the thesis without exposing confidential project details? 
-Until this evidence is available, the academically safe formulation is that the thesis uses the RTI project context as a case study and derives from it a methodological need: translating healthcare interoperability flows into formal workload models that can be executed and measured. 
+\noindent This continuity requirement operates within a regulated data environment.
+Health data are a special category of personal data under Article~9 of European
+Union Regulation 2016/679, and their processing remains subject to data
+protection by design and by default and to measures appropriate to risk under
+Articles~25 and~32 \footcite[arts.~9, 25 and
+32]{eu-gdpr-2016-679}. The FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}\glsadd{fseg}, or Electronic
+Health Record, translates the same principle into role-based authorisation,
+periodic verification of access profiles, secure communication, operational
+traceability, and audit-log mechanisms \footcite[art.~25]{decreto-fse-2-2023}. DM~77/2022 thus creates a dual technical
+requirement: information must cross organisational boundaries to support the COT,
+yet each crossing must preserve identity, authorisation, confidentiality, and
+traceability. Satisfying both conditions requires the territorial-care model to
+interoperate with the heterogeneous systems already present in the regional
+ecosystem.
 
-\subsection{Regional Healthcare Context}
-\noindent The regional healthcare context is relevant because the thesis does not study interoperability as an abstract software problem. It studies it in relation to territorial care, regional governance, and the need to coordinate services distributed across Healthcare Organizations. Ministerial Decree 77/2022 frames the development of territorial care in the Italian National Health Service and defines organizational and technological standards that increase the need for digital continuity across care settings. 
-In the Veneto Region, this context is connected to the SI.Ter initiative, whose purpose is to support territorial healthcare services through a regional information system. The coexistence of local applications, regional platforms, authentication services, patient registry systems, Electronic Health Record components, and document repositories makes interoperability a structural requirement rather than an optional feature. 
-This section introduces the regional healthcare setting, the national regulation on territorial care, the link with Mission 6 of the National Recovery and Resilience Plan, and the problem of information fragmentation in community-based services. 
-\subsubsection{The Healthcare System of Regione Veneto}
-\noindent For the purposes of this thesis, the Veneto healthcare system is considered through the lens of the actors and systems that participate in interoperability flows. The relevant level is not a general institutional history of the regional health service, but the interaction between Azienda Zero, the regional Healthcare Organizations, local care services, and shared digital infrastructures. 
-The SI.Ter documentation positions the project within the ecosystem of the Healthcare Organizations of the Veneto Region. The system is required to interact with existing regional and local services, including authentication infrastructure, Anagrafe Zero for patient registry functions, Electronic Health Record services, XDS repositories, prescription services, CUP systems, ADT systems, digital signature providers, payment systems, and other administrative or logistical components. This gives the regional healthcare system a distributed structure: some capabilities are centralized or regional, while others remain connected to the individual Healthcare Organizations and their existing applications. 
-From an interoperability perspective, this organization has direct consequences. A single care process may require data from multiple sources and may involve several responsibility boundaries. For example, patient identification can involve regional registry services; clinical documentation can involve the Electronic Health Record and XDS repositories; access can depend on authentication and authorization services; and territorial workflows can involve local application modules. The relevant technical problem is therefore the orchestration of heterogeneous systems, each with its own interface, data model, and operational constraints. 
-This is the context in which SI.Ter becomes important for the thesis. It is not treated merely as an application suite, but as a case study of regional healthcare integration. Its role is to make visible the connection between healthcare organization, software architecture, and the need for controlled experimental methods to evaluate integration flows. 
-\subsubsection{PNRR}
-\noindent Ministerial Decree 77/2022 defines models and standards for the development of territorial care within the Italian National Health Service. The decree distinguishes between a descriptive model of territorial care and a set of prescriptive standards, requiring regional planning to be aligned with the standards connected to Mission 6, Component 1 of the National Recovery and Resilience Plan. For this thesis, the decree is relevant because it makes territorial care a coordinated system of services rather than a collection of isolated local activities. 
-The decree identifies several structures and functions that are significant for interoperability. The District is described as a coordination level for territorial health and social-health services. The Casa della Comunita is a physical access point for citizens and multidisciplinary care. The Centrale Operativa Territoriale, or COT, coordinates patient transitions across care settings and requires information systems capable of tracking and monitoring those transitions. The 116117 operational center provides access to non-urgent medical care and must be connected with territorial coordination mechanisms. Home care, community hospitals, telemedicine, and other territorial services also require digital continuity. 
-The technological implications are explicit in several parts of the regulation. Territorial coordination depends on systems able to collect, manage, and monitor health data, access the Electronic Health Record, interconnect with company applications, and support telemedicine or shared information flows. Therefore, the regulation does not only define organizational structures; it also creates a demand for interoperable information systems. 
-In the thesis, DM 77/2022 provides the healthcare rationale for the technical work. If territorial care requires coordination among services, then integration flows must be studied not only for correctness but also for behavior under load, observability, and robustness. This link justifies the transition from domain analysis to workload generation and performance-oriented experimentation. 
-The available documentation supports a direct link between Ministerial Decree 77/2022 and Mission 6 of the National Recovery and Resilience Plan. The decree is described as a milestone for the reform of territorial care, and the extracted documentation reports investments connected to home care, Centrali Operative Territoriali, and telemedicine. This connection is important because it shows that territorial healthcare digitalization is part of a broader national transformation program, not an isolated regional initiative. 
-For the thesis, the relevant aspect is not the financial detail of the investment plan, but the operational consequence: territorial care requires shared, timely, and reliable information. The COT must coordinate transitions between settings; home care requires information exchange with territorial platforms and the Electronic Health Record; telemedicine requires digital infrastructures that support remote interaction and data collection. These requirements increase the dependency on interoperable systems. 
-The SI.Ter initiative can be read within this transformation context. It aims to support territorial healthcare services by providing application modules and integration capabilities that can cooperate with regional and local systems. The need for interoperability is therefore generated by both organizational reform and technical heterogeneity. 
-The decree itself is sufficient to justify the connection between territorial-care reform and Mission 6, Component 1 of the National Recovery and Resilience Plan. Exact investment-line figures are not needed for the introductory argument and should be introduced only if the final bibliography includes the corresponding institutional source. [DATA MISSING: BibLaTeX entry and exact institutional source for PNRR investment-line figures or milestone tables, if those details are retained later in the thesis.] 
-\subsubsection{Information Fragmentation in Territorial Healthcare}
-\noindent Information fragmentation is one of the central motivations for SI.Ter and for this thesis. It can be understood at three levels. Application fragmentation occurs when different services or Healthcare Organizations use different software systems. Information fragmentation occurs when patient, clinical, administrative, or workflow data are distributed across registries, local applications, document repositories, and regional platforms. Organizational fragmentation occurs when care processes require coordination among actors that belong to different services or settings. 
-In territorial healthcare, these forms of fragmentation are particularly relevant because care continuity depends on transitions. A patient may move from hospital discharge to home care, from a territorial access point to a COT evaluation, or from an application module to an Electronic Health Record consultation. Each transition requires the correct identification of the patient, the availability of relevant clinical information, and the consistent execution of authorization and audit mechanisms. 
-The SI.Ter documentation explicitly places the solution in continuity with systems already in use and describes the need to integrate with multiple existing components. This confirms that the problem is not simply to replace legacy systems, but to make heterogeneous systems cooperate. The thesis takes this fragmentation as the starting point for its research problem. If the same care process depends on multiple systems and protocols, then evaluation must consider the behavior of the flow as a whole, not only the behavior of an isolated service call. 
-\subsection{SI.Ter: Territorial Information System of Regione Veneto}
-\noindent The Territorial Information System for the Healthcare Organizations of the Veneto Region, referred to as SI.Ter, is the main project context of the thesis. The available documentation describes it as a regional initiative that includes application modules for territorial care and integration with existing regional and local systems. 
-For this thesis, SI.Ter is relevant in three complementary ways. Functionally, it supports territorial services and care pathways such as protected discharge, protected admission, home care, intermediate care, and other community-based processes. Technologically, it is described as a web-based, cloud-native, multi-layer solution based on microservices, APIs, integration middleware, workflow automation, monitoring, and DevSecOps practices. From a governance perspective, it is connected to regional project documentation, contractual requirements, milestones, and interactions among several actors. 
-This section introduces SI.Ter as the case-study environment from which the thesis derives its analytical and technical problem: how to model and evaluate interoperability flows in a complex healthcare integration architecture. 
-\subsubsection{Overview}
-\noindent The SI.Ter initiative concerns the realization of a Territorial Information System for the Healthcare Organizations of the Veneto Region. The project documentation presents it as part of a broader effort to support territorial healthcare services through application modules, interoperability services, and integration with existing regional platforms. The RTI technical report identifies core components such as ePersonam for COT, home care, intermediate residential structures and hospice, SisTer for services such as consultori, developmental age, neuropsychiatry and mental health, and an electronic prescription module placed transversally with respect to the other modules. 
-The initiative is not described as a greenfield replacement of all existing systems. The documentation emphasizes continuity with solutions already in use and the need to extend and harmonize the supply across the regional territory. This is important because it clarifies the integration problem: SI.Ter must operate in an ecosystem where several systems already exist and where regional services such as APMS, Anagrafe Zero, Electronic Health Record components, XDS repositories, CUP, ADT, and other platforms remain relevant. 
-For the thesis, SI.Ter provides the concrete domain in which interoperability flows are studied. The initiative makes visible the need to combine functional understanding of territorial care processes with technical knowledge of standards, protocols, and integration layers. 
-The available project documentation identifies DDR 11922/2026 as the source connected to the SI.Ter governance model. In this introductory chapter, the governance dimension is therefore limited to the project-level framing: SI.Ter is treated as a regional initiative involving Azienda Zero, the Healthcare Organizations, and a formal project governance context. [DATA MISSING: BibLaTeX entry and exact page reference for DDR 11922/2026 before using a more precise governance formulation.] 
-\subsubsection{Functional Architecture}
-\noindent The functional architecture of SI.Ter can be understood as a set of application domains supporting territorial healthcare processes. The available documentation identifies modules related to the Centrale Operativa Territoriale, home care, intermediate care structures, hospice, consultori, developmental age services, neuropsychiatry, mental health, and electronic prescription. These components are not isolated from each other: they participate in care pathways where information must follow the patient and remain available to authorized operators. 
-This kind of architecture is relevant to the thesis because it identifies the processes that generate interoperability requirements. Protected discharge, for example, requires the coordination of hospital-originated information, territorial evaluation, possible activation of home care or intermediate settings, and access to patient documentation. Protected admission similarly requires interaction between territorial services and clinical-care applications. These are functional scenarios before they are technical flows. 
-At this level, the thesis does not need to describe every SI.Ter function. It focuses on the functional architecture only insofar as it explains why integration flows exist and why they involve multiple systems. The functional view provides the bridge between healthcare processes and executable workload models. 
-The naming used here is intentionally limited to module families explicitly present in the consulted SI.Ter and RTI documentation: ePersonam-related territorial-care areas, SisTer-related services, and the transversal electronic-prescription component. [DATA MISSING: final validation of the exact SI.Ter module names to be used consistently in the submitted thesis.] 
-\subsubsection{Technological Architecture}
-\noindent The SI.Ter technical report describes the solution as web-based, cloud-native, modular, and organized according to a multi-layer architecture. The presentation layer includes web frontends based on modern web technologies. The interoperability layer includes WSO2 Micro Integrator, microservices for specific integration functions, RabbitMQ for asynchronous messaging, Drools for transformation and validation logic, and support for standards and formats such as REST, HL7, JSON, XML, FHIR, and XDS.b. The process automation layer uses Camunda v7 for BPMN and DMN-based workflow management. Other layers include business logic, persistence, business intelligence, DevSecOps, and monitoring. 
-This architecture matters for the thesis because it introduces several observation and mediation points between a client request and the final application behavior. A flow may cross authentication services, gateway components, transformation logic, queues, application microservices, registries, and document repositories. As a consequence, measuring only the client-side duration of a request is not equivalent to measuring middleware processing time or backend service time. 
-The thesis framework is not the SI.Ter platform itself. It is a separate experimental tool designed to generate and execute RVE-oriented workloads. However, its design is motivated by the technological architecture of systems like SI.Ter, where integration layers and application layers must be distinguished when interpreting measurements. 
-For this reason, the technological stack is described at the level of component families and architectural responsibilities, without reproducing endpoint details, deployment parameters, credentials, or environment-specific configuration. [DATA MISSING: final disclosure confirmation for any more detailed description of SI.Ter technological components.] 
-\subsubsection{Project Objectives and Milestones}
-\noindent The project documentation frames SI.Ter as a regional initiative aimed at supporting territorial healthcare services, integrating with existing systems, and aligning with the architectural requirements of Azienda Zero. The technical tender documentation states that the system must be based on a microservice logic, include application modules necessary to support the described processes, and provide modules dedicated to data integration to and from hospital information systems and Azienda Zero systems. 
-The available RTI documentation also refers to the need to extend existing solutions, add required functionalities, preserve continuity with pre-existing systems, and define detailed schedules for development, testing, validation, and release of integrations. This shows that the objectives are both functional and architectural: support territorial care processes, integrate with the regional ecosystem, and provide a scalable and maintainable technical foundation. 
-For this thesis, the milestone aspect is relevant only as background. The work does not evaluate project management execution or contractual delivery. Instead, it uses the project objectives to motivate a research problem: when a system must integrate many existing services and support territorial workflows, there is value in having an independent methodology for modelling and measuring integration flows before drawing conclusions about performance or capacity. 
-Available planning notes report project milestones, but milestone dates are not necessary for the research problem developed in this chapter. If the final thesis needs a project timeline, it should be based on the validated project plan rather than on secondary notes. [DATA MISSING: official milestone table and dates, if a SI.Ter project timeline is included.] 
-\subsection{Research Problem}
-\noindent The research problem emerges from the gap between documented interoperability requirements and controlled experimental evaluation. In the SI.Ter context, healthcare flows involve heterogeneous systems, multiple standards, and several architectural layers. The industrial problem is the need to integrate existing applications and regional services. The technical problem is the correct orchestration of multi-step, multi-protocol flows. The experimental problem is the difficulty of generating realistic, repeatable, and observable traffic for those flows. 
-The thesis addresses this gap by asking how healthcare interoperability flows can be translated into executable workloads that preserve relevant dependencies and can be measured without confusing framework-side observations with middleware-side evidence. This leads to four subproblems: heterogeneity among healthcare systems, complexity of multi-actor and multi-protocol flows, absence of a controlled RVE end-to-end simulation environment, and the architectural limits of directly correlating framework data with middleware data. 
-\subsubsection{Interoperability among Heterogeneous Healthcare Systems}
-\noindent Healthcare interoperability in the SI.Ter context is heterogeneous by design. The system must interact with regional services, existing local systems, application modules, identity and assertion providers, patient registry services, Electronic Health Record components, XDS repositories, and administrative platforms. Each of these systems can expose different interfaces, data formats, security requirements, and operational constraints. 
-The research gap is therefore concrete: it is not enough to verify that a single API endpoint can be called. A healthcare process may require several calls, each dependent on data produced by previous steps. For instance, an authentication or assertion step may enable access to a later service; a patient query may provide identifiers or context needed by a care application; a document publication flow may depend on both patient identity and document metadata. The interoperability problem is thus both semantic and temporal. 
-This thesis treats heterogeneity as a property that must be modelled. A workload must represent flow types, transaction sequences, dependencies, inputs, outputs, and execution modes. Without such modelling, performance tests risk becoming collections of isolated requests that do not reflect the behavior of real integration processes. 
-\subsubsection{Complexity of Multi-Actor and Multi-Protocol Flows}
-\noindent The complexity of regional healthcare integration flows derives from the interaction of multiple actors and protocols. A single end-to-end flow can involve security services, patient registry services, context-call services, middleware, application modules, and document infrastructures. These components may communicate through SOAP, REST, XML, JSON, FHIR resources, SAML assertions, JWT tokens, or IHE profiles. 
-The important point for the thesis is that these steps are not independent. Within a flow, later steps may require tokens, identifiers, or outputs produced by earlier steps. This creates sequential dependencies inside each flow. At the same time, a workload may contain many independent flows that can be executed concurrently. The framework therefore preserves a key invariant: steps are sequential within a flow, while concurrency is introduced across independent flows when supported by the execution engine. 
-This distinction is central to performance evaluation. Step latency, request latency, flow completion time, throughput, and concurrency are not interchangeable. A slow authentication step can affect all dependent steps in a flow, while high concurrency can affect scheduling and resource contention across flows. The thesis uses this complexity to justify a flow-level modelling approach rather than a request-only benchmark. 
-\subsubsection{Absence of a Controlled Environment for Traffic Simulation}
-\noindent A recurring difficulty in evaluating interoperability systems is the lack of a controlled environment that can reproduce complete application traffic while keeping inputs, schedules, and workload composition explicit. In the RVE context, this means representing not only individual transactions such as patient query or context call, but also the sequences in which those transactions occur and the data dependencies between them. 
-The developed framework addresses this need by generating synthetic FHIR patients, composing RVE flows, building stochastic timelines, executing requests in mock or live mode, and collecting structured JSONL logs. This does not replace validation in real environments. Rather, it provides a controlled layer where workload design, flow mix, scheduling, and logging can be inspected and repeated. 
-The absence of such a layer would make experimental evaluation less reproducible. It would be difficult to compare configurations, isolate workload assumptions, or distinguish whether observed behavior depends on the flow model, the execution mode, the middleware, or the backend system. The framework is therefore introduced as a methodological instrument: it makes the studied flows executable and observable. 
-\subsubsection{Limits of Correlation between Framework and Middleware side Observations}
-\noindent A key methodological constraint of the thesis is that framework-side observations and middleware-side observations cannot always be directly correlated. The framework can observe the requests it schedules, the responses it receives, the flow completion time, and the structured events it logs. Middleware components, instead, may observe routing, transformation, gateway processing, queues, retries, backend calls, or internal errors. These are related phenomena, but they are not automatically the same measurement. 
-Direct correlation can be non-identifiable when timestamps come from different systems, clocks are not aligned, identifiers are missing, sampling differs, or the middleware aggregates events at a different level of granularity. Even when both sides report latency, the population and measurement boundaries may differ. A client-observed latency can include network time and downstream processing, while gateway latency may represent only part of the path. 
-For this reason, the thesis adopts a two-level grey-box methodology. The first level is the framework layer, where workload generation, scheduling, request execution, and client-observed metrics are controlled. The second level is the middleware layer, where enrichment or comparison is possible only when logs contain sufficient identifiers and timing information. This prevents unjustified causal claims and supports a more careful interpretation of performance evidence. 
-\subsection{Thesis Objectives}
-\noindent The thesis objectives are organized around four dimensions: analytical, modelling, implementation, and measurement. The analytical objective is to study the standards, protocols, and architectures used in healthcare interoperability. The modelling objective is to formalize relevant use cases and translate them into flow-based representations. The implementation objective is to build a framework for generating, scheduling, executing, and logging RVE workloads. The measurement objective is to define metrics and an experimental method that distinguish request-level, step-level, flow-level, and time-window observations. 
-These objectives are intentionally formulated as verifiable activities rather than as promises of final performance improvements. The thesis aims to provide a method and an artefact for evaluation; any quantitative conclusion must depend on real experimental data produced and analyzed in later chapters. 
-\subsubsection{Studying Standards Protocols and Interoperability Architectures}
-\noindent The first objective is to study the technical foundations that make regional healthcare interoperability possible. This includes healthcare standards such as HL7 FHIR R4, IHE profiles such as XDS.b and IUA, message formats such as XML and JSON, interaction styles such as SOAP and REST, and security mechanisms based on SAML assertions and JWT tokens. The objective is not to provide an encyclopedic presentation of each standard, but to understand their role inside the specific flows considered by the thesis. 
-This study supports the analytical pillar of the work. It makes it possible to interpret regional specifications such as Anagrafe Zero, context-call mechanisms, Affinity Domain rules, and authentication-related documentation. It also allows the thesis to distinguish between functional requirements, protocol constraints, and implementation choices. For example, FHIR is relevant for patient resources and registry interactions, while SAML and JWT are relevant for identity propagation and access control. 
-The expected outcome of this objective is a precise vocabulary for describing flows. Without this vocabulary, the framework would risk generating technically plausible traffic that is not connected to the semantics of the healthcare domain. The study of standards therefore prepares both the use-case formalization and the technical implementation. 
-\subsubsection{Translating Internship Experience into Academic Use Cases}
-\noindent The second objective is to formalize the main healthcare use cases considered in the internship context, especially protected discharge and protected admission. These scenarios are relevant because they require coordination between care settings and depend on the availability of patient identity, clinical context, and application-level information. They are also representative of the broader problem of territorial care continuity. 
-Formalization means identifying actors, systems, preconditions, information dependencies, and possible integration steps. It does not mean inventing operational details that are not documented. Where the available sources describe the involvement of COT, ADT notifications, Anagrafe Zero, Electronic Health Record consultation, XDS repositories, or context-call mechanisms, these elements can be used to motivate the flow model. Where the internship-specific activity is not documented, the thesis must mark the gap. 
-This objective connects the healthcare domain to the framework. A use case becomes relevant for experimentation only when it can be mapped to a workload structure: flow type, ordered steps, dependencies, execution mode, and measurable outputs. 
-\subsubsection{Designing and Implementing a Traffic Simulation Framework}
-\noindent The third objective is to design and implement a Python framework for simulating RVE application traffic end to end. The current codebase supports synthetic FHIR patient generation, flow construction, timeline generation, asynchronous execution, mock and live modes, JSONL logging, normalization, and metric computation. The framework is organized as a pipeline that moves from patients to requests, from requests to timelines, from timelines to execution logs, and from logs to analytical reports. 
-This objective is technical but remains linked to the domain analysis. The framework is not a generic load generator detached from healthcare semantics. Its unit of modelling is the flow, not only the isolated request. Supported flow types include sequences such as RVE-1.b followed by RVE-121 and RVE-130, RVE-1.b followed by RVE-54, RVE-1.b followed by RVE-55, and additional flows involving ITI-18, ITI-43 and ScrybaSign interactions as represented in the current codebase. 
-The implementation objective is therefore to provide an executable artefact that can reproduce dependencies among steps, vary workload composition, schedule arrivals, and collect structured evidence for later analysis. 
-\subsubsection{Defining a Measurement Methodology}
-\noindent The fourth objective is to define a measurement methodology based on operationally clear indicators. The framework and analytics components support metrics related to latency, throughput, error rate, concurrency, flow completion, and time-series aggregation. These metrics must be interpreted at the correct level: a request-level latency is different from step latency, flow completion time, throughput over a time window, or observed concurrency. 
-The methodology also distinguishes between framework-observed and middleware-observed data. Framework logs can support measurements such as client-observed latency, scheduling behavior, success or failure at step level, and flow-level completion. Middleware logs, when available and joinable, can add information about gateway or upstream processing. However, the two sources must not be conflated unless identifiers, timestamps, and measurement boundaries make the comparison meaningful. 
-This objective prepares the experimental chapters. It does not claim final results in advance; it defines the conditions under which results can later be considered valid: explicit configuration, known workload, documented execution mode, clear metric definitions, and traceable data sources. 
-\subsection{Main Contributions}
-\noindent The thesis contributes along four lines. The analytical contribution is the technical-functional study of healthcare interoperability flows in a regional territorial-care context. The technical contribution is the implementation of a framework that can generate, schedule, execute, and log RVE-oriented workloads. The methodological contribution is a two-level grey-box approach that separates framework-side observations from middleware-side evidence. The experimental contribution is the preparation and, where data are available, production of empirical evidence for evaluating flow behavior. 
-These contributions should be read together. The framework is not an appendix to the analysis, and the analysis is not merely background for the software. The thesis contribution lies in the connection between the two: healthcare processes are translated into executable workloads, and those workloads become the basis for controlled measurement. 
-\subsubsection{Analytical: Functional Study of Interoperability Flows}
-\noindent The analytical contribution consists in reconstructing how healthcare interoperability flows operate within the regional territorial-care context. This includes identifying the relevant actors, systems, standards, and transaction families, and understanding how they relate to care scenarios such as protected discharge and protected admission. The analysis uses project documentation and regional specifications to connect organizational processes with technical interfaces. 
-The originality of this contribution does not lie in redefining healthcare standards. Standards such as HL7 FHIR, IHE profiles, SAML, JWT, SOAP, REST, XML, and JSON already exist and are reused. The contribution lies in applying them to a coherent thesis problem: understanding which flows matter for territorial care, how they compose into end-to-end interactions, and what dependencies must be preserved when moving from analysis to experimentation. 
-This analytical layer is necessary because a workload generator without domain grounding would risk testing artificial sequences. Conversely, domain analysis without executable modelling would remain difficult to evaluate experimentally. The thesis places the analytical contribution at the foundation of the technical work. 
-\subsubsection{Technical: A Framework for Generating Scheduling Executing and Measuring RVE Workloads}
-\noindent The technical contribution is the development of a framework that models RVE traffic as flows composed of ordered transaction steps. The framework supports a configurable flow mix, where each flow type represents a class of interaction and each weight defines its relative frequency in the generated workload. This allows experiments to represent different workload compositions without changing the implementation code.
-The current codebase maps flow types to transaction sequences. Examples include:
-\begin{itemize}
-  \item \textit{FLOW\_CONTEXT\_CALL}: the integration flow with the FSE visualizer;
-  \item \textit{FLOW\_PATIENT\_QUERY}: the integration flow with Anagrafe Zero for patient query;
-  \item \textit{FLOW\_PATIENT\_CREATE}: the integration flow with Anagrafe Zero for patient creation;
-  \item \textit{FLOW\_ITI\_18}, the integration flow with the XDS.b Registry;
-  \item \textit{FLOW\_ITI\_43}, the integration flow with the XDS.b Repository;
-  \item \textit{FLOW\_SCRYBASIGN\_SIGN}, the integration flow with the digital signature provider.
-\end{itemize}
-These flows are generated, scheduled over time, executed according to the selected mode, and logged as structured events. 
-The contribution is not simply the ability to send HTTP requests. It is the combination of synthetic patient generation, dependency-aware flow construction, stochastic timeline generation, asynchronous execution, mock/live modes, placeholder resolution, JSONL logging, normalization, and metric computation. This makes the framework suitable for studying flow-level behavior rather than only endpoint-level behavior. 
-\subsubsection{Methodological: A Two-Level Grey-Box Analysis Approach}
-\noindent The methodological contribution is the use of a two-level grey-box approach. The first level is the framework layer, where the experimenter controls workload generation, flow composition, scheduling, execution mode, and client-side logging. The second level is the middleware layer, where additional evidence may be available from gateway, routing, transformation, or upstream-processing logs. 
-The term grey-box is used because the framework does not treat the whole system as an opaque black box, but neither does it assume full visibility into every internal component. It uses the observability available at each layer and keeps the interpretation boundaries explicit. Framework data can describe what the client generated and observed; middleware data can describe what the integration layer processed, if such data are available and joinable. 
-This prevents an important methodological error: interpreting descriptive alignment as causal proof. Two time series may appear similar without representing the same measurement boundary. A latency increase observed at the client may depend on middleware processing, backend response time, network effects, scheduling, or workload composition. The thesis therefore uses the two-level method to support cautious design guidance rather than unsupported causal claims. 
-\subsubsection{Experimental: Empirical Evidence on Performance and Robustness}
-\noindent The experimental contribution is the production of empirical data through controlled executions of the framework, when such executions are available. The framework is designed to generate datasets, timelines, execution logs, normalized metrics, reports, and graphs. These artefacts can support evaluation of latency distributions, throughput, error rate, concurrency, flow completion time, burst behavior, and the effects of configured fault injection. 
-At this stage, however, the final empirical contribution remains data-gated. The current codebase supports the generation of datasets, timelines, execution logs, normalized metrics, reports, and graphs, but this capability is not equivalent to a validated experimental result. [DATA MISSING: final executed scenarios, dataset sizes, configuration versions, logs, metric reports, and validated interpretations.] The thesis can describe the experimental capability of the framework because it is supported by the codebase, but it must not claim quantitative results until the corresponding runs have been executed and analyzed. 
-\subsection{Structure of the Dissertation}
-\noindent The dissertation follows a narrative path from context to evaluation. After this introductory chapter, the thesis first develops the healthcare and interoperability background needed to understand the problem. It then examines the standards, protocols, and regional specifications that define the technical environment in which SI.Ter-related flows operate. 
-The central chapters move from analysis to design. The healthcare use cases and integration flows are formalized, with particular attention to how multi-step interactions depend on authentication, patient identity, application context, and document exchange. The framework is then presented as the technical response to this modelling problem: it transforms the analyzed flows into executable workloads. 
-The implementation chapter describes the current codebase in terms of modules, responsibilities, and verified behavior, without replacing design discussion with line-by-line code commentary. The methodology chapter defines the experimental protocol, metrics, data sources, and interpretation rules. The results chapter is intentionally data-gated: it must report only evidence derived from real runs, logs, reports, and validated analysis. Finally, the concluding chapter connects the analytical and technical outcomes, discusses limitations, and identifies future work, including possible extensions of the framework and broader experimental validation. 
+\subsection{Heterogeneous Systems in SI.Ter}
+\label{sec:industrial-ecosystem}
+
+\noindent The regional programme\glsadd{siter}\glsadd{siterg} provides the Veneto project context
+in which the organisational mandate becomes an integration problem. Regional
+documentation defines SI.Ter as a programme that connects territorial-care
+application domains, shared services, and pre-existing local and regional
+systems; it does not assume their replacement by a single greenfield platform
+\footcite[pp.~1--3]{regione-veneto-ddr-11922-2026}. The procurement framework
+accordingly requires cooperation across distinct ownership boundaries while
+preserving the processes and information assets already managed by Healthcare
+Organisations \footcite{azienda-zero-siter-capitolato,rti-siter-relazione-tecnica}.
+The COT model therefore depends on an architecture whose components remain
+heterogeneous in responsibility, interface, and data representation. The integration perimeter includes APMS (Application Profile Management System)\glsadd{apms}\glsadd{apmsg}
+for authentication and user-profile management in cloud-based applications
+\footcite[Version~1.4.1, Section~1]{apms-auth-v141}, Anagrafe Zero for patient identification and
+registration, local Admission, Discharge, and Transfer systems, and the FSEr
+(Fascicolo Sanitario Elettronico regionale) document infrastructure. Within the
+document path, XDS (Cross-Enterprise Document Sharing)\glsadd{xds}\glsadd{xdsg} repositories publish and
+retrieve clinical documents according to the regional Affinity Domain, while
+their indexing makes those documents available to the regional record. The
+documented SI.Ter architecture also connects context-call services, digital
+signature providers, prescription services, local clinical applications, and
+other shared components \footcite[Sections~2.1.2 and~2.1.4]{rti-siter-relazione-tecnica}.
+Within the integration stack represented by the thesis, Scryba Sign instantiates
+the signature-provider role and exposes its services through SOAP (Simple Object
+Access Protocol) interfaces described by WSDL (Web Services Description
+Language) contracts. The component handles FEA (Firma Elettronica Avanzata) and
+remote digital signatures; when the selected certificate and trust-service
+conditions satisfy the applicable eIDAS (electronic identification,
+authentication and trust services) requirements, the latter supports FEQ (Firma
+Elettronica Qualificata). It produces CAdES (CMS Advanced Electronic Signatures),
+PAdES (PDF Advanced Electronic Signatures), and XAdES (XML Advanced Electronic
+Signatures) envelopes and applies timestamping in the TimeStampedData (TSD)
+format. This
+classification identifies the supported integration surface and does not by
+itself certify the legal qualification of every configured signature
+\footcites[pp.~7, 10, 28, and~89]{scryba-sign-developer-guide-v16}
+[Articles~3 and~25]{eu-eidas-910-2014}
+[Section~2]{rfc5544-timestamped-data}.
+The technological gap becomes visible in the interaction models exposed by the
+two principal data domains. Anagrafe Zero provides resource-oriented REST
+(Representational State Transfer) interactions over HTTP (Hypertext Transfer
+Protocol), based on HL7 (Health Level Seven) FHIR (Fast Healthcare
+Interoperability Resources)\glsadd{fhir}\glsadd{fhirg} R4 (Release 4), for RVE (Regione
+Veneto)\glsadd{rve}\glsadd{rveg} operations such as patient search and identifier assignment. FHIR
+admits both XML (Extensible Markup Language) and
+JSON (JavaScript Object Notation)\glsadd{json}\glsadd{jsong} representations, but the applicable regional
+interactions specify FHIR XML; the contrast is therefore not a simple
+XML-versus-JSON conversion \footcite[Sections~1.5.2 and~2.5.2]{arsenal-anagrafe-zero-v26}.
+The FSEr document infrastructure instead applies IHE (Integrating the Healthcare
+Enterprise)\glsadd{ihe}\glsadd{iheg} XDS.b transactions through SOAP (Simple Object Access Protocol)
+Web Services\footcite{ihe-xdsb,affinity-domain-italia-v263}. Both families can use HTTP over TCP (Transmission Control Protocol) and protect the
+channel through mTLS (mutual Transport Layer Security). The mediation challenge
+therefore lies above this common transport substrate: SI.Ter must reconcile
+resource-oriented REST operations with message-oriented SOAP transactions and
+map patient identifiers, document metadata, security contexts, error semantics,
+and workflow dependencies without changing their clinical meaning. Interface
+connectivity alone is insufficient because syntactically valid forwarding does
+not guarantee semantic equivalence between the two application contracts. An end-to-end care transition can consequently traverse several systems before
+the receiving actor obtains the information required to continue the process.
+The solution architecture mediates these interactions through application
+interfaces and an interoperability layer. The layer mediates RESTful FHIR and
+SOAP-based IHE XDS.b interactions with ebXML (Electronic Business using
+eXtensible Markup Language) metadata, while managing asynchronous orchestration,
+transformation, errors, and interface lifecycles
+\footcite[Sections~2.1.2 and~2.1.4]{rti-siter-relazione-tecnica}.
+Table~\ref{tab:siter-interoperability-standards} summarizes how the principal
+interoperability standards and regulatory constraints govern patient data,
+document exchange, access control, and auditability within the SI.Ter
+integration stack \footcite[Article~25]{eu-gdpr-2016-679}\footcite[Article~25]{decreto-fse-2-2023}\footcite[Section~4.5]{azienda-zero-siter-capitolato}.
+
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
+    \caption{Summary of key standards, including regulatory constraints, and their functional roles in the SI.Ter integration stack.}
+    \label{tab:siter-interoperability-standards}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Standard} & \textbf{Protocol or format} & \textbf{Role in the project} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Standard} & \textbf{Protocol or format} & \textbf{Role in the project} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\footnotesize Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    \textbf{HL7 FHIR R4}\par
+    {\footnotesize Health Level Seven Fast Healthcare Interoperability Resources, Release 4}
+    & HTTP/REST; \texttt{Patient} and \texttt{Bundle} resources represented in FHIR XML, with JSON where required by the applicable interaction
+    & Supports patient-registry interactions with Anagrafe Zero, including patient search, identifier assignment, and demographic updates such as RVE-54 and RVE-55. \\
+    \hline
+    \textbf{IHE XDS.b}\par
+    {\footnotesize Integrating the Healthcare Enterprise Cross-Enterprise Document Sharing}
+    & SOAP/XML messages, ebXML metadata, and the ITI (IT Infrastructure) transactions ITI-41, ITI-18, and ITI-43
+    & Supports publication, metadata indexing and query, and retrieval of clinical documents through the FSEr Document Repository and Document Registry. \\
+    \hline
+    \rowcolor{tableGray}
+    \textbf{SAML (Security Assertion Markup Language)\glsadd{saml}\glsadd{samlg} 2.0 / JWT (JSON Web Token)\glsadd{jwt}\glsadd{jwtg}}
+    & XML assertions and compact RFC (Request for Comments) 7519 tokens carried by the transaction-specific SOAP or HTTP/REST exchanges
+    & Establishes and propagates the security context: RVE-121 uses the SAML assertion to obtain a JWT, which is then used by RVE-130 for the contextual service call. \\
+    \hline
+    \textbf{GDPR (General Data Protection Regulation) / FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}\glsadd{fseg} 2.0}
+    & Data Protection by Design and by Default constraints
+    & Establishes design constraints for differentiated access profiles and operation traceability. In the regional stack, IHE ATNA (Audit Trail and Node Authentication)\glsadd{atna}\glsadd{atnag} implements audit logging. Authorisation checks and audit-record generation constitute non-bypassable processing in a compliant path; their cost therefore remains part of the measured end-to-end performance. \\
+    \hline
+    \rowcolor{tableGray}
+    \textbf{eIDAS; CAdES, PAdES, and XAdES}\par
+    {\footnotesize Electronic-signature legal framework and signature-envelope profiles}
+    & SOAP Web Services; CMS, PDF, and XML signature envelopes; TimeStampedData temporal evidence
+    & eIDAS supplies the legal classification of electronic signatures, while the envelope and timestamp formats define the Scryba Sign integration artefacts processed by the calling application. \\
+\end{longtable}
+\endgroup
+
+\noindent These capabilities solve the connectivity problem only at the interface level. They do
+not by themselves establish whether a multi-system care process remains
+reconstructable from its initial request to its final outcome. Each mediation function introduces a boundary at which identifiers, security
+contexts, payloads, or timing information may change. Authentication can be a
+prerequisite for a patient query; the patient identifier returned by that query
+can become an input to document search; a retrieved document can affect a later
+care decision. The integration gap is therefore not the absence of interfaces,
+but the absence of a single observation point that represents the meaning,
+ordering, and outcome of all interactions involved in a care workflow. This gap
+turns the heterogeneity of SI.Ter into a problem of information continuity and
+end-to-end traceability.
+
+
+\section{Continuity and Observability}
+\label{sec:problem-to-question}
+
+\subsection{Workflow Traceability}
+\label{sec:general-problem}
+
+\noindent Territorial care crosses organisational, application, and information
+boundaries at the same time. Organisational fragmentation arises because a
+single care pathway assigns responsibilities to hospital departments, the COT,
+territorial services, general practitioners, and home-care providers.
+Application fragmentation arises because these actors use software governed by
+different organisations. Information fragmentation arises because identity,
+clinical, administrative, and workflow data reside in registries, local
+applications, repositories, and regional platforms. Interoperability connects
+these domains, but the care process remains traceable only when the connections
+preserve the relationships among actors, data, and ordered activities. The protected-discharge workflow illustrates the resulting dependency chain. A
+hospital operator identifies the patient, assembles the information required for
+the referral, selects a proposed territorial setting, and submits the request to
+the competent COT. The COT receives and evaluates the request, coordinates the
+actors involved, and advances the case through explicit workflow states. The
+protected-admission workflow applies an analogous coordination pattern in the
+opposite direction, from a territorial setting towards a hospital structure
+\footcite[Sections~2.1.5 and~2.4.1]{rti-siter-relazione-tecnica}. These processes
+are multi-actor workflows rather than sequences of unrelated service calls:
+their correctness depends on the availability and interpretation of outputs
+produced by earlier activities.
+
+\noindent The upper branch in Figure~\ref{fig:rdg-regional-transaction-workflow} makes the
+identity dependency concrete. Within \texttt{FLOW\_PATIENT\_QUERY}, RDG executes
+RVE-1.b before the RVE-54 Patient Query. Through the first transaction, the
+regional IAP (Identity and Assertion Provider)\glsadd{iap}\glsadd{iapg} generates and returns a SAML 2.0 identity
+assertion; the execution engine extracts its required Base64 representation,
+stores it in the context of the same flow occurrence, and resolves the corresponding placeholder in the
+\texttt{Authorization} header of RVE-54 before sending the query. The resulting
+header carries the assertion with the \texttt{IHE-SAML} authentication scheme,
+as required by the regional security profile
+\footcite[Section~4.2]{arsenal-security-v214}\footcite[Section~1.7]{arsenal-anagrafe-zero-v26}.
+RDG therefore represents regional security-session state as explicit
+per-occurrence dependency data rather than reducing it to the state of the
+underlying HTTP connection. If RVE-1.b fails, the required assertion cannot be
+extracted, or its placeholder remains unresolved, the engine does not execute a
+semantically valid patient query and records the workflow as incomplete. This
+behaviour makes assertion acquisition and propagation part of the tested
+workflow. An isolated request can exercise RVE-54 only after receiving a valid
+security context from outside the test and therefore cannot evaluate the
+identity hand-off on which the regional interaction depends.
+
+\noindent A technical evaluation based on isolated endpoints cannot represent this
+dependency. A successful authentication request does not prove that the resulting
+security context is accepted by the next service; a successful patient query
+does not prove that the returned identifier reaches document search; and a set
+of individually successful calls does not prove that the workflow reaches its
+intended terminal state. The relevant unit of analysis is therefore one
+occurrence of an end-to-end workflow, considered both through its executed
+interactions and through its overall outcome and completion time. This unit
+preserves the functional meaning that disappears when measurements are aggregated
+only by endpoint. End-to-end reconstruction also requires stable correlation identifiers,
+ordered timestamps, transport and application outcomes, and explicit data
+dependencies between steps. Without this evidence, a failure can be located at
+the client boundary but cannot be associated reliably with the workflow state
+that precedes or follows it. The continuity problem consequently becomes an
+observability problem: the evaluation method must reconstruct the external
+behaviour of the distributed workflow, while the regional security perimeter
+limits which internal evidence the experiment can inspect.
+
+\noindent Figure~\ref{fig:rdg-regional-transaction-workflow} maps this requirement to the
+Request Dataset Generator (RDG)\glsadd{rdg}\glsadd{rdgg} flow model, in which each correlated occurrence
+retains both business outputs and the security context required by downstream
+transactions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/rdg_regional_transaction_workflow.pdf}
+    \caption[RDG-orchestrated regional transactions]{RDG orchestration of the
+    RVE-1.b authentication output into regional patient-identity flows.}
+    \label{fig:rdg-regional-transaction-workflow}
+\end{figure}
+
+\subsection{The Authorised Observation Boundary}
+\label{sec:scope-investigation}
+
+\noindent Regional security specifications make authentication, authorisation, secure
+transport, and auditability integral to the integration architecture. Operators
+and applications act within an authenticated and authorised context, and
+assertions or tokens can become prerequisites for later services
+\footcites[Version~1.4.1]{apms-auth-v141}{arsenal-security-v214,arsenal-context-rve-v13}. The
+architecture also provides audit mechanisms for production accountability; the
+regional security specification states that participating actors generate audit
+records and refers their detailed structure to the applicable ATNA (Audit Trail
+and Node Authentication)\glsadd{atna}\glsadd{atnag} profile
+\footcite[Section~4.3.15]{arsenal-security-v214}. The existence of this production
+telemetry does not make it part of the evidence available to every consumer or
+experiment, because access remains governed by operational roles and security
+policy. Within the authorised perimeter of this thesis, internal APMS telemetry
+and telemetry from the mediated gateway path are not made available to the
+experiment. This statement describes the
+research boundary; it does not claim that the platforms fail to produce logs or
+that regional policy universally prohibits their inspection. Real patient data,
+credentials, private endpoints, confidential deployment parameters, and
+production audit records likewise remain outside the disclosed dataset.
+Production services are neither instrumented by the thesis nor subjected to
+intrusive load.
+
+\noindent These restrictions, summarised in
+Table~\ref{tab:internal-external-observation}, preserve the applicable security boundary but
+remove the internal timestamps required for a causal decomposition of gateway
+processing. The observable interval consequently extends from the client sending a request
+to the client receiving the corresponding response. It can include client-side
+processing, authentication, network transit, gateway mediation, downstream
+service execution, and response propagation. A latency measured across this
+interval characterises the path as a whole; it cannot attribute a delay to a
+specific gateway component without additional internal evidence. Treating the
+entire difference as gateway processing therefore exceeds the available
+data and violates the distinction between observation and causal explanation. This limitation determines the methodological requirement. The experiment needs
+a controlled external layer that represents complete workflows, fixes the
+workload and observation rules, records client-visible events, and compares
+direct with gateway-mediated execution at the same declared boundary. Such a
+layer does not replace production telemetry. It provides surrogate evidence for
+the effect visible outside the protected platform and makes every inference
+conditional on the comparability of the observed paths. The resulting research
+question is: \emph{how can documented healthcare interoperability workflows be
+translated into reproducible, observable, and measurable end-to-end workloads,
+and how can the apparent overhead associated with gateway mediation be estimated
+differentially when internal platform telemetry is outside the authorised
+observation perimeter?}
+
+\begingroup
+    \renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{4.75cm}|>{\raggedright\arraybackslash}p{5.15cm}|}
+    \caption[Comparison between internal production evidence and external experimental observation]{Comparison between internal production evidence and external
+    experimental observation.}\label{tab:internal-external-observation}\\
+        \hline
+        \rowcolor{veryPeri!18}
+        \textbf{Dimension} & \textbf{Authorised Observation Boundary (Internal)} & \textbf{Experimental Observation Perimeter (RDG)} \\
+        \hline
+        \endfirsthead
+        \hline
+        \rowcolor{veryPeri!18}
+        \textbf{Dimension} & \textbf{Authorised Observation Boundary (Internal)} & \textbf{Experimental Observation Perimeter (RDG)} \\
+        \hline
+        \endhead
+        \hline
+        \multicolumn{3}{r}{\small Continued on the next page}\\
+        \endfoot
+        \hline
+        \endlastfoot
+        \rowcolor{tableGray}
+        \textbf{Data access}
+        & Real clinical data and ATNA audit records remain production-side and are accessible only to authorised operational roles.
+        & RDG uses synthetic FHIR patients; real health data and production audit records remain outside the dataset. \\
+        \hline
+        \textbf{Granularity}
+        & Component-level timestamps and traces remain protected; their availability depends on production instrumentation and authorised operator access.
+        & RDG measures client-observed mediated-path latency $L_{\mathrm{med}}(q)$ and the differential $\Delta L(q)=L_{\mathrm{med}}(q)-L_{\mathrm{dir}}(q)$ for the declared statistic $q$. \\
+        \hline
+        \rowcolor{tableGray}
+        \textbf{Outcome insight}
+        & Internal traces can associate a failure with a component only when the corresponding production evidence is available.
+        & RDG distinguishes the HTTP transport outcome from application completion and semantic rejection visible in the response or output extraction. \\
+        \hline
+        \textbf{Telemetry}
+        & APMS, mediated-gateway, and production ATNA logs remain inaccessible to the experiment.
+        & RDG produces correlated JSONL events for requests, responses, and completed workflow occurrences. \\
+        \hline
+        \rowcolor{tableGray}
+        \textbf{Overhead attribution}
+        & Direct gateway measurement requires aligned ingress, internal-component, and egress timestamps, which lie outside the experimental perimeter.
+        & $\Delta L$ estimates an aggregate path-level effect that can include routing, security, transformation, downstream-service, and retry costs; it does not decompose APMS or gateway processing. \\
+\end{longtable}
+\endgroup
+\clearpage
+
+\section{Methodological Response}
+\label{sec:methodological-response}
+
+\subsection{Surrogate Observability through RDG}
+\noindent RDG answers this question as the technical
+instrument of a \emph{Surrogate Observability Strategy}. The strategy translates
+documented healthcare interactions into synthetic and executable workloads,
+observes them at the client boundary, and compares controlled direct and
+gateway-mediated paths. Its central differential mechanism is the
+\texttt{direct\_\allowbreak vs\_\allowbreak middleware} experiment. The current
+implementation groups direct patient-query and patient-creation flows, contrasts
+their client-observed end-to-end completion-time distributions with the mediated
+patient-query flow, and reports differences for the mean and the 50th, 95th, and
+99th percentiles. These differences estimate \emph{apparent path-level overhead};
+they do not decompose the internal execution time of the gateway.
+
+\noindent Observation in this strategy is not synonymous with measuring network
+latency. The client-observed interval covers the complete request--response path,
+while RDG records the HTTP-level outcome and the application outcome as distinct
+evidence. An HTTP status code 200 confirms that the exchange returns a successful
+HTTP response, but it does not by itself prove that the payload contains the
+required output or that the workflow can advance. The execution engine therefore
+marks a step as failed when a mandatory output cannot be extracted, even if the
+response status is 200, and propagates that failure to the flow-level outcome. The
+same observation model retains service-reported semantic rejections, such as an
+RVE-55 status code 422 associated with FHIR validation, without inferring the
+specific violated constraint when payload-level evidence is unavailable. The
+sanitised evidence set illustrates the first distinction through RVE-TOKEN responses that carry status code 200 but remain application
+failures because the required token is not extracted. RVE-121 provides a
+complementary limit: its observed status code 200 demonstrates the current HTTP
+exchange, whereas evidence item \texttt{E-RVE121-001} does not establish that a
+specific correction causes a transition from an earlier status code 400 to 200.
+Surrogate observability therefore separates HTTP-level evidence, application
+completion, and causal claims instead of treating every successful HTTP response
+as an equivalent logical outcome.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/surrogate_observability_pattern.pdf}
+    \caption[Surrogate observability pattern]{Surrogate observability pattern for \texttt{direct\_vs\_middleware} experiment.}
+    \label{fig:surrogate-observability-pattern}
+\end{figure}
+
+\noindent The framework preserves the process semantics required by that comparison. It
+generates synthetic FHIR R4 patients, composes selected RVE (Regione Veneto)\glsadd{rve}\glsadd{rveg}
+transactions into ordered multi-step flows, resolves outputs that become inputs
+to later steps, and assigns traffic occurrences to configurable timelines.
+Within each workflow occurrence, dependent steps execute sequentially;
+independent occurrences can execute concurrently through Python
+\texttt{asyncio}. Structured client-side events retain flow identity, step
+identity, timing, transport status, application outcome, and scheduling context.
+The resulting observation layer reconnects the functional workflow described by
+the SI.Ter documentation with the measurements available outside the protected
+gateway. The strategy covers selected workflow families related to regional
+authentication, patient identity, application context, document exchange, and
+digital signature. Its standards perimeter includes HL7 (Health Level Seven)\glsadd{hl7}\glsadd{hl7g}
+FHIR R4 resources, RVE specifications, IHE XDS.b transactions, SAML (Security
+Assertion Markup Language)\glsadd{saml}\glsadd{samlg} assertions, and JWT (JSON Web Token)\glsadd{jwt}\glsadd{jwtg} tokens. Synthetic
+patients replace real health information, while mock and authorised live modes
+separate controlled verification of the pipeline from observation of remote
+paths. This scope supports a reproducible performance method without claiming
+clinical effectiveness, legal certification, exhaustive coverage of SI.Ter, or
+successful validation of every implemented transaction.
+
+
+
+\subsection{Scope, Objectives, and Contributions}
+\label{sec:objectives-artefacts-contributions}
+
+The method pursues four verifiable objectives:
+\begin{enumerate}
+    \item interpret the standards, protocols, security mechanisms, and
+    integration architectures that define the selected healthcare workflows;
+    \item formalise protected discharge, protected admission, and the associated
+    interoperability interactions in terms of actors, preconditions, ordered
+    steps, and information dependencies;
+    \item provide a configurable framework that translates those dependencies
+    into synthetic, executable, and observable workloads;
+    \item define measurements that support differential comparison between
+    direct and gateway-mediated paths.
+\end{enumerate}
+\noindent The objectives establish an evidence-producing method and artefact; they neither
+promise a performance improvement nor predetermine the experimental outcome. RDG makes the objectives inspectable through a run-specific artefact chain. The
+chain comprises a resolved configuration, a synthetic dataset, a traffic
+timeline, a JSONL (JSON Lines)\glsadd{jsonl}\glsadd{jsonlg} execution log, a normalised analytical dataset,
+metric reports, tabular summaries, and optional graphs. The analytical layer
+separates request latency, workflow completion time, throughput, error rate,
+concurrency, scheduling delay, and log completeness. Artefact presence
+establishes software output coverage, whereas only an executed and
+quality-checked scenario provides experimental evidence. This distinction keeps
+the methodological contribution independent from any unsupported claim about
+observed performance. The contribution is consequently a reproducible procedure for profiling
+healthcare interoperability paths when the internal gateway remains outside the
+observation perimeter. The analytical component reconstructs the meaning and
+dependencies of the selected regional flows; the software component generates,
+executes, correlates, and measures their occurrences; the differential component
+quantifies the externally visible difference between declared direct and
+mediated paths. Together, these components close the causal chain that begins
+with the coordination mandate of DM~77/2022: the COT requires cross-setting
+information continuity, SI.Ter realises that requirement through heterogeneous
+integrations, distributed workflows create an end-to-end traceability problem,
+security constrains internal observation, and RDG supplies the surrogate evidence
+needed for controlled evaluation. The organisation of the thesis preserves the same progression. Chapter~2
+examines the architectural, interoperability, workload, and performance
+foundations required to interpret the solution space. It also states the
+requirements, use cases, transactions, and ex ante evaluation criteria supported
+by the available sources. Chapter~3 presents RDG from the inside: framework
+design and implementation, data and workload generation, execution and
+observability, the experimental protocol, and the results produced by declared
+runs. Chapter~4 closes the traceability chain from objectives and artefacts to
+criteria, key performance indicators, and results; it assesses the contribution,
+states the limits of the evidence, and derives future directions from the actual
+findings.
+\endgroup
 \newpage

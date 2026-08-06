@@ -1,15 +1,217 @@
 % Acronyms
-\newacronym{api}{API}{Application Program Interface}
+\newacronym{adi}{ADI}{Assistenza Domiciliare Integrata}
+\newacronym{adt}{ADT}{Admission, Discharge, and Transfer}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{apms}{APMS}{Application Profile Management System}
+\newacronym{atna}{ATNA}{Audit Trail and Node Authentication}
+\newacronym{cot}{COT}{Centrale Operativa Territoriale}
+\newacronym{csv}{CSV}{Comma-Separated Values}
+\newacronym{cup}{CUP}{Centro Unico di Prenotazione}
+\newacronym{eu}{EU}{European Union}
+\newacronym{fhir}{FHIR}{Fast Healthcare Interoperability Resources}
+\newacronym{fse}{FSE}{Fascicolo Sanitario Elettronico}
+\newacronym{hl7}{HL7}{Health Level Seven}
+\newacronym{iap}{IAP}{Identity and Assertion Provider}
+\newacronym{ihe}{IHE}{Integrating the Healthcare Enterprise}
+\newacronym{iti}{ITI}{IT Infrastructure}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{jsonl}{JSONL}{JSON Lines}
+\newacronym{jwt}{JWT}{JSON Web Token}
+\newacronym{kpi}{KPI}{Key Performance Indicator}
+\newacronym[
+    shortplural={MMG},
+    longplural={Medici di Medicina Generale}
+]{mmg}{MMG}{Medico di Medicina Generale}
+\newacronym{rdg}{RDG}{Request Dataset Generator}
+\newacronym{rti}{RTI}{Raggruppamento Temporaneo di Imprese}
+\newacronym{rve}{RVE}{Regione Veneto}
+\newacronym{saml}{SAML}{Security Assertion Markup Language}
 \newacronym{sdk}{SDK}{Software Development Kit}
+\newacronym{siad}{SIAD}{Sistema Informativo Assistenza Domiciliare}
+\newacronym{siar}{SIAR}{Sistema Informativo Assistenza Riabilitativa}
+\newacronym{sioc}{SIOC}{Sistema Informativo Ospedali di Comunità}
+\newacronym{siter}{SI.Ter}{Sistema Informativo Territoriale}
 \newacronym{uml}{UML}{Unified Modeling Language}
+\newacronym[
+    shortplural={URT},
+    longplural={Unità Riabilitative Territoriali}
+]{urt}{URT}{Unità Riabilitativa Territoriale}
+\newacronym{xds}{XDS}{Cross-Enterprise Document Sharing}
 \newacronym{tsa}{TSA}{Termine solo acronimo}
 
 % Glossary
+\newglossaryentry{adig}{
+    name={ADI},
+    text={Assistenza Domiciliare Integrata},
+    sort=adi,
+    description={An integrated home-care service provided within the Italian National Health Service. It delivers medical, nursing, rehabilitation, and social-care support at home to eligible people who are non-self-sufficient, have chronic conditions, or require continuity of care after hospital discharge. Access is normally initiated by a general practitioner or a hospital department}
+}
+
+\newglossaryentry{adtg}{
+    name={ADT},
+    text={Admission, Discharge, and Transfer},
+    sort=adt,
+    description={A class of hospital information systems and messages used to manage and communicate patient admission, discharge, transfer, and related encounter events}
+}
+
 \newglossaryentry{apig}{
     name={API},
-    text={Application Program Interface},
+    text={Application Programming Interface},
     sort=api,
-    description={In informatics, an API is a set of procedures available to programmers, typically grouped to form a toolkit for a specific task within a program. Its purpose is to provide an abstraction, usually between hardware and the programmer or between low-level and high-level software, simplifying the programming process}
+    description={A documented interface through which software components communicate by using defined operations, data structures, and interaction rules}
+}
+
+\newglossaryentry{apmsg}{
+    name={APMS},
+    text={Application Profile Management System},
+    sort=apms,
+    description={A centralised system used by Azienda Zero to support user authentication and profile management for participating cloud-based applications}
+}
+
+\newglossaryentry{atnag}{
+    name={ATNA},
+    text={Audit Trail and Node Authentication},
+    sort=atna,
+    description={An IHE integration profile that defines security measures for healthcare information systems, including node authentication, protected communications, and the generation and collection of audit records}
+}
+
+\newglossaryentry{cotg}{
+    name={COT},
+    text={Centrale Operativa Territoriale},
+    sort=cot,
+    description={A territorial coordination centre introduced in the Italian healthcare model to coordinate transitions among hospital, community, home-care, and other territorial services}
+}
+
+\newglossaryentry{csvg}{
+    name={CSV},
+    text={Comma-Separated Values},
+    sort=csv,
+    description={A plain-text tabular data format in which each record is stored on one line and its fields are separated by delimiters, commonly commas}
+}
+
+\newglossaryentry{cupg}{
+    name={CUP},
+    text={Centro Unico di Prenotazione},
+    sort=cup,
+    description={A centralised booking system used by Italian healthcare organisations to manage appointments for outpatient visits, diagnostic examinations, and other healthcare services}
+}
+
+\newglossaryentry{epersonam}{
+    name={ePersonam},
+    sort=epersonam,
+    description={The electronic clinical-record application supplied by Advenias Care for integrated home care and intermediate-care facilities within the SI.Ter project}
+}
+
+\newglossaryentry{eug}{
+    name={EU},
+    text={European Union},
+    sort=eu,
+    description={A political and economic union of European countries whose legislation includes the data-protection framework applicable to the processing of health data}
+}
+
+\newglossaryentry{fhirg}{
+    name={FHIR},
+    text={Fast Healthcare Interoperability Resources},
+    sort=fhir,
+    description={An HL7 standard for exchanging healthcare information electronically through modular resources, defined data models, and interoperable interfaces}
+}
+
+\newglossaryentry{fseg}{
+    name={FSE},
+    text={Fascicolo Sanitario Elettronico},
+    sort=fse,
+    description={The Italian \gls{fse} infrastructure that makes health and social-care documents and data concerning an individual available to authorised actors}
+}
+
+\newglossaryentry{hl7g}{
+    name={HL7},
+    text={Health Level Seven},
+    sort=hl7,
+    description={A family of standards for the exchange, integration, sharing, and retrieval of electronic health information}
+}
+
+\newglossaryentry{iapg}{
+    name={IAP},
+    text={Identity and Assertion Provider},
+    sort=iap,
+    description={A regional security actor that authenticates a requesting application context and issues the identity assertion required by subsequent healthcare interoperability transactions}
+}
+
+\newglossaryentry{iheg}{
+    name={IHE},
+    text={Integrating the Healthcare Enterprise},
+    sort=ihe,
+    description={An international initiative that publishes integration profiles describing how established healthcare standards can be used together to support specific interoperability use cases}
+}
+
+\newglossaryentry{itig}{
+    name={ITI},
+    text={IT Infrastructure},
+    sort=iti,
+    description={The IHE technical domain that defines infrastructure-level integration profiles and transactions for functions such as patient identity, document sharing, security, and auditability}
+}
+
+\newglossaryentry{jsong}{
+    name={JSON},
+    text={JavaScript Object Notation},
+    sort=json,
+    description={A text-based data-interchange format that represents structured data through objects, arrays, and primitive values}
+}
+
+\newglossaryentry{jsonlg}{
+    name={JSONL},
+    text={JSON Lines},
+    sort=jsonl,
+    description={A line-oriented data format in which each line is an independent JSON value, allowing structured event and execution records to be processed incrementally}
+}
+
+\newglossaryentry{jwtg}{
+    name={JWT},
+    text={JSON Web Token},
+    sort=jwt,
+    description={A compact token format used to transmit claims between parties as a JSON object that can be digitally signed and, when required, encrypted}
+}
+
+\newglossaryentry{kpig}{
+    name={KPI},
+    text={Key Performance Indicator},
+    sort=kpi,
+    description={A quantitatively defined measure used to evaluate a relevant aspect of system behaviour or the achievement of a stated objective}
+}
+
+\newglossaryentry{mmgg}{
+    name={MMG},
+    text={Medico di Medicina Generale},
+    sort=mmg,
+    description={A general practitioner who provides primary medical care and acts as a point of access and coordination within the Italian National Health Service}
+}
+
+\newglossaryentry{rdgg}{
+    name={RDG},
+    text={Request Dataset Generator},
+    sort=rdg,
+    description={The software framework developed in this thesis to generate synthetic healthcare data, compose interoperability workflows, schedule workloads, execute requests, and collect structured experimental observations}
+}
+
+\newglossaryentry{rtig}{
+    name={RTI},
+    text={Raggruppamento Temporaneo di Imprese},
+    sort=rti,
+    description={A temporary grouping of companies that jointly participates in a procurement procedure or carries out a contracted project while retaining the organisational roles established by the agreement}
+}
+
+\newglossaryentry{rveg}{
+    name={RVE},
+    text={Regione Veneto},
+    sort=rve,
+    description={The acronym used as a prefix for interoperability transactions defined for the Veneto regional healthcare ecosystem}
+}
+
+\newglossaryentry{samlg}{
+    name={SAML},
+    text={Security Assertion Markup Language},
+    sort=saml,
+    description={An XML-based standard for exchanging authentication and authorisation assertions between identity providers and service providers}
 }
 
 \newglossaryentry{sdkg}{
@@ -19,11 +221,53 @@
     description={A Software Development Kit (SDK) is a collection of development tools in one installable package, facilitating application creation by providing a compiler, debugger, and sometimes a software framework. SDKs are typically specific to a hardware platform and operating system combination. Many application developers use specific SDKs to enable advanced functionalities such as advertisements, push notifications, etc}
 }
 
+\newglossaryentry{siadg}{
+    name={SIAD},
+    text={Sistema Informativo Assistenza Domiciliare},
+    sort=siad,
+    description={The national information flow used to collect and monitor data concerning integrated home-care services, including the care provided through ADI}
+}
+
+\newglossaryentry{siarg}{
+    name={SIAR},
+    text={Sistema Informativo Assistenza Riabilitativa},
+    sort=siar,
+    description={The national information flow used to collect and monitor data concerning rehabilitation care delivered by rehabilitation facilities, including Unità Riabilitative Territoriali}
+}
+
+\newglossaryentry{siocg}{
+    name={SIOC},
+    text={Sistema Informativo Ospedali di Comunità},
+    sort=sioc,
+    description={The national information flow used to monitor activities and care episodes provided by community hospitals}
+}
+
+\newglossaryentry{siterg}{
+    name={SI.Ter},
+    text={Sistema Informativo Territoriale},
+    sort=siter,
+    description={The Veneto regional initiative supporting territorial-care applications and their integration with local and regional healthcare systems}
+}
+
 \newglossaryentry{umlg}{
     name={UML},
     text={Unified Modeling Language},
     sort=uml,
     description={In software engineering, Unified Modeling Language (UML) is a modeling and specification language based on the object-oriented paradigm. UML serves as a "lingua franca" in the object-oriented design and programming community. Much of the industry literature uses UML to describe analytical and design solutions in a concise and understandable way for a broad audience}
+}
+
+\newglossaryentry{urtg}{
+    name={URT},
+    text={Unità Riabilitativa Territoriale},
+    sort=urt,
+    description={A temporary intermediate-care healthcare facility that provides post-acute rehabilitation and nursing assistance to help patients recover autonomy before returning home}
+}
+
+\newglossaryentry{xdsg}{
+    name={XDS and XDS.b},
+    text={Cross-Enterprise Document Sharing},
+    sort=xds,
+    description={An IHE integration profile for registering, discovering, and retrieving clinical documents across healthcare organisations. XDS.b denotes the revised profile variant used by the interoperability architecture considered in this thesis}
 }
 
 \newglossaryentry{TermineSenzaAcronimo}{

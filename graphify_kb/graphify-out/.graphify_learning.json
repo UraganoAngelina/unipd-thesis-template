@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-08-02T15:15:24.453061+00:00",
+  "nodes": {
+    "affinity_xdsb": {
+      "code_fingerprint": "8ffa0f0b9c2782bc23057edd240e0b029a488f395c4b1edeebba63b1b3ef946f",
+      "label": "IHE XDS.b",
+      "last": "2026-08-02T13:43:56.633180+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T13:43:56.633180+00:00",
+          "outcome": "useful",
+          "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
+        }
+      ],
+      "score": 0.998533535,
+      "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_anagrafe_zero": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "Anagrafe Zero",
+      "last": "2026-08-02T13:43:56.633180+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T13:43:56.633180+00:00",
+          "outcome": "useful",
+          "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
+        }
+      ],
+      "score": 0.998533535,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "rti_jwt_authentication": {
+      "code_fingerprint": "e174ed52a73a7dcb059f9f7fddd799ed9e06708ba1b47098854ed0dc82f35b3f",
+      "label": "JWT Authentication",
+      "last": "2026-08-02T13:43:56.633180+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T13:43:56.633180+00:00",
+          "outcome": "useful",
+          "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
+        }
+      ],
+      "score": 0.998533535,
+      "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "subscription_iua_saml": {
+      "code_fingerprint": "ed338a05bf861c7894e1f21bd64b50555ae89b332ee5c76f16bac2b9d98d4446",
+      "label": "IHE IUA SAML Security",
+      "last": "2026-08-02T13:43:56.633180+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T13:43:56.633180+00:00",
+          "outcome": "useful",
+          "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
+        }
+      ],
+      "score": 0.998533535,
+      "source_file": "Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf",
+      "status": "tentative",
+      "uses": 1
+    }
+  },
+  "version": 1
+}

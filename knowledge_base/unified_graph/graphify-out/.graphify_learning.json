@@ -1,0 +1,382 @@
+{
+  "generated_at": "2026-08-02T15:15:35.713982+00:00",
+  "nodes": {
+    "Request-Dataset-Generator::fhir_patient_generator": {
+      "code_fingerprint": "",
+      "label": "fhir_patient_generator.py",
+      "last": "2026-08-02T14:47:58.504861+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T14:47:58.504861+00:00",
+          "outcome": "useful",
+          "q": "no ma andava benissimo quella table, solo che la voglio all interno del file 1_introduction.tex all interno della subsection 1.1.2 Heterogeneous Systems in SI.Ter"
+        },
+        {
+          "date": "2026-07-31T10:01:00.584428+00:00",
+          "outcome": "useful",
+          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
+        }
+      ],
+      "score": 1.94959107,
+      "source_file": "fhir_patient_generator.py",
+      "status": "preferred",
+      "uses": 2
+    },
+    "Request-Dataset-Generator::log_collector": {
+      "code_fingerprint": "",
+      "label": "log_collector.py",
+      "last": "2026-08-02T15:12:07.408713+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:12:07.408713+00:00",
+          "outcome": "useful",
+          "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
+        }
+      ],
+      "score": 0.999944297,
+      "source_file": "log_collector.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::log_collector_middlewarelogparser": {
+      "code_fingerprint": "",
+      "label": "MiddlewareLogParser",
+      "last": "2026-08-02T15:12:07.408713+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:12:07.408713+00:00",
+          "outcome": "useful",
+          "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
+        }
+      ],
+      "score": 0.999944297,
+      "source_file": "log_collector.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::metric_engine": {
+      "code_fingerprint": "",
+      "label": "metric_engine.py",
+      "last": "2026-08-02T15:12:07.408713+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:12:07.408713+00:00",
+          "outcome": "useful",
+          "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
+        }
+      ],
+      "score": 0.999944297,
+      "source_file": "metric_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::metric_engine_direct_vs_middleware_summary": {
+      "code_fingerprint": "",
+      "label": "_direct_vs_middleware_summary()",
+      "last": "2026-07-31T10:01:00.584428+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-31T10:01:00.584428+00:00",
+          "outcome": "useful",
+          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
+        },
+        {
+          "date": "2026-07-31T09:29:50.692545+00:00",
+          "outcome": "useful",
+          "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
+        }
+      ],
+      "score": 1.899593339,
+      "source_file": "metric_engine.py",
+      "status": "preferred",
+      "uses": 2
+    },
+    "Request-Dataset-Generator::metric_engine_metricscalculator": {
+      "code_fingerprint": "",
+      "label": "MetricsCalculator",
+      "last": "2026-07-29T10:33:56.609516+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T10:33:56.609516+00:00",
+          "outcome": "useful",
+          "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
+        }
+      ],
+      "score": 0.907611598,
+      "source_file": "metric_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::metric_engine_warningdetector": {
+      "code_fingerprint": "",
+      "label": "WarningDetector",
+      "last": "2026-07-29T10:33:56.609516+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T10:33:56.609516+00:00",
+          "outcome": "useful",
+          "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
+        }
+      ],
+      "score": 0.907611598,
+      "source_file": "metric_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator": {
+      "code_fingerprint": "",
+      "label": "FlowOrchestrator",
+      "last": "2026-08-02T14:57:09.025976+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T14:57:09.025976+00:00",
+          "outcome": "useful",
+          "q": "Which RDG RVE flows are Direct or Gateway-Mediated for the thesis workflow visual?"
+        },
+        {
+          "date": "2026-07-31T10:01:00.584428+00:00",
+          "outcome": "useful",
+          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
+        },
+        {
+          "date": "2026-07-31T09:29:50.692545+00:00",
+          "outcome": "useful",
+          "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
+        },
+        {
+          "date": "2026-07-29T10:33:56.609516+00:00",
+          "outcome": "useful",
+          "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
+        }
+      ],
+      "score": 3.806909033,
+      "source_file": "rve_transactions/flow_orchestrator.py",
+      "status": "preferred",
+      "uses": 4
+    },
+    "Request-Dataset-Generator::rve_transactions_rve_gateway": {
+      "code_fingerprint": "",
+      "label": "rve_gateway.py",
+      "last": "2026-07-31T09:29:50.692545+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-31T09:29:50.692545+00:00",
+          "outcome": "useful",
+          "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
+        }
+      ],
+      "score": 0.9495592,
+      "source_file": "rve_transactions/rve_gateway.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::traffic_exec_engine_concurrencytracker": {
+      "code_fingerprint": "",
+      "label": "ConcurrencyTracker",
+      "last": "2026-07-29T10:33:56.609516+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T10:33:56.609516+00:00",
+          "outcome": "useful",
+          "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
+        }
+      ],
+      "score": 0.907611598,
+      "source_file": "traffic_exec_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001": {
+      "code_fingerprint": "",
+      "label": "E-MIDDLEWARE-001",
+      "last": "2026-07-31T09:29:50.692545+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-31T09:29:50.692545+00:00",
+          "outcome": "useful",
+          "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
+        }
+      ],
+      "score": 0.9495592,
+      "source_file": "20260727T185227/experiment_summary.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001": {
+      "code_fingerprint": "",
+      "label": "E-PROTOCOL-001",
+      "last": "2026-07-29T13:08:00.418436+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T13:08:00.418436+00:00",
+          "outcome": "useful",
+          "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
+        }
+      ],
+      "score": 0.909857953,
+      "source_file": "20260727T185227/experiment_summary.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227": {
+      "code_fingerprint": "",
+      "label": "Dataset sperimentale sanitizzato 20260727T185227",
+      "last": "2026-07-29T13:08:00.418436+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T13:08:00.418436+00:00",
+          "outcome": "useful",
+          "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
+        }
+      ],
+      "score": 0.909857953,
+      "source_file": "20260727T185227/README.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto": {
+      "code_fingerprint": "",
+      "label": "Protocollo live incompleto",
+      "last": "2026-07-29T13:08:00.418436+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T13:08:00.418436+00:00",
+          "outcome": "useful",
+          "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
+        }
+      ],
+      "score": 0.909857953,
+      "source_file": "20260727T185227/README.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::affinity_xdsb": {
+      "code_fingerprint": "",
+      "label": "IHE XDS.b",
+      "last": "2026-08-02T14:47:58.504861+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T14:47:58.504861+00:00",
+          "outcome": "useful",
+          "q": "no ma andava benissimo quella table, solo che la voglio all interno del file 1_introduction.tex all interno della subsection 1.1.2 Heterogeneous Systems in SI.Ter"
+        },
+        {
+          "date": "2026-08-02T13:51:09.793989+00:00",
+          "outcome": "useful",
+          "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
+        }
+      ],
+      "score": 1.99820313,
+      "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
+      "status": "preferred",
+      "uses": 2
+    },
+    "graphify_kb::analisi_anagrafe_zero": {
+      "code_fingerprint": "",
+      "label": "Anagrafe Zero",
+      "last": "2026-08-02T13:51:09.793989+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T13:51:09.793989+00:00",
+          "outcome": "useful",
+          "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
+        }
+      ],
+      "score": 0.9986462,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::apms_specifiche": {
+      "code_fingerprint": "",
+      "label": "APMS Specifiche",
+      "last": "2026-07-31T10:01:00.584428+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-31T10:01:00.584428+00:00",
+          "outcome": "useful",
+          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
+        }
+      ],
+      "score": 0.950034139,
+      "source_file": "SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::context_jwt_token": {
+      "code_fingerprint": "",
+      "label": "JWT Token",
+      "last": "2026-08-02T14:47:58.504861+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T14:47:58.504861+00:00",
+          "outcome": "useful",
+          "q": "no ma andava benissimo quella table, solo che la voglio all interno del file 1_introduction.tex all interno della subsection 1.1.2 Heterogeneous Systems in SI.Ter"
+        },
+        {
+          "date": "2026-08-02T13:51:09.793989+00:00",
+          "outcome": "useful",
+          "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
+        }
+      ],
+      "score": 1.99820313,
+      "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
+      "status": "preferred",
+      "uses": 2
+    },
+    "graphify_kb::context_saml_assertion": {
+      "code_fingerprint": "",
+      "label": "SAML 2.0 Assertion",
+      "last": "2026-08-02T14:47:58.504861+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T14:47:58.504861+00:00",
+          "outcome": "useful",
+          "q": "no ma andava benissimo quella table, solo che la voglio all interno del file 1_introduction.tex all interno della subsection 1.1.2 Heterogeneous Systems in SI.Ter"
+        },
+        {
+          "date": "2026-08-02T13:51:09.793989+00:00",
+          "outcome": "useful",
+          "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
+        }
+      ],
+      "score": 1.99820313,
+      "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
+      "status": "preferred",
+      "uses": 2
+    },
+    "graphify_kb::infra_audit_log": {
+      "code_fingerprint": "",
+      "label": "Audit Log Management",
+      "last": "2026-07-29T13:08:00.418436+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-29T13:08:00.418436+00:00",
+          "outcome": "useful",
+          "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
+        }
+      ],
+      "score": 0.909857953,
+      "source_file": "Infrastructure Reference Architecture-v1.1.0.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::rti_anagrafica_gateway": {
+      "code_fingerprint": "",
+      "label": "SITER-DIH API Gateway",
+      "last": "2026-07-31T10:01:00.584428+00:00",
+      "provenance": [
+        {
+          "date": "2026-07-31T10:01:00.584428+00:00",
+          "outcome": "useful",
+          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
+        }
+      ],
+      "score": 0.950034139,
+      "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
+      "status": "tentative",
+      "uses": 1
+    }
+  },
+  "version": 1
+}

@@ -58,11 +58,130 @@
       \verb 10.5281/zenodo.18012513
       \endverb
     \endentry
+    \entry{apache-jmeter-component-reference}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8b499b5be8914246b406785e1327dbb3}{%
+           family={{Apache Software Foundation}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{fullhash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{bibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorbibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authornamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorfullhash}{8b499b5be8914246b406785e1327dbb3}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Apache JMeter} User's Manual: Component Reference}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jmeter.apache.org/usermanual/component_reference.html
+      \endverb
+      \verb{url}
+      \verb https://jmeter.apache.org/usermanual/component_reference.html
+      \endverb
+    \endentry
+    \entry{apache-jmeter-test-plan}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8b499b5be8914246b406785e1327dbb3}{%
+           family={{Apache Software Foundation}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{fullhash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{bibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorbibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authornamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorfullhash}{8b499b5be8914246b406785e1327dbb3}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Apache JMeter} User's Manual: Elements of a Test Plan}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jmeter.apache.org/usermanual/test_plan.html
+      \endverb
+      \verb{url}
+      \verb https://jmeter.apache.org/usermanual/test_plan.html
+      \endverb
+    \endentry
+    \entry{apache-jmeter-functions-variables}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8b499b5be8914246b406785e1327dbb3}{%
+           family={{Apache Software Foundation}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{fullhash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{bibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorbibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authornamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorfullhash}{8b499b5be8914246b406785e1327dbb3}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Apache JMeter} User's Manual: Functions and Variables}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jmeter.apache.org/usermanual/functions.html
+      \endverb
+      \verb{url}
+      \verb https://jmeter.apache.org/usermanual/functions.html
+      \endverb
+    \endentry
+    \entry{apache-jmeter-remote-testing}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8b499b5be8914246b406785e1327dbb3}{%
+           family={{Apache Software Foundation}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{fullhash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{bibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorbibnamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authornamehash}{8b499b5be8914246b406785e1327dbb3}
+      \strng{authorfullhash}{8b499b5be8914246b406785e1327dbb3}
+      \field{extraname}{4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Apache JMeter} User's Manual: Remote (Distributed) Testing}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jmeter.apache.org/usermanual/remote-test.html
+      \endverb
+      \verb{url}
+      \verb https://jmeter.apache.org/usermanual/remote-test.html
+      \endverb
+    \endentry
     \entry{ulss3-xvalue-v29}{report}{}
       \name{author}{1}{}{%
         {{hash=5beeb5ae99620c9413d2b3638dba7b00}{%
            family={{Azienda ULSS 3 Serenissima}},
            familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Azienda ULSS 3 Serenissima}%
       }
       \strng{namehash}{5beeb5ae99620c9413d2b3638dba7b00}
       \strng{fullhash}{5beeb5ae99620c9413d2b3638dba7b00}
@@ -77,9 +196,223 @@
       \field{day}{5}
       \field{month}{8}
       \field{title}{Specifiche tecniche di integrazione tra sistemi Document Source e Repository XValue}
+      \field{type}{Technical specification}
       \field{version}{2.9}
       \field{year}{2024}
       \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{azienda-zero-data-reference-architecture-v11}{report}{}
+      \name{author}{1}{}{%
+        {{hash=cd6b511d1eb79f731ebc46343e9366a5}{%
+           family={{Azienda Zero}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Azienda Zero}%
+      }
+      \strng{namehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{fullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{bibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorbibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authornamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorfullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{9}
+      \field{title}{Data Management Reference Architecture: Documento descrittivo della reference architecture per il data management}
+      \field{type}{Reference architecture}
+      \field{version}{1.1}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{azienda-zero-infrastructure-reference-architecture-v110}{report}{}
+      \name{author}{1}{}{%
+        {{hash=cd6b511d1eb79f731ebc46343e9366a5}{%
+           family={{Azienda Zero}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Azienda Zero}%
+      }
+      \strng{namehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{fullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{bibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorbibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authornamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorfullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{10}
+      \field{title}{Infrastrutture -- Reference Architecture: Architettura di riferimento dell'infrastruttura di Azienda Zero}
+      \field{type}{Reference architecture}
+      \field{version}{1.1.0}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{azienda-zero-siter-capitolato}{report}{}
+      \name{author}{1}{}{%
+        {{hash=cd6b511d1eb79f731ebc46343e9366a5}{%
+           family={{Azienda Zero}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Azienda Zero}%
+      }
+      \strng{namehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{fullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{bibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorbibnamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authornamehash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \strng{authorfullhash}{cd6b511d1eb79f731ebc46343e9366a5}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{7}
+      \field{note}{Specific procurement, Digital Healthcare -- Clinical-Care Information Systems, ID 2365, Lot 3; date derived from file metadata}
+      \field{title}{Realizzazione di un Sistema Informativo Territoriale per gli Enti Sanitari della Regione Veneto}
+      \field{type}{Technical specifications}
+      \field{year}{2025}
+      \field{dateera}{ce}
+    \endentry
+    \entry{bergamasco-sis-datawarehouse-2025}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=4b611956ef1c9ff237518d2b247f2be8}{%
+           family={Bergamasco},
+           familyi={B\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Bologna}%
+      }
+      \strng{namehash}{4b611956ef1c9ff237518d2b247f2be8}
+      \strng{fullhash}{4b611956ef1c9ff237518d2b247f2be8}
+      \strng{bibnamehash}{4b611956ef1c9ff237518d2b247f2be8}
+      \strng{authorbibnamehash}{4b611956ef1c9ff237518d2b247f2be8}
+      \strng{authornamehash}{4b611956ef1c9ff237518d2b247f2be8}
+      \strng{authorfullhash}{4b611956ef1c9ff237518d2b247f2be8}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{howpublished}{Materiale didattico per il corso Funzioni direttive dei servizi sanitari e formazione manageriale per le direzioni generali}
+      \field{month}{5}
+      \field{title}{Architettura di un Sistema Informativo Sanitario ({SIS}), con focus particolare su sistemi di Datawarehouse e flussi informativi}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{rti-siter-dimensionamento-v14}{report}{}
+      \name{author}{2}{}{%
+        {{hash=4b611956ef1c9ff237518d2b247f2be8}{%
+           family={Bergamasco},
+           familyi={B\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod}}}%
+        {{hash=522b7021cf115329af58f16fab0d6536}{%
+           family={Rodeghiero},
+           familyi={R\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Raggruppamento Temporaneo di Imprese SI.Ter}%
+      }
+      \strng{namehash}{ee7d65d44844bf992ce407d463215464}
+      \strng{fullhash}{ee7d65d44844bf992ce407d463215464}
+      \strng{bibnamehash}{ee7d65d44844bf992ce407d463215464}
+      \strng{authorbibnamehash}{ee7d65d44844bf992ce407d463215464}
+      \strng{authornamehash}{ee7d65d44844bf992ce407d463215464}
+      \strng{authorfullhash}{ee7d65d44844bf992ce407d463215464}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{26}
+      \field{month}{6}
+      \field{title}{Documento di dimensionamento computazionale: Realizzazione di un Sistema Informativo Territoriale per gli Enti Sanitari della Regione Veneto}
+      \field{type}{Sizing report}
+      \field{version}{1.4}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{bianchi-firme-sigilli-2026}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e5524087debfff147606d38fef818836}{%
+           family={Bianchi},
+           familyi={B\bibinitperiod},
+           given={Marzia},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5524087debfff147606d38fef818836}
+      \strng{fullhash}{e5524087debfff147606d38fef818836}
+      \strng{bibnamehash}{e5524087debfff147606d38fef818836}
+      \strng{authorbibnamehash}{e5524087debfff147606d38fef818836}
+      \strng{authornamehash}{e5524087debfff147606d38fef818836}
+      \strng{authorfullhash}{e5524087debfff147606d38fef818836}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{23}
+      \field{month}{3}
+      \field{note}{Date and author derived from the metadata of the consulted file}
+      \field{title}{Firme e sigilli elettronici: Guida sintetica}
+      \field{type}{Technical presentation}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{arsenal-subscription-v22}{report}{}
+      \name{author}{2}{}{%
+        {{hash=dba377c67e476b8d7e0db3a1cfb5897d}{%
+           family={Canal},
+           familyi={C\bibinitperiod},
+           given={Gregorio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=77485506a0c96dfe6885c4d739a5bbd9}{%
+           family={Cognolato},
+           familyi={C\bibinitperiod},
+           given={Matteo},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Consorzio Arsenàl.IT}%
+      }
+      \strng{namehash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \strng{fullhash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \strng{bibnamehash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \strng{authorbibnamehash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \strng{authornamehash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \strng{authorfullhash}{1e9541472993bb80dbdf889cfce4f8a9}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{1}
+      \field{title}{Specifiche tecniche -- Gestione sottoscrizione/notifica}
+      \field{type}{Technical specification}
+      \field{version}{2.2}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \true{nocite}
     \endentry
     \entry{arsenal-context-rve-v13}{report}{}
       \name{author}{2}{}{%
@@ -95,7 +428,7 @@
            giveni={G\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Consorzio Arsenal.IT}%
+        {Consorzio Arsenàl.IT}%
       }
       \strng{namehash}{19cadf457e7ea62a73345b78cd5c3cb5}
       \strng{fullhash}{19cadf457e7ea62a73345b78cd5c3cb5}
@@ -110,6 +443,7 @@
       \field{day}{18}
       \field{month}{7}
       \field{title}{Specifiche tecniche chiamata di contesto {RVE}}
+      \field{type}{Technical specification}
       \field{version}{1.3}
       \field{year}{2025}
       \field{dateera}{ce}
@@ -119,6 +453,9 @@
         {{hash=ce90f95ffef9ab63a71dc6218a0d6dac}{%
            family={{CNR (ICAR) e Dipartimento per la Trasformazione Digitale}},
            familyi={C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CNR (ICAR) e Dipartimento per la Trasformazione Digitale}%
       }
       \strng{namehash}{ce90f95ffef9ab63a71dc6218a0d6dac}
       \strng{fullhash}{ce90f95ffef9ab63a71dc6218a0d6dac}
@@ -132,7 +469,8 @@
       \field{labeltitlesource}{title}
       \field{day}{31}
       \field{month}{10}
-      \field{title}{Specifiche tecniche per l'interoperabilita tra i sistemi regionali di {FSE}: Affinity Domain Italia}
+      \field{title}{Specifiche tecniche per l'interoperabilità tra i sistemi regionali di {FSE}: Affinity Domain Italia}
+      \field{type}{Technical specification}
       \field{version}{2.6.3}
       \field{year}{2025}
       \field{dateera}{ce}
@@ -160,47 +498,152 @@
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Manoscritto consultato nel corpus documentale}
+      \field{month}{4}
+      \field{note}{Manuscript consulted in the documentary corpus}
       \field{title}{Impact of Latency on Applications' Performance}
+      \field{urlday}{31}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2001}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://users.cs.northwestern.edu/~srg/Papers/01-10-02/srg_2.pdf
+      \endverb
+      \verb{url}
+      \verb https://users.cs.northwestern.edu/~srg/Papers/01-10-02/srg_2.pdf
+      \endverb
     \endentry
-    \entry{article:spooky}{article}{}
-      \name{author}{3}{}{%
-        {{hash=3ebf53e52a3ce84f0ffb8553200a6a63}{%
-           family={Einstein},
-           familyi={E\bibinitperiod},
-           given={Albert},
-           giveni={A\bibinitperiod}}}%
-        {{hash=19dc919856626ef90dab285f889c3b78}{%
-           family={Podolsky},
-           familyi={P\bibinitperiod},
-           given={Boris},
-           giveni={B\bibinitperiod}}}%
-        {{hash=fc8bb495c63cdab3ba6923db2097e4c7}{%
-           family={Rosen},
-           familyi={R\bibinitperiod},
-           given={Nathan},
-           giveni={N\bibinitperiod}}}%
+    \entry{apms-auth-v141}{report}{}
+      \name{author}{1}{}{%
+        {{hash=87da07d54da784247485a9876c24c0ac}{%
+           family={{DXC Technology}},
+           familyi={D\bibinitperiod}}}%
       }
-      \strng{namehash}{d7a7dfe41768036d77a53afecb936f4e}
-      \strng{fullhash}{d7a7dfe41768036d77a53afecb936f4e}
-      \strng{bibnamehash}{d7a7dfe41768036d77a53afecb936f4e}
-      \strng{authorbibnamehash}{d7a7dfe41768036d77a53afecb936f4e}
-      \strng{authornamehash}{d7a7dfe41768036d77a53afecb936f4e}
-      \strng{authorfullhash}{d7a7dfe41768036d77a53afecb936f4e}
+      \list{institution}{1}{%
+        {Azienda Zero}%
+      }
+      \strng{namehash}{87da07d54da784247485a9876c24c0ac}
+      \strng{fullhash}{87da07d54da784247485a9876c24c0ac}
+      \strng{bibnamehash}{87da07d54da784247485a9876c24c0ac}
+      \strng{authorbibnamehash}{87da07d54da784247485a9876c24c0ac}
+      \strng{authornamehash}{87da07d54da784247485a9876c24c0ac}
+      \strng{authorfullhash}{87da07d54da784247485a9876c24c0ac}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{11}
+      \field{title}{Specifiche di integrazione autenticazione {APMS}}
+      \field{type}{Technical specification}
+      \field{version}{1.4.1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{rti-siter-anagrafica-v10}{report}{}
+      \name{author}{1}{}{%
+        {{hash=fbaedb8b0ffca2d7506a57b96443ab3a}{%
+           family={Esposito},
+           familyi={E\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Raggruppamento Temporaneo di Imprese SI.Ter}%
+      }
+      \strng{namehash}{fbaedb8b0ffca2d7506a57b96443ab3a}
+      \strng{fullhash}{fbaedb8b0ffca2d7506a57b96443ab3a}
+      \strng{bibnamehash}{fbaedb8b0ffca2d7506a57b96443ab3a}
+      \strng{authorbibnamehash}{fbaedb8b0ffca2d7506a57b96443ab3a}
+      \strng{authornamehash}{fbaedb8b0ffca2d7506a57b96443ab3a}
+      \strng{authorfullhash}{fbaedb8b0ffca2d7506a57b96443ab3a}
       \field{sortinit}{E}
       \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Physical Review}
-      \field{number}{10}
-      \field{title}{Can Quantum-Mechanical Description of Physical Reality be Considered Complete?}
-      \field{volume}{47}
-      \field{year}{1935}
+      \field{day}{27}
+      \field{month}{5}
+      \field{title}{Realizzazione integrazioni per progetto {SI.Ter}: Specifiche di integrazione degli scenari di Anagrafica}
+      \field{type}{Technical specification}
+      \field{version}{1.0}
+      \field{year}{2026}
+      \field{dateera}{ce}
       \true{nocite}
-      \field{pages}{777\bibrangedash 780}
-      \range{pages}{4}
-      \verb{doi}
-      \verb 10.1103/PhysRev.47.777
+    \endentry
+    \entry{eu-gdpr-2016-679}{report}{}
+      \name{author}{1}{}{%
+        {{hash=d0baa957acb6522d22e3251a428fe067}{%
+           family={{European Parliament and Council of the European Union}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {European Union}%
+      }
+      \strng{namehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{fullhash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{bibnamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authorbibnamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authornamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authorfullhash}{d0baa957acb6522d22e3251a428fe067}
+      \field{extraname}{1}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{4}
+      \field{note}{Official Journal of the European Union, L 119}
+      \field{number}{(EU) 2016/679}
+      \field{title}{Regulation ({EU}) 2016/679 on the Protection of Natural Persons with Regard to the Processing of Personal Data and on the Free Movement of Such Data}
+      \field{type}{Regulation}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 88}
+      \range{pages}{88}
+      \verb{urlraw}
+      \verb https://eur-lex.europa.eu/eli/reg/2016/679/oj
+      \endverb
+      \verb{url}
+      \verb https://eur-lex.europa.eu/eli/reg/2016/679/oj
+      \endverb
+    \endentry
+    \entry{eu-eidas-910-2014}{online}{}
+      \name{author}{1}{}{%
+        {{hash=d0baa957acb6522d22e3251a428fe067}{%
+           family={{European Parliament and Council of the European Union}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{fullhash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{bibnamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authorbibnamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authornamehash}{d0baa957acb6522d22e3251a428fe067}
+      \strng{authorfullhash}{d0baa957acb6522d22e3251a428fe067}
+      \field{extraname}{2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{23}
+      \field{month}{7}
+      \field{note}{Consolidated text of 18 October 2024}
+      \field{title}{Regulation ({EU}) No 910/2014 on Electronic Identification and Trust Services for Electronic Transactions in the Internal Market}
+      \field{urlday}{5}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18/eng
+      \endverb
+      \verb{url}
+      \verb https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18/eng
       \endverb
     \endentry
     \entry{hl7-fhir-r4}{online}{}
@@ -220,11 +663,16 @@
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{11}
       \field{title}{{FHIR} Release 4 (Version 4.0.1): Overview}
       \field{urlday}{22}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \field{urldateera}{ce}
+      \true{nocite}
       \verb{urlraw}
       \verb https://hl7.org/fhir/R4/overview.html
       \endverb
@@ -249,11 +697,16 @@
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{11}
       \field{title}{{FHIR} Release 4 (Version 4.0.1): Resource Bundle}
       \field{urlday}{22}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \field{urldateera}{ce}
+      \true{nocite}
       \verb{urlraw}
       \verb https://hl7.org/fhir/R4/bundle.html
       \endverb
@@ -273,15 +726,18 @@
       \strng{authorbibnamehash}{558a8f2deb91085535be87d1580b69fe}
       \strng{authornamehash}{558a8f2deb91085535be87d1580b69fe}
       \strng{authorfullhash}{558a8f2deb91085535be87d1580b69fe}
-      \field{extraname}{1}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Cross-Enterprise Document Sharing ({XDS.b})}
+      \field{day}{11}
+      \field{month}{11}
+      \field{title}{{IHE IT Infrastructure Technical Framework}, Volume 1: Cross-Enterprise Document Sharing ({XDS.b}), Revision 20.2}
       \field{urlday}{22}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{dateera}{ce}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html
@@ -292,32 +748,49 @@
     \endentry
     \entry{ihe-iua}{online}{}
       \name{author}{1}{}{%
-        {{hash=558a8f2deb91085535be87d1580b69fe}{%
-           family={{IHE International}},
+        {{hash=c7c820ec9e6d3b9556e50220d2c64388}{%
+           family={{IHE IT Infrastructure Technical Committee}},
            familyi={I\bibinitperiod}}}%
       }
-      \strng{namehash}{558a8f2deb91085535be87d1580b69fe}
-      \strng{fullhash}{558a8f2deb91085535be87d1580b69fe}
-      \strng{bibnamehash}{558a8f2deb91085535be87d1580b69fe}
-      \strng{authorbibnamehash}{558a8f2deb91085535be87d1580b69fe}
-      \strng{authornamehash}{558a8f2deb91085535be87d1580b69fe}
-      \strng{authorfullhash}{558a8f2deb91085535be87d1580b69fe}
-      \field{extraname}{2}
+      \strng{namehash}{c7c820ec9e6d3b9556e50220d2c64388}
+      \strng{fullhash}{c7c820ec9e6d3b9556e50220d2c64388}
+      \strng{bibnamehash}{c7c820ec9e6d3b9556e50220d2c64388}
+      \strng{authorbibnamehash}{c7c820ec9e6d3b9556e50220d2c64388}
+      \strng{authornamehash}{c7c820ec9e6d3b9556e50220d2c64388}
+      \strng{authorfullhash}{c7c820ec9e6d3b9556e50220d2c64388}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Internet User Authorization ({IUA})}
+      \field{day}{18}
+      \field{month}{6}
+      \field{title}{Internet User Authorization ({IUA}), Revision 2.5}
       \field{urlday}{22}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
       \field{urldateera}{ce}
+      \true{nocite}
       \verb{urlraw}
       \verb https://profiles.ihe.net/ITI/IUA/
       \endverb
       \verb{url}
       \verb https://profiles.ihe.net/ITI/IUA/
       \endverb
+    \endentry
+    \entry{advenias-paymed-accessi-2025}{misc}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{day}{11}
+      \field{month}{6}
+      \field{note}{Date derived from the metadata of the consulted file; author not identified}
+      \field{title}{Integrazione tra Advenias e Paymed -- Rendicontazione Accessi}
+      \field{type}{Project technical note}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
     \endentry
     \entry{iorio-when-latency-matters}{article}{}
       \name{author}{3}{}{%
@@ -354,31 +827,11 @@
       \field{volume}{51}
       \field{year}{2021}
       \field{dateera}{ce}
-    \endentry
-    \entry{womak:lean-thinking}{book}{}
-      \name{author}{1}{}{%
-        {{hash=e476de67e57454852ad240f1ba5e23ca}{%
-           family={James\bibnamedelimb P.\bibnamedelimi Womack},
-           familyi={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim W\bibinitperiod},
-           given={Daniel\bibnamedelimb T.\bibnamedelimi Jones},
-           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Simon \& Schuster, Inc.}%
-      }
-      \strng{namehash}{e476de67e57454852ad240f1ba5e23ca}
-      \strng{fullhash}{e476de67e57454852ad240f1ba5e23ca}
-      \strng{bibnamehash}{e476de67e57454852ad240f1ba5e23ca}
-      \strng{authorbibnamehash}{e476de67e57454852ad240f1ba5e23ca}
-      \strng{authornamehash}{e476de67e57454852ad240f1ba5e23ca}
-      \strng{authorfullhash}{e476de67e57454852ad240f1ba5e23ca}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Lean Thinking, Second Editon}
-      \field{year}{2010}
-      \true{nocite}
+      \field{pages}{2\bibrangedash 13}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/3503954.3503956
+      \endverb
     \endentry
     \entry{oasis-soa-rm}{report}{}
       \name{author}{5}{}{%
@@ -424,39 +877,336 @@
       \field{day}{12}
       \field{month}{10}
       \field{title}{Reference Model for Service Oriented Architecture 1.0}
+      \field{type}{Committee Specification}
       \field{urlday}{22}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
       \field{year}{2006}
       \field{dateera}{ce}
       \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
-      \endverb
-      \verb{url}
-      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
-      \endverb
-    \endentry
-    \entry{site:agile-manifesto}{online}{}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labeltitlesource}{title}
-      \field{title}{Manifesto Agile}
       \true{nocite}
       \verb{urlraw}
-      \verb http://agilemanifesto.org/iso/it/
+      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
       \endverb
       \verb{url}
-      \verb http://agilemanifesto.org/iso/it/
+      \verb https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
       \endverb
     \endentry
-    \entry{apms-auth-v141}{report}{}
+    \entry{scryba-sign-developer-guide-v16}{report}{}
+      \name{author}{1}{}{%
+        {{hash=dd692e81f5de43c0cb23333caeb1788e}{%
+           family={{Medas S.r.l.}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Medas S.r.l.}%
+      }
+      \strng{namehash}{dd692e81f5de43c0cb23333caeb1788e}
+      \strng{fullhash}{dd692e81f5de43c0cb23333caeb1788e}
+      \strng{bibnamehash}{dd692e81f5de43c0cb23333caeb1788e}
+      \strng{authorbibnamehash}{dd692e81f5de43c0cb23333caeb1788e}
+      \strng{authornamehash}{dd692e81f5de43c0cb23333caeb1788e}
+      \strng{authorfullhash}{dd692e81f5de43c0cb23333caeb1788e}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{10}
+      \field{month}{4}
+      \field{note}{Restricted internal document}
+      \field{title}{{Scryba Sign 3.x Developer's Guide}}
+      \field{type}{Developer's guide}
+      \field{version}{16}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{decreto-fse-2-2023}{report}{}
+      \name{author}{1}{}{%
+        {{hash=b95ad3614f7f05b62f9df851ada7812a}{%
+           family={{Ministero della Salute}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Ministero della Salute}%
+      }
+      \strng{namehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{fullhash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{bibnamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authorbibnamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authornamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authorfullhash}{b95ad3614f7f05b62f9df851ada7812a}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{9}
+      \field{note}{Italian Official Gazette, General Series no. 249, 24 October 2023, as subsequently amended}
+      \field{number}{Decreto 7 settembre 2023}
+      \field{title}{Fascicolo sanitario elettronico 2.0}
+      \field{type}{Ministerial decree}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.gazzettaufficiale.it/eli/id/2023/10/24/23A05829/sg
+      \endverb
+      \verb{url}
+      \verb https://www.gazzettaufficiale.it/eli/id/2023/10/24/23A05829/sg
+      \endverb
+    \endentry
+    \entry{dm-77-2022}{report}{}
+      \name{author}{1}{}{%
+        {{hash=b95ad3614f7f05b62f9df851ada7812a}{%
+           family={{Ministero della Salute}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Ministero della Salute}%
+      }
+      \strng{namehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{fullhash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{bibnamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authorbibnamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authornamehash}{b95ad3614f7f05b62f9df851ada7812a}
+      \strng{authorfullhash}{b95ad3614f7f05b62f9df851ada7812a}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{23}
+      \field{month}{5}
+      \field{note}{Italian Official Gazette, General Series no. 144, 22 June 2022}
+      \field{number}{Decreto 23 maggio 2022, n. 77}
+      \field{title}{Regolamento recante la definizione di modelli e standard per lo sviluppo dell'assistenza territoriale nel Servizio sanitario nazionale}
+      \field{type}{Ministerial decree}
+      \field{year}{2022}
+      \field{dateera}{ce}
+    \endentry
+    \entry{almaviva-percorsi-flussi-territoriali-v30}{report}{}
+      \name{author}{2}{}{%
+        {{hash=69148bb40eff23917ee6a501f73487a8}{%
+           family={Pastore},
+           familyi={P\bibinitperiod},
+           given={Claudio},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ef24f318055d31e3150bdb611e26d6e1}{%
+           family={Martello},
+           familyi={M\bibinitperiod},
+           given={Federica},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {AlmavivA}%
+      }
+      \strng{namehash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \strng{fullhash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \strng{bibnamehash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \strng{authorbibnamehash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \strng{authornamehash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \strng{authorfullhash}{c81fc3fe70600ca3d85b6db67ce34316}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{3}
+      \field{note}{Internal technical document}
+      \field{title}{Percorsi, Sistemi e Flussi Sanitari dei Servizi Territoriali: Dalla Governance ai Servizi: logiche, strumenti e interoperabilità}
+      \field{type}{Technical report}
+      \field{version}{3.0}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{siter-cabina-regia-2026}{misc}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{month}{3}
+      \field{note}{The consulted document does not identify an author}
+      \field{title}{Progetto {SI.Ter}: Presentazione alla Cabina di Regia}
+      \field{type}{Project presentation}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{rti-siter-relazione-tecnica}{report}{}
+      \name{author}{1}{}{%
+        {{hash=cd191fb6ce7d90b54e302cd8f220e217}{%
+           family={{Raggruppamento Temporaneo di Imprese guidato da AlmavivA}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Raggruppamento Temporaneo di Imprese guidato da AlmavivA}%
+      }
+      \strng{namehash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \strng{fullhash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \strng{bibnamehash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \strng{authorbibnamehash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \strng{authornamehash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \strng{authorfullhash}{cd191fb6ce7d90b54e302cd8f220e217}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{9}
+      \field{note}{Date derived from file metadata}
+      \field{title}{Sistema Informativo Territoriale per gli Enti Sanitari della Regione del Veneto -- Lotto 3}
+      \field{type}{Technical report}
+      \field{year}{2025}
+      \field{dateera}{ce}
+    \endentry
+    \entry{regione-veneto-116117-project-2024}{report}{}
+      \name{author}{1}{}{%
+        {{hash=8847c04b704df6f7add833e687cdb6be}{%
+           family={{Regione del Veneto}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Regione del Veneto}%
+      }
+      \strng{namehash}{8847c04b704df6f7add833e687cdb6be}
+      \strng{fullhash}{8847c04b704df6f7add833e687cdb6be}
+      \strng{bibnamehash}{8847c04b704df6f7add833e687cdb6be}
+      \strng{authorbibnamehash}{8847c04b704df6f7add833e687cdb6be}
+      \strng{authornamehash}{8847c04b704df6f7add833e687cdb6be}
+      \strng{authorfullhash}{8847c04b704df6f7add833e687cdb6be}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{18}
+      \field{month}{6}
+      \field{note}{Revision date derived from the filename of the consulted document}
+      \field{title}{Progetto sistema di risposta sanitaria 116117: Istituzione delle relative centrali operative}
+      \field{type}{Project document}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{regione-veneto-ddr-11922-2026}{report}{}
+      \name{author}{1}{}{%
+        {{hash=b08645789606c288b392266904db8989}{%
+           family={{Regione del Veneto, Area Sanità e Sociale}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Regione del Veneto}%
+      }
+      \strng{namehash}{b08645789606c288b392266904db8989}
+      \strng{fullhash}{b08645789606c288b392266904db8989}
+      \strng{bibnamehash}{b08645789606c288b392266904db8989}
+      \strng{authorbibnamehash}{b08645789606c288b392266904db8989}
+      \strng{authornamehash}{b08645789606c288b392266904db8989}
+      \strng{authorfullhash}{b08645789606c288b392266904db8989}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{3}
+      \field{number}{Decreto n. 11922}
+      \field{title}{Modello di Governo per l'implementazione del Sistema Informativo Territoriale ({SI.Ter}) nelle Aziende ed Enti del Servizio Sanitario Regionale della Regione del Veneto}
+      \field{type}{Regional decree}
+      \field{year}{2026}
+      \field{dateera}{ce}
+    \endentry
+    \entry{regione-veneto-ddr-13745-sioc-2025}{report}{}
+      \name{author}{1}{}{%
+        {{hash=f9fae7c59f7f3a3be43d874affead538}{%
+           family={{Regione del Veneto, Direzione Programmazione Sanitaria}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Regione del Veneto}%
+      }
+      \strng{namehash}{f9fae7c59f7f3a3be43d874affead538}
+      \strng{fullhash}{f9fae7c59f7f3a3be43d874affead538}
+      \strng{bibnamehash}{f9fae7c59f7f3a3be43d874affead538}
+      \strng{authorbibnamehash}{f9fae7c59f7f3a3be43d874affead538}
+      \strng{authornamehash}{f9fae7c59f7f3a3be43d874affead538}
+      \strng{authorfullhash}{f9fae7c59f7f3a3be43d874affead538}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{12}
+      \field{number}{Decreto n. 13745}
+      \field{title}{{PNRR} Missione 6, Componente 2, Investimento 1.3.2: Approvazione del tracciato definitivo del flusso informativo sanitario {SIOC}}
+      \field{type}{Regional decree}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{regione-veneto-116117-protocollo-2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e8db9e6552c92e36acc762780ca576ed}{%
+           family={{Regione del Veneto, Gruppo tecnico di lavoro 116117}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{e8db9e6552c92e36acc762780ca576ed}
+      \strng{fullhash}{e8db9e6552c92e36acc762780ca576ed}
+      \strng{bibnamehash}{e8db9e6552c92e36acc762780ca576ed}
+      \strng{authorbibnamehash}{e8db9e6552c92e36acc762780ca576ed}
+      \strng{authornamehash}{e8db9e6552c92e36acc762780ca576ed}
+      \strng{authorfullhash}{e8db9e6552c92e36acc762780ca576ed}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Operating manual}
+      \field{note}{The consulted document does not indicate a publication date}
+      \field{title}{116117: Manuale -- Protocollo 2}
+      \field{year}{}
+      \true{nocite}
+    \endentry
+    \entry{rfc5544-timestamped-data}{online}{}
+      \name{author}{1}{}{%
+        {{hash=6f67c39e36c7795935520da398ca42a5}{%
+           family={Santoni},
+           familyi={S\bibinitperiod},
+           given={Adriano},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {RFC Editor}%
+      }
+      \strng{namehash}{6f67c39e36c7795935520da398ca42a5}
+      \strng{fullhash}{6f67c39e36c7795935520da398ca42a5}
+      \strng{bibnamehash}{6f67c39e36c7795935520da398ca42a5}
+      \strng{authorbibnamehash}{6f67c39e36c7795935520da398ca42a5}
+      \strng{authornamehash}{6f67c39e36c7795935520da398ca42a5}
+      \strng{authorfullhash}{6f67c39e36c7795935520da398ca42a5}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Documento tecnico di progetto consultato nel corpus documentale}
-      \field{title}{Specifiche di integrazione autenticazione {APMS}}
-      \field{version}{1.4.1}
+      \field{month}{2}
+      \field{title}{{RFC 5544}: Syntax for Binding Documents with Time-Stamps}
+      \field{urlday}{5}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC5544
+      \endverb
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/info/rfc5544/
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/info/rfc5544/
+      \endverb
     \endentry
     \entry{arsenal-anagrafe-zero-v26}{report}{}
       \name{author}{4}{}{%
@@ -482,7 +1232,7 @@
            giveni={C\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Consorzio Arsenal.IT}%
+        {Consorzio Arsenàl.IT}%
       }
       \strng{namehash}{113bd41c827a09627be20ce551ea1c72}
       \strng{fullhash}{a0496f4d6d73a4102d4c5e3469ba55ed}
@@ -497,6 +1247,7 @@
       \field{day}{9}
       \field{month}{1}
       \field{title}{Specifiche tecniche -- Anagrafe Zero}
+      \field{type}{Technical specification}
       \field{version}{2.6}
       \field{year}{2024}
       \field{dateera}{ce}
@@ -530,7 +1281,7 @@
            giveni={A\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Consorzio Arsenal.IT}%
+        {Consorzio Arsenàl.IT}%
       }
       \strng{namehash}{462e0ae1e39417b29d3db9c0c4e972b5}
       \strng{fullhash}{46e8266a4c7ef19385bdc47dc1839594}
@@ -545,9 +1296,60 @@
       \field{day}{28}
       \field{month}{6}
       \field{title}{Infrastruttura di sicurezza {GDL-O} Sicurezza}
+      \field{type}{Technical specification}
       \field{version}{2.14}
       \field{year}{2024}
       \field{dateera}{ce}
+    \endentry
+    \entry{zhu-tbbt-trace-replay}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=94685caaef8c1891bfbc65fab0431640}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Ningning},
+           giveni={N\bibinitperiod}}}%
+        {{hash=92bb579372dee5fcaf3c39f86cb13a32}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jiawu},
+           giveni={J\bibinitperiod}}}%
+        {{hash=35a1ce10cbf225efc9b06d505e532803}{%
+           family={Chiueh},
+           familyi={C\bibinitperiod},
+           given={Tzi-cker},
+           giveni={T\bibinithyphendelim c\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Francisco, CA}%
+      }
+      \list{publisher}{1}{%
+        {USENIX Association}%
+      }
+      \strng{namehash}{dc6c1811daa04393e8861dbc680a577d}
+      \strng{fullhash}{dc6c1811daa04393e8861dbc680a577d}
+      \strng{bibnamehash}{dc6c1811daa04393e8861dbc680a577d}
+      \strng{authorbibnamehash}{dc6c1811daa04393e8861dbc680a577d}
+      \strng{authornamehash}{dc6c1811daa04393e8861dbc680a577d}
+      \strng{authorfullhash}{dc6c1811daa04393e8861dbc680a577d}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{4th USENIX Conference on File and Storage Technologies ({FAST} 05)}
+      \field{month}{12}
+      \field{title}{{TBBT}: Scalable and Accurate Trace Replay for File Server Evaluation}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.usenix.org/conference/fast-05/tbbt-scalable-and-accurate-trace-replay-file-server-evaluation
+      \endverb
+      \verb{url}
+      \verb https://www.usenix.org/conference/fast-05/tbbt-scalable-and-accurate-trace-replay-file-server-evaluation
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

@@ -1,0 +1,371 @@
+{
+  "communities": {
+    "0": [
+      "scryba_sign_3_x_developer_s_guide_applicationutils_v1",
+      "scryba_sign_3_x_developer_s_guide_automatic_fea_enrolment",
+      "scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
+      "scryba_sign_3_x_developer_s_guide_document",
+      "scryba_sign_3_x_developer_s_guide_https_basic_authentication",
+      "scryba_sign_3_x_developer_s_guide_identity_document_retrieval",
+      "scryba_sign_3_x_developer_s_guide_integration_certification",
+      "scryba_sign_3_x_developer_s_guide_otp_services",
+      "scryba_sign_3_x_developer_s_guide_remote_digital_signature",
+      "scryba_sign_3_x_developer_s_guide_scryba_sign_server",
+      "scryba_sign_3_x_developer_s_guide_signature_formats",
+      "scryba_sign_3_x_developer_s_guide_signature_validation_and_envelope_removal",
+      "scryba_sign_3_x_developer_s_guide_signer_app",
+      "scryba_sign_3_x_developer_s_guide_signerutils_v1",
+      "scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
+      "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "scryba_sign_3_x_developer_s_guide_synthetic_test_data",
+      "scryba_sign_3_x_developer_s_guide_timestamp_v1",
+      "scryba_sign_3_x_developer_s_guide_validationsutils_v1"
+    ],
+    "1": [
+      "anagrafe_rve100_subscription",
+      "anagrafe_rve55_patientid_assignment",
+      "anagrafe_zero_specifiche",
+      "context_call_specifiche",
+      "context_jwt_token",
+      "context_rve121_get_access_token",
+      "context_rve130_chiamata_contesto",
+      "context_saml_assertion",
+      "rti_anagrafica_gateway",
+      "rti_anagrafica_specifiche",
+      "rti_jwt_authentication",
+      "subscription_fhir_rest_hook",
+      "subscription_iua_saml",
+      "subscription_rve100",
+      "subscription_specifiche"
+    ],
+    "2": [
+      "anagrafe_rve54_patient_query",
+      "analisi_anagrafe_zero",
+      "analisi_apms",
+      "analisi_dimissione_protetta",
+      "analisi_epersonam",
+      "analisi_fser_xds",
+      "analisi_progetto_siter",
+      "analisi_sister",
+      "capitolato_interoperabilita",
+      "governo_cabina_regia",
+      "governo_siter",
+      "pianificazione_apms_token_multitenancy",
+      "siter_cabina_regia_presentazione",
+      "siter_digitalizzazione_dm77"
+    ],
+    "3": [
+      "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+      "scryba_sign_3_x_developer_s_guide_certificate_types",
+      "scryba_sign_3_x_developer_s_guide_document_status_lifecycle",
+      "scryba_sign_3_x_developer_s_guide_getuserinfo4",
+      "scryba_sign_3_x_developer_s_guide_large_file_transfer",
+      "scryba_sign_3_x_developer_s_guide_notification_v1",
+      "scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "scryba_sign_3_x_developer_s_guide_signing_power_and_profile",
+      "scryba_sign_3_x_developer_s_guide_signonedoc",
+      "scryba_sign_3_x_developer_s_guide_sync_session_chain",
+      "scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+      "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+      "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "scryba_sign_3_x_developer_s_guide_verify_authentication"
+    ],
+    "4": [
+      "apms_cognito_user_pool",
+      "apms_specifiche",
+      "infra_apms_integration",
+      "infra_audit_log",
+      "infra_microservizi",
+      "infra_reference_architecture",
+      "security_iap",
+      "security_iti20_audit",
+      "security_rve1_assertion",
+      "specifiche_iap_endpoint"
+    ],
+    "5": [
+      "capitolato_consultori",
+      "capitolato_cure_domiciliari",
+      "capitolato_requisiti_cot",
+      "capitolato_siter",
+      "percorsi_cot",
+      "percorsi_pua",
+      "rti_almaviva_offerta",
+      "rti_epersonam",
+      "rti_sister"
+    ],
+    "6": [
+      "analisi_co116117",
+      "analisi_cot",
+      "analisi_dm77",
+      "analisi_pua",
+      "protocollo_116117",
+      "protocollo_parole_alert",
+      "protocollo_schede_problema"
+    ],
+    "7": [
+      "scryba_sign_3_x_developer_s_guide_async_session_chain",
+      "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "scryba_sign_3_x_developer_s_guide_device_manager",
+      "scryba_sign_3_x_developer_s_guide_enqueueonedoc",
+      "scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc",
+      "scryba_sign_3_x_developer_s_guide_feafgmutils",
+      "scryba_sign_3_x_developer_s_guide_graphometric_workflow"
+    ],
+    "8": [
+      "affinity_domain_specifiche",
+      "affinity_fse",
+      "affinity_ini",
+      "affinity_xdsb",
+      "affinity_xdsdocumententry_metadata",
+      "xvalue_xds_transactions"
+    ],
+    "9": [
+      "dm77_assistenza_domiciliare",
+      "dm77_casa_comunita",
+      "dm77_co116117_standard",
+      "dm77_cot_standard",
+      "dm77_decreto",
+      "dm77_distretto"
+    ],
+    "10": [
+      "latency_edge_computing_latency",
+      "latency_persistent_connections",
+      "latency_when_latency_matters",
+      "network_beta_quantile_rule",
+      "network_latency_throughput",
+      "network_load_sharing_window"
+    ],
+    "11": [
+      "paymed_advenias",
+      "paymed_get_accessi",
+      "paymed_integrazione",
+      "paymed_paymed",
+      "paymed_post_accessi"
+    ],
+    "12": [
+      "dimensionamento_accenture_dih",
+      "dimensionamento_almaviva_epersonam",
+      "dimensionamento_gpi_sister",
+      "dimensionamento_siter"
+    ],
+    "13": [
+      "pianificazione_camunda_bpmn_rules",
+      "pianificazione_dimissione_protetta_e2e",
+      "pianificazione_fser_xds_layer",
+      "pianificazione_rabbitmq_queues"
+    ],
+    "14": [
+      "srg_latency_performance",
+      "srg_mpi_pro",
+      "srg_ping_pong_tests",
+      "srg_point_to_point_latency"
+    ],
+    "15": [
+      "xvalue_document_source",
+      "xvalue_specifiche",
+      "xvalue_xds_registry",
+      "xvalue_xds_repository"
+    ],
+    "16": [
+      "data_governance",
+      "data_reference_architecture",
+      "data_virtualization"
+    ],
+    "17": [
+      "rti_camunda",
+      "rti_layer_interoperabilita",
+      "rti_rabbitmq"
+    ],
+    "18": [
+      "apms_authorization_code_flow",
+      "apms_id_token"
+    ],
+    "19": [
+      "eidas",
+      "eidas_signatures"
+    ],
+    "20": [
+      "feq",
+      "qtsp"
+    ],
+    "21": [
+      "percorsi_flussi_nsis",
+      "percorsi_flussi_sanitari"
+    ],
+    "22": [
+      "scryba_sign_3_x_developer_s_guide_electronic_seal",
+      "scryba_sign_3_x_developer_s_guide_interactive_and_automatic_signature"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12280701754385964,
+    "1": 0.13333333333333333,
+    "2": 0.14285714285714285,
+    "3": 0.14285714285714285,
+    "4": 0.2,
+    "5": 0.25,
+    "6": 0.3333333333333333,
+    "7": 0.2857142857142857,
+    "8": 0.3333333333333333,
+    "9": 0.3333333333333333,
+    "10": 0.3333333333333333,
+    "11": 0.6,
+    "12": 0.5,
+    "13": 0.5,
+    "14": 0.5,
+    "15": 0.5,
+    "16": 0.6666666666666666,
+    "17": 0.6666666666666666,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0
+  },
+  "gods": [
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "label": "SOAP/WSDL Integration Surface",
+      "degree": 11
+    },
+    {
+      "id": "analisi_progetto_siter",
+      "label": "Progetto SI.Ter",
+      "degree": 7
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_scryba_sign_server",
+      "label": "Scryba Sign Server",
+      "degree": 7
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "label": "AsyncSign V2.2 WSDL",
+      "degree": 5
+    },
+    {
+      "id": "subscription_rve100",
+      "label": "RVE-100 Resource Subscription",
+      "degree": 4
+    },
+    {
+      "id": "paymed_paymed",
+      "label": "Paymed",
+      "degree": 4
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_remote_digital_signature",
+      "label": "Remote Digital Signature",
+      "degree": 4
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "label": "Signer Configuration",
+      "degree": 4
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+      "label": "SyncSign V3 WSDL",
+      "degree": 4
+    },
+    {
+      "id": "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "label": "Utils V2 WSDL",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "RVE-54 Patient Query",
+      "target": "Anagrafe Zero",
+      "source_files": [
+        "Specifiche tecniche - Anagrafe Zero v2.6.pdf",
+        "analisi_completa.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Digitalizzazione Elementi DM77",
+      "target": "Progetto SI.Ter",
+      "source_files": [
+        "SITER_presentazione alla Cabina di Regia_25 marzo 2026.pdf",
+        "analisi_completa.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories; peripheral node `Digitalizzazione Elementi DM77` unexpectedly reaches hub `Progetto SI.Ter`"
+    },
+    {
+      "source": "Modello di Governo SI.Ter",
+      "target": "Progetto SI.Ter",
+      "source_files": [
+        "DDR 11922 del 16.03.2026_SITER.pdf",
+        "analisi_completa.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc ↔ paper); connects across different repos/directories; peripheral node `Modello di Governo SI.Ter` unexpectedly reaches hub `Progetto SI.Ter`"
+    },
+    {
+      "source": "Parole Alert",
+      "target": "CO 116117",
+      "source_files": [
+        "MANUALE PROTOCOLLO 2_116117.docx 1.pdf",
+        "analisi_completa.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories"
+    },
+    {
+      "source": "IAP Endpoint",
+      "target": "Identity And Assertion Provider",
+      "source_files": [
+        "specifiche.txt",
+        "Infrastruttura di sicurezza GDL-O Sicurezza v2.14.pdf"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `SOAP/WSDL Integration Surface` connect `SOAP/WSDL Integration Surface` to `Signer Configuration`, `AsyncSign V2.2 WSDL`?",
+      "why": "High betweenness centrality (0.048) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Progetto SI.Ter` connect `Progetto SI.Ter` to `CO 116117`?",
+      "why": "High betweenness centrality (0.035) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `ePersonam`, `SisTer`, `Dimissione Protetta` to the rest of the system?",
+      "why": "61 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `SOAP/WSDL Integration Surface` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12280701754385964 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `RVE-100 Resource Subscription` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Progetto SI.Ter` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Signer Configuration` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

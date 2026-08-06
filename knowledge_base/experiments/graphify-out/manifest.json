@@ -1,0 +1,2912 @@
+{
+  "20260727T185227/provenance.json": {
+    "mtime": 1785310908.7627,
+    "ast_hash": "8af7f04e5b70a4c1cf2d2674b9e590a0",
+    "semantic_hash": "8af7f04e5b70a4c1cf2d2674b9e590a0"
+  },
+  "20260727T185227/README.md": {
+    "mtime": 1785311007.1917102,
+    "ast_hash": "c21ba7e43b7ef24cfac82391a9b5de0c",
+    "semantic_hash": "c21ba7e43b7ef24cfac82391a9b5de0c"
+  },
+  "20260727T185227/error_taxonomy.md": {
+    "mtime": 1785310908.762121,
+    "ast_hash": "12d55455c9d5fb9267a9d6f7131328b5",
+    "semantic_hash": "12d55455c9d5fb9267a9d6f7131328b5"
+  },
+  "20260727T185227/experiment_summary.md": {
+    "mtime": 1785310908.762001,
+    "ast_hash": "4eb61ebb6f3da2375fc51e8c69665c3e",
+    "semantic_hash": "4eb61ebb6f3da2375fc51e8c69665c3e"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232333.2290087,
+    "ast_hash": "838590bf8b806adcfc4d8f5bc9e81752",
+    "semantic_hash": "838590bf8b806adcfc4d8f5bc9e81752"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232333.0330002,
+    "ast_hash": "6750e33401492e9f1938eed768dfe997",
+    "semantic_hash": "6750e33401492e9f1938eed768dfe997"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785232332.723987,
+    "ast_hash": "e6f39bbbb6746b23049735720b2d1651",
+    "semantic_hash": "e6f39bbbb6746b23049735720b2d1651"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232332.6469839,
+    "ast_hash": "6f6a99b96381aefca8fc5e27d0a5440f",
+    "semantic_hash": "6f6a99b96381aefca8fc5e27d0a5440f"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232332.9219956,
+    "ast_hash": "09098e90c14503d914abde9ca685039c",
+    "semantic_hash": "09098e90c14503d914abde9ca685039c"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232332.5269787,
+    "ast_hash": "7507fefc81cf962b32c66c08c3199ed9",
+    "semantic_hash": "7507fefc81cf962b32c66c08c3199ed9"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232333.1340046,
+    "ast_hash": "83dd6fc58a4364c25b9e6adc318c25b8",
+    "semantic_hash": "83dd6fc58a4364c25b9e6adc318c25b8"
+  },
+  "20260727T185227/figures/baseline/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232332.8229914,
+    "ast_hash": "27b7c05405cbc2ed09a2040153f3c122",
+    "semantic_hash": "27b7c05405cbc2ed09a2040153f3c122"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785235849.5471585,
+    "ast_hash": "967a16ed85b8de9d87c0d7d7b943c123",
+    "semantic_hash": "967a16ed85b8de9d87c0d7d7b943c123"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785235849.422156,
+    "ast_hash": "1f46156572543b2cbd7086d85b6a10f2",
+    "semantic_hash": "1f46156572543b2cbd7086d85b6a10f2"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785235849.227152,
+    "ast_hash": "3ab43dd1775bef57f40f0cefa253532e",
+    "semantic_hash": "3ab43dd1775bef57f40f0cefa253532e"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785235849.1781511,
+    "ast_hash": "b01bd16591238b6ef0d2a04dbc641731",
+    "semantic_hash": "b01bd16591238b6ef0d2a04dbc641731"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785235849.3511546,
+    "ast_hash": "f9ecc84e1ac2da8146f2eb3068162c64",
+    "semantic_hash": "f9ecc84e1ac2da8146f2eb3068162c64"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785235849.0981495,
+    "ast_hash": "b226055b5a9af891335b8ddd4f8267c1",
+    "semantic_hash": "b226055b5a9af891335b8ddd4f8267c1"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785235849.4871573,
+    "ast_hash": "c5fbe91a9f67a890136b684e0e0550cc",
+    "semantic_hash": "c5fbe91a9f67a890136b684e0e0550cc"
+  },
+  "20260727T185227/figures/baseline/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785235849.2891533,
+    "ast_hash": "178c7d984fe44ddaa0e20346f56ebab7",
+    "semantic_hash": "178c7d984fe44ddaa0e20346f56ebab7"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242584.0620234,
+    "ast_hash": "fdfab3d01876d92f78a2975679140141",
+    "semantic_hash": "fdfab3d01876d92f78a2975679140141"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242583.8690202,
+    "ast_hash": "4d17d6b4a9790d83018786d9c53f20f1",
+    "semantic_hash": "4d17d6b4a9790d83018786d9c53f20f1"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785242583.5480149,
+    "ast_hash": "c71861b1e9d4701b866d5ef99f8936b9",
+    "semantic_hash": "c71861b1e9d4701b866d5ef99f8936b9"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242583.4640133,
+    "ast_hash": "3272a15df4cf9439520ca4bb9c26b079",
+    "semantic_hash": "3272a15df4cf9439520ca4bb9c26b079"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242583.7620184,
+    "ast_hash": "a71037bb24a09b11cb9a2a4239932090",
+    "semantic_hash": "a71037bb24a09b11cb9a2a4239932090"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242583.3340113,
+    "ast_hash": "4b100c2cf3bf003440252c555015486b",
+    "semantic_hash": "4b100c2cf3bf003440252c555015486b"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242583.9690218,
+    "ast_hash": "7fbdbb3f36d1aa3af5dc9522a8b335ce",
+    "semantic_hash": "7fbdbb3f36d1aa3af5dc9522a8b335ce"
+  },
+  "20260727T185227/figures/baseline/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242583.6570165,
+    "ast_hash": "b34ffed74cd7fa28516873f95a76468a",
+    "semantic_hash": "b34ffed74cd7fa28516873f95a76468a"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785246567.063027,
+    "ast_hash": "6615a622b093afa545236ba366507b74",
+    "semantic_hash": "6615a622b093afa545236ba366507b74"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785246566.8670235,
+    "ast_hash": "ca2e461558e2d3e9951c2d6a0646d865",
+    "semantic_hash": "ca2e461558e2d3e9951c2d6a0646d865"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246566.5500176,
+    "ast_hash": "2b7a38acd599bf826db4ad5b01bc05bc",
+    "semantic_hash": "2b7a38acd599bf826db4ad5b01bc05bc"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246566.462016,
+    "ast_hash": "299efe7033e4e11b39cb9484e4c9b610",
+    "semantic_hash": "299efe7033e4e11b39cb9484e4c9b610"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785246566.7580214,
+    "ast_hash": "dbc160e0ebb4babc3a793bfc8f6a4d45",
+    "semantic_hash": "dbc160e0ebb4babc3a793bfc8f6a4d45"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785246566.3360138,
+    "ast_hash": "84a95bb012572ddba6042397a256587f",
+    "semantic_hash": "84a95bb012572ddba6042397a256587f"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785246566.9690254,
+    "ast_hash": "36ebb099fd53e96c8fb05669b1014ff3",
+    "semantic_hash": "36ebb099fd53e96c8fb05669b1014ff3"
+  },
+  "20260727T185227/figures/baseline/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785246566.6490195,
+    "ast_hash": "f9fcaeb6952abc571ea4f86d18fc1844",
+    "semantic_hash": "f9fcaeb6952abc571ea4f86d18fc1844"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785247586.0670774,
+    "ast_hash": "e473df0fb78e9e41dd4a881fd3b1b234",
+    "semantic_hash": "e473df0fb78e9e41dd4a881fd3b1b234"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785247585.8620722,
+    "ast_hash": "26f6e025f724ce3f57daef9ddc8a16f6",
+    "semantic_hash": "26f6e025f724ce3f57daef9ddc8a16f6"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785247585.537064,
+    "ast_hash": "8874e8a4aba8cace19f30675b22196d0",
+    "semantic_hash": "8874e8a4aba8cace19f30675b22196d0"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785247585.457062,
+    "ast_hash": "ff4026bcdc23f34c2d5abd7c5351f5c4",
+    "semantic_hash": "ff4026bcdc23f34c2d5abd7c5351f5c4"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785247585.7520695,
+    "ast_hash": "df9919d9d272162d6078d4353c2f378f",
+    "semantic_hash": "df9919d9d272162d6078d4353c2f378f"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785247585.3280587,
+    "ast_hash": "055d212acef037991c1ce6cd6409427d",
+    "semantic_hash": "055d212acef037991c1ce6cd6409427d"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785247585.9730752,
+    "ast_hash": "da882275536b60ac2581031bfec6b4c5",
+    "semantic_hash": "da882275536b60ac2581031bfec6b4c5"
+  },
+  "20260727T185227/figures/baseline/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785247585.6400666,
+    "ast_hash": "f10647f45231acb37304cb4bc4690b30",
+    "semantic_hash": "f10647f45231acb37304cb4bc4690b30"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232215.5996788,
+    "ast_hash": "fc09c11ad7f10850b20a7a0ebc92400e",
+    "semantic_hash": "fc09c11ad7f10850b20a7a0ebc92400e"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232215.3336658,
+    "ast_hash": "76d6a03425cbe7b3ed51c6635684534b",
+    "semantic_hash": "76d6a03425cbe7b3ed51c6635684534b"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785232214.820641,
+    "ast_hash": "ef06a87ef303cfd1a18dcb22e9ddb454",
+    "semantic_hash": "ef06a87ef303cfd1a18dcb22e9ddb454"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232214.7196362,
+    "ast_hash": "2a1640d093e09de21184e01d993282b6",
+    "semantic_hash": "2a1640d093e09de21184e01d993282b6"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232215.086654,
+    "ast_hash": "7800d32e0f757304e5160d6867a762a2",
+    "semantic_hash": "7800d32e0f757304e5160d6867a762a2"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232214.532627,
+    "ast_hash": "b9d0198db5a155d295e0b23314b5773b",
+    "semantic_hash": "b9d0198db5a155d295e0b23314b5773b"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232215.4676723,
+    "ast_hash": "0bdde1259c0713a0d2a9601292e80937",
+    "semantic_hash": "0bdde1259c0713a0d2a9601292e80937"
+  },
+  "20260727T185227/figures/baseline_constant/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232214.9536476,
+    "ast_hash": "41d8c2e8536e817fbba04395d44b85fd",
+    "semantic_hash": "41d8c2e8536e817fbba04395d44b85fd"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785235984.601852,
+    "ast_hash": "4792539106184706d90564af4abaa82b",
+    "semantic_hash": "4792539106184706d90564af4abaa82b"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785235984.4818494,
+    "ast_hash": "4f982acb2ade1efdcb0c8c0744efabaf",
+    "semantic_hash": "4f982acb2ade1efdcb0c8c0744efabaf"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785235984.257845,
+    "ast_hash": "62d73e45284b3c5da2140fc826223cb0",
+    "semantic_hash": "62d73e45284b3c5da2140fc826223cb0"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785235984.204844,
+    "ast_hash": "e7f93ea3ff69926350741e87986298f0",
+    "semantic_hash": "e7f93ea3ff69926350741e87986298f0"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785235984.3858476,
+    "ast_hash": "c294c583cd9d714c57eaec56ae0ecc79",
+    "semantic_hash": "c294c583cd9d714c57eaec56ae0ecc79"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785235984.1248424,
+    "ast_hash": "2eb8a1cfa8699391be8bc07d2a8e8efe",
+    "semantic_hash": "2eb8a1cfa8699391be8bc07d2a8e8efe"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785235984.5428507,
+    "ast_hash": "4122d9567cc06d478154ee8747ce43ed",
+    "semantic_hash": "4122d9567cc06d478154ee8747ce43ed"
+  },
+  "20260727T185227/figures/baseline_constant/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785235984.3198462,
+    "ast_hash": "8ad6a961966f6993d2932bc435385f8e",
+    "semantic_hash": "8ad6a961966f6993d2932bc435385f8e"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242930.1465228,
+    "ast_hash": "da81a8db1113b2bad367f44a2c9b5f0f",
+    "semantic_hash": "da81a8db1113b2bad367f44a2c9b5f0f"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242929.947534,
+    "ast_hash": "f531097047542943a2ab0b549b8f9940",
+    "semantic_hash": "f531097047542943a2ab0b549b8f9940"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785242929.5925543,
+    "ast_hash": "a00411eafd0e94f06004975e8dc3931c",
+    "semantic_hash": "a00411eafd0e94f06004975e8dc3931c"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242929.5165586,
+    "ast_hash": "836c863d3dc0a0d54f4f297e008e5ed7",
+    "semantic_hash": "836c863d3dc0a0d54f4f297e008e5ed7"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242929.8005424,
+    "ast_hash": "3a0cfba4d5cae4c8c121b562bb179dea",
+    "semantic_hash": "3a0cfba4d5cae4c8c121b562bb179dea"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242929.389566,
+    "ast_hash": "78c48489d9a76047a40db6a2313adf23",
+    "semantic_hash": "78c48489d9a76047a40db6a2313adf23"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242930.053528,
+    "ast_hash": "b9c3f48db231a4cd20bcc795b0f385bd",
+    "semantic_hash": "b9c3f48db231a4cd20bcc795b0f385bd"
+  },
+  "20260727T185227/figures/baseline_constant/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242929.7005482,
+    "ast_hash": "87bae44485b8d0f7c392a89a6c9db02c",
+    "semantic_hash": "87bae44485b8d0f7c392a89a6c9db02c"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785243333.1505294,
+    "ast_hash": "15a393abe916562d8b9bd8dd92a9209b",
+    "semantic_hash": "15a393abe916562d8b9bd8dd92a9209b"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785243332.9495337,
+    "ast_hash": "33dcf729ebf14f39a0a4c8b4c268518c",
+    "semantic_hash": "33dcf729ebf14f39a0a4c8b4c268518c"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785243332.5805418,
+    "ast_hash": "c6d762aab02c339a1cc4f933cc89c29e",
+    "semantic_hash": "c6d762aab02c339a1cc4f933cc89c29e"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785243332.4985437,
+    "ast_hash": "4162e757f34ac18ec467ca4dcc151ccd",
+    "semantic_hash": "4162e757f34ac18ec467ca4dcc151ccd"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785243332.8285363,
+    "ast_hash": "50cdd5fb493f2819a2ba96e48ce038eb",
+    "semantic_hash": "50cdd5fb493f2819a2ba96e48ce038eb"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785243332.3715465,
+    "ast_hash": "8a31ab78935b91ec7837d0273017dc23",
+    "semantic_hash": "8a31ab78935b91ec7837d0273017dc23"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785243333.0525315,
+    "ast_hash": "95574efdcabf64bc756b26040717eb63",
+    "semantic_hash": "95574efdcabf64bc756b26040717eb63"
+  },
+  "20260727T185227/figures/baseline_constant/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785243332.6945393,
+    "ast_hash": "0b881c37a809647c2a8d9bb1a582e88b",
+    "semantic_hash": "0b881c37a809647c2a8d9bb1a582e88b"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785247734.1387036,
+    "ast_hash": "273229d340df11ea70fb66bc5ad1e951",
+    "semantic_hash": "273229d340df11ea70fb66bc5ad1e951"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785247733.9376988,
+    "ast_hash": "ff025048a889919f50c000e0842fe641",
+    "semantic_hash": "ff025048a889919f50c000e0842fe641"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785247733.5806904,
+    "ast_hash": "b9a9cdb53ac2a0f99e69d991d40f3fe0",
+    "semantic_hash": "b9a9cdb53ac2a0f99e69d991d40f3fe0"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785247733.5036886,
+    "ast_hash": "38a47db0ff93a88fd39ad8ae6541b1df",
+    "semantic_hash": "38a47db0ff93a88fd39ad8ae6541b1df"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785247733.821696,
+    "ast_hash": "a5bcace23902e80e758f53547f96af3d",
+    "semantic_hash": "a5bcace23902e80e758f53547f96af3d"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785247733.3776855,
+    "ast_hash": "c11664cccc20e34f8e25826f83675971",
+    "semantic_hash": "c11664cccc20e34f8e25826f83675971"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785247734.0437014,
+    "ast_hash": "2253625f182384c5477d1cc6fea4eb22",
+    "semantic_hash": "2253625f182384c5477d1cc6fea4eb22"
+  },
+  "20260727T185227/figures/baseline_constant/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785247733.689693,
+    "ast_hash": "3165e4b4c9fcdba9fa61fe018e40a400",
+    "semantic_hash": "3165e4b4c9fcdba9fa61fe018e40a400"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232081.9197078,
+    "ast_hash": "787c738b80d066a8f6c480c995a92b9a",
+    "semantic_hash": "787c738b80d066a8f6c480c995a92b9a"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/burst_vs_non_burst_latency.png": {
+    "mtime": 1785232081.799701,
+    "ast_hash": "1e7c58851bb64a89c5410d5fe32622a0",
+    "semantic_hash": "1e7c58851bb64a89c5410d5fe32622a0"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232081.533686,
+    "ast_hash": "c7119bb0e349bee8a70dfbe655ce392c",
+    "semantic_hash": "c7119bb0e349bee8a70dfbe655ce392c"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785232081.1596649,
+    "ast_hash": "ab62f7d7b2b8ec2c995d50d57ffb8515",
+    "semantic_hash": "ab62f7d7b2b8ec2c995d50d57ffb8515"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232081.0646594,
+    "ast_hash": "3dc4662977286215ee16178d0461e084",
+    "semantic_hash": "3dc4662977286215ee16178d0461e084"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232081.4046786,
+    "ast_hash": "5303a0e5ef84bc2e2032898d102e082d",
+    "semantic_hash": "5303a0e5ef84bc2e2032898d102e082d"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232080.9106507,
+    "ast_hash": "dff3f66af950cd52e62672b68a2e110f",
+    "semantic_hash": "dff3f66af950cd52e62672b68a2e110f"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232081.658693,
+    "ast_hash": "0e64dc8f0055ddfeaf81029484316528",
+    "semantic_hash": "0e64dc8f0055ddfeaf81029484316528"
+  },
+  "20260727T185227/figures/burst/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232081.2846718,
+    "ast_hash": "cb2d273cea5e6ddb00c03a64219d1179",
+    "semantic_hash": "cb2d273cea5e6ddb00c03a64219d1179"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785239510.9536617,
+    "ast_hash": "aaa1ebaf6b29a36ba8ab706392103e29",
+    "semantic_hash": "aaa1ebaf6b29a36ba8ab706392103e29"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/burst_vs_non_burst_latency.png": {
+    "mtime": 1785239510.8906615,
+    "ast_hash": "5865cc0eaec5a9a12ff1b8e8889c565f",
+    "semantic_hash": "5865cc0eaec5a9a12ff1b8e8889c565f"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785239510.7376611,
+    "ast_hash": "2237085341ff2b52d1b46471d97cce0e",
+    "semantic_hash": "2237085341ff2b52d1b46471d97cce0e"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785239510.5186603,
+    "ast_hash": "dcb8dd371b9a5d19ae5e066e1de0f642",
+    "semantic_hash": "dcb8dd371b9a5d19ae5e066e1de0f642"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785239510.46966,
+    "ast_hash": "6a04cd488603d85389172080cf5ed977",
+    "semantic_hash": "6a04cd488603d85389172080cf5ed977"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785239510.6546607,
+    "ast_hash": "1f940eca8f568ea8192f0f1e1bc49ba8",
+    "semantic_hash": "1f940eca8f568ea8192f0f1e1bc49ba8"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785239510.38966,
+    "ast_hash": "b529706572b5dd49dcbb966458d570d2",
+    "semantic_hash": "b529706572b5dd49dcbb966458d570d2"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785239510.8106613,
+    "ast_hash": "640c1e781d2aa5a2eac28e39bff67a12",
+    "semantic_hash": "640c1e781d2aa5a2eac28e39bff67a12"
+  },
+  "20260727T185227/figures/burst/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785239510.5846605,
+    "ast_hash": "cf189d59f778c9c71ed648109e54052e",
+    "semantic_hash": "cf189d59f778c9c71ed648109e54052e"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785239993.995379,
+    "ast_hash": "22bbdc5583a8b7c809bbf5ab28888fb1",
+    "semantic_hash": "22bbdc5583a8b7c809bbf5ab28888fb1"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/burst_vs_non_burst_latency.png": {
+    "mtime": 1785239993.9323785,
+    "ast_hash": "ea12b3505cf5715a5a0fad421e1bb1aa",
+    "semantic_hash": "ea12b3505cf5715a5a0fad421e1bb1aa"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785239993.7853775,
+    "ast_hash": "b81cd178b2843fba3d1e0f9b80c7074b",
+    "semantic_hash": "b81cd178b2843fba3d1e0f9b80c7074b"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785239993.570376,
+    "ast_hash": "24612314ca3622dc17ec4e2629208bf2",
+    "semantic_hash": "24612314ca3622dc17ec4e2629208bf2"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785239993.5213757,
+    "ast_hash": "42c74932847b58f9581b6544ef305a07",
+    "semantic_hash": "42c74932847b58f9581b6544ef305a07"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785239993.7053769,
+    "ast_hash": "a2d9d5591d0ae991788a0bf9ae4d5adf",
+    "semantic_hash": "a2d9d5591d0ae991788a0bf9ae4d5adf"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785239993.440375,
+    "ast_hash": "2963e37c6281bbafe933a818e145c344",
+    "semantic_hash": "2963e37c6281bbafe933a818e145c344"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785239993.850378,
+    "ast_hash": "a4c45765cfabd44674298475e65f7b94",
+    "semantic_hash": "a4c45765cfabd44674298475e65f7b94"
+  },
+  "20260727T185227/figures/burst/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785239993.6353765,
+    "ast_hash": "dddd860e5a51836385da0a1a273a752a",
+    "semantic_hash": "dddd860e5a51836385da0a1a273a752a"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785246244.6677995,
+    "ast_hash": "9db7f5967a65fb7c7b8ac9e88472e038",
+    "semantic_hash": "9db7f5967a65fb7c7b8ac9e88472e038"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/burst_vs_non_burst_latency.png": {
+    "mtime": 1785246244.5727975,
+    "ast_hash": "9cf30daa0a35647e887ae67da4b30fc2",
+    "semantic_hash": "9cf30daa0a35647e887ae67da4b30fc2"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785246244.3477929,
+    "ast_hash": "a46cde6bd687f6211a40265b32c373b6",
+    "semantic_hash": "a46cde6bd687f6211a40265b32c373b6"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246244.0037858,
+    "ast_hash": "56e93e122e76c97b49991c5838fe42ad",
+    "semantic_hash": "56e93e122e76c97b49991c5838fe42ad"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246243.9267843,
+    "ast_hash": "25a692ac20e60f78015cb8f6b0f98761",
+    "semantic_hash": "25a692ac20e60f78015cb8f6b0f98761"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785246244.2177904,
+    "ast_hash": "3d56a6a6dd40e1be8d0cd732e1df5256",
+    "semantic_hash": "3d56a6a6dd40e1be8d0cd732e1df5256"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785246243.7977815,
+    "ast_hash": "0dc4194fd3c60173f5e18ac935131961",
+    "semantic_hash": "0dc4194fd3c60173f5e18ac935131961"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785246244.449795,
+    "ast_hash": "7cc4849a871df86eebddd3ca69f3c92f",
+    "semantic_hash": "7cc4849a871df86eebddd3ca69f3c92f"
+  },
+  "20260727T185227/figures/burst/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785246244.108788,
+    "ast_hash": "53fcf74c9574b3565c2eee8d6442b8d2",
+    "semantic_hash": "53fcf74c9574b3565c2eee8d6442b8d2"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785247541.7199411,
+    "ast_hash": "db78a28ca0a44918e26535f654245989",
+    "semantic_hash": "db78a28ca0a44918e26535f654245989"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/burst_vs_non_burst_latency.png": {
+    "mtime": 1785247541.6179385,
+    "ast_hash": "f00f6947c50a888fc90514d96b1a9c3f",
+    "semantic_hash": "f00f6947c50a888fc90514d96b1a9c3f"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785247541.3789322,
+    "ast_hash": "ac73f2a16ec3b7bf667b35b97a7c6e43",
+    "semantic_hash": "ac73f2a16ec3b7bf667b35b97a7c6e43"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785247541.0359235,
+    "ast_hash": "c7aafa88fa93fc1572706d2f0cb3ff07",
+    "semantic_hash": "c7aafa88fa93fc1572706d2f0cb3ff07"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785247540.9589214,
+    "ast_hash": "d32e9fa7eafedfff888663bffbd0f8b5",
+    "semantic_hash": "d32e9fa7eafedfff888663bffbd0f8b5"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785247541.246929,
+    "ast_hash": "7f037a9f28e059d25ba2575bc07fdc04",
+    "semantic_hash": "7f037a9f28e059d25ba2575bc07fdc04"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785247540.830918,
+    "ast_hash": "d7d6c421a48d7545aba7cdf756d7f79a",
+    "semantic_hash": "d7d6c421a48d7545aba7cdf756d7f79a"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785247541.478935,
+    "ast_hash": "66d17bb29d05200087de2c485a06acd9",
+    "semantic_hash": "66d17bb29d05200087de2c485a06acd9"
+  },
+  "20260727T185227/figures/burst/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785247541.1419263,
+    "ast_hash": "11e299c256d6899c68da4b36bf128e20",
+    "semantic_hash": "11e299c256d6899c68da4b36bf128e20"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785229708.5683677,
+    "ast_hash": "6a5e1aa29f34a67c8b7328b1210f0b78",
+    "semantic_hash": "6a5e1aa29f34a67c8b7328b1210f0b78"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785229708.3623812,
+    "ast_hash": "ff8eedfdd929d4b9e12069020c2a949b",
+    "semantic_hash": "ff8eedfdd929d4b9e12069020c2a949b"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785229708.035403,
+    "ast_hash": "ccd306461130ae7fe03b2b99d22c2e22",
+    "semantic_hash": "ccd306461130ae7fe03b2b99d22c2e22"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229707.944409,
+    "ast_hash": "2f01ae5bc9d762b279c4d6b9822f081a",
+    "semantic_hash": "2f01ae5bc9d762b279c4d6b9822f081a"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785229708.2393894,
+    "ast_hash": "8311fe13a95c52aabe1b0367db1022f4",
+    "semantic_hash": "8311fe13a95c52aabe1b0367db1022f4"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785229707.8464155,
+    "ast_hash": "094c0804c75091386424fb6e718a2483",
+    "semantic_hash": "094c0804c75091386424fb6e718a2483"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785229708.472374,
+    "ast_hash": "239eec439ac5b63329515a1cbd59253d",
+    "semantic_hash": "239eec439ac5b63329515a1cbd59253d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785229708.1453958,
+    "ast_hash": "b8cb2c7c3d0accc63bdad791cddd4ee5",
+    "semantic_hash": "b8cb2c7c3d0accc63bdad791cddd4ee5"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785229784.906723,
+    "ast_hash": "c64c9795a6e21f10592fd8d9a1dee422",
+    "semantic_hash": "c64c9795a6e21f10592fd8d9a1dee422"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785229784.7117338,
+    "ast_hash": "938278c42637051ff63ef8e72c035d2c",
+    "semantic_hash": "938278c42637051ff63ef8e72c035d2c"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785229784.3757527,
+    "ast_hash": "9caeaffbb3bd4a6eabab8326ce547593",
+    "semantic_hash": "9caeaffbb3bd4a6eabab8326ce547593"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229784.295757,
+    "ast_hash": "93a40ab9b83c813e308cf2e070b1ac0a",
+    "semantic_hash": "93a40ab9b83c813e308cf2e070b1ac0a"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785229784.587741,
+    "ast_hash": "2514e3adda693df2a82d737f12644fe0",
+    "semantic_hash": "2514e3adda693df2a82d737f12644fe0"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785229784.1927629,
+    "ast_hash": "a23844edce962b6f4dfef870de57e644",
+    "semantic_hash": "a23844edce962b6f4dfef870de57e644"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785229784.8107283,
+    "ast_hash": "276358a33e903aab34e63df86d75fe18",
+    "semantic_hash": "276358a33e903aab34e63df86d75fe18"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785229784.4897463,
+    "ast_hash": "fe7c84629ee0b4f73b03b114b983dab7",
+    "semantic_hash": "fe7c84629ee0b4f73b03b114b983dab7"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785229970.725377,
+    "ast_hash": "7c7d2c28e6534d44fef45518b36beeaf",
+    "semantic_hash": "7c7d2c28e6534d44fef45518b36beeaf"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785229970.5223844,
+    "ast_hash": "e4e091071c7dedaf874f3a49c3119a3b",
+    "semantic_hash": "e4e091071c7dedaf874f3a49c3119a3b"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785229970.2013958,
+    "ast_hash": "e457709d22912f680c92ddab9c2a607a",
+    "semantic_hash": "e457709d22912f680c92ddab9c2a607a"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229970.1193986,
+    "ast_hash": "c8d2992ec0a00f2056d089e050ae7ea3",
+    "semantic_hash": "c8d2992ec0a00f2056d089e050ae7ea3"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785229970.3963888,
+    "ast_hash": "650c52a284d9585ba5a3b95b5a695274",
+    "semantic_hash": "650c52a284d9585ba5a3b95b5a695274"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785229970.0164022,
+    "ast_hash": "0944db3c1414c56273a3a533dda14bb0",
+    "semantic_hash": "0944db3c1414c56273a3a533dda14bb0"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785229970.6303806,
+    "ast_hash": "612119336c0ac8eab5698684d38bd366",
+    "semantic_hash": "612119336c0ac8eab5698684d38bd366"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785229970.306392,
+    "ast_hash": "58aecfb40492d892410f6f66756c10ef",
+    "semantic_hash": "58aecfb40492d892410f6f66756c10ef"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785230093.8566487,
+    "ast_hash": "928b8d8ff97de82b87237748181602ac",
+    "semantic_hash": "928b8d8ff97de82b87237748181602ac"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785230093.6606536,
+    "ast_hash": "8da3ea5528fb01984388ddd4399a73ad",
+    "semantic_hash": "8da3ea5528fb01984388ddd4399a73ad"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230093.329662,
+    "ast_hash": "efe9b49c52895948dd91a56b6073498f",
+    "semantic_hash": "efe9b49c52895948dd91a56b6073498f"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230093.252664,
+    "ast_hash": "277edca878750dd94b67b95d4a2c0b50",
+    "semantic_hash": "277edca878750dd94b67b95d4a2c0b50"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785230093.5256572,
+    "ast_hash": "91eb73d43894c076af09fd55e2b0d9b2",
+    "semantic_hash": "91eb73d43894c076af09fd55e2b0d9b2"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785230093.1546667,
+    "ast_hash": "b3c422774912ca58fb55db376d948e8f",
+    "semantic_hash": "b3c422774912ca58fb55db376d948e8f"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785230093.762651,
+    "ast_hash": "95ac158e9de0019f76cdf3e59d4eeeaa",
+    "semantic_hash": "95ac158e9de0019f76cdf3e59d4eeeaa"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785230093.4356594,
+    "ast_hash": "58db4c58e86273f9ef6864a60407e256",
+    "semantic_hash": "58db4c58e86273f9ef6864a60407e256"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785230153.251252,
+    "ast_hash": "5a867ad246ec105853b6028d0df8deec",
+    "semantic_hash": "5a867ad246ec105853b6028d0df8deec"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785230153.0502563,
+    "ast_hash": "78a31fe380ae5694167315b283bc6c32",
+    "semantic_hash": "78a31fe380ae5694167315b283bc6c32"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230152.7242632,
+    "ast_hash": "a4aa540e503112e4c16e4fbef5837e2c",
+    "semantic_hash": "a4aa540e503112e4c16e4fbef5837e2c"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230152.6342652,
+    "ast_hash": "cc453e19f9ad4385feca9c1063985713",
+    "semantic_hash": "cc453e19f9ad4385feca9c1063985713"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785230152.922259,
+    "ast_hash": "ab46378a2462a39a9e5a8a99faf0756d",
+    "semantic_hash": "ab46378a2462a39a9e5a8a99faf0756d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785230152.5232677,
+    "ast_hash": "a03fb1600e56e2311c55ef2bf2e096d7",
+    "semantic_hash": "a03fb1600e56e2311c55ef2bf2e096d7"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785230153.158254,
+    "ast_hash": "e48021664f89a73678c39ae00f9965e6",
+    "semantic_hash": "e48021664f89a73678c39ae00f9965e6"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785230152.830261,
+    "ast_hash": "614de9a0d3fc411f12326493ab470135",
+    "semantic_hash": "614de9a0d3fc411f12326493ab470135"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/availability_over_time.png": {
+    "mtime": 1785230275.367054,
+    "ast_hash": "c98d48099acd3be5ea0d94df1dfa53b7",
+    "semantic_hash": "c98d48099acd3be5ea0d94df1dfa53b7"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/concurrency_over_time.png": {
+    "mtime": 1785230275.1590571,
+    "ast_hash": "5dc5063df3019e10069796eebffd0406",
+    "semantic_hash": "5dc5063df3019e10069796eebffd0406"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230274.8410618,
+    "ast_hash": "30a755896b609e01c6996823d15b1d0f",
+    "semantic_hash": "30a755896b609e01c6996823d15b1d0f"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230274.764063,
+    "ast_hash": "fc97c4868bc285b1706b8b70afc01b60",
+    "semantic_hash": "fc97c4868bc285b1706b8b70afc01b60"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/error_rate_over_time.png": {
+    "mtime": 1785230275.036059,
+    "ast_hash": "268ff5730f11e72f54fbc2d862d38d95",
+    "semantic_hash": "268ff5730f11e72f54fbc2d862d38d95"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/latency_distribution.png": {
+    "mtime": 1785230274.6650643,
+    "ast_hash": "53541cd4e8db89dcb6e0d290b8a40565",
+    "semantic_hash": "53541cd4e8db89dcb6e0d290b8a40565"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/scheduling_drift_over_time.png": {
+    "mtime": 1785230275.2720554,
+    "ast_hash": "fcd0e81683ba462e8042bfa4d22a87a8",
+    "semantic_hash": "fcd0e81683ba462e8042bfa4d22a87a8"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r06_seed_106/throughput_over_time.png": {
+    "mtime": 1785230274.9450603,
+    "ast_hash": "0adf3579406bb6c0cd8b6ff354c49d2d",
+    "semantic_hash": "0adf3579406bb6c0cd8b6ff354c49d2d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/availability_over_time.png": {
+    "mtime": 1785230461.9290798,
+    "ast_hash": "bb8c545a5c207e2811a79365c3b04b64",
+    "semantic_hash": "bb8c545a5c207e2811a79365c3b04b64"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/concurrency_over_time.png": {
+    "mtime": 1785230461.7270813,
+    "ast_hash": "e785701c1ab625cc3346bcc73e6af3ec",
+    "semantic_hash": "e785701c1ab625cc3346bcc73e6af3ec"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230461.4120834,
+    "ast_hash": "af85e050a3f3f361092af838bc1a23eb",
+    "semantic_hash": "af85e050a3f3f361092af838bc1a23eb"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230461.333084,
+    "ast_hash": "ec9839881249cdd73ce72b30e70baa1b",
+    "semantic_hash": "ec9839881249cdd73ce72b30e70baa1b"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/error_rate_over_time.png": {
+    "mtime": 1785230461.611082,
+    "ast_hash": "3337007e95f68ecf3694bed8b8580130",
+    "semantic_hash": "3337007e95f68ecf3694bed8b8580130"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/latency_distribution.png": {
+    "mtime": 1785230461.2350848,
+    "ast_hash": "009ba23cfb0cca150d9cae23d2aa4700",
+    "semantic_hash": "009ba23cfb0cca150d9cae23d2aa4700"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/scheduling_drift_over_time.png": {
+    "mtime": 1785230461.8350806,
+    "ast_hash": "76e862cae21cb2a69dac999b282695d1",
+    "semantic_hash": "76e862cae21cb2a69dac999b282695d1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r07_seed_107/throughput_over_time.png": {
+    "mtime": 1785230461.5200827,
+    "ast_hash": "c4d246d42aa2af4bdcb8d2f82e20c9ed",
+    "semantic_hash": "c4d246d42aa2af4bdcb8d2f82e20c9ed"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/availability_over_time.png": {
+    "mtime": 1785230538.1316473,
+    "ast_hash": "5e269816ce8e034db59659f428c3706c",
+    "semantic_hash": "5e269816ce8e034db59659f428c3706c"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/concurrency_over_time.png": {
+    "mtime": 1785230537.927648,
+    "ast_hash": "50a50569e32e417801f013c7f84c499f",
+    "semantic_hash": "50a50569e32e417801f013c7f84c499f"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230537.5946496,
+    "ast_hash": "8341db189df4e61b951168f4127c1bd1",
+    "semantic_hash": "8341db189df4e61b951168f4127c1bd1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230537.51465,
+    "ast_hash": "cca1e686740cd26aecb70a0bea8352ca",
+    "semantic_hash": "cca1e686740cd26aecb70a0bea8352ca"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/error_rate_over_time.png": {
+    "mtime": 1785230537.7996488,
+    "ast_hash": "2192869aab09c7427919b8589217aebc",
+    "semantic_hash": "2192869aab09c7427919b8589217aebc"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/latency_distribution.png": {
+    "mtime": 1785230537.4126506,
+    "ast_hash": "c769522aa46d962f088bd39d3dfc6a3d",
+    "semantic_hash": "c769522aa46d962f088bd39d3dfc6a3d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/scheduling_drift_over_time.png": {
+    "mtime": 1785230538.0356476,
+    "ast_hash": "13ba09e6bfc171255f7b6a410a7ff9c0",
+    "semantic_hash": "13ba09e6bfc171255f7b6a410a7ff9c0"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r08_seed_108/throughput_over_time.png": {
+    "mtime": 1785230537.709649,
+    "ast_hash": "3b65df8889a32f1e2b7a2e4f6fcd5323",
+    "semantic_hash": "3b65df8889a32f1e2b7a2e4f6fcd5323"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/availability_over_time.png": {
+    "mtime": 1785230721.6802704,
+    "ast_hash": "e96a6ace9f8153f52ce508785cfc6d72",
+    "semantic_hash": "e96a6ace9f8153f52ce508785cfc6d72"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/concurrency_over_time.png": {
+    "mtime": 1785230721.4622703,
+    "ast_hash": "b066621690c3b05c93194862ddd2156d",
+    "semantic_hash": "b066621690c3b05c93194862ddd2156d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230721.1042702,
+    "ast_hash": "96328e56f5ca574786d97187ad20c997",
+    "semantic_hash": "96328e56f5ca574786d97187ad20c997"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230721.0192702,
+    "ast_hash": "43823b5c44f1ded94590943ab99a2a97",
+    "semantic_hash": "43823b5c44f1ded94590943ab99a2a97"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/error_rate_over_time.png": {
+    "mtime": 1785230721.3352704,
+    "ast_hash": "a5c285aa25597695fbe0a4b192e55284",
+    "semantic_hash": "a5c285aa25597695fbe0a4b192e55284"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/latency_distribution.png": {
+    "mtime": 1785230720.9072702,
+    "ast_hash": "e8a88345638123b4882cc5fa496f2515",
+    "semantic_hash": "e8a88345638123b4882cc5fa496f2515"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/scheduling_drift_over_time.png": {
+    "mtime": 1785230721.5782704,
+    "ast_hash": "9a096c3db8ab8f6a1dcae9ffdbfe79d1",
+    "semantic_hash": "9a096c3db8ab8f6a1dcae9ffdbfe79d1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r09_seed_109/throughput_over_time.png": {
+    "mtime": 1785230721.2372704,
+    "ast_hash": "5088a58ce3f2d64044da801410ede5b1",
+    "semantic_hash": "5088a58ce3f2d64044da801410ede5b1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/availability_over_time.png": {
+    "mtime": 1785230784.5943165,
+    "ast_hash": "8bd7403e0ae31e8e8baa614e1a2948cd",
+    "semantic_hash": "8bd7403e0ae31e8e8baa614e1a2948cd"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/concurrency_over_time.png": {
+    "mtime": 1785230784.373316,
+    "ast_hash": "b5d2ba3e9903dd67870078b40212259a",
+    "semantic_hash": "b5d2ba3e9903dd67870078b40212259a"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230784.0323157,
+    "ast_hash": "a233d2ad6470e68ba3ffaf79e9196a3e",
+    "semantic_hash": "a233d2ad6470e68ba3ffaf79e9196a3e"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230783.9403155,
+    "ast_hash": "e8b10e5c51eff394350dd24c2e6586b1",
+    "semantic_hash": "e8b10e5c51eff394350dd24c2e6586b1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/error_rate_over_time.png": {
+    "mtime": 1785230784.2353158,
+    "ast_hash": "91038831144d99769f474efef40b6f9d",
+    "semantic_hash": "91038831144d99769f474efef40b6f9d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/latency_distribution.png": {
+    "mtime": 1785230783.8080304,
+    "ast_hash": "07dbd0b579230b0c58c97e2fc5f67f81",
+    "semantic_hash": "07dbd0b579230b0c58c97e2fc5f67f81"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/scheduling_drift_over_time.png": {
+    "mtime": 1785230784.4863162,
+    "ast_hash": "323e51876af71a6d8f7971e407c2cd91",
+    "semantic_hash": "323e51876af71a6d8f7971e407c2cd91"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r10_seed_110/throughput_over_time.png": {
+    "mtime": 1785230784.1413157,
+    "ast_hash": "331eddd9ecd341ccb7d78db915b21d9d",
+    "semantic_hash": "331eddd9ecd341ccb7d78db915b21d9d"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/availability_over_time.png": {
+    "mtime": 1785230985.2919104,
+    "ast_hash": "074e73a692521f13a1767b6f7693df4e",
+    "semantic_hash": "074e73a692521f13a1767b6f7693df4e"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/concurrency_over_time.png": {
+    "mtime": 1785230985.0509093,
+    "ast_hash": "2009ca03c3279ef3e273a8c30ff58caf",
+    "semantic_hash": "2009ca03c3279ef3e273a8c30ff58caf"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230984.6499076,
+    "ast_hash": "831b7d0838647e19174e4844439f2c43",
+    "semantic_hash": "831b7d0838647e19174e4844439f2c43"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230984.5439072,
+    "ast_hash": "d72d128ae402d75d04bbe6d00786b6db",
+    "semantic_hash": "d72d128ae402d75d04bbe6d00786b6db"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/error_rate_over_time.png": {
+    "mtime": 1785230984.8949087,
+    "ast_hash": "6034bc9608de0d11e1f1a1bfdb3eab2c",
+    "semantic_hash": "6034bc9608de0d11e1f1a1bfdb3eab2c"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/latency_distribution.png": {
+    "mtime": 1785230984.4229066,
+    "ast_hash": "27741af8f74f8e939378a8b1fc35aca4",
+    "semantic_hash": "27741af8f74f8e939378a8b1fc35aca4"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/scheduling_drift_over_time.png": {
+    "mtime": 1785230985.17691,
+    "ast_hash": "c092e02ccabed83f2ff22816e22808e9",
+    "semantic_hash": "c092e02ccabed83f2ff22816e22808e9"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r11_seed_111/throughput_over_time.png": {
+    "mtime": 1785230984.787908,
+    "ast_hash": "691e1a408ed38c576b94d0a359a3217c",
+    "semantic_hash": "691e1a408ed38c576b94d0a359a3217c"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/availability_over_time.png": {
+    "mtime": 1785231110.0645468,
+    "ast_hash": "44cb68798e9d2d958f013af5f9702d26",
+    "semantic_hash": "44cb68798e9d2d958f013af5f9702d26"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/concurrency_over_time.png": {
+    "mtime": 1785231109.8455455,
+    "ast_hash": "68cfffaeada345b261cc84c05916ddb9",
+    "semantic_hash": "68cfffaeada345b261cc84c05916ddb9"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/direct_vs_middleware_comparison.png": {
+    "mtime": 1785231109.4875433,
+    "ast_hash": "a2ee98fa5734904f66560ad8198e8806",
+    "semantic_hash": "a2ee98fa5734904f66560ad8198e8806"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231109.3935428,
+    "ast_hash": "aad63038ed457c93f479fa70b4506654",
+    "semantic_hash": "aad63038ed457c93f479fa70b4506654"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/error_rate_over_time.png": {
+    "mtime": 1785231109.7055447,
+    "ast_hash": "5038bbc916e2c46ed91525b797675ac5",
+    "semantic_hash": "5038bbc916e2c46ed91525b797675ac5"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/latency_distribution.png": {
+    "mtime": 1785231109.2695422,
+    "ast_hash": "410fbb38cd6821bd3d217477f2a2364e",
+    "semantic_hash": "410fbb38cd6821bd3d217477f2a2364e"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/scheduling_drift_over_time.png": {
+    "mtime": 1785231109.956546,
+    "ast_hash": "6ba8f684f52fe16b036fefb272cb67e1",
+    "semantic_hash": "6ba8f684f52fe16b036fefb272cb67e1"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r12_seed_112/throughput_over_time.png": {
+    "mtime": 1785231109.6075442,
+    "ast_hash": "9b4bd87246f6496e941bf7a5a8e65778",
+    "semantic_hash": "9b4bd87246f6496e941bf7a5a8e65778"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/availability_over_time.png": {
+    "mtime": 1785231248.3664286,
+    "ast_hash": "3e9411074326ed97b5db41d660ae97f8",
+    "semantic_hash": "3e9411074326ed97b5db41d660ae97f8"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/concurrency_over_time.png": {
+    "mtime": 1785231248.143427,
+    "ast_hash": "f53e0392dcd7fadbed3f4150248b7d94",
+    "semantic_hash": "f53e0392dcd7fadbed3f4150248b7d94"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/direct_vs_middleware_comparison.png": {
+    "mtime": 1785231247.7058692,
+    "ast_hash": "5616c1540903567179c5b497a9f101b2",
+    "semantic_hash": "5616c1540903567179c5b497a9f101b2"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231247.6044233,
+    "ast_hash": "ca8fade558beddd9f39c896ae33744fb",
+    "semantic_hash": "ca8fade558beddd9f39c896ae33744fb"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/error_rate_over_time.png": {
+    "mtime": 1785231248.000426,
+    "ast_hash": "783392e21985a75a8ab0851d5fd2f1ba",
+    "semantic_hash": "783392e21985a75a8ab0851d5fd2f1ba"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/latency_distribution.png": {
+    "mtime": 1785231247.4954224,
+    "ast_hash": "a63b556a3d7878e92153a4aef24fc818",
+    "semantic_hash": "a63b556a3d7878e92153a4aef24fc818"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/scheduling_drift_over_time.png": {
+    "mtime": 1785231248.2584279,
+    "ast_hash": "f2b853d3e459c500d437c0ab97133329",
+    "semantic_hash": "f2b853d3e459c500d437c0ab97133329"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r13_seed_113/throughput_over_time.png": {
+    "mtime": 1785231247.879425,
+    "ast_hash": "1406fac7f1401a6cd8ade6d89ce002cb",
+    "semantic_hash": "1406fac7f1401a6cd8ade6d89ce002cb"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/availability_over_time.png": {
+    "mtime": 1785231373.6183512,
+    "ast_hash": "66460f4c1cb26a74c398a7b1fbe9d5e6",
+    "semantic_hash": "66460f4c1cb26a74c398a7b1fbe9d5e6"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/concurrency_over_time.png": {
+    "mtime": 1785231373.3923495,
+    "ast_hash": "50c03f87a63faa380ff39152151817c0",
+    "semantic_hash": "50c03f87a63faa380ff39152151817c0"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/direct_vs_middleware_comparison.png": {
+    "mtime": 1785231373.0483468,
+    "ast_hash": "ce5360d57ae8c0ded5fc3835deaf5341",
+    "semantic_hash": "ce5360d57ae8c0ded5fc3835deaf5341"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231372.9633462,
+    "ast_hash": "4d2b93f936da8110e39f056345eb826f",
+    "semantic_hash": "4d2b93f936da8110e39f056345eb826f"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/error_rate_over_time.png": {
+    "mtime": 1785231373.2573485,
+    "ast_hash": "0b14e5e874dad2188c488edd1078c6de",
+    "semantic_hash": "0b14e5e874dad2188c488edd1078c6de"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/latency_distribution.png": {
+    "mtime": 1785231372.8553455,
+    "ast_hash": "f5ce4b050a6a676235e4e1d3b2b5b6dd",
+    "semantic_hash": "f5ce4b050a6a676235e4e1d3b2b5b6dd"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/scheduling_drift_over_time.png": {
+    "mtime": 1785231373.4973505,
+    "ast_hash": "98752a4364fdfcf03cf69dfb863cfc56",
+    "semantic_hash": "98752a4364fdfcf03cf69dfb863cfc56"
+  },
+  "20260727T185227/figures/direct_vs_middleware/r14_seed_114/throughput_over_time.png": {
+    "mtime": 1785231373.1613479,
+    "ast_hash": "10b0d47e91ee6aab3820c3eb68f889bf",
+    "semantic_hash": "10b0d47e91ee6aab3820c3eb68f889bf"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232301.656642,
+    "ast_hash": "be4b7cd6bf95f5b723a86e6caded5fa9",
+    "semantic_hash": "be4b7cd6bf95f5b723a86e6caded5fa9"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232301.4206314,
+    "ast_hash": "683ec8f65012627076adf2cb8eba8594",
+    "semantic_hash": "683ec8f65012627076adf2cb8eba8594"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785232301.0826166,
+    "ast_hash": "4f3e98c7fac49a68b3626995e31e0c09",
+    "semantic_hash": "4f3e98c7fac49a68b3626995e31e0c09"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232301.0016131,
+    "ast_hash": "b67150455050c65891225208ff5a505b",
+    "semantic_hash": "b67150455050c65891225208ff5a505b"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232301.3016262,
+    "ast_hash": "efd4e5542f4617ee89b24f353eed8a93",
+    "semantic_hash": "efd4e5542f4617ee89b24f353eed8a93"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232300.8776076,
+    "ast_hash": "e50d2ff0ff144af1fddc095521f8dbc3",
+    "semantic_hash": "e50d2ff0ff144af1fddc095521f8dbc3"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232301.524636,
+    "ast_hash": "365e2e17d210253445e03b68b19397ee",
+    "semantic_hash": "365e2e17d210253445e03b68b19397ee"
+  },
+  "20260727T185227/figures/error_injection/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232301.1976216,
+    "ast_hash": "d77e1c1c0ed711194ceb4d6b48c566a7",
+    "semantic_hash": "d77e1c1c0ed711194ceb4d6b48c566a7"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785236364.6064787,
+    "ast_hash": "810483e223bbd5a6d31b95b158a9898f",
+    "semantic_hash": "810483e223bbd5a6d31b95b158a9898f"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785236364.4504755,
+    "ast_hash": "cf6143288fa997aa4f0afb29d860b10b",
+    "semantic_hash": "cf6143288fa997aa4f0afb29d860b10b"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785236364.2384713,
+    "ast_hash": "7dd369ac37fa8ebd296e23384312312d",
+    "semantic_hash": "7dd369ac37fa8ebd296e23384312312d"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785236364.1874702,
+    "ast_hash": "a221aaa32daeeb15567747fbdd68123b",
+    "semantic_hash": "a221aaa32daeeb15567747fbdd68123b"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785236364.372474,
+    "ast_hash": "03344cd1a8bba54507c1bfbbb47c49bd",
+    "semantic_hash": "03344cd1a8bba54507c1bfbbb47c49bd"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785236364.1064687,
+    "ast_hash": "da6fc0f91eeaab397f6cac2017589b42",
+    "semantic_hash": "da6fc0f91eeaab397f6cac2017589b42"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785236364.519477,
+    "ast_hash": "64ae21abd947a7023a5855549e055a15",
+    "semantic_hash": "64ae21abd947a7023a5855549e055a15"
+  },
+  "20260727T185227/figures/error_injection/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785236364.3074727,
+    "ast_hash": "7c673a3ef4f6dbb7fe33d0c3fbbd01fe",
+    "semantic_hash": "7c673a3ef4f6dbb7fe33d0c3fbbd01fe"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242802.1646183,
+    "ast_hash": "b614cd4711c60709f03d0b1f12d3ecc5",
+    "semantic_hash": "b614cd4711c60709f03d0b1f12d3ecc5"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242801.9136143,
+    "ast_hash": "21ef757280d4658b973273abb7fae4e3",
+    "semantic_hash": "21ef757280d4658b973273abb7fae4e3"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785242801.5786088,
+    "ast_hash": "d72ac79bf525167e7fa8130543a4bcb1",
+    "semantic_hash": "d72ac79bf525167e7fa8130543a4bcb1"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242801.4916074,
+    "ast_hash": "cc31307cdb54f92b28785693d6ea2cbc",
+    "semantic_hash": "cc31307cdb54f92b28785693d6ea2cbc"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242801.7966123,
+    "ast_hash": "b635b6bea2eae90630c106081e3e176a",
+    "semantic_hash": "b635b6bea2eae90630c106081e3e176a"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242801.3656054,
+    "ast_hash": "73ec2b33c0cd852c87262a1b557de363",
+    "semantic_hash": "73ec2b33c0cd852c87262a1b557de363"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242802.0326161,
+    "ast_hash": "40168566fc62e1ceb1cc820f325ab504",
+    "semantic_hash": "40168566fc62e1ceb1cc820f325ab504"
+  },
+  "20260727T185227/figures/error_injection/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242801.6876106,
+    "ast_hash": "0f396567d7f5f3061f99ced13c98d992",
+    "semantic_hash": "0f396567d7f5f3061f99ced13c98d992"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785243161.1512578,
+    "ast_hash": "5bdea28ad6080b89a32c964abda34e7f",
+    "semantic_hash": "5bdea28ad6080b89a32c964abda34e7f"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785243160.904266,
+    "ast_hash": "f200b4c813f2f245dda41a69db594ec2",
+    "semantic_hash": "f200b4c813f2f245dda41a69db594ec2"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785243160.5732772,
+    "ast_hash": "aa95d89569cb9f6e0ac891f425489a49",
+    "semantic_hash": "aa95d89569cb9f6e0ac891f425489a49"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785243160.48528,
+    "ast_hash": "09ac646e494bb364fa5ddfda1490aadf",
+    "semantic_hash": "09ac646e494bb364fa5ddfda1490aadf"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785243160.78427,
+    "ast_hash": "c8e3aa54ee4e09df74de1f3a38ba67a4",
+    "semantic_hash": "c8e3aa54ee4e09df74de1f3a38ba67a4"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785243160.3592844,
+    "ast_hash": "d9488183aff90633a170188c1f839c54",
+    "semantic_hash": "d9488183aff90633a170188c1f839c54"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785243161.054261,
+    "ast_hash": "524333a87e2cedb64a1156ae66f29b33",
+    "semantic_hash": "524333a87e2cedb64a1156ae66f29b33"
+  },
+  "20260727T185227/figures/error_injection/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785243160.6822736,
+    "ast_hash": "af9e61b9faaf61db75d1923043b733e8",
+    "semantic_hash": "af9e61b9faaf61db75d1923043b733e8"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785246939.12748,
+    "ast_hash": "708921bcd0cf0cb711a8e61efd7dc0be",
+    "semantic_hash": "708921bcd0cf0cb711a8e61efd7dc0be"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785246938.880476,
+    "ast_hash": "d3a6e43af0283eecff02f6883274aa40",
+    "semantic_hash": "d3a6e43af0283eecff02f6883274aa40"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246938.5444703,
+    "ast_hash": "fab174fe310cdf5652df3743b95195bd",
+    "semantic_hash": "fab174fe310cdf5652df3743b95195bd"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246938.4684691,
+    "ast_hash": "f24ca7bb2bc200fcf37a99a775ede70a",
+    "semantic_hash": "f24ca7bb2bc200fcf37a99a775ede70a"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785246938.757474,
+    "ast_hash": "fb9a0b27dd813a05418a4b4a6e98b603",
+    "semantic_hash": "fb9a0b27dd813a05418a4b4a6e98b603"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785246938.341467,
+    "ast_hash": "5fb3d424c924f1ebd713fceba1e3db69",
+    "semantic_hash": "5fb3d424c924f1ebd713fceba1e3db69"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785246938.995478,
+    "ast_hash": "e64b89253745ca52d24fee146ec36651",
+    "semantic_hash": "e64b89253745ca52d24fee146ec36651"
+  },
+  "20260727T185227/figures/error_injection/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785246938.6554723,
+    "ast_hash": "ef838d66c70dbf4a61308d85fccafaeb",
+    "semantic_hash": "ef838d66c70dbf4a61308d85fccafaeb"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/availability_over_time.png": {
+    "mtime": 1785250830.5540514,
+    "ast_hash": "d563d21d7688db95ff74b1e178b60e78",
+    "semantic_hash": "d563d21d7688db95ff74b1e178b60e78"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/concurrency_over_time.png": {
+    "mtime": 1785250830.393051,
+    "ast_hash": "9846bdaf0e5c3d56ec814b5e9333d78e",
+    "semantic_hash": "9846bdaf0e5c3d56ec814b5e9333d78e"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/direct_vs_middleware_comparison.png": {
+    "mtime": 1785250830.1830504,
+    "ast_hash": "a1b5f3c38fb29418b6360ad907c09e22",
+    "semantic_hash": "a1b5f3c38fb29418b6360ad907c09e22"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/e2e_latency_by_flow_type.png": {
+    "mtime": 1785250830.1340504,
+    "ast_hash": "3b98a1d48c0fe185a79b527e516cf146",
+    "semantic_hash": "3b98a1d48c0fe185a79b527e516cf146"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/error_rate_over_time.png": {
+    "mtime": 1785250830.3170507,
+    "ast_hash": "d8a00c2b4ccb377c7365ea9964b39e71",
+    "semantic_hash": "d8a00c2b4ccb377c7365ea9964b39e71"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/latency_distribution.png": {
+    "mtime": 1785250830.05305,
+    "ast_hash": "3f94fb1bb1e0b3f040444680f4f0a40a",
+    "semantic_hash": "3f94fb1bb1e0b3f040444680f4f0a40a"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/scheduling_drift_over_time.png": {
+    "mtime": 1785250830.466051,
+    "ast_hash": "30b96ed2c9baac472668c36163848cc5",
+    "semantic_hash": "30b96ed2c9baac472668c36163848cc5"
+  },
+  "20260727T185227/figures/error_injection/r06_seed_106/throughput_over_time.png": {
+    "mtime": 1785250830.2510507,
+    "ast_hash": "e195f96edcec946684a861de3f12fb58",
+    "semantic_hash": "e195f96edcec946684a861de3f12fb58"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232673.1634974,
+    "ast_hash": "563890760c1d66b912534245d286353a",
+    "semantic_hash": "563890760c1d66b912534245d286353a"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232672.9514906,
+    "ast_hash": "d35fc239d90dda52987a9a10bb1c5026",
+    "semantic_hash": "d35fc239d90dda52987a9a10bb1c5026"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232672.6084795,
+    "ast_hash": "403dad32644a23c98c1b3ae1059475cf",
+    "semantic_hash": "403dad32644a23c98c1b3ae1059475cf"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232672.8284867,
+    "ast_hash": "3ac3a90e536496a492f27cf8e47daa32",
+    "semantic_hash": "3ac3a90e536496a492f27cf8e47daa32"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232672.4754753,
+    "ast_hash": "2663952e732e46172b19d2bf2e20f244",
+    "semantic_hash": "2663952e732e46172b19d2bf2e20f244"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232673.0644941,
+    "ast_hash": "067f87d2d2a588f616514cbc88c88366",
+    "semantic_hash": "067f87d2d2a588f616514cbc88c88366"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232672.7234833,
+    "ast_hash": "50f83d5f52a248706685c498b35fddb1",
+    "semantic_hash": "50f83d5f52a248706685c498b35fddb1"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785239167.5145142,
+    "ast_hash": "a86aef80e862ccf1293b0532a1ac023f",
+    "semantic_hash": "a86aef80e862ccf1293b0532a1ac023f"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785239167.3965147,
+    "ast_hash": "8c3b79a74835d5c77ba73edbe3a24310",
+    "semantic_hash": "8c3b79a74835d5c77ba73edbe3a24310"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785239167.1925151,
+    "ast_hash": "fbfd445e04e2e5a1a7c0c7151ffd21da",
+    "semantic_hash": "fbfd445e04e2e5a1a7c0c7151ffd21da"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785239167.3225148,
+    "ast_hash": "e98aa2b0981cd262e2f08927e8f664a9",
+    "semantic_hash": "e98aa2b0981cd262e2f08927e8f664a9"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785239167.1155155,
+    "ast_hash": "6a128b5d3f9b6a1002cb6a9f8a9dcc2f",
+    "semantic_hash": "6a128b5d3f9b6a1002cb6a9f8a9dcc2f"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785239167.4575145,
+    "ast_hash": "b5cec5e71b6e811b73ffd3c07e4567e2",
+    "semantic_hash": "b5cec5e71b6e811b73ffd3c07e4567e2"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785239167.259515,
+    "ast_hash": "eee3e8d876face9c6e3e827d1a647327",
+    "semantic_hash": "eee3e8d876face9c6e3e827d1a647327"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242706.9640632,
+    "ast_hash": "c493e05426418ff1398216763491e3c6",
+    "semantic_hash": "c493e05426418ff1398216763491e3c6"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242706.77506,
+    "ast_hash": "8259ebf37fca87e64c3b8fc0eb04522f",
+    "semantic_hash": "8259ebf37fca87e64c3b8fc0eb04522f"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242706.4570549,
+    "ast_hash": "1e23526a895efb1d1478735217d2e99e",
+    "semantic_hash": "1e23526a895efb1d1478735217d2e99e"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242706.653058,
+    "ast_hash": "c3919a9771101a3b66bee7392ab9fae8",
+    "semantic_hash": "c3919a9771101a3b66bee7392ab9fae8"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242706.3380527,
+    "ast_hash": "d6106bac062cdcb843a944b9f099a14f",
+    "semantic_hash": "d6106bac062cdcb843a944b9f099a14f"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242706.8730617,
+    "ast_hash": "a6aa3067c469623b0fe919db34a72e29",
+    "semantic_hash": "a6aa3067c469623b0fe919db34a72e29"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242706.5580564,
+    "ast_hash": "b3c2393d926ec7b48d7013bb7df17dcc",
+    "semantic_hash": "b3c2393d926ec7b48d7013bb7df17dcc"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785243062.9809718,
+    "ast_hash": "21f8ec37f4e14861a934a96e097c3d59",
+    "semantic_hash": "21f8ec37f4e14861a934a96e097c3d59"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785243062.78798,
+    "ast_hash": "cce1ff232f40ee92ef30b1ddcc49a119",
+    "semantic_hash": "cce1ff232f40ee92ef30b1ddcc49a119"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785243062.4769933,
+    "ast_hash": "55b8a8cc1e6da1e5739971d7f52edc5f",
+    "semantic_hash": "55b8a8cc1e6da1e5739971d7f52edc5f"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785243062.670985,
+    "ast_hash": "946046c6ee92a4d215a7e83af2a07a0e",
+    "semantic_hash": "946046c6ee92a4d215a7e83af2a07a0e"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785243062.3589983,
+    "ast_hash": "3c39435caac995efed5def284cea3ac0",
+    "semantic_hash": "3c39435caac995efed5def284cea3ac0"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785243062.8909757,
+    "ast_hash": "82aa8e238acc007918c444b4e14c8e13",
+    "semantic_hash": "82aa8e238acc007918c444b4e14c8e13"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785243062.575989,
+    "ast_hash": "74101a55c4300cf757c3b75223b1392c",
+    "semantic_hash": "74101a55c4300cf757c3b75223b1392c"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785247854.979506,
+    "ast_hash": "8572626b0ae859126352971d82ca2a34",
+    "semantic_hash": "8572626b0ae859126352971d82ca2a34"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785247854.795502,
+    "ast_hash": "a63d8b2cd807409869b149605c5bd902",
+    "semantic_hash": "a63d8b2cd807409869b149605c5bd902"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785247854.4764946,
+    "ast_hash": "ede73ac34550a0c28d6dc460e75ba4e7",
+    "semantic_hash": "ede73ac34550a0c28d6dc460e75ba4e7"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785247854.6774993,
+    "ast_hash": "fb3bf5d0103c1547c3acb7d3b28d0f74",
+    "semantic_hash": "fb3bf5d0103c1547c3acb7d3b28d0f74"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785247854.358492,
+    "ast_hash": "e9ca79f2e778689507f9112faf7f1674",
+    "semantic_hash": "e9ca79f2e778689507f9112faf7f1674"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785247854.889504,
+    "ast_hash": "03eba974aedf59d04c167fb6f5fc1216",
+    "semantic_hash": "03eba974aedf59d04c167fb6f5fc1216"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785247854.581497,
+    "ast_hash": "8965f3502f0bb41e32a35776fc7a3f1c",
+    "semantic_hash": "8965f3502f0bb41e32a35776fc7a3f1c"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/availability_over_time.png": {
+    "mtime": 1785250934.923415,
+    "ast_hash": "fe82b91ca094c8063da865038f00e0f1",
+    "semantic_hash": "fe82b91ca094c8063da865038f00e0f1"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/concurrency_over_time.png": {
+    "mtime": 1785250934.8024144,
+    "ast_hash": "b20ab83cb5e5b5d8187ab75f5e68c0af",
+    "semantic_hash": "b20ab83cb5e5b5d8187ab75f5e68c0af"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/e2e_latency_by_flow_type.png": {
+    "mtime": 1785250934.5974135,
+    "ast_hash": "4a993b8d3909a72a85acc3560bb9a166",
+    "semantic_hash": "4a993b8d3909a72a85acc3560bb9a166"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/error_rate_over_time.png": {
+    "mtime": 1785250934.728414,
+    "ast_hash": "e6a668cde5af313498c3d83246411abd",
+    "semantic_hash": "e6a668cde5af313498c3d83246411abd"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/latency_distribution.png": {
+    "mtime": 1785250934.5164132,
+    "ast_hash": "d829b716a68acb4e6c3e0bcda1036c8e",
+    "semantic_hash": "d829b716a68acb4e6c3e0bcda1036c8e"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/scheduling_drift_over_time.png": {
+    "mtime": 1785250934.8664145,
+    "ast_hash": "0dc92f515c3e2f1269948f1b45e6b40e",
+    "semantic_hash": "0dc92f515c3e2f1269948f1b45e6b40e"
+  },
+  "20260727T185227/figures/flow_type_comparison_direct/r06_seed_106/throughput_over_time.png": {
+    "mtime": 1785250934.6644137,
+    "ast_hash": "4dc29d57f46df5cf378f982ffc9b2d10",
+    "semantic_hash": "4dc29d57f46df5cf378f982ffc9b2d10"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785229645.9718263,
+    "ast_hash": "6a5e1aa29f34a67c8b7328b1210f0b78",
+    "semantic_hash": "6a5e1aa29f34a67c8b7328b1210f0b78"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785229645.7728415,
+    "ast_hash": "5238223f4ec11199aa1180f520437228",
+    "semantic_hash": "5238223f4ec11199aa1180f520437228"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229645.4468665,
+    "ast_hash": "c7e7fb2e6c867d718162167bed95ef0d",
+    "semantic_hash": "c7e7fb2e6c867d718162167bed95ef0d"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785229645.649851,
+    "ast_hash": "8311fe13a95c52aabe1b0367db1022f4",
+    "semantic_hash": "8311fe13a95c52aabe1b0367db1022f4"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785229645.360873,
+    "ast_hash": "f908b2aa2647e1a9681cfe98e39fde1b",
+    "semantic_hash": "f908b2aa2647e1a9681cfe98e39fde1b"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785229645.8748338,
+    "ast_hash": "9537e7663ab15107799f0c3618f3d8dd",
+    "semantic_hash": "9537e7663ab15107799f0c3618f3d8dd"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785229645.5598578,
+    "ast_hash": "b8cb2c7c3d0accc63bdad791cddd4ee5",
+    "semantic_hash": "b8cb2c7c3d0accc63bdad791cddd4ee5"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785229846.081553,
+    "ast_hash": "c64c9795a6e21f10592fd8d9a1dee422",
+    "semantic_hash": "c64c9795a6e21f10592fd8d9a1dee422"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785229845.8715632,
+    "ast_hash": "deb191352bfbe608a78758d242c54cdf",
+    "semantic_hash": "deb191352bfbe608a78758d242c54cdf"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229845.5165803,
+    "ast_hash": "9c0d1ddfb6cd06343259cc276451fea1",
+    "semantic_hash": "9c0d1ddfb6cd06343259cc276451fea1"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785229845.73257,
+    "ast_hash": "2514e3adda693df2a82d737f12644fe0",
+    "semantic_hash": "2514e3adda693df2a82d737f12644fe0"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785229845.4245846,
+    "ast_hash": "add46112b821e55742a482aef63dc03f",
+    "semantic_hash": "add46112b821e55742a482aef63dc03f"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785229845.9875576,
+    "ast_hash": "69efc8fdb005ba9edc18a35da0dd3255",
+    "semantic_hash": "69efc8fdb005ba9edc18a35da0dd3255"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785229845.6385744,
+    "ast_hash": "fe7c84629ee0b4f73b03b114b983dab7",
+    "semantic_hash": "fe7c84629ee0b4f73b03b114b983dab7"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785229908.306771,
+    "ast_hash": "7c7d2c28e6534d44fef45518b36beeaf",
+    "semantic_hash": "7c7d2c28e6534d44fef45518b36beeaf"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785229908.0837803,
+    "ast_hash": "5cf0875b61deaed332b3c346f3c5eacb",
+    "semantic_hash": "5cf0875b61deaed332b3c346f3c5eacb"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229907.7357945,
+    "ast_hash": "bd84d0e4369e04842fc2318bfed74f30",
+    "semantic_hash": "bd84d0e4369e04842fc2318bfed74f30"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785229907.945786,
+    "ast_hash": "650c52a284d9585ba5a3b95b5a695274",
+    "semantic_hash": "650c52a284d9585ba5a3b95b5a695274"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785229907.630799,
+    "ast_hash": "a45b31c507f721fc05348d9716de9edc",
+    "semantic_hash": "a45b31c507f721fc05348d9716de9edc"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785229908.1937757,
+    "ast_hash": "352c1eb38a7e8cd64fc9528c90e3b952",
+    "semantic_hash": "352c1eb38a7e8cd64fc9528c90e3b952"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785229907.84879,
+    "ast_hash": "8cd093311cc3c502a09a4abbcc975504",
+    "semantic_hash": "8cd093311cc3c502a09a4abbcc975504"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785230031.9843702,
+    "ast_hash": "928b8d8ff97de82b87237748181602ac",
+    "semantic_hash": "928b8d8ff97de82b87237748181602ac"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785230031.7543774,
+    "ast_hash": "b954b04aced4c770e0a7d19ebf0f059c",
+    "semantic_hash": "b954b04aced4c770e0a7d19ebf0f059c"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230031.4153876,
+    "ast_hash": "c85132ca028d1b5964e3c9fd2ffad321",
+    "semantic_hash": "c85132ca028d1b5964e3c9fd2ffad321"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785230031.6263812,
+    "ast_hash": "91eb73d43894c076af09fd55e2b0d9b2",
+    "semantic_hash": "91eb73d43894c076af09fd55e2b0d9b2"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785230031.3173904,
+    "ast_hash": "cacc1729f7d04d277d40bb72425824e5",
+    "semantic_hash": "cacc1729f7d04d277d40bb72425824e5"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785230031.8693738,
+    "ast_hash": "c5ee5e02dc3629e5b902ca9c19eb9522",
+    "semantic_hash": "c5ee5e02dc3629e5b902ca9c19eb9522"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785230031.531384,
+    "ast_hash": "58db4c58e86273f9ef6864a60407e256",
+    "semantic_hash": "58db4c58e86273f9ef6864a60407e256"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785230212.6170788,
+    "ast_hash": "5a867ad246ec105853b6028d0df8deec",
+    "semantic_hash": "5a867ad246ec105853b6028d0df8deec"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785230212.4170823,
+    "ast_hash": "64a66824f523bd1cab63a9c66a6f1b53",
+    "semantic_hash": "64a66824f523bd1cab63a9c66a6f1b53"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230212.0850885,
+    "ast_hash": "be1007cbd1ef92b3f54548e588b26426",
+    "semantic_hash": "be1007cbd1ef92b3f54548e588b26426"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785230212.2830849,
+    "ast_hash": "ab46378a2462a39a9e5a8a99faf0756d",
+    "semantic_hash": "ab46378a2462a39a9e5a8a99faf0756d"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785230211.9930902,
+    "ast_hash": "e40053a421fe49fd51dc81b8a83c5aa9",
+    "semantic_hash": "e40053a421fe49fd51dc81b8a83c5aa9"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785230212.5220804,
+    "ast_hash": "0b25be8972ca4021d65d647edd5b722f",
+    "semantic_hash": "0b25be8972ca4021d65d647edd5b722f"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785230212.1890864,
+    "ast_hash": "614de9a0d3fc411f12326493ab470135",
+    "semantic_hash": "614de9a0d3fc411f12326493ab470135"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/availability_over_time.png": {
+    "mtime": 1785230337.0112383,
+    "ast_hash": "c98d48099acd3be5ea0d94df1dfa53b7",
+    "semantic_hash": "c98d48099acd3be5ea0d94df1dfa53b7"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/concurrency_over_time.png": {
+    "mtime": 1785230336.8002408,
+    "ast_hash": "f300b551f3291a32963e7ff5e84b331b",
+    "semantic_hash": "f300b551f3291a32963e7ff5e84b331b"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230336.4892445,
+    "ast_hash": "a0c1c36ee9d745b8478227ce1db63162",
+    "semantic_hash": "a0c1c36ee9d745b8478227ce1db63162"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/error_rate_over_time.png": {
+    "mtime": 1785230336.6832423,
+    "ast_hash": "268ff5730f11e72f54fbc2d862d38d95",
+    "semantic_hash": "268ff5730f11e72f54fbc2d862d38d95"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/latency_distribution.png": {
+    "mtime": 1785230336.3902457,
+    "ast_hash": "8ffbacd8ded901a316499b768c9061c5",
+    "semantic_hash": "8ffbacd8ded901a316499b768c9061c5"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/scheduling_drift_over_time.png": {
+    "mtime": 1785230336.9152396,
+    "ast_hash": "fa4a6540945ec2bbc026a248cf70c5c8",
+    "semantic_hash": "fa4a6540945ec2bbc026a248cf70c5c8"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r06_seed_106/throughput_over_time.png": {
+    "mtime": 1785230336.5932434,
+    "ast_hash": "0adf3579406bb6c0cd8b6ff354c49d2d",
+    "semantic_hash": "0adf3579406bb6c0cd8b6ff354c49d2d"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/availability_over_time.png": {
+    "mtime": 1785230400.3075752,
+    "ast_hash": "bb8c545a5c207e2811a79365c3b04b64",
+    "semantic_hash": "bb8c545a5c207e2811a79365c3b04b64"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/concurrency_over_time.png": {
+    "mtime": 1785230400.105577,
+    "ast_hash": "d80a4201c1e4fc7832fe488951c29583",
+    "semantic_hash": "d80a4201c1e4fc7832fe488951c29583"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230399.78358,
+    "ast_hash": "3a76de00daf0637e4836dc064b415202",
+    "semantic_hash": "3a76de00daf0637e4836dc064b415202"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/error_rate_over_time.png": {
+    "mtime": 1785230399.9795783,
+    "ast_hash": "3337007e95f68ecf3694bed8b8580130",
+    "semantic_hash": "3337007e95f68ecf3694bed8b8580130"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/latency_distribution.png": {
+    "mtime": 1785230399.6905808,
+    "ast_hash": "a9b06ba99028e9aa1b51e4a773f645bb",
+    "semantic_hash": "a9b06ba99028e9aa1b51e4a773f645bb"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/scheduling_drift_over_time.png": {
+    "mtime": 1785230400.2125762,
+    "ast_hash": "9fde6cde7e76e22e50a90b51f3d52b8e",
+    "semantic_hash": "9fde6cde7e76e22e50a90b51f3d52b8e"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r07_seed_107/throughput_over_time.png": {
+    "mtime": 1785230399.8885791,
+    "ast_hash": "c4d246d42aa2af4bdcb8d2f82e20c9ed",
+    "semantic_hash": "c4d246d42aa2af4bdcb8d2f82e20c9ed"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/availability_over_time.png": {
+    "mtime": 1785230599.6674254,
+    "ast_hash": "5e269816ce8e034db59659f428c3706c",
+    "semantic_hash": "5e269816ce8e034db59659f428c3706c"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/concurrency_over_time.png": {
+    "mtime": 1785230599.453426,
+    "ast_hash": "66d8774fa78f2aec248a8dfd39da9f1f",
+    "semantic_hash": "66d8774fa78f2aec248a8dfd39da9f1f"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230599.122427,
+    "ast_hash": "705817ad32ddbcd50c1b75159fe49de9",
+    "semantic_hash": "705817ad32ddbcd50c1b75159fe49de9"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/error_rate_over_time.png": {
+    "mtime": 1785230599.3274264,
+    "ast_hash": "2192869aab09c7427919b8589217aebc",
+    "semantic_hash": "2192869aab09c7427919b8589217aebc"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/latency_distribution.png": {
+    "mtime": 1785230599.0374272,
+    "ast_hash": "6714824f6bd9016cdd2c18896adf8978",
+    "semantic_hash": "6714824f6bd9016cdd2c18896adf8978"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/scheduling_drift_over_time.png": {
+    "mtime": 1785230599.5704257,
+    "ast_hash": "3f3d106b7b1803480caa6695535d463a",
+    "semantic_hash": "3f3d106b7b1803480caa6695535d463a"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r08_seed_108/throughput_over_time.png": {
+    "mtime": 1785230599.2364266,
+    "ast_hash": "3b65df8889a32f1e2b7a2e4f6fcd5323",
+    "semantic_hash": "3b65df8889a32f1e2b7a2e4f6fcd5323"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/availability_over_time.png": {
+    "mtime": 1785230660.5443044,
+    "ast_hash": "e96a6ace9f8153f52ce508785cfc6d72",
+    "semantic_hash": "e96a6ace9f8153f52ce508785cfc6d72"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/concurrency_over_time.png": {
+    "mtime": 1785230660.3463047,
+    "ast_hash": "3970801cc980ef000badb7f49dc4a206",
+    "semantic_hash": "3970801cc980ef000badb7f49dc4a206"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230660.033305,
+    "ast_hash": "5fa4f28dc3c970e49f13740f896e11db",
+    "semantic_hash": "5fa4f28dc3c970e49f13740f896e11db"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/error_rate_over_time.png": {
+    "mtime": 1785230660.2283049,
+    "ast_hash": "a5c285aa25597695fbe0a4b192e55284",
+    "semantic_hash": "a5c285aa25597695fbe0a4b192e55284"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/latency_distribution.png": {
+    "mtime": 1785230659.932305,
+    "ast_hash": "b9f4bb17d2993e5c334ddf4accec998c",
+    "semantic_hash": "b9f4bb17d2993e5c334ddf4accec998c"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/scheduling_drift_over_time.png": {
+    "mtime": 1785230660.4483044,
+    "ast_hash": "935185a9ddc3e0d585d2dc61fd392811",
+    "semantic_hash": "935185a9ddc3e0d585d2dc61fd392811"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r09_seed_109/throughput_over_time.png": {
+    "mtime": 1785230660.1363049,
+    "ast_hash": "5088a58ce3f2d64044da801410ede5b1",
+    "semantic_hash": "5088a58ce3f2d64044da801410ede5b1"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/availability_over_time.png": {
+    "mtime": 1785230846.5284328,
+    "ast_hash": "8bd7403e0ae31e8e8baa614e1a2948cd",
+    "semantic_hash": "8bd7403e0ae31e8e8baa614e1a2948cd"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/concurrency_over_time.png": {
+    "mtime": 1785230846.2964323,
+    "ast_hash": "d7e8154be1b379702b48947c84b5aeef",
+    "semantic_hash": "d7e8154be1b379702b48947c84b5aeef"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230845.9104314,
+    "ast_hash": "c391baf88371703c666c6ac71cc903c5",
+    "semantic_hash": "c391baf88371703c666c6ac71cc903c5"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/error_rate_over_time.png": {
+    "mtime": 1785230846.143432,
+    "ast_hash": "91038831144d99769f474efef40b6f9d",
+    "semantic_hash": "91038831144d99769f474efef40b6f9d"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/latency_distribution.png": {
+    "mtime": 1785230845.8084311,
+    "ast_hash": "ff3f3c37e0addf36c205c7677ea9da47",
+    "semantic_hash": "ff3f3c37e0addf36c205c7677ea9da47"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/scheduling_drift_over_time.png": {
+    "mtime": 1785230846.4174325,
+    "ast_hash": "82cb9f8c357d4e62ff3620a5de07117a",
+    "semantic_hash": "82cb9f8c357d4e62ff3620a5de07117a"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r10_seed_110/throughput_over_time.png": {
+    "mtime": 1785230846.0374317,
+    "ast_hash": "93f15cb713cc0bd768ade61ca37f30d7",
+    "semantic_hash": "93f15cb713cc0bd768ade61ca37f30d7"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/availability_over_time.png": {
+    "mtime": 1785230908.8876133,
+    "ast_hash": "074e73a692521f13a1767b6f7693df4e",
+    "semantic_hash": "074e73a692521f13a1767b6f7693df4e"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/concurrency_over_time.png": {
+    "mtime": 1785230908.6356125,
+    "ast_hash": "8256c54156e685037d4b6196e1cd9c4b",
+    "semantic_hash": "8256c54156e685037d4b6196e1cd9c4b"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230908.233611,
+    "ast_hash": "29af2e843354924c1ba9838f27c7e504",
+    "semantic_hash": "29af2e843354924c1ba9838f27c7e504"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/error_rate_over_time.png": {
+    "mtime": 1785230908.4856122,
+    "ast_hash": "6034bc9608de0d11e1f1a1bfdb3eab2c",
+    "semantic_hash": "6034bc9608de0d11e1f1a1bfdb3eab2c"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/latency_distribution.png": {
+    "mtime": 1785230908.1316109,
+    "ast_hash": "2761300684da1a12bc1efbe0451d91d0",
+    "semantic_hash": "2761300684da1a12bc1efbe0451d91d0"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/scheduling_drift_over_time.png": {
+    "mtime": 1785230908.772613,
+    "ast_hash": "8eb11e960fad42d4b09835b96146fc7e",
+    "semantic_hash": "8eb11e960fad42d4b09835b96146fc7e"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r11_seed_111/throughput_over_time.png": {
+    "mtime": 1785230908.3706117,
+    "ast_hash": "691e1a408ed38c576b94d0a359a3217c",
+    "semantic_hash": "691e1a408ed38c576b94d0a359a3217c"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/availability_over_time.png": {
+    "mtime": 1785231047.3952057,
+    "ast_hash": "44cb68798e9d2d958f013af5f9702d26",
+    "semantic_hash": "44cb68798e9d2d958f013af5f9702d26"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/concurrency_over_time.png": {
+    "mtime": 1785231047.1602044,
+    "ast_hash": "08d421b1cb1dac9acfeaca2101dafaf3",
+    "semantic_hash": "08d421b1cb1dac9acfeaca2101dafaf3"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231046.7582026,
+    "ast_hash": "8af171855b87c2c1192f4ff4e252de6d",
+    "semantic_hash": "8af171855b87c2c1192f4ff4e252de6d"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/error_rate_over_time.png": {
+    "mtime": 1785231047.0172038,
+    "ast_hash": "5038bbc916e2c46ed91525b797675ac5",
+    "semantic_hash": "5038bbc916e2c46ed91525b797675ac5"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/latency_distribution.png": {
+    "mtime": 1785231046.6432018,
+    "ast_hash": "c8667c7bb2ac50cc80bd11598904d639",
+    "semantic_hash": "c8667c7bb2ac50cc80bd11598904d639"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/scheduling_drift_over_time.png": {
+    "mtime": 1785231047.2912052,
+    "ast_hash": "c98967808707d59b53653e79dcabca10",
+    "semantic_hash": "c98967808707d59b53653e79dcabca10"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r12_seed_112/throughput_over_time.png": {
+    "mtime": 1785231046.9112031,
+    "ast_hash": "9b4bd87246f6496e941bf7a5a8e65778",
+    "semantic_hash": "9b4bd87246f6496e941bf7a5a8e65778"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/availability_over_time.png": {
+    "mtime": 1785231186.2110121,
+    "ast_hash": "3e9411074326ed97b5db41d660ae97f8",
+    "semantic_hash": "3e9411074326ed97b5db41d660ae97f8"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/concurrency_over_time.png": {
+    "mtime": 1785231186.004011,
+    "ast_hash": "6d02a220fd2da3e09baa39deba56c898",
+    "semantic_hash": "6d02a220fd2da3e09baa39deba56c898"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231185.6920087,
+    "ast_hash": "bdd434b30b5f844abedfe65ca75883a1",
+    "semantic_hash": "bdd434b30b5f844abedfe65ca75883a1"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/error_rate_over_time.png": {
+    "mtime": 1785231185.88701,
+    "ast_hash": "783392e21985a75a8ab0851d5fd2f1ba",
+    "semantic_hash": "783392e21985a75a8ab0851d5fd2f1ba"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/latency_distribution.png": {
+    "mtime": 1785231185.5970082,
+    "ast_hash": "b56d6b2141b8fb0d0bfcec74afb57234",
+    "semantic_hash": "b56d6b2141b8fb0d0bfcec74afb57234"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/scheduling_drift_over_time.png": {
+    "mtime": 1785231186.1160116,
+    "ast_hash": "9aff16c6bcb46a2fcdbf5d156af21671",
+    "semantic_hash": "9aff16c6bcb46a2fcdbf5d156af21671"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r13_seed_113/throughput_over_time.png": {
+    "mtime": 1785231185.7960095,
+    "ast_hash": "1406fac7f1401a6cd8ade6d89ce002cb",
+    "semantic_hash": "1406fac7f1401a6cd8ade6d89ce002cb"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/availability_over_time.png": {
+    "mtime": 1785231310.7987554,
+    "ast_hash": "66460f4c1cb26a74c398a7b1fbe9d5e6",
+    "semantic_hash": "66460f4c1cb26a74c398a7b1fbe9d5e6"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/concurrency_over_time.png": {
+    "mtime": 1785231310.573874,
+    "ast_hash": "5f1df6cd9a002aa351151939f4ae29ce",
+    "semantic_hash": "5f1df6cd9a002aa351151939f4ae29ce"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231310.190871,
+    "ast_hash": "b07e5c49913ce4a9866850422f0efeeb",
+    "semantic_hash": "b07e5c49913ce4a9866850422f0efeeb"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/error_rate_over_time.png": {
+    "mtime": 1785231310.440873,
+    "ast_hash": "0b14e5e874dad2188c488edd1078c6de",
+    "semantic_hash": "0b14e5e874dad2188c488edd1078c6de"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/latency_distribution.png": {
+    "mtime": 1785231310.0728703,
+    "ast_hash": "0c79d4cb667fd37d45b7ac68235b4fe2",
+    "semantic_hash": "0c79d4cb667fd37d45b7ac68235b4fe2"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/scheduling_drift_over_time.png": {
+    "mtime": 1785231310.689875,
+    "ast_hash": "f48b9571c0a0327301c73522e5b4f67e",
+    "semantic_hash": "f48b9571c0a0327301c73522e5b4f67e"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r14_seed_114/throughput_over_time.png": {
+    "mtime": 1785231310.3328722,
+    "ast_hash": "10b0d47e91ee6aab3820c3eb68f889bf",
+    "semantic_hash": "10b0d47e91ee6aab3820c3eb68f889bf"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/availability_over_time.png": {
+    "mtime": 1785231434.579835,
+    "ast_hash": "269174e3eb4e1be26ac252bfc789720a",
+    "semantic_hash": "269174e3eb4e1be26ac252bfc789720a"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/concurrency_over_time.png": {
+    "mtime": 1785231434.340833,
+    "ast_hash": "c05e31c0599b0801176c486a33530874",
+    "semantic_hash": "c05e31c0599b0801176c486a33530874"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231433.97783,
+    "ast_hash": "66a1344094dc6c754f440799b28f98a7",
+    "semantic_hash": "66a1344094dc6c754f440799b28f98a7"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/error_rate_over_time.png": {
+    "mtime": 1785231434.196832,
+    "ast_hash": "12fa03ca574639227dd9b3ca14730746",
+    "semantic_hash": "12fa03ca574639227dd9b3ca14730746"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/latency_distribution.png": {
+    "mtime": 1785231433.8878293,
+    "ast_hash": "0245b493e8708789bdcede03a4e09aae",
+    "semantic_hash": "0245b493e8708789bdcede03a4e09aae"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/scheduling_drift_over_time.png": {
+    "mtime": 1785231434.468834,
+    "ast_hash": "924cc0ab62f071696fa0ed0eff7e5097",
+    "semantic_hash": "924cc0ab62f071696fa0ed0eff7e5097"
+  },
+  "20260727T185227/figures/flow_type_comparison_middleware/r15_seed_115/throughput_over_time.png": {
+    "mtime": 1785231434.098831,
+    "ast_hash": "4f2df8048558121a1b350370af91dcf8",
+    "semantic_hash": "4f2df8048558121a1b350370af91dcf8"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785231756.5317452,
+    "ast_hash": "b5b44eb219ebad9b8661c425a7c1e53b",
+    "semantic_hash": "b5b44eb219ebad9b8661c425a7c1e53b"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785231756.2947242,
+    "ast_hash": "2e67bb51b0b8db037f5780be91329cb8",
+    "semantic_hash": "2e67bb51b0b8db037f5780be91329cb8"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231755.8976893,
+    "ast_hash": "9188786a61d8164da512a87cace3c938",
+    "semantic_hash": "9188786a61d8164da512a87cace3c938"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785231756.142711,
+    "ast_hash": "3ec853f9ebd9459a59c3aac2927bf590",
+    "semantic_hash": "3ec853f9ebd9459a59c3aac2927bf590"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785231755.7576768,
+    "ast_hash": "c7461cabff95940831262209482f38f0",
+    "semantic_hash": "c7461cabff95940831262209482f38f0"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785231756.4237356,
+    "ast_hash": "9bbff01b0ca9e0d124d377a31f80019b",
+    "semantic_hash": "9bbff01b0ca9e0d124d377a31f80019b"
+  },
+  "20260727T185227/figures/live_smoke_small/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785231756.030701,
+    "ast_hash": "08c282438a1cff5483c98c8998786a92",
+    "semantic_hash": "08c282438a1cff5483c98c8998786a92"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785229723.9023683,
+    "ast_hash": "c0b4cabddebae6b8b24da26f31ff3a32",
+    "semantic_hash": "c0b4cabddebae6b8b24da26f31ff3a32"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785229723.7013812,
+    "ast_hash": "f071548108e73bae120f9980c3ed8ab1",
+    "semantic_hash": "f071548108e73bae120f9980c3ed8ab1"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785229723.3774018,
+    "ast_hash": "298d2f5eb8f85b8cc4835513dca55adb",
+    "semantic_hash": "298d2f5eb8f85b8cc4835513dca55adb"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785229723.2914073,
+    "ast_hash": "cf01dded55944141b5f4684c20fd3a53",
+    "semantic_hash": "cf01dded55944141b5f4684c20fd3a53"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785229723.577389,
+    "ast_hash": "43deba98b7aca09ba5c47982286959f9",
+    "semantic_hash": "43deba98b7aca09ba5c47982286959f9"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785229723.156416,
+    "ast_hash": "b9baab159cd5fba8475d0d6f329be40a",
+    "semantic_hash": "b9baab159cd5fba8475d0d6f329be40a"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785229723.8033745,
+    "ast_hash": "cca1a2340a99b3e9e8eada618689091e",
+    "semantic_hash": "cca1a2340a99b3e9e8eada618689091e"
+  },
+  "20260727T185227/figures/live_smoke_small/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785229723.484395,
+    "ast_hash": "81464b1f863b0b51e15c436de55c5665",
+    "semantic_hash": "81464b1f863b0b51e15c436de55c5665"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242945.146682,
+    "ast_hash": "a61ab84caedc915b76489b86721fa1da",
+    "semantic_hash": "a61ab84caedc915b76489b86721fa1da"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242944.9536927,
+    "ast_hash": "4cba29972ed82dde158bc0b9190e459a",
+    "semantic_hash": "4cba29972ed82dde158bc0b9190e459a"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242944.621711,
+    "ast_hash": "67d1b68547e2d736bc5804af1b77db8b",
+    "semantic_hash": "67d1b68547e2d736bc5804af1b77db8b"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242944.8237,
+    "ast_hash": "f78f5f43b737dfb2ee1d32bf5e12ebd3",
+    "semantic_hash": "f78f5f43b737dfb2ee1d32bf5e12ebd3"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242944.513717,
+    "ast_hash": "227965bcaa01e0a2695711060f6ffc96",
+    "semantic_hash": "227965bcaa01e0a2695711060f6ffc96"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242945.0526874,
+    "ast_hash": "1b510c154591470c00b41e6be5e97cdb",
+    "semantic_hash": "1b510c154591470c00b41e6be5e97cdb"
+  },
+  "20260727T185227/figures/live_smoke_small/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242944.7257054,
+    "ast_hash": "9c2e9662095683465a15f90e7daf0180",
+    "semantic_hash": "9c2e9662095683465a15f90e7daf0180"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785246288.325694,
+    "ast_hash": "27a9170b3df33e4b909c2647ad46146a",
+    "semantic_hash": "27a9170b3df33e4b909c2647ad46146a"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785246288.1226902,
+    "ast_hash": "e83de926594ce50170aac6ff3beffc33",
+    "semantic_hash": "e83de926594ce50170aac6ff3beffc33"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246287.7876832,
+    "ast_hash": "9c9b59d62bb6cf1f9275582eec27be8e",
+    "semantic_hash": "9c9b59d62bb6cf1f9275582eec27be8e"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246287.7006814,
+    "ast_hash": "87a83d3a5684b504165d11cd71240f4c",
+    "semantic_hash": "87a83d3a5684b504165d11cd71240f4c"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785246287.9956875,
+    "ast_hash": "13c785f93c57bb53c29ae9e9385be28a",
+    "semantic_hash": "13c785f93c57bb53c29ae9e9385be28a"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785246287.579679,
+    "ast_hash": "a9390483f3e443bb5c54c464522ca975",
+    "semantic_hash": "a9390483f3e443bb5c54c464522ca975"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785246288.2296922,
+    "ast_hash": "0843765945aed1cde7b2c6d9e8a3eccc",
+    "semantic_hash": "0843765945aed1cde7b2c6d9e8a3eccc"
+  },
+  "20260727T185227/figures/live_smoke_small/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785246287.8956854,
+    "ast_hash": "cfc68b6bd27cd9f0f5439196032c6706",
+    "semantic_hash": "cfc68b6bd27cd9f0f5439196032c6706"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785246595.516542,
+    "ast_hash": "40bd9a735056bac4bddb3cc6b9992f55",
+    "semantic_hash": "40bd9a735056bac4bddb3cc6b9992f55"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785246595.3235385,
+    "ast_hash": "5db11c927a8a995923ad592d454191b9",
+    "semantic_hash": "5db11c927a8a995923ad592d454191b9"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246594.9955328,
+    "ast_hash": "31a6ab7c640b8d9f2da7824532984db7",
+    "semantic_hash": "31a6ab7c640b8d9f2da7824532984db7"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246594.9115312,
+    "ast_hash": "2ba5768d950f7051250d1c0a2e09b7bd",
+    "semantic_hash": "2ba5768d950f7051250d1c0a2e09b7bd"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785246595.1975362,
+    "ast_hash": "33f5d1fda4dbcec78a0e9d4f243b8d82",
+    "semantic_hash": "33f5d1fda4dbcec78a0e9d4f243b8d82"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785246594.7805288,
+    "ast_hash": "b1b3298b1312ffdb6d41b47c55135dcb",
+    "semantic_hash": "b1b3298b1312ffdb6d41b47c55135dcb"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785246595.4225404,
+    "ast_hash": "7179f3c81d9823afacba2d97e6c915de",
+    "semantic_hash": "7179f3c81d9823afacba2d97e6c915de"
+  },
+  "20260727T185227/figures/live_smoke_small/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785246595.1015346,
+    "ast_hash": "d3c5856bd10b2a00692ab13cdad3086f",
+    "semantic_hash": "d3c5856bd10b2a00692ab13cdad3086f"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/availability_over_time.png": {
+    "mtime": 1785230476.5279822,
+    "ast_hash": "516865e39ea8c4cc6c88f8e1cd753a0e",
+    "semantic_hash": "516865e39ea8c4cc6c88f8e1cd753a0e"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/concurrency_over_time.png": {
+    "mtime": 1785230476.3309836,
+    "ast_hash": "9176e96230a792bb5d43fb2823cc96e8",
+    "semantic_hash": "9176e96230a792bb5d43fb2823cc96e8"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/direct_vs_middleware_comparison.png": {
+    "mtime": 1785230476.0119858,
+    "ast_hash": "63af0b0dc73d1afd48f5f1390d9ed4c9",
+    "semantic_hash": "63af0b0dc73d1afd48f5f1390d9ed4c9"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230475.9279861,
+    "ast_hash": "52cc137d622247f613fc051a1f3e023c",
+    "semantic_hash": "52cc137d622247f613fc051a1f3e023c"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/error_rate_over_time.png": {
+    "mtime": 1785230476.2109845,
+    "ast_hash": "01cc677a4de51fa424c98cabbce43e48",
+    "semantic_hash": "01cc677a4de51fa424c98cabbce43e48"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/latency_distribution.png": {
+    "mtime": 1785230475.810987,
+    "ast_hash": "9c586191de9ba4b75e042984bbe269c7",
+    "semantic_hash": "9c586191de9ba4b75e042984bbe269c7"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/scheduling_drift_over_time.png": {
+    "mtime": 1785230476.4339828,
+    "ast_hash": "0ce136c4e479cb3fbbc0bb4bc656df21",
+    "semantic_hash": "0ce136c4e479cb3fbbc0bb4bc656df21"
+  },
+  "20260727T185227/figures/live_smoke_small/r08_seed_108/throughput_over_time.png": {
+    "mtime": 1785230476.120985,
+    "ast_hash": "3f635fb0968f5bc91d113586ef7818ea",
+    "semantic_hash": "3f635fb0968f5bc91d113586ef7818ea"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/availability_over_time.png": {
+    "mtime": 1785230923.9166656,
+    "ast_hash": "e7ac94954b8f33795aae168dc337f519",
+    "semantic_hash": "e7ac94954b8f33795aae168dc337f519"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/concurrency_over_time.png": {
+    "mtime": 1785230923.6846647,
+    "ast_hash": "ff7177f3aa0a31ccd0b7d184ee0f521d",
+    "semantic_hash": "ff7177f3aa0a31ccd0b7d184ee0f521d"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/e2e_latency_by_flow_type.png": {
+    "mtime": 1785230923.3486636,
+    "ast_hash": "93d723a150d9958e23a1a7272c6496c8",
+    "semantic_hash": "93d723a150d9958e23a1a7272c6496c8"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/error_rate_over_time.png": {
+    "mtime": 1785230923.5516644,
+    "ast_hash": "c6a0abce9426999b7399a9aaebfd2fe3",
+    "semantic_hash": "c6a0abce9426999b7399a9aaebfd2fe3"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/latency_distribution.png": {
+    "mtime": 1785230923.227663,
+    "ast_hash": "2e667401b0d7e06ef63839b0666b157e",
+    "semantic_hash": "2e667401b0d7e06ef63839b0666b157e"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/scheduling_drift_over_time.png": {
+    "mtime": 1785230923.811665,
+    "ast_hash": "18bd0e88fcc845553a5cc6706a43d953",
+    "semantic_hash": "18bd0e88fcc845553a5cc6706a43d953"
+  },
+  "20260727T185227/figures/live_smoke_small/r11_seed_111/throughput_over_time.png": {
+    "mtime": 1785230923.4536638,
+    "ast_hash": "a08bf556c18b38ee713c88bcc417e628",
+    "semantic_hash": "a08bf556c18b38ee713c88bcc417e628"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/availability_over_time.png": {
+    "mtime": 1785231124.36063,
+    "ast_hash": "f74687a81b1e608ddb7444859b2d3db4",
+    "semantic_hash": "f74687a81b1e608ddb7444859b2d3db4"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/concurrency_over_time.png": {
+    "mtime": 1785231124.1336288,
+    "ast_hash": "7ad1d10215ff624f9b01588d7eef40bf",
+    "semantic_hash": "7ad1d10215ff624f9b01588d7eef40bf"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/direct_vs_middleware_comparison.png": {
+    "mtime": 1785231123.814627,
+    "ast_hash": "c1c176f5350fb73ffdb4568f06296602",
+    "semantic_hash": "c1c176f5350fb73ffdb4568f06296602"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/e2e_latency_by_flow_type.png": {
+    "mtime": 1785231123.7246263,
+    "ast_hash": "1bb499952a523ae129cb0ecf340985ea",
+    "semantic_hash": "1bb499952a523ae129cb0ecf340985ea"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/error_rate_over_time.png": {
+    "mtime": 1785231124.009628,
+    "ast_hash": "b7aea1e253f9738e1cdbbe5cffcd33b8",
+    "semantic_hash": "b7aea1e253f9738e1cdbbe5cffcd33b8"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/latency_distribution.png": {
+    "mtime": 1785231123.6056256,
+    "ast_hash": "19e4d1c251ee0354cecad5836972d470",
+    "semantic_hash": "19e4d1c251ee0354cecad5836972d470"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/scheduling_drift_over_time.png": {
+    "mtime": 1785231124.2656295,
+    "ast_hash": "2d5d34887d3ddf21564c72dea472ace3",
+    "semantic_hash": "2d5d34887d3ddf21564c72dea472ace3"
+  },
+  "20260727T185227/figures/live_smoke_small/r12_seed_112/throughput_over_time.png": {
+    "mtime": 1785231123.9206274,
+    "ast_hash": "5697d4df530a425eb3254215f8461fa0",
+    "semantic_hash": "5697d4df530a425eb3254215f8461fa0"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785232555.38156,
+    "ast_hash": "56e081756e69c7028958b2b2885188a5",
+    "semantic_hash": "56e081756e69c7028958b2b2885188a5"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785232555.1735528,
+    "ast_hash": "9fc077096e592e32dc4ac2a1b43d2bcb",
+    "semantic_hash": "9fc077096e592e32dc4ac2a1b43d2bcb"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785232554.8285408,
+    "ast_hash": "45a0584d45c41b2f990a3a94e4671307",
+    "semantic_hash": "45a0584d45c41b2f990a3a94e4671307"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785232554.7485378,
+    "ast_hash": "47c5c929b6298ec94386f6af17a729e6",
+    "semantic_hash": "47c5c929b6298ec94386f6af17a729e6"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785232555.0505486,
+    "ast_hash": "8272d7300d99bb1aeb0e7b0bbbe35501",
+    "semantic_hash": "8272d7300d99bb1aeb0e7b0bbbe35501"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785232554.6155334,
+    "ast_hash": "4a3b9f24caac2ee31b9005b37475d7aa",
+    "semantic_hash": "4a3b9f24caac2ee31b9005b37475d7aa"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785232555.2805564,
+    "ast_hash": "2ac97c72d053fd631abff1e96a28ba4b",
+    "semantic_hash": "2ac97c72d053fd631abff1e96a28ba4b"
+  },
+  "20260727T185227/figures/load_ramp/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785232554.9385445,
+    "ast_hash": "fdbddc6f1c3543e3729442d93f21b145",
+    "semantic_hash": "fdbddc6f1c3543e3729442d93f21b145"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785236274.775671,
+    "ast_hash": "a321f34a1e0954506b0e22c57e1d87c5",
+    "semantic_hash": "a321f34a1e0954506b0e22c57e1d87c5"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785236274.6486683,
+    "ast_hash": "991fdb9749bc468b8987f023ebae13db",
+    "semantic_hash": "991fdb9749bc468b8987f023ebae13db"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785236274.432664,
+    "ast_hash": "8511a0e67908396aed0b209caaadc3e5",
+    "semantic_hash": "8511a0e67908396aed0b209caaadc3e5"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785236274.3746629,
+    "ast_hash": "302da85ad22418bab01cbdfbf459aca5",
+    "semantic_hash": "302da85ad22418bab01cbdfbf459aca5"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785236274.5736668,
+    "ast_hash": "3f150503934dcc7ce9c818630843a48a",
+    "semantic_hash": "3f150503934dcc7ce9c818630843a48a"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785236274.293661,
+    "ast_hash": "0173e095d992a4a83fbb678f993320d0",
+    "semantic_hash": "0173e095d992a4a83fbb678f993320d0"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785236274.7126696,
+    "ast_hash": "82250aa31a426648f6d2e17d61f334df",
+    "semantic_hash": "82250aa31a426648f6d2e17d61f334df"
+  },
+  "20260727T185227/figures/load_ramp/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785236274.5026655,
+    "ast_hash": "1a3defd32b10369317a3f51bfa2e3c55",
+    "semantic_hash": "1a3defd32b10369317a3f51bfa2e3c55"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242542.3363214,
+    "ast_hash": "f0b0112cbb89b9315bca832b92e510d4",
+    "semantic_hash": "f0b0112cbb89b9315bca832b92e510d4"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242542.1293178,
+    "ast_hash": "ecfe36c10dc9a8781c895ed52099c875",
+    "semantic_hash": "ecfe36c10dc9a8781c895ed52099c875"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785242541.7923121,
+    "ast_hash": "8b7da27831832a4af8a6ab2054ff6bad",
+    "semantic_hash": "8b7da27831832a4af8a6ab2054ff6bad"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242541.7143106,
+    "ast_hash": "a97c587dec6fc434147a66a6c1a6bd2a",
+    "semantic_hash": "a97c587dec6fc434147a66a6c1a6bd2a"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242542.0103157,
+    "ast_hash": "c6914e5f5528339fb0c2463a35734f6a",
+    "semantic_hash": "c6914e5f5528339fb0c2463a35734f6a"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242541.5863085,
+    "ast_hash": "010eef7a7778843d67289bf3820c3b95",
+    "semantic_hash": "010eef7a7778843d67289bf3820c3b95"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242542.2363195,
+    "ast_hash": "aab86d2fed2997360594c0b80b34377a",
+    "semantic_hash": "aab86d2fed2997360594c0b80b34377a"
+  },
+  "20260727T185227/figures/load_ramp/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242541.904314,
+    "ast_hash": "524f29e883a90c75f809d8ae85ba5ff0",
+    "semantic_hash": "524f29e883a90c75f809d8ae85ba5ff0"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785246522.4122095,
+    "ast_hash": "935dc0d5de6470eb44263093037421f7",
+    "semantic_hash": "935dc0d5de6470eb44263093037421f7"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785246522.1962054,
+    "ast_hash": "75323600a7fb6964e9c84285d5be690c",
+    "semantic_hash": "75323600a7fb6964e9c84285d5be690c"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246521.843199,
+    "ast_hash": "df6f09af9f9b6bf3c7d764a4d7c9be8e",
+    "semantic_hash": "df6f09af9f9b6bf3c7d764a4d7c9be8e"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246521.7651975,
+    "ast_hash": "f2e0f23e04b5e8bb07a212f62b7cacf5",
+    "semantic_hash": "f2e0f23e04b5e8bb07a212f62b7cacf5"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785246522.0722032,
+    "ast_hash": "5c56ccea22adfe4da917444fb7e15726",
+    "semantic_hash": "5c56ccea22adfe4da917444fb7e15726"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785246521.6361952,
+    "ast_hash": "463ac1d4e3ac7efe87db389879dd048c",
+    "semantic_hash": "463ac1d4e3ac7efe87db389879dd048c"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785246522.3082075,
+    "ast_hash": "6ea5bdaeb16bfde1e5713e0a38201595",
+    "semantic_hash": "6ea5bdaeb16bfde1e5713e0a38201595"
+  },
+  "20260727T185227/figures/load_ramp/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785246521.951201,
+    "ast_hash": "66ab460402a547a2ec1b1bf489c98fdd",
+    "semantic_hash": "66ab460402a547a2ec1b1bf489c98fdd"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785246835.5547361,
+    "ast_hash": "d26e5930c829a7b289ba111b2f5c39b2",
+    "semantic_hash": "d26e5930c829a7b289ba111b2f5c39b2"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785246835.3337324,
+    "ast_hash": "87ab746f3bfc3407db4f267a3d21574a",
+    "semantic_hash": "87ab746f3bfc3407db4f267a3d21574a"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785246834.9747262,
+    "ast_hash": "64c9b370ce74d91957db89f18eed09c5",
+    "semantic_hash": "64c9b370ce74d91957db89f18eed09c5"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785246834.8837247,
+    "ast_hash": "bc413ab89178ac5e021544b93fbebfa4",
+    "semantic_hash": "bc413ab89178ac5e021544b93fbebfa4"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785246835.2127302,
+    "ast_hash": "64bb48cf43d2fd14ddcb3c6094f21b8a",
+    "semantic_hash": "64bb48cf43d2fd14ddcb3c6094f21b8a"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785246834.7407222,
+    "ast_hash": "5b2e68beb19a0fea963cad26f9c4d7bb",
+    "semantic_hash": "5b2e68beb19a0fea963cad26f9c4d7bb"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785246835.4587345,
+    "ast_hash": "46638e25f556c51898528611e6e460f5",
+    "semantic_hash": "46638e25f556c51898528611e6e460f5"
+  },
+  "20260727T185227/figures/load_ramp/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785246835.0907283,
+    "ast_hash": "4bc68076da65f606fd41b998b087d92e",
+    "semantic_hash": "4bc68076da65f606fd41b998b087d92e"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/availability_over_time.png": {
+    "mtime": 1785235806.1062949,
+    "ast_hash": "81f17150c6dc2f5ca383c3ec25e68e12",
+    "semantic_hash": "81f17150c6dc2f5ca383c3ec25e68e12"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/burst_vs_non_burst_latency.png": {
+    "mtime": 1785235806.006293,
+    "ast_hash": "466d4385e0d883017e679293ea445e99",
+    "semantic_hash": "466d4385e0d883017e679293ea445e99"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/concurrency_over_time.png": {
+    "mtime": 1785235805.8342896,
+    "ast_hash": "95800bc9bb25b8025de10d545f007d12",
+    "semantic_hash": "95800bc9bb25b8025de10d545f007d12"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/direct_vs_middleware_comparison.png": {
+    "mtime": 1785235805.5852847,
+    "ast_hash": "c3b744a15b98514a9c19b99c776ebcdf",
+    "semantic_hash": "c3b744a15b98514a9c19b99c776ebcdf"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/e2e_latency_by_flow_type.png": {
+    "mtime": 1785235805.5352836,
+    "ast_hash": "ee591a4ad1f47674a58ccb9d1da0404d",
+    "semantic_hash": "ee591a4ad1f47674a58ccb9d1da0404d"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/error_rate_over_time.png": {
+    "mtime": 1785235805.7472878,
+    "ast_hash": "a591d2836eb0b25ba3bff3fb1a803ab0",
+    "semantic_hash": "a591d2836eb0b25ba3bff3fb1a803ab0"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/latency_distribution.png": {
+    "mtime": 1785235805.449282,
+    "ast_hash": "8727bac1eda44cab79072b775d949862",
+    "semantic_hash": "8727bac1eda44cab79072b775d949862"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/scheduling_drift_over_time.png": {
+    "mtime": 1785235805.901291,
+    "ast_hash": "866b40eba06526665f6c45baad5dab75",
+    "semantic_hash": "866b40eba06526665f6c45baad5dab75"
+  },
+  "20260727T185227/figures/stress_extreme/r01_seed_101/throughput_over_time.png": {
+    "mtime": 1785235805.6632862,
+    "ast_hash": "ef144256cd0fffee6d8c8e0bf505c19a",
+    "semantic_hash": "ef144256cd0fffee6d8c8e0bf505c19a"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/availability_over_time.png": {
+    "mtime": 1785239045.6111004,
+    "ast_hash": "d5a398448171c0a9edad09598aa085cf",
+    "semantic_hash": "d5a398448171c0a9edad09598aa085cf"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/burst_vs_non_burst_latency.png": {
+    "mtime": 1785239045.522101,
+    "ast_hash": "043d23e3d5971e2f82b7f69ac2863147",
+    "semantic_hash": "043d23e3d5971e2f82b7f69ac2863147"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/concurrency_over_time.png": {
+    "mtime": 1785239045.359102,
+    "ast_hash": "62b7f096f322b601e2839251ad383f31",
+    "semantic_hash": "62b7f096f322b601e2839251ad383f31"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/direct_vs_middleware_comparison.png": {
+    "mtime": 1785239045.1341035,
+    "ast_hash": "a3cd565c45b28fc137282cd294cdf529",
+    "semantic_hash": "a3cd565c45b28fc137282cd294cdf529"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/e2e_latency_by_flow_type.png": {
+    "mtime": 1785239045.0841038,
+    "ast_hash": "7a3c9bf11fe884f39e66306a031c0d8f",
+    "semantic_hash": "7a3c9bf11fe884f39e66306a031c0d8f"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/error_rate_over_time.png": {
+    "mtime": 1785239045.2771027,
+    "ast_hash": "7bbde12c48643f31a3598172a9adf940",
+    "semantic_hash": "7bbde12c48643f31a3598172a9adf940"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/latency_distribution.png": {
+    "mtime": 1785239044.9991045,
+    "ast_hash": "4571c449983907eb564150c7180cc66c",
+    "semantic_hash": "4571c449983907eb564150c7180cc66c"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/scheduling_drift_over_time.png": {
+    "mtime": 1785239045.4231017,
+    "ast_hash": "2f37c573d11cc1e1bf3ec70a638a16c8",
+    "semantic_hash": "2f37c573d11cc1e1bf3ec70a638a16c8"
+  },
+  "20260727T185227/figures/stress_extreme/r02_seed_102/throughput_over_time.png": {
+    "mtime": 1785239045.207103,
+    "ast_hash": "c85fed1a749ea9ff5583cb90d15adbfd",
+    "semantic_hash": "c85fed1a749ea9ff5583cb90d15adbfd"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/availability_over_time.png": {
+    "mtime": 1785242341.485854,
+    "ast_hash": "994abac7d3483a480645d122cd9f5b07",
+    "semantic_hash": "994abac7d3483a480645d122cd9f5b07"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/burst_vs_non_burst_latency.png": {
+    "mtime": 1785242341.3538516,
+    "ast_hash": "ab8e0172578faadec67fb8e2d0c3a71e",
+    "semantic_hash": "ab8e0172578faadec67fb8e2d0c3a71e"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/concurrency_over_time.png": {
+    "mtime": 1785242341.0908468,
+    "ast_hash": "2de5796a15e1309cc38091057d96e3f7",
+    "semantic_hash": "2de5796a15e1309cc38091057d96e3f7"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/direct_vs_middleware_comparison.png": {
+    "mtime": 1785242340.7338405,
+    "ast_hash": "ac07192f6b5fb2398f427ef0f9c1546d",
+    "semantic_hash": "ac07192f6b5fb2398f427ef0f9c1546d"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/e2e_latency_by_flow_type.png": {
+    "mtime": 1785242340.650839,
+    "ast_hash": "c1e139007197f923169c41ed1151863a",
+    "semantic_hash": "c1e139007197f923169c41ed1151863a"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/error_rate_over_time.png": {
+    "mtime": 1785242340.9638445,
+    "ast_hash": "2b08a4514e93c3b8333ceb33e568b0dd",
+    "semantic_hash": "2b08a4514e93c3b8333ceb33e568b0dd"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/latency_distribution.png": {
+    "mtime": 1785242340.5198367,
+    "ast_hash": "75487fc961608e28546e971b6311e79a",
+    "semantic_hash": "75487fc961608e28546e971b6311e79a"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/scheduling_drift_over_time.png": {
+    "mtime": 1785242341.2038488,
+    "ast_hash": "e9bf84ad331deba42007add3e49a0190",
+    "semantic_hash": "e9bf84ad331deba42007add3e49a0190"
+  },
+  "20260727T185227/figures/stress_extreme/r03_seed_103/throughput_over_time.png": {
+    "mtime": 1785242340.8478425,
+    "ast_hash": "c86b8c7542d346a633900a4aa89b7762",
+    "semantic_hash": "c86b8c7542d346a633900a4aa89b7762"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/availability_over_time.png": {
+    "mtime": 1785245763.118097,
+    "ast_hash": "431fd33a2ad5025e925e6d61e2250d71",
+    "semantic_hash": "431fd33a2ad5025e925e6d61e2250d71"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/burst_vs_non_burst_latency.png": {
+    "mtime": 1785245762.9910934,
+    "ast_hash": "d80e670b888bbe7054bf94869e46c1f4",
+    "semantic_hash": "d80e670b888bbe7054bf94869e46c1f4"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/concurrency_over_time.png": {
+    "mtime": 1785245762.7460861,
+    "ast_hash": "3e27905654d5c196fe51e59b06aae659",
+    "semantic_hash": "3e27905654d5c196fe51e59b06aae659"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/direct_vs_middleware_comparison.png": {
+    "mtime": 1785245762.4060762,
+    "ast_hash": "d4f19bd5640af2c9502bf2e7ad2c4ede",
+    "semantic_hash": "d4f19bd5640af2c9502bf2e7ad2c4ede"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/e2e_latency_by_flow_type.png": {
+    "mtime": 1785245762.328074,
+    "ast_hash": "e9ca321e89775bbbb5749676709f77b0",
+    "semantic_hash": "e9ca321e89775bbbb5749676709f77b0"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/error_rate_over_time.png": {
+    "mtime": 1785245762.6220825,
+    "ast_hash": "0c18ab79de99031fb0b23da9430c3fd8",
+    "semantic_hash": "0c18ab79de99031fb0b23da9430c3fd8"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/latency_distribution.png": {
+    "mtime": 1785245762.19507,
+    "ast_hash": "b960c381d23c65494271c0909e44fa8d",
+    "semantic_hash": "b960c381d23c65494271c0909e44fa8d"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/scheduling_drift_over_time.png": {
+    "mtime": 1785245762.843089,
+    "ast_hash": "9005604dee40cacc10412695c0be47da",
+    "semantic_hash": "9005604dee40cacc10412695c0be47da"
+  },
+  "20260727T185227/figures/stress_extreme/r04_seed_104/throughput_over_time.png": {
+    "mtime": 1785245762.5170796,
+    "ast_hash": "eb9fa0daab41d182400154113bea34e5",
+    "semantic_hash": "eb9fa0daab41d182400154113bea34e5"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/availability_over_time.png": {
+    "mtime": 1785250745.5909054,
+    "ast_hash": "56ee06f9f8cfde95f39c0b7b7a42849b",
+    "semantic_hash": "56ee06f9f8cfde95f39c0b7b7a42849b"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/burst_vs_non_burst_latency.png": {
+    "mtime": 1785250745.4909053,
+    "ast_hash": "963902b7d20a5c0919aad6489a03d7e8",
+    "semantic_hash": "963902b7d20a5c0919aad6489a03d7e8"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/concurrency_over_time.png": {
+    "mtime": 1785250745.3219051,
+    "ast_hash": "163a63634ca9bc0558c7e39533690687",
+    "semantic_hash": "163a63634ca9bc0558c7e39533690687"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/direct_vs_middleware_comparison.png": {
+    "mtime": 1785250745.096905,
+    "ast_hash": "d854cb28787485ab77883c9b2a4df253",
+    "semantic_hash": "d854cb28787485ab77883c9b2a4df253"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/e2e_latency_by_flow_type.png": {
+    "mtime": 1785250745.040905,
+    "ast_hash": "1beb442840444dcf9a14b87b5f7a6d6e",
+    "semantic_hash": "1beb442840444dcf9a14b87b5f7a6d6e"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/error_rate_over_time.png": {
+    "mtime": 1785250745.239905,
+    "ast_hash": "6614e719f0d7f5e9e8fc6666feb4c875",
+    "semantic_hash": "6614e719f0d7f5e9e8fc6666feb4c875"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/latency_distribution.png": {
+    "mtime": 1785250744.955905,
+    "ast_hash": "e4cf5fa8b7db78a7730a67bb68ae10fc",
+    "semantic_hash": "e4cf5fa8b7db78a7730a67bb68ae10fc"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/scheduling_drift_over_time.png": {
+    "mtime": 1785250745.3879051,
+    "ast_hash": "75388a0276adcd6dedf8af9086bd8348",
+    "semantic_hash": "75388a0276adcd6dedf8af9086bd8348"
+  },
+  "20260727T185227/figures/stress_extreme/r05_seed_105/throughput_over_time.png": {
+    "mtime": 1785250745.167905,
+    "ast_hash": "b72f0ce069226b0352be268d630d28ac",
+    "semantic_hash": "b72f0ce069226b0352be268d630d28ac"
+  }
+}

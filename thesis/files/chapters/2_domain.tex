@@ -1,178 +1,1042 @@
-\chapter{Domain Context and Interoperability}
-\label{chap:domain}
+\chapter{Solution Space}
+\label{chap:stateofart}
 
+\section{Scientific Basis of the Profiling Strategy}
+\subsection{Experimental Alternatives and Validity}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[alt={Testo alternativo dell'immagine}, height=5cm]{img/qubit.jpeg}
-%     \description[Rappresenzazione Qubit]{Long description}
-%     \caption{Lorem}
-%     \label{fig:qubit}
-% \end{figure}
-% \lipsum[1]
+\noindent The methodological problem is not the generation of a large number of
+requests. It is the production of interpretable performance evidence for
+stateful healthcare workflows when the experimenter controls the initiating
+client but does not control the complete regional execution path. The relevant
+unit of analysis is therefore an information-dependent workflow rather than an
+isolated endpoint. A valid experiment preserves the order in which security
+material, patient identifiers, context information and application outcomes become available.
+It also distinguishes the load offered to the system from the work that the system completes.
 
-% \begin{listing}[H]
-% \begin{minted}{c}
-% #include <stdio.h>
-% int main() {
-%     print("Hello, world!");
-%     return 0;
-% }
-% \end{minted}
-% \caption{Example of code}
-% \label{listing:b}
-% \end{listing}
+\noindent Four experimental strategies define the solution space. Operational observation
+offers high ecological fidelity, but it does not isolate the offered load from
+concurrent changes in users, services, routing, and infrastructure. An isolated
+protocol benchmark offers strong repeatability, but it removes the state
+transitions that determine whether a regional workflow reaches its terminal
+outcome. Trace replay can preserve an observed temporal pattern, but it requires
+an authorised trace whose state, ordering, and dependencies support faithful
+reconstruction. Controlled synthetic workflows make composition, timing,
+concurrency, and randomisation explicit, but their resemblance to production
+traffic requires independent validation.
 
-% Lorem ipsum:
-% \begin{listing}[H]
-% \begin{minted}{c}
-% #include <stdio.h>
-% int main() {
-%     print("Hello, world!");
-%     return 0;
-% }
-% \end{minted}
-% \caption{Example of code}
-% \label{listing:b-2}
-% \end{listing}
+\noindent Zhu, Chen, and Chiueh provide the decisive methodological distinction. Their
+trace-replay study treats the input trace, the initial system state, and the
+dependencies among operations as necessary conditions for accurate replay. The
+authors also show that temporal or spatial scaling remains credible only when it
+does not violate those dependencies \footcite{zhu-tbbt-trace-replay}. Their
+result does not establish the universal superiority of replay over synthetic
+benchmarks. It establishes that replay validity depends on evidence that exists
+before the experiment begins. In the regional case examined by this thesis, no
+authorised production trace, complete state reconstruction, sanitisation
+procedure, or replay agreement enters the available evidence perimeter.
+Consequently, trace replay is not an admissible experimental option. Within this perimeter, controlled synthetic workflows constitute the only
+strategy that simultaneously preserves internal validity, data minimisation, and
+repeatability. The conclusion is conditional rather than absolute: synthetic
+execution is the only controllable route among the evidence sources that the
+experimenter is authorised to use. It does not reproduce an unknown operational
+distribution by assumption. Instead, it creates matched experimental populations
+whose differences follow from declared factors. This distinction prevents the
+absence of production evidence from becoming an implicit claim of production
+representativeness.
 
-% Lorem ipsum:
-% \begin{listing}[H]
-% \begin{minted}{c}
-% #include <stdio.h>
-% int main() {
-%     print("Hello, world!");
-%     return 0;
-% }
-% \end{minted}
-% \caption{Example of code}
-% \label{listing:b-3}
-% \end{listing}
+\noindent Table~\ref{tab:solution-alternatives} separates the scientific role of each
+alternative from the claim that it can support.
 
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
+    \caption{Experimental alternatives and their admissible scientific role.}
+    \label{tab:solution-alternatives}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Strategy} & \textbf{Primary strength} & \textbf{Admissible claim} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Strategy} & \textbf{Primary strength} & \textbf{Admissible claim} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Operational observation & Natural service mix and environmental realism. & Descriptive evidence for the observed environment when access and provenance are complete. \\
+    \hline
+    Isolated protocol benchmark & Repeatable control of one exchange. & Baseline for one contract, not completion of a stateful healthcare flow. \\
+    \hline
+    \rowcolor{tableGray}
+    Trace replay & Preservation of captured ordering and timing when state and dependencies remain reconstructable. & Reproduction of an authorised trace within its capture and scaling assumptions. \\
+    \hline
+    Synthetic workflow & Explicit flow mix, timing, seed, concurrency, and data policy. & Internally valid comparison of declared scenarios; external representativeness remains unproven. \\
+\end{longtable}
+\endgroup
 
-\section{Introduction}
-\noindent This chapter develops the domain background needed to understand the interoperability problem addressed by the thesis. Chapter 1 introduced the research setting and the dual analytical and technical contribution of the work; the present chapter focuses instead on the healthcare environment in which those contributions become necessary. The reference domain is territorial healthcare in the Veneto Region, where care continuity depends on the cooperation of organizational actors, clinical-care applications, regional platforms, authentication services, patient registries, document repositories, and integration middleware.
-The chapter first discusses territorial care and continuity of care, with particular attention to the organizational model defined by Ministerial Decree 77/2022. It then examines the problem of information fragmentation and the need for interoperability among heterogeneous systems. Finally, it identifies the main actors and integration components involved in the regional ecosystem, and introduces the normative, organizational, security, data-management, and auditability constraints that shape the design of healthcare integration flows.
-The purpose is not to provide a general description of the Italian healthcare system. Instead, the chapter isolates the elements that are relevant for the thesis: why territorial processes require information continuity, why healthcare systems cannot be treated as isolated applications, and why a controlled methodology for modelling and measuring interoperability flows is required.
-\subsection{Territorial Care and Continuity}
-\noindent Territorial care refers to the set of healthcare and social-health services delivered close to the patient’s living environment, outside or around the hospital setting. In this thesis, the concept is relevant because territorial care depends heavily on transitions: from hospital to home care, from access points to coordination units, from general practitioners to specialist or community services, and from clinical documentation to regional information systems.
-Continuity of care requires that information follows these transitions in a consistent and timely way. A patient taken in charge by a territorial service may need to be identified through a regional registry, associated with a care pathway, linked to documents in the Electronic Health Record, and managed by operators with different roles and authorizations. The domain therefore creates interoperability requirements before any technical implementation is considered.
-This section introduces the territorial structures defined by DM 77/2022, the role of Centrali Operative Territoriali, the actors involved in patient management, and the effect of digitalization on care-taking processes.
-\subsection{Territorial Structures and Organizational Models}
-\noindent Ministerial Decree 77/2022 defines models and standards for the development of territorial care in the Italian National Health Service. For the thesis, the relevant point is that territorial care is organized as a network of services and coordination structures rather than as a sequence of isolated encounters. The decree identifies entities such as the District, the Casa della Comunita, the Centrale Operativa Territoriale, the 116117 operational center, home care services, community hospitals, and telemedicine-supported services.
-The District represents a coordination level for territorial health and social-health services. The Casa della Comunita is conceived as a recognizable access point for citizens and as a place where multidisciplinary professionals can operate. The Centrale Operativa Territoriale, or COT, coordinates transitions across settings and supports the continuity of care. Home care and community hospitals represent further settings in which patient management depends on coordinated information exchange.
-The technological implications are substantial. The decree refers to systems for tracking transitions, managing and monitoring health data, accessing the Electronic Health Record, integrating with company applications, and supporting telemedicine. These requirements show that territorial care is not only an organizational reform; it also requires digital infrastructures capable of linking actors, applications, and information sources.
-The decree is therefore used in this chapter as the normative source for the organizational and technological rationale of territorial interoperability, especially for the district model, the COT, the 116117 operational center, home care, community hospitals, telemedicine, Electronic Health Record access, and information-system interconnection. [DATA MISSING: BibLaTeX entry and exact page references for the cited DM 77/2022 passages in the final bibliography.]
-\subsection{Role of the Centrale Operativa Territoriale}
-\noindent The Centrale Operativa Territoriale, abbreviated as COT, is central to the interoperability perspective of this thesis. Its function is not primarily to deliver a clinical service directly, but to coordinate the taking in charge of the person and to connect services and professionals across different care settings. In this sense, the COT is a coordination node where organizational continuity and information continuity meet.
-The COT needs access to updated patient information, care-transition data, and communication channels with other services. It may interact with hospital departments, home care services, general practitioners, territorial access points, and regional systems. The DM 77/2022 documentation explicitly associates COT activity with technological requirements such as tracking transitions, monitoring health data, accessing the Electronic Health Record, and integrating with company information systems.
-For interoperability, this means that the COT cannot be represented as a standalone application. It is part of a distributed process in which patient identity, clinical context, care assignment, and documentation must be made available across systems. Protected discharge and protected admission are therefore natural examples of COT-related processes: they involve transitions between hospital and territorial settings, require coordination among actors, and depend on reliable information exchange.
-\subsection{Other Actors and Roles}
-\noindent Territorial care involves several actors whose responsibilities are distinct but operationally connected. General practitioners, or Medici di Medicina Generale (MMG), represent a primary-care reference for patients. ULSS and other Healthcare Organizations provide organizational and operational structures for local services. Hospital departments generate or consume information related to admissions, discharges, and clinical events. Assistenza Domiciliare Integrata (ADI) provides integrated home care for patients requiring support at home.
-The relevance of these actors for the thesis lies in their information dependencies. A hospital department may trigger a discharge process that requires territorial follow-up. ADI may need patient data, care plans, clinical documentation, and coordination with the COT. MMG may need visibility over patient transitions and documents. Healthcare Organizations must manage local processes while also interoperating with regional systems and shared infrastructures.
-These interactions create the conditions for multi-actor flows. The information needed to manage a patient is not owned by a single system or actor. It is distributed across applications, registries, documents, and organizational responsibilities. As a result, interoperability becomes a prerequisite for continuity of care, and any experimental model of such flows must preserve the fact that several actors and systems contribute to one end-to-end process.
-\subsection{Digitalization Impact}
-\noindent Digitalization affects care-taking processes by making coordination more dependent on shared information systems. In territorial care, taking charge of a patient may involve patient identification, assessment, care-plan creation, assignment to a service, consultation of previous documents, production of new clinical documentation, and audit of operator actions. These steps are partly organizational and partly technical.
-The SI.Ter documentation describes a context in which territorial services are supported by application modules and by integration with regional or local systems. Digitalization therefore does not simply replace paper with electronic forms. It changes the way processes are coordinated: information can be routed, transformed, validated, logged, subscribed to, or made available through regional services. At the same time, digitalization introduces new constraints, because each step must respect authorization rules, data-protection requirements, interoperability specifications, and auditability needs.
-For this thesis, the impact of digitalization is relevant because it turns care pathways into measurable technical flows. Once a process is mediated by services, APIs, middleware, and logs, it becomes possible to model it as a sequence of steps and to evaluate properties such as latency, completion time, error rate, and concurrency. This is the conceptual link between the healthcare domain and the framework developed in the thesis.
-The available SI.Ter notes support two examples that can be used at an abstract, non-operational level. In a protected-discharge pattern, hospital-originated information can trigger COT evaluation, access to patient identity and clinical documentation, and assignment to an appropriate territorial setting. In a 116117/PUA/COT pattern, a citizen-facing access channel can route a socio-health need toward the PUA and then to the COT, where the process is managed through territorial-care applications. These examples are used only as workflow patterns: organization-specific names, local configurations, operational details, and endpoint-level information remain outside the scope of this chapter. [DATA MISSING: final disclosure validation for detailed SI.Ter workflow variants, operational names, and organization-specific examples.]
-\subsection{Information Fragmentation and Interoperability}
-Information fragmentation occurs when data required for a care process are distributed across systems that were not originally designed as a single application. In territorial healthcare, fragmentation may concern patient identity, clinical documentation, administrative records, prescriptions, workflow states, access rights, and audit information. The problem is not only technical: it reflects the organizational distribution of healthcare responsibilities.
-Interoperability is the response to this fragmentation. It enables heterogeneous systems to exchange information, preserve meaning across boundaries, and support continuity of care. However, interoperability also introduces complexity, because each integration flow must coordinate formats, protocols, identifiers, security mechanisms, routing rules, and error handling.
-This section discusses fragmentation from the perspective of application heterogeneity, architectural separation among layers, middleware orchestration, and the value of interoperability for care continuity and process governance.
-\subsection{Heterogeneity of Healthcare Application Systems}
-\noindent Healthcare application systems are heterogeneous because they serve different purposes and have evolved under different organizational and technical constraints. In the Veneto regional context described by the SI.Ter documentation, the ecosystem includes territorial-care modules, authentication systems, patient registry services, Electronic Health Record components, XDS repositories, prescription systems, CUP systems, ADT systems, digital signature services, and administrative platforms.
-Each system exposes a specific operational view of the patient or the process. A registry system focuses on patient identity and demographic information. A document infrastructure focuses on clinical documents and metadata. A workflow application focuses on care coordination. An authentication service focuses on identity, roles, and access context. Interoperability has to connect these views without assuming that they share the same internal model.
-This heterogeneity motivates the thesis. A performance or workload evaluation that treats all requests as equivalent would miss the fact that different transactions have different semantics, dependencies, and technical constraints. The framework therefore models traffic at the level of flows and transaction sequences, not only as isolated HTTP requests.
-\subsection{Separation of Concerns}
-\noindent Modern healthcare platforms are usually organized into layers. The SI.Ter technical documentation describes presentation components, backend services, interoperability components, workflow automation, persistence, monitoring, and external regional or local systems. This separation improves modularity and maintainability, but it also means that a user action may cross several layers before producing a completed business outcome.
-A frontend may initiate a request, but the relevant operation can involve backend services, middleware routing, transformation logic, regional APIs, registries, queues, or document repositories. From the user’s point of view, this may appear as a single workflow step. From an interoperability perspective, it is a chain of technical interactions.
-This separation is important for measurement. Client-observed latency, middleware processing time, backend execution time, and regional-service response time do not describe the same boundary. The thesis therefore avoids treating a single metric as if it represented the whole system. Instead, it motivates a layered interpretation of measurements, where framework-side observations and middleware-side observations remain distinct unless reliable correlation evidence is available.
-\subsection{Orchestration Routing and Application Decoupling}
-\noindent When several systems participate in a healthcare process, interoperability requires orchestration, routing, transformation, and decoupling. Orchestration defines how steps are coordinated. Routing determines where a message or request must be sent. Transformation adapts formats and data representations. Decoupling reduces direct dependencies among application components, often through APIs, queues, or middleware services.
-The SI.Ter documentation assigns a central role to the interoperability layer, including message orchestration, support for multiple formats and protocols, asynchronous messaging, and transformation logic. These components are not auxiliary details. They are what make it possible for applications developed for different purposes to participate in a shared care process.
-For the thesis, orchestration also has an experimental meaning. A workload should not only contain a number of requests; it should represent the order and dependency structure of a flow. If a token must be obtained before a context call, or if a patient query precedes a later operation, the benchmark must preserve that sequence. This is why the framework models step dependencies within flows and allows concurrency among independent flows rather than flattening all activity into unrelated requests.
-\subsection{Interoperability as Added Value}
-\noindent Interoperability adds value when it supports care continuity and process governance. From the care-continuity perspective, it enables information to follow the patient across settings and professionals. From the governance perspective, it makes processes more observable, traceable, and consistent with organizational rules. In territorial healthcare, both dimensions are necessary.
-A protected discharge process, for example, may require information from hospital systems, patient registry services, territorial coordination applications, and document infrastructures. If these systems do not interoperate, the process risks duplication, delays, manual reconciliation, or incomplete information. If they interoperate through controlled flows, the process can be more consistently represented, monitored, and audited.
-The thesis treats interoperability as a measurable property of process execution. It is not enough to state that systems are connected; it is also necessary to understand whether the resulting flows can be executed under defined workload conditions, whether failures are observable, and whether performance indicators can be computed at the appropriate level.
-\section{Actors and Integration Components}
-\noindent The interoperability ecosystem considered in the thesis includes both organizational actors and technical components. Organizational actors include Healthcare Organizations, territorial services, hospital departments, MMG, ADI, and coordination units such as the COT. Technical components include application modules, middleware, API gateways, identity providers, IAP services, patient registry systems, Electronic Health Record infrastructure, document repositories, context-call services, and prescription services.
-The purpose of this section is to identify these components only at the level needed for the thesis. Later chapters can then map them to standards, transactions, and executable flow models. This avoids turning the chapter into a catalogue of systems while still clarifying why healthcare interoperability requires careful architectural analysis.
-\subsection{Corporate and Regional Systems}
-\noindent Corporate and regional systems coexist in the Veneto healthcare ecosystem. Corporate systems are associated with the operations of individual Healthcare Organizations, such as local clinical applications, ADT systems, CUP systems, or document repositories. Regional systems provide shared services, such as identity infrastructure, patient registry functions, Electronic Health Record access, and regional interoperability specifications.
-This coexistence produces a distributed architecture of responsibility. Some information is managed locally, some is accessed through regional services, and some must be synchronized or referenced across boundaries. In such a context, a care process cannot be modelled as a single application transaction. It must be understood as an interaction among systems that differ in scope, ownership, and interface.
-For the thesis, this distinction matters because the framework simulates traffic that represents regional interoperability flows rather than only local application behavior. The modelled workload therefore reflects the existence of shared services and external dependencies.
-\subsection{API Gateway and Integration Middleware}
-\noindent API gateways and integration middleware act as mediation layers between clients, application services, and external systems. Their functions may include routing, protocol mediation, transformation, security enforcement, logging, error handling, and lifecycle management of APIs. The SI.Ter technical report describes an interoperability layer involving WSO2 Micro Integrator, microservices, RabbitMQ, transformation logic, and API management components.
-The middleware layer is particularly important for performance and observability. It can introduce processing time, retries, queues, transformations, or error-management behavior. At the same time, it can provide logs and metrics that are not visible from the client side. This dual role makes middleware both a functional enabler and a measurement boundary.
-The thesis therefore distinguishes framework-generated observations from middleware observations. A framework request can measure end-to-end client behavior, but middleware logs may be needed to understand gateway or upstream contributions. This distinction underlies the two-level grey-box methodology introduced in Chapter 1 and developed later in the thesis.
-\subsection{Identity Providers and Authentication Levels}
-\noindent Authentication and authorization are core constraints in healthcare interoperability. Operators must be identified, their roles must be known, and access to patient information must be limited to appropriate contexts. The documentation consulted for the thesis includes references to federated identity mechanisms, APMS, SAML, JWT, and Identity and Assertion Provider services.
-In the regional RVE flows considered by the framework, identity and assertion steps are not peripheral. They can be prerequisites for later transactions. For example, an assertion or token obtained in an earlier step may be required by a later service call. This makes security part of the execution logic of the flow rather than a separate configuration detail.
-From an experimental point of view, authentication-related steps affect both correctness and performance. A flow can fail if a token or assertion is missing, invalid, or not propagated correctly. A measurement framework must therefore model these dependencies explicitly, while avoiding any exposure of real credentials, certificates, or sensitive endpoint details.
-\subsection{Regional Health Registry and Anagrafe Zero}
-\noindent Anagrafe Zero represents a central component for patient identity and registry functions in the regional ecosystem. The consulted Anagrafe Zero specification refers to transactions such as RVE-54 Patient Query, RVE-55 Patient ID Assignment, RVE-57 Patient Info Updating, and RVE-100 Resource Subscription. These services are connected to the management, search, creation, update, and subscription of patient identity information.
-For the thesis, Anagrafe Zero is relevant because patient identity is a prerequisite for many care processes. A flow involving protected discharge, protected admission, or access to clinical documents requires a reliable patient context. If patient identity is uncertain or inconsistent, later steps may become impossible or unsafe.
-The framework reflects this relevance by generating synthetic FHIR Patient resources and by modelling patient-related RVE flows. In particular, the current codebase includes flow types involving RVE-54 and RVE-55. This supports experiments where patient identity operations are part of a broader workload rather than isolated examples.
-\subsection{Electronic Health Record and Document Infrastructure}
-\noindent The Electronic Health Record and document infrastructure provide access to clinical documentation across care settings. In the regional ecosystem, XDS-based document repositories and the Affinity Domain specifications are relevant to the publication, retrieval, and indexing of documents. The SI.Ter technical documentation also refers to integration with XDS repositories and the regional Electronic Health Record.
-Document interoperability differs from patient-registry interoperability because it deals not only with identity, but also with clinical documents, metadata, access rules, and document lifecycle. Transactions such as ITI-18 and ITI-43 are relevant to document query and retrieval in IHE XDS.b environments, while other transactions may be involved in publication or replacement.
-For the thesis, the document infrastructure is part of the broader interoperability scenario. The framework currently includes ITI-18 and ITI-43 flow types, allowing document-oriented traffic to be represented in the workload model. Final claims about document-publication behavior must remain limited to what is supported by the sources and the codebase.
-\subsection{ePersonam and Context Services}
-\noindent The SI.Ter technical documentation identifies ePersonam as one of the application suites involved in territorial care modules such as COT, home care, intermediate care, and hospice. In the thesis, ePersonam is relevant as an example of a clinical-care application environment that may need to interact with regional services and context mechanisms.
-Context services are important because some flows do not simply exchange data; they enable access to an application or service while carrying identity and patient context. The RVE context-call documentation describes a pattern involving RVE-121 for obtaining a JWT token and RVE-130 for carrying the context call. In such flows, the application context depends on values produced by previous authentication or token-exchange steps.
-The framework models this kind of dependency through FLOW\_CONTEXT\_CALL, which includes RVE-1.b, RVE-121, and RVE-130. This makes the context-call scenario a clear example of why sequential flow modelling is necessary
-\subsection{Dematerialized Electronic Prescription}
-\noindent Dematerialized electronic prescription services are part of the broader healthcare integration ecosystem. The SI.Ter technical report refers to integration with the regional prescription system and mentions MEF transactions such as prescription sending and cancellation. In territorial care, prescription functions may be relevant when clinical-care applications need to interact with regional or national prescription services.
-For this thesis, prescription services are introduced as part of the domain context rather than as a central implemented flow. The framework focus remains on RVE and related interoperability traffic.
-\section{Normative and Organizational Constraints}
-\noindent Healthcare interoperability is shaped by constraints that go beyond software architecture. National and regional regulation, identity and authorization rules, health-data management requirements, document handling, traceability, and auditability all influence how flows can be designed and evaluated.
-These constraints are relevant to the thesis because they explain why healthcare workloads cannot be generated as arbitrary traffic. Each flow must respect domain semantics, security requirements, and data-governance boundaries. Even in mock or simulation mode, the framework must preserve the logical structure of the process without exposing credentials, real patient data, or confidential operational details.
-This section summarizes the main constraint families relevant to the thesis and marks the areas where further documentary verification is required.
-\subsection{National and Regional}
-\noindent The national framework is represented in this thesis primarily by Ministerial Decree 77/2022, which defines models and standards for territorial care, and by the connection with Mission 6 of the National Recovery and Resilience Plan. The regional framework is represented by SI.Ter project documentation, regional interoperability specifications, and the governance role of Azienda Zero and the Veneto Healthcare Organizations.
-These sources impose constraints at different levels. Organizational standards define which structures and functions must exist in territorial care. Technological requirements indicate that systems must support information sharing, monitoring, Electronic Health Record access, and interconnection with existing applications. Project documentation defines architectural expectations such as microservices, API-based interoperability, integration components, and interaction with regional services.
-The current evidence is sufficient to identify the relevant families of constraints, but not to freeze the final legal apparatus of the thesis. The bibliography should distinguish at least between national territorial-care regulation, regional SI.Ter governance and project documentation, and technical interoperability specifications. [DATA MISSING: final list of national and regional legal references to cite in the thesis bibliography.] Until those references are finalized, this section avoids broad legal claims and remains focused on the constraints explicitly present in the consulted documents.
-\subsection{Identity and Authorization Management}
-\noindent Identity and authorization constraints are central in healthcare interoperability because access to patient information must be associated with authenticated operators, roles, structures, and operational contexts. The consulted documentation refers to authentication through APMS, federated identity providers, SAML-based mechanisms, JWT tokens, and identity/assertion services.
-For integration flows, identity management has two implications. First, authentication is often a prerequisite for accessing later services. Second, authorization context influences which data an operator or application can access. This means that identity cannot be treated as an external detail. It is part of the flow structure.
-The consulted sources support a non-sensitive architectural description: APMS, federated identity providers, Identity and Assertion Provider services, SAML assertions, JWT tokens, and token-exchange steps can be discussed as mechanisms for propagating authenticated context across flows. Exact attribute sets, authorization matrices, credential material, and payload examples are not required in this chapter. [DATA MISSING: final description of the exact identity attributes and authorization rules that can be disclosed in the thesis.] The text should avoid reproducing payload examples containing personal or sensitive data and should describe only the non-sensitive architectural role of identity and authorization mechanisms.
-\subsection{Document management}
-\noindent Health data and clinical documents are subject to stronger constraints than ordinary application data. They must be accurate, protected, traceable, and available only to authorized actors. In the interoperability flows considered by the thesis, this affects patient registry operations, Electronic Health Record access, XDS document exchange, clinical document production, and document lifecycle management.
-From a technical point of view, these constraints require consistent patient identifiers, correct metadata, controlled access, and reliable document exchange. From an experimental point of view, they imply that the framework must use synthetic patients and avoid real personal data. The goal is to preserve the structure of the flow without exposing real health information.
-The available documentation supports an architectural treatment of document governance through the Electronic Health Record, IHE XDS.b, Affinity Domain metadata, XDS Document Repository and Registry roles, and electronic-signature or seal mechanisms where applicable. This is sufficient to explain why document flows require controlled identifiers, metadata, access context, and lifecycle handling. [DATA MISSING: final citation for the data-protection and clinical-document governance rules to be included in the thesis.] Until then, the section remains at the architectural and methodological level.
-\subsection{Traceability and Audit}
-\noindent Traceability and auditability are essential in healthcare interoperability because systems must make it possible to reconstruct relevant actions, accesses, exchanges, and failures. The SI.Ter documentation refers to monitoring, logging, audit, and interoperability components capable of tracking messages and processing outcomes. IHE ATNA is also relevant in the broader healthcare interoperability domain when audit trails and node authentication are considered.
-For the thesis, traceability has a methodological meaning as well. The framework produces structured JSONL logs so that executions can be reconstructed and normalized for metric computation. This logging is not equivalent to a full production audit infrastructure, but it provides experimental traceability: generated flows, scheduled events, responses, failures, and completion status can be analyzed after execution.
-The consulted security and architecture sources support a high-level distinction between production audit infrastructure and experimental logging. Production systems may involve audit-log management and IHE ATNA-related events such as ITI-20, whereas the framework logs are designed for reconstructing experimental executions and computing metrics. [DATA MISSING: confirmation of which production audit requirements and ATNA-related details can be cited in the final thesis.] The chapter should therefore distinguish production auditability from experimental observability.
+\noindent The resulting validity model separates four questions. Construct
+validity concerns whether the executable workload preserves the documented
+meaning and prerequisites of each transaction. Internal validity concerns whether
+matched scenarios differ only in the intended factor. External validity concerns
+whether an independent regional source supports the configured temporal profile,
+payload classes, and flow mix. Conclusion validity concerns whether repeated
+observations, explicit populations, and visible missing data support the reported
+comparison. Reproducibility therefore does not imply representativeness, and a
+realistic observation does not imply causality when uncontrolled environmental
+changes coexist with the measured path.
 
+\subsection{Synthetic Workflows as Experimental Instruments}
 
+\noindent A synthetic workflow has scientific value only when it acts as an
+experimental instrument rather than as a collection of fabricated requests. Its
+structure derives from authoritative transaction and process specifications; its
+data remain synthetic; its schedule derives from declared stochastic or
+deterministic rules; and its outcomes remain classified at transport,
+application, and complete-flow levels. These properties make the independent
+variables inspectable and the dependent variables reproducible without requiring
+real patient records or security artefacts.
 
+\noindent The strategy distinguishes \emph{what} executes from \emph{when} execution
+starts. The flow mix specifies semantically distinct workflows. The timeline
+assigns their planned start times. A homogeneous Poisson process supplies one
+reproducible baseline. For intensity $\lambda>0$, the arrival count in an interval
+of duration $t$ follows
+\begin{equation}
+    \Pr[N(t)=k]=\frac{(\lambda t)^k e^{-\lambda t}}{k!},
+    \qquad k=0,1,2,\ldots .
+\end{equation}
+A non-stationary profile replaces the constant rate with $\lambda(t)$, for which
+\begin{equation}
+    \mathbb{E}[N(a,b)]=\int_a^b \lambda(u)\,du .
+\end{equation}
+\noindent Piecewise rates express controlled ramps and peaks, while parameterised bursts
+express short concentrations around a baseline. These models define experimental
+hypotheses; they do not estimate Veneto clinical demand in the absence of an
+authorised operational series.
 
+\noindent The synthetic strategy preserves a second separation between flow arrivals and
+request arrivals. One flow can expand into different numbers of requests, carry
+different payload classes, and terminate at different points. Equal flow rates
+therefore do not imply equal request rates or equal remote work. A shift toward
+document processing changes transferred bytes and downstream computation; a
+shift toward authentication and context access changes the number of dependent
+steps and the probability of early termination. The experiment reports both the
+configured flow composition and the realised transaction composition, because a
+load comparison without this information confounds intensity with workload
+content.
 
+\noindent Synthetic data also perform a methodological role. Metadata-driven generation
+creates structurally and semantically valid patient and document contexts without
+using personal data. Stateful orchestration associates every derived identifier,
+assertion, token, or document reference with one flow occurrence, while a
+session-aware identity hand-off prevents security material from crossing
+concurrent occurrences. The asynchronous execution model permits concurrency
+among independent occurrences while preserving sequential dependencies inside
+each occurrence. These architectural properties support controlled concurrency
+without weakening the semantics of the workflow.
 
+\noindent The design includes an explicit calibration condition. A controlled local path
+establishes the range in which scheduling, event production, and analysis sustain
+the intended offered load without material drift. This calibration does not
+predict the capacity of a regional service. It determines whether the workload
+generator remains a credible experimental instrument. When delivery drift
+already increases in the control condition, a corresponding live scenario cannot
+support a conclusion about external saturation.
 
+\noindent The statistical unit follows the same hierarchy. Requests within one flow share
+state, flows within one run share workload and environmental conditions, and
+repetitions provide the highest-level comparable units. Request distributions
+remain useful for transaction analysis, but the method does not treat every
+request as an independent replicate. This rule prevents a large sample count from
+overstating the amount of independent experimental evidence.
 
+\noindent The selected strategy consequently favours internal validity over unsupported
+realism. It makes every assumption visible: flow weights, arrival profile,
+payload class, connection policy, seed, concurrency bound, execution mode, and
+outcome rule. An independent authorised traffic source can later test external
+validity without changing the measurement semantics. Until such a source exists,
+the thesis presents synthetic workloads as controlled experimental inputs and
+never as reconstructed regional demand.
 
+\section{Security-Constrained Observation Strategy}
+\subsection{Authorised Observation Boundary}
 
+\noindent The Authorised Observation Boundary originates from regional security,
+privacy, and organisational control, not from a limitation of the workload
+generator. The Request Dataset Generator (RDG) can initiate approved synthetic
+traffic and retain
+sanitised client-side events. The experimenter cannot inspect private execution
+phases inside the Application Profile Management System (APMS), regional
+middleware, or downstream services, and cannot retain assertions, access tokens,
+credentials, certificate secrets, private endpoints, or personal data. The
+boundary therefore determines which causal statements the evidence permits
+\footcite{apms-auth-v141,arsenal-security-v214}.
 
+\noindent This constraint leads to an \emph{Advanced Black-box with Surrogate
+Observability} methodology. The black-box component treats the protected regional
+path as an externally observable service. The advanced component preserves more
+than a request timestamp: it observes planned and actual dispatch, transport and
+application outcomes, dependency propagation, terminal flow state, flow
+completion time, scheduling drift, concurrency, and matched path differentials.
+The surrogate component uses these correlated external signals to characterise
+the path without pretending to expose its internal phases.
 
+\noindent The boundary changes the meaning of overhead. A mediated request can include
+authentication, authorisation, envelope handling, semantic validation,
+transformation, routing, queueing, upstream waiting, and backend processing. A
+client-side duration contains their composite effect together with network and
+client contributions. It does not equal gateway processing time, and a slower
+mediated response does not identify one internal component as its cause. Optional
+authorised internal timestamps can validate or refine the external estimate, but
+their absence limits causal attribution rather than invalidating the matched
+external comparison.
 
+\noindent Figure~\ref{fig:functional-gateway-mediation} expresses this methodological
+boundary. The internal functions remain analytically plausible contributors, but
+the experiment measures only their aggregate path effect.
 
+\begin{figure}[htbp]
+    \centering
+    \setlength{\unitlength}{1mm}
+    \begin{picture}(140,78)
+        \put(45,5){\dashbox{1}(97,68){}}
+        \put(42,69){\makebox(90,4)[l]{\colorbox{white}{\textbf{Authorised Observation Boundary}}}}
 
+        \put(55,51){\framebox(70,12){\shortstack{\textbf{Security and Policy}\\Enforcement}}}
+        \put(90,51){\vector(0,-1){6}}
+        \put(55,33){\framebox(70,12){\shortstack{\textbf{Protocol and Semantic}\\Mediation}}}
+        \put(90,33){\vector(0,-1){6}}
+        \put(55,15){\framebox(70,12){\shortstack{\textbf{Downstream Service}\\Execution}}}
 
+        \put(2,31){\framebox(41,13){\shortstack{\textbf{RDG}\\Client Observation}}}
+        \put(40,37.5){\vector(1,0){9}}
+        \put(1,46){\makebox(30,8){\shortstack{\textbf{Path Differential} $\Delta L$}}}
+        \put(1,20){\parbox{30mm}{\centering Correlated external timing and outcomes.}}
 
+        \put(130,15){\line(0,1){48}}
+        \put(128,15){\line(1,0){4}}
+        \put(128,63){\line(1,0){4}}
+        \put(132,37){\makebox(7,4)[l]{$\Delta L$}}
+    \end{picture}
+    \caption[Security-constrained surrogate observability]{Security-constrained
+    surrogate observability. RDG observes the aggregate external path while
+    internal security, mediation, and service phases remain outside the
+    authorised evidence perimeter.}
+    \label{fig:functional-gateway-mediation}
+\end{figure}
 
+\noindent Security state remains part of the workload even when its value remains
+absent from the evidence. Reusing one assertion or token across unrelated
+occurrences can increase apparent throughput while violating the transaction
+contract and removing a mandatory acquisition cost. The method therefore scopes
+security outputs to one occurrence and records only whether their production and
+propagation succeed. Data minimisation removes protected values, not the causal
+position of the security transition.
 
+\noindent Mock middleware events serve a separate purpose. They validate parsing,
+correlation, missing-field handling, and metric computation. They do not support
+claims about production routing, policy enforcement, queueing, or backend
+processing. This evidence separation prevents a test of the analysis chain from
+becoming surrogate evidence about the regional infrastructure.
 
+\subsection{Client-Boundary Latency and Saturation Evidence}
+\label{sec:framework-implications}
 
+\noindent Iorio, Risso, and Casetti justify the choice of the client boundary by
+distinguishing network round-trip time from application-level flow completion
+time. Their end-to-end interval begins with request transmission and ends with
+complete response reception; it therefore captures transmission, transport,
+middlebox, application-protocol, and service contributions that a network probe
+does not expose \footcite{iorio-when-latency-matters}. This boundary also avoids
+the clock-synchronisation requirement of one-way measurements. For a protected
+regional path, the same principle makes the client the only common observation
+point across direct and mediated scenarios.
 
+\noindent The full-stack interpretation makes Flow Completion Time (FCT) the principal
+end-to-end timing metric. Iorio et al. show that network round-trip time (RTT)
+captures only one layer of a latency budget that also contains transmission,
+forwarding, queueing, transport establishment, application protocol, security,
+service exposure, orchestration, and computation. RDG extends this observation
+boundary from one request-response exchange to the terminal outcome of an
+information-dependent workflow. Request latency remains necessary for locating
+which transaction population changes, but workflow FCT determines when the
+domain operation actually completes. This extension transfers the measurement
+principle, not the numerical results of the edge-computing campaign
+\footcite{iorio-when-latency-matters}.
 
+\noindent Figure~\ref{fig:iorio-latency-levels} makes the measurement hierarchy
+explicit. The horizontal displacement between the network, transport, and
+application distributions represents progressively accumulated work rather than
+three interchangeable latency measures. The curves provide a conceptual reading
+of the hierarchy analysed by Iorio et al.; they do not reproduce raw samples or
+RDG observations.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[page=1,width=\textwidth]{img/iorio_latency.pdf}
+    \caption[Network, transport, and application latency]{Conceptual separation
+    of Network Round-Trip Time (RTT), Transmission Control Protocol (TCP) RTT,
+    and application-level Flow Completion Time (FCT). Median markers expose the
+    additional interval that each observation boundary contains.}
+    \label{fig:iorio-latency-levels}
+\end{figure}
 
+For completed request $i$, the external latency is
+\begin{equation}
+    L_i=t^{\mathrm{response}}_i-t^{\mathrm{dispatch}}_i.
+\end{equation}
+For matched direct and mediated populations, the primary path estimand is
+\begin{equation}
+    \Delta L = \widetilde{L}_{\mathrm{mediated}}
+             - \widetilde{L}_{\mathrm{direct}},
+\end{equation}
+where $\widetilde{L}$ denotes a declared statistic over compatible transaction,
+payload, outcome, connection-policy, load, and time-window classes. The
+differential estimates the external effect associated with the path change. It
+does not decompose the contribution of APMS, transport, protocol transformation,
+or a downstream service.
 
+\noindent Consequently, $\Delta L$ represents a \emph{Path-level Overhead}: an aggregated
+external differential that can contain propagation, transport and security
+establishment, gateway policy enforcement, Simple Object Access Protocol (SOAP)/
+Extensible Markup Language (XML) or Representational State Transfer (REST)/
+JavaScript Object Notation (JSON) handling,
+semantic validation, transformation, routing, queueing, and downstream service
+time. The term \emph{aggregated} is essential. A positive differential supports
+the claim that the mediated path adds externally observable time under matched
+conditions; it does not identify which protected internal phase causes that
+difference. This interpretation follows the multi-layer latency budget in the
+edge-computing literature while respecting the narrower authorised observation
+boundary of the regional case.
 
+\noindent The client boundary becomes informative about saturation only when latency joins
+other signals. Akram, Akram, and Rehman model distributed load sharing as a race
+between communication delay and a stochastic availability window. Their analysis
+links increasing traffic intensity and communication latency to stale state,
+failed transfers, wasted work, and reduced effective throughput
+\footcite{akram-numerical-latency}. The load-sharing model does not become a model
+of the Veneto architecture, and its numerical thresholds do not transfer to
+Regione Veneto (RVE) transactions. Its methodological contribution is the joint interpretation of
+latency, state validity, and completed useful work: delay becomes a saturation
+signal when it coexists with shrinking completion capacity and increasing
+ineffective activity.
 
+\noindent Figures~\ref{fig:akram-state-transition} and
+\ref{fig:akram-lsw-cdf} translate this contribution into two complementary
+views. The state model distinguishes useful transitions from a transfer that
+arrives after the target state loses validity. The distribution view shows the
+same risk as a narrowing Load-Sharing Window (LSW) when traffic intensity
+increases. Both views remain methodological abstractions and import neither the
+paper's numerical thresholds nor a topology for the regional system.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[page=1,width=\textwidth]{img/akram_latency.pdf}
+    \caption[Conceptual node load-state transitions]{Conceptual transitions
+    between underloaded, normal, and overloaded node states. A delayed transfer
+    can become ineffective when it reaches a node whose load state no longer
+    validates the original decision.}
+    \label{fig:akram-state-transition}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[page=2,width=0.92\textwidth]{img/akram_latency.pdf}
+    \caption[Conceptual Load-Sharing Window distribution]{Conceptual cumulative
+    distribution of the Load-Sharing Window under increasing traffic intensity.
+    The curves express the qualitative ordering of the model and do not
+    constitute digitised experimental samples.}
+    \label{fig:akram-lsw-cdf}
+\end{figure}
+
+\noindent This stochastic interpretation determines the summary statistics. The median
+($P_{50}$) supplies a robust centre for a skewed latency population, while
+$P_{95}$ and $P_{99}$ expose the tail in which a delayed prerequisite is most
+likely to outlive the state that makes it useful. The arithmetic mean remains a
+supplementary descriptor, but it cannot reveal the probability of crossing a
+high-latency boundary and it changes markedly under rare delays. Akram et al.
+justify this distribution-aware choice through a quantile rule rather than
+through average latency alone; Iorio et al. likewise evaluate application FCT at
+high percentiles. RDG therefore reports $P_{50}$, $P_{95}$, and $P_{99}$ for a
+declared homogeneous population and observation window, together with sample
+size and outcome coverage. The Load-Sharing Window does not represent an actual
+SI.Ter component: it supplies a conceptual model for the stochastic interval in
+which information about distributed state remains actionable
+\footcite{akram-numerical-latency,iorio-when-latency-matters}.
+
+\noindent Dimitrov and Skjellum reinforce the need for application-level interpretation.
+Their experiments show that lower point-to-point latency does not necessarily
+produce lower application execution time, because communication pattern, message
+size, completion mode, Central Processing Unit (CPU) overhead, and the possibility
+of overlapping work
+determine the complete effect \footcite{dimitrov-latency-applications}. The
+studied Message Passing Interface (MPI) environment differs from healthcare
+interoperability, so the thesis transfers only the evaluation principle: a local
+latency number cannot stand for the performance of a heterogeneous workflow.
+Healthcare applications make this principle especially relevant because patient
+queries, context transitions, document retrieval, and cryptographic signing
+expose different message sizes, synchronisation points, and blocking
+dependencies.
+
+\noindent An isolated ping-pong benchmark therefore answers a narrower question than the
+one posed by regional mediation. Dimitrov and Skjellum show that a lower
+point-to-point latency can coexist with higher processor overhead or reduced
+opportunity to overlap communication and computation; the regular request-reply
+pattern also omits the collective and asynchronous structures of real
+applications. In the healthcare case, an isolated endpoint call omits semantic
+validation, identity acquisition, branch selection, and failure propagation.
+RDG is consequently necessary as an orchestrator of dependent workflows, because
+the critical path exists only when each valid output enables the next step. The
+abstract SAML--JWT--FHIR progression illustrates dependency transfer, but the
+documented regional model keeps its concrete paths distinct: SAML enables the
+JWT consumed by RVE-130, whereas a separate SAML-authenticated RVE-54 interaction
+returns a FHIR result. This separation evaluates real gateway mediation without
+inventing one unsupported transaction chain
+\footcite{dimitrov-latency-applications}.
+
+\noindent Figure~\ref{fig:dimitrov-communication-patterns} provides an explanatory
+adaptation of the point-to-point and collective categories in their
+communication-pattern analysis. The original figures report message counts and
+sizes rather than sequence traces; the visualisation therefore illustrates the
+structural distinction without claiming to reconstruct an observed execution.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[page=1,width=\textwidth]{img/dimitrov_communication_patterns.pdf}
+    \caption[Point-to-point and collective communication patterns]{Conceptual
+    point-to-point send/receive and collective all-reduce communication
+    patterns, adapted as a sequence-oriented explanation of the categories
+    analysed by Dimitrov and Skjellum.}
+    \label{fig:dimitrov-communication-patterns}
+\end{figure}
+
+\noindent Latency variability matters for the same reason. A median describes the centre of
+one population, but a dependent flow reacts to the slowest prerequisite on its
+critical path. Iorio et al. document dispersion, high-percentile instability, and
+latency spikes across access, transport, and application conditions; Dimitrov and
+Skjellum show that the application effect depends on the surrounding communication
+pattern. In a healthcare workflow, variability can delay the availability of a
+patient identity, context token, document reference, or signed artefact even when
+the median request remains stable. The method therefore reports distributions and
+tails for homogeneous populations and never substitutes a point-to-point mean for
+complete-flow behaviour.
+
+\noindent Saturation is consequently an inference from converging evidence rather than a
+synonym for high latency. The method requires persistent scheduling drift,
+occupancy near the configured concurrency bound, a plateau or decline in useful
+throughput, and a corresponding change in latency, timeouts, or semantic failures.
+Stable response latency can coexist with increasing delivery drift when the
+generator no longer dispatches work on time. Conversely, higher latency without a
+throughput plateau can reflect payload composition, connection establishment, or
+remote environmental variation rather than saturation.
+
+Table~\ref{tab:metric-semantics} fixes the operational meaning of the principal
+signals.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{4.9cm}|}
+    \caption{Operational measures and their role in saturation analysis.}
+    \label{tab:metric-semantics}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Measure} & \textbf{Population and unit} & \textbf{Interpretive role} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Measure} & \textbf{Population and unit} & \textbf{Interpretive role} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Request latency & Homogeneous completed attempts; milliseconds. & Client-observed dispatch-to-response distribution for one transaction class, reported through $P_{50}$, $P_{95}$, and $P_{99}$ with the sample size. \\
+    \hline
+    Flow completion & Complete and interrupted occurrences remain separate; milliseconds. & Critical-path effect of orchestration, waiting, and blocking failures. \\
+    \hline
+    \rowcolor{tableGray}
+    Useful throughput & Successful terminal flows per declared window. & Completed domain work; it remains distinct from raw request activity. \\
+    \hline
+    Request throughput & Completed attempts per declared window. & Technical activity, including calls that belong to unsuccessful flows. \\
+    \hline
+    \rowcolor{tableGray}
+    Scheduling drift & Actual minus planned start; milliseconds. & Delivery quality of the generator and early evidence of backpressure. \\
+    \hline
+    Outcome distribution & Transport, application, timeout, and terminal-flow classes. & Reliability and preservation of unsuccessful work in every denominator. \\
+\end{longtable}
+\endgroup
+
+\noindent The literature therefore supports the measurement boundary and the
+multi-indicator reasoning, not an imported acceptance threshold. Client-boundary
+latency supplies a reproducible external signal; $\Delta L$ controls the matched
+path comparison; throughput, drift, concurrency, and outcomes determine whether
+the signal is consistent with saturation. Internal attribution remains outside
+the authorised boundary unless a new evidence source enters the protocol.
+
+\section{Healthcare Workflows as Information Dependencies}
+\label{sec:interoperability-transactions}
+\subsection{Protected Discharge and Anagrafe Zero}
+\label{subsec:fhir-r4}
+
+\noindent Protected discharge gives clinical-process meaning to the profiling
+strategy. The inpatient unit identifies the patient, prepares assessment
+information, proposes a destination setting, and forwards the request to the
+Centrale Operativa Territoriale (COT). The COT evaluates the request and assigns
+the definitive setting \footcite[pp.~18--21]{rti-siter-relazione-tecnica}
+\footcite[pp.~35--36]{azienda-zero-siter-capitolato}. Each stage consumes
+information that a preceding stage makes available. The workflow is therefore a
+chain of semantic prerequisites, not a bag of independent service calls.
+
+\noindent Patient identity illustrates the first dependency. The project documentation
+associates protected discharge with patient identification through Anagrafe Zero,
+while the Anagrafe Zero specification requires RVE-54 Patient Query before other
+registry transactions \footcite{arsenal-anagrafe-zero-v26}. A successful network
+response alone does not satisfy this prerequisite. The query has to produce an
+application outcome and a patient context that the next branch can use. Depending
+on the profiled outcome, a later operation can assign a new regional identity
+through RVE-55 or update an existing identity through RVE-57. The branch follows
+the semantic result of the query; it does not follow only the Hypertext Transfer
+Protocol (HTTP) status.
+
+\noindent This dependency explains why a session-aware orchestrator is necessary. The
+patient context belongs to one synthetic occurrence and cannot leak into another
+concurrent occurrence. A failed query blocks the dependent branch, and a warning
+or application error remains distinguishable from transport success. A generic
+request generator can reproduce this behaviour only after the test author adds
+domain-specific state, extraction, validation, and branch rules. The profiling
+problem therefore resides in semantic continuity, not in the ability to send a
+Health Level Seven (HL7) Fast Healthcare Interoperability Resources (FHIR)
+Release 4 (R4) request.
+
+\noindent Semantic FHIR R4 generation is therefore a condition of construct validity,
+not a convenience for producing payload volume. Anagrafe Zero interprets
+identifiers, demographic search parameters, resource structure, and transaction
+outcomes according to its declared FHIR contract. A syntactically valid but
+semantically arbitrary JSON or XML document can exercise transport while
+triggering a different validation branch from the represented patient operation.
+Metadata-driven generation preserves the profile-relevant structure and makes
+the resulting query, assignment, or update comparable across repetitions. It
+also keeps the data synthetic, so semantic fidelity does not require personal
+records \footcite{arsenal-anagrafe-zero-v26}.
+
+\noindent The same principle applies to regional security and context access. An RVE-1.b
+interaction produces a Security Assertion Markup Language (SAML) assertion;
+RVE-121 uses the assertion and contextual information to produce the JSON Web
+Token (JWT) required by RVE-130
+\footcite{arsenal-security-v214,arsenal-context-rve-v13}. The
+later call remains invalid when the required transition is absent, even if an
+earlier endpoint returns a nominally successful transport status. Occurrence-local
+state preserves both the security contract and the cost of acquiring that state.
+
+\noindent Figure~\ref{fig:regional-dependency-chains} makes the occurrence-local
+dependencies visible. It keeps the context path and the patient-query path
+separate: RVE-130 consumes the material produced through RVE-121, whereas RVE-54
+consumes the assertion in a distinct FHIR query. This separation prevents the
+visual model from suggesting one unsupported SAML--JWT--FHIR transaction chain.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[page=2,width=\textwidth,height=0.72\textheight,keepaspectratio]{img/dimitrov_communication_patterns.pdf}
+    \caption[Regional synchronous dependency chains]{Conceptual regional
+    dependency chains retained by the workload model. Each response supplies a
+    semantic prerequisite for the next request within the same occurrence, and
+    a missing prerequisite blocks the dependent transition.}
+    \label{fig:regional-dependency-chains}
+\end{figure}
+
+\noindent Document access adds a further dependency family. Integrating the Healthcare
+Enterprise (IHE) Cross-Enterprise Document Sharing (XDS.b) separates metadata
+query, document selection, retrieval, and publication
+\footcite{ihe-xdsb,affinity-domain-italia-v263}. An Information Technology
+Infrastructure (ITI)-18 query returns metadata;
+an ITI-43 retrieval consumes a repository and document reference; an ITI-41
+publication carries document content and metadata. These transactions remain
+separate performance populations because they differ in payload, outcome, and
+position in the information chain.
+
+\noindent Table~\ref{tab:process-dependencies} summarises the dependencies that shape the
+workload model without claiming that every listed transaction forms one approved
+protected-discharge implementation.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
+    \caption{Information dependencies retained by the profiling model.}
+    \label{tab:process-dependencies}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Dependency} & \textbf{Semantic prerequisite} & \textbf{Profiling consequence} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Dependency} & \textbf{Semantic prerequisite} & \textbf{Profiling consequence} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Patient identity & RVE-54 produces a usable registry outcome before assignment or update. & The flow branches on application semantics and keeps later steps blocked after failure. \\
+    \hline
+    Security identity & RVE-1.b produces occurrence-local assertion evidence. & Protected calls include acquisition cost without retaining the assertion value. \\
+    \hline
+    \rowcolor{tableGray}
+    Context session & RVE-121 produces the material required by RVE-130. & Transport success without the required output remains a failed state transition. \\
+    \hline
+    Document access & ITI-18 produces the reference consumed by ITI-43. & Query and retrieval retain separate latency, payload, and outcome populations. \\
+    \hline
+    \rowcolor{tableGray}
+    Care transition & Patient identity and assessment precede COT evaluation and destination assignment. & Technical completion does not imply clinical approval or completion of the care pathway. \\
+\end{longtable}
+\endgroup
+
+\noindent Both care transitions act as process frames. They identify the
+initiating actor, decision point, information
+prerequisites, and terminal organisational outcome. They do not justify an
+invented chain among every available RVE and ITI transaction. A transaction
+enters an executable case only when both a technical specification and a process
+source support its role. This source gate protects the profiling model from
+turning architectural proximity into an unsupported workflow dependency.
+
+\noindent Anagrafe Zero also demonstrates why throughput requires a domain denominator.
+Three successful endpoint responses do not necessarily represent three completed
+patient-identity processes. A query can end the flow, enable an assignment, or
+enable an update; warnings and duplicate-management rules can change the terminal
+meaning. Request throughput therefore measures technical activity, while flow
+throughput measures useful completion under an explicit semantic outcome rule.
+
+\subsection{Cryptographic and Protocol Heterogeneity}
+
+\noindent Scryba Sign supplies a controlled example of heterogeneous
+interoperability. The service surface uses SOAP, XML, and Web Services
+Description Language (WSDL)
+contracts over protected transport. The synchronous path combines identity and
+signer discovery through \emph{GetUserInfo4} with the \emph{SignOneDoc}
+operation. The document can travel as a Base64-encoded payload, and the service
+performs cryptographic work and constructs a signed artefact
+\footcite[pp.~17--18, 91--96, 107--111]{scryba-sign-developer-guide-v16}.
+Scryba Sign therefore represents a heterogeneous interoperability constraint,
+not an optional software module. Treating it as an ordinary document upload
+removes the protocol, identity, and cryptographic work that the profile has to
+observe.
+
+\noindent The methodological question is why the signing path enters the workload, not how
+the client constructs a particular envelope. A realistic profile has to retain
+the payload class, signing mode, session semantics, and terminal outcome because
+each factor changes the critical path. SOAP/XML handling adds representation and
+envelope costs; Base64 increases the transferred representation relative to the
+binary source; protected transport adds connection and security work;
+cryptographic signing adds service-side computation. The Authorised Observation
+Boundary makes only their aggregate external effect observable as part of the
+Path-level Overhead.
+
+\noindent Signer identity creates a further dependency. The information-discovery step
+identifies the available signing powers, certificates, and One-Time Password
+(OTP) devices; the signing request depends on an admissible certificate and on
+the applicable OTP authorisation path
+\footcite[pp.~60--62, 91--96]{scryba-sign-developer-guide-v16}. This relationship
+requires session-aware identity hand-off: certificate selection and OTP state
+belong to the same signing occurrence and a failed identity prerequisite blocks
+the cryptographic operation. The complete FCT consequently includes the ordered
+identity and signing path rather than only the final SOAP response. The current
+executable perimeter preserves the order \emph{GetUserInfo4}--\emph{SignOneDoc}
+for the synchronous population; automated certificate selection and the complete
+OTP lifecycle remain contract-level extensions, so the thesis does not present
+them as executed measurements.
+
+\noindent The synchronous and asynchronous scenarios define distinct experimental
+populations. In the synchronous scenario, the request-response chain includes the
+return of the signed document. In the asynchronous scenario, submission produces
+session and document identifiers, while later status checks and retrieval define
+completion. The asynchronous path therefore introduces queue residence, polling
+or notification policy, and a longer state lifecycle
+\footcite[pp.~17--18]{scryba-sign-developer-guide-v16}. Pooling the two modes in one
+latency distribution destroys construct validity because their terminal events
+and critical paths differ.
+
+\noindent The profiling model consequently stratifies signing evidence by execution mode,
+payload class, connection policy, and application outcome. The current executable
+evidence perimeter includes the synchronous signing population. The asynchronous
+contract remains a separately defined profile and does not acquire results by
+analogy. This boundary preserves architectural completeness without presenting an
+unexecuted scenario as observed evidence.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
+    \caption{Methodological separation of Scryba Sign profiling populations.}
+    \label{tab:standards-design}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Profile} & \textbf{Terminal condition} & \textbf{Relevant overhead} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Profile} & \textbf{Terminal condition} & \textbf{Relevant overhead} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Synchronous signing & The signed artefact returns in the synchronous interaction. & SOAP/XML and Base64 transfer, protected transport, cryptographic processing, and response transfer. \\
+    \hline
+    Asynchronous signing & Submission state leads to later availability and retrieval of the signed artefact. & Submission, queue residence, status acquisition, retrieval policy, and state lifecycle. \\
+    \hline
+    \rowcolor{tableGray}
+    Large-document path & The signed artefact completes through the applicable document-transfer procedure. & Document size, hashing, external transfer, signing, and retrieval remain explicit strata. \\
+\end{longtable}
+\endgroup
+
+\noindent A direct-versus-mediated comparison uses the same signing mode, payload
+class, application outcome, and connection policy on both paths. Under these
+controls, $\Delta L$ estimates the composite external effect associated with
+mediation. It does not isolate cryptographic time, SOAP serialisation, policy
+enforcement, or network transfer. The signing service therefore strengthens the
+need for surrogate observability: it creates a relevant, heterogeneous critical
+path while leaving its protected internal decomposition unavailable.
+
+\noindent The scenario also confirms the importance of complete-flow metrics. A fast
+submission does not imply a fast signed-document outcome, just as a successful
+patient query does not imply completion of a protected-discharge process. The
+method keeps request latency, state-transition success, and terminal flow
+completion distinct so that local progress cannot masquerade as domain-level
+completion.
+
+\section{Experimental Design and Evidence Semantics}
+\subsection{Controls, Variables, and Reproducibility}
+
+\noindent The primary estimand is the change that RDG observes when a documented
+operation follows a mediated path instead of a direct path under matched
+conditions. The independent variable is the selected path. Transaction class,
+payload class, semantic outcome rule, flow position, offered-load profile,
+connection policy, concurrency bound, seed policy, duration, and observation
+window act as controlled variables. Request latency, flow completion, useful
+throughput, scheduling drift, and outcome distribution act as dependent
+variables.
+
+\noindent Matching requires more than a shared transaction identifier. Direct and mediated
+populations use compatible payloads, success definitions, flow positions, and
+workload conditions. Scenario order also remains controlled because connection
+reuse, cache state, or remote environmental drift can create an apparent path
+difference. Paired seeds align generated choices, while deterministic shuffling
+or interleaving reduces a fixed chronology effect. The method retains run
+timestamps and dispersion because a live remote environment remains variable even
+when the synthetic workload is reproducible.
+
+\noindent Table~\ref{tab:differential-controls} identifies the main confounding sources and
+the residual limitations that remain after control.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
+    \caption{Controls for an interpretable direct-versus-mediated differential.}
+    \label{tab:differential-controls}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Confounding source} & \textbf{Experimental control} & \textbf{Residual limitation} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Confounding source} & \textbf{Experimental control} & \textbf{Residual limitation} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Transaction semantics & Match operation, flow position, and application outcome. & Contract evolution can change equivalence across versions. \\
+    \hline
+    Payload and connection state & Stratify payload class and declare connection policy. & Private caches and remote connection management remain opaque. \\
+    \hline
+    \rowcolor{tableGray}
+    Offered load & Reuse temporal profile, mix, seed policy, duration, and concurrency. & Unobserved external demand remains uncontrolled. \\
+    \hline
+    Execution chronology & Pair repetitions and control scenario order. & Environmental drift can persist within and across pairs. \\
+    \hline
+    \rowcolor{tableGray}
+    Generator capacity & Calibrate delivery and retain drift and active-concurrency signals. & Host scheduling remains part of the external experiment. \\
+\end{longtable}
+\endgroup
+
+\noindent Every run identifies the workload profile, offered rate, duration,
+seed, burst parameters, flow mix, concurrency bound, execution mode,
+configuration state, and artefact version. Reusing a seed aligns paired choices;
+changing seeds across repetitions samples alternative schedules. Neither action
+makes the remote environment deterministic. Reproducibility refers to the
+experimental input and analysis procedure, while environmental repeatability
+remains an empirical question.
+
+\noindent Connection policy deserves explicit control because security setup can
+dominate short flows. Figure~\ref{fig:iorio-persistent-stateless} gives a
+conceptual reconstruction of the persistent and stateless populations analysed
+by Iorio et al. The separation motivates occurrence-local security-state
+management and declared transport reuse; it does not assert that RDG adopts
+WebSocket transport or that the reported medians transfer to regional services.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[page=2,width=\textwidth]{img/iorio_latency.pdf}
+    \caption[Persistent and stateless secure-connection FCT]{Conceptual FCT
+    comparison between a persistent secure connection and a stateless flow that
+    repeats transport and Transport Layer Security (TLS) establishment. The
+    differential motivates explicit connection policy and occurrence-local
+    security-state management in RDG.}
+    \label{fig:iorio-persistent-stateless}
+\end{figure}
+
+\noindent Durations use a monotonic clock. Wall-clock timestamps establish chronology but
+do not support subtraction across independent hosts without a documented
+synchronisation bound. Correlation requires compatible identifiers, event
+semantics, and populations. Missing or unmatched fields remain absent instead of
+being inferred. These rules prevent timestamp precision from being confused with
+visibility beyond the authorised boundary.
+
+\noindent Structured events retain run, scenario, occurrence, flow, step, and request
+identity together with planned time, measured duration, and outcome class.
+Normalisation preserves malformed records, missing terminal events, interrupted
+flows, and unmatched correlations as data-quality outcomes. Silent removal of
+these records biases both latency and reliability toward successful observations.
+Provenance therefore precedes performance interpretation.
+
+\subsection{Evidence Gates and Ex Ante Judgement}
+\label{sec:approach-selection}
+
+\noindent Every performance statement requires an operational definition, a
+population, a unit, an aggregation level, and an event source. If $C(w)$ denotes
+the number of completed units in a window $w$, then
+\begin{equation}
+    X(w)=\frac{C(w)}{|w|}
+\end{equation}
+defines throughput only after the method declares whether $C(w)$ counts requests,
+terminal flows, or successful terminal flows. Retries can increase request
+throughput without increasing useful flow throughput, and early failures can
+reduce request activity while increasing the number of incomplete flows.
+
+\noindent Criteria remain fixed before the corresponding results enter the judgement. For
+criterion $j$, the thesis uses
+\begin{equation}
+    C_j=(S_j,P_j,m_j,s_j,w_j,d_j,\tau_j,E_j),
+\end{equation}
+where $S_j$ is the scenario, $P_j$ the population, $m_j$ the metric, $s_j$ the
+statistic, $w_j$ the window, $d_j$ the preferred direction, $\tau_j$ an externally
+justified threshold, and $E_j$ the evidence gate. A numerical value is not
+assessable when its population, boundary, or threshold provenance is missing.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
+    \caption{Ex ante criteria and required evidence.}
+    \label{tab:ex-ante-criteria}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Criterion} & \textbf{Population} & \textbf{Required evidence} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Criterion} & \textbf{Population} & \textbf{Required evidence} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Latency & Homogeneous requests and complete or interrupted flows remain separate. & Timer boundary, statistic, sample size, window, repetitions, path, and outcome rule. \\
+    \hline
+    Throughput & Request and useful-flow completions under declared offered load. & Profile, mix, concurrency, calibration, duration, and plateau rule. \\
+    \hline
+    \rowcolor{tableGray}
+    Reliability & Transport, application, timeout, and terminal-flow outcomes. & Error taxonomy, denominator, retry rule, and semantic outcome rule. \\
+    \hline
+    Saturation & Drift, active concurrency, throughput, latency, and failures. & Repeated convergence of indicators rather than offered rate alone. \\
+    \hline
+    \rowcolor{tableGray}
+    Data quality & Expected, parsed, malformed, incomplete, and unmatched events. & Event semantics, provenance, coverage rule, and completeness threshold. \\
+\end{longtable}
+\endgroup
+
+\noindent Observation completeness conditions every statistic. The configured
+timeline and flow definition determine expected requests and terminal events; the
+retained event stream determines parsed observations. A missing end event,
+duplicate identifier, malformed record, or unmatched occurrence changes the
+admissible population. Successful-request latency therefore appears beside
+timeouts and application failures rather than replacing them.
+
+\noindent The judgement vocabulary follows the evidence hierarchy. A criterion is
+\emph{not assessable} when its threshold or evidence gate is absent;
+\emph{conditionally supported} when structural or controlled evidence exists
+without the required live coverage; \emph{accepted} when valid evidence meets an
+externally declared rule; and \emph{rejected} when valid evidence violates that
+rule. Mock evidence supports instrument validation. Live external evidence
+supports observations for the declared environment. Internal causal evidence
+requires a newly authorised source inside the protected boundary.
+
+\noindent Threshold provenance remains external to the campaign under judgement. An
+approved service-level requirement, contractual criterion, or preregistered
+protocol can supply $\tau_j$; an observed percentile cannot become its own pass
+value. The Sistema Informativo Territoriale (SI.Ter) procurement specification
+supplies a bounded front-end
+reference for interactions that do not depend on third-party systems
+\footcite[pp.~56--57]{azienda-zero-siter-capitolato}. That reference does not
+automatically transfer to mediated RVE workflows because their dependencies and
+observation boundary differ.
+
+\noindent Repeated scenarios reduce but do not remove temporal confounding. Paired seeds
+align the synthetic choices, controlled ordering limits a fixed sequence effect,
+and run timestamps retain the chronology needed to detect environmental change.
+Remote observations within one run remain dependent. The final judgement
+therefore considers run-level dispersion and consistency of direction instead of
+relying only on a pooled request distribution.
+
+\noindent Negative evidence remains part of the decision. A malformed event, missing
+terminal state, failed token transition, timeout, or generator overload can make a
+performance criterion not assessable while still exposing a framework or
+contract problem. Data-quality and semantic gates apply before aggregation, and
+their failures remain visible in the reported denominator.
+
+\section{Generic versus Domain-Specific Profiling}
+\subsection{Modelling Distance and Semantic Fidelity}
+
+\noindent The comparison between JMeter and RDG concerns paradigms, not product
+feature counts. Apache JMeter represents a mature generic request-centric
+paradigm: its test plans combine samplers, controllers, extractors, variables,
+assertions, scripts, and distributed execution mechanisms
+\footcite{apache-jmeter-test-plan,apache-jmeter-component-reference,apache-jmeter-functions-variables,apache-jmeter-remote-testing}.
+RDG represents a domain-specific workflow paradigm: its primary abstraction is a
+typed healthcare flow whose security, data, dependency, scheduling, and evidence
+semantics remain part of one executable model.
+
+\noindent Both paradigms can issue concurrent SOAP/XML and REST/JSON requests. Raw protocol
+reach is therefore not the deciding criterion. The deciding criterion is
+\emph{modelling distance}: the amount of additional interpretation and custom
+state logic required to move from the experimental model to the documented
+regional workflow. In a generic paradigm, the author composes scoped variables,
+extractors, assertions, controllers, and scripts to preserve SAML propagation,
+patient-query outcomes, context transitions, document references, and failure
+blocking. In a domain-specific paradigm, these relationships constitute the
+workflow vocabulary itself.
+
+\noindent This distinction does not make the generic paradigm technically incapable. It
+makes semantic fidelity an author-maintained convention distributed across plan
+elements. The risk is not only maintenance cost. A test can remain executable
+while becoming semantically invalid: state can leak across virtual users, a
+dependent request can start after a nominal transport success, or a failed
+prerequisite can disappear from the useful-flow denominator. Reducing modelling
+distance reduces the number of places in which these inconsistencies can arise.
+
+\noindent The domain-specific paradigm also connects workload construction and evidence
+construction. Domain-specific metadata generation creates synthetic patient and
+document contexts; stateful orchestration logic preserves occurrence-local
+outputs and branches; the asynchronous execution model expresses concurrency
+among independent flows; the event model retains both technical attempts and
+terminal domain outcomes. The resulting artefact translates documented
+healthcare dependencies into executable and observable experimental units.
+
+\noindent The comparison in Table~\ref{tab:jmeter-rdg-tradeoff} avoids implementation
+names.
+
+\begingroup
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.3cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
+    \caption[Generic and domain-specific profiling paradigms]{Generic and
+    domain-specific profiling paradigms. JMeter represents the generic
+    request-centric paradigm, while RDG represents the domain-specific workflow
+    paradigm.}
+    \label{tab:jmeter-rdg-tradeoff}\\
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Dimension} & \textbf{Generic request-centric paradigm} & \textbf{Domain-specific workflow paradigm} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{veryPeri!18}
+    \textbf{Dimension} & \textbf{Generic request-centric paradigm} & \textbf{Domain-specific workflow paradigm} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{3}{r}{\small Continued on the next page}\\
+    \endfoot
+    \hline
+    \endlastfoot
+    \rowcolor{tableGray}
+    Unit of analysis & Request or sampler sequence extended with user-defined state. & Typed information-dependent healthcare flow. \\
+    \hline
+    State semantics & Scope and lifetime emerge from variables, extractors, controllers, and custom logic. & Occurrence-local state and prerequisite blocking form explicit invariants. \\
+    \hline
+    \rowcolor{tableGray}
+    Data semantics & Payloads remain generic unless the plan incorporates domain-specific generation and validation. & Synthetic patient and document metadata preserve the represented profile without using personal data. \\
+    \hline
+    Outcome semantics & Transport assertions require additional domain rules for application and flow completion. & Transport, application, and terminal-flow outcomes remain separate by construction. \\
+    \hline
+    \rowcolor{tableGray}
+    Observability & Endpoint timing is native; workflow correlation and path differentials require explicit composition. & Correlated external events directly support surrogate path observation. \\
+    \hline
+    Evolution cost & Broad ecosystem and mature distributed facilities; domain contracts remain test-plan responsibilities. & Lower modelling distance for represented contracts; domain model requires maintenance when specifications change. \\
+    \hline
+\end{longtable}
+\endgroup
+
+\noindent The comparison therefore concerns semantic risk and experimental
+traceability. A generic plan is attractive when the target is a stateless endpoint
+or a protocol-level baseline. A domain-specific workflow is attractive when the
+experimental outcome depends on ordered state transitions, domain metadata,
+application-level validation, and flow-level denominators. The Veneto use case
+belongs to the second class because security, identity, context, document, and
+signing transitions determine whether useful work completes.
+
+\subsection{Ex Ante Justification of RDG}
+
+\noindent RDG is methodologically justified when five conditions hold: the target process
+contains dependencies whose violation changes experimental meaning; authorised
+evidence excludes production traces and internal regional telemetry; synthetic
+data preserve contract structure without protected material; the research
+question concerns complete-flow behaviour and path differentials; and one
+evidence model connects offered load, state transitions, external timing, and
+terminal outcomes. The regional case satisfies all five conditions.
+
+\noindent RDG does not claim that its execution engine is faster. A throughput comparison
+with JMeter requires matched workloads, equal host conditions, and a dedicated
+generator benchmark, which lies outside this chapter. A stateless generic
+baseline remains useful for calibration and protocol isolation, but it does not
+replace a session-aware workload for protected regional workflows.
+
+\noindent The choice relocates rather than eliminates complexity. A domain-specific model
+requires versioned transaction semantics, outcome definitions, scheduling
+controls, and event provenance. The same elements otherwise reappear as dispersed
+custom logic in a generic plan; RDG makes them inspectable at the abstraction
+level of the research question.
+
+\paragraph{Scientific Rationale for Domain-Specific Profiling.}
+RDG responds to latency-aware distributed systems by combining quantile-based
+stochastic interpretation, full-stack FCT, matched Path-level Overhead,
+application-representative communication patterns, metadata-driven FHIR R4
+generation, and session-aware orchestration. The absence of authorised traces
+makes controlled synthetic workflows the admissible internally valid input,
+while the regional security perimeter imposes Advanced Black-box with Surrogate
+Observability. RDG is therefore not merely custom software: it translates
+international methodological consensus into Regione Veneto's operational,
+semantic, and security constraints. Its evidence supports reproducible external
+profiling and workflow inference, not internal causes or unexecuted branches.
 
 \newpage

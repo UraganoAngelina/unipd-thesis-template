@@ -1,443 +1,688 @@
-\chapter[State of the Art and Methodological Foundations]{State of the Art and\\Methodological Foundations}
-\label{chap:stateofart}
-
-The problem addressed by this thesis lies at the intersection of two areas that must be considered jointly. On the one hand, healthcare interoperability requires integration architectures, semantic standards, and security mechanisms capable of coordinating heterogeneous systems. On the other hand, evaluating a distributed gateway requires an experimental model that correctly distinguishes latency, throughput, concurrency, reliability, and the temporal behavior of the workload. Considering only the first set of aspects would produce a static description of interfaces; focusing only on the second would reduce the workload to traffic devoid of the meaning and dependencies of healthcare processes.
-
-This chapter therefore develops a state of the art oriented towards methodological decisions. Integration architectures and healthcare standards are examined to clarify what an executable flow must represent. Performance literature and traffic models are discussed to establish how such flows should be scheduled, observed, and aggregated. The results of the reviewed studies are not transferred directly to the regional case: studies on edge computing, MPI clusters, and load sharing have different experimental scopes and are used only to derive measurement principles, with the necessary caution. The discussion ultimately leads to implications for the framework developed in this thesis, which is presented as an instrument for translating documented interoperability flows into reproducible and measurable workloads rather than as a generic request generator.
-
-\section{Software Integration Architectures}
-\label{sec:integration-architectures}
-
-In the domain considered, an integration architecture does not coincide with a single protocol or middleware product. It defines responsibilities and boundaries among service providers and consumers, mediation components, backend systems, and security mechanisms. This perspective is necessary to interpret the path of a request correctly: the same functional operation may traverse several technical layers, each exposing different timing, errors, and observable data.
-
-This section relates service-oriented and resource-oriented paradigms to the roles of API gateways and middleware, the sequential nature of multi-step flows, and the decoupling of callers from providers. Its purpose is not to present a general taxonomy, but to isolate the properties that influence workload construction and subsequent measurement: interaction granularity, data dependencies, security enforcement points, transformations, and observation boundaries.
-
-\subsection[SOA and Resource-Oriented Architecture]{Service-Oriented Architecture and Resource-Oriented Architecture}
-\label{subsec:soa-roa}
-
-Service-Oriented Architecture (SOA) represents capabilities in a distributed system as services exposed through explicit interfaces and contracts. The OASIS reference model deliberately avoids binding this definition to a specific technology and places the interaction between entities that provide and use capabilities in a shared context at its center \cite{oasis-soa-rm}. For this thesis, the relevant aspect is not the historical association between SOA and SOAP Web Services, but the separation among the service contract, its internal implementation, and the organization that governs access. This separation allows systems developed and managed by different parties to cooperate without sharing the same internal application model.
-
-Resource-Oriented Architecture (ROA), by contrast, adopts the resource as its primary conceptual unit, identified and manipulated through uniform operations. In healthcare, HL7 Fast Healthcare Interoperability Resources (FHIR) expresses this approach clearly: information entities such as patients are represented as resources, while RESTful interactions apply HTTP operations within the constraints defined by the specification and adopted profiles \cite{hl7-fhir-r4}. ROA does not remove the contract; it distributes it across the resource model, profiles, permitted operations, search parameters, code systems, and conformance rules.
-
-SOA and ROA should therefore not be treated as mutually exclusive alternatives. A healthcare platform may expose services with clearly delimited functional responsibilities and use FHIR resources and REST interactions within them. Similarly, the same architecture may include SOAP document services conforming to IHE profiles and REST patient-registry services based on FHIR. The useful distinction concerns two ways of defining contract granularity: the first emphasizes the provided capability and operation, whereas the second emphasizes resource representation and lifecycle.
-
-This coexistence is documented in the regional case. The Anagrafe Zero specifications describe patient-registry transactions built on FHIR R4, including patient search and identifier assignment, while XDS.b document integration uses IHE actors and transactions with distinct responsibilities \cite{arsenal-anagrafe-zero-v26,ihe-xdsb,ulss3-xvalue-v29}. The architectural implication is that the workload cannot assume a single interaction style or serialization. It must preserve the actual contract of each step while representing the process as an end-to-end unit.
-
-From a performance perspective, the selected granularity affects the number of round trips, message size, connection reuse, and the points at which transformations or controls may be applied. This does not imply that one style is inherently faster than another: performance depends on the specific profile, payload size, security mechanisms, and infrastructure path. The reviewed literature shows that application-perceived latency is multidimensional and that apparently local choices, such as connection management and serialization, may alter the distribution of completion times \cite{iorio-when-latency-matters}.
-
-The methodological consequence for the framework is twofold. First, the transaction type must remain an explicit attribute to support consistent aggregation and comparison among homogeneous operations. Second, the unit of work cannot be reduced to an HTTP operation: a healthcare capability may require authentication, patient-registry queries, context acquisition, and document access. SOA and ROA therefore provide the architectural vocabulary for describing individual contracts, while the flow model provides the unit required to evaluate their composition.
-
-\subsection{API Gateways, Middleware, and Orchestration Patterns}
-\label{subsec:gateway-middleware-orchestration}
-
-An API gateway provides a controlled entry point to a set of services. Depending on the specific architecture, it may apply routing, credential or token verification, access policies, traffic limiting, and event collection. Integration middleware may have a broader scope: in addition to exposing APIs, it may mediate protocols and formats, transform messages, coordinate calls, and connect synchronous services with asynchronous components. These functions may be distributed across separate components or combined in the same product; for analysis, distinguishing them by responsibility is more useful than relying on product terminology.
-
-Routing selects the destination or path of a request. Mediation adapts the contract between caller and provider, for example by translating an external interface into a call to a regional system. Transformation modifies the representation or structure of a message when the two sides do not use the same format. Security verifies identity, tokens, channel, and authorization context. Observability produces the events required to reconstruct the path and outcome. These responsibilities are not interchangeable: a correctly routed request may be rejected for authorization reasons, while a valid backend response may be altered or hidden by a transformation error.
-
-Orchestration adds a temporal dimension. An orchestrator establishes the order of operations, evaluates preconditions, and propagates data between steps. In the flows examined in this thesis, a value obtained from a security service may be required to invoke the next service, and an identifier returned by a query may become the input of a subsequent operation. Orchestration must not be confused with simply concatenating URLs: it preserves the logical state of a flow occurrence even when the individual services are stateless.
-
-These responsibilities determine two measurement boundaries. The first is observable by the traffic generator and includes the time between sending and receiving each request and the total flow duration. The second lies inside the middleware, where gateway time, waits, upstream calls, retries, or infrastructure data may be observable. The availability of the second level depends on the actual presence of correlatable logs and cannot be inferred from client time alone. The grey-box model adopted by the thesis follows precisely from this distinction: it integrates observations from different levels without declaring them equivalent.
-
-The gateway is also a point at which offered load may differ from the load actually forwarded. Authorization checks, concurrency limits, timeouts, or circuit breakers may prevent a request from reaching the backend. Client-side throughput, the number of requests accepted by the gateway, and the number of operations completed by the backend therefore answer different questions. Any aggregation must state the boundary and observed population explicitly.
-
-In the framework, these principles are reflected in the preservation of flow, occurrence, request, and step identifiers. These attributes enable joins between framework events and middleware data when both are available. On their own, however, they do not demonstrate a causal decomposition of latency: correlation requires compatible keys, clocks, and sufficiently reliable event semantics. The experimental methodology must therefore treat correlation coverage and quality as dataset properties rather than implicit assumptions.
-
-% CONTROL NOTE: separation of measurement levels verified in log_collector.py and metric_engine.py.
-
-\subsection[Synchronous Communication and Multi-Step Flows]{Synchronous Communication, Stateless Services, and Multi-Step Flows}
-\label{subsec:sync-stateless-multistep}
-
-Synchronous communication ties caller progress to the availability of a response, an error, or a timeout. This property simplifies the semantics of some transactions, but makes the duration of each step sensitive to the network, security mechanisms, middleware, and remote-system processing. In a multi-step flow, this dependency propagates: a subsequent step cannot begin when it requires an output that the preceding step has not yet produced.
-
-The stateless nature of a service does not contradict this sequencing. Stateless means that each request contains, or makes it possible to reconstruct, the context required by the service to process it; it does not mean that the application process has no state. The flow coordinator must preserve identifiers, tokens, assertions, or results required for continuation. State therefore moves from the individual service to the application composition or exchanged data.
-
-Regional specifications make this distinction concrete. The context call describes a transaction that obtains a JWT from a SAML assertion and the information required to access services; the resulting token is intended for subsequent interactions \cite{arsenal-context-rve-v13}. Anagrafe Zero separates patient search from identity assignment or modification and, under specified circumstances, requires a preliminary search \cite{arsenal-anagrafe-zero-v26}. XDS.b similarly distinguishes metadata queries from document retrieval \cite{ihe-xdsb}. Security, registry, context, and document services therefore form an information chain rather than a collection of independent requests.
-
-For a single flow occurrence, ordering is part of correctness. Advancing a call or reusing an output that belongs to another occurrence would produce a technically executable but semantically incorrect workload. Independent occurrences, by contrast, may overlap in time. The concurrency relevant to this thesis is therefore concurrency among flows, while step order and interruption after a blocking failure remain valid within each flow.
-
-This structure also changes metric interpretation. Step latency measures one interaction observed by the client; flow completion time measures the interval required to complete the entire sequence. The sum of step latencies may differ from flow duration when local processing, dependency resolution, or other intervals are present. Moreover, an early error may prevent later steps from running: counting those later steps as successes, errors, or missing requests without stating the rule would alter the interpretation of the experiment.
-
-The framework implements these semantics through ordered steps, placeholders resolved at runtime in live mode, and a separate context for each occurrence. A concurrency limit encloses the entire flow, while multiple flows are scheduled as asynchronous tasks. In this chapter, these details verify that the model is implementable; the code-level description is deferred to the design and implementation chapters.
-
-% CONTROL NOTE: invariant verified in traffic_exec_engine.py:805-960 and flow_orchestrator.py:91-108.
-
-\subsection{Decoupling Callers from Service Providers}
-\label{subsec:decoupling}
-
-Decoupling reduces the knowledge that a caller must have about the implementation and location of a service provider. The caller depends on a stable contract and access point, while routing, instance selection, transformations, and policies may evolve within the integration layer. In healthcare, where regional services, Healthcare Organization applications, and document repositories fall under different organizational responsibilities, this separation is both a maintainability requirement and a technical pattern.
-
-Decoupling may be spatial, temporal, or representational. It is spatial when the caller does not know the physical instance that will process the request; temporal when producer and consumer need not be available simultaneously, as in queue-based systems; and representational when middleware mediates formats or contracts. The synchronous flows examined in this thesis primarily implement the first and third forms. Any asynchronous components in the broader ecosystem must not be attributed automatically to the modelled transactions.
-
-This advantage has an observability cost. An additional layer introduces possible waits, transformations, controls, and failure modes. Client latency includes the overall result of the path but does not identify which component produced the delay. A middleware measurement may isolate part of the path, while still depending on logging quality and the availability of correlation keys. Architectural decoupling therefore requires an equally explicit observability strategy.
-
-Distinguishing mediation, routing, security, transformation, and observability prevents over-interpretation. If the gateway rejects a token, the backend may never be involved; if a transformation fails, the observed time does not measure remote-service capacity; if a timeout occurs after forwarding, the client and middleware may record different outcomes. The experiment must preserve these cases rather than flattening them into a single error category.
-
-Decoupling is also relevant when comparing direct and mediated paths. A valid comparison requires the two workloads to represent semantically comparable operations and the path difference to be a controlled variable. Without this control, attributing the difference between latency distributions to the middleware would be an unsupported causal inference. The framework provides path categories and optional middleware data, but the results chapter may draw conclusions only from scenarios that were actually executed and documented.
-
-\section{Healthcare Standards and Protocols}
-\label{sec:healthcare-standards}
-
-Healthcare standards operate at different levels. FHIR defines resources and interactions; Integrating the Healthcare Enterprise (IHE) profiles coordinate actors and transactions for specific interoperability problems; regional specifications constrain and contextualize these standards through profiles, code systems, and operational rules. Protocols, formats, and tokens complete the technical contract but do not replace healthcare semantics.
-
-This distinction is essential to the thesis. The workload must reproduce the form of the interactions actually studied without assuming that conformance to a general standard automatically entails conformance to a regional profile. The following subsections therefore examine FHIR R4, IUA, XDS.b, document transactions, and security mechanisms only in relation to the aspects that influence flow composition and measurement. Fields, cardinalities, and code systems not required for the methodological argument remain delegated to the primary specifications.
-
-\subsection{HL7 FHIR R4}
-\label{subsec:fhir-r4}
-
-HL7 FHIR R4 organizes healthcare information into resources with defined structure and semantics, which can be linked through references and exchanged according to different paradigms. Published version 4.0.1 of the R4 specification includes a RESTful API, messaging, documents, and operations; it therefore does not coincide solely with the use of JSON over HTTP \cite{hl7-fhir-r4}. A resource represents an interoperable concept, while profiles and extensions constrain or extend its use for a specific context.
-
-The \texttt{Patient} resource is central to the registry case, but its concrete meaning depends on the regional profile. Anagrafe Zero v2.6 states its alignment with FHIR R4 and defines its own transactions, actors, and rules for regional patient identity \cite{arsenal-anagrafe-zero-v26}. Syntactic conformance of a generic Patient resource is therefore insufficient: identifiers, extensions, code systems, and constraints must be evaluated against the applicable specification. In the framework, the synthetic generator adopts the structure required by the regional case; this chapter does not reproduce cardinality tables, for which the technical document remains authoritative.
-
-The \texttt{Bundle} resource is a container for a collection of resources and supports different uses, including search results, messages, documents, and atomic transactions \cite{hl7-fhir-r4-bundle}. Its type is therefore semantically significant. Within the scope examined, RVE-54 returns a collection of registry results represented as a Bundle containing Patient entries, whereas the RVE-55 request uses a \texttt{transaction} Bundle containing the Patient resource to register; the response in turn contains the outcome and resulting resource according to the regional profile \cite{arsenal-anagrafe-zero-v26}. These differences prevent all Bundles from being treated as equivalent payloads.
-
-The current framework represents Patient and Bundle explicitly. For the query flow, it generates parameters from the synthetic resource and, in mock mode, provides a \texttt{searchset} response Bundle; for identifier assignment, it builds an XML-serialized \texttt{transaction} Bundle. These choices are implementation evidence, not a general statement about the mandatory format of all FHIR services. The regional specification remains authoritative for RVE messages; the code establishes only what the framework can currently produce and execute.
-
-FHIR also contributes to workload measurability. Resource type, Bundle type, and operation affect payload size, serialization complexity, and outcome semantics. Latency comparisons among heterogeneous requests must therefore be stratified at least by transaction and, where necessary, by size. Structured resources make it possible to generate coherent synthetic data, but do not automatically make the traffic mix realistic: the flow distribution remains a separate experimental variable.
-
-% CONTROL NOTE: implemented resources and Bundles verified in fhir_patient_generator.py, rve_54.py, and rve_55.py.
-
-\subsection{IHE IUA -- Internet User Authorization}
-\label{subsec:ihe-iua}
-
-The IHE Internet User Authorization (IUA) profile adds authorization information to RESTful HTTP transactions. In the official specification, its principal actors are the Authorization Client, Authorization Server, and Resource Server. The client obtains an access token from the Authorization Server and incorporates it into the request; the Resource Server validates the token and applies the access decision, possibly enforcing additional service-specific policies \cite{ihe-iua}.
-
-This separation clarifies a distinction that is often blurred: authentication and authorization are not synonyms. Authentication establishes or verifies an identity; the Authorization Server uses identity, client, requested resource, and other information to issue a token; and the Resource Server ultimately applies policy at access time. IUA does not prescribe a single user-authentication method, because that choice depends on the project or national extension. Instead, the profile defines how the authorization result participates in RESTful interactions.
-
-The current IUA specification describes the Get Access Token, Incorporate Access Token, Introspect Token, and Get Authorization Server Metadata transactions, with options for JWT, SAML, or token introspection \cite{ihe-iua}. The regional case examined here must not be equated automatically with every detail of the current profile release. The Anagrafe Zero specifications refer to IUA in their security considerations, while the regional security and context-call documents define RVE transactions and their own procedures for producing and using assertions and tokens \cite{arsenal-security-v214,arsenal-context-rve-v13}. The relationship is therefore one of profiling and contextualization, not nominal equivalence.
-
-IUA is relevant to this thesis because it introduces steps that belong to both the functional path and its time budget. Token acquisition may precede the protected call; validation may occur at the gateway or Resource Server; and a rejection may interrupt the flow before the healthcare service is invoked. A generator that sent only the final request would omit a significant part of the end-to-end behavior.
-
-From an experimental perspective, tokens and assertions must be treated as dependencies, not as data to expose in the results. Logs must record transaction type, outcome, and timing without including credentials or sensitive contents. In mock mode, synthetic values may be propagated; in live mode, resolution must occur within each individual flow occurrence. This preserves the authorization structure while keeping secret management separate.
-
-\subsection{IHE XDS.b -- Cross-Enterprise Document Sharing}
-\label{subsec:ihe-xdsb}
-
-The IHE Cross-Enterprise Document Sharing (XDS.b) profile organizes the sharing of clinical documents among organizations participating in an Affinity Domain. The domain shares the policies and conventions required to make documents searchable and retrievable, while the profile separates content persistence from metadata indexing \cite{ihe-xdsb,affinity-domain-italia-v263}.
-
-The Document Source produces and publishes the document together with the required metadata. The Document Repository receives and persistently stores the content and registers its metadata with the Document Registry. The Registry maintains Document Entries and responds to queries from the Document Consumer. The Consumer searches the Registry using defined criteria and retrieves the document from the Repository identified in its metadata \cite{ihe-xdsb}. This separation is fundamental: the Registry is not the document store, and the Repository does not replace the metadata-query service.
-
-The consulted XValue integration specification confirms the same division of responsibilities in the regional context and documents publication through ITI-41 together with the metadata required for indexing \cite{ulss3-xvalue-v29}. The Affinity Domain Italia v2.6.3 document defines constraints and value sets for metadata such as XDSDocumentEntry attributes and submission structures \cite{affinity-domain-italia-v263}. These tables are not reproduced here: the purpose is to show that metadata form part of the interoperable contract rather than being ancillary attributes.
-
-XDS.b is content-neutral with respect to the document: the profile governs publication, registration, query, and retrieval without requiring the clinical content to have one representation. Semantic interoperability therefore also depends on Affinity Domain policies concerning format, structure, code systems, and classifications. For workload construction, this means that document size and type may vary independently of transaction form and must be controlled when they affect transfer times.
-
-Security applies across the actors without changing their document-related responsibilities. The regional XValue specification requires a prior security assertion for the described transactions \cite{ulss3-xvalue-v29}; this chapter nevertheless keeps the explanation of XDS.b separate from that of SAML and JWT. Experimentally, a document flow must preserve its security dependency and distinguish metadata query from content retrieval. Only then can end-to-end time be interpreted with respect to the steps actually executed.
-
-\subsection{ITI Transactions for Document Publication, Query, and Retrieval}
-\label{subsec:iti-document-transactions}
-
-ITI transactions operationalize the XDS.b model by assigning precise responsibilities to actor pairs. Publication uses Provide and Register Document Set-b [ITI-41], initiated by the Document Source towards the Document Repository. The request includes both the document and its metadata; the Repository stores the content and forwards the metadata to the Registry through Register Document Set-b [ITI-42] \cite{ihe-xdsb}. In the regional XValue context, ITI-41 is explicitly identified as the transaction used to publish the document and transmit its associated metadata \cite{ulss3-xvalue-v29}.
-
-Queries use Registry Stored Query [ITI-18]. The Document Consumer queries the Document Registry; the Registry applies the stored-query criteria and returns metadata for matching Document Entries, including the elements required to locate the document and the Repository that stores it \cite{ihe-xdsb}. The query result is therefore not the clinical document itself. Conflating ITI-18 with retrieval would remove a distinct step from the model and alter both its semantics and its measurement.
-
-Retrieval uses Retrieve Document Set [ITI-43]. After selecting a Document Entry, the Document Consumer requests the corresponding content from the Document Repository. This transaction may transfer payloads substantially larger than a query response; latency and throughput are therefore not directly comparable without considering document size and type. The logical sequence is query, selection, and retrieval, although individual steps may still be executed in controlled experimental scenarios.
-
-The current framework includes flows for ITI-18 and ITI-43, each preceded by acquisition of an RVE-1.b assertion. ITI-41 is documented among the transactions relevant to the architecture but is not currently a flow type in the generator. This difference between analytical scope and implementation coverage must remain explicit: the chapter may describe ITI-41 as a foundation of the document process, but must not attribute execution of an unimplemented transaction to the framework.
-
-The three transactions also suggest distinct metric populations. ITI-18 produces query observations, ITI-43 retrieval observations, and ITI-41 publication observations. Combining them into one mean would erase differences in responsibility and payload. The methodology must therefore stratify by transaction type and, for document operations, treat message size as a controlled variable.
-
-% CONTROL NOTE: implemented ITI flows verified in flow_orchestrator.py; ITI-41 is absent from the current map.
-
-\subsection{SOAP, REST, XML, JSON, and Interoperability Profiles}
-\label{subsec:soap-rest-serialization}
-
-SOAP and REST belong to different conceptual levels: SOAP defines an envelope-based messaging protocol, whereas REST is an architectural style that, in the healthcare APIs considered here, is implemented through HTTP semantics and resource identification. XML and JSON are representation formats and do not determine the interaction style on their own. Their concrete combination is established by the applicable standard and profile.
-
-The documentary corpus uses SOAP/XML for security and XDS.b transactions. Anagrafe Zero instead uses FHIR-based HTTP interactions, while the RVE context call uses HTTP with JSON payloads \cite{arsenal-security-v214,arsenal-anagrafe-zero-v26,arsenal-context-rve-v13,ulss3-xvalue-v29}. It is therefore inaccurate to describe the ecosystem as a linear migration from SOAP to REST. The two paradigms coexist because they implement different contracts and profiles.
-
-For evaluation, the relevant aspects are the number of exchanges, payload size, serialization and parsing costs, connection management, and security mechanisms. In their task-offloading scenario, Iorio, Risso, and Casetti show that application protocol, connection persistence, and serialization may affect flow completion time; they also stress that the effect depends on the messages and infrastructure under examination \cite{iorio-when-latency-matters}. These results do not justify classifying XML as necessarily slow or JSON as necessarily efficient in RVE flows.
-
-The framework must therefore reproduce the format required by each transaction and record payload size. A comparison between SOAP/XML and REST/JSON would be meaningful only if the operations were functionally comparable and other variables controlled; in the current case, the formats often identify different services. Analysis by transaction type, with size possibly used as a descriptive covariate rather than a demonstrated cause, is more appropriate.
-
-Error handling also differs among profiles. HTTP status codes, SOAP faults, FHIR errors, and timeouts must be normalized without losing their original information. The normalized layer supports common aggregation, while transaction type and original status preserve the possibility of profile-specific analysis. This dual representation avoids both complete fragmentation of the metrics and the flattening of non-equivalent semantics.
-
-\subsection{SAML, JWT, and Token-Based Authorization}
-\label{subsec:saml-jwt}
-
-Security Assertion Markup Language (SAML) and JSON Web Token (JWT) are structured formats that may carry assertions and claims, but their use must be interpreted within the protocol and profile that produce and consume them. A SAML assertion is not synonymous with login, just as the presence of a JWT does not by itself demonstrate authorization for a specific operation. The decision depends on issuer, audience, temporal validity, context, and enforced policies.
-
-In the documented regional infrastructure, the RVE-1.b transaction involves an Identity and Assertion Provider and produces a SAML assertion for subsequent interactions \cite{arsenal-security-v214}. The context-call specification describes RVE-121 GetAccessToken: an AccessTokenRequester sends a request to the AccessTokenManager containing the assertion and context information; after verification, the manager returns a JWT that can be used to access the requested services \cite{arsenal-context-rve-v13}. This step is a contextualized token exchange, not a purely syntactic conversion.
-
-RVE-121 precedes RVE-130 in the implemented context-call flow. The dependency is both temporal and informational because the final call requires the output obtained previously. Token validity also introduces a constraint on total duration and reuse. This chapter does not report unnecessary lifetime values or specific claims; such details belong to particular specification versions and environment configurations.
-
-For a different application scope, the consulted APMS specifications describe OpenID Connect flows involving tokens and controls applied by the API gateway \cite{apms-auth-v141}. This material shows that different identity and authorization mechanisms may coexist in the same ecosystem. APMS, IUA, and RVE transactions must not be merged into one universal flow: each document defines its own actors, audiences, and purposes.
-
-For workload construction, the implication is that tokens and assertions are typed outputs correlated with a flow occurrence. In live mode, they must be extracted from the response and inserted only into dependent steps; in mock mode, they may be synthetic while preserving the same dependency structure. Logs must not retain their contents. Metrics should instead expose security-step latency, errors that interrupt the flow, and their effect on completion time, without inferring the organizational cause of denial from the status code alone.
-
-% CONTROL NOTE: RVE-1.b -> RVE-121 -> RVE-130 chain verified in the codebase; no real token must be included in logs or thesis text.
-
-\section{Performance Measurement in Distributed Systems}
-\label{sec:distributed-performance}
-
-The performance of a distributed system cannot be represented by a single number. A request traverses the network, transport, security, middleware, and application service; a healthcare flow combines several requests and may terminate before completion. Latency, throughput, errors, and concurrency therefore describe distinct aspects and must state their observation boundary, population, unit, and time window.
-
-The selected literature highlights two complementary risks. Point-to-point measurements may be too narrow to predict application behavior, while global means may conceal long tails and temporal variation. The following subsections therefore introduce application-level flow completion time, the limitations of elementary synthetic benchmarks, the interaction between load and capacity, and the role of percentiles and time series. These foundations prepare the operational definitions of the experimental protocol without anticipating values or results that have not yet been produced.
-
-\subsection{Network Latency, Transport Latency, and Application-Level Flow Completion Time}
-\label{subsec:latency-levels}
-
-Point-to-point network latency estimates the time required for a packet or probe to travel between two nodes and return to the sender. The round-trip time (RTT) obtained with tools such as ping mainly reflects propagation, forwarding, and queuing as observed by the probe protocol. It does not necessarily include connection establishment, security, complete payload transmission, or application processing.
-
-Transport latency extends the boundary to connection and protocol behavior. Handshakes, congestion control, retransmissions, delayed acknowledgments, and connection reuse may alter the time exposed to the application. Iorio, Risso, and Casetti explicitly distinguish network RTT, TCP-level RTT, and application-level flow completion time (FCT), observing that the latter includes message transmission, middleboxes, and application-infrastructure behavior \cite{iorio-when-latency-matters}.
-
-In this thesis, \emph{request latency} denotes the time observed by the framework between the beginning of a step request and the availability of its response or error. It is a client-side application measurement, not a pure network measurement. \emph{Flow completion time} instead denotes the interval between the start and completion of an entire multi-step occurrence. This duration includes the steps actually executed and intermediate framework processing, and must therefore not be called RTT.
-
-The two levels answer different questions. Request latency supports comparisons among homogeneous transactions and helps identify which step contributes to duration. Flow completion time more directly represents the time required to obtain the outcome of the simulated process. A failed flow must be analyzed separately or accompanied by the step at which it stopped, because its duration is not that of a successful completion.
-
-When a correlatable middleware log is available, internal gateway and upstream measurements may be added. They do not replace the client measurement and cannot be reconstructed reliably by subtracting unsynchronized values. Decomposition is valid only for events that provide compatible data and a verified join key.
-
-Finally, every latency distribution must state its population: requests, steps of a specific type, completed flows, or observations within a time window. Mixing levels produces formally computable but semantically meaningless percentiles. This distinction underpins the later separation among request-level, step-level, flow-level, and time-window metrics.
-
-\subsection{Limitations of Point-to-Point Measurements and Ping-Pong Benchmarks}
-\label{subsec:point-to-point-limits}
-
-Point-to-point benchmarks are useful for characterizing a link or communication implementation under controlled conditions. A ping-pong test measures repeated exchanges between two endpoints and may isolate RTT and bandwidth for selected message sizes. Simplicity is an advantage: the test is repeatable, permits focused comparisons, and reduces the number of variables. Its limitation appears when the result is treated as a sufficient prediction of application performance.
-
-Dimitrov and Skjellum compare polling and blocking completion modes in MPI clusters and show that a marked difference in point-to-point latency does not necessarily produce a corresponding difference in the application benchmarks considered \cite{dimitrov-latency-applications}. The examined applications primarily exchange medium or large messages and are more sensitive to sustained bandwidth and communication patterns. This result does not concern healthcare gateways, but demonstrates that transferring conclusions from a microbenchmark to an application requires a workload model.
-
-In the RVE case, a ping to an endpoint does not include authentication, SOAP or FHIR parsing, gateway routing, repository access, application processing, or dependencies among steps. Even a single-request HTTP benchmark remains incomplete when the actual process requires tokens or data produced by preceding calls. It may nevertheless be useful as a baseline for isolating connectivity problems or characterizing one transaction.
-
-The limitation is therefore not an absolute defect of the instrument, but a matter of external validity. A proportionate mitigation is to combine three levels: elementary environment measurements when available, application-step latency, and flow completion time. Comparisons among levels must remain descriptive; an observed correlation does not automatically identify a cause.
-
-A second limitation concerns temporal representativeness. Short serial tests do not reproduce concurrency, queues, bursts, or routing variations. A microbenchmark may expose the minimum achievable under favorable conditions, but not the distribution under mixed load. For this reason, the framework schedules multiple occurrences and preserves windowed time series, while the experimental protocol must specify seeds, duration, and repetitions.
-
-The resulting principle is that each benchmark must be evaluated against the research question. If the question concerns the minimum cost of one call, a point-to-point measurement may be appropriate. If it concerns the gateway's ability to sustain composed healthcare flows, an end-to-end measurement with a semantically valid workload is required.
-
-\subsection{Throughput, Errors, Concurrency, and Execution Queues}
-\label{subsec:throughput-errors-concurrency}
-
-Offered load is the rate at which the generator schedules new occurrences; throughput is the observed completion rate. If $N_c(W)$ is the number of units completed within a window $W$ of duration $|W|$, throughput is
-\begin{equation}
-    X(W)=\frac{N_c(W)}{|W|}.
-\end{equation}
-The unit must identify the counted object: requests per second or flows per second. The framework computes both forms globally and, where applicable, by flow type. A global value over the whole run is a summary, whereas a series of time buckets exposes variation and transients.
-
-The error rate is the ratio of observations classified as errors to the population considered. The denominator is again part of the definition: errors per request, per transaction, and incomplete flows are not equivalent. An error in an initial step may prevent subsequent steps from running; the flow success rate captures the outcome of the entire occurrence, while the distribution of failure steps describes error propagation.
-
-Concurrency measures the number of tasks active simultaneously, not the total number scheduled. The framework observes active flows and active steps. Because steps within one occurrence are sequential, an increase in active steps results from overlap among independent flows. The configured limit determines how many occurrences may enter the execution section; it does not necessarily equal the throughput achieved.
-
-When offered load temporarily exceeds available capacity, scheduled events may start late. The framework records \emph{queue delay}, or scheduling drift, as the difference between actual and planned start times. This is a generator-side measurement: it exposes pressure on the scheduler or concurrency limit, but does not represent an internal gateway queue. Middleware queues require their own observations.
-
-The metrics interact. In a stable regime, throughput and offered load may rise together. As capacity is approached, concurrency and delay may increase; beyond a certain regime, timeouts or errors may appear while useful throughput plateaus or declines. This is an interpretive structure to be tested against data, not a trend that can be attributed to the thesis experiments in advance.
-
-Chapter 8 must therefore state the formula, unit, level, and source of every KPI. Examples include request throughput in requests/s from completed events; flow throughput in flows/s from \texttt{flow\_completed} events; error rate as a percentage of the request population; flow success rate as a percentage of occurrences; concurrency as active flows or steps sampled at send time; and queue delay in milliseconds. Results may be reported only for scenarios that were actually executed.
-
-% CONTROL NOTE: implemented definitions verified in log_collector.py and metric_engine.py.
-
-\subsection{Percentiles, Long Tails, and Temporal Stability of Measurements}
-\label{subsec:percentiles-tail-stability}
-
-The mean describes the sample expectation but does not show how observations are distributed. Distributed-system latencies are often asymmetric and long-tailed: a small number of high values may be operationally important while having limited effect on the median. Percentiles address this need. Percentile $p$ is the value below which a fraction $p/100$ of the observed population falls.
-
-P50 describes median behavior, while P95 and P99 characterize progressively more extreme portions of the distribution. They are not interchangeable with the maximum, which depends strongly on sample size, and do not constitute guarantees for individual observations. Iorio, Risso, and Casetti highlight the difficulty of obtaining stable estimates beyond P99 and recommend repeated and prolonged observations to reduce the influence of occasional events \cite{iorio-when-latency-matters}.
-
-A percentile is interpretable only when its population and window are stated. A global P99 over all requests mixes different transactions; P99 by transaction type permits a more consistent comparison. P95 of flow completion time concerns flows rather than steps. A percentile computed per time bucket also describes a different phenomenon from one computed over the entire run.
-
-Temporal stability requires both time series and repetitions. An aggregate distribution may conceal an interval of degradation offset by regular periods. Buckets of declared duration make it possible to observe throughput, errors, concurrency, queue delay, and latency over time. Repetitions with controlled seeds help separate synthetic-load variability from system variability, although they do not remove variability in a live environment.
-
-The framework's descriptive statistics include the median and percentiles through P99, and the normalized dataset produces configurable time buckets. This technical availability does not replace experimental design: extreme-tail analysis requires sufficient samples, and the sample size must be reported. When the population is small, a high percentile should be presented cautiously or omitted.
-
-\subsection{Effects of Access Networks, Routing, Buffering, and Application Protocols}
-\label{subsec:network-stack-effects}
-
-Application time results from contributions distributed across the entire path. Access networks introduce different technologies, capacities, and sharing conditions; routing determines paths that do not depend solely on geographical distance; buffering can absorb bursts but may also create delay under congestion; and transport, security, and application protocols add handshakes, congestion control, encoding, and parsing.
-
-The measurement campaign by Iorio, Risso, and Casetti varies access networks, server placement, message size, protocol, and connection management. Its principal conclusion is that moving the data center closer reduces one delay component but does not by itself guarantee low flow completion time: transmission, queuing, transport, application, and orchestration may dominate the path \cite{iorio-when-latency-matters}.
-
-For a healthcare gateway, middleware introduces further functions, including token verification, routing, transformation, and upstream forwarding. These operations belong to the application layer and cannot be inferred from network RTT. Similarly, high latency does not demonstrate middleware saturation: the cause may lie in the access network, the regional service, document size, or a combination of factors.
-
-The grey-box methodology addresses this indeterminacy by separating the client boundary from the middleware boundary. The first reports the generator's experience and flow duration; the second, when available, adds internal components and infrastructure data. Interpretation must avoid unsupported subtraction and correlation. Even when CPU or connection data are available, establishing causality requires a controlled experiment rather than statistical correlation alone.
-
-\section{Workload and Traffic Models}
-\label{sec:workload-models}
-
-Performance evaluation requires not only valid requests, but also an explicit rule defining when they arrive at the system and in what composition. The load model separates workload content from its temporal dynamics: the flow mix describes which flows are selected; the arrival process determines their timestamps; and bursts and non-stationary profiles introduce controlled transients.
-
-In the framework, the timeline is constructed from previously generated requests and does not create new healthcare semantics. This boundary makes it possible to vary the temporal profile without altering flow contracts. The following subsections define the Poisson process, variable-rate profiles, burst injection, and the meaning of a synthetic workload. Parameter values belong to experimental scenarios and are not presented as representative of real healthcare traffic in the absence of observational data.
-
-\subsection{Stochastic Arrival Processes and the Poisson Distribution}
-\label{subsec:poisson-arrivals}
-
-A homogeneous Poisson process models independent arrivals with a constant rate $\lambda>0$. The number of arrivals $N(t)$ in an interval of duration $t$ follows
-\begin{equation}
-    \Pr[N(t)=k]=\frac{(\lambda t)^k e^{-\lambda t}}{k!},
-\end{equation}
-while inter-arrival times are exponentially distributed with parameter $\lambda$. The model provides a simple stochastic baseline: unlike a periodic schedule, it introduces variability while retaining a controllable mean rate.
-
-The independence assumption is not intended to describe every healthcare process. Coordinated access, batches, shifts, and campaigns may produce dependencies and autocorrelation. In the framework, the Poisson process is a design decision for generating reproducible and parameterized workloads; its suitability for real traffic must be evaluated against observed data, which are not currently available in the corpus.
-
-The timeline accepts an intensity function $\lambda(t)$. A constant rate implements the homogeneous case; a variable rate implements a non-homogeneous process through thinning. Candidate events are generated at an upper-bound rate $\lambda_{max}$ and accepted with probability $\lambda(t)/\lambda_{max}$. A seed controls the pseudo-random generator, making the same timeline reproducible under the same configuration.
-
-Each arrival is associated with a request selected from the existing dataset and receives a unique occurrence identifier. The same temporal model can therefore be applied to different mixes without losing step correlation. Duration is expressed in seconds and rate in arrivals per second; the final number of events remains a random variable and must not be confused with the nominal size of the source dataset.
-
-The experimental protocol and results must report the parameters actually used, sample sizes, and repetitions. This chapter assigns no empirical validity to a particular configuration. [DATA MISSING: observed arrival distribution in real RVE systems, required to validate the Poisson model against operational traffic.]
-
-% CONTROL NOTE: model implementation verified in timeline_generator.py:22-123 and 177-290.
-
-\subsection{Non-Stationary Traffic Profiles}
-\label{subsec:nonstationary-traffic}
-
-A non-stationary process permits a variable intensity $\lambda(t)$. In an interval $[a,b]$, the expected number of arrivals is
-\begin{equation}
-    \mathbb{E}[N(a,b)]=\int_a^b \lambda(u)\,du.
-\end{equation}
-This formulation represents ramps, peak periods, and decreasing phases without abandoning a stochastic model of inter-arrival times.
-
-The framework implements a constant profile, a time-banded synthetic daily clinical profile, and a step profile defined in configuration. The clinical profile is a synthetic pattern: it divides the simulated duration into intervals associated with low, base, and peak levels. It is not derived from Veneto traffic measurements and must not be presented as an observed curve. The step profile is particularly useful for controlled experiments because it makes explicit the times at which offered load changes.
-
-Non-stationarity makes it possible to study adaptation and transients. A system may sustain the same overall mean rate while responding differently to a ramp or sequence of peaks. To interpret this effect, metrics must be aggregated over windows consistent with the scale of change; a mean over the entire execution could erase the phase of interest.
-
-The seed makes the pseudo-random sequence reproducible, but does not make a live execution deterministic because the network and external systems remain variable. The protocol must therefore record the profile, parameters, seed, duration, code version, and configuration, and must include independent repetitions.
-
-\subsection{Probabilistic Bursts and Overload Scenarios}
-\label{subsec:bursts-overload}
-
-A burst is a temporary cluster of closely spaced arrivals superimposed on baseline traffic. In the implemented model, each baseline arrival triggers a cluster with probability $p_b$. Cluster size is sampled between configurable minimum and maximum values; each additional event receives a uniformly distributed offset within a window of width \texttt{burst\_spread}. Events are marked with their arrival type and burst identifier.
-
-This construction distinguishes a burst from a sustained increase in $\lambda(t)$. The former concentrates requests within a short window; the latter changes the rate over a longer interval. Saturation is not an input parameter, but a behavior to observe when offered load interacts with the concurrency limit and system capacity. A burst may not saturate an overprovisioned system, whereas a sustained rate may produce queuing even without clusters.
-
-Potential effects are visible through several KPIs: generator-side queue delay, active flows and steps, windowed throughput, request latency, flow completion time, error rate, and timeouts. Comparison between burst and non-burst events is descriptive; causal attribution requires control of transaction mix, payload size, and system conditions.
-
-Burst parameters are configurable, and the seed makes injection reproducible. The marker in the normalized dataset supports stratified analysis. Again, the model does not claim that bursts of a particular size correspond to a real clinical process. [DATA MISSING: operational traces or domain statistics required to calibrate the probability, size, and duration of RVE bursts.]
-
-% CONTROL NOTE: algorithm verified in timeline_generator.py:138-170 and 221-249.
-
-\subsection{Synthetic Workloads for Distributed Systems}
-\label{subsec:synthetic-workloads}
-
-A synthetic workload is a population of operations constructed according to explicit rules and used to exercise a system without relying on personal data or a complete operational trace. Its quality does not derive from volume alone: it must preserve flow structure, type distribution, dependencies among steps, and payload characteristics relevant to the experimental question.
-
-The flow mix assigns a non-negative weight to each flow type. After normalization, the weight represents its selection probability in the workload. Actual counts may differ slightly from theoretical proportions because of sampling and finite population size. The seed and dataset size must therefore be recorded.
-
-The current codebase defines seven flow types: context call (RVE-1.b, RVE-121, RVE-130), patient query (RVE-1.b, RVE-54), patient creation (RVE-1.b, RVE-55), document query (RVE-1.b, ITI-18), document retrieval (RVE-1.b, ITI-43), a mediated patient-registry path (middleware token followed by gateway operations RVE-54, RVE-55, RVE-57, and RVE-100), and a two-step ScrybaSign signature flow. This list describes current software coverage; it does not demonstrate equal functional validation or live execution for every flow.
-
-The timeline does not invent new steps, but samples previously constructed flows. This keeps two experimental dimensions separate: workload composition and temporal process. Arrival profiles can therefore be compared under a constant mix, or different mixes under the same profile, avoiding changes to multiple variables without declaring them.
-
-The synthetic nature of the workload imposes limitations. Patient resources do not represent real individuals; weights are not operational frequencies until calibrated; and mocks do not measure the performance of real services. Its methodological value lies in controllability and reproducibility. Representativeness must be argued separately and declared as a limitation when production data are unavailable.
-
-% CONTROL NOTE: flow types verified in the _FLOW_MODULES map; the request_dataset_generator.py docstring is outdated for the middleware flow, and the code takes precedence.
-
-\section{Literature on Latency, Throughput, and Scheduling}
-\label{sec:latency-throughput-literature}
-
-The three selected studies examine latency from different perspectives. Iorio, Risso, and Casetti conduct end-to-end measurements in task-offloading scenarios; Dimitrov and Skjellum compare microbenchmarks and MPI applications; Akram, Akram, and Rehman formulate a stochastic model for load-sharing decisions \cite{iorio-when-latency-matters,dimitrov-latency-applications,akram-numerical-latency}. None of these studies concerns RVE healthcare gateways, and their quantitative results are not directly comparable with the experiments in this thesis.
-
-Their joint reading is nevertheless methodologically useful. The first study shows the multiplicity of contributions to application time; the second constrains the validity of extrapolations from ping-pong tests; and the third highlights that decisions based on delayed information must consider distributions and temporal windows. The following subsections extract these principles while preserving the separate scope of each study and deferring the operational definitions of the adopted KPIs to Chapter 8.
-
-\subsection{Effects of Latency on Transfer Effectiveness and Throughput}
-\label{subsec:latency-transfer-throughput}
-
-Latency and throughput describe related but non-equivalent dimensions. Latency concerns the duration of an operation or flow; throughput concerns the number of completions per unit of time. An increase in the former may reduce the latter when operations occupy resources or concurrency slots for longer, but the effect depends on the execution model, the possibility of overlapping work, and the available capacity.
-
-In the task-offloading scenario studied by Iorio, Risso, and Casetti, flow completion time includes propagation, transmission, transport, application protocols, and processing. Their experiments show that reducing the distance to the server does not remove the other contributions, and that message size and connection management may alter application time \cite{iorio-when-latency-matters}. This result supports end-to-end measurement but provides no coefficients that can be transferred to healthcare payloads.
-
-In the MPI-cluster study, the lower point-to-point latency achieved through polling does not improve the considered application benchmarks, which are dominated by medium or large messages and bandwidth. Although asynchronous modes introduce overhead in microbenchmarks, they permit overlap and reduce CPU consumption for communication \cite{dimitrov-latency-applications}. The lesson is that a local optimization may not increase application throughput when the actual pattern exploits other mechanisms.
-
-In the load-sharing model by Akram, Akram, and Rehman, latency makes information about the sender or receiver state stale; a transfer may therefore consume resources without producing the intended benefit \cite{akram-numerical-latency}. Useful throughput is implicitly distinguished from the simple number of transfers initiated: increasing migration traffic is not equivalent to increasing completed work.
-
-For the RVE gateway, the consequence is to measure both requests and completed flows. A high call rate may include retries, steps destined to fail, or interrupted flows. Flow throughput and flow success rate describe useful work more directly, while request throughput and per-transaction latency help localize behavior. Units and windows must remain explicit, and no causal relationship should be anticipated before the data are available.
-
-\subsection{Load-Sharing Window, Transfer in Vain, and Transfer Unnecessary}
-\label{subsec:lsw-tiv-tu}
-
-The model by Akram, Akram, and Rehman represents nodes as M/M/1 queues and distinguishes underloaded and overloaded states through thresholds. When an overloaded node identifies an available receiver, there is a random interval during which the transfer may still be useful. This interval is called the Load-Sharing Window (LSW) and is defined with respect to the first relevant state change of either sender or receiver \cite{akram-numerical-latency}.
-
-In the model, a \emph{Transfer in Vain} (TIV) occurs when the receiver ceases to be available before the job arrives. A \emph{Transfer Unnecessary} (TU) occurs when the sender clears its own backlog during the transfer. In both cases, the decision was based on a state that is no longer valid when its effect occurs. Latency therefore acts as information age rather than only as an additive cost.
-
-The paper formalizes the window through first-passage times of the queues and evaluates the probability that it remains open beyond the time required for the decision and transfer. The model depends on specific assumptions: Poisson arrivals, exponential services, state thresholds, and job migration. These assumptions do not describe execution of an RVE flow, in which no load sharing between computational queues occurs.
-
-The transferable lesson is narrower: a decision based on remote state must account for the delay between observing and using that information. In the framework, this idea supports recording planned timestamps, actual starts, step durations, and completion time, but does not justify implementing TIV, TU, or LSW as RVE KPIs. Including them in the results without a corresponding model would create a false equivalence.
-
-A further lesson concerns useful throughput. Sending more work may increase overhead and reduce effectiveness when conditions change before completion. In the healthcare case, a cautious analogy is that calls initiated with expired tokens or invalid dependencies do not contribute to successful flows; this remains a methodological analogy, however, rather than an application of the M/M/1 model.
-
-\subsection{Quantile-Based Decision Rules and the Risks of Simple Means}
-\label{subsec:quantile-decision-rules}
-
-A mean-based decision uses a central value and disregards the probability of extreme observations. In the LSW model, this simplification is problematic because a decision must remain valid before a random window closes. Akram, Akram, and Rehman propose a rule based on a quantile of the window distribution: a transfer is admitted only when the expected delay is compatible with a selected confidence level \cite{akram-numerical-latency}.
-
-The methodological value of this rule lies in making risk explicit. If $q_\beta$ represents a threshold derived from the distribution, the parameter $\beta$ makes the conservativeness of the decision visible. A stricter threshold reduces potentially ineffective transfers but may forgo useful opportunities. The quantile is therefore not inherently superior; it makes the trade-off between exploiting opportunities and risking failure configurable.
-
-The same logic supports the use of percentiles in metrics, but the two uses must not be conflated. In the paper, the quantile enters the scheduling rule; in the RVE framework, P95 and P99 are descriptive statistics computed after execution. The framework does not currently use latency quantiles to admit or reject flows. Applying such a policy would require a design extension and new validation.
-
-Means remain useful for aggregate comparisons and some capacity formulas, but must be accompanied by the median, percentiles, sample size, and temporal variability. In particular, a stable mean may coexist with a high P99 or brief periods of errors. The selection of statistics must be driven by the question: typical behavior, distribution tail, reliability, or adaptation to variable load.
-
-The numerical paper reports improvements within its simulated scenario, but these values depend on the M/M/1 model and adopted parameters and are not used as predictions for SI.Ter or the framework. The evidence relevant to this thesis is limited to the principle that, when risk lies in the distribution tail, a simple mean is not a sufficient basis for decision-making.
-
-\subsection{Local Latency Optimization and End-to-End Performance}
-\label{subsec:local-vs-e2e}
-
-A local optimization reduces the time of one component or step. End-to-end performance instead depends on the composition of all steps, their dependencies, and the load. If the optimized component contributes little to the critical path, the final benefit may be limited; if the optimization consumes a shared resource, it may even worsen other dimensions.
-
-The three studies provide complementary examples. Moving the server closer reduces propagation but does not remove transmission, protocol, and processing time \cite{iorio-when-latency-matters}. Reducing MPI latency through polling does not necessarily improve bandwidth-dominated applications and may increase CPU use \cite{dimitrov-latency-applications}. Rapidly executing a migration decision does not make it useful if load information is already stale \cite{akram-numerical-latency}.
-
-In the interoperability case, optimizing a single transaction may not reduce completion time proportionally when authentication, document retrieval, or queuing dominates the flow. Similarly, reducing gateway latency does not demonstrate improvement of the overall service when the backend or access network remains dominant. Identifying the contribution requires measurements at the correct boundaries and controlled scenarios.
-
-This principle motivates the framework's dual granularity: step and flow. Per-step metrics expose local differences, while flow completion time tests whether those differences affect the overall outcome. Middleware data, when available, add another level but do not automatically authorize a causal decomposition.
-
-\section{Implications for Framework Design}
-\label{sec:framework-implications}
-
-The preceding sections converge on four methodological requirements. Healthcare semantics require complete sequences and dependencies among steps to be represented. The distributed nature of the system requires client and middleware boundaries to remain distinct. Latency variability requires structured logs, percentiles, and time series. Finally, capacity evaluation requires controllable, non-stationary, and reproducible load profiles.
-
-This section states how these principles guide the current framework without replacing the design and implementation chapters. The described choices have been verified in the codebase, while their performance effects remain subject to the experimental protocol. No feature is presented as a result, and no available metric is interpreted as evidence until it has been applied to real experimental datasets.
-
-\subsection{Measuring Complete Flows Rather Than Individual Calls}
-\label{subsec:measure-complete-flows}
-
-An individual HTTP call is a technical unit; a flow is a process unit. In the cases studied, the outcome depends on ordering and output propagation: the assertion precedes the access-token request, the token precedes the protected call, and the document query precedes document retrieval. Measuring calls alone would omit the cost of composition and the consequences of intermediate failures.
-
-The framework represents each flow type as an ordered list of steps. Each occurrence receives a distinct identifier, while its steps share the flow ID and have their own request ID and index. In live mode, placeholders in dependent steps are resolved from outputs extracted from preceding responses; in mock mode, synthetic outputs are prepared within the chain. This structure preserves data dependencies without sharing context among occurrences.
-
-The execution engine runs the steps of a flow sequentially and stops the chain at the first blocking error. Independent flows are scheduled concurrently within a semaphore that limits the number of active occurrences. The invariant is therefore explicit: internal sequencing and external concurrency. This behavior is consistent with the requirement not to use tokens or identifiers before they become available.
-
-Measurements are required at least at two granularities. Client time, outcome, size, and transaction type are recorded for each step. Total duration, success, failure step, and number of steps actually executed are recorded for the flow. The normalized dataset also preserves steps skipped after a failure, preventing them from being interpreted as requests absent for incidental reasons.
-
-This choice does not imply that flow completion time is always the sum of step latencies. Placeholder resolution, scheduling, and local code contribute to the overall interval. Comparing the sum with total duration may be diagnostically useful, but must not be imposed as an identity. Likewise, failed flows must be separated from successful completions when distributions are constructed.
-
-% CONTROL NOTE: behavior verified in flow_orchestrator.py, traffic_exec_engine.py, and log_collector.py.
-
-\subsection{Separating Measurement Levels Without Forcing Unsupported Correlations}
-\label{subsec:separate-measurement-levels}
-
-The framework adopts a two-level grey-box approach. The framework layer observes what the generator can measure directly: planned and actual timestamps, requests, responses, client latency, concurrency, and flow completion. When available, the middleware layer may add gateway latency, upstream latency, retries, circuit-breaker state, and infrastructure indicators.
-
-This separation follows from a limitation discussed in the literature: an end-to-end measurement represents application experience but does not automatically localize its cause \cite{iorio-when-latency-matters}. Internal data increase diagnostic capability while introducing correlation requirements. A middleware record must be associated with the correct occurrence and corresponding step; equality of a reused identifier alone may be insufficient.
-
-The collector normalizes framework records even without middleware data. If a second log is present, the join enriches matching requests; otherwise, internal fields remain null. This makes coverage explicit and prevents simulated or inferred values from replacing missing observations. Join completeness is itself an observability metric.
-
-The mock middleware log is a pipeline-testing instrument, not a measurement of real middleware. Its synthetic latency decomposition is used to verify parsers, joins, and reports. The data it produces cannot support conclusions about the gateway, backend, or infrastructure. In the results, they must be marked as mock data and kept separate from live executions.
-
-Statistical correlation among CPU, connections, and latency does not demonstrate causality either. It may suggest a hypothesis to test through controlled load variation, repetitions, and control of external variables. The generalizable guidelines are therefore to keep boundaries separate, measure correlation coverage, and state the origin of every field. Availability of internal data remains specific to the environment and logging policies.
-
-% CONTROL NOTE: optional fields and joins verified in log_collector.py; mock data verified in mock_middleware_log.py.
-
-\subsection{Collecting Structured and Normalized Logs}
-\label{subsec:structured-normalized-logs}
-
-A reproducible experiment requires machine-readable events rather than diagnostic messages alone. The framework emits three JSON Lines (JSONL) event types, with one JSON object per line. A \texttt{request\_sent} event records dispatch; a \texttt{response\_received} event records the corresponding outcome; and a \texttt{flow\_completed} event records flow completion. This format supports incremental processing and preserves event granularity without enclosing all records in one monolithic document.
-
-The events share experiment and correlation metadata: run, scenario, execution, flow occurrence, flow, request, and step. A sent-request event includes planned and actual times, queue delay, concurrency, arrival type, and payload size. A response event includes status, success, error, size, and client latency. A completion event includes duration, outcome, and failure step. These fields are described here to motivate traceability; the complete schema belongs to the implementation chapter.
-
-The collector pairs send and response events by occurrence, constructs request-level records, reconstructs flows, and aggregates a bucketed time series. If a middleware log is available, it adds internal fields without overwriting the client measurement. The normalized result separates \texttt{requests}, \texttt{flows}, and \texttt{timeseries}, thereby preserving the aggregation levels required by the methodology.
-
-Normalization addresses two problems. First, source logs represent events, whereas metrics require complete records. Second, framework and middleware logs may use different schemas. The join constructs a common view but must preserve null values and data provenance so that absence is not interpreted as zero. Malformed or uncorrelatable records must be counted and reported rather than completed by assumption.
-
-Confidentiality is a cross-cutting requirement. Experimental logs must exclude tokens, assertions, credentials, and personal data. Synthetic identifiers and technical metadata are sufficient for event correlation. This choice separates performance observability from clinical audit: the framework does not replace production audit infrastructure and must not reproduce its sensitive contents.
-
-% CONTROL NOTE: event schema verified in traffic_exec_engine.py:620-769; normalization verified in log_collector.py.
-
-\subsection{Evaluating Behavior Under Realistic Loads, Bursts, and Flow Mixes}
-\label{subsec:realistic-loads-bursts-mix}
-
-A workload suitable for evaluation must be realistic with respect to the structure of the problem and controllable with respect to the experiment. In the framework, structural realism derives from flow types and payloads conforming to the specifications studied; temporal realism is instead a configurable hypothesis expressed through rate, profile, and bursts. Without operational traces, the term \emph{realistic} denotes plausibility and controlled diversity rather than demonstrated equivalence with production.
-
-The flow mix determines the selection probability of each path. Keeping the mix constant isolates the effect of the load profile, while changing a single weight supports composition-based comparisons. Because flows have different numbers of steps and payloads, the same flow rate may produce a different request rate. Both quantities must be reported.
-
-The constant profile provides a baseline; the step profile permits ramps and sustained levels; the synthetic clinical profile introduces time bands; and bursts superimpose short clusters on baseline traffic. For each scenario, the duration, $\lambda(t)$ function or steps, seed, burst probability, minimum and maximum cluster size, spread, and concurrency limit must be recorded. Configurations present in the repository do not automatically constitute executed experiments.
-
-Temporary peaks, sustained load, and saturation must be distinguished operationally. A peak is a brief increase in offered load; sustained load maintains a level over a declared window; saturation may be inferred only from combined evidence, such as persistent growth in queue delay, concurrency at the configured limit, a throughput plateau, and a possible increase in errors or timeouts. No single indicator demonstrates saturation by itself.
-
-The metric engine compares burst and non-burst distributions, produces throughput and error rates over time, and observes concurrency and scheduling drift. These capabilities prepare the protocol but do not demonstrate gateway behavior. Chapter 9 must use only logs produced by declared executions, report populations and windows, and refrain from quantitative conclusions when data are insufficient.
-
-[DATA MISSING: calibration of flow mixes and temporal profiles using operational RVE statistics; until such data become available, the scenarios remain controlled synthetic workloads.]
-
-% CONTROL NOTE: profiles and bursts verified in timeline_generator.py; available metrics verified in metric_engine.py. The Chapter 9 data gate remains unchanged.
+\chapter{Selected Approach: Framework Design, Implementation, and Experimental Evaluation}
+\chaptermark{Selected Approach}
+\label{chap:selected-approach}
+
+Chapter~\ref{chap:introduction} defined the need for a controlled and
+traceable way of exercising healthcare-interoperability workflows.
+Chapter~\ref{chap:stateofart} then established the methodological
+requirements that follow from this need: the workload must preserve semantic
+dependencies, distinguish request- and flow-level observations, expose its
+temporal model, and keep client-side evidence separate from optional
+middleware-side measurements. This chapter presents the selected approach from
+the inside and records the evidence that is currently available.
+
+The implementation described here is the Request Dataset Generator (RDG)
+repository at the revision inspected for this migration. The chapter
+distinguishes three claims that would otherwise be easy to conflate. A feature
+is \emph{implemented} when it is present in the current code; it is
+\emph{functionally exercised} when a test or archived run covers it; and it is
+\emph{experimentally evaluated} only when an identified configuration,
+execution log, normalised dataset, and metric report support the corresponding
+analysis. In particular, mock execution validates the framework pipeline but
+does not measure the capacity of a live regional or industrial service.
+
+\section{Technical Objectives and System Architecture}
+\label{sec:rdg-objectives-architecture}
+
+\paragraph{Technical objectives.}
+The framework translates the methodological requirements of
+Section~\ref{sec:framework-implications} into five technical objectives. First,
+it must generate synthetic healthcare data without requiring personal data.
+Second, it must compose those data into ordered multi-step flows whose
+dependencies remain explicit. Third, it must schedule independent flow
+occurrences according to a configurable temporal model while preserving the
+order of steps within each occurrence. Fourth, it must emit structured evidence
+at request, flow, and time-window granularity. Finally, it must make
+configuration, random seeds, execution mode, and output provenance recoverable
+from each run.
+
+These objectives delimit the artefact. RDG is not a conformance-certification
+tool, a production audit system, or a clinical simulator. It creates and
+executes controlled workloads at the client boundary and can enrich the
+resulting records when a compatible middleware log is supplied. The absence of
+that second source remains visible in the normalised dataset rather than being
+replaced by estimated values.
+
+\paragraph{End-to-end pipeline.}
+The command dispatcher in \texttt{main.py} exposes independent commands for
+patient generation, flow-dataset construction, timeline production, execution,
+log collection, and metric calculation. The \texttt{pipeline} command connects
+the same stages in memory and on disk:
+\begin{align*}
+  \text{configuration}
+  &\rightarrow \text{synthetic data and flows}
+  \rightarrow \text{timeline}\\
+  &\rightarrow \text{execution log}
+  \rightarrow \text{normalised dataset}
+  \rightarrow \text{metrics and reports}.
+\end{align*}
+This separation allows an intermediate artefact to be inspected or replayed
+without changing the responsibilities of the surrounding stages.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \begin{tabular}{|p{2.0cm}|p{3.7cm}|p{6.3cm}|}
+        \hline
+        \textbf{Stage} & \textbf{Primary implementation} & \textbf{Produced or transformed evidence} \\
+        \hline
+        Data generation & \texttt{fhir\_patient\_}\newline\texttt{generator.py} & Synthetic Patient resources and transaction Bundles. \\
+        \hline
+        Workload composition & \texttt{request\_dataset\_}\allowbreak\texttt{generator.py}, \texttt{flow\_}\allowbreak\texttt{orchestrator.py} & Weighted population of flows, ordered steps, identifiers, dependencies, and payload metadata. \\
+        \hline
+        Temporal scheduling & \texttt{timeline\_}\newline\texttt{generator.py} & Timestamped flow occurrences with base/burst provenance and experiment identifiers. \\
+        \hline
+        Execution & \texttt{traffic\_exec\_}\newline\texttt{engine.py} & Mock or live step outcomes and JSONL request/response/flow events. \\
+        \hline
+        Collection & \texttt{log\_collector.py} & Request, flow, and bucketed time-series populations; optional middleware enrichment. \\
+        \hline
+        Analysis & \texttt{metric\_engine.py} & Machine-readable metrics, human-readable report, CSV tables, warnings, and optional graphs. \\
+        \hline
+    \end{tabular}
+    \caption{Verified responsibilities of the RDG pipeline.}
+    \label{tab:rdg-pipeline}
+\end{table}
+
+\paragraph{Repository organisation and dependency direction.}
+The top-level modules implement the pipeline stages, while the transaction
+package contains the transaction builders and the flow
+orchestrator. A transaction builder returns one executable step with its
+method, target selected from configuration, headers, body, transport profile,
+dependency specification, output-extraction rules, and---in mock mode---a
+synthetic response. The orchestrator adds correlation metadata and combines
+these steps into flow types. The execution engine consumes this common shape;
+it does not contain healthcare-specific request templates.
+
+This direction of dependency is important. Domain-specific contracts remain in
+the transaction modules, composition remains in the orchestrator, and temporal
+or analytical mechanisms operate on shared metadata. Adding a new transaction
+therefore does not require the scheduler or metric engine to understand its
+payload, provided that the module satisfies the common step contract and
+declares the outputs required by downstream steps.
+
+\paragraph{Configuration and run provenance.}
+Configuration is loaded from JSON and merged with command defaults. Before a
+pipeline execution, the dispatcher establishes a scenario identifier, run
+identifier, execution identifier, and seeds for workload, timeline, and fault
+injection. It also resolves output paths under a run-specific directory and
+writes the effective configuration as \texttt{config.resolved.json}. The run
+directory can then contain the generated dataset, timeline, JSONL execution
+log, normalised metrics, metric reports, tabular summaries, and graphs.
+
+The effective configuration is more authoritative than the current scenario
+template when interpreting an archived run: templates may evolve after an
+execution, whereas the resolved copy records the parameters attached to that
+run. Credentials, security tokens, certificate material, private endpoints,
+and generated clinical-like values are deliberately excluded from this
+chapter. Reproducibility concerns non-sensitive parameters and provenance, not
+publication of protected configuration.
+
+\section{Synthetic Inputs and Executable Transactions}
+\label{sec:rdg-data-workload-transactions}
+
+\paragraph{Synthetic Patient resources.}
+The data generator creates a FHIR Patient-shaped resource with synthetic
+identifiers, demographics, contact information, addresses, regional
+extensions, a contained practitioner, and a contained assistance contract.
+It can also construct the transaction Bundle used by the RVE-55 path and
+serialise generated structures as JSON or XML. Random generation removes the
+need for real patient records, while an optional identifier and a declared seed
+support controlled regeneration.
+
+The generated structure is intended to exercise the contracts implemented by
+the framework. Its richness does not prove conformance with every cardinality,
+terminology rule, or business constraint of the applicable regional profile.
+That distinction mirrors the boundary established in
+Section~\ref{subsec:fhir-r4}: the code demonstrates what the workload can
+produce, while the primary specification remains authoritative for
+conformance.
+
+\paragraph{Workload population and correlation model.}
+\texttt{build\_workload} accepts the number of source flows, a weighted
+\texttt{flow\_mix}, an execution mode, the complete configuration, and an
+optional seed. Weights are normalised and sampled to choose a flow type; a new
+synthetic patient is generated for each source flow. The resulting flow carries
+a flow identifier, a type, and an ordered list of steps. Every step has its own
+request identifier and index, while the timeline later adds a distinct
+\texttt{flow\_occurrence\_id} whenever a source flow is scheduled. This last
+identifier prevents repeated uses of the same source flow from being merged
+during log reconstruction.
+
+The current implementation defines the seven flow types in
+Table~\ref{tab:implemented-flow-types}. The table reports software coverage,
+not equal validation status. In particular, a zero default weight or presence
+in the map does not establish that a path has been exercised against a live
+provider.
+
+\begin{table}[htbp]
+    \centering
+    \scriptsize
+    \begin{tabular}{|p{3.2cm}|p{7.8cm}|p{1.0cm}|}
+        \hline
+        \textbf{Flow type} & \textbf{Ordered transaction modules} & \textbf{Steps} \\
+        \hline
+        \texttt{FLOW\_CONTEXT\_CALL} & RVE-1.b $\rightarrow$ RVE-121 $\rightarrow$ RVE-130 & 3 \\
+        \hline
+        \texttt{FLOW\_PATIENT\_QUERY} & RVE-1.b $\rightarrow$ RVE-54 & 2 \\
+        \hline
+        \texttt{FLOW\_PATIENT\_CREATE} & RVE-1.b $\rightarrow$ RVE-55 & 2 \\
+        \hline
+        \texttt{FLOW\_ITI\_18} & RVE-1.b $\rightarrow$ ITI-18 & 2 \\
+        \hline
+        \texttt{FLOW\_ITI\_43} & RVE-1.b $\rightarrow$ ITI-43 & 2 \\
+        \hline
+        \texttt{FLOW\_PATIENT\_QUERY\_}\allowbreak\texttt{MIDDLEWARE} & RVE token $\rightarrow$ gateway RVE-54 $\rightarrow$ gateway RVE-55 $\rightarrow$ gateway RVE-57 $\rightarrow$ gateway RVE-100 & 5 \\
+        \hline
+        \texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} & GetUserInfo $\rightarrow$ SignOneDoc & 2 \\
+        \hline
+    \end{tabular}
+    \caption{Flow types present in the current orchestrator map.}
+    \label{tab:implemented-flow-types}
+\end{table}
+
+\paragraph{Step dependencies and the mock/live boundary.}
+A flow is more than a list of independent HTTP requests. A step may declare
+that a field comes from an output of an earlier step. In live mode, downstream
+headers, bodies, and URLs can contain scoped placeholders; the execution engine
+resolves them from the per-occurrence context only after the preceding response
+has been processed. Required outputs are validated before the chain continues.
+An unresolved placeholder or missing required output is logged as a failure
+instead of sending an incomplete dependent request.
+
+In mock mode, transaction builders attach synthetic responses and the
+orchestrator propagates their declared outputs while constructing the chain.
+Execution then consumes those responses without opening an HTTP session. This
+mode tests composition, scheduling, failure handling, logging, collection, and
+metric production under controlled conditions. It cannot measure network,
+gateway, provider, or production-system behaviour. Dry-run is a separate
+execution branch that records a successful empty interaction without sending
+requests and must not be interpreted as either mock-contract validation or live
+service evidence.
+
+\paragraph{RVE, ITI, and mediated paths.}
+The direct regional paths combine an initial assertion-producing transaction
+with context, patient-registry, or document transactions. The two ITI flows use
+dedicated transaction modules after the initial integration step. The mediated
+patient path has a different structure: it obtains a middleware token and then
+executes the configured gateway scenarios for RVE-54, RVE-55, RVE-57, and
+RVE-100. This five-step path is therefore not a request-for-request replacement
+for the two-step direct patient query. Comparisons between their completion
+times must acknowledge the different step count and contracts.
+
+The code confirms that RVE-57 is present in the mediated flow. It does not, by
+itself, provide the primary domain evidence required to finalise the semantic
+description left open in Section~\ref{sec:interoperability-transactions}.
+[SOURCE NEEDED: authoritative RVE-57 specification and approved mapping of the
+gateway scenarios to the thesis use cases.]
+
+\paragraph{Digital-signature provider flow.}
+\texttt{FLOW\_SCRYBASIGN\_SIGN} composes two SOAP POST steps in a fixed order:
+the provider user-information operation and the single-document signing
+operation. Both builders obtain authentication and mutual-TLS profile
+information through scoped configuration helpers. Their mock branches return a
+minimal successful SOAP envelope, which allows the generic pipeline to
+exercise the two-step shape without contacting the provider.
+
+The current signing request builder contains a fixed test document and does not
+declare a data dependency between the first and second response. This is the
+implemented contract and should not be described as a dynamically generated
+clinical-document signing workflow. Unit tests verify the order, SOAP operation
+shape, authentication-header construction, and transport-profile selection,
+but no archived run in the available corpus contains this flow type.
+The newer sanitised live corpus supersedes the preceding archive statement. It
+records 17{,}838 HTTP~200 successes for
+\texttt{SCRYBASIGN-GET-USER-INFO} and 17{,}838
+\texttt{SCRYBASIGN-SIGN-ONE-DOC} outcomes, of which 17{,}015 are HTTP~200
+successes and 823 are failures. Of the failures, 28 have no HTTP response and
+795 have status HTTP~502 with declared fault injection. These observations
+establish live execution and client-side outcome coverage, but not provider-side
+response semantics or authorisation of the test.
+
+[DATA MISSING: approved mock validation, confirmation that the live execution
+was credential-authorised, sanitised provider-side evidence, and validation of
+the signed-response semantics.]
+
+\section{Traffic Execution and Evidence Pipeline}
+\label{sec:rdg-execution-observability}
+
+\paragraph{Temporal model and occurrence generation.}
+The timeline generator separates flow content from arrival time. It supports a
+constant rate, a configurable step profile, and a synthetic time-banded
+clinical profile. For a variable intensity $\lambda(t)$, arrivals are produced
+through Lewis--Shedler thinning: candidates are sampled from an upper-bound
+homogeneous process and retained according to
+$\lambda(t)/\lambda_{\max}$. Optional bursts add a configurable number of
+closely spaced occurrences around selected baseline arrivals. Every event
+records whether it is a base or burst arrival and, where applicable, its burst
+identifier.
+
+The generator samples from the already constructed source dataset according to
+its empirical flow-type distribution. It therefore changes the temporal
+population without modifying transaction definitions. A seed makes workload
+and timeline sampling repeatable for a fixed code and configuration, but it
+cannot make the latency of live remote services deterministic. The nominal
+duration and rate also do not fix the final number of arrivals, which remains a
+realisation of the stochastic process.
+
+\paragraph{Scheduling and concurrency semantics.}
+The execution engine follows scheduled timestamps using an asynchronous task
+per flow occurrence. A semaphore limits concurrent flows and encloses the whole
+flow rather than a single request. Inside that boundary, steps are executed in
+order and share only their occurrence-local output context; separate flows can
+overlap. The engine stops a chain at the first non-success status or processing
+error, records the failing step, and leaves the remaining downstream steps
+unexecuted.
+
+Live execution opens an HTTP client session, resolves dependencies, optionally
+uses the configured proxy and mutual-TLS context, sends the request, extracts
+declared outputs, and validates required fields. Mock execution reads the
+synthetic response attached to each step. A deterministic fault injector can
+apply declared error, timeout, or latency-spike rules by transaction, flow
+type, or step. These injected outcomes evaluate framework behaviour under
+controlled faults; they are not observations of provider reliability.
+
+\paragraph{Structured execution events.}
+The execution logger emits three JSONL event types. A
+\texttt{request\_sent} event records experiment identifiers, flow occurrence,
+request and step identifiers, transaction, payload size, scheduled and actual
+start times, queue delay, active flows and steps, and burst provenance. A
+\texttt{response\_received} event records status, response size, client
+latency, success, error, and fault-injection provenance. A
+\texttt{flow\_completed} event records total duration, success, first failed
+step, declared step count, and burst provenance.
+
+This schema implements the distinction between an interaction and an
+application flow established in Chapter~\ref{chap:stateofart}. It also
+records enough provenance to stratify observations by scenario, flow,
+transaction, arrival type, or execution. Payload contents, assertions, tokens,
+credentials, and certificate data are not required by the analytical schema
+and must not be exported as thesis evidence.
+
+\paragraph{Normalisation and optional grey-box enrichment.}
+The collector parses the framework JSONL stream, pairs sent and received events
+by occurrence, reconstructs completed flows, and aggregates a bucketed time
+series. Its output contains four top-level parts: metadata, requests, flows, and
+timeseries. Request records retain client latency, outcome, concurrency,
+scheduling, size, and provenance. Flow records retain completion time, executed
+steps, skipped downstream steps, and outcome. Metadata records the source files
+and the observed time range.
+
+A second parser can ingest a compatible middleware JSONL stream. Matching
+records may add gateway and upstream latencies, retry count, circuit-breaker
+state, and infrastructure observations. When no middleware record is
+available, these fields remain null. The present archived runs report zero
+middleware events, so they support only the framework level of the grey-box
+model. No gateway/upstream decomposition or infrastructure correlation can be
+derived from them.
+
+\paragraph{Metric and reporting engine.}
+The metric engine calculates eighteen measures grouped into performance,
+reliability, resilience, scalability, and observability. The performance group
+includes flow completion time, step latency, request and flow throughput,
+burst/\allowbreak non-burst summaries, and an optional direct-versus-mediated comparison.
+Reliability includes error, timeout, retry, and flow-success rates. Resilience
+includes recovery episodes, failure propagation, and availability over
+time-series buckets. Scalability includes available resource observations,
+performance versus load, client-observed concurrency, and throughput
+efficiency. Observability includes tracing completeness, event correlation, and
+scheduling fidelity.
+
+Descriptive statistics include the population size, mean, median, standard
+deviation, minimum, maximum, and selected percentiles. The engine can produce a
+JSON report, a Markdown report, CSV summary tables, warnings, and graphs. Its
+warning detector compares metrics with configurable values, including built-in
+fallbacks. These are software warning thresholds, not domain-approved
+acceptance criteria. They cannot close the gap identified in
+Section~\ref{sec:approach-selection}.
+
+\section{Evaluation Protocol and Experimental Design}
+\label{sec:rdg-evaluation-methodology}
+
+\paragraph{Evaluation questions.}
+The implemented architecture and the evidence required by the problem
+statement lead to four evaluation questions:
+\begin{enumerate}
+    \item Can RDG preserve ordered transaction dependencies and isolate the
+    state of concurrent flow occurrences in both mock and live modes?
+    \item Can a declared flow mix and temporal model be reproduced with
+    traceable identifiers, seeds, configuration, and artefacts?
+    \item Can execution events be transformed into consistent request-, flow-,
+    and time-window populations without filling unavailable middleware fields?
+    \item Within an approved scenario, how do latency distributions,
+    throughput, reliability, queueing, and flow completion change with flow
+    composition, offered load, bursts, or injected faults?
+\end{enumerate}
+The first three questions concern functional and methodological validity. The
+fourth concerns experimental behaviour and must be answered separately for
+each execution mode and observed system boundary.
+
+\paragraph{Critical evaluation of the architecture.}
+The pipeline provides strong separation between domain contracts, temporal
+load, execution, and analysis. It also makes intermediate artefacts inspectable
+and allows the same collector and metric engine to process mock and live logs.
+The main architectural trade-off is that a generic step contract can preserve
+ordering and metadata without establishing semantic equivalence among flows.
+A two-step direct patient query and a five-step mediated path can both be
+executed, but their difference cannot be attributed solely to middleware.
+
+The execution semaphore applies to complete flows. This protects
+within-occurrence dependencies and makes the number of active flows explicit,
+but it also means that long or blocked flows retain a concurrency slot. This is
+part of the evaluated execution model and should not be mistaken for an
+unqualified model of provider-side concurrency. Similarly, the client-side
+clock measures scheduling and request completion at the generator; internal
+service queues remain outside that boundary unless a verified second source is
+available.
+
+\paragraph{Two-level grey-box measurement model.}
+Level~1 is always generated by RDG and observes scheduled dispatch, actual
+dispatch, client-side step latency, response outcome, flow completion, and
+client-observed concurrency. Level~2 is optional and may observe middleware
+internal intervals, retries, circuit-breaker state, or infrastructure
+measurements. A join is acceptable only when identifiers and occurrence
+semantics are compatible. The completeness of that join is a data-quality
+measure, not an assumption.
+
+The two levels must not be combined by visually aligning unsynchronised series
+or subtracting intervals with different clock and boundary semantics. A
+statistical association may support a diagnostic hypothesis, but causal
+attribution requires controlled variation and compatible measurements. The
+available run corpus contains Level~1 only.
+
+\paragraph{Variables and controlled factors.}
+The independent variables exposed by the framework include execution mode,
+flow mix, source-dataset size, temporal profile and intensity, burst parameters,
+concurrency limit, timeout, and declared fault-injection rules. Dependent
+variables include step and flow latency distributions, request and flow
+throughput, error and timeout rates, flow-success rate, scheduling drift,
+queue delay, active flows and steps, recovery episodes, and evidence
+completeness.
+
+At minimum, a comparison must hold constant the code revision, transaction
+modules, execution mode, credentials and transport policy where applicable,
+flow mix unless it is the factor under study, seed policy, duration, concurrency
+limit, metric implementation, and observation boundary. Payload-size and
+step-count distributions must be reported when they differ across compared
+flows. Live tests additionally require a documented hardware, operating-system,
+network, remote-environment, and time-of-execution context.
+
+\paragraph{Reproducibility protocol and missing controls.}
+An analysable run must retain the code revision, resolved configuration,
+dataset, timeline, execution log, normalised dataset, metric report, and any
+excluded or failed-run record. Scenario, run, and execution identifiers must
+agree across these artefacts. Seeds must be recorded separately for workload,
+timeline, and fault injection. Results must identify the execution mode and
+must never combine mock and live samples in one distribution.
+
+The current archive satisfies much of the artefact chain for individual runs,
+but it does not constitute the final approved experiment campaign. The
+sanitised batch planned 30 repetitions for each of ten scenarios, whereas the
+available complete population ranges from five to fifteen runs per scenario
+and totals 74 runs. Provenance identifies source commit
+\texttt{f08fb53fd4ad11ef803642c0a066e9a6d9e2b327} as the RDG checkout observed
+at extraction time, rather than as a revision embedded in the batch manifest.
+
+[DATA MISSING: approved warm-up and cool-down policy, minimum populations,
+hardware and operating-system inventory, network path and
+clock-synchronisation evidence, remote-environment version, run exclusion
+policy, and a manifest-embedded immutable code/configuration revision.]
+
+\section{Executed Scenarios, KPIs, and Quality Controls}
+\label{sec:rdg-scenarios-kpis-quality}
+
+\paragraph{Declared scenarios versus executed evidence.}
+The repository contains configuration templates for constant baselines,
+step-load ramps, bursts, direct-versus-mediated comparisons, fault injection,
+flow-type comparisons, a small live smoke test, and an extreme stress profile.
+Their presence describes intended experiment capabilities. Only a scenario
+with a run directory and a coherent artefact chain is treated here as executed.
+The resolved configuration in each run directory determines its mode and
+parameters.
+
+Table~\ref{tab:archived-rdg-runs} inventories the six available run
+directories. Five are explicitly mock executions. The sixth is recorded as a
+live, three-flow smoke run, but its size and coverage make it suitable only as
+limited functional evidence.
+
+\begin{table}[htbp]
+    \centering
+    \scriptsize
+    \begin{tabular}{|p{3.0cm}|p{1.1cm}|p{1.0cm}|p{0.9cm}|p{5.1cm}|}
+        \hline
+        \textbf{Archived scenario} & \textbf{Mode} & \textbf{Flows} & \textbf{Req.} & \textbf{Observed flow types} \\
+        \hline
+        \texttt{baseline\_mock} & mock & 12 & 26 & context, patient query, patient create \\
+        \hline
+        \texttt{burst\_mock} & mock & 136 & 321 & context, patient query, patient create \\
+        \hline
+        \texttt{direct\_vs\_}\allowbreak\texttt{middleware\_mock} & mock & 76 & 287 & direct patient query, mediated patient path \\
+        \hline
+        \texttt{error\_injection\_mock} & mock & 65 & 151 & context, patient query, patient create \\
+        \hline
+        \texttt{flow\_type\_}\allowbreak\texttt{comparison\_}\allowbreak\texttt{middleware} & mock & 45 & 225 & mediated patient path only \\
+        \hline
+        \texttt{live\_smoke\_small} & live & 3 & 6 & direct patient query only \\
+        \hline
+    \end{tabular}
+    \caption{Executed runs supported by resolved configurations and normalised datasets.}
+    \label{tab:archived-rdg-runs}
+\end{table}
+
+The executed corpus does not cover ITI-18, ITI-43, or
+\texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN}; nor does it include a step-ramp or extreme
+stress run. Current scenario templates that mention these flows cannot be used
+as evidence that the corresponding test was performed. The newer sanitised
+live corpus supersedes this six-run inventory: it contains five complete
+\texttt{load\_ramp} runs, five \texttt{stress\_extreme} runs, six
+\texttt{flow\_type\_comparison\_direct} runs, fifteen
+\texttt{flow\_type\_comparison\_middleware} runs, and live outcomes for
+ITI-18, ITI-43, and both ScrybaSign transactions.
+
+[EXPERIMENTAL RESULT MISSING: 226 of the 300 planned runs were not complete;
+finish the planned repetitions before treating the campaign as final.]
+
+[TO EXPAND: reconcile Table~\ref{tab:archived-rdg-runs} and the superseded
+six-run inventory with the newer sanitised campaign in a later drafting phase.]
+
+\paragraph{Operational KPI populations.}
+Flow completion time is calculated over completed flow records and must be
+stratified by flow type, outcome, and mode. Step latency is calculated over
+paired request/response occurrences and is stratified at least by transaction
+and flow type. Request throughput counts completed requests per observed second;
+flow throughput counts completed flow occurrences over the same run interval.
+The two are reported together because flow types have different step counts.
+
+Reliability uses request errors, timeouts, and completed-flow outcomes. Failure
+at a step is associated with skipped downstream steps rather than fabricated
+requests. Scheduling fidelity uses the difference between planned and actual
+client dispatch together with queue delay and active-flow/step counts.
+Burst analysis uses the explicit base/burst labels. Middleware breakdown,
+resource saturation, and retry or circuit-breaker measures are valid only for
+records actually enriched by a second source.
+
+\paragraph{Data-quality controls.}
+Before interpretation, each run is checked for:
+\begin{itemize}
+    \item an available resolved configuration and explicit execution mode;
+    \item consistent scenario, run, execution, flow-occurrence, flow, request,
+    and step identifiers;
+    \item paired sent/received events and an explicit flow-completion event;
+    \item recorded population sizes, time range, units, and flow-type coverage;
+    \item explicit fault-injection and burst provenance;
+    \item separate mock and live populations;
+    \item the count and coverage of middleware-enriched records;
+    \item retained failed or incomplete observations rather than silent
+    imputation.
+\end{itemize}
+
+All six normalised datasets identify their framework log, and their request
+records are associated with reconstructed flows. They also all report zero
+middleware events and zero requests with middleware timing fields. This is a
+valid Level~1 dataset condition, but it prevents a Level~2 grey-box analysis.
+[DATA MISSING: verified middleware log with compatible occurrence keys,
+measurement-boundary documentation, clock evidence, and quantified join
+coverage.]
+
+\paragraph{Acceptance criteria.}
+The archived reports contain configurable warning values and the engine
+produces warnings when those values are crossed. They are useful for automated
+inspection but are not clinical, contractual, or production-service acceptance
+limits. The experiment can currently judge internal consistency, functional
+completion, reproducibility of mock inputs, and descriptive behaviour within a
+scenario. It cannot judge production suitability against an approved service
+level.
+
+[DATA MISSING: domain-supported acceptance thresholds, required confidence or
+uncertainty, minimum sample sizes, repetition count, comparison rules, and the
+scenario--KPI--population--threshold--evidence matrix defined ex ante.]
+
+\section{Evidence, Discussion, and Design Guidelines}
+\label{sec:rdg-results-discussion}
+
+\paragraph{Functional evidence.}
+The code-level test suite exercises placeholder resolution, supported flow
+composition, ITI profiles, ScrybaSign request construction and ordering,
+timeline occurrence identity, burst tagging, configuration validity, and
+pipeline command dispatch. During this migration, 29 tests were executed in a
+read-only environment: 28 completed successfully and the graph/table-output
+test stopped because the optional plotting dependency was not installed. This
+environmental failure does not invalidate the underlying metric calculation,
+but it means that the current test execution is not a clean all-green release
+record.
+
+The archived mock runs further validate that generated flows can traverse the
+timeline, executor, logger, collector, and metric engine. The small live run
+records three successful direct patient-query flows, six successful requests,
+and the expected two-step transaction shape. Its population is too small and
+its environmental context too incomplete for performance inference; it is
+reported only as limited live-path functional evidence.
+
+\paragraph{Mock pipeline results.}
+Table~\ref{tab:mock-rdg-results} reports selected outcomes from the five mock
+runs. Values describe execution of synthetic responses and framework-side
+processing on the recorded host. They must not be read as regional-service,
+gateway, middleware, or provider latency.
+
+\begin{table}[htbp]
+    \centering
+    \scriptsize
+    \begin{tabular}{|p{3.4cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|}
+        \hline
+        \textbf{Scenario} & \textbf{FCT P50 ms} & \textbf{FCT P99 ms} & \textbf{Req/s} & \textbf{Error \%} & \textbf{Flow success \%} \\
+        \hline
+        Baseline mock & 0.462 & 0.859 & 11.770 & 0.000 & 100.000 \\
+        \hline
+        Burst mock & 0.694 & 2.134 & 27.821 & 0.000 & 100.000 \\
+        \hline
+        Direct/mediated mock & 1.796 & 3.033 & 18.162 & 0.000 & 100.000 \\
+        \hline
+        Fault-injection mock & 0.839 & 50.930 & 12.768 & 5.960 & 86.154 \\
+        \hline
+        Mediated-flow mock & 2.259 & 6.599 & 24.534 & 0.000 & 100.000 \\
+        \hline
+    \end{tabular}
+    \caption{Selected framework-side outcomes from archived mock runs. FCT denotes flow completion time.}
+    \label{tab:mock-rdg-results}
+\end{table}
+
+The baseline and burst runs show that burst-labelled occurrences are processed
+and remain available for stratified analysis. The increase in reported P99 in
+the burst run is an observation of this mock execution, not evidence of remote
+system degradation. Only one seed and one execution are available, and the two
+runs do not establish a distribution of run-to-run variability.
+
+The direct-versus-mediated mock report contains 31 direct and 45 mediated flow
+occurrences. Their mean completion times are respectively 0.781~ms and
+2.166~ms, with P95 values of 1.147~ms and 2.961~ms. The report calls the
+difference an \emph{apparent overhead}; this wording is essential. The paths
+have two and five steps respectively, use synthetic responses, and have no
+middleware-internal observations. The difference validates stratified
+reporting but cannot isolate middleware cost.
+
+The fault-injection run contains 65 flows and 151 executed requests. Nine flows
+fail after declared synthetic faults, giving a flow-success rate of
+86.154\% and a request error rate of 5.960\%. The report identifies two
+recovery episodes with a mean duration of 3.5~s. These values demonstrate that
+the pipeline retains injected failures, interrupts downstream steps, and
+computes resilience summaries. They do not estimate the failure or recovery
+behaviour of a live service.
+
+\paragraph{Grey-box result boundary.}
+Although the direct-versus-mediated and mediated-only runs exercise the
+five-step gateway path, their normalised datasets contain no middleware events.
+Consequently, gateway latency, upstream latency, retry count, circuit-breaker
+state, CPU, memory, and internal connection measurements are unavailable. The
+only defensible comparison is between client-observed flow shapes in mock mode.
+The Level~2 portion of the planned grey-box evaluation remains unexecuted.
+
+[EXPERIMENTAL RESULT MISSING: execute matched direct and mediated live
+scenarios with a real, documented middleware log; verify occurrence-level
+joins and observation boundaries before analysing internal latency or resource
+relationships.]
+
+\paragraph{Relation to the state of the art.}
+The available evidence supports the methodological conclusions of
+Chapter~\ref{chap:stateofart} at the level of the artefact. Step and flow
+populations are both retained, percentiles expose distribution tails that a
+mean would hide, and structured occurrence identifiers prevent repeated
+source flows from being collapsed. The evidence does not yet support the
+stronger empirical comparison with the reviewed literature: different systems,
+payloads, network paths, and experimental designs preclude transfer of their
+quantitative findings.
+
+In particular, the mock tail and fault-injection observations illustrate why
+P95/P99 and failed-flow populations are useful, but do not validate a
+production scheduling or capacity rule. Likewise, the small live smoke run
+does not establish that lower-level optimisations improve end-to-end
+performance. Those questions require the missing repeated live campaign and
+declared acceptance framework.
+
+\paragraph{Design and evaluation guidelines.}
+The implementation and current evidence support the following conservative
+guidelines:
+\begin{enumerate}
+    \item preserve transaction, step, flow, and occurrence identities from
+    generation through reporting;
+    \item treat step order and dependency propagation as correctness
+    invariants, while applying concurrency between independent flows;
+    \item record resolved configuration and independent seeds with every run;
+    \item separate mock, dry-run, and live evidence in storage and analysis;
+    \item report request and flow throughput together because flow shapes have
+    different step counts;
+    \item qualify direct-versus-mediated comparisons by semantic equivalence,
+    step count, payload, and observation boundary;
+    \item leave unavailable middleware and infrastructure fields null and
+    quantify their coverage;
+    \item distinguish configurable software warnings from approved acceptance
+    thresholds;
+    \item calibrate flow mixes and arrival profiles before claiming
+    representativeness of operational traffic;
+    \item derive production or capacity guidance only from repeated,
+    controlled, appropriately authorised live experiments.
+\end{enumerate}
+
+\paragraph{Residual limitations and contribution boundary.}
+The present chapter can substantiate the architecture, current transaction map,
+mock/live boundary, evidence pipeline, archived mock validation, and one
+limited live patient-query smoke run. It cannot substantiate production
+capacity, provider reliability, causal middleware attribution, operational
+traffic representativeness, or the performance of ITI and ScrybaSign paths.
+These limitations preserve the distinction between software capability and
+experimental evidence established at the beginning of the chapter.
+
+The newer sanitised live corpus provides repeated execution evidence for
+ITI-18 (21{,}722 outcomes, including 3{,}395 successes), ITI-43
+(21{,}514 outcomes, including 21{,}371 successes),
+\texttt{SCRYBASIGN-GET-USER-INFO} (17{,}838 successes), and
+\texttt{SCRYBASIGN-SIGN-ONE-DOC} (17{,}838 outcomes, including 17{,}015
+successes). The planned protocol remains incomplete, and the sanitised corpus
+contains no Level~2 middleware evidence.
+
+[EXPERIMENTAL RESULT MISSING: complete the remaining planned repetitions and
+integrate sanitised Level~2 middleware evidence before drawing final
+cross-layer or capacity conclusions.]
+
+[TO EXPAND: after the final campaign, discuss every accepted and rejected
+hypothesis against the ex ante criteria, report uncertainty and failed runs,
+and derive only the architectural, performance-profiling, and gateway-evaluation
+guidelines supported by those results.]

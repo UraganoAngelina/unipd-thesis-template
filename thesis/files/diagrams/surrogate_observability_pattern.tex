@@ -1,0 +1,107 @@
+\documentclass[tikz,border=8pt]{standalone}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,calc,fit,positioning}
+
+\definecolor{DirectBlue}{HTML}{124C9C}
+\definecolor{DirectFill}{HTML}{EDF4FF}
+\definecolor{GatewayPurple}{HTML}{6B3FA0}
+\definecolor{GatewayFill}{HTML}{F5EEFC}
+\definecolor{Ink}{HTML}{20242A}
+\definecolor{Muted}{HTML}{5D6570}
+\definecolor{Rule}{HTML}{CBD1D8}
+\definecolor{Panel}{HTML}{F8F9FB}
+\definecolor{DeltaFill}{HTML}{FFF6DD}
+\definecolor{DeltaRule}{HTML}{B78103}
+
+\begin{document}
+\sffamily
+\begin{tikzpicture}[
+    font=\sffamily,
+    node distance=8mm,
+    endpoint/.style={
+        rounded corners=2.5mm,
+        minimum width=31mm,
+        minimum height=14mm,
+        align=center,
+        very thick,
+        text=Ink,
+        fill=white
+    },
+    route/.style={-{Stealth[length=3.2mm,width=2.2mm]}, line width=1.35pt},
+    evidence/.style={-{Stealth[length=2.7mm,width=1.9mm]}, line width=1.1pt, dashed},
+    badge/.style={rounded corners=1.8mm, inner xsep=3.2mm, inner ysep=1.7mm,
+                  font=\bfseries\small, text=white},
+    note/.style={font=\small, text=Muted, align=center}
+]
+
+% Canvas title and observation boundary
+\node[font=\bfseries\LARGE, text=DirectBlue] at (8,9.65)
+    {Surrogate Observability Pattern};
+\node[font=\large, text=Muted] at (8,9.15)
+    {\texttt{direct\_vs\_middleware}: client-side differential experiment};
+\node[draw=Rule, fill=Panel, rounded corners=2mm, inner xsep=5mm,
+      inner ysep=1.5mm, font=\small\bfseries, text=Muted] at (8,8.55)
+    {Authorised evidence boundary: RDG timestamps, outcomes, and correlation metadata only};
+
+% Direct path panel
+\filldraw[fill=DirectFill, draw=DirectBlue, line width=1.1pt, rounded corners=3mm]
+    (0.35,5.75) rectangle (15.65,8.15);
+\node[badge, fill=DirectBlue] at (1.85,7.75) {PATH A --- DIRECT};
+
+\node[endpoint, draw=DirectBlue] (rdgD) at (3.0,6.85)
+    {\textbf{RDG}\\[-1mm]{\scriptsize client timestamps}};
+\node[endpoint, draw=DirectBlue] (svcD) at (12.9,6.85)
+    {\textbf{Downstream Service}\\[-1mm]{\scriptsize target operation}};
+\draw[route, draw=DirectBlue] (rdgD.east) -- node[above, font=\small, text=Ink]
+    {direct interaction} (svcD.west);
+\draw[{Stealth[length=2.4mm]}-{Stealth[length=2.4mm]}, draw=DirectBlue,
+      line width=0.9pt] ($(rdgD.south)+(0,-0.35)$) --
+    node[fill=DirectFill, inner xsep=2mm, font=\small\bfseries, text=DirectBlue]
+    {$L_A(q)$: client-observed end-to-end latency}
+    ($(svcD.south)+(0,-0.35)$);
+
+% Mediated path panel
+\filldraw[fill=GatewayFill, draw=GatewayPurple, line width=1.1pt, rounded corners=3mm]
+    (0.35,3.05) rectangle (15.65,5.45);
+\node[badge, fill=GatewayPurple] at (2.05,5.05) {PATH B --- MEDIATED};
+
+\node[endpoint, draw=GatewayPurple] (rdgM) at (2.65,4.10)
+    {\textbf{RDG}\\[-1mm]{\scriptsize client timestamps}};
+\node[endpoint, draw=GatewayPurple, fill=white] (gw) at (8.0,4.10)
+    {\textbf{Gateway (APMS)}\\[-1mm]{\scriptsize protected middleware layer}};
+\node[endpoint, draw=GatewayPurple] (svcM) at (13.35,4.10)
+    {\textbf{Downstream Service}\\[-1mm]{\scriptsize same target operation}};
+\draw[route, draw=GatewayPurple] (rdgM.east) -- (gw.west);
+\draw[route, draw=GatewayPurple] (gw.east) -- (svcM.west);
+
+\node[draw=GatewayPurple, densely dashed, rounded corners=2mm,
+      fit=(gw), inner sep=2.5mm, label={[font=\scriptsize\bfseries,text=GatewayPurple]above:
+      INTERNAL LOGS UNAVAILABLE}] {};
+\draw[{Stealth[length=2.4mm]}-{Stealth[length=2.4mm]}, draw=GatewayPurple,
+      line width=0.9pt] ($(rdgM.south)+(0,-0.35)$) --
+    node[fill=GatewayFill, inner xsep=2mm, font=\small\bfseries, text=GatewayPurple]
+    {$L_B(q)$: client-observed end-to-end latency}
+    ($(svcM.south)+(0,-0.35)$);
+
+% Differential estimate
+\node[draw=DeltaRule, fill=DeltaFill, rounded corners=3mm, line width=1.2pt,
+      minimum width=108mm, minimum height=13mm, align=center, text=Ink] (delta) at (8,1.95)
+    {\textbf{Surrogate differential estimate}\\[-0.3mm]
+     $\displaystyle \Delta L(q)=L_B(q)-L_A(q)$\qquad
+     $q\in\{\mathrm{mean},P_{50},P_{95},P_{99}\}$};
+
+% Interpretation and constraint band
+\node[font=\bfseries\small, text=DeltaRule] at (8,1.02)
+    {No middleware timestamps required: $\Delta L$ estimates apparent mediated-path overhead};
+\node[note] at (8,0.55)
+    {Comparable workload, downstream service, load profile, and observation boundary are required.};
+\node[note, text=Ink] at (8,0.10)
+    {It isolates the aggregate mediation effect, \textbf{not} APMS internal processing time;};
+\node[note] at (8,-0.25)
+    {network routing, security processing, transformations, and retries may also contribute to $\Delta L$.};
+
+\end{tikzpicture}
+\end{document}

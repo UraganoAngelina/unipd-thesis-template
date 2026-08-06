@@ -1,6 +1,6 @@
 # Source Inventory
 
-Generated: 2026-07-15T12:09:35+02:00
+Updated: 2026-08-04
 
 Original files are the authoritative sources. Extracted text is for search and drafting support.
 
@@ -31,6 +31,8 @@ Original files are the authoritative sources. Extracted text is for search and d
 | `paper_numerical_latency_throughput` | academic | `/home/alberto/Downloads/Accademic papers/Thesis paper/Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf` | [extracted_text/paper_numerical_latency_throughput.txt](extracted_text/paper_numerical_latency_throughput.txt) | 15 | 4095 | standard | extracted | Academic paper |
 | `paper_srg_2` | academic | `/home/alberto/Downloads/Accademic papers/Thesis paper/srg_2.pdf` | [extracted_text/paper_srg_2.txt](extracted_text/paper_srg_2.txt) | 8 | 5604 | standard | extracted | Academic paper |
 | `project_architecture` | architecture | `/home/alberto/Downloads/project-architecture.txt` | [extracted_text/project_architecture.txt](extracted_text/project_architecture.txt) |  | 1114 | standard | copied | Architecture snapshot |
+| `scryba_sign_developer_guide_v16` | internal_project | `/home/alberto/Desktop/RVE-SoapUI/Scryba_Sign_3-X_DEVELOPERS_GUIDE_V18/Scryba_Sign_3-X_DEVELOPERS_GUIDE_V18/Scryba Sign 3.x Developer's Guide.pdf` |  | 113 | 23947 | restricted | indexed: sanitized | Medas developer guide; original PDF is retained in `graphify_kb`, while generated graph nodes omit example credentials, private endpoints, and personal data |
+| `experiment_20260727T185227` | experimental | [experiments/20260727T185227/README.md](experiments/20260727T185227/README.md) | [experiments/20260727T185227/experiment_summary.md](experiments/20260727T185227/experiment_summary.md) |  | 1409 | sanitized | scanned | Batteria live: 1.842 file verificati, 74 run complete, metriche/outcome sanitizzati e 578 PNG |
 
 ## Extraction Limitations
 

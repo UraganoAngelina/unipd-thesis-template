@@ -1,0 +1,28 @@
+{
+  "status": "SUPERATO",
+  "generated_on": "2026-07-31",
+  "counts": {
+    "canonical_nodes": 664,
+    "physical_nodes": 1305,
+    "physical_edges": 2275,
+    "edge_verbalizations": 4550,
+    "physical_hyperedges": 10,
+    "property_occurrences": 55325,
+    "aliases_checked": 5
+  },
+  "checks": {
+    "nodes": true,
+    "edges": true,
+    "hyperedges": true,
+    "properties": {
+      "graph": true,
+      "node": true,
+      "edge": true,
+      "hyperedge": true
+    },
+    "aliases": true,
+    "canonical_names": true,
+    "no_invented_relations": true
+  },
+  "missing_aliases": []
+}

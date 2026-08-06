@@ -1,13 +1,11 @@
-\chapter{Bibliografia}
+\chapter{Bibliography}
 \label{cap:bibliography}
 
 \nocite{*}
 
-% Books bibliography
-\printbibliography[heading=subbibliography, title={Testi}, type=book]
-
-% Articles bibliography
-\printbibliography[heading=subbibliography, title={Articoli}, type=article]
-
-% Websites bibliography
-%\printbibliography[heading=subbibliography, title={Siti}, type=online]
+% Print every bibliographic entry except online-only sources, which are
+% collected separately in the Online Sources chapter.
+\begingroup
+    \setlength{\emergencystretch}{4em}
+    \printbibliography[heading=none, nottype=online]
+\endgroup

@@ -3,7 +3,7 @@
     12pt,
     oneside,
     a4paper,
-    italian
+    english
 ]{book}
 
 \input{config/packages}
@@ -17,21 +17,17 @@
     \input{preface/1_title_page}
     \increasepagenumbering % increase the page numbrering by 1, in order to cout the frontispiece
     \input{preface/2_copyright}
-    \input{preface/3_acknowledgements}
+    %\input{preface/3_acknowledgements}
     \input{preface/4_abstract}
     \input{preface/5_table_of_contents}
-    \printglossary[type=\acronymtype, title=Acronimi e abbreviazioni, toctitle=Acronimi e abbreviazioni]
-    \printglossary[type=main, title=Glossario, toctitle=Glossario]
+    \printglossary[type=\acronymtype, title=Acronyms and Abbreviations, toctitle=Acronyms and Abbreviations]
+    \printglossary[type=main, title=Glossary, toctitle=Glossary]
     \blankpage % example of a blank page that also increases the page couter by 1
-
     \mainmatter
     \input{chapters/1_introduction}
     \input{chapters/2_domain}
-    \input{chapters/3_soa}
-    \input{chapters/4_sysanal}
-    \input{chapters/5_trans}
-    \input{chapters/6_desing}
-    \input{chapters/7_impl}
+    %\input{chapters/3_soa}
+    %\input{chapters/4_sysanal}
 
     \pagenumbering{roman}
     \backmatter

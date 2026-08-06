@@ -2,14 +2,37 @@
 \phantomsection
 \pdfbookmark{Compendio}{Compendio}
 \begingroup
+\setlength{\emergencystretch}{2em}
 \let\clearpage\relax
 \let\cleardoublepage\relax
 \chapter*{Abstract}
-
-\noindent The increasing digitalization of community-based healthcare services requires information architectures capable of ensuring interoperability, information continuity, and integration among heterogeneous systems. This thesis is framed within the Territorial Information System for the Healthcare Organizations of the Veneto Region, a project aimed at reducing local application fragmentation and supporting community care processes in line with Ministerial Decree 77/2022 and the Italian National Recovery and Resilience Plan. The work, carried out during an internship at Almaviva in the digital healthcare domain, addresses healthcare interoperability from a dual perspective: a technical-functional analysis of regional integration flows and the design of an original Python framework for the end-to-end simulation of RVE application traffic. The framework supports synthetic FHIR patient generation, multi-step workload composition, stochastic traffic scheduling, asynchronous execution in mock and live modes, structured logging, and performance-oriented metric computation. The proposed methodology adopts a two-level grey-box approach, distinguishing framework-observable measurements from middleware-level evidence, and provides a methodological basis for translating healthcare interoperability processes into executable and measurable experimental models. Community-based healthcare depends on the ability of heterogeneous systems to exchange consistent information across organizational, technological, and clinical boundaries. In the Veneto regional context, this problem emerges from the coexistence of clinical-care applications, authentication services, regional patient registry services, Electronic Health Record components, integration middleware, and domain-specific interoperability specifications. The central issue addressed by this thesis is therefore not limited to message exchange: it concerns the modelling, execution, and observation of multi-step healthcare interoperability flows whose correctness and performance depend on several coordinated systems. This creates the need for a methodology that connects functional analysis with experimental evaluation. The thesis pursues two complementary objectives. The first is analytical: to study the healthcare and integration context of community care processes, with particular attention to protected discharge and protected admission, regional RVE transactions, IHE profiles, HL7 FHIR R4, and security mechanisms based on SAML and JWT. The second is technical: to design and implement a framework capable of generating synthetic patients, composing executable RVE workloads, scheduling traffic over time, executing flows in controlled conditions, and collecting data suitable for later performance analysis. Together, these objectives support a structured bridge between process analysis and measurable interoperability behavior. The work combines documentary analysis, flow modelling, software implementation, and experimental-methodology design. On the domain side, it considers regional healthcare interoperability specifications, HL7 FHIR R4 resources, IHE profiles, SOAP and REST communication patterns, XML and JSON representations, SAML assertions, and JWT-based access mechanisms. On the technical side, the implemented framework is based on Python and includes modules for FHIR patient synthesis, RVE flow composition, stochastic timeline generation, asynchronous HTTP execution through asyncio and \texttt{aiohttp}, mock and live execution modes, JSONL logging, log normalization, and metric computation. These components are used to represent healthcare flows as executable workloads. The main contribution of the thesis lies in the integration of two perspectives that are often treated separately. The analytical contribution consists in reconstructing relevant healthcare interoperability scenarios and identifying how clinical-care processes can be mapped onto regional transactions, standards, and integration layers. The technical contribution consists in the design and implementation of a simulation and measurement framework that turns these flows into executable workloads. This makes it possible to observe step-level and flow-level behavior, distinguish framework-side and middleware-side evidence, and prepare an experimental basis for evaluating latency, throughput, error rate, concurrency, and workload composition.
-\section{Results}
-\noindent (DATA MISSING)
-\section{Conclusions}
-\noindent (DATA MISSING)
+\noindent The digitalisation of community-based healthcare requires heterogeneous
+applications to exchange information through regional services whose behaviour
+must be assessed across complete transaction paths. In the context of
+SI.Ter (Sistema Informativo Territoriale), the Territorial Information System
+for the Healthcare Organisations of the Veneto Region, this thesis defines an
+experimental methodology for end-to-end
+performance profiling and differential overhead characterisation of cloud-based
+healthcare interoperability gateways. Documented regional workflows become
+reproducible workloads observed at the client boundary. The Request Dataset
+Generator (RDG) is a Python framework that creates synthetic Fast Healthcare
+Interoperability Resources (FHIR) R4 (Release 4) patients, composes ordered
+multi-step workflows, schedules configurable traffic, and concurrently executes
+independent flow occurrences. It supports the direct RVE (Regione Veneto)
+patient-registry transactions RVE-54 and RVE-55 and a gateway-mediated workflow
+in mock and live
+modes. Structured logs provide a traceable dataset for request- and flow-level
+latency, throughput, error-rate, concurrency, and scheduling metrics. Since internal gateway logs remain outside the authorised perimeter, the
+\emph{Surrogate Observability Strategy} uses the
+\texttt{direct\_\allowbreak vs\_\allowbreak middleware} experiment to compare
+client-observed latency distributions for direct and mediated paths. Differences
+in means and selected percentiles estimate apparent path-level overhead, not
+internal gateway time; routing, security, transformation, network, and retry
+effects may also contribute. The empirical campaign comprises 74 completed runs. As a proof of concept, it
+distinguishes transport from application outcomes, request from flow
+populations, direct from mediated paths, and successful from failed processing.
+The contribution is a profiling framework and a reproducible
+surrogate-observability protocol for constrained healthcare integration
+environments.
 \endgroup
 \vfill

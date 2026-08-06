@@ -1,30 +1,8 @@
-@book{womak:lean-thinking,
-    author = {James P. Womack, Daniel T. Jones},
-    title = {Lean Thinking, Second Editon},
-    publisher = {Simon \& Schuster, Inc.},
-    year = {2010}
-}
-
-@article{article:spooky,
-  author = {Albert Einstein and Boris Podolsky and Nathan Rosen},
-  title = {Can Quantum-Mechanical Description of Physical Reality be Considered Complete?},
-  journal = {Physical Review},
-  volume = {47},
-  number = {10},
-  pages = {777-780},
-  year = {1935},
-  doi = {10.1103/PhysRev.47.777},
-}
-
-@online{site:agile-manifesto,
-    title = {Manifesto Agile},
-    url = {http://agilemanifesto.org/iso/it/}
-}
-
 @report{oasis-soa-rm,
   author = {C. Matthew MacKenzie and Ken Laskey and Francis McCabe and Peter F. Brown and Rebekah Metz},
   title = {Reference Model for Service Oriented Architecture 1.0},
   institution = {OASIS},
+  type = {Committee Specification},
   date = {2006-10-12},
   url = {https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html},
   urldate = {2026-07-22}
@@ -33,6 +11,7 @@
 @online{hl7-fhir-r4,
   author = {{HL7 International}},
   title = {{FHIR} Release 4 (Version 4.0.1): Overview},
+  date = {2019-11-01},
   url = {https://hl7.org/fhir/R4/overview.html},
   urldate = {2026-07-22}
 }
@@ -40,35 +19,71 @@
 @online{hl7-fhir-r4-bundle,
   author = {{HL7 International}},
   title = {{FHIR} Release 4 (Version 4.0.1): Resource Bundle},
+  date = {2019-11-01},
   url = {https://hl7.org/fhir/R4/bundle.html},
   urldate = {2026-07-22}
 }
 
 @online{ihe-iua,
-  author = {{IHE International}},
-  title = {Internet User Authorization ({IUA})},
+  author = {{IHE IT Infrastructure Technical Committee}},
+  title = {Internet User Authorization ({IUA}), Revision 2.5},
+  date = {2026-06-18},
   url = {https://profiles.ihe.net/ITI/IUA/},
   urldate = {2026-07-22}
 }
 
 @online{ihe-xdsb,
   author = {{IHE International}},
-  title = {Cross-Enterprise Document Sharing ({XDS.b})},
+  title = {{IHE IT Infrastructure Technical Framework}, Volume 1:
+    Cross-Enterprise Document Sharing ({XDS.b}), Revision 20.2},
+  date = {2025-11-11},
   url = {https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html},
   urldate = {2026-07-22}
+}
+
+@online{apache-jmeter-test-plan,
+  author = {{Apache Software Foundation}},
+  title = {{Apache JMeter} User's Manual: Elements of a Test Plan},
+  url = {https://jmeter.apache.org/usermanual/test_plan.html},
+  urldate = {2026-08-04}
+}
+
+@online{apache-jmeter-component-reference,
+  author = {{Apache Software Foundation}},
+  title = {{Apache JMeter} User's Manual: Component Reference},
+  url = {https://jmeter.apache.org/usermanual/component_reference.html},
+  urldate = {2026-08-04}
+}
+
+@online{apache-jmeter-functions-variables,
+  author = {{Apache Software Foundation}},
+  title = {{Apache JMeter} User's Manual: Functions and Variables},
+  url = {https://jmeter.apache.org/usermanual/functions.html},
+  urldate = {2026-08-04}
+}
+
+@online{apache-jmeter-remote-testing,
+  author = {{Apache Software Foundation}},
+  title = {{Apache JMeter} User's Manual: Remote (Distributed) Testing},
+  url = {https://jmeter.apache.org/usermanual/remote-test.html},
+  urldate = {2026-08-04}
 }
 
 @report{arsenal-anagrafe-zero-v26,
   author = {Elena Vio and Mauro Zanardini and Gianluca Pavan and Cristina Zanin},
   title = {Specifiche tecniche -- Anagrafe Zero},
-  institution = {Consorzio Arsenal.IT},
+  institution = {Consorzio Arsenàl.IT},
+  type = {Technical specification},
   version = {2.6},
   date = {2024-01-09}
 }
 
 @report{affinity-domain-italia-v263,
   author = {{CNR (ICAR) e Dipartimento per la Trasformazione Digitale}},
-  title = {Specifiche tecniche per l'interoperabilita tra i sistemi regionali di {FSE}: Affinity Domain Italia},
+  title = {Specifiche tecniche per l'interoperabilità tra i sistemi regionali
+    di {FSE}: Affinity Domain Italia},
+  institution = {{CNR (ICAR) e Dipartimento per la Trasformazione Digitale}},
+  type = {Technical specification},
   version = {2.6.3},
   date = {2025-10-31}
 }
@@ -76,6 +91,8 @@
 @report{ulss3-xvalue-v29,
   author = {{Azienda ULSS 3 Serenissima}},
   title = {Specifiche tecniche di integrazione tra sistemi Document Source e Repository XValue},
+  institution = {Azienda ULSS 3 Serenissima},
+  type = {Technical specification},
   version = {2.9},
   date = {2024-08-05}
 }
@@ -83,7 +100,8 @@
 @report{arsenal-security-v214,
   author = {Mauro Zanardini and Matteo Girardello and Andrea Volpini and Isabella Sgro and Alessia Favero},
   title = {Infrastruttura di sicurezza {GDL-O} Sicurezza},
-  institution = {Consorzio Arsenal.IT},
+  institution = {Consorzio Arsenàl.IT},
+  type = {Technical specification},
   version = {2.14},
   date = {2024-06-28}
 }
@@ -91,15 +109,213 @@
 @report{arsenal-context-rve-v13,
   author = {Gregorio Canal and Gianluca Pavan},
   title = {Specifiche tecniche chiamata di contesto {RVE}},
-  institution = {Consorzio Arsenal.IT},
+  institution = {Consorzio Arsenàl.IT},
+  type = {Technical specification},
   version = {1.3},
   date = {2025-07-18}
 }
 
 @report{apms-auth-v141,
+  author = {{DXC Technology}},
   title = {Specifiche di integrazione autenticazione {APMS}},
+  institution = {Azienda Zero},
+  type = {Technical specification},
   version = {1.4.1},
-  note = {Documento tecnico di progetto consultato nel corpus documentale}
+  date = {2024-11-22}
+}
+
+@report{arsenal-subscription-v22,
+  author = {Gregorio Canal and Matteo Cognolato},
+  title = {Specifiche tecniche -- Gestione sottoscrizione/notifica},
+  institution = {Consorzio Arsenàl.IT},
+  type = {Technical specification},
+  version = {2.2},
+  date = {2021-01-22}
+}
+
+@report{azienda-zero-data-reference-architecture-v11,
+  author = {{Azienda Zero}},
+  title = {Data Management Reference Architecture: Documento descrittivo della
+    reference architecture per il data management},
+  institution = {Azienda Zero},
+  type = {Reference architecture},
+  version = {1.1},
+  date = {2025-09-19}
+}
+
+@report{azienda-zero-infrastructure-reference-architecture-v110,
+  author = {{Azienda Zero}},
+  title = {Infrastrutture -- Reference Architecture: Architettura di
+    riferimento dell'infrastruttura di Azienda Zero},
+  institution = {Azienda Zero},
+  type = {Reference architecture},
+  version = {1.1.0},
+  date = {2025-10-09}
+}
+
+@report{rti-siter-dimensionamento-v14,
+  author = {Stefano Bergamasco and Nicola Rodeghiero},
+  title = {Documento di dimensionamento computazionale: Realizzazione di un
+    Sistema Informativo Territoriale per gli Enti Sanitari della Regione
+    Veneto},
+  institution = {{Raggruppamento Temporaneo di Imprese SI.Ter}},
+  type = {Sizing report},
+  version = {1.4},
+  date = {2026-06-26}
+}
+
+@report{almaviva-percorsi-flussi-territoriali-v30,
+  author = {Claudio Pastore and Federica Martello},
+  title = {Percorsi, Sistemi e Flussi Sanitari dei Servizi Territoriali: Dalla
+    Governance ai Servizi: logiche, strumenti e interoperabilità},
+  institution = {AlmavivA},
+  type = {Technical report},
+  version = {3.0},
+  date = {2026-03-17},
+  note = {Internal technical document}
+}
+
+@report{rti-siter-anagrafica-v10,
+  author = {Andrea Esposito},
+  title = {Realizzazione integrazioni per progetto {SI.Ter}: Specifiche di
+    integrazione degli scenari di Anagrafica},
+  institution = {{Raggruppamento Temporaneo di Imprese SI.Ter}},
+  type = {Technical specification},
+  version = {1.0},
+  date = {2026-05-27}
+}
+
+@misc{siter-cabina-regia-2026,
+  title = {Progetto {SI.Ter}: Presentazione alla Cabina di Regia},
+  type = {Project presentation},
+  date = {2026-03-25},
+  note = {The consulted document does not identify an author}
+}
+
+@misc{bianchi-firme-sigilli-2026,
+  author = {Marzia Bianchi},
+  title = {Firme e sigilli elettronici: Guida sintetica},
+  type = {Technical presentation},
+  date = {2026-03-23},
+  note = {Date and author derived from the metadata of the consulted file}
+}
+
+@misc{advenias-paymed-accessi-2025,
+  title = {Integrazione tra Advenias e Paymed -- Rendicontazione Accessi},
+  type = {Project technical note},
+  date = {2025-06-11},
+  note = {Date derived from the metadata of the consulted file; author not
+    identified}
+}
+
+@report{regione-veneto-116117-project-2024,
+  author = {{Regione del Veneto}},
+  title = {Progetto sistema di risposta sanitaria 116117: Istituzione delle
+    relative centrali operative},
+  institution = {Regione del Veneto},
+  type = {Project document},
+  date = {2024-06-18},
+  note = {Revision date derived from the filename of the consulted document}
+}
+
+@misc{regione-veneto-116117-protocollo-2,
+  author = {{Regione del Veneto, Gruppo tecnico di lavoro 116117}},
+  title = {116117: Manuale -- Protocollo 2},
+  howpublished = {Operating manual},
+  date = {XXXX},
+  note = {The consulted document does not indicate a publication date}
+}
+
+@report{regione-veneto-ddr-13745-sioc-2025,
+  author = {{Regione del Veneto, Direzione Programmazione Sanitaria}},
+  title = {{PNRR} Missione 6, Componente 2, Investimento 1.3.2:
+    Approvazione del tracciato definitivo del flusso informativo sanitario
+    {SIOC}},
+  institution = {Regione del Veneto},
+  type = {Regional decree},
+  number = {Decreto n. 13745},
+  date = {2025-12-17}
+}
+
+@unpublished{bergamasco-sis-datawarehouse-2025,
+  author = {Stefano Bergamasco},
+  title = {Architettura di un Sistema Informativo Sanitario ({SIS}), con focus
+    particolare su sistemi di Datawarehouse e flussi informativi},
+  howpublished = {Materiale didattico per il corso Funzioni direttive dei
+    servizi sanitari e formazione manageriale per le direzioni generali},
+  location = {Bologna},
+  date = {2025-05-21}
+}
+
+@report{dm-77-2022,
+  author = {{Ministero della Salute}},
+  title = {Regolamento recante la definizione di modelli e standard per lo
+    sviluppo dell'assistenza territoriale nel Servizio sanitario nazionale},
+  institution = {Ministero della Salute},
+  type = {Ministerial decree},
+  number = {Decreto 23 maggio 2022, n. 77},
+  date = {2022-05-23},
+  note = {Italian Official Gazette, General Series no. 144, 22 June 2022}
+}
+
+@report{eu-gdpr-2016-679,
+  author = {{European Parliament and Council of the European Union}},
+  title = {Regulation ({EU}) 2016/679 on the Protection of Natural Persons
+    with Regard to the Processing of Personal Data and on the Free Movement of
+    Such Data},
+  institution = {European Union},
+  type = {Regulation},
+  number = {(EU) 2016/679},
+  date = {2016-04-27},
+  pages = {1--88},
+  note = {Official Journal of the European Union, L 119},
+  url = {https://eur-lex.europa.eu/eli/reg/2016/679/oj},
+  urldate = {2026-07-29}
+}
+
+@report{decreto-fse-2-2023,
+  author = {{Ministero della Salute}},
+  title = {Fascicolo sanitario elettronico 2.0},
+  institution = {Ministero della Salute},
+  type = {Ministerial decree},
+  number = {Decreto 7 settembre 2023},
+  date = {2023-09-07},
+  note = {Italian Official Gazette, General Series no. 249, 24 October 2023,
+    as subsequently amended},
+  url = {https://www.gazzettaufficiale.it/eli/id/2023/10/24/23A05829/sg},
+  urldate = {2026-07-29}
+}
+
+@report{regione-veneto-ddr-11922-2026,
+  author = {{Regione del Veneto, Area Sanità e Sociale}},
+  title = {Modello di Governo per l'implementazione del Sistema Informativo
+    Territoriale ({SI.Ter}) nelle Aziende ed Enti del Servizio Sanitario
+    Regionale della Regione del Veneto},
+  institution = {Regione del Veneto},
+  type = {Regional decree},
+  number = {Decreto n. 11922},
+  date = {2026-03-16}
+}
+
+@report{azienda-zero-siter-capitolato,
+  author = {{Azienda Zero}},
+  title = {Realizzazione di un Sistema Informativo Territoriale per gli Enti
+    Sanitari della Regione Veneto},
+  institution = {Azienda Zero},
+  type = {Technical specifications},
+  date = {2025-07-09},
+  note = {Specific procurement, Digital Healthcare -- Clinical-Care
+    Information Systems, ID 2365, Lot 3; date derived from file metadata}
+}
+
+@report{rti-siter-relazione-tecnica,
+  author = {{Raggruppamento Temporaneo di Imprese guidato da AlmavivA}},
+  title = {Sistema Informativo Territoriale per gli Enti Sanitari della Regione
+    del Veneto -- Lotto 3},
+  institution = {{Raggruppamento Temporaneo di Imprese guidato da AlmavivA}},
+  type = {Technical report},
+  date = {2025-09-19},
+  note = {Date derived from file metadata}
 }
 
 @article{iorio-when-latency-matters,
@@ -108,13 +324,18 @@
   journal = {{ACM SIGCOMM} Computer Communication Review},
   volume = {51},
   number = {4},
-  date = {2021-10}
+  pages = {2--13},
+  date = {2021-10},
+  doi = {10.1145/3503954.3503956}
 }
 
 @unpublished{dimitrov-latency-applications,
   author = {Rossen Dimitrov and Anthony Skjellum},
   title = {Impact of Latency on Applications' Performance},
-  note = {Manoscritto consultato nel corpus documentale}
+  date = {2001-04},
+  note = {Manuscript consulted in the documentary corpus},
+  url = {https://users.cs.northwestern.edu/~srg/Papers/01-10-02/srg_2.pdf},
+  urldate = {2026-07-31}
 }
 
 @article{akram-numerical-latency,
@@ -125,4 +346,45 @@
   number = {4},
   date = {2025-12},
   doi = {10.5281/zenodo.18012513}
+}
+
+@inproceedings{zhu-tbbt-trace-replay,
+  author = {Ningning Zhu and Jiawu Chen and Tzi-cker Chiueh},
+  title = {{TBBT}: Scalable and Accurate Trace Replay for File Server Evaluation},
+  booktitle = {4th USENIX Conference on File and Storage Technologies ({FAST} 05)},
+  publisher = {USENIX Association},
+  location = {San Francisco, CA},
+  date = {2005-12},
+  url = {https://www.usenix.org/conference/fast-05/tbbt-scalable-and-accurate-trace-replay-file-server-evaluation},
+  urldate = {2026-07-29}
+}
+
+@report{scryba-sign-developer-guide-v16,
+  author = {{Medas S.r.l.}},
+  title = {{Scryba Sign 3.x Developer's Guide}},
+  institution = {Medas S.r.l.},
+  type = {Developer's guide},
+  version = {16},
+  date = {2024-04-10},
+  note = {Restricted internal document}
+}
+
+@online{eu-eidas-910-2014,
+  author = {{European Parliament and Council of the European Union}},
+  title = {Regulation ({EU}) No 910/2014 on Electronic Identification and
+    Trust Services for Electronic Transactions in the Internal Market},
+  date = {2014-07-23},
+  note = {Consolidated text of 18 October 2024},
+  url = {https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18/eng},
+  urldate = {2026-08-05}
+}
+
+@online{rfc5544-timestamped-data,
+  author = {Adriano Santoni},
+  title = {{RFC 5544}: Syntax for Binding Documents with Time-Stamps},
+  organization = {{RFC Editor}},
+  date = {2010-02},
+  doi = {10.17487/RFC5544},
+  url = {https://www.rfc-editor.org/info/rfc5544/},
+  urldate = {2026-08-05}
 }

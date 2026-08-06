@@ -168,7 +168,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortlocale</bcf:key>
-      <bcf:value>italian</bcf:value>
+      <bcf:value>english</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
@@ -2361,58 +2361,60 @@
     <bcf:datasource type="file" datatype="bibtex">references/bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">oasis-soa-rm</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">hl7-fhir-r4</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
-    <bcf:citekey order="3" intorder="2">ihe-xdsb</bcf:citekey>
-    <bcf:citekey order="3" intorder="3">ulss3-xvalue-v29</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">arsenal-context-rve-v13</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">ihe-xdsb</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">hl7-fhir-r4</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">hl7-fhir-r4-bundle</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">ihe-iua</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">ihe-iua</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">arsenal-security-v214</bcf:citekey>
-    <bcf:citekey order="14" intorder="2">arsenal-context-rve-v13</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">ihe-xdsb</bcf:citekey>
-    <bcf:citekey order="15" intorder="2">affinity-domain-italia-v263</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">ihe-xdsb</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">ulss3-xvalue-v29</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">affinity-domain-italia-v263</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">ulss3-xvalue-v29</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">ihe-xdsb</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">ulss3-xvalue-v29</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">ihe-xdsb</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">dm-77-2022</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">dm-77-2022</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">decreto-fse-2-2023</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">regione-veneto-ddr-11922-2026</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">azienda-zero-siter-capitolato</bcf:citekey>
+    <bcf:citekey order="6" intorder="2">rti-siter-relazione-tecnica</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">apms-auth-v141</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">rti-siter-relazione-tecnica</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">eu-eidas-910-2014</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">rfc5544-timestamped-data</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">ihe-xdsb</bcf:citekey>
+    <bcf:citekey order="13" intorder="2">affinity-domain-italia-v263</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">rti-siter-relazione-tecnica</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">decreto-fse-2-2023</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">azienda-zero-siter-capitolato</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">rti-siter-relazione-tecnica</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">arsenal-security-v214</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">apms-auth-v141</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">arsenal-security-v214</bcf:citekey>
+    <bcf:citekey order="22" intorder="2">arsenal-context-rve-v13</bcf:citekey>
     <bcf:citekey order="23" intorder="1">arsenal-security-v214</bcf:citekey>
-    <bcf:citekey order="23" intorder="2">arsenal-anagrafe-zero-v26</bcf:citekey>
-    <bcf:citekey order="23" intorder="3">arsenal-context-rve-v13</bcf:citekey>
-    <bcf:citekey order="23" intorder="4">ulss3-xvalue-v29</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">arsenal-security-v214</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">arsenal-context-rve-v13</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">apms-auth-v141</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">dimitrov-latency-applications</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="32" intorder="2">dimitrov-latency-applications</bcf:citekey>
-    <bcf:citekey order="32" intorder="3">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">dimitrov-latency-applications</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">dimitrov-latency-applications</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">iorio-when-latency-matters</bcf:citekey>
-    <bcf:citekey order="42" intorder="1" nocite="1">*</bcf:citekey>
-    <bcf:citekey order="43" intorder="2" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">zhu-tbbt-trace-replay</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">apms-auth-v141</bcf:citekey>
+    <bcf:citekey order="25" intorder="2">arsenal-security-v214</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">iorio-when-latency-matters</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">iorio-when-latency-matters</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">akram-numerical-latency</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">akram-numerical-latency</bcf:citekey>
+    <bcf:citekey order="29" intorder="2">iorio-when-latency-matters</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">dimitrov-latency-applications</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">dimitrov-latency-applications</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">rti-siter-relazione-tecnica</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">azienda-zero-siter-capitolato</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">arsenal-security-v214</bcf:citekey>
+    <bcf:citekey order="36" intorder="2">arsenal-context-rve-v13</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">ihe-xdsb</bcf:citekey>
+    <bcf:citekey order="37" intorder="2">affinity-domain-italia-v263</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">azienda-zero-siter-capitolato</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">apache-jmeter-test-plan</bcf:citekey>
+    <bcf:citekey order="42" intorder="2">apache-jmeter-component-reference</bcf:citekey>
+    <bcf:citekey order="42" intorder="3">apache-jmeter-functions-variables</bcf:citekey>
+    <bcf:citekey order="42" intorder="4">apache-jmeter-remote-testing</bcf:citekey>
+    <bcf:citekey order="43" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="44" intorder="2" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

@@ -4,6 +4,52 @@
   "graph": {
     "hyperedges": [
       {
+        "id": "scryba_signing_scenarios",
+        "label": "Scryba Sign Integration Scenarios",
+        "nodes": [
+          "scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+          "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+          "scryba_sign_3_x_developer_s_guide_graphometric_workflow"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+      },
+      {
+        "id": "scryba_signing_service_surface",
+        "label": "Scryba Sign SOAP Service Surface",
+        "nodes": [
+          "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+          "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+          "scryba_sign_3_x_developer_s_guide_utils_v2",
+          "scryba_sign_3_x_developer_s_guide_notification_v1",
+          "scryba_sign_3_x_developer_s_guide_timestamp_v1",
+          "scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
+          "scryba_sign_3_x_developer_s_guide_signerutils_v1",
+          "scryba_sign_3_x_developer_s_guide_applicationutils_v1",
+          "scryba_sign_3_x_developer_s_guide_validationsutils_v1"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+      },
+      {
+        "id": "scryba_stateful_signature_chain",
+        "label": "Stateful Signature Session Chain",
+        "nodes": [
+          "scryba_sign_3_x_developer_s_guide_signer_configuration",
+          "scryba_sign_3_x_developer_s_guide_sync_session_chain",
+          "scryba_sign_3_x_developer_s_guide_async_session_chain",
+          "scryba_sign_3_x_developer_s_guide_document_status_lifecycle"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+      },
+      {
         "id": "sanita_territoriale_operating_model",
         "label": "Sanita Territoriale Operating Model",
         "nodes": [
@@ -92,9 +138,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_progetto_siter",
       "community": 2,
-      "norm_label": "progetto si.ter"
+      "norm_label": "progetto si.ter",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_progetto_siter"
     },
     {
       "label": "DM 77/2022",
@@ -105,9 +152,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_dm77",
-      "community": 5,
-      "norm_label": "dm 77/2022"
+      "community": 6,
+      "norm_label": "dm 77/2022",
+      "community_name": "CO 116117",
+      "id": "analisi_dm77"
     },
     {
       "label": "CO 116117",
@@ -118,9 +166,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_co116117",
-      "community": 5,
-      "norm_label": "co 116117"
+      "community": 6,
+      "norm_label": "co 116117",
+      "community_name": "CO 116117",
+      "id": "analisi_co116117"
     },
     {
       "label": "Centrale Operativa Territoriale",
@@ -131,9 +180,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_cot",
-      "community": 5,
-      "norm_label": "centrale operativa territoriale"
+      "community": 6,
+      "norm_label": "centrale operativa territoriale",
+      "community_name": "CO 116117",
+      "id": "analisi_cot"
     },
     {
       "label": "Punto Unico di Accesso",
@@ -144,9 +194,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_pua",
-      "community": 5,
-      "norm_label": "punto unico di accesso"
+      "community": 6,
+      "norm_label": "punto unico di accesso",
+      "community_name": "CO 116117",
+      "id": "analisi_pua"
     },
     {
       "label": "ePersonam",
@@ -157,9 +208,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_epersonam",
       "community": 2,
-      "norm_label": "epersonam"
+      "norm_label": "epersonam",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_epersonam"
     },
     {
       "label": "SisTer",
@@ -170,9 +222,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_sister",
       "community": 2,
-      "norm_label": "sister"
+      "norm_label": "sister",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_sister"
     },
     {
       "label": "APMS",
@@ -183,9 +236,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_apms",
       "community": 2,
-      "norm_label": "apms"
+      "norm_label": "apms",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_apms"
     },
     {
       "label": "Anagrafe Zero",
@@ -196,9 +250,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_anagrafe_zero",
-      "community": 0,
-      "norm_label": "anagrafe zero"
+      "community": 2,
+      "norm_label": "anagrafe zero",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_anagrafe_zero"
     },
     {
       "label": "FSEr XDS",
@@ -209,9 +264,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_fser_xds",
-      "community": 0,
-      "norm_label": "fser xds"
+      "community": 2,
+      "norm_label": "fser xds",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_fser_xds"
     },
     {
       "label": "Dimissione Protetta",
@@ -222,9 +278,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analisi_dimissione_protetta",
-      "community": 0,
-      "norm_label": "dimissione protetta"
+      "community": 2,
+      "norm_label": "dimissione protetta",
+      "community_name": "Progetto SI.Ter",
+      "id": "analisi_dimissione_protetta"
     },
     {
       "label": "APMS Token Multitenancy",
@@ -235,9 +292,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pianificazione_apms_token_multitenancy",
       "community": 2,
-      "norm_label": "apms token multitenancy"
+      "norm_label": "apms token multitenancy",
+      "community_name": "Progetto SI.Ter",
+      "id": "pianificazione_apms_token_multitenancy"
     },
     {
       "label": "Dimissione Protetta End To End",
@@ -248,9 +306,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pianificazione_dimissione_protetta_e2e",
-      "community": 11,
-      "norm_label": "dimissione protetta end to end"
+      "community": 13,
+      "norm_label": "dimissione protetta end to end",
+      "community_name": "Dimissione Protetta End To End",
+      "id": "pianificazione_dimissione_protetta_e2e"
     },
     {
       "label": "FSEr XDS Layer",
@@ -261,9 +320,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pianificazione_fser_xds_layer",
-      "community": 11,
-      "norm_label": "fser xds layer"
+      "community": 13,
+      "norm_label": "fser xds layer",
+      "community_name": "Dimissione Protetta End To End",
+      "id": "pianificazione_fser_xds_layer"
     },
     {
       "label": "RabbitMQ Queues",
@@ -274,9 +334,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pianificazione_rabbitmq_queues",
-      "community": 11,
-      "norm_label": "rabbitmq queues"
+      "community": 13,
+      "norm_label": "rabbitmq queues",
+      "community_name": "Dimissione Protetta End To End",
+      "id": "pianificazione_rabbitmq_queues"
     },
     {
       "label": "Camunda BPMN Rules",
@@ -287,9 +348,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pianificazione_camunda_bpmn_rules",
-      "community": 11,
-      "norm_label": "camunda bpmn rules"
+      "community": 13,
+      "norm_label": "camunda bpmn rules",
+      "community_name": "Dimissione Protetta End To End",
+      "id": "pianificazione_camunda_bpmn_rules"
     },
     {
       "label": "IAP Endpoint",
@@ -300,9 +362,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "specifiche_iap_endpoint",
-      "community": 1,
-      "norm_label": "iap endpoint"
+      "community": 4,
+      "norm_label": "iap endpoint",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "specifiche_iap_endpoint"
     },
     {
       "label": "When Latency Matters",
@@ -313,9 +376,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "latency_when_latency_matters",
-      "community": 8,
-      "norm_label": "when latency matters"
+      "community": 10,
+      "norm_label": "when latency matters",
+      "community_name": "Edge Computing Latency",
+      "id": "latency_when_latency_matters"
     },
     {
       "label": "Edge Computing Latency",
@@ -326,9 +390,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "latency_edge_computing_latency",
-      "community": 8,
-      "norm_label": "edge computing latency"
+      "community": 10,
+      "norm_label": "edge computing latency",
+      "community_name": "Edge Computing Latency",
+      "id": "latency_edge_computing_latency"
     },
     {
       "label": "Persistent Connections",
@@ -339,9 +404,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "latency_persistent_connections",
-      "community": 8,
-      "norm_label": "persistent connections"
+      "community": 10,
+      "norm_label": "persistent connections",
+      "community_name": "Edge Computing Latency",
+      "id": "latency_persistent_connections"
     },
     {
       "label": "SI.Ter Dimensionamento Computazionale",
@@ -352,9 +418,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dimensionamento_siter",
-      "community": 10,
-      "norm_label": "si.ter dimensionamento computazionale"
+      "community": 12,
+      "norm_label": "si.ter dimensionamento computazionale",
+      "community_name": "SI.Ter Dimensionamento Computazionale",
+      "id": "dimensionamento_siter"
     },
     {
       "label": "Componenti GPI SisTer",
@@ -365,9 +432,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dimensionamento_gpi_sister",
-      "community": 10,
-      "norm_label": "componenti gpi sister"
+      "community": 12,
+      "norm_label": "componenti gpi sister",
+      "community_name": "SI.Ter Dimensionamento Computazionale",
+      "id": "dimensionamento_gpi_sister"
     },
     {
       "label": "Componenti Accenture DIH",
@@ -378,9 +446,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dimensionamento_accenture_dih",
-      "community": 10,
-      "norm_label": "componenti accenture dih"
+      "community": 12,
+      "norm_label": "componenti accenture dih",
+      "community_name": "SI.Ter Dimensionamento Computazionale",
+      "id": "dimensionamento_accenture_dih"
     },
     {
       "label": "Componenti Almaviva ePersonam",
@@ -391,9 +460,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dimensionamento_almaviva_epersonam",
-      "community": 10,
-      "norm_label": "componenti almaviva epersonam"
+      "community": 12,
+      "norm_label": "componenti almaviva epersonam",
+      "community_name": "SI.Ter Dimensionamento Computazionale",
+      "id": "dimensionamento_almaviva_epersonam"
     },
     {
       "label": "Capitolato Tecnico SI.Ter",
@@ -404,9 +474,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "capitolato_siter",
-      "community": 3,
-      "norm_label": "capitolato tecnico si.ter"
+      "community": 5,
+      "norm_label": "capitolato tecnico si.ter",
+      "community_name": "Requisiti COT",
+      "id": "capitolato_siter"
     },
     {
       "label": "Requisiti COT",
@@ -417,9 +488,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "capitolato_requisiti_cot",
-      "community": 3,
-      "norm_label": "requisiti cot"
+      "community": 5,
+      "norm_label": "requisiti cot",
+      "community_name": "Requisiti COT",
+      "id": "capitolato_requisiti_cot"
     },
     {
       "label": "Requisiti Cure Domiciliari",
@@ -430,9 +502,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "capitolato_cure_domiciliari",
-      "community": 3,
-      "norm_label": "requisiti cure domiciliari"
+      "community": 5,
+      "norm_label": "requisiti cure domiciliari",
+      "community_name": "Requisiti COT",
+      "id": "capitolato_cure_domiciliari"
     },
     {
       "label": "Requisiti Consultori",
@@ -443,9 +516,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "capitolato_consultori",
-      "community": 3,
-      "norm_label": "requisiti consultori"
+      "community": 5,
+      "norm_label": "requisiti consultori",
+      "community_name": "Requisiti COT",
+      "id": "capitolato_consultori"
     },
     {
       "label": "Interoperabilita e Integrazioni",
@@ -456,9 +530,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "capitolato_interoperabilita",
-      "community": 0,
-      "norm_label": "interoperabilita e integrazioni"
+      "community": 2,
+      "norm_label": "interoperabilita e integrazioni",
+      "community_name": "Progetto SI.Ter",
+      "id": "capitolato_interoperabilita"
     },
     {
       "label": "Modello di Governo SI.Ter",
@@ -469,9 +544,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "governo_siter",
       "community": 2,
-      "norm_label": "modello di governo si.ter"
+      "norm_label": "modello di governo si.ter",
+      "community_name": "Progetto SI.Ter",
+      "id": "governo_siter"
     },
     {
       "label": "Cabina di Regia",
@@ -482,9 +558,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "governo_cabina_regia",
       "community": 2,
-      "norm_label": "cabina di regia"
+      "norm_label": "cabina di regia",
+      "community_name": "Progetto SI.Ter",
+      "id": "governo_cabina_regia"
     },
     {
       "label": "Decreto Ministeriale 77/2022",
@@ -495,9 +572,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_decreto",
-      "community": 7,
-      "norm_label": "decreto ministeriale 77/2022"
+      "community": 9,
+      "norm_label": "decreto ministeriale 77/2022",
+      "community_name": "COT Standard",
+      "id": "dm77_decreto"
     },
     {
       "label": "Distretto",
@@ -508,9 +586,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_distretto",
-      "community": 7,
-      "norm_label": "distretto"
+      "community": 9,
+      "norm_label": "distretto",
+      "community_name": "COT Standard",
+      "id": "dm77_distretto"
     },
     {
       "label": "Casa della Comunita",
@@ -521,9 +600,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_casa_comunita",
-      "community": 7,
-      "norm_label": "casa della comunita"
+      "community": 9,
+      "norm_label": "casa della comunita",
+      "community_name": "COT Standard",
+      "id": "dm77_casa_comunita"
     },
     {
       "label": "COT Standard",
@@ -534,9 +614,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_cot_standard",
-      "community": 7,
-      "norm_label": "cot standard"
+      "community": 9,
+      "norm_label": "cot standard",
+      "community_name": "COT Standard",
+      "id": "dm77_cot_standard"
     },
     {
       "label": "CO 116117 Standard",
@@ -547,9 +628,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_co116117_standard",
-      "community": 7,
-      "norm_label": "co 116117 standard"
+      "community": 9,
+      "norm_label": "co 116117 standard",
+      "community_name": "COT Standard",
+      "id": "dm77_co116117_standard"
     },
     {
       "label": "Assistenza Domiciliare",
@@ -560,9 +642,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dm77_assistenza_domiciliare",
-      "community": 7,
-      "norm_label": "assistenza domiciliare"
+      "community": 9,
+      "norm_label": "assistenza domiciliare",
+      "community_name": "COT Standard",
+      "id": "dm77_assistenza_domiciliare"
     },
     {
       "label": "Data Reference Architecture",
@@ -573,9 +656,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "data_reference_architecture",
-      "community": 14,
-      "norm_label": "data reference architecture"
+      "community": 16,
+      "norm_label": "data reference architecture",
+      "community_name": "Data Reference Architecture",
+      "id": "data_reference_architecture"
     },
     {
       "label": "Data Governance",
@@ -586,9 +670,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "data_governance",
-      "community": 14,
-      "norm_label": "data governance"
+      "community": 16,
+      "norm_label": "data governance",
+      "community_name": "Data Reference Architecture",
+      "id": "data_governance"
     },
     {
       "label": "Data Virtualization",
@@ -599,9 +684,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "data_virtualization",
-      "community": 14,
-      "norm_label": "data virtualization"
+      "community": 16,
+      "norm_label": "data virtualization",
+      "community_name": "Data Reference Architecture",
+      "id": "data_virtualization"
     },
     {
       "label": "Firme e Sigilli Elettronici",
@@ -612,9 +698,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "eidas_signatures",
-      "community": 17,
-      "norm_label": "firme e sigilli elettronici"
+      "community": 19,
+      "norm_label": "firme e sigilli elettronici",
+      "community_name": "eIDAS",
+      "id": "eidas_signatures"
     },
     {
       "label": "eIDAS",
@@ -625,9 +712,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "eidas",
-      "community": 17,
-      "norm_label": "eidas"
+      "community": 19,
+      "norm_label": "eidas",
+      "community_name": "eIDAS",
+      "id": "eidas"
     },
     {
       "label": "Firma Elettronica Qualificata",
@@ -638,9 +726,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "feq",
-      "community": 18,
-      "norm_label": "firma elettronica qualificata"
+      "community": 20,
+      "norm_label": "firma elettronica qualificata",
+      "community_name": "Firma Elettronica Qualificata",
+      "id": "feq"
     },
     {
       "label": "Qualified Trust Service Provider",
@@ -651,9 +740,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "qtsp",
-      "community": 18,
-      "norm_label": "qualified trust service provider"
+      "community": 20,
+      "norm_label": "qualified trust service provider",
+      "community_name": "Firma Elettronica Qualificata",
+      "id": "qtsp"
     },
     {
       "label": "Infrastructure Reference Architecture",
@@ -664,9 +754,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "infra_reference_architecture",
-      "community": 1,
-      "norm_label": "infrastructure reference architecture"
+      "community": 4,
+      "norm_label": "infrastructure reference architecture",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "infra_reference_architecture"
     },
     {
       "label": "Microservizi",
@@ -677,9 +768,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "infra_microservizi",
-      "community": 1,
-      "norm_label": "microservizi"
+      "community": 4,
+      "norm_label": "microservizi",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "infra_microservizi"
     },
     {
       "label": "APMS Integration",
@@ -690,9 +782,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "infra_apms_integration",
-      "community": 1,
-      "norm_label": "apms integration"
+      "community": 4,
+      "norm_label": "apms integration",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "infra_apms_integration"
     },
     {
       "label": "Audit Log Management",
@@ -703,9 +796,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "infra_audit_log",
-      "community": 1,
-      "norm_label": "audit log management"
+      "community": 4,
+      "norm_label": "audit log management",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "infra_audit_log"
     },
     {
       "label": "Identity And Assertion Provider",
@@ -716,9 +810,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "security_iap",
-      "community": 1,
-      "norm_label": "identity and assertion provider"
+      "community": 4,
+      "norm_label": "identity and assertion provider",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "security_iap"
     },
     {
       "label": "RVE-1 Authenticate And Get Assertion",
@@ -729,9 +824,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "security_rve1_assertion",
-      "community": 1,
-      "norm_label": "rve-1 authenticate and get assertion"
+      "community": 4,
+      "norm_label": "rve-1 authenticate and get assertion",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "security_rve1_assertion"
     },
     {
       "label": "ITI-20 Record Audit Event",
@@ -742,9 +838,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "security_iti20_audit",
-      "community": 1,
-      "norm_label": "iti-20 record audit event"
+      "community": 4,
+      "norm_label": "iti-20 record audit event",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "security_iti20_audit"
     },
     {
       "label": "Manuale Protocollo 116117",
@@ -755,9 +852,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "protocollo_116117",
-      "community": 5,
-      "norm_label": "manuale protocollo 116117"
+      "community": 6,
+      "norm_label": "manuale protocollo 116117",
+      "community_name": "CO 116117",
+      "id": "protocollo_116117"
     },
     {
       "label": "Schede Problema",
@@ -768,9 +866,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "protocollo_schede_problema",
-      "community": 5,
-      "norm_label": "schede problema"
+      "community": 6,
+      "norm_label": "schede problema",
+      "community_name": "CO 116117",
+      "id": "protocollo_schede_problema"
     },
     {
       "label": "Parole Alert",
@@ -781,9 +880,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "protocollo_parole_alert",
-      "community": 5,
-      "norm_label": "parole alert"
+      "community": 6,
+      "norm_label": "parole alert",
+      "community_name": "CO 116117",
+      "id": "protocollo_parole_alert"
     },
     {
       "label": "Numerical Evaluation Of Network Latency And Throughput",
@@ -794,9 +894,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "network_latency_throughput",
-      "community": 8,
-      "norm_label": "numerical evaluation of network latency and throughput"
+      "community": 10,
+      "norm_label": "numerical evaluation of network latency and throughput",
+      "community_name": "Edge Computing Latency",
+      "id": "network_latency_throughput"
     },
     {
       "label": "Load-Sharing Window",
@@ -807,9 +908,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "network_load_sharing_window",
-      "community": 8,
-      "norm_label": "load-sharing window"
+      "community": 10,
+      "norm_label": "load-sharing window",
+      "community_name": "Edge Computing Latency",
+      "id": "network_load_sharing_window"
     },
     {
       "label": "Beta Quantile Rule",
@@ -820,9 +922,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "network_beta_quantile_rule",
-      "community": 8,
-      "norm_label": "beta quantile rule"
+      "community": 10,
+      "norm_label": "beta quantile rule",
+      "community_name": "Edge Computing Latency",
+      "id": "network_beta_quantile_rule"
     },
     {
       "label": "Percorsi Sistemi e Flussi Sanitari",
@@ -833,9 +936,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "percorsi_flussi_sanitari",
-      "community": 19,
-      "norm_label": "percorsi sistemi e flussi sanitari"
+      "community": 21,
+      "norm_label": "percorsi sistemi e flussi sanitari",
+      "community_name": "Flussi NSIS",
+      "id": "percorsi_flussi_sanitari"
     },
     {
       "label": "Flussi NSIS",
@@ -846,9 +950,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "percorsi_flussi_nsis",
-      "community": 19,
-      "norm_label": "flussi nsis"
+      "community": 21,
+      "norm_label": "flussi nsis",
+      "community_name": "Flussi NSIS",
+      "id": "percorsi_flussi_nsis"
     },
     {
       "label": "PUA",
@@ -859,9 +964,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "percorsi_pua",
-      "community": 3,
-      "norm_label": "pua"
+      "community": 5,
+      "norm_label": "pua",
+      "community_name": "Requisiti COT",
+      "id": "percorsi_pua"
     },
     {
       "label": "COT",
@@ -872,9 +978,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "percorsi_cot",
-      "community": 3,
-      "norm_label": "cot"
+      "community": 5,
+      "norm_label": "cot",
+      "community_name": "Requisiti COT",
+      "id": "percorsi_cot"
     },
     {
       "label": "RTI AlmavivA Offerta Tecnica",
@@ -885,9 +992,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_almaviva_offerta",
-      "community": 3,
-      "norm_label": "rti almaviva offerta tecnica"
+      "community": 5,
+      "norm_label": "rti almaviva offerta tecnica",
+      "community_name": "Requisiti COT",
+      "id": "rti_almaviva_offerta"
     },
     {
       "label": "ePersonam",
@@ -898,9 +1006,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_epersonam",
-      "community": 3,
-      "norm_label": "epersonam"
+      "community": 5,
+      "norm_label": "epersonam",
+      "community_name": "Requisiti COT",
+      "id": "rti_epersonam"
     },
     {
       "label": "SisTer",
@@ -911,9 +1020,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_sister",
-      "community": 3,
-      "norm_label": "sister"
+      "community": 5,
+      "norm_label": "sister",
+      "community_name": "Requisiti COT",
+      "id": "rti_sister"
     },
     {
       "label": "Layer Interoperabilita",
@@ -924,9 +1034,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_layer_interoperabilita",
-      "community": 15,
-      "norm_label": "layer interoperabilita"
+      "community": 17,
+      "norm_label": "layer interoperabilita",
+      "community_name": "Layer Interoperabilita",
+      "id": "rti_layer_interoperabilita"
     },
     {
       "label": "Camunda v7",
@@ -937,9 +1048,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_camunda",
-      "community": 15,
-      "norm_label": "camunda v7"
+      "community": 17,
+      "norm_label": "camunda v7",
+      "community_name": "Layer Interoperabilita",
+      "id": "rti_camunda"
     },
     {
       "label": "RabbitMQ",
@@ -950,9 +1062,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_rabbitmq",
-      "community": 15,
-      "norm_label": "rabbitmq"
+      "community": 17,
+      "norm_label": "rabbitmq",
+      "community_name": "Layer Interoperabilita",
+      "id": "rti_rabbitmq"
     },
     {
       "label": "APMS Specifiche",
@@ -963,9 +1076,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "apms_specifiche",
-      "community": 1,
-      "norm_label": "apms specifiche"
+      "community": 4,
+      "norm_label": "apms specifiche",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "apms_specifiche"
     },
     {
       "label": "Cognito User Pool",
@@ -976,9 +1090,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "apms_cognito_user_pool",
-      "community": 1,
-      "norm_label": "cognito user pool"
+      "community": 4,
+      "norm_label": "cognito user pool",
+      "community_name": "Infrastructure Reference Architecture",
+      "id": "apms_cognito_user_pool"
     },
     {
       "label": "Authorization Code Flow",
@@ -989,9 +1104,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "apms_authorization_code_flow",
-      "community": 16,
-      "norm_label": "authorization code flow"
+      "community": 18,
+      "norm_label": "authorization code flow",
+      "community_name": "Authorization Code Flow",
+      "id": "apms_authorization_code_flow"
     },
     {
       "label": "ID Token",
@@ -1002,9 +1118,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "apms_id_token",
-      "community": 16,
-      "norm_label": "id token"
+      "community": 18,
+      "norm_label": "id token",
+      "community_name": "Authorization Code Flow",
+      "id": "apms_id_token"
     },
     {
       "label": "Presentazione alla Cabina di Regia",
@@ -1015,9 +1132,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "siter_cabina_regia_presentazione",
       "community": 2,
-      "norm_label": "presentazione alla cabina di regia"
+      "norm_label": "presentazione alla cabina di regia",
+      "community_name": "Progetto SI.Ter",
+      "id": "siter_cabina_regia_presentazione"
     },
     {
       "label": "Digitalizzazione Elementi DM77",
@@ -1028,9 +1146,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "siter_digitalizzazione_dm77",
       "community": 2,
-      "norm_label": "digitalizzazione elementi dm77"
+      "norm_label": "digitalizzazione elementi dm77",
+      "community_name": "Progetto SI.Ter",
+      "id": "siter_digitalizzazione_dm77"
     },
     {
       "label": "Specifiche Anagrafe Zero",
@@ -1041,9 +1160,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "anagrafe_zero_specifiche",
-      "community": 0,
-      "norm_label": "specifiche anagrafe zero"
+      "community": 1,
+      "norm_label": "specifiche anagrafe zero",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "anagrafe_zero_specifiche"
     },
     {
       "label": "RVE-54 Patient Query",
@@ -1054,9 +1174,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "anagrafe_rve54_patient_query",
-      "community": 0,
-      "norm_label": "rve-54 patient query"
+      "community": 2,
+      "norm_label": "rve-54 patient query",
+      "community_name": "Progetto SI.Ter",
+      "id": "anagrafe_rve54_patient_query"
     },
     {
       "label": "RVE-55 PatientID Assignment",
@@ -1067,9 +1188,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "anagrafe_rve55_patientid_assignment",
-      "community": 0,
-      "norm_label": "rve-55 patientid assignment"
+      "community": 1,
+      "norm_label": "rve-55 patientid assignment",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "anagrafe_rve55_patientid_assignment"
     },
     {
       "label": "RVE-100 Resource Subscription",
@@ -1080,9 +1202,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "anagrafe_rve100_subscription",
-      "community": 0,
-      "norm_label": "rve-100 resource subscription"
+      "community": 1,
+      "norm_label": "rve-100 resource subscription",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "anagrafe_rve100_subscription"
     },
     {
       "label": "Specifiche Gestione Sottoscrizione Notifica",
@@ -1093,9 +1216,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "subscription_specifiche",
-      "community": 0,
-      "norm_label": "specifiche gestione sottoscrizione notifica"
+      "community": 1,
+      "norm_label": "specifiche gestione sottoscrizione notifica",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "subscription_specifiche"
     },
     {
       "label": "RVE-100 Resource Subscription",
@@ -1106,9 +1230,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "subscription_rve100",
-      "community": 0,
-      "norm_label": "rve-100 resource subscription"
+      "community": 1,
+      "norm_label": "rve-100 resource subscription",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "subscription_rve100"
     },
     {
       "label": "FHIR Subscription rest-hook",
@@ -1119,9 +1244,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "subscription_fhir_rest_hook",
-      "community": 0,
-      "norm_label": "fhir subscription rest-hook"
+      "community": 1,
+      "norm_label": "fhir subscription rest-hook",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "subscription_fhir_rest_hook"
     },
     {
       "label": "IHE IUA SAML Security",
@@ -1132,9 +1258,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "subscription_iua_saml",
-      "community": 4,
-      "norm_label": "ihe iua saml security"
+      "community": 1,
+      "norm_label": "ihe iua saml security",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "subscription_iua_saml"
     },
     {
       "label": "Specifiche RTI Anagrafica",
@@ -1145,9 +1272,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_anagrafica_specifiche",
-      "community": 4,
-      "norm_label": "specifiche rti anagrafica"
+      "community": 1,
+      "norm_label": "specifiche rti anagrafica",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "rti_anagrafica_specifiche"
     },
     {
       "label": "SITER-DIH API Gateway",
@@ -1158,9 +1286,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_anagrafica_gateway",
-      "community": 4,
-      "norm_label": "siter-dih api gateway"
+      "community": 1,
+      "norm_label": "siter-dih api gateway",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "rti_anagrafica_gateway"
     },
     {
       "label": "JWT Authentication",
@@ -1171,9 +1300,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rti_jwt_authentication",
-      "community": 4,
-      "norm_label": "jwt authentication"
+      "community": 1,
+      "norm_label": "jwt authentication",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "rti_jwt_authentication"
     },
     {
       "label": "Specifiche Chiamata di Contesto RVE",
@@ -1184,9 +1314,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "context_call_specifiche",
-      "community": 4,
-      "norm_label": "specifiche chiamata di contesto rve"
+      "community": 1,
+      "norm_label": "specifiche chiamata di contesto rve",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "context_call_specifiche"
     },
     {
       "label": "RVE-121 GetAccessToken",
@@ -1197,9 +1328,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "context_rve121_get_access_token",
-      "community": 4,
-      "norm_label": "rve-121 getaccesstoken"
+      "community": 1,
+      "norm_label": "rve-121 getaccesstoken",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "context_rve121_get_access_token"
     },
     {
       "label": "JWT Token",
@@ -1210,9 +1342,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "context_jwt_token",
-      "community": 4,
-      "norm_label": "jwt token"
+      "community": 1,
+      "norm_label": "jwt token",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "context_jwt_token"
     },
     {
       "label": "SAML 2.0 Assertion",
@@ -1223,9 +1356,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "context_saml_assertion",
-      "community": 4,
-      "norm_label": "saml 2.0 assertion"
+      "community": 1,
+      "norm_label": "saml 2.0 assertion",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "context_saml_assertion"
     },
     {
       "label": "RVE-130 Chiamata Contesto",
@@ -1236,9 +1370,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "context_rve130_chiamata_contesto",
-      "community": 4,
-      "norm_label": "rve-130 chiamata contesto"
+      "community": 1,
+      "norm_label": "rve-130 chiamata contesto",
+      "community_name": "RVE-100 Resource Subscription",
+      "id": "context_rve130_chiamata_contesto"
     },
     {
       "label": "Affinity Domain Italia",
@@ -1249,9 +1384,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "affinity_domain_specifiche",
-      "community": 6,
-      "norm_label": "affinity domain italia"
+      "community": 8,
+      "norm_label": "affinity domain italia",
+      "community_name": "Affinity Domain Italia",
+      "id": "affinity_domain_specifiche"
     },
     {
       "label": "Fascicolo Sanitario Elettronico",
@@ -1262,9 +1398,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "affinity_fse",
-      "community": 6,
-      "norm_label": "fascicolo sanitario elettronico"
+      "community": 8,
+      "norm_label": "fascicolo sanitario elettronico",
+      "community_name": "Affinity Domain Italia",
+      "id": "affinity_fse"
     },
     {
       "label": "Infrastruttura Nazionale per l Interoperabilita",
@@ -1275,9 +1412,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "affinity_ini",
-      "community": 6,
-      "norm_label": "infrastruttura nazionale per l interoperabilita"
+      "community": 8,
+      "norm_label": "infrastruttura nazionale per l interoperabilita",
+      "community_name": "Affinity Domain Italia",
+      "id": "affinity_ini"
     },
     {
       "label": "IHE XDS.b",
@@ -1288,9 +1426,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "affinity_xdsb",
-      "community": 6,
-      "norm_label": "ihe xds.b"
+      "community": 8,
+      "norm_label": "ihe xds.b",
+      "community_name": "Affinity Domain Italia",
+      "id": "affinity_xdsb"
     },
     {
       "label": "XDSDocumentEntry Metadata",
@@ -1301,9 +1440,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "affinity_xdsdocumententry_metadata",
-      "community": 6,
-      "norm_label": "xdsdocumententry metadata"
+      "community": 8,
+      "norm_label": "xdsdocumententry metadata",
+      "community_name": "Affinity Domain Italia",
+      "id": "affinity_xdsdocumententry_metadata"
     },
     {
       "label": "Specifiche integrazione XValue",
@@ -1314,9 +1454,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "xvalue_specifiche",
-      "community": 13,
-      "norm_label": "specifiche integrazione xvalue"
+      "community": 15,
+      "norm_label": "specifiche integrazione xvalue",
+      "community_name": "Document Source",
+      "id": "xvalue_specifiche"
     },
     {
       "label": "Document Source",
@@ -1327,9 +1468,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "xvalue_document_source",
-      "community": 13,
-      "norm_label": "document source"
+      "community": 15,
+      "norm_label": "document source",
+      "community_name": "Document Source",
+      "id": "xvalue_document_source"
     },
     {
       "label": "XDS Document Repository",
@@ -1340,9 +1482,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "xvalue_xds_repository",
-      "community": 13,
-      "norm_label": "xds document repository"
+      "community": 15,
+      "norm_label": "xds document repository",
+      "community_name": "Document Source",
+      "id": "xvalue_xds_repository"
     },
     {
       "label": "XDS Document Registry",
@@ -1353,9 +1496,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "xvalue_xds_registry",
-      "community": 13,
-      "norm_label": "xds document registry"
+      "community": 15,
+      "norm_label": "xds document registry",
+      "community_name": "Document Source",
+      "id": "xvalue_xds_registry"
     },
     {
       "label": "XDS.b Transactions",
@@ -1366,9 +1510,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "xvalue_xds_transactions",
-      "community": 6,
-      "norm_label": "xds.b transactions"
+      "community": 8,
+      "norm_label": "xds.b transactions",
+      "community_name": "Affinity Domain Italia",
+      "id": "xvalue_xds_transactions"
     },
     {
       "label": "Integrazione Advenias Paymed",
@@ -1379,9 +1524,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "paymed_integrazione",
-      "community": 9,
-      "norm_label": "integrazione advenias paymed"
+      "community": 11,
+      "norm_label": "integrazione advenias paymed",
+      "community_name": "Paymed",
+      "id": "paymed_integrazione"
     },
     {
       "label": "Advenias",
@@ -1392,9 +1538,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "paymed_advenias",
-      "community": 9,
-      "norm_label": "advenias"
+      "community": 11,
+      "norm_label": "advenias",
+      "community_name": "Paymed",
+      "id": "paymed_advenias"
     },
     {
       "label": "Paymed",
@@ -1405,9 +1552,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "paymed_paymed",
-      "community": 9,
-      "norm_label": "paymed"
+      "community": 11,
+      "norm_label": "paymed",
+      "community_name": "Paymed",
+      "id": "paymed_paymed"
     },
     {
       "label": "Endpoint GET accessi",
@@ -1418,9 +1566,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "paymed_get_accessi",
-      "community": 9,
-      "norm_label": "endpoint get accessi"
+      "community": 11,
+      "norm_label": "endpoint get accessi",
+      "community_name": "Paymed",
+      "id": "paymed_get_accessi"
     },
     {
       "label": "Endpoint POST accessi",
@@ -1431,9 +1580,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "paymed_post_accessi",
-      "community": 9,
-      "norm_label": "endpoint post accessi"
+      "community": 11,
+      "norm_label": "endpoint post accessi",
+      "community_name": "Paymed",
+      "id": "paymed_post_accessi"
     },
     {
       "label": "Impact of Latency on Applications Performance",
@@ -1444,9 +1594,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "srg_latency_performance",
-      "community": 12,
-      "norm_label": "impact of latency on applications performance"
+      "community": 14,
+      "norm_label": "impact of latency on applications performance",
+      "community_name": "Impact of Latency on Applications Performance",
+      "id": "srg_latency_performance"
     },
     {
       "label": "Point-to-Point Latency",
@@ -1457,9 +1608,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "srg_point_to_point_latency",
-      "community": 12,
-      "norm_label": "point-to-point latency"
+      "community": 14,
+      "norm_label": "point-to-point latency",
+      "community_name": "Impact of Latency on Applications Performance",
+      "id": "srg_point_to_point_latency"
     },
     {
       "label": "Ping-Pong Tests",
@@ -1470,9 +1622,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "srg_ping_pong_tests",
-      "community": 12,
-      "norm_label": "ping-pong tests"
+      "community": 14,
+      "norm_label": "ping-pong tests",
+      "community_name": "Impact of Latency on Applications Performance",
+      "id": "srg_ping_pong_tests"
     },
     {
       "label": "MPI/Pro",
@@ -1483,9 +1636,615 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "srg_mpi_pro",
-      "community": 12,
-      "norm_label": "mpi/pro"
+      "community": 14,
+      "norm_label": "mpi/pro",
+      "community_name": "Impact of Latency on Applications Performance",
+      "id": "srg_mpi_pro"
+    },
+    {
+      "label": "Scryba Sign 3.x Developer's Guide (V16)",
+      "file_type": "document",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "scryba sign 3.x developer's guide (v16)",
+      "id": "scryba_sign_3_x_developer_s_guide_document",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Scryba Sign Server",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "scryba sign server",
+      "id": "scryba_sign_3_x_developer_s_guide_scryba_sign_server",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Signer App",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "signer app",
+      "id": "scryba_sign_3_x_developer_s_guide_signer_app",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "SOAP/WSDL Integration Surface",
+      "file_type": "rationale",
+      "rationale": "Scryba Sign exposes signing, timestamping, authentication, document retrieval, and validation capabilities through versioned SOAP Web Services described by WSDL contracts.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "soap/wsdl integration surface",
+      "id": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "HTTPS with Basic Authentication",
+      "file_type": "rationale",
+      "rationale": "Basic Authentication credentials are only encoded, so HTTPS is required to protect Web Service communication.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "https with basic authentication",
+      "id": "scryba_sign_3_x_developer_s_guide_https_basic_authentication",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Remote Digital Signature",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "remote digital signature",
+      "id": "scryba_sign_3_x_developer_s_guide_remote_digital_signature",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "CAdES, PAdES, XAdES, and Hash Signing",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "cades, pades, xades, and hash signing",
+      "id": "scryba_sign_3_x_developer_s_guide_signature_formats",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Simplified Remote Signature",
+      "file_type": "rationale",
+      "rationale": "The simplified procedure omits OTP only when the authenticated and authorised Signer App enforces session timeout and appropriate user authentication controls.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "simplified remote signature",
+      "id": "scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Interactive and Automatic Signature",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 22,
+      "norm_label": "interactive and automatic signature",
+      "id": "scryba_sign_3_x_developer_s_guide_interactive_and_automatic_signature",
+      "community_name": "Electronic Seal"
+    },
+    {
+      "label": "Electronic Seal",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 22,
+      "norm_label": "electronic seal",
+      "id": "scryba_sign_3_x_developer_s_guide_electronic_seal",
+      "community_name": "Electronic Seal"
+    },
+    {
+      "label": "Signer Configuration",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "signer configuration",
+      "id": "scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "Signing Power and Signature Profile",
+      "file_type": "rationale",
+      "rationale": "A configured certificate alone does not authorise signing; a signer must also have a signing power that binds eligible certificates to a signature profile and its permitted document origins and types.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "signing power and signature profile",
+      "id": "scryba_sign_3_x_developer_s_guide_signing_power_and_profile",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "FDR, Smart Card, and FEA Certificate Types",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "fdr, smart card, and fea certificate types",
+      "id": "scryba_sign_3_x_developer_s_guide_certificate_types",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "Synchronous Signing Workflow",
+      "file_type": "rationale",
+      "rationale": "The Signer App controls credential collection and either signs one document in one call or manages a stateful session for a batch of documents.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "synchronous signing workflow",
+      "id": "scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "Asynchronous Signing Workflow",
+      "file_type": "rationale",
+      "rationale": "The Signer App enqueues documents, directs the user to the Scryba Sign signing page, polls for completion, retrieves the signed document, and acknowledges acquisition by requesting deletion.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "asynchronous signing workflow",
+      "id": "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "Graphometric Signature Workflow",
+      "file_type": "rationale",
+      "rationale": "The graphometric workflow resembles the asynchronous scenario but accepts one document per session and carries the ordered graphical-signature information required by the signing device.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "graphometric signature workflow",
+      "id": "scryba_sign_3_x_developer_s_guide_graphometric_workflow",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "SyncSign V3 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "syncsign v3 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "OpenSignSession, SignDoc, CloseSignSession Chain",
+      "file_type": "rationale",
+      "rationale": "The returned session identifier is propagated to subsequent calls so multiple documents use the same certificate and one credential acquisition.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "opensignsession, signdoc, closesignsession chain",
+      "id": "scryba_sign_3_x_developer_s_guide_sync_session_chain",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "SignOneDoc",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "signonedoc",
+      "id": "scryba_sign_3_x_developer_s_guide_signonedoc",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "AsyncSign V2.2 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "asyncsign v2.2 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "OpenSignSession, EnqueueDoc, CloseSignSession Chain",
+      "file_type": "rationale",
+      "rationale": "The asynchronous batch chain opens an upload session, obtains a document UID for each enqueue operation, and closes the session with an action that commits or cancels signing.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "opensignsession, enqueuedoc, closesignsession chain",
+      "id": "scryba_sign_3_x_developer_s_guide_async_session_chain",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "EnqueueOneDoc",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "enqueueonedoc",
+      "id": "scryba_sign_3_x_developer_s_guide_enqueueonedoc",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "FeaFgmEnqueueOneDoc",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "feafgmenqueueonedoc",
+      "id": "scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "Notification V1.0 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "notification v1.0 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_notification_v1",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "getDocumentStatus GET/DELETE Lifecycle",
+      "file_type": "rationale",
+      "rationale": "The client polls with GET until the signed document is available and then uses DELETE to acknowledge acquisition and end server-side availability.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "getdocumentstatus get/delete lifecycle",
+      "id": "scryba_sign_3_x_developer_s_guide_document_status_lifecycle",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "Utils V2 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "utils v2 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "DespatchOtp and VerifyOTP",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "despatchotp and verifyotp",
+      "id": "scryba_sign_3_x_developer_s_guide_otp_services",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "GetUserInfo4",
+      "file_type": "rationale",
+      "rationale": "The method returns the signer's powers, certificates, and OTP devices so the Signer App can construct a valid signing request and user interface.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "getuserinfo4",
+      "id": "scryba_sign_3_x_developer_s_guide_getuserinfo4",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "GetUserAuth and Strong Authentication Verification",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "getuserauth and strong authentication verification",
+      "id": "scryba_sign_3_x_developer_s_guide_verify_authentication",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "TimeStamp V1.0 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "timestamp v1.0 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_timestamp_v1",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "digitalStamp V1.0 WSDL",
+      "file_type": "rationale",
+      "rationale": "Digital stamping produces a verifiable PDF copy; flattening preserves the visual signature objects but does not preserve pre-existing digital signatures as cryptographic layers.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "digitalstamp v1.0 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Large-file SFTP and SHA-256 Transfer Procedure",
+      "file_type": "rationale",
+      "rationale": "For documents larger than 10 MB, the binary is transferred outside the SOAP envelope through certificate-authenticated SFTP and correlated to the signing request by its SHA-256 digest.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 3,
+      "norm_label": "large-file sftp and sha-256 transfer procedure",
+      "id": "scryba_sign_3_x_developer_s_guide_large_file_transfer",
+      "community_name": "Signer Configuration"
+    },
+    {
+      "label": "signerUtils V1.0_rev3 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "signerutils v1.0_rev3 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_signerutils_v1",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "SPID/CIE-based Automatic FEA Enrolment",
+      "file_type": "rationale",
+      "rationale": "A trusted SPID or CIE identification flow can support automatic FEA certificate issuance while preserving explicit user consent and document-preview requirements.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "spid/cie-based automatic fea enrolment",
+      "id": "scryba_sign_3_x_developer_s_guide_automatic_fea_enrolment",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "FeaFgmUtils WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "feafgmutils wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_feafgmutils",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "applicationUtils V1.0 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "applicationutils v1.0 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_applicationutils_v1",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "RetrieveIdentityDocument",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "retrieveidentitydocument",
+      "id": "scryba_sign_3_x_developer_s_guide_identity_document_retrieval",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "validationsUtils V1.0 WSDL",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "validationsutils v1.0 wsdl",
+      "id": "scryba_sign_3_x_developer_s_guide_validationsutils_v1",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "verifyValidations and RemoveEnvelopes",
+      "file_type": "concept",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "verifyvalidations and removeenvelopes",
+      "id": "scryba_sign_3_x_developer_s_guide_signature_validation_and_envelope_removal",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Medas Device Manager",
+      "file_type": "rationale",
+      "rationale": "Physical devices such as smart cards, graphometric tablets, and scanners are mediated by the Device Manager client rather than accessed directly through the server integration surface.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 7,
+      "norm_label": "medas device manager",
+      "id": "scryba_sign_3_x_developer_s_guide_device_manager",
+      "community_name": "AsyncSign V2.2 WSDL"
+    },
+    {
+      "label": "Synthetic Test Documents and Metadata",
+      "file_type": "rationale",
+      "rationale": "Integration testing must not use documents or metadata that identify real persons.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "synthetic test documents and metadata",
+      "id": "scryba_sign_3_x_developer_s_guide_synthetic_test_data",
+      "community_name": "SOAP/WSDL Integration Surface"
+    },
+    {
+      "label": "Integration Certification Process",
+      "file_type": "rationale",
+      "rationale": "The integration is first exercised independently in a test environment and then verified through a joint test with temporary certificates or test access.",
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2024-04-10",
+      "author": "Medas",
+      "contributor": "Alberto",
+      "community": 0,
+      "norm_label": "integration certification process",
+      "id": "scryba_sign_3_x_developer_s_guide_integration_certification",
+      "community_name": "SOAP/WSDL Integration Surface"
     }
   ],
   "links": [
@@ -2438,9 +3197,535 @@
       "weight": 1.0,
       "source": "srg_mpi_pro",
       "target": "srg_point_to_point_latency"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_document",
+      "target": "scryba_sign_3_x_developer_s_guide_scryba_sign_server"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_device_manager",
+      "target": "scryba_sign_3_x_developer_s_guide_scryba_sign_server"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_scryba_sign_server"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_scryba_sign_server",
+      "target": "scryba_sign_3_x_developer_s_guide_remote_digital_signature"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_scryba_sign_server",
+      "target": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_signer_app",
+      "target": "scryba_sign_3_x_developer_s_guide_scryba_sign_server"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_timestamp_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_scryba_sign_server"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_integration_certification",
+      "target": "scryba_sign_3_x_developer_s_guide_signer_app"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_https_basic_authentication",
+      "target": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_applicationutils_v1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_digitalstamp_v1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_notification_v1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_signerutils_v1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_syncsign_v3"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_timestamp_v1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_utils_v2"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
+      "target": "scryba_sign_3_x_developer_s_guide_validationsutils_v1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
+      "target": "scryba_sign_3_x_developer_s_guide_https_basic_authentication"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_otp_services",
+      "target": "scryba_sign_3_x_developer_s_guide_remote_digital_signature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_remote_digital_signature",
+      "target": "scryba_sign_3_x_developer_s_guide_signature_formats"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
+      "target": "scryba_sign_3_x_developer_s_guide_remote_digital_signature"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_electronic_seal",
+      "target": "scryba_sign_3_x_developer_s_guide_interactive_and_automatic_signature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_getuserinfo4",
+      "target": "scryba_sign_3_x_developer_s_guide_signer_configuration"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "target": "scryba_sign_3_x_developer_s_guide_certificate_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "target": "scryba_sign_3_x_developer_s_guide_signing_power_and_profile"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_sync_session_chain",
+      "target": "scryba_sign_3_x_developer_s_guide_signer_configuration"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_large_file_transfer",
+      "target": "scryba_sign_3_x_developer_s_guide_synchronous_workflow"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+      "target": "scryba_sign_3_x_developer_s_guide_syncsign_v3"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+      "target": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+      "target": "scryba_sign_3_x_developer_s_guide_document_status_lifecycle"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_large_file_transfer",
+      "target": "scryba_sign_3_x_developer_s_guide_asynchronous_workflow"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_feafgmutils",
+      "target": "scryba_sign_3_x_developer_s_guide_graphometric_workflow"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_graphometric_workflow",
+      "target": "scryba_sign_3_x_developer_s_guide_device_manager"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_graphometric_workflow",
+      "target": "scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+      "target": "scryba_sign_3_x_developer_s_guide_signonedoc"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+      "target": "scryba_sign_3_x_developer_s_guide_sync_session_chain"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "target": "scryba_sign_3_x_developer_s_guide_async_session_chain"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "target": "scryba_sign_3_x_developer_s_guide_enqueueonedoc"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc",
+      "target": "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_notification_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_document_status_lifecycle"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "target": "scryba_sign_3_x_developer_s_guide_getuserinfo4"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "target": "scryba_sign_3_x_developer_s_guide_otp_services"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_utils_v2",
+      "target": "scryba_sign_3_x_developer_s_guide_verify_authentication"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_signerutils_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_automatic_fea_enrolment"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_applicationutils_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_identity_document_retrieval"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_validationsutils_v1",
+      "target": "scryba_sign_3_x_developer_s_guide_signature_validation_and_envelope_removal"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scryba_sign_3_x_developer_s_guide_synthetic_test_data",
+      "target": "scryba_sign_3_x_developer_s_guide_integration_certification"
     }
   ],
   "hyperedges": [
+    {
+      "id": "scryba_signing_scenarios",
+      "label": "Scryba Sign Integration Scenarios",
+      "nodes": [
+        "scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+        "scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+        "scryba_sign_3_x_developer_s_guide_graphometric_workflow"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+    },
+    {
+      "id": "scryba_signing_service_surface",
+      "label": "Scryba Sign SOAP Service Surface",
+      "nodes": [
+        "scryba_sign_3_x_developer_s_guide_syncsign_v3",
+        "scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+        "scryba_sign_3_x_developer_s_guide_utils_v2",
+        "scryba_sign_3_x_developer_s_guide_notification_v1",
+        "scryba_sign_3_x_developer_s_guide_timestamp_v1",
+        "scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
+        "scryba_sign_3_x_developer_s_guide_signerutils_v1",
+        "scryba_sign_3_x_developer_s_guide_applicationutils_v1",
+        "scryba_sign_3_x_developer_s_guide_validationsutils_v1"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+    },
+    {
+      "id": "scryba_stateful_signature_chain",
+      "label": "Stateful Signature Session Chain",
+      "nodes": [
+        "scryba_sign_3_x_developer_s_guide_signer_configuration",
+        "scryba_sign_3_x_developer_s_guide_sync_session_chain",
+        "scryba_sign_3_x_developer_s_guide_async_session_chain",
+        "scryba_sign_3_x_developer_s_guide_document_status_lifecycle"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf"
+    },
     {
       "id": "sanita_territoriale_operating_model",
       "label": "Sanita Territoriale Operating Model",
@@ -2519,5 +3804,5 @@
       "source_file": "3503954.3503956.pdf"
     }
   ],
-  "built_at_commit": "5f9434fc0f01de5d74dd3c6d72fffc217b7f8629"
+  "built_at_commit": "05e5ef61a82c13d2f4ef8a0d2b5136a2f7d0a9aa"
 }
