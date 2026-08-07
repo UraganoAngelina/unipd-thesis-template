@@ -194,9 +194,7 @@ client contributions. It does not equal gateway processing time, and a slower
 mediated response does not identify one internal component as its cause. Optional
 authorised internal timestamps can validate or refine the external estimate, but
 their absence limits causal attribution rather than invalidating the matched
-external comparison.
-
-\noindent Figure~\ref{fig:functional-gateway-mediation} expresses this methodological
+external comparison. Figure~\ref{fig:functional-gateway-mediation} expresses this methodological
 boundary. The internal functions remain analytically plausible contributors, but
 the experiment measures only their aggregate path effect.
 
@@ -273,8 +271,7 @@ principle, not the numerical results of the edge-computing campaign
 explicit. The horizontal displacement between the network, transport, and
 application distributions represents progressively accumulated work rather than
 three interchangeable latency measures. The curves provide a conceptual reading
-of the hierarchy analysed by Iorio et al.; they do not reproduce raw samples or
-RDG observations.
+of the hierarchy analysed by Iorio et al.
 
 \begin{figure}[htbp]
     \centering
@@ -303,10 +300,7 @@ or a downstream service.
 
 \noindent Consequently, $\Delta L$ represents a \emph{Path-level Overhead}: an aggregated
 external differential that can contain propagation, transport and security
-establishment, gateway policy enforcement, Simple Object Access Protocol (SOAP)/
-Extensible Markup Language (XML) or Representational State Transfer (REST)/
-JavaScript Object Notation (JSON) handling,
-semantic validation, transformation, routing, queueing, and downstream service
+establishment, gateway policy enforcement, SOAP/XML or REST/JSON handling, semantic validation, transformation, routing, queueing, and downstream service
 time. The term \emph{aggregated} is essential. A positive differential supports
 the claim that the mediated path adds externally observable time under matched
 conditions; it does not identify which protected internal phase causes that
@@ -315,13 +309,12 @@ edge-computing literature while respecting the narrower authorised observation
 boundary of the regional case.
 
 \noindent The client boundary becomes informative about saturation only when latency joins
-other signals. Akram, Akram, and Rehman model distributed load sharing as a race
+other signals. Akram, and Rehman model distributed load sharing as a race
 between communication delay and a stochastic availability window. Their analysis
 links increasing traffic intensity and communication latency to stale state,
 failed transfers, wasted work, and reduced effective throughput
 \footcite{akram-numerical-latency}. The load-sharing model does not become a model
-of the Veneto architecture, and its numerical thresholds do not transfer to
-Regione Veneto (RVE) transactions. Its methodological contribution is the joint interpretation of
+of the Veneto architecture, and its numerical thresholds do not transfer to RVE transactions. Its methodological contribution is the joint interpretation of
 latency, state validity, and completed useful work: delay becomes a saturation
 signal when it coexists with shrinking completion capacity and increasing
 ineffective activity.
@@ -334,7 +327,7 @@ same risk as a narrowing Load-Sharing Window (LSW) when traffic intensity
 increases. Both views remain methodological abstractions and import neither the
 paper's numerical thresholds nor a topology for the regional system.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics[page=1,width=\textwidth]{img/akram_latency.pdf}
     \caption[Conceptual node load-state transitions]{Conceptual transitions
@@ -372,8 +365,7 @@ which information about distributed state remains actionable
 \noindent Dimitrov and Skjellum reinforce the need for application-level interpretation.
 Their experiments show that lower point-to-point latency does not necessarily
 produce lower application execution time, because communication pattern, message
-size, completion mode, Central Processing Unit (CPU) overhead, and the possibility
-of overlapping work
+size, completion mode, CPU overhead, and the possibility of overlapping work
 determine the complete effect \footcite{dimitrov-latency-applications}. The
 studied Message Passing Interface (MPI) environment differs from healthcare
 interoperability, so the thesis transfers only the evaluation principle: a local
@@ -391,12 +383,7 @@ pattern also omits the collective and asynchronous structures of real
 applications. In the healthcare case, an isolated endpoint call omits semantic
 validation, identity acquisition, branch selection, and failure propagation.
 RDG is consequently necessary as an orchestrator of dependent workflows, because
-the critical path exists only when each valid output enables the next step. The
-abstract SAML--JWT--FHIR progression illustrates dependency transfer, but the
-documented regional model keeps its concrete paths distinct: SAML enables the
-JWT consumed by RVE-130, whereas a separate SAML-authenticated RVE-54 interaction
-returns a FHIR result. This separation evaluates real gateway mediation without
-inventing one unsupported transaction chain
+the critical path exists only when each valid output enables the next step.
 \footcite{dimitrov-latency-applications}.
 
 \noindent Figure~\ref{fig:dimitrov-communication-patterns} provides an explanatory
@@ -498,14 +485,13 @@ chain of semantic prerequisites, not a bag of independent service calls.
 
 \noindent Patient identity illustrates the first dependency. The project documentation
 associates protected discharge with patient identification through Anagrafe Zero,
-while the Anagrafe Zero specification requires RVE-54 Patient Query before other
+while the Anagrafe Zero specification requires [RVE-54] Patient Query before other
 registry transactions \footcite{arsenal-anagrafe-zero-v26}. A successful network
 response alone does not satisfy this prerequisite. The query has to produce an
 application outcome and a patient context that the next branch can use. Depending
 on the profiled outcome, a later operation can assign a new regional identity
-through RVE-55 or update an existing identity through RVE-57. The branch follows
-the semantic result of the query; it does not follow only the Hypertext Transfer
-Protocol (HTTP) status.
+through [RVE-55] or update an existing identity through [RVE-57]. The branch follows
+the semantic result of the query; it does not follow only the HTTP status.
 
 \noindent This dependency explains why a session-aware orchestrator is necessary. The
 patient context belongs to one synthetic occurrence and cannot leak into another
@@ -514,10 +500,7 @@ or application error remains distinguishable from transport success. A generic
 request generator can reproduce this behaviour only after the test author adds
 domain-specific state, extraction, validation, and branch rules. The profiling
 problem therefore resides in semantic continuity, not in the ability to send a
-Health Level Seven (HL7) Fast Healthcare Interoperability Resources (FHIR)
-Release 4 (R4) request.
-
-\noindent Semantic FHIR R4 generation is therefore a condition of construct validity,
+HL7-FHIR R4 request. Semantic FHIR R4 generation is therefore a condition of construct validity,
 not a convenience for producing payload volume. Anagrafe Zero interprets
 identifiers, demographic search parameters, resource structure, and transaction
 outcomes according to its declared FHIR contract. A syntactically valid but
@@ -528,10 +511,8 @@ the resulting query, assignment, or update comparable across repetitions. It
 also keeps the data synthetic, so semantic fidelity does not require personal
 records \footcite{arsenal-anagrafe-zero-v26}.
 
-\noindent The same principle applies to regional security and context access. An RVE-1.b
-interaction produces a Security Assertion Markup Language (SAML) assertion;
-RVE-121 uses the assertion and contextual information to produce the JSON Web
-Token (JWT) required by RVE-130
+\noindent The same principle applies to regional security and context access. An [RVE-1.b]
+interaction produces a SAML assertion; [RVE-121] uses the assertion and contextual information to produce the JWT required by [RVE-130]
 \footcite{arsenal-security-v214,arsenal-context-rve-v13}. The
 later call remains invalid when the required transition is absent, even if an
 earlier endpoint returns a nominally successful transport status. Occurrence-local
@@ -539,7 +520,7 @@ state preserves both the security contract and the cost of acquiring that state.
 
 \noindent Figure~\ref{fig:regional-dependency-chains} makes the occurrence-local
 dependencies visible. It keeps the context path and the patient-query path
-separate: RVE-130 consumes the material produced through RVE-121, whereas RVE-54
+separate: [RVE-130] consumes the material produced through [RVE-121], whereas [RVE-54]
 consumes the assertion in a distinct FHIR query. This separation prevents the
 visual model from suggesting one unsupported SAML--JWT--FHIR transaction chain.
 
@@ -588,17 +569,21 @@ protected-discharge implementation.
     \hline
     \endlastfoot
     \rowcolor{tableGray}
-    Patient identity & RVE-54 produces a usable registry outcome before assignment or update. & The flow branches on application semantics and keeps later steps blocked after failure. \\
+    Patient identity & [RVE-54] produces a usable registry outcome before assignment or update. & The flow branches on application semantics and keeps later steps blocked after failure. \\
     \hline
-    Security identity & RVE-1.b produces occurrence-local assertion evidence. & Protected calls include acquisition cost without retaining the assertion value. \\
+    Security identity & [RVE-1.b] produces occurrence-local assertion evidence. & Protected calls include acquisition cost without retaining the assertion value. \\
     \hline
     \rowcolor{tableGray}
-    Context session & RVE-121 produces the material required by RVE-130. & Transport success without the required output remains a failed state transition. \\
+    Context session & [RVE-121] produces the material required by [RVE-130]. & Transport success without the required output remains a failed state transition. \\
     \hline
     Document access & ITI-18 produces the reference consumed by ITI-43. & Query and retrieval retain separate latency, payload, and outcome populations. \\
     \hline
     \rowcolor{tableGray}
     Care transition & Patient identity and assessment precede COT evaluation and destination assignment. & Technical completion does not imply clinical approval or completion of the care pathway. \\
+    \hline
+    \rowcolor{tableGray}
+    Document Signing & SignOneDoc transaction need a SAML Assetion Token from a [RVE-1.b]. &  Transport success without the required output remains a failed state transition. \\
+   
 \end{longtable}
 \endgroup
 
@@ -620,8 +605,7 @@ throughput measures useful completion under an explicit semantic outcome rule.
 \subsection{Cryptographic and Protocol Heterogeneity}
 
 \noindent Scryba Sign supplies a controlled example of heterogeneous
-interoperability. The service surface uses SOAP, XML, and Web Services
-Description Language (WSDL)
+interoperability. The service surface uses SOAP, XML, and WSDL.
 contracts over protected transport. The synchronous path combines identity and
 signer discovery through \emph{GetUserInfo4} with the \emph{SignOneDoc}
 operation. The document can travel as a Base64-encoded payload, and the service
@@ -647,7 +631,7 @@ identifies the available signing powers, certificates, and One-Time Password
 (OTP) devices; the signing request depends on an admissible certificate and on
 the applicable OTP authorisation path
 \footcite[pp.~60--62, 91--96]{scryba-sign-developer-guide-v16}. This relationship
-requires session-aware identity hand-off: certificate selection and OTP state
+requires session-aware identity hand-off: certificate selection and One-Time Password state 
 belong to the same signing occurrence and a failed identity prerequisite blocks
 the cryptographic operation. The complete FCT consequently includes the ordered
 identity and signing path rather than only the final SOAP response. The current
@@ -783,23 +767,15 @@ configuration state, and artefact version. Reusing a seed aligns paired choices;
 changing seeds across repetitions samples alternative schedules. Neither action
 makes the remote environment deterministic. Reproducibility refers to the
 experimental input and analysis procedure, while environmental repeatability
-remains an empirical question.
-
-\noindent Connection policy deserves explicit control because security setup can
+remains an empirical question. Connection policy deserves explicit control because security setup can
 dominate short flows. Figure~\ref{fig:iorio-persistent-stateless} gives a
-conceptual reconstruction of the persistent and stateless populations analysed
-by Iorio et al. The separation motivates occurrence-local security-state
-management and declared transport reuse; it does not assert that RDG adopts
-WebSocket transport or that the reported medians transfer to regional services.
+conceptual reconstruction of the persistent and stateless populations analysed.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[page=2,width=\textwidth]{img/iorio_latency.pdf}
     \caption[Persistent and stateless secure-connection FCT]{Conceptual FCT
-    comparison between a persistent secure connection and a stateless flow that
-    repeats transport and Transport Layer Security (TLS) establishment. The
-    differential motivates explicit connection policy and occurrence-local
-    security-state management in RDG.}
+    comparison.}
     \label{fig:iorio-persistent-stateless}
 \end{figure}
 
@@ -960,9 +936,7 @@ names.
 \renewcommand{\arraystretch}{1.0}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.3cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
     \caption[Generic and domain-specific profiling paradigms]{Generic and
-    domain-specific profiling paradigms. JMeter represents the generic
-    request-centric paradigm, while RDG represents the domain-specific workflow
-    paradigm.}
+    domain-specific profiling paradigms.}
     \label{tab:jmeter-rdg-tradeoff}\\
     \hline
     \rowcolor{veryPeri!18}
@@ -1008,27 +982,21 @@ signing transitions determine whether useful work completes.
 \subsection{Ex Ante Justification of RDG}
 
 \noindent RDG is methodologically justified when five conditions hold: the target process
-contains dependencies whose violation changes experimental meaning; authorised
-evidence excludes production traces and internal regional telemetry; synthetic
+contains dependencies whose violation changes experimental meaning; synthetic
 data preserve contract structure without protected material; the research
 question concerns complete-flow behaviour and path differentials; and one
 evidence model connects offered load, state transitions, external timing, and
-terminal outcomes. The regional case satisfies all five conditions.
-
-\noindent RDG does not claim that its execution engine is faster. A throughput comparison
+terminal outcomes. A throughput comparison
 with JMeter requires matched workloads, equal host conditions, and a dedicated
-generator benchmark, which lies outside this chapter. A stateless generic
-baseline remains useful for calibration and protocol isolation, but it does not
-replace a session-aware workload for protected regional workflows.
-
-\noindent The choice relocates rather than eliminates complexity. A domain-specific model
+generator benchmark. A stateless generic baseline remains useful for calibration and protocol isolation, but it does not
+replace a session-aware workload for protected regional workflows. The choice relocates rather than eliminates complexity. A domain-specific model
 requires versioned transaction semantics, outcome definitions, scheduling
 controls, and event provenance. The same elements otherwise reappear as dispersed
 custom logic in a generic plan; RDG makes them inspectable at the abstraction
 level of the research question.
 
 \paragraph{Scientific Rationale for Domain-Specific Profiling.}
-RDG responds to latency-aware distributed systems by combining quantile-based
+\noindent RDG responds to latency-aware distributed systems by combining quantile-based
 stochastic interpretation, full-stack FCT, matched Path-level Overhead,
 application-representative communication patterns, metadata-driven FHIR R4
 generation, and session-aware orchestration. The absence of authorised traces
@@ -1036,7 +1004,6 @@ makes controlled synthetic workflows the admissible internally valid input,
 while the regional security perimeter imposes Advanced Black-box with Surrogate
 Observability. RDG is therefore not merely custom software: it translates
 international methodological consensus into Regione Veneto's operational,
-semantic, and security constraints. Its evidence supports reproducible external
-profiling and workflow inference, not internal causes or unexecuted branches.
+semantic, and security constraints.
 
 \newpage

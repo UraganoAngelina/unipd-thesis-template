@@ -23,10 +23,10 @@
 \contentsline {subsection}{\numberline {2.3.2}Cryptographic and Protocol Heterogeneity}{37}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}Experimental Design and Evidence Semantics}{40}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Controls, Variables, and Reproducibility}{40}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{44}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{43}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Generic versus Domain-Specific Profiling}{46}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Modelling Distance and Semantic Fidelity}{46}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Ex Ante Justification of RDG}{50}{subsection.2.5.2}%
-\contentsline {paragraph}{Scientific Rationale for Domain-Specific Profiling.}{50}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Ex Ante Justification of RDG}{49}{subsection.2.5.2}%
+\contentsline {paragraph}{Scientific Rationale for Domain-Specific Profiling.}{49}{subsection.2.5.2}%
 \contentsline {chapter}{Bibliography}{i}{chapter*.26}%
 \contentsline {chapter}{Online Sources}{vi}{chapter*.27}%

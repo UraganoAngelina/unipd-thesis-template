@@ -151,7 +151,7 @@ integration stack \footcite[Article~25]{eu-gdpr-2016-679}\footcite[Article~25]{d
     \textbf{HL7 FHIR R4}\par
     {\footnotesize Health Level Seven Fast Healthcare Interoperability Resources, Release 4}
     & HTTP/REST; \texttt{Patient} and \texttt{Bundle} resources represented in FHIR XML, with JSON where required by the applicable interaction
-    & Supports patient-registry interactions with Anagrafe Zero, including patient search, identifier assignment, and demographic updates such as RVE-54 and RVE-55. \\
+    & Supports patient-registry interactions with Anagrafe Zero, including patient search, identifier assignment, and demographic updates such as [RVE-54] and [RVE-55]. \\
     \hline
     \textbf{IHE XDS.b}\par
     {\footnotesize Integrating the Healthcare Enterprise Cross-Enterprise Document Sharing}
@@ -161,7 +161,7 @@ integration stack \footcite[Article~25]{eu-gdpr-2016-679}\footcite[Article~25]{d
     \rowcolor{tableGray}
     \textbf{SAML (Security Assertion Markup Language)\glsadd{saml}\glsadd{samlg} 2.0 / JWT (JSON Web Token)\glsadd{jwt}\glsadd{jwtg}}
     & XML assertions and compact RFC (Request for Comments) 7519 tokens carried by the transaction-specific SOAP or HTTP/REST exchanges
-    & Establishes and propagates the security context: RVE-121 uses the SAML assertion to obtain a JWT, which is then used by RVE-130 for the contextual service call. \\
+    & Establishes and propagates the security context: [RVE-121] uses the SAML assertion to obtain a JWT, which is then used by [RVE-130] for the contextual service call. \\
     \hline
     \textbf{GDPR (General Data Protection Regulation) / FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}\glsadd{fseg} 2.0}
     & Data Protection by Design and by Default constraints
@@ -217,21 +217,21 @@ produced by earlier activities.
 
 \noindent The upper branch in Figure~\ref{fig:rdg-regional-transaction-workflow} makes the
 identity dependency concrete. Within \texttt{FLOW\_PATIENT\_QUERY}, RDG executes
-RVE-1.b before the RVE-54 Patient Query. Through the first transaction, the
+[RVE-1.b] before the [RVE-54] Patient Query. Through the first transaction, the
 regional IAP (Identity and Assertion Provider)\glsadd{iap}\glsadd{iapg} generates and returns a SAML 2.0 identity
 assertion; the execution engine extracts its required Base64 representation,
 stores it in the context of the same flow occurrence, and resolves the corresponding placeholder in the
-\texttt{Authorization} header of RVE-54 before sending the query. The resulting
+\texttt{Authorization} header of [RVE-54] before sending the query. The resulting
 header carries the assertion with the \texttt{IHE-SAML} authentication scheme,
 as required by the regional security profile
 \footcite[Section~4.2]{arsenal-security-v214}\footcite[Section~1.7]{arsenal-anagrafe-zero-v26}.
 RDG therefore represents regional security-session state as explicit
 per-occurrence dependency data rather than reducing it to the state of the
-underlying HTTP connection. If RVE-1.b fails, the required assertion cannot be
+underlying HTTP connection. If [RVE-1.b] fails, the required assertion cannot be
 extracted, or its placeholder remains unresolved, the engine does not execute a
 semantically valid patient query and records the workflow as incomplete. This
 behaviour makes assertion acquisition and propagation part of the tested
-workflow. An isolated request can exercise RVE-54 only after receiving a valid
+workflow. An isolated request can exercise [RVE-54] only after receiving a valid
 security context from outside the test and therefore cannot evaluate the
 identity hand-off on which the regional interaction depends.
 
@@ -262,7 +262,7 @@ transactions.
     \centering
     \includegraphics[width=\textwidth]{img/rdg_regional_transaction_workflow.pdf}
     \caption[RDG-orchestrated regional transactions]{RDG orchestration of the
-    RVE-1.b authentication output into regional patient-identity flows.}
+    [RVE-1.b] authentication output into regional patient-identity flows.}
     \label{fig:rdg-regional-transaction-workflow}
 \end{figure}
 
@@ -385,12 +385,12 @@ required output or that the workflow can advance. The execution engine therefore
 marks a step as failed when a mandatory output cannot be extracted, even if the
 response status is 200, and propagates that failure to the flow-level outcome. The
 same observation model retains service-reported semantic rejections, such as an
-RVE-55 status code 422 associated with FHIR validation, without inferring the
+[RVE-55] status code 422 associated with FHIR validation, without inferring the
 specific violated constraint when payload-level evidence is unavailable. The
 sanitised evidence set illustrates the first distinction through RVE-TOKEN responses that carry status code 200 but remain application
-failures because the required token is not extracted. RVE-121 provides a
+failures because the required token is not extracted. [RVE-121] provides a
 complementary limit: its observed status code 200 demonstrates the current HTTP
-exchange, whereas evidence item \texttt{E-RVE121-001} does not establish that a
+exchange, whereas evidence item \texttt{E-RVE-121-001} does not establish that a
 specific correction causes a transition from an earlier status code 400 to 200.
 Surrogate observability therefore separates HTTP-level evidence, application
 completion, and causal claims instead of treating every successful HTTP response
