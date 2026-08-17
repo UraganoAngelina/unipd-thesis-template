@@ -1,6 +1,6 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Acronyms and Abbreviations}{viii}{section*.12}%
-\contentsline {chapter}{Glossary}{ix}{section*.14}%
+\contentsline {chapter}{Acronyms and Abbreviations}{ix}{section*.12}%
+\contentsline {chapter}{Glossary}{x}{section*.14}%
 \contentsline {chapter}{\numberline {1}Problem Statement}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Regulatory and Technical Context}{1}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Territorial Coordination}{1}{subsection.1.1.1}%
@@ -14,19 +14,69 @@
 \contentsline {chapter}{\numberline {2}Solution Space}{18}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Scientific Basis of the Profiling Strategy}{18}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Experimental Alternatives and Validity}{18}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Synthetic Workflows as Experimental Instruments}{20}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.2}Synthetic Workflows as Experimental Instruments}{21}{subsection.2.1.2}%
 \contentsline {section}{\numberline {2.2}Security-Constrained Observation Strategy}{23}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Authorised Observation Boundary}{23}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Client-Boundary Latency and Saturation Evidence}{25}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Healthcare Workflows as Information Dependencies}{33}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Protected Discharge and Anagrafe Zero}{33}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Cryptographic and Protocol Heterogeneity}{37}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Experimental Design and Evidence Semantics}{40}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Controls, Variables, and Reproducibility}{40}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{43}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.3.2}Cryptographic and Protocol Heterogeneity}{38}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Experimental Design and Evidence Semantics}{41}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Controls, Variables, and Reproducibility}{41}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{44}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Generic versus Domain-Specific Profiling}{46}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Modelling Distance and Semantic Fidelity}{46}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Ex Ante Justification of RDG}{49}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Justification of the Request Dataset Generator framework}{49}{subsection.2.5.2}%
 \contentsline {paragraph}{Scientific Rationale for Domain-Specific Profiling.}{49}{subsection.2.5.2}%
-\contentsline {chapter}{Bibliography}{i}{chapter*.26}%
-\contentsline {chapter}{Online Sources}{vi}{chapter*.27}%
+\contentsline {paragraph}{Summary of the Solution Space.}{50}{subsection.2.5.2}%
+\contentsline {chapter}{\numberline {3}Selected Approach}{51}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Technical Objectives and System Architecture}{51}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Architectural Objectives and End-to-End Pipeline}{51}{subsection.3.1.1}%
+\contentsline {paragraph}{Technical objectives.}{51}{subsection.3.1.1}%
+\contentsline {paragraph}{End-to-end pipeline.}{52}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Module Boundaries and Secure Transport}{53}{subsection.3.1.2}%
+\contentsline {paragraph}{Repository organisation and dependency direction.}{53}{subsection.3.1.2}%
+\contentsline {paragraph}{Configuration and run provenance.}{54}{subsection.3.1.2}%
+\contentsline {paragraph}{Mutual Transport Layer Security context management.}{54}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Synthetic Inputs and Executable Transactions}{56}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Synthetic Resources and Transaction Heterogeneity}{56}{subsection.3.2.1}%
+\contentsline {paragraph}{Synthetic Patient resources.}{56}{subsection.3.2.1}%
+\contentsline {paragraph}{Workload population and correlation model.}{56}{subsection.3.2.1}%
+\contentsline {paragraph}{RVE, ITI, and mediated paths.}{57}{figure.caption.37}%
+\contentsline {paragraph}{Digital-signature provider flow.}{58}{figure.caption.37}%
+\contentsline {paragraph}{Step dependencies and the mock/live boundary.}{59}{figure.caption.37}%
+\contentsline {section}{\numberline {3.3}Traffic Execution and Evidence Pipeline}{60}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Temporal Scheduling and Stateful Execution}{60}{subsection.3.3.1}%
+\contentsline {paragraph}{Temporal model and occurrence generation.}{60}{subsection.3.3.1}%
+\contentsline {paragraph}{Scheduling and concurrency semantics.}{60}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Configuration Interface and Evidence Processing}{61}{subsection.3.3.2}%
+\contentsline {paragraph}{User-interface configuration bridge.}{62}{figure.caption.38}%
+\contentsline {paragraph}{Structured execution events.}{62}{figure.caption.38}%
+\contentsline {paragraph}{Normalisation and surrogate enrichment.}{63}{figure.caption.38}%
+\contentsline {paragraph}{Metric and reporting engine.}{63}{figure.caption.38}%
+\contentsline {section}{\numberline {3.4}Evaluation Protocol and Experimental Design}{64}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Evaluation Questions and Construct Validity}{64}{subsection.3.4.1}%
+\contentsline {paragraph}{Evaluation questions.}{64}{subsection.3.4.1}%
+\contentsline {paragraph}{Critical evaluation of the architecture.}{65}{Item.8}%
+\contentsline {paragraph}{Advanced Black-box with Surrogate Observability.}{65}{Item.8}%
+\contentsline {subsection}{\numberline {3.4.2}Variables and Reproducibility Controls}{66}{subsection.3.4.2}%
+\contentsline {paragraph}{Variables and controlled factors.}{66}{subsection.3.4.2}%
+\contentsline {paragraph}{Reproducibility protocol and campaign controls.}{66}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Executed Scenarios, Performance Indicators, and Quality Controls}{67}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Scenario Evidence and Operational Populations}{67}{subsection.3.5.1}%
+\contentsline {paragraph}{Declared scenarios versus executed evidence.}{67}{subsection.3.5.1}%
+\contentsline {paragraph}{Operational performance populations.}{69}{table.caption.39}%
+\contentsline {subsection}{\numberline {3.5.2}Quality Controls and Acceptance Boundary}{69}{subsection.3.5.2}%
+\contentsline {paragraph}{Data-quality controls.}{69}{subsection.3.5.2}%
+\contentsline {paragraph}{Acceptance criteria.}{70}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Evidence, Discussion, and Design Guidelines}{71}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Functional and Quantitative Evidence}{71}{subsection.3.6.1}%
+\contentsline {paragraph}{Functional evidence.}{71}{subsection.3.6.1}%
+\contentsline {paragraph}{Mock pipeline results.}{71}{subsection.3.6.1}%
+\contentsline {paragraph}{Surrogate-observability result boundary.}{73}{table.caption.40}%
+\contentsline {subsection}{\numberline {3.6.2}Interpretation and Contribution Boundary}{73}{subsection.3.6.2}%
+\contentsline {paragraph}{Relation to the state of the art.}{73}{subsection.3.6.2}%
+\contentsline {paragraph}{Design and evaluation guidelines.}{74}{subsection.3.6.2}%
+\contentsline {paragraph}{Residual limitations and contribution boundary.}{74}{Item.18}%
+\contentsline {chapter}{Bibliography}{i}{chapter*.41}%
+\contentsline {chapter}{Online Sources}{vi}{chapter*.42}%

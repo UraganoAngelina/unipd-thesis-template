@@ -4,12 +4,17 @@
 \contentsline {figure}{\numberline {1.2}{\ignorespaces RDG-orchestrated regional transactions}}{10}{figure.caption.17}%
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Surrogate observability pattern}}{15}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Security-constrained surrogate observability}}{24}{figure.caption.19}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Network, transport, and application latency}}{26}{figure.caption.20}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Conceptual node load-state transitions}}{28}{figure.caption.21}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Conceptual Load-Sharing Window distribution}}{28}{figure.caption.22}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Point-to-point and collective communication patterns}}{30}{figure.caption.23}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Regional synchronous dependency chains}}{35}{figure.caption.24}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Persistent and stateless secure-connection FCT}}{42}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Security-constrained surrogate observability}}{24}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Network, transport, and application latency}}{26}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Conceptual node load-state transitions}}{28}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Conceptual Load-Sharing Window distribution}}{28}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Point-to-point and collective communication patterns}}{30}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Regional synchronous dependency chains}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Persistent and stateless secure-connection FCT}}{43}{figure.caption.30}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Request Dataset Generator pipeline preserves a traceable chain from experiment configuration and Fast Healthcare Interoperability Resources Release 4 workload generation to asynchronous execution, JavaScript Object Notation Lines (JSONL) evidence, and statistical analysis. Source: Author's elaboration based on the current RDG source code.}}{52}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Secure transport and mTLS context management.}}{55}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Semantic transformation and placeholder resolution.}}{57}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Experiment persistence and user-interface bridge architecture.}}{61}{figure.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

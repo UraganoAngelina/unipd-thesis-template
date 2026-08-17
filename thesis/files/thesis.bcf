@@ -2413,8 +2413,11 @@
     <bcf:citekey order="42" intorder="2">apache-jmeter-component-reference</bcf:citekey>
     <bcf:citekey order="42" intorder="3">apache-jmeter-functions-variables</bcf:citekey>
     <bcf:citekey order="42" intorder="4">apache-jmeter-remote-testing</bcf:citekey>
-    <bcf:citekey order="43" intorder="1" nocite="1">*</bcf:citekey>
-    <bcf:citekey order="44" intorder="2" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">iorio-when-latency-matters</bcf:citekey>
+    <bcf:citekey order="44" intorder="2">akram-numerical-latency</bcf:citekey>
+    <bcf:citekey order="45" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="46" intorder="2" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

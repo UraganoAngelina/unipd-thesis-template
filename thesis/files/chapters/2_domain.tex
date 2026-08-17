@@ -49,24 +49,19 @@ alternative from the claim that it can support.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
-    \caption{Experimental alternatives and their admissible scientific role.}
-    \label{tab:solution-alternatives}\\
+\begin{table}[H]
+    \centering
+    \caption[Experimental alternatives and admissible claims]{Experimental
+    alternatives and the claims that each strategy can
+    support within the available evidence perimeter. Source: Author's synthesis based on
+    Zhu et al. (2005).}
+    \label{tab:solution-alternatives}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Strategy} & \textbf{Primary strength} & \textbf{Admissible claim} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Strategy} & \textbf{Primary strength} & \textbf{Admissible claim} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Operational observation & Natural service mix and environmental realism. & Descriptive evidence for the observed environment when access and provenance are complete. \\
     \hline
@@ -76,7 +71,9 @@ alternative from the claim that it can support.
     Trace replay & Preservation of captured ordering and timing when state and dependencies remain reconstructable. & Reproduction of an authorised trace within its capture and scaling assumptions. \\
     \hline
     Synthetic workflow & Explicit flow mix, timing, seed, concurrency, and data policy. & Internally valid comparison of declared scenarios; external representativeness remains unproven. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent The resulting validity model separates four questions. Construct
@@ -198,7 +195,7 @@ external comparison. Figure~\ref{fig:functional-gateway-mediation} expresses thi
 boundary. The internal functions remain analytically plausible contributors, but
 the experiment measures only their aggregate path effect.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \setlength{\unitlength}{1mm}
     \begin{picture}(140,78)
@@ -222,9 +219,8 @@ the experiment measures only their aggregate path effect.
         \put(132,37){\makebox(7,4)[l]{$\Delta L$}}
     \end{picture}
     \caption[Security-constrained surrogate observability]{Security-constrained
-    surrogate observability. RDG observes the aggregate external path while
-    internal security, mediation, and service phases remain outside the
-    authorised evidence perimeter.}
+    surrogate observability. The visual defines the limit of causal attribution adopted by the thesis. 
+    Source: Author's elaboration based on DXC Technology (2024) and Zanardini et al. (2024).}
     \label{fig:functional-gateway-mediation}
 \end{figure}
 
@@ -273,13 +269,13 @@ application distributions represents progressively accumulated work rather than
 three interchangeable latency measures. The curves provide a conceptual reading
 of the hierarchy analysed by Iorio et al.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[page=1,width=\textwidth]{img/iorio_latency.pdf}
     \caption[Network, transport, and application latency]{Conceptual separation
     of Network Round-Trip Time (RTT), Transmission Control Protocol (TCP) RTT,
-    and application-level Flow Completion Time (FCT). Median markers expose the
-    additional interval that each observation boundary contains.}
+    and application-level Flow Completion Time (FCT). Source: Adapted from Iorio et al.
+    (2021).}
     \label{fig:iorio-latency-levels}
 \end{figure}
 
@@ -327,13 +323,12 @@ same risk as a narrowing Load-Sharing Window (LSW) when traffic intensity
 increases. Both views remain methodological abstractions and import neither the
 paper's numerical thresholds nor a topology for the regional system.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[page=1,width=\textwidth]{img/akram_latency.pdf}
     \caption[Conceptual node load-state transitions]{Conceptual transitions
-    between underloaded, normal, and overloaded node states. A delayed transfer
-    can become ineffective when it reaches a node whose load state no longer
-    validates the original decision.}
+    between underloaded, normal, and overloaded node states. Source: Adapted from Akram et al.
+    (2025).}
     \label{fig:akram-state-transition}
 \end{figure}
 
@@ -342,8 +337,7 @@ paper's numerical thresholds nor a topology for the regional system.
     \includegraphics[page=2,width=0.92\textwidth]{img/akram_latency.pdf}
     \caption[Conceptual Load-Sharing Window distribution]{Conceptual cumulative
     distribution of the Load-Sharing Window under increasing traffic intensity.
-    The curves express the qualitative ordering of the model and do not
-    constitute digitised experimental samples.}
+    Source: Adapted from Akram et al. (2025).}
     \label{fig:akram-lsw-cdf}
 \end{figure}
 
@@ -392,13 +386,12 @@ communication-pattern analysis. The original figures report message counts and
 sizes rather than sequence traces; the visualisation therefore illustrates the
 structural distinction without claiming to reconstruct an observed execution.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[page=1,width=\textwidth]{img/dimitrov_communication_patterns.pdf}
     \caption[Point-to-point and collective communication patterns]{Conceptual
     point-to-point send/receive and collective all-reduce communication
-    patterns, adapted as a sequence-oriented explanation of the categories
-    analysed by Dimitrov and Skjellum.}
+    patterns. Source: Adapted from Dimitrov and Skjellum (2001).}
     \label{fig:dimitrov-communication-patterns}
 \end{figure}
 
@@ -422,29 +415,22 @@ generator no longer dispatches work on time. Conversely, higher latency without 
 throughput plateau can reflect payload composition, connection establishment, or
 remote environmental variation rather than saturation.
 
-Table~\ref{tab:metric-semantics} fixes the operational meaning of the principal
+\noindent Table~\ref{tab:metric-semantics} fixes the operational meaning of the principal
 signals.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{4.9cm}|}
-    \caption{Operational measures and their role in saturation analysis.}
-    \label{tab:metric-semantics}\\
+\begin{table}[H]
+    \centering
+    \caption[Operational measures for saturation analysis]{Operational measures
+    and their role in saturation analysis. Source: Author's synthesis based on Iorio et al. (2021) and Akram et al. (2025).}
+    \label{tab:metric-semantics}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{4.9cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Measure} & \textbf{Population and unit} & \textbf{Interpretive role} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Measure} & \textbf{Population and unit} & \textbf{Interpretive role} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Request latency & Homogeneous completed attempts; milliseconds. & Client-observed dispatch-to-response distribution for one transaction class, reported through $P_{50}$, $P_{95}$, and $P_{99}$ with the sample size. \\
     \hline
@@ -459,7 +445,9 @@ signals.
     Scheduling drift & Actual minus planned start; milliseconds. & Delivery quality of the generator and early evidence of backpressure. \\
     \hline
     Outcome distribution & Transport, application, timeout, and terminal-flow classes. & Reliability and preservation of unsuccessful work in every denominator. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent The literature therefore supports the measurement boundary and the
@@ -524,13 +512,14 @@ separate: [RVE-130] consumes the material produced through [RVE-121], whereas [R
 consumes the assertion in a distinct FHIR query. This separation prevents the
 visual model from suggesting one unsupported SAML--JWT--FHIR transaction chain.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[page=2,width=\textwidth,height=0.72\textheight,keepaspectratio]{img/dimitrov_communication_patterns.pdf}
     \caption[Regional synchronous dependency chains]{Conceptual regional
-    dependency chains retained by the workload model. Each response supplies a
-    semantic prerequisite for the next request within the same occurrence, and
-    a missing prerequisite blocks the dependent transition.}
+    dependency chains retained by the workload model. Source:
+    Author's elaboration based on the regional security specification v2.14
+    (2024), context-call specification v1.3 (2025), and Anagrafe Zero
+    specification v2.6 (2024).}
     \label{fig:regional-dependency-chains}
 \end{figure}
 
@@ -538,7 +527,7 @@ visual model from suggesting one unsupported SAML--JWT--FHIR transaction chain.
 Enterprise (IHE) Cross-Enterprise Document Sharing (XDS.b) separates metadata
 query, document selection, retrieval, and publication
 \footcite{ihe-xdsb,affinity-domain-italia-v263}. An Information Technology
-Infrastructure (ITI)-18 query returns metadata;
+Infrastructure ITI-18 query returns metadata;
 an ITI-43 retrieval consumes a repository and document reference; an ITI-41
 publication carries document content and metadata. These transactions remain
 separate performance populations because they differ in payload, outcome, and
@@ -550,24 +539,21 @@ protected-discharge implementation.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-    \caption{Information dependencies retained by the profiling model.}
-    \label{tab:process-dependencies}\\
+\begin{table}[H]
+    \centering
+    \caption[Information dependencies in the profiling model]{Information
+    dependencies retained by the profiling model. Source: Author's
+    synthesis of the Anagrafe Zero v2.6 (2024), regional security v2.14
+    (2024), context-call v1.3 (2025), Affinity Domain Italia v2.6.3
+    (2025), Scryba Sign v16 (2024), and SI.Ter (2025) technical
+    specifications.}
+    \label{tab:process-dependencies}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Dependency} & \textbf{Semantic prerequisite} & \textbf{Profiling consequence} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Dependency} & \textbf{Semantic prerequisite} & \textbf{Profiling consequence} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Patient identity & [RVE-54] produces a usable registry outcome before assignment or update. & The flow branches on application semantics and keeps later steps blocked after failure. \\
     \hline
@@ -583,8 +569,9 @@ protected-discharge implementation.
     \hline
     \rowcolor{tableGray}
     Document Signing & SignOneDoc transaction need a SAML Assetion Token from a [RVE-1.b]. &  Transport success without the required output remains a failed state transition. \\
-   
-\end{longtable}
+   \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent Both care transitions act as process frames. They identify the
@@ -623,10 +610,7 @@ each factor changes the critical path. SOAP/XML handling adds representation and
 envelope costs; Base64 increases the transferred representation relative to the
 binary source; protected transport adds connection and security work;
 cryptographic signing adds service-side computation. The Authorised Observation
-Boundary makes only their aggregate external effect observable as part of the
-Path-level Overhead.
-
-\noindent Signer identity creates a further dependency. The information-discovery step
+Boundary makes only their aggregate external effect observable as part of the Path-level Overhead. Signer identity creates a further dependency. The information-discovery step
 identifies the available signing powers, certificates, and One-Time Password
 (OTP) devices; the signing request depends on an admissible certificate and on
 the applicable OTP authorisation path
@@ -659,24 +643,21 @@ unexecuted scenario as observed evidence.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-    \caption{Methodological separation of Scryba Sign profiling populations.}
-    \label{tab:standards-design}\\
+\begin{table}[H]
+    \centering
+    \caption[Scryba Sign profiling populations]{Methodological separation of
+    Scryba Sign profiling populations;
+    the distinct terminal conditions prevent synchronous, asynchronous, and
+    large-document paths from being pooled into one latency distribution.
+    Source: Author's synthesis based on the Scryba Sign 3.x Developer's Guide
+    v16 (Medas S.r.l., 2024).}
+    \label{tab:standards-design}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Profile} & \textbf{Terminal condition} & \textbf{Relevant overhead} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Profile} & \textbf{Terminal condition} & \textbf{Relevant overhead} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Synchronous signing & The signed artefact returns in the synchronous interaction. & SOAP/XML and Base64 transfer, protected transport, cryptographic processing, and response transfer. \\
     \hline
@@ -684,7 +665,9 @@ unexecuted scenario as observed evidence.
     \hline
     \rowcolor{tableGray}
     Large-document path & The signed artefact completes through the applicable document-transfer procedure. & Document size, hashing, external transfer, signing, and retrieval remain explicit strata. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent A direct-versus-mediated comparison uses the same signing mode, payload
@@ -728,24 +711,17 @@ the residual limitations that remain after control.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
-    \caption{Controls for an interpretable direct-versus-mediated differential.}
-    \label{tab:differential-controls}\\
+\begin{table}[H]
+    \centering
+    \caption[Controls for the direct-versus-mediated differential]{Controls for
+    an interpretable direct-versus-mediated differential. Source: Author's synthesis based on Zhu et al. (2005) and Iorio et al. (2021).}
+    \label{tab:differential-controls}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Confounding source} & \textbf{Experimental control} & \textbf{Residual limitation} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Confounding source} & \textbf{Experimental control} & \textbf{Residual limitation} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Transaction semantics & Match operation, flow position, and application outcome. & Contract evolution can change equivalence across versions. \\
     \hline
@@ -758,7 +734,9 @@ the residual limitations that remain after control.
     \hline
     \rowcolor{tableGray}
     Generator capacity & Calibrate delivery and retain drift and active-concurrency signals. & Host scheduling remains part of the external experiment. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent Every run identifies the workload profile, offered rate, duration,
@@ -774,8 +752,9 @@ conceptual reconstruction of the persistent and stateless populations analysed.
 \begin{figure}[H]
     \centering
     \includegraphics[page=2,width=\textwidth]{img/iorio_latency.pdf}
-    \caption[Persistent and stateless secure-connection FCT]{Conceptual FCT
-    comparison.}
+    \caption[Persistent and stateless secure-connection FCT]{Conceptual
+    comparison of Flow Completion Time (FCT) under persistent and stateless
+    secure-connection policies. Source: Adapted from Iorio et al. (2021).}
     \label{fig:iorio-persistent-stateless}
 \end{figure}
 
@@ -819,24 +798,18 @@ assessable when its population, boundary, or threshold provenance is missing.
 
 \begingroup
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
-    \caption{Ex ante criteria and required evidence.}
-    \label{tab:ex-ante-criteria}\\
+\begin{table}[H]
+    \centering
+    \caption[Ex ante criteria and required evidence]{Ex ante criteria and
+    required evidence. Source: Author's methodological synthesis based on
+    the SI.Ter procurement specification (Azienda Zero, 2025).}
+    \label{tab:ex-ante-criteria}
+    \small
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.1cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Criterion} & \textbf{Population} & \textbf{Required evidence} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Criterion} & \textbf{Population} & \textbf{Required evidence} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Latency & Homogeneous requests and complete or interrupted flows remain separate. & Timer boundary, statistic, sample size, window, repetitions, path, and outcome rule. \\
     \hline
@@ -849,7 +822,9 @@ assessable when its population, boundary, or threshold provenance is missing.
     \hline
     \rowcolor{tableGray}
     Data quality & Expected, parsed, malformed, incomplete, and unmatched events. & Event semantics, provenance, coverage rule, and completeness threshold. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent Observation completeness conditions every statistic. The configured
@@ -894,65 +869,51 @@ their failures remain visible in the reported denominator.
 \section{Generic versus Domain-Specific Profiling}
 \subsection{Modelling Distance and Semantic Fidelity}
 
-\noindent The comparison between JMeter and RDG concerns paradigms, not product
-feature counts. Apache JMeter represents a mature generic request-centric
-paradigm: its test plans combine samplers, controllers, extractors, variables,
-assertions, scripts, and distributed execution mechanisms
+\noindent Apache JMeter and the Request Dataset Generator (RDG) represent
+different modelling paradigms rather than different protocol capabilities.
+JMeter provides a mature request-centric model through samplers, controllers,
+extractors, variables, assertions, scripts, and distributed execution
 \footcite{apache-jmeter-test-plan,apache-jmeter-component-reference,apache-jmeter-functions-variables,apache-jmeter-remote-testing}.
-RDG represents a domain-specific workflow paradigm: its primary abstraction is a
-typed healthcare flow whose security, data, dependency, scheduling, and evidence
-semantics remain part of one executable model.
+RDG uses a typed healthcare flow that integrates security, data, dependencies,
+scheduling, and evidence semantics.
 
-\noindent Both paradigms can issue concurrent SOAP/XML and REST/JSON requests. Raw protocol
-reach is therefore not the deciding criterion. The deciding criterion is
-\emph{modelling distance}: the amount of additional interpretation and custom
-state logic required to move from the experimental model to the documented
-regional workflow. In a generic paradigm, the author composes scoped variables,
-extractors, assertions, controllers, and scripts to preserve SAML propagation,
-patient-query outcomes, context transitions, document references, and failure
-blocking. In a domain-specific paradigm, these relationships constitute the
-workflow vocabulary itself.
+\noindent Both paradigms issue concurrent SOAP/XML and REST/JSON requests. The
+decisive criterion is \emph{modelling distance}: the additional interpretation
+and state logic required to express a documented regional workflow. A generic
+plan coordinates variables, extractors, assertions, controllers, and scripts to
+propagate security material, interpret patient-query outcomes, preserve context
+and document references, and block invalid transitions. RDG encodes these
+relations in the workflow vocabulary. The generic paradigm remains capable, but
+semantic fidelity depends on author-maintained conventions distributed across
+plan elements. This distribution increases the risk of cross-user state leakage,
+execution after transport-only success, or exclusion of failed prerequisites
+from the useful-flow denominator. Encoding these relations as workflow
+invariants reduces those failure points.
 
-\noindent This distinction does not make the generic paradigm technically incapable. It
-makes semantic fidelity an author-maintained convention distributed across plan
-elements. The risk is not only maintenance cost. A test can remain executable
-while becoming semantically invalid: state can leak across virtual users, a
-dependent request can start after a nominal transport success, or a failed
-prerequisite can disappear from the useful-flow denominator. Reducing modelling
-distance reduces the number of places in which these inconsistencies can arise.
-
-\noindent The domain-specific paradigm also connects workload construction and evidence
-construction. Domain-specific metadata generation creates synthetic patient and
-document contexts; stateful orchestration logic preserves occurrence-local
-outputs and branches; the asynchronous execution model expresses concurrency
-among independent flows; the event model retains both technical attempts and
-terminal domain outcomes. The resulting artefact translates documented
-healthcare dependencies into executable and observable experimental units.
-
-\noindent The comparison in Table~\ref{tab:jmeter-rdg-tradeoff} avoids implementation
-names.
+\noindent RDG also couples workload and evidence construction. Domain metadata
+creates synthetic patient and document contexts; stateful orchestration retains
+occurrence-local outputs and branches; asynchronous execution preserves
+concurrency among independent flows; and structured events distinguish
+technical attempts from terminal domain outcomes. The resulting model translates
+documented healthcare dependencies into executable, observable experimental
+units. Table~\ref{tab:jmeter-rdg-tradeoff} summarises the resulting trade-off.
 
 \begingroup
-\renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.3cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
+\renewcommand{\arraystretch}{0.9}
+\begin{table}[H]
+    \centering
     \caption[Generic and domain-specific profiling paradigms]{Generic and
-    domain-specific profiling paradigms.}
-    \label{tab:jmeter-rdg-tradeoff}\\
+    domain-specific profiling paradigms comparison. Source: Author's synthesis of the Apache JMeter User's Manual
+    (Apache Software Foundation, accessed 2026) and the Anagrafe Zero v2.6,
+    regional security v2.14, context-call v1.3, and Scryba Sign v16
+    specifications.}
+    \label{tab:jmeter-rdg-tradeoff}
+    \footnotesize
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.3cm}|>{\raggedright\arraybackslash}p{4.6cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Dimension} & \textbf{Generic request-centric paradigm} & \textbf{Domain-specific workflow paradigm} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Dimension} & \textbf{Generic request-centric paradigm} & \textbf{Domain-specific workflow paradigm} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\small Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     Unit of analysis & Request or sampler sequence extended with user-defined state. & Typed information-dependent healthcare flow. \\
     \hline
@@ -968,7 +929,8 @@ names.
     \hline
     Evolution cost & Broad ecosystem and mature distributed facilities; domain contracts remain test-plan responsibilities. & Lower modelling distance for represented contracts; domain model requires maintenance when specifications change. \\
     \hline
-\end{longtable}
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent The comparison therefore concerns semantic risk and experimental
@@ -979,7 +941,8 @@ application-level validation, and flow-level denominators. The Veneto use case
 belongs to the second class because security, identity, context, document, and
 signing transitions determine whether useful work completes.
 
-\subsection{Ex Ante Justification of RDG}
+\subsection[Justification of the Request Dataset Generator framework]
+{Justification of the Request Dataset Generator framework}
 
 \noindent RDG is methodologically justified when five conditions hold: the target process
 contains dependencies whose violation changes experimental meaning; synthetic
@@ -1005,5 +968,38 @@ while the regional security perimeter imposes Advanced Black-box with Surrogate
 Observability. RDG is therefore not merely custom software: it translates
 international methodological consensus into Regione Veneto's operational,
 semantic, and security constraints.
+
+\paragraph{Summary of the Solution Space.}
+\noindent Under the available evidence perimeter, controlled Synthetic Workflows
+constitute this thesis's only experimentally valid instrument. Operational
+observation cannot isolate offered load from environmental variation; protocol
+benchmarks omit domain-critical dependencies; and trace replay requires
+authorised traces with reconstructable state and ordering. Since the permitted
+corpus contains no such trace, synthetic execution provides reproducible inputs
+while leaving external representativeness unproven. It also makes flow
+composition, arrival timing, randomisation, payload classes, and outcome rules
+explicit experimental factors.
+
+\noindent The regional authorisation perimeter determines the observation method. Advanced
+Black-box with Surrogate Observability treats the protected path as a black box
+and correlates planned and actual dispatch times with client-boundary latency,
+application outcomes, dependency propagation, and flow completion. Scheduling
+drift, concurrency, and direct-versus-mediated differentials provide path-level
+evidence without assigning delay to inaccessible security, mediation, routing,
+or downstream phases. Mock events validate the measurement chain; claims about
+the live environment require authorised observations and complete provenance.
+
+\noindent Semantic fidelity links these methodological choices. Fast Healthcare
+Interoperability Resources Release 4 (FHIR R4) payloads preserve the
+profile-relevant meaning of synthetic patient operations, while stateful
+orchestration keeps assertions, tokens, identifiers, document references, and
+signing state local to each flow occurrence. Sequential prerequisites remain
+ordered within workflows, while independent occurrences execute concurrently.
+Performance populations therefore represent completed or interrupted healthcare
+operations, not unrelated HTTP exchanges. Together, synthetic control, surrogate
+observability, and semantic fidelity define credible profiling requirements.
+Chapter 3 details the Request Dataset Generator framework's internal design and
+implementation, showing how these principles become an executable profiling
+instrument.
 
 \newpage

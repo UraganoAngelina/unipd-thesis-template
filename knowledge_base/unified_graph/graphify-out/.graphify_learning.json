@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T15:15:35.713982+00:00",
+  "generated_at": "2026-08-17T09:19:56.669473+00:00",
   "nodes": {
     "Request-Dataset-Generator::fhir_patient_generator": {
       "code_fingerprint": "",
@@ -17,7 +17,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 1.94959107,
+      "score": 1.386458279,
       "source_file": "fhir_patient_generator.py",
       "status": "preferred",
       "uses": 2
@@ -33,7 +33,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.999944297,
+      "score": 0.711113767,
       "source_file": "log_collector.py",
       "status": "tentative",
       "uses": 1
@@ -41,18 +41,23 @@
     "Request-Dataset-Generator::log_collector_middlewarelogparser": {
       "code_fingerprint": "",
       "label": "MiddlewareLogParser",
-      "last": "2026-08-02T15:12:07.408713+00:00",
+      "last": "2026-08-02T15:29:59.127785+00:00",
       "provenance": [
+        {
+          "date": "2026-08-02T15:29:59.127785+00:00",
+          "outcome": "useful",
+          "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
+        },
         {
           "date": "2026-08-02T15:12:07.408713+00:00",
           "outcome": "useful",
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.999944297,
+      "score": 1.422431366,
       "source_file": "log_collector.py",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "Request-Dataset-Generator::metric_engine": {
       "code_fingerprint": "",
@@ -65,7 +70,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.999944297,
+      "score": 0.711113767,
       "source_file": "metric_engine.py",
       "status": "tentative",
       "uses": 1
@@ -86,7 +91,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 1.899593339,
+      "score": 1.350902224,
       "source_file": "metric_engine.py",
       "status": "preferred",
       "uses": 2
@@ -94,40 +99,61 @@
     "Request-Dataset-Generator::metric_engine_metricscalculator": {
       "code_fingerprint": "",
       "label": "MetricsCalculator",
-      "last": "2026-07-29T10:33:56.609516+00:00",
+      "last": "2026-08-17T08:39:35.071994+00:00",
       "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        },
         {
           "date": "2026-07-29T10:33:56.609516+00:00",
           "outcome": "useful",
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.907611598,
+      "score": 1.644803687,
       "source_file": "metric_engine.py",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "Request-Dataset-Generator::metric_engine_warningdetector": {
       "code_fingerprint": "",
       "label": "WarningDetector",
-      "last": "2026-07-29T10:33:56.609516+00:00",
+      "last": "2026-08-17T08:39:35.071994+00:00",
       "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        },
         {
           "date": "2026-07-29T10:33:56.609516+00:00",
           "outcome": "useful",
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.907611598,
+      "score": 1.644803687,
       "source_file": "metric_engine.py",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator": {
       "code_fingerprint": "",
       "label": "FlowOrchestrator",
-      "last": "2026-08-02T14:57:09.025976+00:00",
+      "last": "2026-08-02T15:44:59.379944+00:00",
+      "neg": 1,
       "provenance": [
+        {
+          "date": "2026-08-02T15:44:59.379944+00:00",
+          "outcome": "corrected",
+          "q": "How are RVE-1.b, RVE-54, and RVE-55 ordered in direct RDG flows?"
+        },
+        {
+          "date": "2026-08-02T15:29:59.127785+00:00",
+          "outcome": "useful",
+          "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
+        },
         {
           "date": "2026-08-02T14:57:09.025976+00:00",
           "outcome": "useful",
@@ -142,17 +168,13 @@
           "date": "2026-07-31T09:29:50.692545+00:00",
           "outcome": "useful",
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
-        },
-        {
-          "date": "2026-07-29T10:33:56.609516+00:00",
-          "outcome": "useful",
-          "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 3.806909033,
+      "score": 2.707124961,
       "source_file": "rve_transactions/flow_orchestrator.py",
-      "status": "preferred",
-      "uses": 4
+      "status": "contested",
+      "uses": 5,
+      "verdict": "useful"
     },
     "Request-Dataset-Generator::rve_transactions_rve_gateway": {
       "code_fingerprint": "",
@@ -165,8 +187,40 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.9495592,
+      "score": 0.675282235,
       "source_file": "rve_transactions/rve_gateway.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::rve_transactions_scrybasign_common": {
+      "code_fingerprint": "",
+      "label": "scrybasign_common.py",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "rve_transactions/scrybasign_common.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::rve_transactions_scrybasign_common_resolve_auth_header": {
+      "code_fingerprint": "",
+      "label": "resolve_auth_header()",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "rve_transactions/scrybasign_common.py",
       "status": "tentative",
       "uses": 1
     },
@@ -181,8 +235,88 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.907611598,
+      "score": 0.645451056,
       "source_file": "traffic_exec_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::traffic_exec_engine_mtlscontextfactory": {
+      "code_fingerprint": "",
+      "label": "MtlsContextFactory",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "traffic_exec_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::ui_tabs_config_tab_configtab": {
+      "code_fingerprint": "",
+      "label": "ConfigTab",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "ui/tabs/config_tab.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::ui_tabs_dashboard_tab_dashboardtab": {
+      "code_fingerprint": "",
+      "label": "DashboardTab",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "ui/tabs/dashboard_tab.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::ui_tabs_run_tab_runtab": {
+      "code_fingerprint": "",
+      "label": "RunTab",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "ui/tabs/run_tab.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::ui_ui_config_bridge": {
+      "code_fingerprint": "",
+      "label": "ui_config_bridge.py",
+      "last": "2026-08-17T08:39:35.071994+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-17T08:39:35.071994+00:00",
+          "outcome": "useful",
+          "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
+        }
+      ],
+      "score": 0.999352631,
+      "source_file": "ui/ui_config_bridge.py",
       "status": "tentative",
       "uses": 1
     },
@@ -197,7 +331,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.9495592,
+      "score": 0.675282235,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -213,7 +347,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.909857953,
+      "score": 0.647048559,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -229,7 +363,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.909857953,
+      "score": 0.647048559,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
@@ -245,7 +379,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.909857953,
+      "score": 0.647048559,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
@@ -266,7 +400,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.99820313,
+      "score": 1.42102891,
       "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
       "status": "preferred",
       "uses": 2
@@ -282,7 +416,23 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 0.9986462,
+      "score": 0.71019062,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::analisi_apms": {
+      "code_fingerprint": "",
+      "label": "APMS",
+      "last": "2026-08-02T15:29:59.127785+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:29:59.127785+00:00",
+          "outcome": "useful",
+          "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
+        }
+      ],
+      "score": 0.711317599,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -298,7 +448,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.950034139,
+      "score": 0.675619989,
       "source_file": "SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf",
       "status": "tentative",
       "uses": 1
@@ -319,7 +469,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.99820313,
+      "score": 1.42102891,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 2
@@ -340,7 +490,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.99820313,
+      "score": 1.42102891,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 2
@@ -356,7 +506,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.909857953,
+      "score": 0.647048559,
       "source_file": "Infrastructure Reference Architecture-v1.1.0.pdf",
       "status": "tentative",
       "uses": 1
@@ -372,7 +522,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.950034139,
+      "score": 0.675619989,
       "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
       "status": "tentative",
       "uses": 1
