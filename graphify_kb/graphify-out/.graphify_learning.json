@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T15:15:24.453061+00:00",
+  "generated_at": "2026-08-19T08:55:11.380843+00:00",
   "nodes": {
     "affinity_xdsb": {
       "code_fingerprint": "8ffa0f0b9c2782bc23057edd240e0b029a488f395c4b1edeebba63b1b3ef946f",
@@ -12,7 +12,7 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.998533535,
+      "score": 0.678310372,
       "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
       "status": "tentative",
       "uses": 1
@@ -20,16 +20,181 @@
     "analisi_anagrafe_zero": {
       "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
       "label": "Anagrafe Zero",
-      "last": "2026-08-02T13:43:56.633180+00:00",
+      "last": "2026-08-19T08:36:56.866071+00:00",
       "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        },
         {
           "date": "2026-08-02T13:43:56.633180+00:00",
           "outcome": "useful",
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.998533535,
+      "score": 1.678017722,
       "source_file": "analisi_completa.md",
+      "status": "preferred",
+      "uses": 2
+    },
+    "analisi_apms": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "APMS",
+      "last": "2026-08-19T08:36:56.866071+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        }
+      ],
+      "score": 0.99970735,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_cot": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "Centrale Operativa Territoriale",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_dm77": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "DM 77/2022",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_fser_xds": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "FSEr XDS",
+      "last": "2026-08-19T08:36:56.866071+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        }
+      ],
+      "score": 0.99970735,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_progetto_siter": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "Progetto SI.Ter",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "analisi_pua": {
+      "code_fingerprint": "280552bee5156930357b5705e817e0d6b1aa11867e7028ef50e5ba70b21f87cd",
+      "label": "Punto Unico di Accesso",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "analisi_completa.md",
+      "status": "tentative",
+      "uses": 1
+    },
+    "context_jwt_token": {
+      "code_fingerprint": "12554c28eb80c98d430980aa054e0285ce1bde4ef5ece3a0ef774f691693c0db",
+      "label": "JWT Token",
+      "last": "2026-08-19T08:36:56.866071+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        }
+      ],
+      "score": 0.99970735,
+      "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "context_saml_assertion": {
+      "code_fingerprint": "12554c28eb80c98d430980aa054e0285ce1bde4ef5ece3a0ef774f691693c0db",
+      "label": "SAML 2.0 Assertion",
+      "last": "2026-08-19T08:36:56.866071+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        }
+      ],
+      "score": 0.99970735,
+      "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "dm77_casa_comunita": {
+      "code_fingerprint": "a7dbf21a65c4ed7fc799f3cb80f4887c3799897ab3b79f42f2c5dcae1444896b",
+      "label": "Casa della Comunita",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "DM_77_2022.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "dm77_distretto": {
+      "code_fingerprint": "a7dbf21a65c4ed7fc799f3cb80f4887c3799897ab3b79f42f2c5dcae1444896b",
+      "label": "Distretto",
+      "last": "2026-08-02T15:20:32.237544+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-02T15:20:32.237544+00:00",
+          "outcome": "useful",
+          "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
+        }
+      ],
+      "score": 0.679362465,
+      "source_file": "DM_77_2022.pdf",
       "status": "tentative",
       "uses": 1
     },
@@ -44,8 +209,24 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.998533535,
+      "score": 0.678310372,
       "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "scryba_sign_3_x_developer_s_guide_scryba_sign_server": {
+      "code_fingerprint": "07a127357a9f668102232a7b87411e8f0f5d88c8291765305cd1d64410748bf8",
+      "label": "Scryba Sign Server",
+      "last": "2026-08-19T08:36:56.866071+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:36:56.866071+00:00",
+          "outcome": "useful",
+          "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
+        }
+      ],
+      "score": 0.99970735,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
       "status": "tentative",
       "uses": 1
     },
@@ -60,7 +241,7 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.998533535,
+      "score": 0.678310372,
       "source_file": "Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf",
       "status": "tentative",
       "uses": 1

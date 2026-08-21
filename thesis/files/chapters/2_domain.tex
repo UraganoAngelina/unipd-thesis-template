@@ -1,5 +1,11 @@
 \chapter{Solution Space}
 \label{chap:stateofart}
+\noindent This chapter evaluates the methodological alternatives available for
+performance profiling under a constrained observation perimeter. It establishes
+the statistical and distributed-systems foundations of the selected strategy,
+maps healthcare and cryptographic dependencies to experimental controls,
+defines the semantics and admissibility gates of the resulting evidence, and
+concludes by comparing generic and domain-specific profiling approaches.
 
 \section{Scientific Basis of the Profiling Strategy}
 \subsection{Experimental Alternatives and Validity}
@@ -88,7 +94,7 @@ realistic observation does not imply causality when uncontrolled environmental
 changes coexist with the measured path.
 
 \subsection{Synthetic Workflows as Experimental Instruments}
-
+\label{sub:experimental}
 \noindent A synthetic workflow has scientific value only when it acts as an
 experimental instrument rather than as a collection of fabricated requests. Its
 structure derives from authoritative transaction and process specifications; its
@@ -958,7 +964,7 @@ controls, and event provenance. The same elements otherwise reappear as disperse
 custom logic in a generic plan; RDG makes them inspectable at the abstraction
 level of the research question.
 
-\paragraph{Scientific Rationale for Domain-Specific Profiling.}
+\subsection{Scientific Rationale for Domain-Specific Profiling.}
 \noindent RDG responds to latency-aware distributed systems by combining quantile-based
 stochastic interpretation, full-stack FCT, matched Path-level Overhead,
 application-representative communication patterns, metadata-driven FHIR R4
@@ -969,37 +975,36 @@ Observability. RDG is therefore not merely custom software: it translates
 international methodological consensus into Regione Veneto's operational,
 semantic, and security constraints.
 
-\paragraph{Summary of the Solution Space.}
-\noindent Under the available evidence perimeter, controlled Synthetic Workflows
-constitute this thesis's only experimentally valid instrument. Operational
-observation cannot isolate offered load from environmental variation; protocol
-benchmarks omit domain-critical dependencies; and trace replay requires
-authorised traces with reconstructable state and ordering. Since the permitted
-corpus contains no such trace, synthetic execution provides reproducible inputs
-while leaving external representativeness unproven. It also makes flow
-composition, arrival timing, randomisation, payload classes, and outcome rules
-explicit experimental factors.
+\section{Summary}
+\subsection{Synthesis}
+\noindent Within the available evidence perimeter, controlled Synthetic Workflows
+constitute the thesis's only experimentally valid instrument. Operational
+observation cannot isolate offered load from environmental variation, protocol
+benchmarks omit domain dependencies, and trace replay requires authorised traces
+with reconstructable state and ordering. Because the permitted corpus contains
+no such trace, synthetic execution provides reproducible inputs while leaving
+external representativeness unproven. It also makes flow composition, arrival
+timing, randomisation, payload classes, and outcome rules explicit experimental
+factors.
 
 \noindent The regional authorisation perimeter determines the observation method. Advanced
 Black-box with Surrogate Observability treats the protected path as a black box
-and correlates planned and actual dispatch times with client-boundary latency,
-application outcomes, dependency propagation, and flow completion. Scheduling
-drift, concurrency, and direct-versus-mediated differentials provide path-level
-evidence without assigning delay to inaccessible security, mediation, routing,
-or downstream phases. Mock events validate the measurement chain; claims about
-the live environment require authorised observations and complete provenance.
+and correlates dispatch timing with client-boundary latency, application
+outcomes, dependency propagation, and flow completion. Scheduling drift,
+concurrency, and direct-versus-mediated differentials provide path-level evidence
+without assigning delay to inaccessible internal phases. Mock events validate
+the measurement chain; live claims require authorised observations and complete
+provenance.
 
-\noindent Semantic fidelity links these methodological choices. Fast Healthcare
-Interoperability Resources Release 4 (FHIR R4) payloads preserve the
-profile-relevant meaning of synthetic patient operations, while stateful
-orchestration keeps assertions, tokens, identifiers, document references, and
-signing state local to each flow occurrence. Sequential prerequisites remain
-ordered within workflows, while independent occurrences execute concurrently.
-Performance populations therefore represent completed or interrupted healthcare
-operations, not unrelated HTTP exchanges. Together, synthetic control, surrogate
+\noindent Semantic fidelity completes the method. Fast Healthcare Interoperability
+Resources Release 4 (FHIR R4) payloads preserve profile-relevant meaning, while
+stateful orchestration keeps assertions, tokens, identifiers, document
+references, and signing state local to each flow occurrence. Prerequisites remain
+sequential within workflows and independent occurrences execute concurrently, so
+performance populations represent completed or interrupted healthcare operations
+rather than unrelated HTTP exchanges. Together, synthetic control, surrogate
 observability, and semantic fidelity define credible profiling requirements.
-Chapter 3 details the Request Dataset Generator framework's internal design and
-implementation, showing how these principles become an executable profiling
-instrument.
+Chapter 3 shows how the Request Dataset Generator turns these principles into an
+executable profiling instrument.
 
 \newpage

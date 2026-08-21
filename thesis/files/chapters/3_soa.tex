@@ -2,18 +2,20 @@
 \chaptermark{Selected Approach}
 \label{chap:selected-approach}
 
-\noindent Chapter~\ref{chap:introduction} defines the need for a controlled and
-traceable way of exercising healthcare-interoperability workflows.
-Chapter~\ref{chap:stateofart} then establishes the methodological
-requirements that follow from this need: the workload must preserve semantic
-dependencies, distinguish request- and flow-level observations, expose its
-temporal model, and keep client-side evidence separate from optional
-middleware-side measurements. This chapter presents the selected approach from
-the inside and records the evidence that is currently available.
+\noindent This chapter presents the Request Dataset Generator as both the selected
+engineering approach and the experimental instrument that produces the thesis's
+empirical evidence. It first specifies the architecture, synthetic inputs,
+execution model, and evidence pipeline; it then defines the evaluation protocol
+and quality controls; finally, it characterises the resulting empirical
+stochastic distributions, assesses quantile-based confidence, and interprets
+the Path-level Overhead ($\Delta L$) under the surrogate observability
+invariants established in Chapter~2.
 
-\noindent The implementation described here is the Request Dataset Generator (RDG)
-repository at the revision inspected for this migration. The chapter
-distinguishes three claims that are easy to conflate. A feature
+\noindent Chapter~\ref{chap:introduction} defines the need for a controlled and
+traceable evaluation of healthcare-interoperability workflows, while
+Chapter~\ref{chap:stateofart} derives the methodological requirements imposed by
+that need. The implementation described here is the Request Dataset Generator
+(RDG) repository. The analysis distinguishes three evidential levels. A feature
 is \emph{implemented} when it is present in the current code; it is
 \emph{functionally exercised} when a test or archived run covers it; and it is
 \emph{experimentally evaluated} only when an identified configuration,
@@ -27,7 +29,7 @@ does not measure the capacity of a live regional or industrial service.
 \subsection{Architectural Objectives and End-to-End Pipeline}
 \label{subsec:rdg-objectives-pipeline}
 
-\paragraph{Technical objectives.}
+\paragraph{Technical objectives}
 \noindent The framework translates the methodological requirements of
 Section~\ref{sec:framework-implications} into five technical objectives. First,
 it must generate synthetic healthcare data without requiring personal data.
@@ -46,11 +48,11 @@ resulting records when a compatible middleware log is supplied. The absence of
 that second source remains visible in the normalised dataset rather than being
 replaced by estimated values.
 
-\paragraph{End-to-end pipeline.}
+\paragraph{End-to-end pipeline}
 \noindent The command dispatcher in \texttt{main.py} exposes independent commands for
 patient generation, flow-dataset construction, timeline production, execution,
 log collection, and metric calculation. The \texttt{pipeline} command connects
-the same stages in memory and on disk:
+all the stages in a single invocation:
 \begin{align*}
   \text{configuration}
   &\rightarrow \text{synthetic data}
@@ -59,38 +61,30 @@ the same stages in memory and on disk:
   \rightarrow \text{normalised dataset}
   \rightarrow \text{metrics and reports}.
 \end{align*}
-This separation allows an intermediate artefact to be inspected or replayed
+\noindent This separation allows an intermediate artefact to be inspected or replayed
 without changing the responsibilities of the surrounding stages.
-
-\begin{figure}[H]
-    \centering
-    \small
-    \setlength{\tabcolsep}{2pt}
-    \begin{tabular}{@{}c c c c c c c c c@{}}
-        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Configuration\par\tiny resolved parameters}}
-        & $\rightarrow$ &
-        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Workload\\Generation\par\tiny FHIR R4 flows}}
-        & $\rightarrow$ &
-        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Traffic\\Execution\par\tiny asynchronous flows}}
-        & $\rightarrow$ &
-        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Log\\Collection\par\tiny structured events}}
-        & $\rightarrow$ &
-        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Metric\\Analysis\par\tiny P50, P95, P99}}
-    \end{tabular}
-    \caption{The Request Dataset Generator pipeline preserves a traceable chain from experiment configuration and Fast Healthcare Interoperability Resources Release 4 workload generation to asynchronous execution, JavaScript Object Notation Lines (JSONL) evidence, and statistical analysis. Source: Author's elaboration based on the current RDG source code.}
-    \label{fig:rdg-end-to-end-pipeline}
-\end{figure}
+\paragraph{Design Patterns}
+\noindent RDG adopts a staged Pipeline separating generation, scheduling,
+execution, normalisation, and analysis. The handler map in \texttt{main.py}
+forms a lightweight Command dispatcher. Transaction modules act as Builders of
+uniform steps, which \texttt{Flow\allowbreak Orchestrator} composes according to
+the \texttt{RveTransaction\allowbreak Module} protocol. Traffic-profile functions
+implement Strategy, whereas \texttt{MtlsContext\allowbreak Factory} applies
+Factory with lazy caching to mTLS contexts. The configuration Bridge isolates graphical-interface persistence from the
+core.
 
 \begin{table}[H]
     \centering
+    \caption{Each pipeline stage owns one transformation and emits an inspectable artefact, which prevents generation, execution, and analysis concerns from being conflated. Source: Author's elaboration based on the framework's source code.}
     \small
-    \begin{tabular}{|p{2.0cm}|p{3.7cm}|p{6.3cm}|}
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabular}{|p{3.4cm}|p{3.4cm}|p{5.8cm}|}
         \hline
         \rowcolor{veryPeri!18}
-        \textbf{Stage} & \textbf{Primary implementation} & \textbf{Produced or transformed evidence} \\
+        \textbf{Stage} & \textbf{Implementation} & \textbf{Produced evidence} \\
         \hline
         \rowcolor{tableGray}
-        Data generation & \texttt{fhir\_patient\_}\newline\texttt{generator.py} & Synthetic Patient resources and transaction Bundles. \\
+        Data generation & \texttt{fhir\_patient\_}\newline\texttt{generator.py} & Synthetic Patient resources and FHIR Bundles. \\
         \hline
         Workload composition & \texttt{request\_dataset\_}\allowbreak\texttt{generator.py}, \texttt{flow\_}\allowbreak\texttt{orchestrator.py} & Weighted population of flows, ordered steps, identifiers, dependencies, and payload metadata. \\
         \hline
@@ -105,55 +99,53 @@ without changing the responsibilities of the surrounding stages.
         Analysis & \texttt{metric\_engine.py} & Machine-readable metrics, human-readable report, comma-separated-value tables, warnings, and optional graphs. \\
         \hline
     \end{tabular}
-    \caption{Each pipeline stage owns one transformation and emits an inspectable artefact, which prevents generation, execution, and analysis concerns from being conflated. Source: Author's elaboration based on the current RDG source code.}
     \label{tab:rdg-pipeline}
 \end{table}
 
 \subsection{Module Boundaries and Secure Transport}
 \label{subsec:rdg-boundaries-transport}
 
-\paragraph{Repository organisation and dependency direction.}
+\paragraph{Repository organisation and dependency direction}
 \noindent The top-level modules implement the pipeline stages, while the transaction
 package contains the transaction builders and the flow
 orchestrator. A transaction builder returns one executable step with its
 method, target selected from configuration, headers, body, transport profile,
-dependency specification, output-extraction rules, and---in mock mode---a
-synthetic response. The orchestrator adds correlation metadata and combines
+dependency specification, output-extraction rules, and possibly a
+synthetic response (generated only when in mock mode). The orchestrator adds correlation metadata and combines
 these steps into flow types. The execution engine consumes this common shape;
 it does not contain healthcare-specific request templates.
 
 \noindent This direction of dependency is important. Domain-specific contracts remain in
 the transaction modules, composition remains in the orchestrator, and temporal
 or analytical mechanisms operate on shared metadata. Adding a new transaction
-therefore does not require the scheduler or metric engine to understand its
+therefore does not require the timeline generator or metric engine to understand its
 payload, provided that the module satisfies the common step contract and
 declares the outputs required by downstream steps.
 
-\paragraph{Configuration and run provenance.}
-\noindent Configuration is loaded from JavaScript Object Notation (JSON) and merged with command defaults. Before a
-pipeline execution, the dispatcher establishes a scenario identifier, run
+\paragraph{Configuration and run provenance}
+\noindent Configuration is obtained by merging a global default configuration with a scenario-specific JavaScript Object Notation (JSON) file.
+Before a pipeline execution, the dispatcher establishes a scenario identifier, run
 identifier, execution identifier, and seeds for workload, timeline, and fault
 injection. It also resolves output paths under a run-specific directory and
 writes the effective configuration as \texttt{config.resolved.json}. The run
 directory can then contain the generated dataset, timeline, JSONL execution
 log, normalised metrics, metric reports, tabular summaries, and graphs.
 
-\noindent The effective configuration is more authoritative than the current scenario
+\noindent The effective configuration is more authoritative than the default
 template when interpreting an archived run: templates may evolve after an
 execution, whereas the resolved copy records the parameters attached to that
 run. Credentials, security tokens, certificate material, private endpoints,
 and generated clinical-like values are deliberately excluded from this
-chapter. Reproducibility concerns non-sensitive parameters and provenance, not
-publication of protected configuration.
+chapter.
 
-\paragraph{Mutual Transport Layer Security context management.}
+\paragraph{Mutual Transport Layer Security context management}
 \noindent \texttt{MtlsContextFactory} separates cryptographic material from executable
 steps. A transaction declares only a named mutual-Transport Layer Security
 (mTLS) profile in its transport metadata; the runtime configuration retains
 certificate paths, verification policy, and any environment-variable reference
 used to resolve a certificate password. On first use, the factory constructs a
-Python \texttt{SSLContext}, loads either a Privacy-Enhanced Mail certificate
-chain or a Public-Key Cryptography Standards~\#12 container, and caches the
+Python Secure Sockets Layer (\textit{SSLContext})\glsadd{ssl}\glsadd{sslg} object, loads either a Privacy-Enhanced Mail (\textit{PEM})\glsadd{pem}\glsadd{pemg} certificate
+chain or a Public-Key Cryptography Standards (\textit{PKCS}~\#12)\glsadd{pkcs}\glsadd{pkcsg} container, and caches the
 context by profile name. Subsequent requests reuse the same context through the
 run-wide \texttt{aiohttp.ClientSession}, allowing eligible secure connections
 to benefit from session-level connection pooling without copying keys or
@@ -171,7 +163,7 @@ application response from the regional gateway.
     \centering
     \resizebox{\textwidth}{!}{%
     \begin{tikzpicture}[
-        node distance=8mm and 10mm,
+        node distance=10mm and 12mm,
         >=Latex,
         component/.style={draw, rounded corners=2pt, align=center, minimum height=12mm,
                           text width=3.15cm, font=\scriptsize, fill=black!3},
@@ -181,22 +173,22 @@ application response from the regional gateway.
         \node[component, dashed] (identity)
             {\textbf{Identity Material}\\PKCS\#12 or PEM certificate\\environment credential};
         \node[component, right=of identity] (factory)
-            {\texttt{MtlsContextFactory}\\\texttt{.\_load\_pkcs12()}\\profile cache};
+            {\textbf{MtlsContextFactory}\\\texttt{.\_load\_pkcs12()}\\profile cache};
         \node[component, right=of factory] (context)
-            {\texttt{SSLContext}\\Python \texttt{ssl}};
+            {\textbf{SSLContext}\\Python \texttt{ssl}};
         \node[component, below=of context] (engine)
-            {Traffic Execution\\Engine\\run-wide \texttt{aiohttp} session};
+            {\textbf{Traffic Execution\\Engine}\\run-wide \texttt{aiohttp} session};
         \node[component, right=of engine] (gateway)
-            {Regional APMS\\Gateway};
+            {Regional\\Gateway};
 
         \draw[flow] (identity) -- node[note, above]
-            {resolve and load} (factory);
+            {resolve\\and load} (factory);
         \draw[flow] (factory) -- node[note, above] {create} (context);
         \draw[flow] (context) -- node[note, right] {inject as \texttt{ssl}} (engine);
-        \draw[flow] (engine) -- node[note, above] {HTTPS + mTLS} (gateway);
+        \draw[flow] (engine) -- node[note, above] {HTTPS\\+ mTLS} (gateway);
     \end{tikzpicture}
     }
-    \caption[Secure transport and mTLS context management.]{Secure Transport and mTLS Management Layer. The secure-transport layer keeps certificate material and password resolution outside generated workload steps: \texttt{MtlsContextFactory} creates and caches a profile-specific \texttt{SSLContext}, which the traffic engine supplies to its run-wide \texttt{aiohttp} session before protected regional requests. This separation makes channel-establishment failures distinguishable from application responses. Source: Author's elaboration based on the RDG implementation of \texttt{MtlsContextFactory} and \texttt{send\_request()}.}
+    \caption[Secure transport and mutual Transport Layer Security context management.]{Secure Transport and mutual Transport Layer Security (mTLS) Management Layer. The secure-transport layer keeps certificate material and password resolution outside generated workload steps, making channel-establishment failures distinguishable from application responses. Source: Author's elaboration based on the framework's source code.}
     \label{fig:rdg-secure-transport}
 \end{figure}
 
@@ -206,7 +198,7 @@ application response from the regional gateway.
 \subsection{Synthetic Resources and Transaction Heterogeneity}
 \label{subsec:rdg-resources-transactions}
 
-\paragraph{Synthetic Patient resources.}
+\paragraph{Synthetic Patient resources}
 \noindent The data generator creates a FHIR Patient-shaped resource with synthetic
 identifiers, demographics, contact information, addresses, regional
 extensions, a contained practitioner, and a contained assistance contract.
@@ -224,25 +216,23 @@ Section~\ref{subsec:fhir-r4}: the code demonstrates what the workload can
 produce, while the primary specification remains authoritative for
 conformance.
 
-\paragraph{Workload population and correlation model.}
-\noindent \texttt{build\_workload} accepts the number of source flows, a weighted
-\texttt{flow\_mix}, an execution mode, the complete configuration, and an
-optional seed. Weights are normalised and sampled to choose a flow type; a new
-synthetic patient is generated for each source flow. The resulting flow carries
+\paragraph{Workload population and correlation model}
+\noindent \texttt{build\_workload()} accepts the number of source flows, a weighted
+\texttt{flow\_mix}, an execution mode, the complete configuration,the number of patients and an
+optional seed. Weights are normalised and sampled to choose a flow type; the number of
+synthetic patients are generated for each step of the source flow that needs that specific resource. The resulting flow carries
 a flow identifier, a type, and an ordered list of steps. Every step has its own
-request identifier and index, while the timeline later adds a distinct
+request identifier and index, while the timeline generator later adds a distinct
 \texttt{flow\_occurrence\_id} whenever a source flow is scheduled. This last
 identifier prevents repeated uses of the same source flow from being merged
 during log reconstruction.
 
-\noindent The current implementation defines the seven flow types in
-Table~\ref{tab:implemented-flow-types}. The table reports software coverage,
-not equal validation status. In particular, a zero default weight or presence
-in the map does not establish that a path has been exercised against a live
-provider.
+\noindent The implementation defines the seven flow types in
+Table~\ref{tab:implemented-flow-types}.
 
 \begin{table}[H]
     \centering
+    \caption{Implemented integration-flow map, including each ordered transaction chain and its number of executable steps. Source: Author's elaboration based on the framework's source code and regional specifications.}
     \scriptsize
     \begin{tabular}{|p{3.2cm}|p{7.8cm}|p{1.0cm}|}
         \hline
@@ -268,7 +258,6 @@ provider.
         \texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} & GetUserInfo $\rightarrow$ SignOneDoc & 2 \\
         \hline
     \end{tabular}
-    \caption{The orchestrator maps heterogeneous regional, Integrating the Healthcare Enterprise, mediated, and digital-signature transactions to one ordered step contract; step count remains part of every comparison. Source: Author's elaboration based on the current RDG source code, the regional specifications cited in Chapter~\ref{chap:stateofart}, and the Scryba Sign developer guide.}
     \label{tab:implemented-flow-types}
 \end{table}
 
@@ -284,7 +273,7 @@ provider.
         note/.style={font=\tiny, align=center}
     ]
         \node[stage] (rve) {Step $N$\\RVE-1.b (SOAP)};
-        \node[stage, right=of rve] (extract)
+        \node[stage, right=18mm of rve] (extract)
             {Output Extraction\\required SAML Assertion};
         \node[context, right=of extract] (context)
             {\textbf{Stateful Occurrence Context}\\JSON dictionary};
@@ -293,19 +282,16 @@ provider.
         \node[stage, right=of resolve] (iti)
             {Step $N+1$\\ITI-18 (XDS Registry)};
 
-        \draw[flow] (rve) -- node[note, above] {HTTP 200 + body} (extract);
-        \draw[flow] (extract) -- node[note, above] {store output} (context);
+        \draw[flow] (rve) -- node[note, above] {HTTP 200 +\\body} (extract);
+        \draw[flow] (extract) -- node[note, above] {store \\ output} (context);
         \draw[flow] (context) -- node[note, right] {lookup} (resolve);
-        \draw[flow] (resolve) -- node[note, above] {resolved SOAP header} (iti);
-
-        \node[draw, dashed, rounded corners=2pt, fit=(rve)(extract)(context)(resolve)(iti),
-              inner sep=3mm, label={[font=\scriptsize]below:Domain-specific orchestration preserves semantic continuity}] {};
+        \draw[flow] (resolve) -- node[note, above] {resolved \\header} (iti);
     \end{tikzpicture}
-    \caption[Semantic transformation and placeholder resolution.]{Semantic Transformation and Placeholder Resolution. The RVE-1.b response becomes an executable dependency rather than a loose ordering convention: the engine extracts the required SAML Assertion into the occurrence-local context, resolves the exact ITI-18 placeholder, and prevents transmission while a required value remains unresolved. Workflow success therefore depends on semantic continuity across the two protocol steps. Source: Author's elaboration based on the current RDG implementations of \texttt{rve\_1b.py}, \texttt{iti\_18.py}, and \texttt{traffic\_exec\_engine.py}.}
+    \caption[Semantic transformation and placeholder resolution.]{Semantic transformation and placeholder resolution across dependent protocol steps. Source: Author's elaboration based on the framework's source code.}
     \label{fig:rdg-semantic-dependency}
 \end{figure}
 
-\paragraph{RVE, ITI, and mediated paths.}
+\paragraph{Regione Veneto, IHE Transactions, and mediated paths}
 \noindent The direct regional paths combine an initial assertion-producing transaction
 with context, patient-registry, or document transactions. The two ITI flows use
 dedicated transaction modules after the initial integration step. The mediated
@@ -322,14 +308,11 @@ implemented transaction label and excludes it from claims of semantic
 equivalence with the direct path described in
 Section~\ref{sec:interoperability-transactions}.
 
-\paragraph{Digital-signature provider flow.}
-\noindent \texttt{FLOW\_SCRYBASIGN\_SIGN} composes two Simple Object Access Protocol
-(SOAP) POST steps in a fixed order:
+\paragraph{Digital-signature provider flow}
+\noindent \texttt{FLOW\_SCRYBASIGN\_SIGN} composes two SOAP/POST steps in a fixed order:
 the provider user-information operation and the single-document signing
 operation. The shared \texttt{scrybasign\_common.py} module centralises endpoint
-selection, mTLS-profile resolution, and construction of the Hypertext Transfer
-Protocol (HTTP)
-\texttt{Authorization} header. In particular, \texttt{resolve\_auth\_header()}
+selection, mTLS-profile resolution, and construction of the HTTP \texttt{Authorization} header. In particular, \texttt{resolve\_auth\_header()}
 reads a scoped username and password, optionally resolves the password from an
 environment variable, encodes the credential pair in Base64, and returns the
 Basic-authentication value consumed by both builders. The generated dataset
@@ -337,47 +320,26 @@ therefore contains the application header but not the certificate material
 managed by \texttt{MtlsContextFactory}.
 
 \noindent The signing envelope carries its document in the Base64 \texttt{docBin} field.
-The current builder embeds a fixed test artefact rather than encoding a generated
-clinical document, and it declares no response dependency between
-\texttt{GetUserInfo} and \texttt{SignOneDoc}. The credential block also exposes
-an optional one-time password (OTP) element, but the builder leaves it empty:
-\texttt{resolve\_auth\_header()} implements transport-level Basic
-authentication and does not generate or verify an OTP. This distinction keeps
-strong signing authentication inside the provider contract instead of
-misrepresenting it as an implemented framework capability.
+The current builder embeds a fixed test artefact and \texttt{resolve\_auth\_header()} implements transport-level Basic authentication.
 
 \noindent The provider documentation distinguishes synchronous and asynchronous signing
-surfaces.\footcite{scryba-sign-developer-guide-v16} The current flow map instantiates only the synchronous
-\texttt{SignOneDoc} path. The workload model can represent the two interaction
+surfaces.\footcite{scryba-sign-developer-guide-v16} The current flow map instantiates only the synchronous path.
+The workload model could represent the two interaction
 styles as distinct flow types, step sequences, and completion criteria, but an
 asynchronous signing experiment requires explicit enqueue, status, or
-notification transaction modules that the inspected source does not contain.
-Mock envelopes exercise the implemented two-step synchronous shape without
-contacting the provider, while the sanitised live corpus establishes
-client-boundary execution coverage without proving provider-side response
-semantics or authorisation. Section~\ref{sec:rdg-results-discussion} retains
-that evidential boundary.
+notification modules that the source does not implement, Section~\ref{sec:rdg-results-discussion} retains that evidential boundary.
 
-\paragraph{Step dependencies and the mock/live boundary.}
-\noindent A flow is more than a list of independent Hypertext Transfer Protocol (HTTP)
-requests. A step may declare that a field comes from an output of an earlier
-step. In live mode, downstream headers, bodies, and Uniform Resource Locators
-(URLs) can contain scoped
+\paragraph{Step dependencies and the mock/live boundary}
+\noindent A flow is more than a list of independent HTTP requests, a step may also declare that a field comes from an output of an earlier
+step. In live mode, downstream headers, bodies, and URLs can contain scoped
 placeholders; the execution engine resolves them from the occurrence-local
 context only after processing the preceding response. Required outputs are
-validated before the chain continues. An unresolved placeholder or missing
-required output is logged as a failure instead of sending an incomplete
-dependent request.
-
-\noindent In mock mode, transaction builders attach synthetic responses and the
+validated before the chain continues, an unresolved placeholder or missing required output is logged as a failure. In mock mode, transaction builders attach synthetic responses and the
 orchestrator propagates their declared outputs while constructing the chain.
 Execution then consumes those responses without opening an HTTP session. This
 mode tests composition, scheduling, failure handling, logging, collection, and
 metric production under controlled conditions. It cannot measure network,
-gateway, provider, or production-system behaviour. Dry-run is a separate
-execution branch that records a successful empty interaction without sending
-requests and is distinct from both mock-contract validation and live-service
-evidence.
+gateway, provider, or production-system behaviour.
 
 \section{Traffic Execution and Evidence Pipeline}
 \label{sec:rdg-execution-observability}
@@ -385,7 +347,7 @@ evidence.
 \subsection{Temporal Scheduling and Stateful Execution}
 \label{subsec:rdg-scheduling-execution}
 
-\paragraph{Temporal model and occurrence generation.}
+\paragraph{Temporal model and occurrence generation}
 \noindent The timeline generator separates flow content from arrival time. It supports a
 constant rate, a configurable step profile, and a synthetic time-banded
 clinical profile. For a variable intensity $\lambda(t)$, arrivals are produced
@@ -393,104 +355,192 @@ through Lewis--Shedler thinning: candidates are sampled from an upper-bound
 homogeneous process and retained according to
 $\lambda(t)/\lambda_{\max}$. Optional bursts add a configurable number of
 closely spaced occurrences around selected baseline arrivals. Every event
-records whether it is a base or burst arrival and, where applicable, its burst
+records whether it is a base or burst arrival and, when applicable, its burst
 identifier.
 
 \noindent The generator samples from the already constructed source dataset according to
 its empirical flow-type distribution. It therefore changes the temporal
 population without modifying transaction definitions. A seed makes workload
-and timeline sampling repeatable for a fixed code and configuration, but it
+and timeline sampling repeatable for a fixed configuration, but it
 cannot make the latency of live remote services deterministic. The nominal
 duration and rate also do not fix the final number of arrivals, which remains a
-realisation of the stochastic process.
+realisation of the stochastic process. The generated schedule is therefore
+interpreted only as one reproducible sample from a declared stochastic distribution.
 
-\paragraph{Scheduling and concurrency semantics.}
+\paragraph{Scheduling and concurrency semantics}
 \noindent The execution engine follows scheduled timestamps using an asynchronous task
 per flow occurrence. A semaphore limits concurrent flows and encloses the whole
-flow rather than a single request. Inside that boundary, steps are executed in
+flow rather than a single request. Within that boundary, steps are executed in
 order and share only their occurrence-local output context; separate flows can
 overlap. The engine stops a chain at the first non-success status or processing
-error, records the failing step, and leaves the remaining downstream steps
+error of a flow, records the failing step, and leaves the remaining downstream steps
 unexecuted.
 
 \noindent Live execution opens an HTTP client session, resolves dependencies, optionally
-uses the configured proxy and mTLS context, sends the request, extracts
+uses the configured mTLS context, sends the request, extracts
 declared outputs, and validates required fields. Mock execution reads the
 synthetic response attached to each step. A deterministic fault injector can
 apply declared error, timeout, or latency-spike rules by transaction, flow
 type, or step. These injected outcomes evaluate framework behaviour under
 controlled faults; they are not observations of provider reliability.
 
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.75\textwidth}{!}{%
+    \begin{tikzpicture}[
+        >=Stealth,
+        every node/.style={font=\sffamily},
+        engine/.style={draw=blue!65!black, rounded corners=2pt,
+            fill=blue!7, align=center, minimum height=8mm,
+            text width=4.3cm, font=\sffamily\scriptsize},
+        gate/.style={draw=blue!70!black, rounded corners=2pt,
+            fill=blue!14, align=center, minimum height=8mm,
+            text width=4.8cm, font=\sffamily\scriptsize\bfseries},
+        flowstep/.style={draw=black!55, rounded corners=2pt,
+            fill=white, align=center, minimum height=11mm,
+            text width=2.65cm, font=\sffamily\scriptsize},
+        failedstep/.style={flowstep, draw=red!65!black, fill=red!7},
+        skippedstep/.style={flowstep, draw=black!45, dashed, fill=black!5,
+            text=black!60},
+        context/.style={draw=blue!55!black, dashed, rounded corners=3pt,
+            fill=blue!2, inner xsep=5mm, inner ysep=3mm},
+        mode/.style={draw=black!50, rounded corners=2pt, fill=black!3,
+            align=center, minimum height=9mm, text width=3.45cm,
+            font=\sffamily\tiny},
+        fault/.style={draw=red!65!black, rounded corners=2pt, fill=red!7,
+            align=center, minimum height=9mm, text width=2.7cm,
+            font=\sffamily\scriptsize\bfseries},
+        flow/.style={->, semithick, draw=blue!70!black},
+        failflow/.style={->, semithick, draw=red!70!black},
+        annotation/.style={font=\sffamily\tiny, align=center, fill=white,
+            inner sep=1pt}
+    ]
+        \node[engine] (scheduler) at (0,-0.05)
+            {\textbf{Timeline Scheduler}\\scheduled events $\rightarrow$ asynchronous occurrence tasks};
+        \node[gate] (semaphore) at (0,-1.15)
+            {Semaphore (Flow-level Boundary)};
+
+        \node[flowstep] (a1) at (-4.0,-2.75)
+            {\textbf{Step 1}\\response output\\extract / validate};
+        \node[flowstep] (a2) at (0,-2.75)
+            {\textbf{Step 2}\\response output\\extract / validate};
+        \node[flowstep] (a3) at (4.0,-2.75)
+            {\textbf{Step 3}\\response output\\extract / validate};
+
+        \node[flowstep] (b1) at (-4.0,-4.75)
+            {\textbf{Step 1}\\response output\\extract / validate};
+        \node[failedstep] (b2) at (0,-4.75)
+            {\textbf{Step 2}\\injected failure\\stop condition};
+        \node[skippedstep] (b3) at (4.0,-4.75)
+            {\textbf{Step 3}\\Unexecuted};
+
+        \begin{pgfonlayer}{background}
+            \node[context, fit=(a1)(a2)(a3)] (contexta) {};
+            \node[context, fit=(b1)(b2)(b3)] (contextb) {};
+        \end{pgfonlayer}
+        \node[anchor=north west, font=\sffamily\tiny\bfseries,
+            text=blue!65!black, fill=blue!2, inner sep=1pt]
+            at ([xshift=1mm,yshift=-0.5mm]contexta.north west)
+            {Flow Occurrence A --- Stateful Occurrence Context A};
+        \node[anchor=north west, font=\sffamily\tiny\bfseries,
+            text=blue!65!black, fill=blue!2, inner sep=1pt]
+            at ([xshift=1mm,yshift=-0.5mm]contextb.north west)
+            {Flow Occurrence B --- Stateful Occurrence Context B};
+
+        \draw[flow] (scheduler) -- (semaphore);
+        \coordinate (flowbus) at (-6.35,-1.15);
+        \coordinate (flowbusa) at (-6.35,-2.75);
+        \coordinate (flowbusb) at (-6.35,-4.75);
+        \draw[semithick, draw=blue!70!black]
+            (semaphore.west) -- (flowbus) -- (flowbusb);
+        \draw[flow] (flowbusa) -- (contexta.west);
+        \draw[flow] (flowbusb) -- (contextb.west);
+        \draw[flow] (a1) -- node[annotation, above] {context update} (a2);
+        \draw[flow] (a2) -- node[annotation, above] {context update} (a3);
+        \draw[flow] (b1) -- node[annotation, above] {context update} (b2);
+        \draw[failflow] (b2) -- node[annotation, above, text=red!70!black,
+            font=\sffamily\tiny\bfseries] {Fail-fast Stop} (b3);
+
+        \node[mode] (live) at (-4.0,-6.55)
+            {\textbf{Live execution (run-wide)}\\real network request\\extract + validate\\required outputs};
+        \node[fault] (injector) at (0,-6.55) {Fault Injector};
+        \node[mode] (mock) at (4.0,-6.55)
+            {\textbf{Mock execution (run-wide)}\\synthetic response\\consume declared outputs};
+        \draw[failflow] (injector) -- node[annotation, right,
+            text=red!70!black] {targets Step 2} (b2);
+    \end{tikzpicture}%
+    }
+    \caption[Asynchronous flow execution and concurrency control]{Asynchronous flow-execution model Source: Author's elaboration based on the framework implementation.}
+    \label{fig:exec_concurrency}
+\end{figure}
+
 \subsection{Configuration Interface and Evidence Processing}
 \label{subsec:rdg-configuration-evidence}
 
 \begin{figure}[H]
     \centering
+    \resizebox{0.96\textwidth}{!}{%
     \begin{tikzpicture}[
+        node distance=10mm and 13mm,
         >=Latex,
         component/.style={draw, rounded corners=2pt, align=center, minimum height=11mm,
-                          text width=2.75cm, font=\scriptsize, fill=black!3},
-        bridge/.style={component, fill=black!12, very thick, text width=3.8cm},
-        artefact/.style={component, dashed, text width=3.0cm},
+                          text width=3.15cm, font=\scriptsize, fill=black!3},
+        merge/.style={component, fill=black!12, very thick, text width=5.0cm},
+        artefact/.style={component, fill=white, text width=3.35cm},
         flow/.style={->, semithick},
         dataflow/.style={<->, semithick},
         note/.style={font=\tiny, align=center}
     ]
-        \node[component, text width=3.8cm] (operator) at (0,0)
-            {Operator Input\\CustomTkinter GUI};
-        \node[component] (configtab) at (-2.3,-1.65)
-            {\texttt{ConfigTab}\\edit and validate parameters};
-        \node[component] (runtab) at (2.3,-1.65)
-            {\texttt{RunTab}\\observe prototype stages};
-        \node[bridge] (bridge) at (0,-3.35)
-            {\texttt{ui\_config\_bridge.py}\\\texttt{load\_config()} \quad \texttt{save\_config()}};
-        \node[artefact] (uijson) at (0,-5.35)
-            {\texttt{config/}\\\texttt{experiment.json}\\persisted UI experiment state};
+        \node[artefact] (cliconfig)
+            {Direct Command-Line Input\\\texttt{-{}-config path.json}};
+        \node[component, right=of cliconfig] (ui)
+            {Optional Desktop\\User Interface (UI)\\\texttt{ConfigTab} and \texttt{RunTab}};
+        \node[artefact, right=of ui] (uijson)
+            {Persisted UI Overrides\\\texttt{config/experiment.json}};
 
-        \node[component] (cli) at (5.7,-2.5)
-            {Core CLI Pipeline\\\texttt{main.py}};
-        \node[artefact] (cliconfig) at (5.7,-4.35)
-            {Runtime \texttt{config.json}\\resolved run configuration};
+        \node[merge, below=13mm of ui] (resolver)
+            {Configuration Resolution and Merge\\base file + defaults + UI overrides};
+        \node[artefact, below=of resolver] (resolved)
+            {Run-specific Snapshot\\\texttt{runs/run\_id/}\\\texttt{config.resolved.json}};
+        \node[component, below=of resolved] (pipeline)
+            {Core Pipeline\\\texttt{main.py}\\execute $\rightarrow$ collect\\$\rightarrow$ metrics};
+        \node[component, right=of pipeline] (results)
+            {Dashboard and Artefacts\\metrics, reports, and graphs};
 
-        \draw[flow] (operator) -- (configtab);
-        \draw[flow] (operator) -- (runtab);
-        \draw[dataflow] (configtab) -- (bridge);
-        \draw[flow] (bridge) -- (runtab);
-        \draw[dataflow] (bridge) -- (uijson);
-        \draw[flow] (cliconfig) -- (cli);
-
-        \draw[dashed, thick] (4.0,0.65) --
-            node[note, fill=white, rotate=90] {no UI import dependency}
-            (4.0,-6.0);
+        \draw[flow] (cliconfig.south) |- node[note, near start, left]
+            {base configuration\\or direct execution} (resolver.west);
+        \draw[flow] (ui) -- node[note, right] {overrides} (resolver);
+        \draw[dataflow] (ui) -- node[note, above] {save\\and reload} (uijson);
+        \draw[flow] (resolver) -- node[note, right] {resolve and persist} (resolved);
+        \draw[flow] (resolved) -- node[note, right] {effective configuration} (pipeline);
+        \draw[flow] (pipeline) -- node[note, above] {results} (results);
     \end{tikzpicture}
-    \caption[Experiment persistence and user-interface bridge architecture.]{Experiment Persistence and UI Bridge Architecture. The desktop interface reads and writes its experiment state only through \texttt{ui\_config\_bridge.py}: \texttt{ConfigTab} changes persisted parameters, while \texttt{RunTab} reloads them to drive its stage-level controls and status view. The core command-line pipeline remains outside this dependency boundary and resolves its own runtime configuration, so interface persistence does not couple the executable engine to CustomTkinter. Source: Author's elaboration based on execution of the current RDG interface and inspection of \texttt{ui\_config\_bridge.py}, \texttt{config\_tab.py}, \texttt{run\_tab.py}, and \texttt{main.py}.}
+    }
+    \caption[Experiment persistence and user-interface bridge architecture.]{Experiment persistence and user-interface bridge architecture; both invocation paths produce a run-specific resolved snapshot before the core pipeline executes. Source: Author's design based on the framework's source code.}
     \label{fig:rdg-ui-persistence-bridge}
 \end{figure}
 
-\paragraph{User-interface configuration bridge.}
-\noindent The optional desktop interface separates experiment persistence from visual
-state through \texttt{ui\_config\_bridge.py}. Its \texttt{load\_config()}
-function merges the JSON file with explicit defaults and tolerates a missing or
-invalid file; \texttt{save\_config()} serialises the values selected by the
-operator. The dependency remains one-way: interface modules import the bridge,
-whereas the command-line pipeline does not depend on the user-interface package.
-The bridge consequently provides a stable persistence boundary rather than a
-second configuration model.
+\paragraph{User-interface configuration and shared execution}
+\noindent The integration model treats the desktop user interface (UI) as an optional
+configuration front end to the same core pipeline used by direct execution.
+\texttt{ConfigTab} collects the experiment name, duration, arrival intensity,
+synthetic-patient count, active transactions, mediated-flow type, and target
+environment. The configuration bridge persists these choices as reusable
+overrides, allowing \texttt{RunTab} to reload them when the operator starts a
+new execution. The resolver combines the selected base JSON configuration, the framework defaults, and any explicit UI
+overrides into one effective configuration. It then stores the run-specific
+state in \texttt{config.resolved.json} before the pipeline consumes it, so
+repeatability depends on the resolved snapshot rather than on mutable state.
 
-\noindent The three tabs expose complementary operational views. \texttt{ConfigTab}
-collects experiment name, duration, arrival intensity, synthetic-patient count,
-active transactions, mediated-flow type, and target environment, then persists
-them through the bridge. \texttt{RunTab} presents stage-level controls,
-thread-safe progress, and a live status log. In the inspected revision its
-workers simulate the four stage transitions and write demonstration outputs;
-they do not invoke the verified \texttt{main.py} pipeline. \texttt{DashboardTab}
-reloads metric and report files after a run and presents throughput, P95 latency,
-error rate, request count, per-flow distributions, and the Markdown report. The
-interface is therefore a functional prototype for configuration and immediate
-inspection, while reproducible execution remains attached to the command-line
-pipeline and its resolved configuration.
+\noindent The graphical path remains optional. The operator can bypass the UI and invoke
+\texttt{main.py} through the command-line interface (CLI), supplying the desired
+JSON file with \texttt{-{}-config}. In this mode the selected file and the
+framework defaults feed the same configuration-resolution path without UI
+overrides. Both access modes therefore terminate in the same execution stages
+and artefact layout, while \texttt{DashboardTab} provides the graphical view of
+the resulting metrics, reports, and graphs when the desktop interface is used.
 
-\paragraph{Structured execution events.}
+\paragraph{Structured execution events}
 \noindent The execution logger emits three JSONL event types. A
 \texttt{request\_sent} event records experiment identifiers, flow occurrence,
 request and step identifiers, transaction, payload size, scheduled and actual
@@ -503,33 +553,27 @@ step, declared step count, and burst provenance.
 \noindent This schema implements the distinction between an interaction and an
 application flow established in Chapter~\ref{chap:stateofart}. It also
 records enough provenance to stratify observations by scenario, flow,
-transaction, arrival type, or execution. Payload contents, assertions, tokens,
-credentials, and certificate data are not required by the analytical schema
-and must not be exported as thesis evidence.
+transaction, arrival type, or execution.
 
-\paragraph{Normalisation and surrogate enrichment.}
+\paragraph{Normalisation and surrogate enrichment}
 \noindent The collector parses the framework JSONL stream, pairs sent and received events
 by occurrence, reconstructs completed flows, and aggregates a bucketed time
 series. Its output contains four top-level parts: metadata, requests, flows, and
 timeseries. Request records retain client latency, outcome, concurrency,
 scheduling, size, and provenance. Flow records retain completion time, executed
-steps, skipped downstream steps, and outcome. Metadata records the source files
-and the observed time range.
+steps, skipped downstream steps, and outcome.
 
 \noindent A second parser can ingest a compatible middleware JSONL stream. Matching
 records may add gateway and upstream latencies, retry count, circuit-breaker
 state, and infrastructure observations. When no middleware record is
-available, these fields remain null. The present archived runs report zero
-middleware events, so they support the client-boundary layer of Advanced
-Black-box with Surrogate Observability. No gateway/upstream decomposition or
-infrastructure correlation derives from those records.
+available, these fields remain null.
 
-\paragraph{Metric and reporting engine.}
+\paragraph{Metric and reporting engine}
 \noindent \texttt{MetricsCalculator} transforms the normalised request, flow, and
 time-bucket populations into eighteen measures grouped into performance,
 reliability, resilience, scalability, and observability. Performance separates
 Flow Completion Time (FCT) from step latency and reports request and flow
-throughput, burst strata, and Path-level Overhead ($\Delta L$) for compatible
+throughput, burst and non-burst observations, and Path-level Overhead ($\Delta L$) for compatible
 direct and mediated populations. Reliability retains error, timeout, retry, and
 flow-success rates; resilience derives recovery episodes, propagation, and
 bucket-level availability; scalability relates available resource and
@@ -539,208 +583,216 @@ scheduling fidelity.
 \noindent \texttt{StatisticsHelper} sorts each eligible population and calculates its
 size, mean, median, standard deviation, range, and P50, P75, P90, P95, and P99
 through linear interpolation between adjacent ranks. Median, P95, and P99 retain
-the centre and tail of the empirical distribution, in line with the
+the centre and tail of the empirical stochastic distribution, in line with the
 latency-analysis rationale established by Iorio et al. and Akram et
-al.\footcite{iorio-when-latency-matters,akram-numerical-latency} The
-\texttt{WarningDetector} then evaluates the calculated structure against
+al. The \texttt{WarningDetector} then evaluates the calculated structure against
 configurable thresholds for tail latency, error rate, availability, resource
 saturation, and scheduling drift; it also flags a P99/P50 ratio above the
-configured skew rule. JSON and Markdown reports, comma-separated-value tables,
+configured skew rule. JSON and Markdown reports, CSV tables,
 and optional graphs preserve both the statistic and its population. These
 warnings automate inspection but remain software signals, not clinical,
 contractual, or production acceptance criteria.
 
+\begin{figure}[H]
+    \centering
+    \small
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabular}{@{}c c c c c c c c c@{}}
+        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Configuration\par\tiny resolved parameters}}
+        & $\rightarrow$ &
+        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Workload\\Generation\par\tiny FHIR R4 flows}}
+        & $\rightarrow$ &
+        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Traffic\\Execution\par\tiny asynchronous flows}}
+        & $\rightarrow$ &
+        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Log\\Collection\par\tiny structured events}}
+        & $\rightarrow$ &
+        \fbox{\parbox[c][1.9cm][c]{1.9cm}{\centering\scriptsize Metric\\Analysis\par\tiny P50, P95, P99}}
+    \end{tabular}
+    \caption{End-to-end pipeline: from resolved configuration to quantile-based metric analysis. Source: Author's elaboration based on the framework's source code.}
+    \label{fig:rdg-end-to-end-pipeline}
+\end{figure}
+
 \section{Evaluation Protocol and Experimental Design}
 \label{sec:rdg-evaluation-methodology}
 
-\subsection{Evaluation Questions and Construct Validity}
+\subsection{Evaluation Questions and Validity Construction}
 \label{subsec:rdg-questions-validity}
 
-\paragraph{Evaluation questions.}
-\noindent The implemented architecture and the evidence required by the problem
-statement lead to four evaluation questions:
+\paragraph{Evaluation questions}
+\noindent The implemented architecture and the live evidence lead to four
+evaluation questions:
 \begin{enumerate}
     \item Can RDG preserve ordered transaction dependencies and isolate the
-    state of concurrent flow occurrences in both mock and live modes?
+    state of concurrent flow occurrences during authorised live execution?
     \item Can a declared flow mix and temporal model be reproduced with
     traceable identifiers, seeds, configuration, and artefacts?
-    \item Can execution events be transformed into consistent request-, flow-,
+    \item Can execution events be transformed into consistent request, flow
     and time-window populations without filling unavailable middleware fields?
-    \item Within an approved scenario, how do latency distributions,
-    throughput, reliability, queueing, and flow completion change with flow
-    composition, offered load, bursts, or injected faults?
+    \item How do latency distributions, reliability, and flow completion vary
+    with flow composition, offered load, bursts, and mediated execution?
 \end{enumerate}
-\noindent The first three questions concern functional and methodological validity. The
-fourth concerns experimental behaviour and must be answered separately for
-each execution mode and observed system boundary.
+\noindent The campaign answers these questions within the authorised client-side
+observation boundary. Mock mode supports internal code debugging only and does
+not contribute observations to the result population discussed in this
+chapter.
 
-\paragraph{Critical evaluation of the architecture.}
-\noindent The pipeline provides strong separation between domain contracts, temporal
-load, execution, and analysis. It also makes intermediate artefacts inspectable
-and allows the same collector and metric engine to process mock and live logs.
-The main architectural trade-off is that a generic step contract can preserve
-ordering and metadata without establishing semantic equivalence among flows.
-A two-step direct patient query and a five-step mediated path can both be
-executed, but their difference cannot be attributed solely to middleware.
+\paragraph{Validity construction}
+\noindent The pipeline separates domain contracts, temporal load, execution, and
+analysis while retaining every intermediate artefact. Flow Completion Time
+(FCT) measures the elapsed time between the first request and terminal event of
+one flow occurrence. Its distributions remain stratified by flow type and
+outcome because a rapid failure does not represent successful service
+performance. Path-level Overhead ($\Delta L$) is admissible as a performance
+measure only when direct and mediated populations contain comparable,
+successful flows.
 
-\noindent The execution semaphore applies to complete flows. This protects
+\noindent The execution semaphore applies to complete flows, this protects
 within-occurrence dependencies and makes the number of active flows explicit,
 but it also means that long or blocked flows retain a concurrency slot. This is
-part of the evaluated execution model and does not represent an
-unqualified model of provider-side concurrency. Similarly, the client-side
-clock measures scheduling and request completion at the generator; internal
-service queues remain outside that boundary unless a verified second source is
-available.
+part of the evaluated execution model and does not provide an unqualified model
+of provider-side concurrency. The client-side clock measures scheduling and
+request completion at the generator; internal service queues remain outside
+this boundary.
 
-\paragraph{Advanced Black-box with Surrogate Observability.}
+\paragraph{Advanced Black-box with Surrogate Observability}
 \noindent Framework evidence always records scheduled and actual dispatch, client-side
 step latency, response outcome, flow completion, and client-observed
-concurrency. Optional surrogate evidence records middleware intervals, retries,
-circuit-breaker state, or infrastructure measurements. A join is valid only
-when identifiers, occurrence semantics, clocks, and measurement boundaries are
-compatible; join coverage is a data-quality measure rather than an assumption.
+concurrency. Surrogate evidence may add middleware timing, retry state,
+circuit-breaker state, or infrastructure measures. A join remains valid
+only when identifiers, occurrence semantics, clocks, and measurement boundaries
+are compatible; join coverage is a data-quality measure rather than an
+assumption.
+
+\noindent Four \emph{surrogate observability invariants} govern every differential:
+occurrence identity remains stable across the artefact chain; compared timers
+use the same client-boundary definition; transport, application, and terminal
+flow outcomes remain distinct; and unavailable internal measurements remain
+null. Semantic equivalence, payload class, step count, connection policy, and
+load define additional matching conditions. A violation changes the estimand
+and prevents the resulting difference from being interpreted as Path-level
+Overhead ($\Delta L$).
 
 \noindent Unsynchronised series are not aligned visually or subtracted across different
 clock and boundary semantics. A statistical association supports a diagnostic
 hypothesis, whereas causal attribution requires controlled variation and
-compatible measurements. The available run corpus contains framework evidence
-only, so Advanced Black-box with Surrogate Observability preserves the internal
-path as an explicit attribution boundary.
+compatible measurements.
 
 \subsection{Variables and Reproducibility Controls}
 \label{subsec:rdg-variables-reproducibility}
 
-\paragraph{Variables and controlled factors.}
+\paragraph{Variables and controlled factors}
 \noindent The independent variables exposed by the framework include execution mode,
 flow mix, source-dataset size, temporal profile and intensity, burst parameters,
 concurrency limit, timeout, and declared fault-injection rules. Dependent
 variables include step and flow latency distributions, request and flow
 throughput, error and timeout rates, flow-success rate, scheduling drift,
 queue delay, active flows and steps, recovery episodes, and evidence
-completeness.
+completeness. Scenario configuration controls duration, concurrency,
+temporal profile, and flow mix. Paired scenario contrasts use the same seed,
+while payload and step-count differences remain explicit in the interpretation.
 
-\noindent At minimum, a comparison must hold constant the code revision, transaction
-modules, execution mode, credentials and transport policy where applicable,
-flow mix unless it is the factor under study, seed policy, duration, concurrency
-limit, metric implementation, and observation boundary. Payload-size and
-step-count distributions must be reported when they differ across compared
-flows. Live tests additionally require a documented hardware, operating-system,
-network, remote-environment, and time-of-execution context.
+\paragraph{Reproducibility protocol and campaign controls}
+\noindent The final campaign comprises 74 accepted live runs across ten scenarios.
+Every accepted run retains the resolved configuration, generated dataset,
+timeline, execution log, normalised metrics, tabular exports, and report.
+Scenario, run, execution, flow-occurrence, flow, request, and step identifiers
+remain traceable across this chain. The campaign applies deterministic scenario
+ordering within each replicate and the seed rule
+\texttt{base\_seed + replicate - 1}; equal replicate numbers therefore support
+paired scenario contrasts without merging independent flow occurrences.
 
-\paragraph{Reproducibility protocol and campaign controls.}
-\noindent An analysable run must retain the code revision, resolved configuration,
-dataset, timeline, execution log, normalised dataset, metric report, and any
-excluded or failed-run record. Scenario, run, and execution identifiers must
-agree across these artefacts. Seeds must be recorded separately for workload,
-timeline, and fault injection. Results must identify the execution mode and
-must never combine mock and live samples in one distribution.
+\paragraph{Statistical treatment}
+\noindent The analysis reports request and flow populations, exact outcome rates, and
+successful FCT percentiles. Medians describe central behaviour, while P95
+and P99 expose tail amplification. Pooled occurrence-level summaries quantify
+the complete evidence population; run-level summaries and equal-seed paired
+differences preserve the run as the experimental unit. Failed and successful
+flows remain separate, and a percentile is undefined when a scenario contains
+no successful flow. In this chapter, \emph{quantile-based confidence} denotes
+the degree to which replicated, outcome-homogeneous populations support a
+consistent central or tail interpretation; it does not denote a parametric
+confidence interval. Confidence therefore decreases when repetitions are few,
+scenario populations are unbalanced, or the compared paths terminate with
+different outcomes.
 
-\noindent The current archive satisfies much of the artefact chain for individual runs,
-but it does not constitute the final approved experiment campaign. The
-sanitised batch specifies 30 repetitions for each of ten scenarios, whereas the
-available complete population ranges from five to fifteen runs per scenario
-and totals 74 runs. Provenance identifies source commit
-\texttt{f08fb53fd4ad11ef803642c0a066e9a6d9e2b327} as the RDG checkout observed
-at extraction time, rather than as a revision embedded in the batch manifest.
-
-\noindent Construct validity remains independent of whether the incomplete campaign
-supports a final performance comparison. The framework already exposes the
-controls required to define workload, scheduling, concurrency, fault policy,
-and evidence provenance. Performance inference additionally depends on an
-approved warm-up and cool-down policy, minimum populations, hardware and
-operating-system inventory, network-path and clock-synchronisation evidence,
-remote-environment version, run-exclusion rules, and an immutable revision in
-the campaign manifest. Since the available archive does not provide this full
-set, the chapter treats those items as limits of the observed campaign rather
-than gaps in the implemented profiling capability.
-
-\section{Executed Scenarios, Performance Indicators, and Quality Controls}
+\section{Scenarios, Indicators, and Quality Controls}
 \label{sec:rdg-scenarios-kpis-quality}
 
 \subsection{Scenario Evidence and Operational Populations}
 \label{subsec:rdg-scenarios-populations}
 
-\paragraph{Declared scenarios versus executed evidence.}
-\noindent The repository contains configuration templates for constant baselines,
-step-load ramps, bursts, Path-level Overhead ($\Delta L$), fault injection,
-flow-type comparisons, a small live smoke test, and an extreme stress profile.
-Their presence describes intended experiment capabilities. Only a scenario
-with a run directory and a coherent artefact chain is treated here as executed.
-The resolved configuration in each run directory determines its mode and
-parameters.
-
-\noindent Table~\ref{tab:archived-rdg-runs} inventories the six available run
-directories. Five are explicitly mock executions. The sixth is recorded as a
-live, three-flow smoke run, but its size and coverage make it suitable only as
-limited functional evidence.
+\paragraph{Declared scenarios}
+\noindent The final inventory covers constant baselines, bursts, step-load ramps,
+extreme stress, fault injection, direct and mediated flow comparisons, and a
+compact live smoke profile. Every accepted resolved configuration declares
+live execution. The chapter therefore treats the inventory as \emph{Live
+Production-Like Scenarios}. The full flow mix includes context operations,
+direct patient query and creation, ITI-18 and ITI-43 transactions, the mediated patient path, and the Scryba Sign
+\texttt{GetUserInfo}/\texttt{SignOneDoc} sequence.
 
 \begin{table}[H]
     \centering
+    \caption{Experimental-campaign inventory. Source: Author's elaboration based on the final experimental campaign.}
     \scriptsize
-    \begin{tabular}{|p{3.0cm}|p{1.1cm}|p{1.0cm}|p{1.3cm}|p{4.7cm}|}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|p{3.4cm}|p{1.0cm}|p{3.4cm}|p{5.1cm}|}
         \hline
         \rowcolor{veryPeri!18}
-        \textbf{Archived scenario} & \textbf{Mode} & \textbf{Flows} & \textbf{Requests} & \textbf{Observed flow types} \\
+        \textbf{Scenario} & \textbf{Live runs} & \textbf{Temporal profile} & \textbf{Principal flow population} \\
         \hline
         \rowcolor{tableGray}
-        \texttt{baseline\_mock} & mock & 12 & 26 & context, patient query, patient create \\
+        \texttt{baseline} & 5 & daily clinical & full seven-flow mix \\
         \hline
-        \texttt{burst\_mock} & mock & 136 & 321 & context, patient query, patient create \\
-        \hline
-        \rowcolor{tableGray}
-        \texttt{direct\_vs\_}\allowbreak\texttt{middleware\_mock} & mock & 76 & 287 & direct patient query, mediated patient path \\
-        \hline
-        \texttt{error\_injection\_mock} & mock & 65 & 151 & context, patient query, patient create \\
+        \texttt{baseline\_constant} & 5 & daily clinical & full seven-flow mix \\
         \hline
         \rowcolor{tableGray}
-        \texttt{flow\_type\_}\allowbreak\texttt{comparison\_}\allowbreak\texttt{middleware} & mock & 45 & 225 & mediated patient path only \\
+        \texttt{burst} & 5 & daily clinical with bursts & full seven-flow mix \\
         \hline
-        \texttt{live\_smoke\_small} & live & 3 & 6 & direct patient query only \\
+        \texttt{direct\_vs\_middleware} & 14 & daily clinical & direct patient and mediated paths \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{error\_injection} & 6 & daily clinical & full mix with declared faults \\
+        \hline
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_direct}} & 6 & daily clinical & direct, ITI, and Scryba Sign flows \\
+        \hline
+        \rowcolor{tableGray}
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & daily clinical & mediated patient path \\
+        \hline
+        \texttt{live\_smoke\_small} & 8 & daily clinical & compact full-flow mix \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{load\_ramp} & 5 & step & full seven-flow mix \\
+        \hline
+        \texttt{stress\_extreme} & 5 & step with bursts & full seven-flow mix \\
         \hline
     \end{tabular}
-    \caption{The migration archive links each executed scenario to a resolved configuration and normalised dataset, thereby supporting functional traceability without implying a balanced final campaign. Source: Author's elaboration based on the archived RDG run directories and their resolved configurations.}
-    \label{tab:archived-rdg-runs}
+    \label{tab:final-rdg-campaign}
 \end{table}
 
-\noindent The six-run migration archive does not cover ITI-18, ITI-43, the
-\texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} flow, a step ramp, or the extreme-stress
-profile. The subsequent sanitised live corpus extends transaction coverage and
-contains five complete \texttt{load\_ramp} runs, five
-\texttt{stress\_extreme} runs, six
-\texttt{flow\_type\_comparison\_direct} runs, fifteen
-\texttt{flow\_type\_comparison\_middleware} runs, and live outcomes for ITI-18,
-ITI-43, and both Scryba Sign transactions. The two inventories have different
-roles: Table~\ref{tab:archived-rdg-runs} documents the minimal artefact chain
-used for functional migration, whereas the sanitised corpus documents broader
-live execution.
+\noindent Table~\ref{tab:final-rdg-campaign} defines the final accepted evidence set.
+The distribution of runs reflects scenario-specific validation depth: the
+comparison families receive more repetitions, while the high-volume load
+profiles obtain large within-run populations. Scenario inference therefore uses
+its own observed population rather than weighting all scenarios as if they
+contain equal run counts.
 
-\noindent The campaign manifest defines 300 runs across ten scenarios; the available
-corpus contains 145 started runs and 74 complete runs. This imbalance preserves
-observed outcomes but prevents the incomplete sample from acting as a final,
-balanced comparison. It is a limitation of the experimental campaign, not of
-the framework's ability to generate, execute, and normalise the declared
-scenario families.
-
-\paragraph{Operational performance populations.}
-\noindent Flow completion time is calculated over completed flow records and must be
-stratified by flow type, outcome, and mode. Step latency is calculated over
-paired request/response occurrences and is stratified at least by transaction
-and flow type. Request throughput counts completed requests per observed second;
+\paragraph{Operational performance populations}
+\noindent Flow completion time is calculated over completed flow records and remains
+stratified by flow type and outcome. Step latency is calculated over paired
+request/response occurrences and remains stratified by transaction and flow
+type. Request throughput counts completed requests per observed second;
 flow throughput counts completed flow occurrences over the same run interval.
 The two are reported together because flow types have different step counts.
 
 \noindent Reliability uses request errors, timeouts, and completed-flow outcomes. Failure
 at a step is associated with skipped downstream steps rather than fabricated
 requests. Scheduling fidelity uses the difference between planned and actual
-client dispatch together with queue delay and active-flow/step counts.
-Burst analysis uses the explicit base/burst labels. Middleware breakdown,
-resource saturation, and retry or circuit-breaker measures are valid only for
-records actually enriched by a second source.
+client dispatch together with queue delay and active-flow/step counts, finally burst analysis uses the explicit base/burst labels. Middleware breakdown, resource saturation, and retry or circuit-breaker measures are valid only for records actually enriched by a second source.
 
 \subsection{Quality Controls and Acceptance Boundary}
 \label{subsec:rdg-quality-acceptance}
 
-\paragraph{Data-quality controls.}
+\paragraph{Data-quality controls}
 \noindent Before interpretation, each run is checked for:
 \begin{itemize}
     \item an available resolved configuration and explicit execution mode;
@@ -749,206 +801,395 @@ records actually enriched by a second source.
     \item paired sent/received events and an explicit flow-completion event;
     \item recorded population sizes, time range, units, and flow-type coverage;
     \item explicit fault-injection and burst provenance;
-    \item separate mock and live populations;
-    \item the count and coverage of middleware-enriched records;
-    \item retained failed or incomplete observations rather than silent
-    imputation.
+    \item exclusive inclusion of live populations in final results;
+    \item retained failed observations rather than silent imputation.
 \end{itemize}
 
-\noindent All six normalised migration datasets identify their framework log, and their
-request records are associated with reconstructed flows. They also report zero
-middleware events and zero requests with middleware timing fields. This is a
-valid client-boundary condition for Advanced Black-box with Surrogate
-Observability, but it prevents cross-layer decomposition. A surrogate analysis
-therefore remains conditional on a verified middleware log with compatible
-occurrence keys, documented measurement boundaries, clock evidence, and
-quantified join coverage.
+\noindent Across the 74 runs, RDG records 757{,}517 structured events,
+299{,}534 paired request occurrences, and 158{,}449 flow completions. Every run
+satisfies the event identity
+$N_{events}=2N_{requests}+N_{flows}$; all required identifiers agree with the resolved configurations. Middleware-enriched fields
+remain empty, consistently with the authorised client-side boundary. The
+dataset therefore supports end-to-end client observation but not internal
+cross-layer decomposition.
 
-\paragraph{Acceptance criteria.}
-\noindent The archived reports contain configurable warning values and the engine
-produces warnings when those values are crossed. They are useful for automated
-inspection but are not clinical, contractual, or production-service acceptance
-limits. The experiment can currently judge internal consistency, functional
-completion, reproducibility of mock inputs, and descriptive behaviour within a
-scenario. It cannot judge production suitability against an approved service
-level.
+\paragraph{Acceptance criteria}
+\noindent Research acceptance requires a coherent
+artefact chain, explicit outcomes, preserved failure observations, reproducible
+configuration, and a stated observation boundary. The 74-run dataset satisfies
+these criteria and constitutes the final quantitative evidence population for
+the thesis.
 
-\noindent The chapter consequently applies acceptance at construct level: identifiers
-remain coherent, dependencies resolve within an occurrence, mock and live
-populations remain separate, failed observations remain explicit, and every
-reported statistic identifies its source population. Production acceptance
-remains outside the current evidential boundary because the campaign does not
-provide domain-supported thresholds, required uncertainty, minimum sample
-sizes, a complete repetition count, or an ex ante
-scenario--indicator--population--threshold--evidence matrix. These controls qualify
-the strength of experimental conclusions rather than the existence of the
-implemented measurement pipeline.
-
-\section{Evidence, Discussion, and Design Guidelines}
+\section{Empirical Stochastic Distributions}
 \label{sec:rdg-results-discussion}
 
-\subsection{Functional and Quantitative Evidence}
+\subsection{Outcome-Stratified Evidence}
 \label{subsec:rdg-functional-quantitative-evidence}
 
-\paragraph{Functional evidence.}
-\noindent The recorded functional-validation run exercises placeholder resolution,
-supported flow composition, Integrating the Healthcare Enterprise profiles,
-Scryba Sign request construction and ordering, timeline occurrence identity,
-burst tagging, configuration validity, and pipeline command dispatch. It
-contains 29 tests: 28 complete successfully, while the graph/table-output test
-stops because the optional plotting dependency is unavailable. The successful
-population validates the implemented contracts covered by those tests and the
-transformation from generated flows to normalised evidence. The remaining
-environmental error does not invalidate metric calculation, but it prevents the
-record from constituting an all-green release criterion. The current source
-contains a larger test inventory, so the 28-test result remains evidence for
-the recorded migration snapshot rather than an assertion about every later
-checkout.
-
-\noindent The archived mock runs further validate that generated flows can traverse the
-timeline, executor, logger, collector, and metric engine. The small live run
-records three successful direct patient-query flows, six successful requests,
-and the expected two-step transaction shape. Its population is too small and
-its environmental context too incomplete for performance inference; it is
-reported only as limited live-path functional evidence.
-
-\paragraph{Mock pipeline results.}
-\noindent Table~\ref{tab:mock-rdg-results} reports selected outcomes from the five mock
-runs. Values describe execution of synthetic responses and framework-side
-processing on the recorded host. They must not be read as regional-service,
-gateway, middleware, or provider latency.
+\paragraph{Empirical population and evidence-chain validity}
+\noindent The 74 accepted live runs instantiate the complete evidence chain from
+generation and timeline construction to asynchronous execution, structured
+collection, normalisation, and metric calculation. The resulting sample space
+contains 299{,}534 request occurrences, of which 219{,}906 succeed (73.416\%),
+and 158{,}449 flow occurrences, of which 78{,}821 reach a successful terminal
+state (49.745\%). These populations define outcome-conditioned random variables
+rather than a test-coverage inventory: Flow Completion Time (FCT) is therefore
+characterised separately for successful and interrupted occurrences, and the
+path comparison yields a Path-level Overhead ($\Delta L$) of
+184.7~ms at the authorised client boundary.
 
 \begin{table}[H]
     \centering
+    \caption[Live scenario populations and Flow Completion Time quantiles.]{Live scenario populations and successful-flow Flow Completion Time (FCT) quantiles at P50, P95, and P99. Source: Author's elaboration based on the final experimental campaign.}
     \scriptsize
-    \begin{tabular}{|p{3.4cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|p{1.45cm}|}
+    \setlength{\tabcolsep}{3.1pt}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{3.2cm}|r|r|r|r|r|r|r|}
         \hline
         \rowcolor{veryPeri!18}
-        \textbf{Scenario} & \textbf{FCT P50 ms} & \textbf{FCT P99 ms} & \textbf{Requests/s} & \textbf{Error \%} & \textbf{Flow success \%} \\
+        \textbf{Scenario} & \textbf{Runs} & \textbf{Requests} & \textbf{Flows} & \textbf{Flow success \%} & \textbf{FCT P50 ms} & \textbf{FCT P95 ms} & \textbf{FCT P99 ms} \\
         \hline
         \rowcolor{tableGray}
-        Baseline mock & 0.462 & 0.859 & 11.770 & 0.000 & 100.000 \\
+        \texttt{baseline} & 5 & 594 & 307 & 54.07 & 559.7 & 1{,}211.8 & 18{,}892.6 \\
         \hline
-        Burst mock & 0.694 & 2.134 & 27.821 & 0.000 & 100.000 \\
-        \hline
-        \rowcolor{tableGray}
-        Direct/mediated mock & 1.796 & 3.033 & 18.162 & 0.000 & 100.000 \\
-        \hline
-        Fault-injection mock & 0.839 & 50.930 & 12.768 & 5.960 & 86.154 \\
+        \texttt{baseline\_constant} & 5 & 2{,}771 & 1{,}431 & 53.88 & 504.5 & 1{,}093.0 & 18{,}271.8 \\
         \hline
         \rowcolor{tableGray}
-        Mediated-flow mock & 2.259 & 6.599 & 24.534 & 0.000 & 100.000 \\
+        \texttt{burst} & 5 & 20{,}731 & 10{,}562 & 52.14 & 461.9 & 1{,}129.0 & 22{,}759.4 \\
+        \hline
+        \texttt{direct\_vs\_middleware} & 14 & 1{,}590 & 1{,}590 & 15.63 & 755.8 & 1{,}658.8 & --- \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{error\_injection} & 6 & 1{,}722 & 868 & 58.87 & 543.5 & 2{,}840.0 & 21{,}547.8 \\
+        \hline
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_direct}} & 6 & 2{,}251 & 1{,}037 & 80.42 & 571.1 & 17{,}966.6 & 21{,}934.5 \\
+        \hline
+        \rowcolor{tableGray}
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & 1{,}687 & 1{,}687 & 15.63 & 755.8 & 1{,}658.8 & --- \\
+        \hline
+        \texttt{live\_smoke\_small} & 8 & 196 & 122 & 42.62 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{load\_ramp} & 5 & 11{,}750 & 6{,}066 & 53.58 & 456.0 & 948.4 & 23{,}174.6 \\
+        \hline
+        \texttt{stress\_extreme} & 5 & 256{,}242 & 134{,}779 & 50.25 & 572.3 & 2{,}026.9 & 21{,}505.9 \\
         \hline
     \end{tabular}
-    \caption{Selected mock-run outcomes demonstrate framework-side scheduling, failure retention, and metric generation; they do not estimate regional-service latency. Flow Completion Time (FCT) is measured over completed occurrence records. Source: Author's elaboration based on archived RDG mock reports generated by \texttt{metric\_engine.py}.}
-    \label{tab:mock-rdg-results}
+    }
+    \label{tab:final-rdg-scenario-results}
 \end{table}
 
-\noindent The baseline and burst runs show that burst-labelled occurrences are processed
-and remain available for stratified analysis. The increase in reported P99 in
-the burst run is an observation of this mock execution, not evidence of remote
-system degradation. Only one seed and one execution are available, and the two
-runs do not establish a distribution of run-to-run variability.
+\subsection{Load-Scheduling Calibration}
+\label{subsec:rdg-load-scheduling-calibration}
 
-\noindent The mock Path-level Overhead ($\Delta L$) report contains 31 direct and 45 mediated flow
-occurrences. Their mean completion times are respectively 0.781~ms and
-2.166~ms, with P95 values of 1.147~ms and 2.961~ms. The report calls the
-difference an \emph{apparent overhead}; this wording is essential. The paths
-have two and five steps respectively, use synthetic responses, and have no
-middleware-internal observations. The difference validates stratified
-reporting but cannot isolate middleware cost.
+\noindent The linear load ramp scenario works as the calibration condition introduced in
+Section~\ref{sub:experimental}: the generator remains credible only
+if its timing error stays negligible before offered work reaches the declared
+concurrency boundary. Figure~\ref{fig:load-ramp-calibration} therefore reads
+client-observed active work together with the ninety-fifth-percentile queue
+delay.
 
-\noindent The fault-injection run contains 65 flows and 151 executed requests. Nine flows
-fail after declared synthetic faults, giving a flow-success rate of
-86.154\% and a request error rate of 5.960\%. The report identifies two
-recovery episodes with a mean duration of 3.5~s. These values demonstrate that
-the pipeline retains injected failures, interrupts downstream steps, and
-computes resilience summaries. They do not estimate the failure or recovery
-behaviour of a live service.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png}
+    \caption[Client-side calibration under a linear concurrency schedule.]{Client-observed concurrency and scheduling drift. Source: Author's elaboration based on the experimental campaign.}
+    \label{fig:load-ramp-calibration}
+\end{figure}
 
-\paragraph{Surrogate-observability result boundary.}
-\noindent Although the runs used to calculate Path-level Overhead ($\Delta L$) and the
-mediated-only runs exercise the
-five-step gateway path, their normalised datasets contain no middleware events.
-Consequently, gateway latency, upstream latency, retry count, circuit-breaker
-state, central processing unit (CPU), memory, and internal connection
-measurements are unavailable. The only defensible comparison is between client-observed flow shapes in mock mode.
-The surrogate layer of Advanced Black-box with Surrogate Observability remains
-unobserved. Cross-layer latency or resource relationships therefore require
-matched successful direct and mediated live populations, a documented
-middleware log, verified occurrence-level joins, compatible clocks, and
-explicit measurement boundaries; none belongs to the current result set.
+\noindent During the first minute, the queue-delay series remains close to zero;
+the rising envelope begins only when the active-flow and active-step series
+reach the configured limit of 30. The plateau at 30 occurs at approximately 60 seconds, and the persistent
+queue-delay increase starts within the following buckets. Its envelope then
+grows to about 67 seconds before the arrival stream drains. This temporal
+ordering is consistent with semaphore backpressure: the execution semaphore
+wraps an entire flow occurrence, so a flow that waits for admission accumulates
+dispatch delay while admitted flows preserve their internal transaction order.
+The graph consequently shows controlled queue formation at the client boundary,
+not evidence that the event loop loses timing fidelity before saturation.
 
-\subsection{Interpretation and Contribution Boundary}
-\label{subsec:rdg-interpretation-boundary}
+\noindent The isolated returns to zero in the queue-delay series coincide with buckets
+that contain no eligible delay observation; they do not reverse the rising
+envelope. Likewise, the plateau records the configured client-side admission
+limit and does not identify a provider-side capacity threshold. The paired
+panels thus validate the generator's calibration logic within the declared
+measurement boundary: timing remains stable below the limit, while overload is
+made explicit as measurable queueing rather than hidden inside request latency.
 
-\paragraph{Relation to the state of the art.}
-\noindent The available evidence supports the methodological conclusions of
-Chapter~\ref{chap:stateofart} at the level of the artefact. Step and flow
-populations are both retained, percentiles expose distribution tails that a
-mean hides, and structured occurrence identifiers prevent repeated
-source flows from being collapsed. The evidence does not yet support the
-stronger empirical comparison with the reviewed literature: different systems,
-payloads, network paths, and experimental designs preclude transfer of their
-quantitative findings.
+\noindent Each load profile is paired with the \texttt{baseline\_constant} run that uses
+the same seed. At run level, the median P50 difference equals $-43.9$~ms for
+\texttt{burst} ($-8.84\%$; interquartile range (IQR): $-69.1$ to $-41.6$~ms)
+and $-58.7$~ms for \texttt{load\_ramp} ($-10.32\%$; IQR: $-69.0$ to
+$-30.0$~ms). These profiles shift the centre without producing a uniform
+rightward displacement of their empirical stochastic distributions. In
+contrast, \texttt{stress\_extreme} increases the median run-level P50 by
+$55.3$~ms ($+10.82\%$), with an IQR from $-0.02$ to $+125.9$~ms. Over the
+pooled successful-flow population, P50 rises from 504.5 to 572.3~ms
+($+13.45\%$), P95 rises from 1{,}093.0 to 2{,}026.9~ms ($+85.44\%$), and P99
+rises from 18{,}271.8 to 21{,}505.9~ms ($+17.70\%$), while flow success
+decreases by 3.63 percentage points. The non-uniform quantile displacement
+shows that extreme load changes the distributional shape: its principal effect
+appears around the upper-tail shoulder captured by P95, while the far tail is
+already populated by structurally long flows in the baseline.
 
-\noindent In particular, the mock tail and fault-injection observations illustrate why
-P95/P99 and failed-flow populations are useful, but do not validate a
-production scheduling or capacity rule. Likewise, the small live smoke run
-does not establish that lower-level optimisations improve end-to-end
-performance. Those questions require the missing repeated live campaign and
-declared acceptance framework.
+\subsection{Stochastic Saturation and Operational Response}
+\label{subsec:rdg-stochastic-saturation-response}
 
-\paragraph{Design and evaluation guidelines.}
-\noindent The implementation and current evidence support the following conservative
-guidelines:
-\begin{enumerate}
-    \item preserve transaction, step, flow, and occurrence identities from
-    generation through reporting;
-    \item treat step order and dependency propagation as correctness
-    invariants, while applying concurrency between independent flows;
-    \item record resolved configuration and independent seeds with every run;
-    \item separate mock, dry-run, and live evidence in storage and analysis;
-    \item report request and flow throughput together because flow shapes have
-    different step counts;
-    \item qualify Path-level Overhead ($\Delta L$) by semantic equivalence,
-    step count, payload, and observation boundary;
-    \item leave unavailable middleware and infrastructure fields null and
-    quantify their coverage;
-    \item distinguish configurable warnings from approved acceptance thresholds;
-    \item calibrate flow mixes and arrival profiles before claiming
-    representativeness of operational traffic;
-    \item derive production or capacity guidance only from repeated,
-    controlled, appropriately authorised live experiments.
-\end{enumerate}
+\noindent Figure~\ref{fig:stress-saturation-timeline} aligns concurrency, scheduling
+drift, completion throughput, error rate, and error-free bucket availability
+from the extreme-stress run on a common temporal axis.
+The request-latency distribution remains separate in
+Figure~\ref{fig:stress-latency-distribution}, because its horizontal axis
+represents latency rather than elapsed experimental time. The histogram is
+bimodal, but its secondary concentration lies near 45 seconds rather than 30
+seconds. This position agrees with the run-specific 45-second step timeout and
+coexists with a declared five-percent injected-timeout rule. The visual
+evidence therefore supports a timeout-bound mode.
 
-\paragraph{Residual limitations and contribution boundary.}
-\noindent The present chapter can substantiate the architecture, current transaction map,
-mock/live boundary, evidence pipeline, archived mock validation, and one
-limited live patient-query smoke run. It does not substantiate production
-capacity, provider reliability, causal middleware attribution, or operational
-traffic representativeness. It establishes execution coverage, rather than a
-complete performance characterisation, for the Integrating the Healthcare
-Enterprise and Scryba Sign paths. These limits preserve the distinction between
-software capability and experimental evidence established at the beginning of
-the chapter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png}
+    \caption[Operational timeline under stochastic queueing saturation.]{Three-panel operational timeline under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
+    \label{fig:stress-saturation-timeline}
+\end{figure}
 
-\noindent The newer sanitised live corpus provides repeated execution evidence for
-ITI-18 (21{,}722 outcomes, including 3{,}395 successes), ITI-43
-(21{,}514 outcomes, including 21{,}371 successes),
-\texttt{SCRYBASIGN-GET-USER-INFO} (17{,}838 successes), and
-\texttt{SCRYBASIGN-SIGN-ONE-DOC} (17{,}838 outcomes, including 17{,}015
-successes). The planned protocol remains incomplete, and the sanitised corpus
-contains no middleware-side surrogate evidence. Consequently, these counts
-support transaction-outcome coverage within the 74 complete runs but not final
-cross-layer, Path-level Overhead ($\Delta L$), or capacity conclusions.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png}
+    \caption[Request-latency distribution under stochastic queueing saturation.]{Isolated client-observed request-latency distribution under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
+    \label{fig:stress-latency-distribution}
+\end{figure}
 
-\noindent The contribution therefore closes at two levels. At artefact level, the chapter
-establishes a configurable, stateful, asynchronous, and observable profiling
-pipeline. At experimental level, it reports only hypotheses and populations
-supported by retained evidence, including failed runs and incomplete scenario
-coverage. Final production rules remain conditional on a balanced authorised
-campaign, ex ante acceptance criteria, uncertainty reporting, and compatible
-surrogate observations; the absence of those campaign controls does not reduce
-the implemented framework to an undocumented prototype.
+\noindent The independent pooled analysis places the successful Flow Completion Time
+for the IHE-XDS.b transaction (ITI-18) at 37{,}869.5~ms for the
+ninety-fifth percentile and 43{,}972.1~ms for the ninety-ninth percentile.
+Those values characterise an outcome-stratified flow population, whereas the
+histogram pools request latencies from one run.
+They nevertheless locate the reported tail in the same tens-of-seconds regime
+as the timeout-bound mode, subject to the different populations and timers.
+
+\noindent The operational panels derive from the same one-second bucket boundaries.
+Ten-second rolling means expose the macroscopic trajectory, while transparent
+raw throughput and error-rate observations preserve the underlying variation.
+Error bursts coexist with positive completion throughput across most of the
+run. This joint view distinguishes useful completions from error incidence,
+but it does not by itself estimate a correlation coefficient or establish
+causation. In particular, the smoothed availability series averages a binary
+indicator that equals 100 only when a bucket has no errors and zero otherwise;
+it remains an experimental bucket indicator rather than a continuous estimate
+of provider availability.
+
+\noindent In Akram et al.'s stochastic model, the conjunction of an expanding latency
+tail and diminishing useful completions constitutes empirical evidence of the
+closing of the Load-Sharing Window and hence of the onset of the risk of
+\emph{Transfer in Vain}. The \texttt{stress\_extreme} population exhibits this
+joint signature at the client boundary through the $85.44\%$ P95 amplification,
+the positive P99 displacement, and the lower flow-success rate. This language
+transfers the explanatory model rather than an internal topology: the
+Load-Sharing Window remains a methodological abstraction, because the evidence
+does not observe a regional load-transfer mechanism directly. In Iorio et
+al.'s terms, the same signature appears in application-level FCT rather than in
+network round-trip time, which gives quantile-based confidence that the effect
+belongs to complete-workflow behaviour within the observed population.
+
+\subsection{Domain-Specific Flow Signatures}
+\label{subsec:rdg-domain-specific-flow-signatures}
+
+\noindent A domain-specific workload preserves transaction chains that a generic request
+generator otherwise collapses into an undifferentiated latency sample. In
+Figure~\ref{fig:flow-type-completion-signatures}, different integration flow types occupy visibly different locations and spreads. The figure thus
+supports a family of conditional random variables $L\mid\text{flow type}$ rather than a single unconditional latency variable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.81\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png}
+    \caption[Client-observed completion time by healthcare flow type.]{Client-observed end-to-end completion time by flow type Source: Author's elaboration based on the final experimental campaign.}
+    \label{fig:flow-type-completion-signatures}
+\end{figure}
+
+\noindent The XDS.b Registry Stored Query flow is centred
+near 19 seconds in the selected run, whereas the displayed Anagrafe Zero
+patient-query and patient-creation paths remain predominantly below about
+1.5 seconds. The repository-query, context-call, and signature distributions
+form further distinct bands. These are visual, single-run comparisons without
+outcome stratification; the boxplot therefore establishes heterogeneity but
+does not replace the pooled percentiles reported in
+Table~\ref{tab:final-rdg-transaction-results}.
+
+\noindent This separation has methodological consequences. Fast Healthcare
+Interoperability Resources (FHIR) Representational State Transfer (REST)
+patient-registry interactions and Integrating the Healthcare Enterprise (IHE)
+Cross-Enterprise Document Sharing (XDS) Simple Object Access Protocol (SOAP)
+transactions differ in protocol, payload, dependency chain, and terminal
+condition. Averaging them erases precisely the semantic structure needed to
+interpret application-level completion time. Stratification by flow type is
+therefore part of the measurement model, not a presentation choice.
+
+\paragraph{Outcome-stratified transaction and flow distributions}
+\noindent Table~\ref{tab:final-rdg-transaction-results} separates transaction outcomes
+from successful end-to-end flow populations. The separation defines distinct
+stochastic variables for technical attempts and useful terminal work, because
+a prerequisite can terminate an occurrence before the focal transaction
+starts.
+\noindent ITI-18 contributes 21{,}722 transaction outcomes and a 15.63\% success
+rate; its successful FCT distribution also displays the longest P95 and P99
+tails. ITI-43 contributes 21{,}514 outcomes with 99.34\% transaction success.
+Scryba Sign records 17{,}838 successful \texttt{GetUserInfo} calls and 17{,}015
+successful \texttt{SignOneDoc} calls, which yields 17{,}015 successful complete
+signature flows. The values provide large empirical populations for FCT and
+tail analysis while preserving the exact outcome semantics of each step.
+
+\begin{table}[H]
+    \centering
+    \caption{Transaction-outcome populations and successful end-to-end Flow Completion Time (FCT) distributions at P50, P95, and P99. Source: Author's elaboration based on the final experimental campaign.}
+    \footnotesize
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{3.7cm}|p{3.4cm}|r|r|r|r|}
+        \hline
+        \rowcolor{veryPeri!18}
+        \textbf{Flow family} & \textbf{Transaction outcomes / successes} & \textbf{Successful flows} & \textbf{FCT P50 ms} & \textbf{FCT P95 ms} & \textbf{FCT P99 ms} \\
+        \hline
+        \rowcolor{tableGray}
+        ITI-18 & 21{,}722 / 3{,}395 (15.63\%) & 3{,}395 & 1{,}518.6 & 37{,}869.5 & 43{,}972.1 \\
+        \hline
+        ITI-43 & 21{,}514 / 21{,}371 (99.34\%) & 21{,}371 & 579.7 & 1{,}559.2 & 3{,}992.1 \\
+        \hline
+        \rowcolor{tableGray}
+        Scryba Sign & \texttt{GetUserInfo}: 17{,}838 / 17{,}838; \quad  \texttt{SignOneDoc}: \quad 17{,}838 / 17{,}015 (95.39\%) & 17{,}015 & 819.6 & 2{,}472.0 & 13{,}006.9 \\
+        \hline
+    \end{tabular}
+    }
+    \label{tab:final-rdg-transaction-results}
+\end{table}
+
+\subsection{Client-Boundary Path Displacement}
+\label{subsec:rdg-client-boundary-path-displacement}
+
+\noindent Figure~\ref{fig:overhead-boxplot} separates the path distributions by
+terminal outcome. Both for successful and failed-path boxes pool the observed
+failed flows from all 14 complete direct-versus-mediated runs and retain their
+measured distributional shapes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png}
+    \caption[Path-level displacement by terminal outcome.]{Client-observed path-level displacement stratified by successful completion and fail-fast termination. Source: Author's elaboration based on the final experimental campaign.}
+    \label{fig:overhead-boxplot}
+\end{figure}
+
+\noindent The independent pooled analysis compares the 755.8~ms mediated median with
+the 571.1~ms direct median and defines a client-observed \emph{Path-level
+Overhead} ($\Delta L$) of 184.7~ms. This value remains an aggregate external
+displacement under the Surrogate Observability Strategy; it is not a decomposed
+middleware processing time. For the failed-flow population, the corresponding
+mediated-minus-direct differences equal $+62.18$~ms for the mean,
+$+12.88$~ms for the median, and $+284.30$~ms for the ninety-fifth percentile.
+
+\noindent The 12.88~ms failed-flow median differential is the empirical signature of
+the execution engine's fail-fast rule: steps execute sequentially and the
+chain terminates at the first non-successful transaction. Let
+$X_0 \rightarrow X_1 \rightarrow \cdots \rightarrow X_m$ denote the ordered
+workflow states and let $\tau$ be the first failed transition. The engine acts
+as a stochastic truncation operator
+\begin{equation}
+    \mathcal{T}_{\tau}(X_0,\ldots,X_m)=(X_0,\ldots,X_{\tau}),
+    \qquad
+    W_{\mathrm{avoided}}(\tau)=\sum_{j=\tau+1}^{m}D_j,
+\end{equation}
+where $D_j$ denotes the service demand that downstream step $j$ would inject.
+The observed low differential is consistent with a short realised prefix,
+whereas the implementation-level stopping rule establishes that the remaining
+suffix is not submitted.
+
+\noindent This operator provides the execution-layer counterpart to the stochastic
+state-transition model in Figure~\ref{fig:akram-state-transition}. The two
+state spaces remain distinct: the figure describes transitions among node load
+states, while $\mathcal{T}_{\tau}$ acts on the dependency states of one
+healthcare workflow. Their connection is the avoided service demand. When a
+failed prerequisite suppresses downstream IHE-XDS.b Registry Stored Query
+[ITI-18] or Retrieve Document Set [ITI-43] transactions in flow families that
+contain them, the client observes only the truncated completion time and the
+channel receives no requests whose semantic prerequisites are already invalid.
+Under saturation, this avoided wasted work reduces the offered load that can
+drive the gateway from a normal toward an overloaded state and therefore acts
+as a protective mechanism against overload collapse. It does not, however,
+identify an internal gateway component or prove a provider-side capacity
+threshold. The centre--tail distinction follows the application-level Flow
+Completion Time hierarchy of Iorio et al. and the stochastic quantile
+interpretation of Akram et al.; the surrogate observability invariants prevent
+either path displacement from being recast as an unsupported causal
+decomposition\footcite{iorio-when-latency-matters,akram-numerical-latency}.
+
+\subsection{Research Question Synthesis}
+\label{subsec:rdg-interpretation-closure}
+
+\paragraph{Validation of the stochastic propositions}
+\noindent The quantitative evidence validates the methodological propositions of
+Chapter~\ref{chap:stateofart} within the observed perimeter. First, latency is
+an empirical stochastic distribution rather than a scalar property: P50, P95,
+and P99 move by different proportions under load, and the mean alone cannot
+represent that deformation. Second, application-level FCT remains the relevant
+unit for dependent workflows: the distinct ITI-18, ITI-43, and Scryba Sign
+tails show that request populations cannot substitute for complete-flow
+behaviour. Third, useful completion and latency require joint interpretation:
+the \texttt{stress\_extreme} P95 amplification and success-rate reduction
+instantiate the closing-window signature formalised through Akram et al.'s
+Load-Sharing Window and Transfer in Vain model. Finally, occurrence identifiers
+and outcome stratification prevent repeated source flows, interrupted chains,
+and successful terminal work from collapsing into one heterogeneous sample.
+
+\paragraph{Methodological consequences}
+\noindent The validation depends on invariants that also delimit every admissible
+generalisation. Transaction, step, flow, and occurrence identities remain
+continuous from generation through reporting; step order and dependency
+propagation remain sequential within an occurrence, whereas concurrency applies
+between independent flows. Resolved configuration, seed, execution mode, and
+population definition accompany each estimate. Request and flow throughput
+remain joint but non-interchangeable measures because the flow families contain
+different numbers of steps, while debugging populations remain outside the
+live empirical distributions.
+
+\noindent The same discipline constrains the Path-level Overhead: semantic
+equivalence, step count, payload class, connection policy, load, and observation
+boundary define the estimand before subtraction. Configurable software warnings
+do not become acceptance thresholds, and flow mixes or arrival profiles do not
+become representative merely because they generate large samples. These
+conditions operationalise the surrogate observability invariants and preserve
+the distinction between a reproducible client-boundary characterisation and an
+unsupported causal decomposition.
+
+\paragraph{Concluding Remarks}
+\noindent The framework translates documented healthcare workflows into configurable,
+stateful, and asynchronous workloads, connecting transaction semantics with an
+executable performance experiment. Its evidence chain retains resolved
+configuration, deterministic seeds, flow-occurrence identifiers, timeline,
+execution events, normalised records, and final metrics. Every result therefore
+remains traceable to its scenario and run. This continuity answers the
+reproducibility and observability components of the research question.
+
+\noindent The final campaign comprises 74 runs, 299{,}534 request occurrences, and
+158{,}449 flow completions across ten live scenarios. Within this sample, the
+21{,}722 ITI-18 outcomes, 21{,}514 ITI-43 outcomes, 17{,}838 successful
+\texttt{GetUserInfo} calls, and 17{,}015 successful \texttt{SignOneDoc} calls
+form distinct transaction, flow, and outcome distributions. Their analytical
+value lies in the joint observation of Flow Completion Time (FCT), success,
+request and useful-flow activity, and P50, P95, and P99 rather than in volume
+alone.
+
+\noindent Across load profiles, burst and load ramp do not produce a uniform increase in
+central FCT, whereas extreme stress raises pooled successful FCT by 13.45\% at
+P50, 85.44\% at P95, and 17.70\% at P99, with a 3.63-percentage-point reduction
+in flow success. The asymmetric movement locates the dominant effect in the
+upper-tail shoulder rather than in a uniform translation of the distribution.
+This joint latency--success rate signature provides quantile-based confidence for a closing Load-Sharing Window
+and the associated risk of Transfer in Vain within the observed population,
+while the limited number of complete repetitions prevents extrapolation to a
+universal saturation or capacity threshold.
+
+\noindent The differential component completes the synthesis. The direct--mediated
+contrast identifies a client-observed Path-level Overhead ($\Delta L$)
+of 184.7~ms at P50 within the authorised boundary. The surrogate observability invariants make outcomes, centre, tail, load sensitivity,
+and path displacement jointly interpretable. The resulting evidence answers
+Chapter~\ref{chap:introduction}'s research question within the stated perimeter
+and connects Chapter~\ref{chap:stateofart}'s stochastic theory to the empirical
+distributions produced by the framework.
 \newpage

@@ -3,6 +3,12 @@
 
 \begingroup
 \setlength{\emergencystretch}{2em}
+\noindent This chapter defines the research problem by connecting the regulatory
+mandate for territorial-care coordination to the heterogeneous SI.Ter
+integration architecture. It first establishes the institutional and technical
+context, then formalises the resulting continuity and observability constraints,
+and finally derives the methodological response, research objectives, and
+contributions addressed by the thesis.
 
 \section{Regulatory and Technical Context}
 \label{sec:regulatory-technical-context}
@@ -11,10 +17,11 @@
 \label{chap:domain}
 \label{sec:territorial-regulatory}
 
-\noindent DM (Decreto Ministeriale) 77/2022 defines territorial care as a
+\noindent DM (Decreto Ministeriale / Ministerial Decree) 77/2022 defines territorial care as a
 coordinated network of services rather than as a collection of isolated clinical
 encounters. Its organisational model includes the District, the Casa della
-Comunità, the COT (Centrale Operativa Territoriale)\glsadd{cot}\glsadd{cotg}, the 116117 operational
+Comunità, the COT (Centrale Operativa Territoriale / Territorial Coordination
+Centre)\glsadd{cot}\glsadd{cotg}, the 116117 operational
 centre, home-care services, community hospitals, and telemedicine-supported
 services \footcite[Allegato~1, pp.~12, 20--21]{dm-77-2022}. The decree therefore
 assigns digital information exchange an operational role: coordination across
@@ -35,7 +42,7 @@ supporting applications are not.
     \centering
     \includegraphics[width=\textwidth]{img/territorial_care_operating_model.pdf}
     \caption[Territorial-care operating model]{Concept of the territorial-care operating model defined
-    by DM~77/2022.}
+    by DM~77/2022. Source: Adapted from the Ministerial Decree 77/2022.}
     \label{fig:territorial-care-operating-model}
 \end{figure}
 
@@ -54,7 +61,7 @@ traceability. Satisfying both conditions requires the territorial-care model to
 interoperate with the heterogeneous systems already present in the regional
 ecosystem.
 
-\subsection{Heterogeneous Systems in SI.Ter}
+\subsection{Heterogeneity in the Territorial Information System}
 \label{sec:industrial-ecosystem}
 
 \noindent The regional programme\glsadd{siter}\glsadd{siterg} provides the Veneto project context
@@ -107,7 +114,7 @@ XML-versus-JSON conversion \footcite[Sections~1.5.2 and~2.5.2]{arsenal-anagrafe-
 The FSEr document infrastructure instead applies IHE (Integrating the Healthcare
 Enterprise)\glsadd{ihe}\glsadd{iheg} XDS.b transactions through SOAP (Simple Object Access Protocol)
 Web Services\footcite{ihe-xdsb,affinity-domain-italia-v263}. Both families can use HTTP over TCP (Transmission Control Protocol) and protect the
-channel through mTLS (mutual Transport Layer Security). The mediation challenge
+channel through mutual Transport Layer Security (mTLS). The mediation challenge
 therefore lies above this common transport substrate: SI.Ter must reconcile
 resource-oriented REST operations with message-oriented SOAP transactions and
 map patient identifiers, document metadata, security contexts, error semantics,
@@ -121,32 +128,128 @@ SOAP-based IHE XDS.b interactions with ebXML (Electronic Business using
 eXtensible Markup Language) metadata, while managing asynchronous orchestration,
 transformation, errors, and interface lifecycles
 \footcite[Sections~2.1.2 and~2.1.4]{rti-siter-relazione-tecnica}.
-Table~\ref{tab:siter-interoperability-standards} summarizes how the principal
-interoperability standards and regulatory constraints govern patient data,
-document exchange, access control, and auditability within the SI.Ter
-integration stack \footcite[Article~25]{eu-gdpr-2016-679}\footcite[Article~25]{decreto-fse-2-2023}\footcite[Section~4.5]{azienda-zero-siter-capitolato}.
+\noindent The integration stack connects heterogeneous services, ranging from
+context-call providers to digital signature engines, within a regulated regional
+perimeter. Figure~\ref{fig:siter-architectural-layers} illustrates the
+architectural layers of this environment, highlighting the mediation challenge:
+the interoperability layer must reconcile the resource-oriented REST interactions
+of Anagrafe Zero with the message-oriented SOAP transactions required by the FSEr
+document infrastructure. This mediation, protected by mutual Transport Layer
+Security (mTLS), ensures that clinical meaning and security contexts are preserved
+as information crosses organisational boundaries. The specific standards and
+functional roles governing these layers are further detailed in
+Table~\ref{tab:siter-interoperability-standards}.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{%
+    \begin{tikzpicture}[
+        >=Latex,
+        component/.style={draw=blue!65!black, rounded corners=2pt,
+            fill=blue!5, align=center, minimum height=10mm,
+            text width=4.7cm, font=\small},
+        security/.style={draw=blue!70!black, rounded corners=2pt,
+            fill=blue!12, align=center, minimum height=11mm,
+            text width=5.5cm, font=\small},
+        gateway/.style={draw=black!60, rounded corners=2pt,
+            fill=black!4, align=center, minimum height=13mm,
+            text width=11.6cm, font=\scriptsize},
+        service/.style={draw=blue!65!black, rounded corners=2pt,
+            fill=blue!8, align=center, minimum height=12mm,
+            text width=3.65cm, font=\small},
+        layer/.style={draw=black!45, rounded corners=3pt, fill=black!2},
+        securitylayer/.style={draw=blue!60!black, dashed,
+            rounded corners=3pt, fill=blue!3},
+        layerlabel/.style={font=\bfseries\fontsize{7}{8}\selectfont, text=black!75,
+            align=center, text width=1.65cm},
+        biflow/.style={<->, line width=0.75pt, draw=blue!70!black},
+        protocol/.style={font=\scriptsize, fill=white, inner sep=1.5pt,
+            text=black!80}
+    ]
+        \begin{pgfonlayer}{background}
+            \path[layer] (-6.8,0.75) rectangle (6.8,-1.00);
+            \path[securitylayer] (-6.8,-1.25) rectangle (6.8,-3.25);
+            \path[layer] (-6.8,-3.50) rectangle (6.8,-5.25);
+            \path[layer] (-7.1,-5.70) rectangle (7.1,-7.80);
+        \end{pgfonlayer}
+
+        \draw[black!30] (-5.15,0.75) -- (-5.15,-1.00);
+        \draw[black!30] (-5.15,-1.25) -- (-5.15,-3.25);
+        \draw[black!30] (-5.15,-3.50) -- (-5.15,-5.25);
+        \draw[black!30] (-5.50,-5.70) -- (-5.50,-7.80);
+
+        \node[layerlabel] at (-5.98,-0.12) {Layer 1\\Client Domain};
+        \node[layerlabel] at (-5.98,-2.25)
+            {Layer 2\\{\fontsize{6.5}{7}\selectfont Connectivity}\\\& Security};
+        \node[layerlabel] at (-5.98,-4.38)
+            {Layer 3\\Mediation\\Gateway};
+        \node[layerlabel] at (-6.30,-6.75)
+            {Layer 4\\Regional\\Services};
+
+        \node[component] (apps) at (-2.55,-0.15)
+            {\textbf{Territorial Applications}};
+        \node[component] (rdg) at (3.45,-0.15)
+            {\textbf{Request Dataset Generator (RDG)}};
+
+        \node[font=\bfseries\scriptsize, text=blue!65!black]
+            at (4.25,-1.55) {mTLS Protected Channel};
+        \node[security] (apms) at (0.75,-2.35)
+            {\textbf{APMS / Identity Provider}\\[-0.1em]
+             \scriptsize SAML / JWT management};
+
+        \node[gateway, text width=10.7cm] (gateway) at (0.75,-4.38) {%
+            \begin{tabular}{@{}c@{\hspace{1.05cm}}c@{\hspace{1.05cm}}c@{}}
+                \textbf{REST to SOAP} & \textbf{ebXML Metadata} &
+                    \textbf{Asynchronous} \\
+                Transformation & Mapping & Orchestration
+            \end{tabular}};
+
+        \node[service] (anagrafe) at (-3.35,-6.75)
+            {\textbf{Anagrafe Zero}\\[-0.1em]
+             \scriptsize REST FHIR};
+        \node[service] (fser) at (0.75,-6.75)
+            {\textbf{FSEr}\\[-0.1em]
+             \scriptsize SOAP XDS.b};
+        \node[service] (scryba) at (4.85,-6.75)
+            {\textbf{Scryba Sign}\\[-0.1em]
+             \scriptsize SOAP Signature};
+
+        \draw[biflow] (apps.south) -- ++(0,-0.25) -|
+            ([xshift=-1.35cm]apms.north);
+        \draw[biflow] (rdg.south) -- ++(0,-0.25) -|
+            ([xshift=1.35cm]apms.north);
+        \draw[biflow] (apms.south) -- (gateway.north);
+
+        \draw[biflow] ([xshift=-4.10cm]gateway.south) -- (anagrafe.north);
+        \draw[biflow] (gateway.south) -- (fser.north);
+        \draw[biflow] ([xshift=4.10cm]gateway.south) -- (scryba.north);
+        \node[protocol] at (-3.35,-5.50) {REST / FHIR};
+        \node[protocol] at (0.75,-5.50) {SOAP / XDS.b};
+        \node[protocol] at (4.85,-5.50) {SOAP / Signature};
+    \end{tikzpicture}%
+    }
+    \caption[Architectural layers of the SI.Ter integration stack]{Architectural
+    Layers of the SI.Ter Integration Stack. Source: Author's elaboration based
+    on regional technical specifications.}
+    \label{fig:siter-architectural-layers}
+\end{figure}
 
 \begingroup
-\footnotesize
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
-    \caption{Summary of key standards, including regulatory constraints, and their functional roles in the SI.Ter integration stack.}
-    \label{tab:siter-interoperability-standards}\\
+\begin{table}[H]
+    \centering
+    \caption{Summary of key standards, including regulatory constraints, and
+    their functional roles in the SI.Ter integration stack. Source: Author's
+    synthesis based on the cited regulatory, regional, and interoperability
+    specifications.}
+    \label{tab:siter-interoperability-standards}
+    \scriptsize
+    \setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
     \hline
     \rowcolor{veryPeri!18}
     \textbf{Standard} & \textbf{Protocol or format} & \textbf{Role in the project} \\
     \hline
-    \endfirsthead
-    \hline
-    \rowcolor{veryPeri!18}
-    \textbf{Standard} & \textbf{Protocol or format} & \textbf{Role in the project} \\
-    \hline
-    \endhead
-    \hline
-    \multicolumn{3}{r}{\footnotesize Continued on the next page}\\
-    \endfoot
-    \hline
-    \endlastfoot
     \rowcolor{tableGray}
     \textbf{HL7 FHIR R4}\par
     {\footnotesize Health Level Seven Fast Healthcare Interoperability Resources, Release 4}
@@ -172,7 +275,9 @@ integration stack \footcite[Article~25]{eu-gdpr-2016-679}\footcite[Article~25]{d
     {\footnotesize Electronic-signature legal framework and signature-envelope profiles}
     & SOAP Web Services; CMS, PDF, and XML signature envelopes; TimeStampedData temporal evidence
     & eIDAS supplies the legal classification of electronic signatures, while the envelope and timestamp formats define the Scryba Sign integration artefacts processed by the calling application. \\
-\end{longtable}
+    \hline
+\end{tabular}
+\end{table}
 \endgroup
 
 \noindent These capabilities solve the connectivity problem only at the interface level. They do
@@ -262,7 +367,9 @@ transactions.
     \centering
     \includegraphics[width=\textwidth]{img/rdg_regional_transaction_workflow.pdf}
     \caption[RDG-orchestrated regional transactions]{RDG orchestration of the
-    [RVE-1.b] authentication output into regional patient-identity flows.}
+    [RVE-1.b] authentication output into regional patient-identity flows.
+    Source: Author's elaboration based on the current RDG implementation and
+    the cited regional security and Anagrafe Zero specifications.}
     \label{fig:rdg-regional-transaction-workflow}
 \end{figure}
 
@@ -316,24 +423,19 @@ observation perimeter?}
 
 \begingroup
     \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{4.75cm}|>{\raggedright\arraybackslash}p{5.15cm}|}
+\begin{table}[H]
+    \centering
     \caption[Comparison between internal production evidence and external experimental observation]{Comparison between internal production evidence and external
-    experimental observation.}\label{tab:internal-external-observation}\\
+    experimental observation. Source: Author's elaboration based on the cited
+    regional security specifications and the RDG evidence model.}
+    \label{tab:internal-external-observation}
+    \footnotesize
+    \setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{4.75cm}|>{\raggedright\arraybackslash}p{5.15cm}|}
         \hline
         \rowcolor{veryPeri!18}
         \textbf{Dimension} & \textbf{Authorised Observation Boundary (Internal)} & \textbf{Experimental Observation Perimeter (RDG)} \\
         \hline
-        \endfirsthead
-        \hline
-        \rowcolor{veryPeri!18}
-        \textbf{Dimension} & \textbf{Authorised Observation Boundary (Internal)} & \textbf{Experimental Observation Perimeter (RDG)} \\
-        \hline
-        \endhead
-        \hline
-        \multicolumn{3}{r}{\small Continued on the next page}\\
-        \endfoot
-        \hline
-        \endlastfoot
         \rowcolor{tableGray}
         \textbf{Data access}
         & Real clinical data and ATNA audit records remain production-side and are accessible only to authorised operational roles.
@@ -355,15 +457,17 @@ observation perimeter?}
         \rowcolor{tableGray}
         \textbf{Overhead attribution}
         & Direct gateway measurement requires aligned ingress, internal-component, and egress timestamps, which lie outside the experimental perimeter.
-        & $\Delta L$ estimates an aggregate path-level effect that can include routing, security, transformation, downstream-service, and retry costs; it does not decompose APMS or gateway processing. \\
-\end{longtable}
+        & $\Delta L$ measures an aggregate path-level effect that can include routing, security, transformation, downstream-service, and retry costs; it does not decompose APMS or gateway processing. \\
+        \hline
+\end{tabular}
+\end{table}
 \endgroup
 \clearpage
 
 \section{Methodological Response}
 \label{sec:methodological-response}
 
-\subsection{Surrogate Observability through RDG}
+\subsection{Surrogate Observability}
 \noindent RDG answers this question as the technical
 instrument of a \emph{Surrogate Observability Strategy}. The strategy translates
 documented healthcare interactions into synthetic and executable workloads,
@@ -373,7 +477,7 @@ gateway-mediated paths. Its central differential mechanism is the
 implementation groups direct patient-query and patient-creation flows, contrasts
 their client-observed end-to-end completion-time distributions with the mediated
 patient-query flow, and reports differences for the mean and the 50th, 95th, and
-99th percentiles. These differences estimate \emph{apparent path-level overhead};
+99th percentiles. These differences estimate \emph{path-level overhead};
 they do not decompose the internal execution time of the gateway.
 
 \noindent Observation in this strategy is not synonymous with measuring network
@@ -399,7 +503,9 @@ as an equivalent logical outcome.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/surrogate_observability_pattern.pdf}
-    \caption[Surrogate observability pattern]{Surrogate observability pattern for \texttt{direct\_vs\_middleware} experiment.}
+    \caption[Surrogate observability pattern]{Surrogate observability pattern for
+    the \texttt{direct\_vs\_middleware} experiment. Source: Author's
+    elaboration based on the RDG experimental design.}
     \label{fig:surrogate-observability-pattern}
 \end{figure}
 
