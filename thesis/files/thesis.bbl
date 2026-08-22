@@ -475,7 +475,7 @@
       \field{year}{2025}
       \field{dateera}{ce}
     \endentry
-    \entry{dimitrov-latency-applications}{unpublished}{}
+    \entry{dimitrov-latency-applications}{report}{}
       \name{author}{2}{}{%
         {{hash=709589cabe735d75e00dc6cba21400c9}{%
            family={Dimitrov},
@@ -488,6 +488,9 @@
            given={Anthony},
            giveni={A\bibinitperiod}}}%
       }
+      \list{institution}{1}{%
+        {Systems Research Group, Northwestern University}%
+      }
       \strng{namehash}{f21e7d457b5e27a1e14337289340c69e}
       \strng{fullhash}{f21e7d457b5e27a1e14337289340c69e}
       \strng{bibnamehash}{f21e7d457b5e27a1e14337289340c69e}
@@ -498,14 +501,13 @@
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{4}
-      \field{note}{Manuscript consulted in the documentary corpus}
+      \field{month}{04}
       \field{title}{Impact of Latency on Applications' Performance}
+      \field{type}{Technical Report}
       \field{urlday}{31}
       \field{urlmonth}{7}
       \field{urlyear}{2026}
       \field{year}{2001}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \verb{urlraw}
       \verb https://users.cs.northwestern.edu/~srg/Papers/01-10-02/srg_2.pdf

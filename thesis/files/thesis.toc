@@ -1,6 +1,6 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Acronyms and Abbreviations}{xi}{section*.12}%
-\contentsline {chapter}{Glossary}{xii}{section*.14}%
+\contentsline {chapter}{Acronyms and Abbreviations}{x}{section*.12}%
+\contentsline {chapter}{Glossary}{xi}{section*.14}%
 \contentsline {chapter}{\numberline {1}Problem Statement}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Regulatory and Technical Context}{1}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Territorial Coordination}{1}{subsection.1.1.1}%
@@ -20,69 +20,69 @@
 \contentsline {subsection}{\numberline {2.2.2}Client-Boundary Latency and Saturation Evidence}{25}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Healthcare Workflows as Information Dependencies}{33}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Protected Discharge and Anagrafe Zero}{33}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Cryptographic and Protocol Heterogeneity}{38}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Experimental Design and Evidence Semantics}{41}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Controls, Variables, and Reproducibility}{41}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{44}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Generic versus Domain-Specific Profiling}{46}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Modelling Distance and Semantic Fidelity}{46}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Justification of the Request Dataset Generator framework}{49}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Scientific Rationale for Domain-Specific Profiling.}{49}{subsection.2.5.3}%
-\contentsline {section}{\numberline {2.6}Summary}{50}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Synthesis}{50}{subsection.2.6.1}%
-\contentsline {chapter}{\numberline {3}Selected Approach}{51}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Technical Objectives and System Architecture}{51}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Architectural Objectives and End-to-End Pipeline}{51}{subsection.3.1.1}%
-\contentsline {paragraph}{Technical objectives}{51}{subsection.3.1.1}%
-\contentsline {paragraph}{End-to-end pipeline}{52}{subsection.3.1.1}%
-\contentsline {paragraph}{Design Patterns}{52}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Module Boundaries and Secure Transport}{53}{subsection.3.1.2}%
-\contentsline {paragraph}{Repository organisation and dependency direction}{53}{subsection.3.1.2}%
-\contentsline {paragraph}{Configuration and run provenance}{54}{subsection.3.1.2}%
-\contentsline {paragraph}{Mutual Transport Layer Security context management}{54}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Synthetic Inputs and Executable Transactions}{56}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Synthetic Resources and Transaction Heterogeneity}{56}{subsection.3.2.1}%
-\contentsline {paragraph}{Synthetic Patient resources}{56}{subsection.3.2.1}%
-\contentsline {paragraph}{Workload population and correlation model}{56}{subsection.3.2.1}%
-\contentsline {paragraph}{Regione Veneto, IHE Transactions, and mediated paths}{57}{figure.caption.39}%
-\contentsline {paragraph}{Digital-signature provider flow}{58}{figure.caption.39}%
-\contentsline {paragraph}{Step dependencies and the mock/live boundary}{58}{figure.caption.39}%
-\contentsline {section}{\numberline {3.3}Traffic Execution and Evidence Pipeline}{59}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Temporal Scheduling and Stateful Execution}{59}{subsection.3.3.1}%
-\contentsline {paragraph}{Temporal model and occurrence generation}{59}{subsection.3.3.1}%
-\contentsline {paragraph}{Scheduling and concurrency semantics}{60}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Configuration Interface and Evidence Processing}{61}{subsection.3.3.2}%
-\contentsline {paragraph}{User-interface configuration and shared execution}{61}{figure.caption.41}%
-\contentsline {paragraph}{Structured execution events}{62}{figure.caption.41}%
-\contentsline {paragraph}{Normalisation and surrogate enrichment}{62}{figure.caption.41}%
-\contentsline {paragraph}{Metric and reporting engine}{63}{figure.caption.41}%
-\contentsline {section}{\numberline {3.4}Evaluation Protocol and Experimental Design}{64}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Evaluation Questions and Validity Construction}{64}{subsection.3.4.1}%
-\contentsline {paragraph}{Evaluation questions}{64}{subsection.3.4.1}%
-\contentsline {paragraph}{Validity construction}{64}{Item.8}%
-\contentsline {paragraph}{Advanced Black-box with Surrogate Observability}{65}{Item.8}%
-\contentsline {subsection}{\numberline {3.4.2}Variables and Reproducibility Controls}{65}{subsection.3.4.2}%
-\contentsline {paragraph}{Variables and controlled factors}{65}{subsection.3.4.2}%
-\contentsline {paragraph}{Reproducibility protocol and campaign controls}{66}{subsection.3.4.2}%
-\contentsline {paragraph}{Statistical treatment}{66}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Scenarios, Indicators, and Quality Controls}{67}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Scenario Evidence and Operational Populations}{67}{subsection.3.5.1}%
-\contentsline {paragraph}{Declared scenarios}{67}{subsection.3.5.1}%
-\contentsline {paragraph}{Operational performance populations}{68}{table.caption.43}%
-\contentsline {subsection}{\numberline {3.5.2}Quality Controls and Acceptance Boundary}{68}{subsection.3.5.2}%
-\contentsline {paragraph}{Data-quality controls}{68}{subsection.3.5.2}%
-\contentsline {paragraph}{Acceptance criteria}{69}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Empirical Stochastic Distributions}{69}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Outcome-Stratified Evidence}{69}{subsection.3.6.1}%
-\contentsline {paragraph}{Empirical population and evidence-chain validity}{69}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Load-Scheduling Calibration}{70}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Stochastic Saturation and Operational Response}{72}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {3.6.4}Domain-Specific Flow Signatures}{74}{subsection.3.6.4}%
-\contentsline {paragraph}{Outcome-stratified transaction and flow distributions}{75}{figure.caption.48}%
-\contentsline {subsection}{\numberline {3.6.5}Client-Boundary Path Displacement}{76}{subsection.3.6.5}%
-\contentsline {subsection}{\numberline {3.6.6}Research Question Synthesis}{78}{subsection.3.6.6}%
-\contentsline {paragraph}{Validation of the stochastic propositions}{78}{subsection.3.6.6}%
-\contentsline {paragraph}{Methodological consequences}{78}{subsection.3.6.6}%
-\contentsline {paragraph}{Concluding Remarks}{79}{subsection.3.6.6}%
+\contentsline {subsection}{\numberline {2.3.2}Cryptographic and Protocol Heterogeneity}{37}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Experimental Design and Evidence Semantics}{40}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Controls, Variables, and Reproducibility}{40}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Evidence Gates and Ex Ante Judgement}{43}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Generic versus Domain-Specific Profiling}{45}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Modelling Distance and Semantic Fidelity}{45}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Justification of the Request Dataset Generator framework}{48}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Scientific Rationale for Domain-Specific Profiling.}{48}{subsection.2.5.3}%
+\contentsline {section}{\numberline {2.6}Summary}{49}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Synthesis}{49}{subsection.2.6.1}%
+\contentsline {chapter}{\numberline {3}Selected Approach}{50}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Technical Objectives and System Architecture}{50}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Architectural Objectives and End-to-End Pipeline}{50}{subsection.3.1.1}%
+\contentsline {paragraph}{Technical objectives}{50}{subsection.3.1.1}%
+\contentsline {paragraph}{End-to-end pipeline}{51}{subsection.3.1.1}%
+\contentsline {paragraph}{Design Patterns}{51}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Module Boundaries and Secure Transport}{52}{subsection.3.1.2}%
+\contentsline {paragraph}{Repository organisation and dependency direction}{52}{subsection.3.1.2}%
+\contentsline {paragraph}{Configuration and run provenance}{53}{subsection.3.1.2}%
+\contentsline {paragraph}{Mutual Transport Layer Security context management}{53}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Synthetic Inputs and Executable Transactions}{55}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Synthetic Resources and Transaction Heterogeneity}{55}{subsection.3.2.1}%
+\contentsline {paragraph}{Synthetic Patient resources}{55}{subsection.3.2.1}%
+\contentsline {paragraph}{Workload population and correlation model}{55}{subsection.3.2.1}%
+\contentsline {paragraph}{Regione Veneto, IHE Transactions, and mediated paths}{56}{figure.caption.39}%
+\contentsline {paragraph}{Digital-signature provider flow}{57}{figure.caption.39}%
+\contentsline {paragraph}{Step dependencies and the mock/live boundary}{57}{figure.caption.39}%
+\contentsline {section}{\numberline {3.3}Traffic Execution and Evidence Pipeline}{58}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Temporal Scheduling and Stateful Execution}{58}{subsection.3.3.1}%
+\contentsline {paragraph}{Temporal model and occurrence generation}{58}{subsection.3.3.1}%
+\contentsline {paragraph}{Scheduling and concurrency semantics}{59}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Configuration Interface and Evidence Processing}{60}{subsection.3.3.2}%
+\contentsline {paragraph}{User-interface configuration and shared execution}{60}{figure.caption.41}%
+\contentsline {paragraph}{Structured execution events}{61}{figure.caption.41}%
+\contentsline {paragraph}{Normalisation and surrogate enrichment}{61}{figure.caption.41}%
+\contentsline {paragraph}{Metric and reporting engine}{62}{figure.caption.41}%
+\contentsline {section}{\numberline {3.4}Evaluation Protocol and Experimental Design}{63}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Evaluation Questions and Validity Construction}{63}{subsection.3.4.1}%
+\contentsline {paragraph}{Evaluation questions}{63}{subsection.3.4.1}%
+\contentsline {paragraph}{Validity construction}{63}{Item.8}%
+\contentsline {paragraph}{Advanced Black-box with Surrogate Observability}{64}{Item.8}%
+\contentsline {subsection}{\numberline {3.4.2}Variables and Reproducibility Controls}{64}{subsection.3.4.2}%
+\contentsline {paragraph}{Variables and controlled factors}{64}{subsection.3.4.2}%
+\contentsline {paragraph}{Reproducibility protocol and campaign controls}{65}{subsection.3.4.2}%
+\contentsline {paragraph}{Statistical treatment}{65}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Scenarios, Indicators, and Quality Controls}{66}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Scenario Evidence and Operational Populations}{66}{subsection.3.5.1}%
+\contentsline {paragraph}{Declared scenarios}{66}{subsection.3.5.1}%
+\contentsline {paragraph}{Operational performance populations}{67}{table.caption.43}%
+\contentsline {subsection}{\numberline {3.5.2}Quality Controls and Acceptance Boundary}{67}{subsection.3.5.2}%
+\contentsline {paragraph}{Data-quality controls}{67}{subsection.3.5.2}%
+\contentsline {paragraph}{Acceptance criteria}{68}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Empirical Stochastic Distributions}{68}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Outcome-Stratified Evidence}{68}{subsection.3.6.1}%
+\contentsline {paragraph}{Empirical population and evidence-chain validity}{68}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Load-Scheduling Calibration}{69}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Stochastic Saturation and Operational Response}{71}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Domain-Specific Flow Signatures}{73}{subsection.3.6.4}%
+\contentsline {paragraph}{Outcome-stratified transaction and flow distributions}{74}{figure.caption.48}%
+\contentsline {subsection}{\numberline {3.6.5}Client-Boundary Path Displacement}{75}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.6}Research Question Synthesis}{77}{subsection.3.6.6}%
+\contentsline {paragraph}{Validation of the stochastic propositions}{77}{subsection.3.6.6}%
+\contentsline {paragraph}{Methodological consequences}{77}{subsection.3.6.6}%
+\contentsline {paragraph}{Concluding Remarks}{78}{subsection.3.6.6}%
 \contentsline {chapter}{Bibliography}{i}{chapter*.51}%
 \contentsline {chapter}{Online Sources}{vi}{chapter*.52}%
