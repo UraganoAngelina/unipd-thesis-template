@@ -1,11 +1,16 @@
 {
-  "generated_at": "2026-08-27T08:04:48.728710+00:00",
+  "generated_at": "2026-08-28T12:22:39.630452+00:00",
   "nodes": {
     "Request-Dataset-Generator::fhir_patient_generator": {
       "code_fingerprint": "",
       "label": "fhir_patient_generator.py",
-      "last": "2026-08-02T14:47:58.504861+00:00",
+      "last": "2026-08-27T08:06:46.152746+00:00",
       "provenance": [
+        {
+          "date": "2026-08-27T08:06:46.152746+00:00",
+          "outcome": "useful",
+          "q": "Resolve the remaining abrupt structural transitions in Sections 3.1 and 3.2 by introducing the first subsections before their nested paragraphs."
+        },
         {
           "date": "2026-08-02T14:47:58.504861+00:00",
           "outcome": "useful",
@@ -17,10 +22,10 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 1.101760041,
+      "score": 2.045307096,
       "source_file": "fhir_patient_generator.py",
       "status": "preferred",
-      "uses": 2
+      "uses": 3
     },
     "Request-Dataset-Generator::log_collector": {
       "code_fingerprint": "",
@@ -33,7 +38,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.565092181,
+      "score": 0.549905678,
       "source_file": "log_collector.py",
       "status": "tentative",
       "uses": 1
@@ -54,7 +59,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 1.130346339,
+      "score": 1.099968979,
       "source_file": "log_collector.py",
       "status": "preferred",
       "uses": 2
@@ -70,7 +75,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.794902907,
+      "score": 0.773540382,
       "source_file": "main.py",
       "status": "tentative",
       "uses": 1
@@ -91,7 +96,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 1.564094757,
+      "score": 1.522060676,
       "source_file": "metric_engine.py",
       "status": "preferred",
       "uses": 2
@@ -118,7 +123,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.135647633,
+      "score": 0.132002186,
       "source_file": "metric_engine.py",
       "status": "contested",
       "uses": 2,
@@ -146,7 +151,7 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.369198756,
+      "score": 0.359276767,
       "source_file": "metric_engine.py",
       "status": "contested",
       "uses": 2,
@@ -163,7 +168,7 @@
           "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
         }
       ],
-      "score": 0.832782297,
+      "score": 0.810401787,
       "source_file": "metric_engine.py",
       "status": "tentative",
       "uses": 1
@@ -179,7 +184,7 @@
           "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
         }
       ],
-      "score": 0.832782297,
+      "score": 0.810401787,
       "source_file": "metric_engine.py",
       "status": "tentative",
       "uses": 1
@@ -200,7 +205,7 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 1.307056264,
+      "score": 1.271929934,
       "source_file": "metric_engine.py",
       "status": "preferred",
       "uses": 2
@@ -208,9 +213,14 @@
     "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator": {
       "code_fingerprint": "",
       "label": "FlowOrchestrator",
-      "last": "2026-08-27T07:02:37.034376+00:00",
+      "last": "2026-08-27T08:06:46.152746+00:00",
       "neg": 2,
       "provenance": [
+        {
+          "date": "2026-08-27T08:06:46.152746+00:00",
+          "outcome": "useful",
+          "q": "Resolve the remaining abrupt structural transitions in Sections 3.1 and 3.2 by introducing the first subsections before their nested paragraphs."
+        },
         {
           "date": "2026-08-27T07:02:37.034376+00:00",
           "outcome": "useful",
@@ -230,17 +240,12 @@
           "date": "2026-08-02T15:29:59.127785+00:00",
           "outcome": "useful",
           "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
-        },
-        {
-          "date": "2026-08-02T14:57:09.025976+00:00",
-          "outcome": "useful",
-          "q": "Which RDG RVE flows are Direct or Gateway-Mediated for the thesis workflow visual?"
         }
       ],
-      "score": 2.212383337,
+      "score": 3.126083076,
       "source_file": "rve_transactions/flow_orchestrator.py",
       "status": "contested",
-      "uses": 6,
+      "uses": 7,
       "verdict": "useful"
     },
     "Request-Dataset-Generator::rve_transactions_rve_gateway": {
@@ -254,7 +259,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.536618371,
+      "score": 0.522197083,
       "source_file": "rve_transactions/rve_gateway.py",
       "status": "tentative",
       "uses": 1
@@ -270,7 +275,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.794143475,
+      "score": 0.77280136,
       "source_file": "rve_transactions/scrybasign_common.py",
       "status": "tentative",
       "uses": 1
@@ -286,7 +291,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.794143475,
+      "score": 0.77280136,
       "source_file": "rve_transactions/scrybasign_common.py",
       "status": "tentative",
       "uses": 1
@@ -318,7 +323,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 1.766967158,
+      "score": 1.719481007,
       "source_file": "",
       "status": "contested",
       "uses": 3,
@@ -335,7 +340,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.794902907,
+      "score": 0.773540382,
       "source_file": "",
       "status": "tentative",
       "uses": 1
@@ -351,7 +356,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.832202872,
+      "score": 0.809837933,
       "source_file": "tests/test_core.py",
       "status": "tentative",
       "uses": 1
@@ -367,7 +372,7 @@
           "q": "Ridurre la Figura 4.1 per farla rientrare a pagina 84 e spostare sotto la timeline l'etichetta Observed saturated asynchronous timeline della Figura 4.2."
         }
       ],
-      "score": 0.936948456,
+      "score": 0.911768545,
       "source_file": "timeline_generator.py",
       "status": "tentative",
       "uses": 1
@@ -383,7 +388,7 @@
           "q": "Where should transitional bridges be inserted in Chapter 3 to prevent abrupt parent-to-child heading transitions?"
         }
       ],
-      "score": 0.999002576,
+      "score": 0.972154998,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -399,7 +404,7 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.512912789,
+      "score": 0.499128574,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -420,7 +425,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 1.76787621,
+      "score": 1.720365629,
       "source_file": "traffic_exec_engine.py",
       "status": "preferred",
       "uses": 2
@@ -436,7 +441,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.832202872,
+      "score": 0.809837933,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -452,7 +457,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.832202872,
+      "score": 0.809837933,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -473,7 +478,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.589046382,
+      "score": 1.546341741,
       "source_file": "traffic_exec_engine.py",
       "status": "preferred",
       "uses": 2
@@ -489,7 +494,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.794902907,
+      "score": 0.773540382,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -505,7 +510,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.832202872,
+      "score": 0.809837933,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -526,7 +531,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.589046382,
+      "score": 1.546341741,
       "source_file": "ui/tabs/config_tab.py",
       "status": "preferred",
       "uses": 2
@@ -542,7 +547,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.794143475,
+      "score": 0.77280136,
       "source_file": "ui/tabs/dashboard_tab.py",
       "status": "tentative",
       "uses": 1
@@ -563,7 +568,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.589046382,
+      "score": 1.546341741,
       "source_file": "ui/tabs/run_tab.py",
       "status": "preferred",
       "uses": 2
@@ -584,7 +589,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.589046382,
+      "score": 1.546341741,
       "source_file": "ui/ui_config_bridge.py",
       "status": "preferred",
       "uses": 2
@@ -600,7 +605,7 @@
           "q": "Ground and structurally optimize Chapter 4, integrate the reconciliation matrix and two TikZ figures, and recast the theoretical perspectives as explicitly proposed future work."
         }
       ],
-      "score": 0.935673338,
+      "score": 0.910527695,
       "source_file": "20260727T185227/error_taxonomy.md",
       "status": "tentative",
       "uses": 1
@@ -616,7 +621,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.536618371,
+      "score": 0.522197083,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -632,7 +637,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.514182257,
+      "score": 0.500363926,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -648,7 +653,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.514182257,
+      "score": 0.500363926,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
@@ -670,7 +675,7 @@
           "q": "Ridurre la Figura 4.1 per farla rientrare a pagina 84 e spostare sotto la timeline l'etichetta Observed saturated asynchronous timeline della Figura 4.2."
         }
       ],
-      "score": -0.000909052,
+      "score": -0.000884622,
       "source_file": "20260727T185227/README.md",
       "status": "contested",
       "uses": 1,
@@ -687,7 +692,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.514182257,
+      "score": 0.500363926,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
@@ -708,7 +713,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.129231867,
+      "score": 1.098884458,
       "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
       "status": "preferred",
       "uses": 2
@@ -724,7 +729,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 0.564358596,
+      "score": 0.549191807,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -740,7 +745,7 @@
           "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
         }
       ],
-      "score": 0.565254158,
+      "score": 0.550063301,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -756,7 +761,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.53688677,
+      "score": 0.522458269,
       "source_file": "SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf",
       "status": "tentative",
       "uses": 1
@@ -777,7 +782,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.129231867,
+      "score": 1.098884458,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 2
@@ -803,7 +808,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.924134774,
+      "score": 1.872424839,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 3
@@ -819,7 +824,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.514182257,
+      "score": 0.500363926,
       "source_file": "Infrastructure Reference Architecture-v1.1.0.pdf",
       "status": "tentative",
       "uses": 1
@@ -835,7 +840,7 @@
           "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
         }
       ],
-      "score": 0.832782297,
+      "score": 0.810401787,
       "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
       "status": "tentative",
       "uses": 1
@@ -851,7 +856,7 @@
           "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
         }
       ],
-      "score": 0.832782297,
+      "score": 0.810401787,
       "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
       "status": "tentative",
       "uses": 1
@@ -872,7 +877,7 @@
           "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
         }
       ],
-      "score": 1.768455636,
+      "score": 1.720929482,
       "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
       "status": "preferred",
       "uses": 2
@@ -888,7 +893,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.53688677,
+      "score": 0.522458269,
       "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
       "status": "tentative",
       "uses": 1

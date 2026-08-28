@@ -21,7 +21,7 @@ contributions addressed by the thesis.
 coordinated network of services rather than as a collection of isolated clinical
 encounters. Its organisational model includes the District, the Casa della
 Comunità, the COT (Centrale Operativa Territoriale / Territorial Coordination
-Centre)\glsadd{cot}\glsadd{cotg}, the 116117 operational
+Centre)\glsadd{cot}, the 116117 operational
 centre, home-care services, community hospitals, and telemedicine-supported
 services \footcite[Allegato~1, pp.~12, 20--21]{dm-77-2022}. The decree therefore
 assigns digital information exchange an operational role: coordination across
@@ -51,7 +51,7 @@ Health data are a special category of personal data under Article~9 of European
 Union Regulation 2016/679, and their processing remains subject to data
 protection by design and by default and to measures appropriate to risk under
 Articles~25 and~32 \footcite[arts.~9, 25 and
-32]{eu-gdpr-2016-679}. The FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}\glsadd{fseg}, or Electronic
+32]{eu-gdpr-2016-679}. The FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}, or Electronic
 Health Record, translates the same principle into role-based authorisation,
 periodic verification of access profiles, secure communication, operational
 traceability, and audit-log mechanisms \footcite[art.~25]{decreto-fse-2-2023}. DM~77/2022 thus creates a dual technical
@@ -64,7 +64,7 @@ ecosystem.
 \subsection{Heterogeneity in the Territorial Information System}
 \label{sec:industrial-ecosystem}
 
-\noindent The regional programme\glsadd{siter}\glsadd{siterg} provides the Veneto project context
+\noindent The regional programme\glsadd{siter} provides the Veneto project context
 in which the organisational mandate becomes an integration problem. Regional
 documentation defines SI.Ter as a programme that connects territorial-care
 application domains, shared services, and pre-existing local and regional
@@ -74,12 +74,12 @@ accordingly requires cooperation across distinct ownership boundaries while
 preserving the processes and information assets already managed by Healthcare
 Organisations \footcite{azienda-zero-siter-capitolato,rti-siter-relazione-tecnica}.
 The COT model therefore depends on an architecture whose components remain
-heterogeneous in responsibility, interface, and data representation. The integration perimeter includes APMS (Application Profile Management System)\glsadd{apms}\glsadd{apmsg}
+heterogeneous in responsibility, interface, and data representation. The integration perimeter includes the Application Profile Management System (APMS)\glsadd{apms}
 for authentication and user-profile management in cloud-based applications
 \footcite[Version~1.4.1, Section~1]{apms-auth-v141}, Anagrafe Zero for patient identification and
 registration, local Admission, Discharge, and Transfer systems, and the FSEr
 (Fascicolo Sanitario Elettronico regionale) document infrastructure. Within the
-document path, XDS (Cross-Enterprise Document Sharing)\glsadd{xds}\glsadd{xdsg} repositories publish and
+document path, XDS (Cross-Enterprise Document Sharing)\glsadd{xds} repositories publish and
 retrieve clinical documents according to the regional Affinity Domain, while
 their indexing makes those documents available to the regional record. The
 documented SI.Ter architecture also connects context-call services, digital
@@ -105,14 +105,14 @@ The technological gap becomes visible in the interaction models exposed by the
 two principal data domains. Anagrafe Zero provides resource-oriented REST
 (Representational State Transfer) interactions over HTTP (Hypertext Transfer
 Protocol), based on HL7 (Health Level Seven) FHIR (Fast Healthcare
-Interoperability Resources)\glsadd{fhir}\glsadd{fhirg} R4 (Release 4), for RVE (Regione
-Veneto)\glsadd{rve}\glsadd{rveg} operations such as patient search and identifier assignment. FHIR
+Interoperability Resources)\glsadd{fhir} R4 (Release 4), for RVE (Regione
+Veneto)\glsadd{rve} operations such as patient search and identifier assignment. FHIR
 admits both XML (Extensible Markup Language) and
-JSON (JavaScript Object Notation)\glsadd{json}\glsadd{jsong} representations, but the applicable regional
+JSON (JavaScript Object Notation)\glsadd{json} representations, but the applicable regional
 interactions specify FHIR XML; the contrast is therefore not a simple
 XML-versus-JSON conversion \footcite[Sections~1.5.2 and~2.5.2]{arsenal-anagrafe-zero-v26}.
 The FSEr document infrastructure instead applies IHE (Integrating the Healthcare
-Enterprise)\glsadd{ihe}\glsadd{iheg} XDS.b transactions through SOAP (Simple Object Access Protocol)
+Enterprise)\glsadd{ihe} XDS.b transactions through SOAP (Simple Object Access Protocol)
 Web Services\footcite{ihe-xdsb,affinity-domain-italia-v263}. Both families can use HTTP over TCP (Transmission Control Protocol) and protect the
 channel through mutual Transport Layer Security (mTLS). The mediation challenge
 therefore lies above this common transport substrate: SI.Ter must reconcile
@@ -182,14 +182,14 @@ Table~\ref{tab:siter-interoperability-standards}.
         \node[layerlabel] at (-5.98,-2.25)
             {Layer 2\\{\fontsize{6.5}{7}\selectfont Connectivity}\\\& Security};
         \node[layerlabel] at (-5.98,-4.38)
-            {Layer 3\\Mediation\\Gateway};
+            {Layer 3\\Regional Integration\\Gateway};
         \node[layerlabel] at (-6.30,-6.75)
             {Layer 4\\Regional\\Services};
 
         \node[component] (apps) at (-2.55,-0.15)
             {\textbf{Territorial Applications}};
         \node[component] (rdg) at (3.45,-0.15)
-            {\textbf{Request Dataset Generator (RDG)}};
+            {\textbf{RDG Framework}};
 
         \node[font=\bfseries\scriptsize, text=blue!65!black]
             at (4.25,-1.55) {mTLS Protected Channel};
@@ -262,13 +262,13 @@ Table~\ref{tab:siter-interoperability-standards}.
     & Supports publication, metadata indexing and query, and retrieval of clinical documents through the FSEr Document Repository and Document Registry. \\
     \hline
     \rowcolor{tableGray}
-    \textbf{SAML (Security Assertion Markup Language)\glsadd{saml}\glsadd{samlg} 2.0 / JWT (JSON Web Token)\glsadd{jwt}\glsadd{jwtg}}
+    \textbf{SAML (Security Assertion Markup Language)\glsadd{saml} 2.0 / JWT (JSON Web Token)\glsadd{jwt}}
     & XML assertions and compact RFC (Request for Comments) 7519 tokens carried by the transaction-specific SOAP or HTTP/REST exchanges
     & Establishes and propagates the security context: [RVE-121] uses the SAML assertion to obtain a JWT, which is then used by [RVE-130] for the contextual service call. \\
     \hline
-    \textbf{GDPR (General Data Protection Regulation) / FSE (Fascicolo Sanitario Elettronico)\glsadd{fse}\glsadd{fseg} 2.0}
+    \textbf{GDPR (General Data Protection Regulation) / FSE (Fascicolo Sanitario Elettronico)\glsadd{fse} 2.0}
     & Data Protection by Design and by Default constraints
-    & Establishes design constraints for differentiated access profiles and operation traceability. In the regional stack, IHE ATNA (Audit Trail and Node Authentication)\glsadd{atna}\glsadd{atnag} implements audit logging. Authorisation checks and audit-record generation constitute non-bypassable processing in a compliant path; their cost therefore remains part of the measured end-to-end performance. \\
+    & Establishes design constraints for differentiated access profiles and operation traceability. In the regional stack, IHE ATNA (Audit Trail and Node Authentication)\glsadd{atna} implements audit logging. Authorisation checks and audit-record generation constitute non-bypassable processing in a compliant path; their cost therefore remains part of the measured end-to-end performance. \\
     \hline
     \rowcolor{tableGray}
     \textbf{eIDAS; CAdES, PAdES, and XAdES}\par
@@ -323,8 +323,8 @@ produced by earlier activities.
 \noindent The upper branch in Figure~\ref{fig:rdg-regional-transaction-workflow} makes the
 identity dependency concrete. Within \texttt{FLOW\_PATIENT\_QUERY}, RDG executes
 [RVE-1.b] before the [RVE-54] Patient Query. Through the first transaction, the
-regional IAP (Identity and Assertion Provider)\glsadd{iap}\glsadd{iapg} generates and returns a SAML 2.0 identity
-assertion; the execution engine extracts its required Base64 representation,
+regional IAP (Identity and Assertion Provider)\glsadd{iap} generates and returns a SAML 2.0 identity
+assertion; the Traffic Execution Engine extracts its required Base64 representation,
 stores it in the context of the same flow occurrence, and resolves the corresponding placeholder in the
 \texttt{Authorization} header of [RVE-54] before sending the query. The resulting
 header carries the assertion with the \texttt{IHE-SAML} authentication scheme,
@@ -333,7 +333,7 @@ as required by the regional security profile
 RDG therefore represents regional security-session state as explicit
 per-occurrence dependency data rather than reducing it to the state of the
 underlying HTTP connection. If [RVE-1.b] fails, or if the required assertion cannot be
-extracted or its placeholder remains unresolved, the engine does not execute a
+extracted or its placeholder remains unresolved, the Traffic Execution Engine does not execute a
 semantically valid patient query and records the workflow as incomplete. This
 behaviour makes assertion acquisition and propagation part of the tested
 workflow. An isolated request can exercise [RVE-54] only after receiving a valid
@@ -359,14 +359,14 @@ behaviour of the distributed workflow, while the regional security perimeter
 limits which internal evidence the experiment can inspect.
 
 \noindent Figure~\ref{fig:rdg-regional-transaction-workflow} maps this requirement to the
-Request Dataset Generator (RDG)\glsadd{rdg}\glsadd{rdgg} flow model, in which each correlated occurrence
+RDG\glsadd{rdg} flow model, in which each correlated occurrence
 retains both business outputs and the security context required by downstream
 transactions.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/rdg_regional_transaction_workflow.pdf}
-    \caption[Request Dataset Generator-orchestrated transactions]{Request Dataset Generator orchestration of the
+    \caption[RDG-orchestrated transactions]{RDG orchestration of the
     [RVE-1.b] authentication output into regional patient-identity flows.
     Source: Author's elaboration based on the framework implementation and regional specifications.}
     \label{fig:rdg-regional-transaction-workflow}
@@ -383,12 +383,12 @@ assertions or tokens can become prerequisites for later services
 architecture also provides audit mechanisms for production accountability; the
 regional security specification states that participating actors generate audit
 records and refers their detailed structure to the applicable ATNA (Audit Trail
-and Node Authentication)\glsadd{atna}\glsadd{atnag} profile
+and Node Authentication)\glsadd{atna} profile
 \footcite[Section~4.3.15]{arsenal-security-v214}. The existence of this production
 telemetry does not make it part of the evidence available to every consumer or
 experiment, because access remains governed by operational roles and security
 policy. Within the authorised perimeter of this thesis, internal APMS telemetry
-and telemetry from the mediated gateway path are not made available to the
+and telemetry from the regional integration gateway path are not made available to the
 experiment. This statement describes the
 research boundary; it does not claim that the platforms fail to produce logs or
 that regional policy universally prohibits their inspection. Real patient data,
@@ -399,24 +399,24 @@ intrusive load.
 
 \noindent These restrictions, summarised in
 Table~\ref{tab:internal-external-observation}, preserve the applicable security boundary but
-remove the internal timestamps required for a causal decomposition of gateway
+remove the internal timestamps required for a causal decomposition of regional integration gateway
 processing. The observable interval consequently extends from the client sending a request
 to the client receiving the corresponding response. It can include client-side
-processing, authentication, network transit, gateway mediation, downstream
+processing, authentication, network transit, regional integration gateway mediation, downstream
 service execution, and response propagation. A latency measured across this
 interval characterises the path as a whole; it cannot attribute a delay to a
-specific gateway component without additional internal evidence. Treating the
-entire difference as gateway processing therefore exceeds the available
+specific regional integration gateway component without additional internal evidence. Treating the
+entire difference as regional integration gateway processing therefore exceeds the available
 data and violates the distinction between observation and causal explanation. This limitation determines the methodological requirement. The experiment needs
 a controlled external layer that represents complete workflows, fixes the
 workload and observation rules, records client-visible events, and compares
-direct with gateway-mediated execution at the same declared boundary. Such a
+direct execution with execution mediated by the regional integration gateway at the same declared boundary. Such a
 layer does not replace production telemetry. It provides surrogate evidence for
 the effect visible outside the protected platform and makes every inference
 conditional on the comparability of the observed paths. The resulting research
 question is: \emph{how can documented healthcare interoperability workflows be
 translated into reproducible, observable, and measurable end-to-end workloads,
-and how can the apparent overhead associated with gateway mediation be estimated
+and how can the apparent overhead associated with regional integration gateway mediation be estimated
 differentially when internal platform telemetry is outside the authorised
 observation perimeter?}
 
@@ -450,13 +450,13 @@ observation perimeter?}
         & RDG distinguishes the HTTP transport outcome from application completion and semantic rejection visible in the response or output extraction. \\
         \hline
         \textbf{Telemetry}
-        & APMS, mediated-gateway, and production ATNA logs remain inaccessible to the experiment.
+        & APMS, regional integration gateway, and production ATNA logs remain inaccessible to the experiment.
         & RDG produces correlated JSONL events for requests, responses, and completed workflow occurrences. \\
         \hline
         \rowcolor{tableGray}
         \textbf{Overhead attribution}
-        & Direct gateway measurement requires aligned ingress, internal-component, and egress timestamps, which lie outside the experimental perimeter.
-        & $\Delta L$ measures an aggregate path-level effect that can include routing, security, transformation, downstream-service, and retry costs; it does not decompose APMS or gateway processing. \\
+        & Direct regional integration gateway measurement requires aligned ingress, internal-component, and egress timestamps, which lie outside the experimental perimeter.
+        & $\Delta L$ measures an aggregate path-level effect that can include routing, security, transformation, downstream-service, and retry costs; it does not decompose APMS or regional integration gateway processing. \\
         \hline
 \end{tabular}
 \end{table}
@@ -471,20 +471,20 @@ observation perimeter?}
 instrument of a \emph{Surrogate Observability Strategy}. The strategy translates
 documented healthcare interactions into synthetic and executable workloads,
 observes them at the client boundary, and compares controlled direct and
-gateway-mediated paths. Its central differential mechanism is the
+paths mediated by the regional integration gateway. Its central differential mechanism is the
 \texttt{direct\_\allowbreak vs\_\allowbreak middleware} experiment. The current
 implementation groups direct patient-query and patient-creation flows, contrasts
 their client-observed end-to-end completion-time distributions with the mediated
 patient-query flow, and reports differences for the mean and the 50th, 95th, and
 99th percentiles. These differences estimate \emph{path-level overhead};
-they do not decompose the internal execution time of the gateway.
+they do not decompose the internal execution time of the regional integration gateway.
 
 \noindent Observation in this strategy is not synonymous with measuring network
 latency. The client-observed interval covers the complete request--response path,
 while RDG records the HTTP-level outcome and the application outcome as distinct
 evidence. An HTTP status code 200 confirms that the exchange returns a successful
 HTTP response, but it does not by itself prove that the payload contains the
-required output or that the workflow can advance. The execution engine therefore
+required output or that the workflow can advance. The Traffic Execution Engine therefore
 marks a step as failed when a mandatory output cannot be extracted, even if the
 response status is 200, and propagates that failure to the flow-level outcome. The
 same observation model retains service-reported semantic rejections, such as an
@@ -509,7 +509,7 @@ as an equivalent logical outcome.
 \end{figure}
 
 \noindent The framework preserves the process semantics required by that comparison. It
-generates synthetic FHIR R4 patients, composes selected RVE (Regione Veneto)\glsadd{rve}\glsadd{rveg}
+generates synthetic FHIR R4 patients, composes selected RVE (Regione Veneto)\glsadd{rve}
 transactions into ordered multi-step flows, resolves outputs that become inputs
 to later steps, and assigns traffic occurrences to configurable timelines.
 Within each workflow occurrence, dependent steps execute sequentially;
@@ -518,11 +518,11 @@ independent occurrences can execute concurrently through Python
 identity, timing, transport status, application outcome, and scheduling context.
 The resulting observation layer reconnects the functional workflow described by
 the SI.Ter documentation with the measurements available outside the protected
-gateway. The strategy covers selected workflow families related to regional
+regional integration gateway. The strategy covers selected workflow families related to regional
 authentication, patient identity, application context, document exchange, and
-digital signature. Its standards perimeter includes HL7 (Health Level Seven)\glsadd{hl7}\glsadd{hl7g}
+digital signature. Its standards perimeter includes HL7 (Health Level Seven)\glsadd{hl7}
 FHIR R4 resources, RVE specifications, IHE XDS.b transactions, SAML (Security
-Assertion Markup Language)\glsadd{saml}\glsadd{samlg} assertions, and JWT (JSON Web Token)\glsadd{jwt}\glsadd{jwtg} tokens. Synthetic
+Assertion Markup Language)\glsadd{saml} assertions, and JWT (JSON Web Token)\glsadd{jwt} tokens. Synthetic
 patients replace real health information, while mock and authorised live modes
 separate controlled verification of the pipeline from observation of remote
 paths. This scope supports a reproducible performance method without claiming
@@ -544,12 +544,12 @@ The method pursues four verifiable objectives:
     \item provide a configurable framework that translates those dependencies
     into synthetic, executable, and observable workloads;
     \item define measurements that support differential comparison between
-    direct and gateway-mediated paths.
+    direct paths and paths mediated by the regional integration gateway.
 \end{enumerate}
 \noindent The objectives establish an evidence-producing method and artefact; they neither
 promise a performance improvement nor predetermine the experimental outcome. RDG makes the objectives inspectable through a run-specific artefact chain. The
 chain comprises a resolved configuration, a synthetic dataset, a traffic
-timeline, a JSONL (JSON Lines)\glsadd{jsonl}\glsadd{jsonlg} execution log, a normalised analytical dataset,
+timeline, a JSONL (JSON Lines)\glsadd{jsonl} execution log, a normalised analytical dataset,
 metric reports, tabular summaries, and optional graphs. The analytical layer
 separates request latency, workflow completion time, throughput, error rate,
 concurrency, scheduling delay, and log completeness. Artefact presence
@@ -557,7 +557,7 @@ establishes software output coverage, whereas only an executed and
 quality-checked scenario provides experimental evidence. This distinction keeps
 the methodological contribution independent from any unsupported claim about
 observed performance. The contribution is consequently a reproducible procedure for profiling
-healthcare interoperability paths when the internal gateway remains outside the
+healthcare interoperability paths when the internal regional integration gateway remains outside the
 observation perimeter. The analytical component reconstructs the meaning and
 dependencies of the selected regional flows; the software component generates,
 executes, correlates, and measures their occurrences; the differential component

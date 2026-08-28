@@ -141,6 +141,15 @@
 
 % Make glossaries and bibliography
 \makeglossaries
+% Print acronym expansions and their glossary descriptions in one list.
+\newglossarystyle{combinedacronyms}{%
+  \setglossarystyle{long}%
+  \renewcommand*{\glossentry}[2]{%
+    \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+    \glsentrylong{##1}.\space
+    \glossentrydesc{##1}\glspostdescription\space ##2\tabularnewline
+  }%
+}
 % Redefine the format for the glossary entries to be italic
 \renewcommand*{\glstextformat}[1]{\textit{#1}\glox}
 %\glsaddall

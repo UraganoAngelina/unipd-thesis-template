@@ -22,8 +22,8 @@ presented as an unsupported decomposition of a protected regional platform.
 \noindent Chapter~\ref{chap:introduction} defines four objectives: interpret the
 selected standards and architectures, formalise the corresponding healthcare
 workflows, translate them into executable and observable workloads, and compare
-direct with gateway-mediated paths. The Request Dataset Generator (RDG) provides
-the artefact that connects these objectives. Its evidence chain preserves
+direct paths with paths mediated by the regional integration gateway. The RDG
+framework provides the artefact that connects these objectives. Its evidence chain preserves
 configuration, seed, timeline, occurrence identity, request and flow outcomes,
 and statistical population from workload construction to reporting. The three
 results below provide the principal closure: path-level displacement
@@ -83,10 +83,11 @@ objective--model--evidence map.
             Instrument validity holds below the admission boundary; overload
             exposes client-side backpressure. \\
             \hline
-            Compare direct and gateway-mediated paths. &
+            Compare direct paths with paths mediated by the regional
+            integration gateway. &
             Path-level Overhead
             $\Delta L(P_{50})=L_{\mathrm{mediated}}-L_{\mathrm{direct}}$. &
-            Successful-flow medians of $755.8$~ms and $571.1$~ms        
+            Successful-flow medians of $755.8$~ms and $571.1$~ms yield
             $\Delta L(P_{50})=184.7$~ms. &
             The client-boundary displacement is quantified; mediation-only
             and component-level attribution remain non-assessable. \\
@@ -100,7 +101,7 @@ objective--model--evidence map.
 \label{subsec:conclusions-path-displacement}
 
 \noindent The fourth objective of Chapter~\ref{chap:introduction} requires a
-differential measurement because internal gateway telemetry lies outside the
+differential measurement because internal regional integration gateway telemetry lies outside the
 authorised observation perimeter. Chapter~\ref{chap:stateofart} consequently
 defines the Path-level Overhead for a declared statistic $q$ as
 \begin{equation}
@@ -137,7 +138,7 @@ contain two steps, whereas the mediated patient workflow contains five steps
 and different contracts. The subtraction consequently describes the declared
 campaign populations; it does not constitute a single-variable estimate of a
 semantically equivalent operation or an operational budget attributable only
-to gateway mediation.
+to regional integration gateway mediation.
 
 \noindent Network transit, connection and security handling, policy enforcement,
 transformation, routing, queueing, downstream execution, retries, and the
@@ -156,11 +157,11 @@ component-level causal attribution.
 \subsection{Asynchronous State Truncation and Fail-Fast Efficiency}
 \label{subsec:conclusions-state-truncation}
 
-\noindent The framework preserves a strict execution invariant: steps within one flow
+\noindent The RDG framework preserves a strict execution invariant: steps within one flow
 occurrence execute sequentially, while independent occurrences execute
 concurrently. Let an occurrence traverse the ordered states
 $X_0\rightarrow X_1\rightarrow\cdots\rightarrow X_m$, and let the random
-index $\tau$ identify the first unsuccessful transition. The execution engine
+index $\tau$ identify the first unsuccessful transition. The Traffic Execution Engine
 implements the stochastic truncation operator
 \begin{equation}
     \mathcal{T}_{\tau}(X_0,\ldots,X_m)
@@ -274,14 +275,14 @@ of distributed state under load\footnote{%
 \phantomsection\label{fn:akram-load-model}%
 \cite{akram-numerical-latency}.}.
 
-\noindent At the gateway boundary, suppression of an invalid suffix removes requests
+\noindent At the regional integration gateway boundary, suppression of an invalid suffix removes requests
 that would otherwise compete for admission, connection handling, parsing,
 validation, transformation, and routing. At the downstream boundary, services
 do not receive requests whose inputs depend on a failed state. This reduction
 in submitted work can weaken one path to queueing backpressure, but the
 campaign does not isolate its marginal effect on congestion. The mechanism
 therefore establishes fail-fast termination as an execution and correctness
-property; it neither reveals gateway capacity nor eliminates transfer in vain
+property; it neither reveals regional integration gateway capacity nor eliminates transfer in vain
 for requests that already enter a long queue or approach a timeout.
 
 \subsection[Queueing Saturation and Load-Sharing Window Closure]{Queueing Saturation and Load-Sharing Window}
@@ -294,11 +295,11 @@ relevant transition at the client-side admission mechanism, when
 \emph{active flows reach the configured capacity $C_{\max}=30$ at approximately
 $60$~s}. The scheduling-drift envelope then passes approximately
 $60{,}000$~ms and approaches $67{,}000$~ms before the arrival stream drains.
-Flow occurrences continue to arrive, but the executor cannot admit them at
+Flow occurrences continue to arrive, but the Traffic Execution Engine cannot admit them at
 their planned instants; delivery drift therefore accumulates outside the
 semaphore.
 
-\noindent The plateau identifies the generator's configured concurrency boundary, not
+\noindent The plateau identifies the RDG framework's configured concurrency boundary, not
 a regional service capacity of $30$. Once the semaphore remains occupied, the
 planned arrival process $\lambda(t)$ no longer equals the workload delivered to
 the remote path. Request latency excludes the interval spent waiting for local
@@ -409,17 +410,17 @@ external validity of the method.
 
 \paragraph{Black-Box Observability Boundary}
 \noindent The regional integration path remains a black box to the experiment. Internal
-logs from the Application Profile Management System (APMS), gateway components,
+logs from the Application Profile Management System (APMS), regional integration gateway components,
 and downstream services are inaccessible within the authorised security and
-policy perimeter. The Request Dataset Generator (RDG) therefore measures the
+policy perimeter. The RDG framework therefore measures the
 interval between client dispatch and client receipt and reconstructs state from
 client-visible outcomes.
 
 \noindent The method measures a declared path differential, but it cannot partition
 that differential among network transport, connection establishment, security
-processing, queue residence, transformation, routing, gateway computation, and
+processing, queue residence, transformation, routing, regional integration gateway computation, and
 downstream execution. Consequently, \emph{$\Delta L(P_{50})=184.7$~ms remains
-an aggregate surrogate displacement}, not a direct measurement of gateway
+an aggregate surrogate displacement}, not a direct measurement of regional integration gateway
 service time.
 
 \noindent A causal decomposition requires aligned ingress, component-level,
@@ -449,7 +450,7 @@ microservices. Those architectures change connection reuse, synchronisation,
 backpressure, state ownership, and completion semantics.
 
 \paragraph{Local Client Ingestion Bottlenecks}
-\noindent The extreme campaign also profiles the limits of a single load-generator node.
+\noindent The extreme campaign also profiles the limits of a single RDG node.
 Once active flows occupy the semaphore, queued occurrences accumulate delivery
 drift and the realised input to the remote system diverges from the configured
 arrival process. The observed plateau and drift therefore demonstrate
@@ -463,7 +464,7 @@ experiment can attribute exclusively to the system under test.
 
 \noindent Above the local knee, an increase in scheduled traffic can increase
 client-side queueing without increasing remotely delivered traffic by the same
-amount. The extreme run consequently characterises the coupled generator--path
+amount. The extreme run consequently characterises the coupled RDG--path
 system after local saturation rather than an isolated provider capacity.
 
 \paragraph{Replication and Population Balance}
@@ -485,7 +486,7 @@ representativeness.
 \subsection{Engineering Scalability and Platform Evolutions}
 \label{subsec:future-engineering-scalability}
 
-\noindent The engineering roadmap separates generator capacity from gateway
+\noindent The engineering roadmap separates RDG capacity from regional integration gateway
 capacity by scaling, controlling, and grounding the experimental instrument.
 The three evolutions below address, respectively, distributed workload
 generation, closed-loop load control, and trace-based workload construction.
@@ -493,13 +494,13 @@ Each retains the thesis's evidence discipline by making calibration conditions,
 observation boundaries, and failure states explicit.
 
 \paragraph{Distributed Workload Generation}
-\noindent The first evolution replaces the single-node Request Dataset Generator
-(RDG) with a Kubernetes-orchestrated cluster whose workers execute disjoint
+\noindent The first evolution replaces the single-node RDG framework with a
+Kubernetes-orchestrated cluster whose workers execute disjoint
 partitions of one global occurrence space. A control plane assigns deterministic
 seed intervals, immutable configuration digests, globally unique occurrence
 identifiers, and a common experiment epoch. Each worker maintains a local
 asynchronous pool and publishes occurrence-scoped events to a partitioned
-collector. If worker $k$ delivers intensity $\lambda_k(t)$, the intended offered
+Log Collector. If worker $k$ delivers intensity $\lambda_k(t)$, the intended offered
 load is
 \[
     \lambda(t)=\sum_{k=1}^{n}\lambda_k(t).
@@ -520,8 +521,8 @@ scalability\footcites{unipd-runtimes-concurrency-syllabus}
 {apache-jmeter-remote-testing}.
 
 \paragraph{Adaptive Closed-Loop Workload Control}
-\noindent The second evolution turns the open-loop scheduler into a constrained
-feedback experiment. At control instant $k$, the controller observes
+\noindent The second evolution extends the open-loop Timeline Generator with
+constrained feedback control. At control instant $k$, the controller observes
 \[
  y_k=\left(P_{95}^{\mathrm{drift}},P_{95}^{\mathrm{latency}},
  e_k,X_k,C_k\right),
@@ -541,12 +542,12 @@ error budgets.
 $\partial X/\partial\lambda$ approaches zero while the derivatives of tail
 latency, delivery drift, or failures remain positive. Repeated approaches from
 below, under independent seeds and a fixed semantic mix, produce a confidence
-region for that knee rather than an unsupported exact gateway threshold. A
+region for that knee rather than an unsupported exact regional integration gateway threshold. A
 Reinforcement Learning agent can replace the fixed controller when the response
 surface is history-dependent, but it trains on mock or isolated traces and
 operates live only behind a safety shield that constrains its action space. The
 controller also checks per-worker headroom, because a feedback law that observes
-only end-to-end latency can misclassify generator saturation as remote
+only end-to-end latency can misclassify RDG saturation as remote
 saturation.
 
 \paragraph{Anonymised Real-World Trace Replay}
@@ -582,7 +583,7 @@ identified population, and a declared observation boundary.
 \paragraph{Predictable Dispatch and Release Jitter}
 \noindent The first proposed extension treats the divergence represented in
 Figure~\ref{fig:scheduling-drift-chronogram} as a local schedulability problem.
-The non-stationary Poisson generator admits arbitrarily short inter-arrival
+The non-stationary Poisson model of the Timeline Generator admits arbitrarily short inter-arrival
 distances, so a regulator first maps each flow class to a sporadic task
 $\tau_i=(C_i,T_i,D_i,J_i)$ with worst-case local demand $C_i$, minimum
 inter-arrival time $T_i$, deadline $D_i$, and release jitter $J_i$. Under the
@@ -617,7 +618,7 @@ itself\footcites{unipd-real-time-kernels-syllabus}
 
 \paragraph{Static Verification of Concurrency Bounds}
 \noindent The second proposed extension applies abstract interpretation to the
-asynchronous executor's lowered control-flow graph. Let $\Sigma$ be the concrete
+Traffic Execution Engine's lowered control-flow graph. Let $\Sigma$ be the concrete
 state space and let $F(X)=\Sigma_0\cup\operatorname{post}(X)$ be the monotone
 collecting transformer. Under the required $\omega$-continuity assumption, its
 concrete collecting semantics is
@@ -649,7 +650,8 @@ If the analyser establishes this invariant for normal completion, exceptions,
 and cancellation, soundness yields $a\leq30$ for every arrival trace.
 
 \noindent This proof remains future work. It also does not bound waiting tasks:
-the present scheduler can create an unbounded waiting population, so proving
+the present Traffic Execution Engine can accumulate an unbounded waiting
+population, so proving
 $0\leq q\leq Q$ additionally requires a bounded producer queue and an explicit
 block, shed, or defer policy
 \footcites{unipd-software-verification-syllabus}{mine-numeric-invariants}.

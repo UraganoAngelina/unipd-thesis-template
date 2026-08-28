@@ -20,8 +20,6 @@
     %\input{preface/3_acknowledgements}
     \input{preface/4_abstract}
     \input{preface/5_table_of_contents}
-    \printglossary[type=\acronymtype, title=Acronyms and Abbreviations, toctitle=Acronyms and Abbreviations]
-    \printglossary[type=main, title=Glossary, toctitle=Glossary]
     \blankpage % example of a blank page that also increases the page couter by 1
     \mainmatter
     \input{chapters/1_introduction}
@@ -29,8 +27,13 @@
     \input{chapters/3_soa}
     \input{chapters/4_concl}
 
-    \pagenumbering{roman}
     \backmatter
+    \printglossary[
+        type=\acronymtype,
+        style=combinedacronyms,
+        title=Glossary and Acronyms,
+        toctitle=Glossary and Acronyms
+    ]
     \input{references/bibliography}
     \input{references/webliography}
 \end{document}

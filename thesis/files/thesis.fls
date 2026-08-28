@@ -3,7 +3,7 @@ INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/alberto/unipd-thesis-template/thesis/files/thesis.tex
+INPUT thesis.tex
 OUTPUT thesis.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/book.cls
@@ -666,21 +666,13 @@ INPUT ./thesis.lot
 INPUT ./thesis.lot
 INPUT thesis.lot
 OUTPUT thesis.lot
-INPUT ./thesis.acr
-INPUT ./thesis.acr
-INPUT thesis.acr
-INPUT ./thesis.gls
-INPUT ./thesis.gls
-INPUT thesis.gls
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr8.tfm
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx8.tfm
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbxi10.tfm
 INPUT ./chapters/1_introduction.tex
 INPUT ./chapters/1_introduction.tex
 INPUT ./chapters/1_introduction.tex
 INPUT ./chapters/1_introduction.tex
 INPUT chapters/1_introduction.tex
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmr7.tfm
@@ -709,6 +701,7 @@ INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmcsc10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx7.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt8.tfm
 INPUT ./img/rdg_regional_transaction_workflow.pdf
 INPUT ./img/rdg_regional_transaction_workflow.pdf
@@ -819,6 +812,9 @@ INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmri8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmri7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmri10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmri12.tfm
+INPUT ./thesis.acr
+INPUT ./thesis.acr
+INPUT thesis.acr
 INPUT ./references/bibliography.tex
 INPUT ./references/bibliography.tex
 INPUT ./references/bibliography.tex
@@ -837,7 +833,6 @@ INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb
-INPUT /usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb

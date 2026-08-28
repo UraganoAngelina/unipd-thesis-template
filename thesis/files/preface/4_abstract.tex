@@ -9,25 +9,27 @@
 \noindent The digitalisation of community-based healthcare requires heterogeneous
 applications to exchange information through regional services whose behaviour
 must be assessed across complete transaction paths. In the context of
-SI.Ter (Sistema Informativo Territoriale), the Territorial Information System
+Sistema Informativo Territoriale (SI.Ter), the Territorial Information System
 for the Healthcare Organisations of the Veneto Region, this thesis defines an
 experimental methodology for end-to-end
 performance profiling and differential overhead characterisation of cloud-based
 healthcare interoperability gateways. Documented regional workflows become
 reproducible workloads observed at the client boundary. The Request Dataset
 Generator (RDG) is a Python framework that creates synthetic Fast Healthcare
-Interoperability Resources (FHIR) R4 (Release 4) patients, composes ordered
+Interoperability Resources Release 4 (FHIR R4) Patient resources, composes ordered
 multi-step workflows, schedules configurable traffic, and concurrently executes
-independent flow occurrences. It supports the direct RVE (Regione Veneto)
-patient-registry transactions RVE-54 and RVE-55 and a gateway-mediated workflow
+independent flow occurrences. It supports the direct Regione Veneto (RVE)
+patient-registry transactions RVE-54 and RVE-55 and a workflow mediated by the
+regional integration gateway
 in mock and live
 modes. Structured logs provide a traceable dataset for request- and flow-level
-latency, throughput, error-rate, concurrency, and scheduling metrics. Since internal gateway logs remain outside the authorised perimeter, the
+latency, throughput, error-rate, concurrency, and scheduling metrics. Since
+internal regional integration gateway logs remain outside the authorised perimeter, the
 \emph{Surrogate Observability Strategy} uses the
 \texttt{direct\_\allowbreak vs\_\allowbreak middleware} experiment to compare
 client-observed latency distributions for direct and mediated paths. Differences
 in means and selected percentiles express path-level displacement, not
-internal gateway time; routing, security, transformation, network, and retry
+internal regional integration gateway time; routing, security, transformation, network, and retry
 effects may also contribute. The empirical campaign comprises 74 completed runs. As a proof of concept, it
 distinguishes transport from application outcomes, request from flow
 populations, direct from mediated paths, and successful from failed processing.

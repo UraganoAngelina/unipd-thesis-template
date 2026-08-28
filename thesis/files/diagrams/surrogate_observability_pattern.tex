@@ -71,7 +71,7 @@
 \node[endpoint, draw=GatewayPurple] (rdgM) at (2.65,4.10)
     {\textbf{RDG}\\[-1mm]{\scriptsize client timestamps}};
 \node[endpoint, draw=GatewayPurple, fill=white] (gw) at (8.0,4.10)
-    {\textbf{Gateway (APMS)}\\[-1mm]{\scriptsize protected middleware layer}};
+    {\textbf{Regional Integration Gateway}\\[-1mm]{\scriptsize protected integration layer}};
 \node[endpoint, draw=GatewayPurple] (svcM) at (13.35,4.10)
     {\textbf{Downstream Service}\\[-1mm]{\scriptsize same target operation}};
 \draw[route, draw=GatewayPurple] (rdgM.east) -- (gw.west);
@@ -95,7 +95,7 @@
 
 % Interpretation and constraint band
 \node[font=\bfseries\small, text=DeltaRule] at (8,1.02)
-    {No middleware timestamps required: $\Delta L$ estimates apparent mediated-path overhead};
+    {No regional integration gateway timestamps required: $\Delta L$ estimates apparent mediated-path overhead};
 \node[note] at (8,0.55)
     {Comparable workload, downstream service, load profile, and observation boundary are required.};
 \node[note, text=Ink] at (8,0.10)

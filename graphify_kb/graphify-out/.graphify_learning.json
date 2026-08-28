@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T08:55:11.380843+00:00",
+  "generated_at": "2026-08-28T12:22:25.672993+00:00",
   "nodes": {
     "affinity_xdsb": {
       "code_fingerprint": "8ffa0f0b9c2782bc23057edd240e0b029a488f395c4b1edeebba63b1b3ef946f",
@@ -12,7 +12,7 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.678310372,
+      "score": 0.549130244,
       "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
       "status": "tentative",
       "uses": 1
@@ -33,7 +33,7 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 1.678017722,
+      "score": 1.358449347,
       "source_file": "analisi_completa.md",
       "status": "preferred",
       "uses": 2
@@ -49,7 +49,7 @@
           "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
         }
       ],
-      "score": 0.99970735,
+      "score": 0.809319102,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -65,7 +65,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -81,7 +81,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -97,7 +97,7 @@
           "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
         }
       ],
-      "score": 0.99970735,
+      "score": 0.809319102,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -113,7 +113,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -129,7 +129,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -145,7 +145,7 @@
           "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
         }
       ],
-      "score": 0.99970735,
+      "score": 0.809319102,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "tentative",
       "uses": 1
@@ -153,18 +153,23 @@
     "context_saml_assertion": {
       "code_fingerprint": "12554c28eb80c98d430980aa054e0285ce1bde4ef5ece3a0ef774f691693c0db",
       "label": "SAML 2.0 Assertion",
-      "last": "2026-08-19T08:36:56.866071+00:00",
+      "last": "2026-08-19T08:57:35.548447+00:00",
       "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        },
         {
           "date": "2026-08-19T08:36:56.866071+00:00",
           "outcome": "useful",
           "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
         }
       ],
-      "score": 0.99970735,
+      "score": 1.618906333,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "dm77_casa_comunita": {
       "code_fingerprint": "a7dbf21a65c4ed7fc799f3cb80f4887c3799897ab3b79f42f2c5dcae1444896b",
@@ -177,7 +182,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "DM_77_2022.pdf",
       "status": "tentative",
       "uses": 1
@@ -193,7 +198,7 @@
           "q": "How should the Sanita Territoriale Operating Model hyperarc connect COT, PUA, Distretto, Casa della Comunita, and SI.Ter?"
         }
       ],
-      "score": 0.679362465,
+      "score": 0.549981973,
       "source_file": "DM_77_2022.pdf",
       "status": "tentative",
       "uses": 1
@@ -209,7 +214,7 @@
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.678310372,
+      "score": 0.549130244,
       "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
       "status": "tentative",
       "uses": 1
@@ -225,24 +230,93 @@
           "q": "Architectural Layers of the SI.Ter Integration Stack diagram and Chapter 1 narrative integration"
         }
       ],
-      "score": 0.99970735,
+      "score": 0.809319102,
       "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "scryba_sign_3_x_developer_s_guide_synthetic_test_data": {
+      "code_fingerprint": "07a127357a9f668102232a7b87411e8f0f5d88c8291765305cd1d64410748bf8",
+      "label": "Synthetic Test Documents and Metadata",
+      "last": "2026-08-19T08:57:35.548447+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        }
+      ],
+      "score": 0.80958723,
+      "source_file": "Scryba Sign 3.x Developer's Guide.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "srg_latency_performance": {
+      "code_fingerprint": "6b6d969532eb2436726a12825f4c535f7ff03ab3dd7ff252b33dd67a06ec922c",
+      "label": "Impact of Latency on Applications Performance",
+      "last": "2026-08-19T08:57:35.548447+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        }
+      ],
+      "score": 0.80958723,
+      "source_file": "srg_2.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "subscription_fhir_rest_hook": {
+      "code_fingerprint": "ed338a05bf861c7894e1f21bd64b50555ae89b332ee5c76f16bac2b9d98d4446",
+      "label": "FHIR Subscription rest-hook",
+      "last": "2026-08-19T08:57:35.548447+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        }
+      ],
+      "score": 0.80958723,
+      "source_file": "Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf",
       "status": "tentative",
       "uses": 1
     },
     "subscription_iua_saml": {
       "code_fingerprint": "ed338a05bf861c7894e1f21bd64b50555ae89b332ee5c76f16bac2b9d98d4446",
       "label": "IHE IUA SAML Security",
-      "last": "2026-08-02T13:43:56.633180+00:00",
+      "last": "2026-08-19T08:57:35.548447+00:00",
       "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        },
         {
           "date": "2026-08-02T13:43:56.633180+00:00",
           "outcome": "useful",
           "q": "Genera una Tabella degli Standard di Interoperabilità basata sui nodi del grafo SI.Ter Integration Stack. La tabella deve avere tre colonne: Standard, Protocollo/Formato, Funzione nel Progetto. Includi IHE XDS.b per i documenti, FHIR R4 per i dati paziente e SAML/JWT per la sicurezza."
         }
       ],
-      "score": 0.678310372,
+      "score": 1.358717475,
       "source_file": "Specifiche tecniche - Gestione sottoscrizione_notifica v2.2.pdf",
+      "status": "preferred",
+      "uses": 2
+    },
+    "xvalue_xds_repository": {
+      "code_fingerprint": "02e7e2b0c4ee02a1119d1541aeaba8f12eba726b52fdc2f02f0d8bd928f8acf3",
+      "label": "XDS Document Repository",
+      "last": "2026-08-19T08:57:35.548447+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T08:57:35.548447+00:00",
+          "outcome": "useful",
+          "q": "Accorciare il sommario finale del Capitolo 2 affinché rientri in una sola pagina mantenendone il significato"
+        }
+      ],
+      "score": 0.80958723,
+      "source_file": "ULSS 3 Serenissima - Specifiche tecniche di integrazione con XValue v2.10.pdf",
       "status": "tentative",
       "uses": 1
     }

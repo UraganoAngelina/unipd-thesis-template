@@ -138,7 +138,7 @@ creates structurally and semantically valid patient and document contexts withou
 using personal data. Stateful orchestration associates every derived identifier,
 assertion, token, or document reference with one flow occurrence, while a
 session-aware identity hand-off prevents security material from crossing
-concurrent occurrences. The asynchronous execution model permits concurrency
+concurrent occurrences. The Traffic Execution Engine permits concurrency
 among independent occurrences while preserving sequential dependencies inside
 each occurrence. These architectural properties support controlled concurrency
 without weakening the semantics of the workflow.
@@ -146,8 +146,8 @@ without weakening the semantics of the workflow.
 \noindent The design includes an explicit calibration condition. A controlled local path
 establishes the range in which scheduling, event production, and analysis sustain
 the intended offered load without material drift. This calibration does not
-predict the capacity of a regional service. It determines whether the workload
-generator remains a credible experimental instrument. When delivery drift
+predict the capacity of a regional service. It determines whether the RDG
+framework remains a credible experimental instrument. When delivery drift
 already increases in the control condition, a corresponding live scenario cannot
 support a conclusion about external saturation.
 
@@ -170,12 +170,11 @@ never as reconstructed regional demand.
 \subsection{Authorised Observation Boundary}
 
 \noindent The Authorised Observation Boundary originates from regional security,
-privacy, and organisational control, not from a limitation of the workload
-generator. The Request Dataset Generator (RDG) can initiate approved synthetic
-traffic and retain
+privacy, and organisational control, not from a limitation of the RDG
+framework. RDG can initiate approved synthetic traffic and retain
 sanitised client-side events. The experimenter cannot inspect private execution
 phases inside the Application Profile Management System (APMS), regional
-middleware, or downstream services, and cannot retain assertions, access tokens,
+integration gateway, or downstream services, and cannot retain assertions, access tokens,
 credentials, certificate secrets, private endpoints, or personal data. The
 boundary therefore determines which causal statements the evidence permits
 \footcite{apms-auth-v141,arsenal-security-v214}.
@@ -193,7 +192,7 @@ the path without pretending to expose its internal phases.
 authentication, authorisation, envelope handling, semantic validation,
 transformation, routing, queueing, upstream waiting, and backend processing. A
 client-side duration contains their composite effect together with network and
-client contributions. It does not equal gateway processing time, and a slower
+client contributions. It does not equal regional integration gateway processing time, and a slower
 mediated response does not identify one internal component as its cause. Optional
 authorised internal timestamps can validate or refine the external estimate, but
 their absence limits causal attribution rather than invalidating the matched
@@ -238,7 +237,7 @@ security outputs to one occurrence and records only whether their production and
 propagation succeed. Data minimisation removes protected values, not the causal
 position of the security transition.
 
-\noindent Mock middleware events serve a separate purpose. They validate parsing,
+\noindent Mock regional integration gateway events serve a separate purpose. They validate parsing,
 correlation, missing-field handling, and metric computation. They do not support
 claims about production routing, policy enforcement, queueing, or backend
 processing. This evidence separation prevents a test of the analysis chain from
@@ -302,7 +301,7 @@ or a downstream service.
 
 \noindent Consequently, $\Delta L$ represents a \emph{Path-level Overhead}: an aggregated
 external differential that can contain propagation, transport and security
-establishment, gateway policy enforcement, SOAP/XML or REST/JSON handling, semantic validation, transformation, routing, queueing, and downstream service
+establishment, regional integration gateway policy enforcement, SOAP/XML or REST/JSON handling, semantic validation, transformation, routing, queueing, and downstream service
 time. The term \emph{aggregated} is essential. A positive differential supports
 the claim that the mediated path adds externally observable time under matched
 conditions; it does not identify which protected internal phase causes that
@@ -416,8 +415,8 @@ complete-flow behaviour.
 synonym for high latency. The method requires persistent scheduling drift,
 occupancy near the configured concurrency bound, a plateau or decline in useful
 throughput, and a corresponding change in latency, timeouts, or semantic failures.
-Stable response latency can coexist with increasing delivery drift when the
-generator no longer dispatches work on time. Conversely, higher latency without a
+Stable response latency can coexist with increasing delivery drift when the RDG
+framework no longer dispatches work on time. Conversely, higher latency without a
 throughput plateau can reflect payload composition, connection establishment, or
 remote environmental variation rather than saturation.
 
@@ -448,7 +447,7 @@ signals.
     Request throughput & Completed attempts per declared window. & Technical activity, including calls that belong to unsuccessful flows. \\
     \hline
     \rowcolor{tableGray}
-    Scheduling drift & Actual minus planned start; milliseconds. & Delivery quality of the generator and early evidence of backpressure. \\
+    Scheduling drift & Actual minus planned start; milliseconds. & Delivery quality of the RDG framework and early evidence of backpressure. \\
     \hline
     Outcome distribution & Transport, application, timeout, and terminal-flow classes. & Reliability and preservation of unsuccessful work in every denominator. \\
     \hline
@@ -491,7 +490,7 @@ the semantic result of the query; it does not follow only the HTTP status.
 patient context belongs to one synthetic occurrence and cannot leak into another
 concurrent occurrence. A failed query blocks the dependent branch, and a warning
 or application error remains distinguishable from transport success. A generic
-request generator can reproduce this behaviour only after the test author adds
+request-centric model can reproduce this behaviour only after the test author adds
 domain-specific state, extraction, validation, and branch rules. The profiling
 problem therefore resides in semantic continuity, not in the ability to send a
 HL7-FHIR R4 request. Semantic FHIR R4 generation is therefore a condition of construct validity,
@@ -735,7 +734,7 @@ the residual limitations that remain after control.
     Execution chronology & Pair repetitions and control scenario order. & Environmental drift can persist within and across pairs. \\
     \hline
     \rowcolor{tableGray}
-    Generator capacity & Calibrate delivery and retain drift and active-concurrency signals. & Host scheduling remains part of the external experiment. \\
+    RDG capacity & Calibrate delivery and retain drift and active-concurrency signals. & Host scheduling remains part of the external experiment. \\
     \hline
 \end{tabular}
 \end{table}
@@ -862,7 +861,7 @@ therefore considers run-level dispersion and consistency of direction instead of
 relying only on a pooled request distribution.
 
 \noindent Negative evidence remains part of the decision. A malformed event, missing
-terminal state, failed token transition, timeout, or generator overload can make a
+terminal state, failed token transition, timeout, or RDG overload can make a
 performance criterion not assessable while still exposing a framework or
 contract problem. Data-quality and semantic gates apply before aggregation, and
 their failures remain visible in the reported denominator.
@@ -870,7 +869,7 @@ their failures remain visible in the reported denominator.
 \section{Generic versus Domain-Specific Profiling}
 \subsection{Modelling Distance and Semantic Fidelity}
 
-\noindent Apache JMeter and the Request Dataset Generator (RDG) represent
+\noindent Apache JMeter and RDG represent
 different modelling paradigms rather than different protocol capabilities.
 JMeter provides a mature request-centric model through samplers, controllers,
 extractors, variables, assertions, scripts, and distributed execution
@@ -893,7 +892,7 @@ invariants reduces those failure points.
 
 \noindent RDG also couples workload and evidence construction. Domain metadata
 creates synthetic patient and document contexts; stateful orchestration retains
-occurrence-local outputs and branches; asynchronous execution preserves
+occurrence-local outputs and branches; the Traffic Execution Engine preserves
 concurrency among independent flows; and structured events distinguish
 technical attempts from terminal domain outcomes. The resulting model translates
 documented healthcare dependencies into executable, observable experimental
@@ -942,8 +941,8 @@ application-level validation, and flow-level denominators. The Veneto use case
 belongs to the second class because security, identity, context, document, and
 signing transitions determine whether useful work completes.
 
-\subsection[Justification of the Request Dataset Generator framework]
-{Justification of the Request Dataset Generator framework}
+\subsection[Justification of the RDG framework]
+{Justification of the RDG framework}
 
 \noindent RDG is methodologically justified when five conditions hold: the target process
 contains dependencies whose violation changes experimental meaning; synthetic
@@ -952,7 +951,7 @@ question concerns complete-flow behaviour and path differentials; and one
 evidence model connects offered load, state transitions, external timing, and
 terminal outcomes. A throughput comparison
 with JMeter requires matched workloads, equal host conditions, and a dedicated
-generator benchmark. A stateless generic baseline remains useful for calibration and protocol isolation, but it does not
+RDG/JMeter benchmark. A stateless generic baseline remains useful for calibration and protocol isolation, but it does not
 replace a session-aware workload for protected regional workflows. The choice relocates rather than eliminates complexity. A domain-specific model
 requires versioned transaction semantics, outcome definitions, scheduling
 controls, and event provenance. The same elements otherwise reappear as dispersed
@@ -998,7 +997,7 @@ sequential within workflows and independent occurrences execute concurrently, so
 performance populations represent completed or interrupted healthcare operations
 rather than unrelated HTTP exchanges. Together, synthetic control, surrogate
 observability, and semantic fidelity define credible profiling requirements.
-Chapter 3 shows how the Request Dataset Generator turns these principles into an
+Chapter 3 shows how the RDG framework turns these principles into an
 executable profiling instrument.
 
 \newpage

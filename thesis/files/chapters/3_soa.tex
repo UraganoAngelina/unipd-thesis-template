@@ -2,7 +2,7 @@
 \chaptermark{Selected Approach}
 \label{chap:selected-approach}
 
-\noindent This chapter presents the Request Dataset Generator as both the selected
+\noindent This chapter presents the RDG framework as both the selected
 engineering approach and the experimental instrument that produces the thesis's
 empirical evidence. It first specifies the architecture, synthetic inputs,
 execution model, and evidence pipeline; it then defines the evaluation protocol
@@ -14,8 +14,8 @@ invariants established in Chapter~2.
 \noindent Chapter~\ref{chap:introduction} defines the need for a controlled and
 traceable evaluation of healthcare-interoperability workflows, while
 Chapter~\ref{chap:stateofart} derives the methodological requirements imposed by
-that need. The implementation described here is the Request Dataset Generator
-(RDG) repository. The analysis distinguishes three evidential levels. A feature
+that need. The implementation described here is the RDG repository. The
+analysis distinguishes three evidential levels. A feature
 is \emph{implemented} when it is present in the current code; it is
 \emph{functionally exercised} when a test or archived run covers it; and it is
 \emph{experimentally evaluated} only when an identified configuration,
@@ -30,7 +30,7 @@ does not measure the capacity of a live regional or industrial service.
 \label{subsec:rdg-objectives-pipeline}
 
 \noindent To translate the high-level evaluation requirements into an executable
-platform, the Request Dataset Generator relies on a modular architecture
+platform, the RDG framework relies on a modular architecture
 divided into clear functional boundaries. This subsection defines the core
 technical objectives of the framework and describes the end-to-end processing
 pipeline that transforms raw input configurations into structured performance
@@ -51,7 +51,7 @@ from each run.
 \noindent These objectives delimit the artefact. RDG is not a conformance-certification
 tool, a production audit system, or a clinical simulator. It creates and
 executes controlled workloads at the client boundary and can enrich the
-resulting records when a compatible middleware log is supplied. The absence of
+resulting records when a compatible regional integration gateway log is supplied. The absence of
 that second source remains visible in the normalised dataset rather than being
 replaced by estimated values.
 
@@ -88,22 +88,22 @@ core.
     \begin{tabular}{|p{3.4cm}|p{3.4cm}|p{5.8cm}|}
         \hline
         \rowcolor{veryPeri!18}
-        \textbf{Stage} & \textbf{Implementation} & \textbf{Produced evidence} \\
+        \textbf{Stage} & \textbf{Component} & \textbf{Produced evidence} \\
         \hline
         \rowcolor{tableGray}
-        Data generation & \texttt{fhir\_patient\_}\newline\texttt{generator.py} & Synthetic Patient resources and FHIR Bundles. \\
+        Data generation & FHIR Patient Generator & Synthetic Patient resources and FHIR Bundles. \\
         \hline
-        Workload composition & \texttt{request\_dataset\_}\allowbreak\texttt{generator.py}, \texttt{flow\_}\allowbreak\texttt{orchestrator.py} & Weighted population of flows, ordered steps, identifiers, dependencies, and payload metadata. \\
-        \hline
-        \rowcolor{tableGray}
-        Temporal scheduling & \texttt{timeline\_}\newline\texttt{generator.py} & Timestamped flow occurrences with base/burst provenance and experiment identifiers. \\
-        \hline
-        Execution & \texttt{traffic\_exec\_}\newline\texttt{engine.py} & Mock or live step outcomes and JSONL request/response/flow events. \\
+        Workload composition & RDG workload builder and Flow Orchestrator & Weighted population of flows, ordered steps, identifiers, dependencies, and payload metadata. \\
         \hline
         \rowcolor{tableGray}
-        Collection & \texttt{log\_collector.py} & Request, flow, and bucketed time-series populations; optional middleware enrichment. \\
+        Temporal scheduling & Timeline Generator & Timestamped flow occurrences with base/burst provenance and experiment identifiers. \\
         \hline
-        Analysis & \texttt{metric\_engine.py} & Machine-readable metrics, human-readable report, comma-separated-value tables, warnings, and optional graphs. \\
+        Execution & Traffic Execution Engine & Mock or live step outcomes and JSONL request/response/flow events. \\
+        \hline
+        \rowcolor{tableGray}
+        Collection & Log Collector & Request, flow, and bucketed time-series populations; optional regional integration gateway enrichment. \\
+        \hline
+        Analysis & Metric Engine & Machine-readable metrics, human-readable report, comma-separated-value tables, warnings, and optional graphs. \\
         \hline
     \end{tabular}
     \label{tab:rdg-pipeline}
@@ -119,13 +119,13 @@ orchestrator. A transaction builder returns one executable step with its
 method, target selected from configuration, headers, body, transport profile,
 dependency specification, output-extraction rules, and possibly a
 synthetic response (generated only when in mock mode). The orchestrator adds correlation metadata and combines
-these steps into flow types. The execution engine consumes this common shape;
+these steps into flow types. The Traffic Execution Engine consumes this common shape;
 it does not contain healthcare-specific request templates.
 
 \noindent This direction of dependency is important. Domain-specific contracts remain in
 the transaction modules, composition remains in the orchestrator, and temporal
 or analytical mechanisms operate on shared metadata. Adding a new transaction
-therefore does not require the timeline generator or metric engine to understand its
+therefore does not require the Timeline Generator or Metric Engine to understand its
 payload, provided that the module satisfies the common step contract and
 declares the outputs required by downstream steps.
 
@@ -151,8 +151,8 @@ steps. A transaction declares only a named mutual-Transport Layer Security
 (mTLS) profile in its transport metadata; the runtime configuration retains
 certificate paths, verification policy, and any environment-variable reference
 used to resolve a certificate password. On first use, the factory constructs a
-Python Secure Sockets Layer (\textit{SSLContext})\glsadd{ssl}\glsadd{sslg} object, loads either a Privacy-Enhanced Mail (\textit{PEM})\glsadd{pem}\glsadd{pemg} certificate
-chain or a Public-Key Cryptography Standards (\textit{PKCS}~\#12)\glsadd{pkcs}\glsadd{pkcsg} container, and caches the
+Python Secure Sockets Layer (\textit{SSLContext})\glsadd{ssl}\glsadd{sslg} object, loads either a Privacy-Enhanced Mail (\textit{PEM})\glsadd{pem} certificate
+chain or a Public-Key Cryptography Standards (\textit{PKCS}~\#12)\glsadd{pkcs} container, and caches the
 context by profile name. Subsequent requests reuse the same context through the
 run-wide \texttt{aiohttp.ClientSession}, allowing eligible secure connections
 to benefit from session-level connection pooling without copying keys or
@@ -164,7 +164,7 @@ This behaviour makes transport policy observable at configuration level while
 keeping sensitive material outside request logs and thesis artefacts. It also
 preserves the experimental distinction between protocol semantics and secure
 channel establishment: a failed mTLS setup is a transport outcome, not an
-application response from the regional gateway.
+application response from the regional integration gateway.
 
 \begin{figure}[H]
     \centering
@@ -186,7 +186,7 @@ application response from the regional gateway.
         \node[component, below=of context] (engine)
             {\textbf{Traffic Execution\\Engine}\\run-wide \texttt{aiohttp} session};
         \node[component, right=of engine] (gateway)
-            {Regional\\Gateway};
+            {Regional Integration\\Gateway};
 
         \draw[flow] (identity) -- node[note, above]
             {resolve\\and load} (factory);
@@ -208,12 +208,12 @@ application response from the regional gateway.
 \noindent The execution of stateful healthcare workflows requires generating rich
 synthetic payloads that conform to regional schemas while remaining completely
 decoupled from real patient records. This subsection details the demographic
-and clinical structures produced by the data generator and analyses the
+and clinical structures produced by the FHIR Patient Generator and analyses the
 cryptographic and protocol heterogeneity that characterises the executable
 transactions of the campaign.
 
 \paragraph{Synthetic Patient resources}
-\noindent The data generator creates a FHIR Patient-shaped resource with synthetic
+\noindent The FHIR Patient Generator creates a FHIR Patient-shaped resource with synthetic
 identifiers, demographics, contact information, addresses, regional
 extensions, a contained practitioner, and a contained assistance contract.
 It can also construct the transaction Bundle used by the [RVE-55] path and
@@ -236,7 +236,7 @@ conformance.
 optional seed. Weights are normalised and sampled to choose a flow type; the number of
 synthetic patients is generated for each step of the source flow that needs that specific resource. The resulting flow carries
 a flow identifier, a type, and an ordered list of steps. Every step has its own
-request identifier and index, while the timeline generator later adds a distinct
+request identifier and index, while the Timeline Generator later adds a distinct
 \texttt{flow\_occurrence\_id} whenever a source flow is scheduled. This last
 identifier prevents repeated uses of the same source flow from being merged
 during log reconstruction.
@@ -266,7 +266,7 @@ Table~\ref{tab:implemented-flow-types}.
         \rowcolor{tableGray}
         \texttt{FLOW\_ITI\_43} & [RVE-1.b] $\rightarrow$ ITI-43 & 2 \\
         \hline
-        \texttt{FLOW\_PATIENT\_QUERY\_}\allowbreak\texttt{MIDDLEWARE} & RVE token $\rightarrow$ gateway RVE-54 $\rightarrow$ gateway RVE-55 $\rightarrow$ gateway RVE-57 $\rightarrow$ gateway RVE-100 & 5 \\
+        \texttt{FLOW\_PATIENT\_QUERY\_}\allowbreak\texttt{MIDDLEWARE} & RVE token $\rightarrow$ regional integration gateway RVE-54 $\rightarrow$ regional integration gateway RVE-55 $\rightarrow$ regional integration gateway RVE-57 $\rightarrow$ regional integration gateway RVE-100 & 5 \\
         \hline
         \rowcolor{tableGray}
         \texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} & GetUserInfo $\rightarrow$ SignOneDoc & 2 \\
@@ -309,8 +309,9 @@ Table~\ref{tab:implemented-flow-types}.
 \noindent The direct regional paths combine an initial assertion-producing transaction
 with context, patient-registry, or document transactions. The two ITI flows use
 dedicated transaction modules after the initial integration step. The mediated
-patient path has a different structure: it obtains a middleware token and then
-executes the configured gateway scenarios for [RVE-54], [RVE-55], [RVE-57], and
+patient path has a different structure: it obtains a token for the regional
+integration gateway and then executes its configured scenarios for [RVE-54],
+[RVE-55], [RVE-57], and
 [RVE-100]. This five-step path is therefore not a request-for-request replacement
 for the two-step direct patient query. Comparisons between their completion
 times must acknowledge the different step count and contracts.
@@ -346,14 +347,14 @@ notification modules that the source does not implement; Section~\ref{sec:rdg-re
 \paragraph{Step dependencies and the mock/live boundary}
 \noindent A flow is more than a list of independent HTTP requests; a step may also declare that a field comes from an output of an earlier
 step. In live mode, downstream headers, bodies, and URLs can contain scoped
-placeholders; the execution engine resolves them from the occurrence-local
+placeholders; the Traffic Execution Engine resolves them from the occurrence-local
 context only after processing the preceding response. Required outputs are
 validated before the chain continues; an unresolved placeholder or missing required output is logged as a failure. In mock mode, transaction builders attach synthetic responses and the
 orchestrator propagates their declared outputs while constructing the chain.
 Execution then consumes those responses without opening an HTTP session. This
 mode tests composition, scheduling, failure handling, logging, collection, and
 metric production under controlled conditions. It cannot measure network,
-gateway, provider, or production-system behaviour.
+regional integration gateway, provider, or production-system behaviour.
 
 \section{Traffic Execution and Evidence Pipeline}
 \label{sec:rdg-execution-observability}
@@ -363,14 +364,14 @@ gateway, provider, or production-system behaviour.
 \noindent The generation of reproducible and stochastically sound workloads requires a
 strict operational separation between planned execution timelines and the
 actual runtime orchestration of transactions. This section details the
-execution engine of the Request Dataset Generator, analysing how it enforces
+Traffic Execution Engine of the RDG framework, analysing how it enforces
 temporal scheduling under concurrency limits and how the structured evidence
 pipeline processes, normalises, and stores resulting system events. By
 establishing these mechanisms, the discussion validates the client-side
 instrumentation before assessing live remote performance profiles.
 
 \paragraph{Temporal model and occurrence generation}
-\noindent The timeline generator separates flow content from arrival time. It supports a
+\noindent The Timeline Generator separates flow content from arrival time. It supports a
 constant rate, a configurable step profile, and a synthetic time-banded
 clinical profile. For a variable intensity $\lambda(t)$, arrivals are produced
 through Lewis--Shedler thinning: candidates are sampled from an upper-bound
@@ -380,7 +381,7 @@ closely spaced occurrences around selected baseline arrivals. Every event
 records whether it is a base or burst arrival and, when applicable, its burst
 identifier.
 
-\noindent The generator samples from the already constructed source dataset according to
+\noindent The Timeline Generator samples from the already constructed source dataset according to
 its empirical flow-type distribution. It therefore changes the temporal
 population without modifying transaction definitions. A seed makes workload
 and timeline sampling repeatable for a fixed configuration, but it
@@ -390,7 +391,7 @@ realisation of the stochastic process. The generated schedule is therefore
 interpreted only as one reproducible sample from a declared stochastic distribution.
 
 \paragraph{Scheduling and concurrency semantics}
-\noindent The execution engine follows scheduled timestamps using an asynchronous task
+\noindent The Traffic Execution Engine follows scheduled timestamps using an asynchronous task
 per flow occurrence. A semaphore limits concurrent flows and encloses the whole
 flow rather than a single request. Within that boundary, steps are executed in
 order and share only their occurrence-local output context; separate flows can
@@ -437,7 +438,7 @@ controlled faults; they are not observations of provider reliability.
             inner sep=1pt}
     ]
         \node[engine] (scheduler) at (0,-0.05)
-            {\textbf{Timeline Scheduler}\\scheduled events $\rightarrow$ asynchronous occurrence tasks};
+            {\textbf{Timeline Generator}\\scheduled events $\rightarrow$ asynchronous occurrence tasks};
         \node[gate] (semaphore) at (0,-1.15)
             {Semaphore (Flow-level Boundary)};
 
@@ -577,20 +578,22 @@ records enough provenance to stratify observations by scenario, flow,
 transaction, arrival type, or execution.
 
 \paragraph{Normalisation and surrogate enrichment}
-\noindent The collector parses the framework JSONL stream, pairs sent and received events
+\noindent The Log Collector parses the framework JSONL stream, pairs sent and received events
 by occurrence, reconstructs completed flows, and aggregates a bucketed time
 series. Its output contains four top-level parts: metadata, requests, flows, and
 timeseries. Request records retain client latency, outcome, concurrency,
 scheduling, size, and provenance. Flow records retain completion time, executed
 steps, skipped downstream steps, and outcome.
 
-\noindent A second parser can ingest a compatible middleware JSONL stream. Matching
-records may add gateway and upstream latencies, retry count, circuit-breaker
-state, and infrastructure observations. When no middleware record is
+\noindent The Log Collector can also ingest a compatible
+regional integration gateway JSONL stream. Matching records may add regional
+integration gateway and
+upstream latencies, retry count, circuit-breaker state, and infrastructure
+observations. When no regional integration gateway record is
 available, these fields remain null.
 
-\paragraph{Metric and reporting engine}
-\noindent \texttt{MetricsCalculator} transforms the normalised request, flow, and
+\paragraph{Metric Engine}
+\noindent The Metric Engine transforms the normalised request, flow, and
 time-bucket populations into eighteen measures grouped into performance,
 reliability, resilience, scalability, and observability. Performance separates
 Flow Completion Time (FCT) from step latency and reports request and flow
@@ -655,7 +658,8 @@ evaluation questions:
     \item Can a declared flow mix and temporal model be reproduced with
     traceable identifiers, seeds, configuration, and artefacts?
     \item Can execution events be transformed into consistent request, flow
-    and time-window populations without filling unavailable middleware fields?
+    and time-window populations without filling unavailable
+    regional integration gateway fields?
     \item How do latency distributions, reliability, and flow completion vary
     with flow composition, offered load, bursts, and mediated execution?
 \end{enumerate}
@@ -679,13 +683,13 @@ within-occurrence dependencies and makes the number of active flows explicit,
 but it also means that long or blocked flows retain a concurrency slot. This is
 part of the evaluated execution model and does not provide an unqualified model
 of provider-side concurrency. The client-side clock measures scheduling and
-request completion at the generator; internal service queues remain outside
+request completion at the RDG client boundary; internal service queues remain outside
 this boundary.
 
 \paragraph{Advanced Black-box with Surrogate Observability}
 \noindent Framework evidence always records scheduled and actual dispatch, client-side
 step latency, response outcome, flow completion, and client-observed
-concurrency. Surrogate evidence may add middleware timing, retry state,
+concurrency. Surrogate evidence may add regional integration gateway timing, retry state,
 circuit-breaker state, or infrastructure measures. A join remains valid
 only when identifiers, occurrence semantics, clocks, and measurement boundaries
 are compatible; join coverage is a data-quality measure rather than an
@@ -829,7 +833,7 @@ The two are reported together because flow types have different step counts.
 \noindent Reliability uses request errors, timeouts, and completed-flow outcomes. Failure
 at a step is associated with skipped downstream steps rather than fabricated
 requests. Scheduling fidelity uses the difference between planned and actual
-client dispatch together with queue delay and active-flow/step counts; finally, burst analysis uses the explicit base/burst labels. Middleware breakdown, resource saturation, and retry or circuit-breaker measures are valid only for records actually enriched by a second source.
+client dispatch together with queue delay and active-flow/step counts; finally, burst analysis uses the explicit base/burst labels. Regional integration gateway breakdown, resource saturation, and retry or circuit-breaker measures are valid only for records actually enriched by a second source.
 
 \subsection{Quality Controls and Acceptance Boundary}
 \label{subsec:rdg-quality-acceptance}
@@ -857,7 +861,7 @@ criteria:
 \noindent Across the 74 runs, RDG records 757{,}517 structured events,
 299{,}534 paired request occurrences, and 158{,}449 flow completions. Every run
 satisfies the event identity
-$N_{events}=2N_{requests}+N_{flows}$; all required identifiers agree with the resolved configurations. Middleware-enriched fields
+$N_{events}=2N_{requests}+N_{flows}$; all required identifiers agree with the resolved configurations. Fields enriched with regional integration gateway data
 remain empty, consistently with the authorised client-side boundary. The
 dataset therefore supports end-to-end client observation but not internal
 cross-layer decomposition.
@@ -956,7 +960,7 @@ path comparison yields a Path-level Overhead ($\Delta L$) of
 \label{subsec:rdg-load-scheduling-calibration}
 
 \noindent The linear load ramp scenario works as the calibration condition introduced in
-Section~\ref{sub:experimental}: the generator remains credible only
+Section~\ref{sub:experimental}: the RDG framework remains credible only
 if its timing error stays negligible before offered work reaches the declared
 concurrency boundary. Figure~\ref{fig:load-ramp-calibration} therefore reads
 client-observed active work together with the ninety-fifth-percentile queue
@@ -984,7 +988,7 @@ not evidence that the event loop loses timing fidelity before saturation.
 that contain no eligible delay observation; they do not reverse the rising
 envelope. Likewise, the plateau records the configured client-side admission
 limit and does not identify a provider-side capacity threshold. The paired
-panels thus validate the generator's calibration logic within the declared
+panels thus validate the RDG framework's calibration logic within the declared
 measurement boundary: timing remains stable below the limit, while overload is
 made explicit as measurable queueing rather than hidden inside request latency.
 
@@ -1067,8 +1071,8 @@ belongs to complete-workflow behaviour within the observed population.
 \subsection{Domain-Specific Flow Signatures}
 \label{subsec:rdg-domain-specific-flow-signatures}
 
-\noindent A domain-specific workload preserves transaction chains that a generic request
-generator otherwise collapses into an undifferentiated latency sample. In
+\noindent A domain-specific workload preserves transaction chains that a generic
+request-centric model otherwise collapses into an undifferentiated latency sample. In
 Figure~\ref{fig:flow-type-completion-signatures}, different integration flow types occupy visibly different locations and spreads. The figure thus
 supports a family of conditional random variables $L\mid\text{flow type}$ rather than a single unconditional latency variable.
 
@@ -1153,15 +1157,15 @@ measured distributional shapes.
 the 571.1~ms direct median and defines a client-observed \emph{Path-level
 Overhead} ($\Delta L$) of 184.7~ms. This value remains an aggregate external
 displacement under the Surrogate Observability Strategy; it is not a decomposed
-middleware processing time. For the failed-flow population, the corresponding
+regional integration gateway processing time. For the failed-flow population, the corresponding
 mediated-minus-direct differences equal $+62.18$~ms for the mean,
 $+12.88$~ms for the median, and $+284.30$~ms for the ninety-fifth percentile.
 
 \noindent The 12.88~ms failed-flow median differential is the empirical signature of
-the execution engine's fail-fast rule: steps execute sequentially and the
+the Traffic Execution Engine's fail-fast rule: steps execute sequentially and the
 chain terminates at the first non-successful transaction. Let
 $X_0 \rightarrow X_1 \rightarrow \cdots \rightarrow X_m$ denote the ordered
-workflow states and let $\tau$ be the first failed transition. The engine acts
+workflow states and let $\tau$ be the first failed transition. The Traffic Execution Engine acts
 as a stochastic truncation operator
 \begin{equation}
     \mathcal{T}_{\tau}(X_0,\ldots,X_m)=(X_0,\ldots,X_{\tau}),
@@ -1183,9 +1187,9 @@ failed prerequisite suppresses downstream IHE-XDS.b Registry Stored Query
 contain them, the client observes only the truncated completion time and the
 channel receives no requests whose semantic prerequisites are already invalid.
 Under saturation, this avoided wasted work reduces the offered load that can
-drive the gateway from a normal toward an overloaded state and therefore acts
+drive the regional integration gateway from a normal toward an overloaded state and therefore acts
 as a protective mechanism against overload collapse. It does not, however,
-identify an internal gateway component or prove a provider-side capacity
+identify an internal regional integration gateway component or prove a provider-side capacity
 threshold. The centre--tail distinction follows the application-level Flow
 Completion Time hierarchy of Iorio et al. and the stochastic quantile
 interpretation of Akram et al.; the surrogate observability invariants prevent
