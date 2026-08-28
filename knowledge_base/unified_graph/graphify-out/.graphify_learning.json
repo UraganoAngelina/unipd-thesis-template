@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T09:48:56.627784+00:00",
+  "generated_at": "2026-08-27T08:04:48.728710+00:00",
   "nodes": {
     "Request-Dataset-Generator::fhir_patient_generator": {
       "code_fingerprint": "",
@@ -17,7 +17,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 1.323232209,
+      "score": 1.101760041,
       "source_file": "fhir_patient_generator.py",
       "status": "preferred",
       "uses": 2
@@ -33,7 +33,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.678685147,
+      "score": 0.565092181,
       "source_file": "log_collector.py",
       "status": "tentative",
       "uses": 1
@@ -54,7 +54,7 @@
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 1.35756483,
+      "score": 1.130346339,
       "source_file": "log_collector.py",
       "status": "preferred",
       "uses": 2
@@ -70,7 +70,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.954691666,
+      "score": 0.794902907,
       "source_file": "main.py",
       "status": "tentative",
       "uses": 1
@@ -78,24 +78,35 @@
     "Request-Dataset-Generator::metric_engine": {
       "code_fingerprint": "",
       "label": "metric_engine.py",
-      "last": "2026-08-02T15:12:07.408713+00:00",
+      "last": "2026-08-27T07:02:37.034376+00:00",
       "provenance": [
+        {
+          "date": "2026-08-27T07:02:37.034376+00:00",
+          "outcome": "useful",
+          "q": "Where should transitional bridges be inserted in Chapter 3 to prevent abrupt parent-to-child heading transitions?"
+        },
         {
           "date": "2026-08-02T15:12:07.408713+00:00",
           "outcome": "useful",
           "q": "How does RDG represent the Surrogate Observability Pattern and estimate gateway overhead without middleware logs?"
         }
       ],
-      "score": 0.678685147,
+      "score": 1.564094757,
       "source_file": "metric_engine.py",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "Request-Dataset-Generator::metric_engine_direct_vs_middleware_summary": {
       "code_fingerprint": "",
       "label": "_direct_vs_middleware_summary()",
-      "last": "2026-07-31T10:01:00.584428+00:00",
+      "last": "2026-08-24T13:26:14.895922+00:00",
+      "neg": 1,
       "provenance": [
+        {
+          "date": "2026-08-24T13:26:14.895922+00:00",
+          "outcome": "corrected",
+          "q": "Which Chapter 4 claims require qualification when reconciling gateway latency, fail-fast execution, and saturation evidence?"
+        },
         {
           "date": "2026-07-31T10:01:00.584428+00:00",
           "outcome": "useful",
@@ -107,16 +118,23 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 1.289297602,
+      "score": 0.135647633,
       "source_file": "metric_engine.py",
-      "status": "preferred",
-      "uses": 2
+      "status": "contested",
+      "uses": 2,
+      "verdict": "useful"
     },
     "Request-Dataset-Generator::metric_engine_metricscalculator": {
       "code_fingerprint": "",
       "label": "MetricsCalculator",
-      "last": "2026-08-17T08:39:35.071994+00:00",
+      "last": "2026-08-24T13:26:14.895922+00:00",
+      "neg": 1,
       "provenance": [
+        {
+          "date": "2026-08-24T13:26:14.895922+00:00",
+          "outcome": "corrected",
+          "q": "Which Chapter 4 claims require qualification when reconciling gateway latency, fail-fast execution, and saturation evidence?"
+        },
         {
           "date": "2026-08-17T08:39:35.071994+00:00",
           "outcome": "useful",
@@ -128,10 +146,43 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 1.569796401,
+      "score": 0.369198756,
       "source_file": "metric_engine.py",
-      "status": "preferred",
-      "uses": 2
+      "status": "contested",
+      "uses": 2,
+      "verdict": "useful"
+    },
+    "Request-Dataset-Generator::metric_engine_metricscalculator_calc_observability": {
+      "code_fingerprint": "",
+      "label": ".calc_observability()",
+      "last": "2026-08-19T10:00:30.034176+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T10:00:30.034176+00:00",
+          "outcome": "useful",
+          "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
+        }
+      ],
+      "score": 0.832782297,
+      "source_file": "metric_engine.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::metric_engine_statisticshelper_percentile": {
+      "code_fingerprint": "",
+      "label": ".percentile()",
+      "last": "2026-08-19T10:00:30.034176+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T10:00:30.034176+00:00",
+          "outcome": "useful",
+          "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
+        }
+      ],
+      "score": 0.832782297,
+      "source_file": "metric_engine.py",
+      "status": "tentative",
+      "uses": 1
     },
     "Request-Dataset-Generator::metric_engine_warningdetector": {
       "code_fingerprint": "",
@@ -149,7 +200,7 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 1.569796401,
+      "score": 1.307056264,
       "source_file": "metric_engine.py",
       "status": "preferred",
       "uses": 2
@@ -157,9 +208,19 @@
     "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator": {
       "code_fingerprint": "",
       "label": "FlowOrchestrator",
-      "last": "2026-08-02T15:44:59.379944+00:00",
-      "neg": 1,
+      "last": "2026-08-27T07:02:37.034376+00:00",
+      "neg": 2,
       "provenance": [
+        {
+          "date": "2026-08-27T07:02:37.034376+00:00",
+          "outcome": "useful",
+          "q": "Where should transitional bridges be inserted in Chapter 3 to prevent abrupt parent-to-child heading transitions?"
+        },
+        {
+          "date": "2026-08-24T13:26:14.895922+00:00",
+          "outcome": "corrected",
+          "q": "Which Chapter 4 claims require qualification when reconciling gateway latency, fail-fast execution, and saturation evidence?"
+        },
         {
           "date": "2026-08-02T15:44:59.379944+00:00",
           "outcome": "corrected",
@@ -174,22 +235,12 @@
           "date": "2026-08-02T14:57:09.025976+00:00",
           "outcome": "useful",
           "q": "Which RDG RVE flows are Direct or Gateway-Mediated for the thesis workflow visual?"
-        },
-        {
-          "date": "2026-07-31T10:01:00.584428+00:00",
-          "outcome": "useful",
-          "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
-        },
-        {
-          "date": "2026-07-31T09:29:50.692545+00:00",
-          "outcome": "useful",
-          "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 2.583673087,
+      "score": 2.212383337,
       "source_file": "rve_transactions/flow_orchestrator.py",
       "status": "contested",
-      "uses": 5,
+      "uses": 6,
       "verdict": "useful"
     },
     "Request-Dataset-Generator::rve_transactions_rve_gateway": {
@@ -203,7 +254,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.644487625,
+      "score": 0.536618371,
       "source_file": "rve_transactions/rve_gateway.py",
       "status": "tentative",
       "uses": 1
@@ -219,7 +270,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.953779576,
+      "score": 0.794143475,
       "source_file": "rve_transactions/scrybasign_common.py",
       "status": "tentative",
       "uses": 1
@@ -235,7 +286,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.953779576,
+      "score": 0.794143475,
       "source_file": "rve_transactions/scrybasign_common.py",
       "status": "tentative",
       "uses": 1
@@ -243,18 +294,35 @@
     "Request-Dataset-Generator::semaphore": {
       "code_fingerprint": "",
       "label": "Semaphore",
-      "last": "2026-08-19T09:17:07.318442+00:00",
+      "last": "2026-08-24T13:26:14.895922+00:00",
+      "neg": 1,
       "provenance": [
+        {
+          "date": "2026-08-24T13:26:14.895922+00:00",
+          "outcome": "corrected",
+          "q": "Which Chapter 4 claims require qualification when reconciling gateway latency, fail-fast execution, and saturation evidence?"
+        },
+        {
+          "date": "2026-08-24T12:25:48.527672+00:00",
+          "outcome": "useful",
+          "q": "Ridurre la Figura 4.1 per farla rientrare a pagina 84 e spostare sotto la timeline l'etichetta Observed saturated asynchronous timeline della Figura 4.2."
+        },
+        {
+          "date": "2026-08-24T11:00:55.924631+00:00",
+          "outcome": "useful",
+          "q": "Ground and structurally optimize Chapter 4, integrate the reconciliation matrix and two TikZ figures, and recast the theoretical perspectives as explicitly proposed future work."
+        },
         {
           "date": "2026-08-19T09:17:07.318442+00:00",
           "outcome": "useful",
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 1.766967158,
       "source_file": "",
-      "status": "tentative",
-      "uses": 1
+      "status": "contested",
+      "uses": 3,
+      "verdict": "useful"
     },
     "Request-Dataset-Generator::sslcontext": {
       "code_fingerprint": "",
@@ -267,7 +335,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.954691666,
+      "score": 0.794902907,
       "source_file": "",
       "status": "tentative",
       "uses": 1
@@ -283,8 +351,40 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 0.832202872,
       "source_file": "tests/test_core.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::timeline_generator": {
+      "code_fingerprint": "",
+      "label": "timeline_generator.py",
+      "last": "2026-08-24T12:25:48.527672+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-24T12:25:48.527672+00:00",
+          "outcome": "useful",
+          "q": "Ridurre la Figura 4.1 per farla rientrare a pagina 84 e spostare sotto la timeline l'etichetta Observed saturated asynchronous timeline della Figura 4.2."
+        }
+      ],
+      "score": 0.936948456,
+      "source_file": "timeline_generator.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "Request-Dataset-Generator::traffic_exec_engine": {
+      "code_fingerprint": "",
+      "label": "traffic_exec_engine.py",
+      "last": "2026-08-27T07:02:37.034376+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-27T07:02:37.034376+00:00",
+          "outcome": "useful",
+          "q": "Where should transitional bridges be inserted in Chapter 3 to prevent abrupt parent-to-child heading transitions?"
+        }
+      ],
+      "score": 0.999002576,
+      "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
     },
@@ -299,7 +399,7 @@
           "q": "Which documented requirements, transaction chains, workload mechanisms, KPI categories, and sanitised evidence support Chapter 2 of the thesis?"
         }
       ],
-      "score": 0.616016825,
+      "score": 0.512912789,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -307,18 +407,23 @@
     "Request-Dataset-Generator::traffic_exec_engine_execute_flow": {
       "code_fingerprint": "",
       "label": "execute_flow()",
-      "last": "2026-08-19T09:17:07.318442+00:00",
+      "last": "2026-08-24T11:00:55.924631+00:00",
       "provenance": [
+        {
+          "date": "2026-08-24T11:00:55.924631+00:00",
+          "outcome": "useful",
+          "q": "Ground and structurally optimize Chapter 4, integrate the reconciliation matrix and two TikZ figures, and recast the theoretical perspectives as explicitly proposed future work."
+        },
         {
           "date": "2026-08-19T09:17:07.318442+00:00",
           "outcome": "useful",
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 1.76787621,
       "source_file": "traffic_exec_engine.py",
-      "status": "tentative",
-      "uses": 1
+      "status": "preferred",
+      "uses": 2
     },
     "Request-Dataset-Generator::traffic_exec_engine_extract_outputs": {
       "code_fingerprint": "",
@@ -331,7 +436,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 0.832202872,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -347,7 +452,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 0.832202872,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -368,7 +473,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.908471242,
+      "score": 1.589046382,
       "source_file": "traffic_exec_engine.py",
       "status": "preferred",
       "uses": 2
@@ -384,7 +489,7 @@
           "q": "Create three Chapter 3 visuals for secure transport, semantic dependencies, and the UI persistence bridge, using the current RDG implementation as evidence."
         }
       ],
-      "score": 0.954691666,
+      "score": 0.794902907,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -400,7 +505,7 @@
           "q": "Generare e integrare il diagramma Asynchronous Flow Execution and Concurrency Control nel Capitolo 3"
         }
       ],
-      "score": 0.999489547,
+      "score": 0.832202872,
       "source_file": "traffic_exec_engine.py",
       "status": "tentative",
       "uses": 1
@@ -421,7 +526,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.908471242,
+      "score": 1.589046382,
       "source_file": "ui/tabs/config_tab.py",
       "status": "preferred",
       "uses": 2
@@ -437,7 +542,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 0.953779576,
+      "score": 0.794143475,
       "source_file": "ui/tabs/dashboard_tab.py",
       "status": "tentative",
       "uses": 1
@@ -458,7 +563,7 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.908471242,
+      "score": 1.589046382,
       "source_file": "ui/tabs/run_tab.py",
       "status": "preferred",
       "uses": 2
@@ -479,10 +584,26 @@
           "q": "Refactor Chapter 3 using the knowledge base for Scryba Sign, mutual TLS, the UI bridge, the metric engine, functional tests, and experimental-validity boundaries."
         }
       ],
-      "score": 1.908471242,
+      "score": 1.589046382,
       "source_file": "ui/ui_config_bridge.py",
       "status": "preferred",
       "uses": 2
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout": {
+      "code_fingerprint": "",
+      "label": "Gateway timeout",
+      "last": "2026-08-24T11:00:55.924631+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-24T11:00:55.924631+00:00",
+          "outcome": "useful",
+          "q": "Ground and structurally optimize Chapter 4, integrate the reconciliation matrix and two TikZ figures, and recast the theoretical perspectives as explicitly proposed future work."
+        }
+      ],
+      "score": 0.935673338,
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "status": "tentative",
+      "uses": 1
     },
     "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001": {
       "code_fingerprint": "",
@@ -495,7 +616,7 @@
           "q": "Come rifocalizzare titolo, Abstract ed Expected Contributions sulla profilazione end-to-end e sul confronto direct_vs_middleware?"
         }
       ],
-      "score": 0.644487625,
+      "score": 0.536618371,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -511,7 +632,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.617541477,
+      "score": 0.514182257,
       "source_file": "20260727T185227/experiment_summary.md",
       "status": "tentative",
       "uses": 1
@@ -527,10 +648,33 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.617541477,
+      "score": 0.514182257,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
+    },
+    "experiments::knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale": {
+      "code_fingerprint": "",
+      "label": "Figure come evidenza visuale",
+      "last": "2026-08-24T13:26:14.895922+00:00",
+      "neg": 1,
+      "provenance": [
+        {
+          "date": "2026-08-24T13:26:14.895922+00:00",
+          "outcome": "corrected",
+          "q": "Which Chapter 4 claims require qualification when reconciling gateway latency, fail-fast execution, and saturation evidence?"
+        },
+        {
+          "date": "2026-08-24T12:25:48.527672+00:00",
+          "outcome": "useful",
+          "q": "Ridurre la Figura 4.1 per farla rientrare a pagina 84 e spostare sotto la timeline l'etichetta Observed saturated asynchronous timeline della Figura 4.2."
+        }
+      ],
+      "score": -0.000909052,
+      "source_file": "20260727T185227/README.md",
+      "status": "contested",
+      "uses": 1,
+      "verdict": "dead end"
     },
     "experiments::knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto": {
       "code_fingerprint": "",
@@ -543,7 +687,7 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.617541477,
+      "score": 0.514182257,
       "source_file": "20260727T185227/README.md",
       "status": "tentative",
       "uses": 1
@@ -564,7 +708,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.35622633,
+      "score": 1.129231867,
       "source_file": "Specifiche tecniche per l’interoperabilità 2.6.3 - Affinity Domain.pdf",
       "status": "preferred",
       "uses": 2
@@ -580,7 +724,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 0.677804098,
+      "score": 0.564358596,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -596,7 +740,7 @@
           "q": "How should the surrogate observability diagram represent direct_vs_middleware, APMS, and the authorised observation boundary?"
         }
       ],
-      "score": 0.678879684,
+      "score": 0.565254158,
       "source_file": "analisi_completa.md",
       "status": "tentative",
       "uses": 1
@@ -612,7 +756,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.644809977,
+      "score": 0.53688677,
       "source_file": "SGI-WP1-Specifiche di integrazione autenticazione APMS-Team di sviluppo-v1.4.1.pdf",
       "status": "tentative",
       "uses": 1
@@ -633,7 +777,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 1.35622633,
+      "score": 1.129231867,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 2
@@ -659,7 +803,7 @@
           "q": "ottimo adesso genera un visual partendo dal contenuto della tabella da integrare direttamente nel corpo del latex, vedi tu se fare un immagine direttamente o una tabella latex"
         }
       ],
-      "score": 2.310917996,
+      "score": 1.924134774,
       "source_file": "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
       "status": "preferred",
       "uses": 3
@@ -675,10 +819,63 @@
           "q": "Close every remaining marker in the thesis abstract and Chapter 1 using authorised sources and interactive author input."
         }
       ],
-      "score": 0.617541477,
+      "score": 0.514182257,
       "source_file": "Infrastructure Reference Architecture-v1.1.0.pdf",
       "status": "tentative",
       "uses": 1
+    },
+    "graphify_kb::network_beta_quantile_rule": {
+      "code_fingerprint": "",
+      "label": "Beta Quantile Rule",
+      "last": "2026-08-19T10:00:30.034176+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T10:00:30.034176+00:00",
+          "outcome": "useful",
+          "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
+        }
+      ],
+      "score": 0.832782297,
+      "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::network_latency_throughput": {
+      "code_fingerprint": "",
+      "label": "Numerical Evaluation Of Network Latency And Throughput",
+      "last": "2026-08-19T10:00:30.034176+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-19T10:00:30.034176+00:00",
+          "outcome": "useful",
+          "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
+        }
+      ],
+      "score": 0.832782297,
+      "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
+      "status": "tentative",
+      "uses": 1
+    },
+    "graphify_kb::network_load_sharing_window": {
+      "code_fingerprint": "",
+      "label": "Load-Sharing Window",
+      "last": "2026-08-24T11:00:55.924631+00:00",
+      "provenance": [
+        {
+          "date": "2026-08-24T11:00:55.924631+00:00",
+          "outcome": "useful",
+          "q": "Ground and structurally optimize Chapter 4, integrate the reconciliation matrix and two TikZ figures, and recast the theoretical perspectives as explicitly proposed future work."
+        },
+        {
+          "date": "2026-08-19T10:00:30.034176+00:00",
+          "outcome": "useful",
+          "q": "Refactoring scientifico del Capitolo 3: collegare quantili, Load-Sharing Window, Transfer in Vain e osservabilita client-side"
+        }
+      ],
+      "score": 1.768455636,
+      "source_file": "Numerical+Evaluation+of+Network+Latency+and+Throughput+in+Distributed+Systems.pdf",
+      "status": "preferred",
+      "uses": 2
     },
     "graphify_kb::rti_anagrafica_gateway": {
       "code_fingerprint": "",
@@ -691,7 +888,7 @@
           "q": "Come riallineare il Capitolo 1 alla Surrogate Observability Strategy e alle 74 run?"
         }
       ],
-      "score": 0.644809977,
+      "score": 0.53688677,
       "source_file": "Specifiche tecniche RTI - Anagrafica.pdf",
       "status": "tentative",
       "uses": 1

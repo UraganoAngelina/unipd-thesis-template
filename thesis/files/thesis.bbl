@@ -379,6 +379,37 @@
       \field{dateera}{ce}
       \true{nocite}
     \endentry
+    \entry{burns-wellings-analysable-real-time}{book}{}
+      \name{author}{2}{}{%
+        {{hash=d27a72bb95399d110a7c00c017fbeb7d}{%
+           family={Burns},
+           familyi={B\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=290db24cfbbe05ce2a1946a2d7bbba05}{%
+           family={Wellings},
+           familyi={W\bibinitperiod},
+           given={Andy},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CreateSpace Independent Publishing Platform}%
+      }
+      \strng{namehash}{d731e0bb188d4723615de83e786891dd}
+      \strng{fullhash}{d731e0bb188d4723615de83e786891dd}
+      \strng{bibnamehash}{d731e0bb188d4723615de83e786891dd}
+      \strng{authorbibnamehash}{d731e0bb188d4723615de83e786891dd}
+      \strng{authornamehash}{d731e0bb188d4723615de83e786891dd}
+      \strng{authorfullhash}{d731e0bb188d4723615de83e786891dd}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781530265503}
+      \field{title}{Analysable Real-Time Systems: Programmed in Ada}
+      \field{year}{2016}
+      \field{dateera}{ce}
+    \endentry
     \entry{arsenal-subscription-v22}{report}{}
       \name{author}{2}{}{%
         {{hash=dba377c67e476b8d7e0db3a1cfb5897d}{%
@@ -474,6 +505,43 @@
       \field{version}{2.6.3}
       \field{year}{2025}
       \field{dateera}{ce}
+    \endentry
+    \entry{cousot-abstract-interpretation}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=8e278ac48d46529580f34189ce35f505}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5b51b0ccb1532c740cef8c8045f0911f}{%
+           family={Cousot},
+           familyi={C\bibinitperiod},
+           given={Radhia},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{fullhash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{bibnamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authorbibnamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authornamehash}{8aded87411c28c264da8bc9283b227f5}
+      \strng{authorfullhash}{8aded87411c28c264da8bc9283b227f5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Fourth Annual Symposium on Principles of Programming Languages}
+      \field{title}{Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints}
+      \field{year}{1977}
+      \field{dateera}{ce}
+      \true{nocite}
+      \field{pages}{238\bibrangedash 252}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1145/512950.512973
+      \endverb
     \endentry
     \entry{dimitrov-latency-applications}{report}{}
       \name{author}{2}{}{%
@@ -835,6 +903,59 @@
       \verb 10.1145/3503954.3503956
       \endverb
     \endentry
+    \entry{lamport-specifying-systems}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5d77435450d10a850a5b58577b9a456b}{%
+           family={Lamport},
+           familyi={L\bibinitperiod},
+           given={Leslie},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{bibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorbibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authornamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhash}{5d77435450d10a850a5b58577b9a456b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780321143068}
+      \field{title}{Specifying Systems: The {TLA+} Language and Tools for Hardware and Software Engineers}
+      \field{year}{2002}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{liu-real-time-systems}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b773ff3e439d6c7daa7f6d5594f8f86c}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jane\bibnamedelimb W.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \strng{fullhash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \strng{bibnamehash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \strng{authorbibnamehash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \strng{authornamehash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \strng{authorfullhash}{b773ff3e439d6c7daa7f6d5594f8f86c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780130996510}
+      \field{title}{Real-Time Systems}
+      \field{year}{2000}
+      \field{dateera}{ce}
+    \endentry
     \entry{oasis-soa-rm}{report}{}
       \name{author}{5}{}{%
         {{hash=da5371826fe64b0774fa89c90b40e262}{%
@@ -921,6 +1042,36 @@
       \field{version}{16}
       \field{year}{2024}
       \field{dateera}{ce}
+    \endentry
+    \entry{mine-numeric-invariants}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f5a65e353c1f698c5b75db2a0914d504}{%
+           family={Miné},
+           familyi={M\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{fullhash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{bibnamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authorbibnamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authornamehash}{f5a65e353c1f698c5b75db2a0914d504}
+      \strng{authorfullhash}{f5a65e353c1f698c5b75db2a0914d504}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Programming Languages}
+      \field{number}{3--4}
+      \field{title}{Tutorial on Static Inference of Numeric Invariants by Abstract Interpretation}
+      \field{volume}{4}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{120\bibrangedash 372}
+      \range{pages}{253}
+      \verb{doi}
+      \verb 10.1561/2500000034
+      \endverb
     \endentry
     \entry{decreto-fse-2-2023}{report}{}
       \name{author}{1}{}{%
@@ -1209,6 +1360,93 @@
       \verb{url}
       \verb https://www.rfc-editor.org/info/rfc5544/
       \endverb
+    \endentry
+    \entry{unipd-real-time-kernels-syllabus}{report}{}
+      \name{author}{1}{}{%
+        {{hash=ab6e793a73c1a6b29f0a1da2e297a025}{%
+           family={{Università degli Studi di Padova}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Università degli Studi di Padova}%
+      }
+      \strng{namehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{fullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{bibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorbibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authornamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorfullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \field{extraname}{1}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{8}
+      \field{note}{Academic year 2024/2025; instructor: Tullio Vardanega}
+      \field{number}{SCQ0093641}
+      \field{title}{Real-Time Kernels and Systems}
+      \field{type}{Course syllabus}
+      \field{year}{2026}
+      \field{dateera}{ce}
+    \endentry
+    \entry{unipd-runtimes-concurrency-syllabus}{report}{}
+      \name{author}{1}{}{%
+        {{hash=ab6e793a73c1a6b29f0a1da2e297a025}{%
+           family={{Università degli Studi di Padova}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Università degli Studi di Padova}%
+      }
+      \strng{namehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{fullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{bibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorbibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authornamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorfullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \field{extraname}{2}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{8}
+      \field{note}{Academic year 2026/2027; responsible instructor: Tullio Vardanega}
+      \field{number}{SCQ0093640}
+      \field{title}{Runtimes for Concurrency and Distribution}
+      \field{type}{Course syllabus}
+      \field{year}{2026}
+      \field{dateera}{ce}
+    \endentry
+    \entry{unipd-software-verification-syllabus}{report}{}
+      \name{author}{1}{}{%
+        {{hash=ab6e793a73c1a6b29f0a1da2e297a025}{%
+           family={{Università degli Studi di Padova}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Università degli Studi di Padova}%
+      }
+      \strng{namehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{fullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{bibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorbibnamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authornamehash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \strng{authorfullhash}{ab6e793a73c1a6b29f0a1da2e297a025}
+      \field{extraname}{3}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{8}
+      \field{note}{Academic year 2026/2027; responsible instructor: Francesco Ranzato}
+      \field{number}{SCQ0089515}
+      \field{title}{Software Verification}
+      \field{type}{Course syllabus}
+      \field{year}{2026}
+      \field{dateera}{ce}
     \endentry
     \entry{arsenal-anagrafe-zero-v26}{report}{}
       \name{author}{4}{}{%

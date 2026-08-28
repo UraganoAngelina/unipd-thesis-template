@@ -332,8 +332,8 @@ as required by the regional security profile
 \footcite[Section~4.2]{arsenal-security-v214}\footcite[Section~1.7]{arsenal-anagrafe-zero-v26}.
 RDG therefore represents regional security-session state as explicit
 per-occurrence dependency data rather than reducing it to the state of the
-underlying HTTP connection. If [RVE-1.b] fails, the required assertion cannot be
-extracted, or its placeholder remains unresolved, the engine does not execute a
+underlying HTTP connection. If [RVE-1.b] fails, or if the required assertion cannot be
+extracted or its placeholder remains unresolved, the engine does not execute a
 semantically valid patient query and records the workflow as incomplete. This
 behaviour makes assertion acquisition and propagation part of the tested
 workflow. An isolated request can exercise [RVE-54] only after receiving a valid

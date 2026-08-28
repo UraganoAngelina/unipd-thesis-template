@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.15)  22 AUG 2026 11:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.15)  27 AUG 2026 16:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1414,22 +1414,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@lot=\write14
 \openout14 = `thesis.lot'.
 
- [8] (./thesis.lol)
-\tf@lol=\write15
-\openout15 = `thesis.lol'.
-
- [9
-
-]) (./thesis.acr) (./thesis.gls [10
+ [8]) (./thesis.acr) (./thesis.gls [9
 
 
 
-] [11
+] [10
 
 
-] [12]) [13]
+] [11]) [12]
 Package hyperref Info: Option `pageanchor' set `false' on input line 25.
- [14
+ [13
 
 ] (./chapters/1_introduction.tex
 Chapter 1.
@@ -1444,13 +1438,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 ]
-<img/territorial_care_operating_model.pdf, id=381, 569.80377pt x 341.58916pt>
+<img/territorial_care_operating_model.pdf, id=402, 569.80377pt x 341.58916pt>
 File: img/territorial_care_operating_model.pdf Graphic file (type pdf)
 <use img/territorial_care_operating_model.pdf>
 Package pdftex.def Info: img/territorial_care_operating_model.pdf  used on input line 43.
 (pdftex.def)             Requested size: 401.18295pt x 240.50764pt.
  [2 <./img/territorial_care_operating_model.pdf>] [3] [4] [5] [6] [7] [8] [9]
-<img/rdg_regional_transaction_workflow.pdf, id=468, 605.59851pt x 296.95442pt>
+<img/rdg_regional_transaction_workflow.pdf, id=489, 605.59851pt x 296.95442pt>
 File: img/rdg_regional_transaction_workflow.pdf Graphic file (type pdf)
 <use img/rdg_regional_transaction_workflow.pdf>
 Package pdftex.def Info: img/rdg_regional_transaction_workflow.pdf  used on input line 368.
@@ -1458,7 +1452,7 @@ Package pdftex.def Info: img/rdg_regional_transaction_workflow.pdf  used on inpu
  [10 <./img/rdg_regional_transaction_workflow.pdf>] [11] [12] [13{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}] [14
 
 ]
-<img/surrogate_observability_pattern.pdf, id=528, 463.32396pt x 316.12505pt>
+<img/surrogate_observability_pattern.pdf, id=549, 463.32396pt x 316.12505pt>
 File: img/surrogate_observability_pattern.pdf Graphic file (type pdf)
 <use img/surrogate_observability_pattern.pdf>
 Package pdftex.def Info: img/surrogate_observability_pattern.pdf  used on input line 504.
@@ -1471,184 +1465,192 @@ Chapter 2.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 66.
  [19] [20] [21{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}] [22] [23] [24]
-<img/iorio_latency.pdf, id=662, page=1, 422.45729pt x 252.82857pt>
+<img/iorio_latency.pdf, id=683, page=1, 422.45729pt x 252.82857pt>
 File: img/iorio_latency.pdf Graphic file (type pdf)
 <use img/iorio_latency.pdf, page 1>
 Package pdftex.def Info: img/iorio_latency.pdf , page1 used on input line 280.
 (pdftex.def)             Requested size: 401.18295pt x 240.10475pt.
  [25] [26 <./img/iorio_latency.pdf>]
-<img/akram_latency.pdf, id=713, page=1, 419.88368pt x 168.34293pt>
+<img/akram_latency.pdf, id=734, page=1, 419.88368pt x 168.34293pt>
 File: img/akram_latency.pdf Graphic file (type pdf)
 <use img/akram_latency.pdf, page 1>
 Package pdftex.def Info: img/akram_latency.pdf , page1 used on input line 334.
 (pdftex.def)             Requested size: 401.18295pt x 160.84702pt.
  [27]
-<img/akram_latency.pdf, id=719, page=2, 418.53664pt x 252.82857pt>
+<img/akram_latency.pdf, id=740, page=2, 418.53664pt x 252.82857pt>
 File: img/akram_latency.pdf Graphic file (type pdf)
 <use img/akram_latency.pdf, page 2>
 Package pdftex.def Info: img/akram_latency.pdf , page2 used on input line 343.
 (pdftex.def)             Requested size: 369.08757pt x 222.95662pt.
  [28 <./img/akram_latency.pdf> <./img/akram_latency.pdf>] [29]
-<img/dimitrov_communication_patterns.pdf, id=776, page=1, 423.56143pt x 297.87987pt>
+<img/dimitrov_communication_patterns.pdf, id=796, page=1, 423.56143pt x 297.87987pt>
 File: img/dimitrov_communication_patterns.pdf Graphic file (type pdf)
 <use img/dimitrov_communication_patterns.pdf, page 1>
 Package pdftex.def Info: img/dimitrov_communication_patterns.pdf , page1 used on input line 397.
 (pdftex.def)             Requested size: 401.18295pt x 282.15703pt.
  [30 <./img/dimitrov_communication_patterns.pdf>] [31] [32] [33]
-<img/dimitrov_communication_patterns.pdf, id=812, page=2, 440.96745pt x 470.70757pt>
+<img/dimitrov_communication_patterns.pdf, id=833, page=2, 440.96745pt x 470.70757pt>
 File: img/dimitrov_communication_patterns.pdf Graphic file (type pdf)
 <use img/dimitrov_communication_patterns.pdf, page 2>
 Package pdftex.def Info: img/dimitrov_communication_patterns.pdf , page2 used on input line 523.
 (pdftex.def)             Requested size: 401.20699pt x 428.26553pt.
- [34] [35 <./img/dimitrov_communication_patterns.pdf>] [36]
+ [34] [35 <./img/dimitrov_communication_patterns.pdf>] [36] [37]
 Overfull \hbox (5.129pt too wide) in paragraph at lines 596--607
 \T1/lmr/m/n/12 trans-port. The syn-chronous path com-bines iden-tity and signer dis-cov-ery through
  []
 
-[37] [38] [39] [40]
-<img/iorio_latency.pdf, id=866, page=2, 426.7644pt x 294.58757pt>
+[38] [39] [40] [41]
+<img/iorio_latency.pdf, id=891, page=2, 426.7644pt x 294.58757pt>
 File: img/iorio_latency.pdf Graphic file (type pdf)
 <use img/iorio_latency.pdf, page 2>
 Package pdftex.def Info: img/iorio_latency.pdf , page2 used on input line 756.
 (pdftex.def)             Requested size: 401.18295pt x 276.93483pt.
- [41] [42 <./img/iorio_latency.pdf>] [43] [44] [45] [46] [47] [48] [49]) (./chapters/3_soa.tex
+ [42] [43 <./img/iorio_latency.pdf>] [44] [45] [46] [47] [48] [49] [50]) (./chapters/3_soa.tex
 Chapter 3.
 
 Overfull \hbox (6.8669pt too wide) in paragraph at lines 14--25
 \T1/lmr/m/n/12 Chapter [][]1[][] de-fines the need for a con-trolled and trace-able eval-u-a-tion of healthcare-
  []
 
-[50
+[51
 
-] [51]
-Underfull \hbox (badness 1400) in paragraph at lines 87--88
+] [52]
+Underfull \hbox (badness 1400) in paragraph at lines 94--95
 []|\T1/lmr/m/n/10.95 Synthetic Pa-tient re-sources and
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 89--89
+Underfull \hbox (badness 1803) in paragraph at lines 96--96
 []|\T1/lmr/m/n/10.95 Workload com-po-si-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--89
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
 []|\T1/lmtt/m/n/10.95 request_dataset_
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--89
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
 \T1/lmtt/m/n/10.95 generator.py\T1/lmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--89
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
 \T1/lmtt/m/n/10.95 flow_
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 []|\T1/lmr/m/n/10.95 Temporal schedul-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 []|\T1/lmr/m/n/10.95 Timestamped flow oc-cur-rences
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 \T1/lmr/m/n/10.95 JSONL re-quest/response/flow
  []
 
-[52] [53] [54]
-Underfull \hbox (badness 10000) in paragraph at lines 255--255
+[53] [54] [55] [56]
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 []|\T1/lmtt/m/n/8 FLOW_PATIENT_QUERY_
  []
 
-[55] [56]
-Overfull \hbox (3.82468pt too wide) in paragraph at lines 312--321
+[57]
+Overfull \hbox (3.82468pt too wide) in paragraph at lines 326--335
 \T1/lmr/m/n/12 ca-tion header but not the cer-tifi-cate ma-te-rial man-aged by \T1/lmtt/m/n/12 MtlsContextFactory\T1/lmr/m/n/12 . 
  []
 
-[57] [58]
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 472.
+[58] [59]
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 493.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [59] [60] [61] [62]
-Overfull \hbox (16.85426pt too wide) in paragraph at lines 649--656
-\T1/lmr/m/n/12 The ex-e-cu-tion semaphore ap-plies to com-plete flows, this pro-tects within-occurrence
- []
-
-[63] [64] [65]
-Underfull \hbox (badness 10000) in paragraph at lines 741--741
+) [60] [61] [62] [63] [64] [65] [66] [67]
+Underfull \hbox (badness 10000) in paragraph at lines 783--783
 []|\T1/lmr/bx/n/8 Live
  []
 
-[66] [67] [68]
-<runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png, id=1053, 519.89232pt x 379.4175pt>
+[68] [69] [70] [71]
+<runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png, id=1091, 519.89232pt x 379.4175pt>
 File: runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png Graphic file (type png)
 <use runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png>
-Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png  used on input line 894.
+Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png  used on input line 967.
 (pdftex.def)             Requested size: 341.00795pt x 248.87053pt.
- [69 <./runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png>] [70]
-<runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png, id=1066, 545.18681pt x 446.26724pt>
+ [72 <./runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png>] [73]
+<runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png, id=1105, 545.18681pt x 446.26724pt>
 File: runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png Graphic file (type png)
 <use runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png>
-Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png  used on input line 950.
+Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png  used on input line 1023.
 (pdftex.def)             Requested size: 341.00795pt x 279.14786pt.
-<runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png, id=1067, 519.89232pt x 293.14519pt>
+<runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png, id=1106, 519.89232pt x 293.14519pt>
 File: runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png Graphic file (type png)
 <use runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png>
-Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png  used on input line 957.
+Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png  used on input line 1030.
 (pdftex.def)             Requested size: 341.00795pt x 192.28212pt.
- [71 <./runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png>] [72 <./runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png>]
-<runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png, id=1080, 558.5116pt x 353.44547pt>
+ [74 <./runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png>] [75 <./runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png>]
+<runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png, id=1118, 558.5116pt x 353.44547pt>
 File: runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png Graphic file (type png)
 <use runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png>
-Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png  used on input line 1004.
+Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png  used on input line 1077.
 (pdftex.def)             Requested size: 324.9572pt x 205.64568pt.
- [73 <./runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+ [76 <./runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 []|\T1/lmr/bx/n/10 Transaction out-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 []|\T1/lmr/m/n/10 21,722 / 3,395
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 []|\T1/lmr/m/n/10 21,514 / 21,371
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 []|\T1/lmtt/m/n/10 GetUserInfo\T1/lmr/m/n/10 :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 \T1/lmr/m/n/10 17,838 / 17,838;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 \T1/lmtt/m/n/10 SignOneDoc\T1/lmr/m/n/10 :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
 \T1/lmr/m/n/10 17,838 / 17,015
  []
 
-[74]
-<runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png, id=1093, 514.47206pt x 330.8611pt>
+[77]
+Overfull \hbox (8.29143pt too wide) in paragraph at lines 1140--1144
+\T1/lmr/m/n/12 Figure [][]3.10[][] sep-a-rates the path dis-tri-bu-tions by ter-mi-nal out-come. The successful-
+ []
+
+
+Overfull \hbox (10.19821pt too wide) in paragraph at lines 1140--1144
+\T1/lmr/m/n/12 plete direct-versus-mediated runs and re-tain their mea-sured dis-tri-bu-tional shapes. 
+ []
+
+<runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png, id=1131, 514.47206pt x 330.8611pt>
 File: runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png Graphic file (type png)
 <use runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png>
-Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png  used on input line 1074.
+Package pdftex.def Info: runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png  used on input line 1147.
 (pdftex.def)             Requested size: 341.00795pt x 219.30298pt.
- [75 <./runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png>] [76] [77] [78] [79]) (./references/bibliography.tex
+[78 <./runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png>] [79] [80] [81] [82]) (./chapters/4_concl.tex
+Chapter 4.
+[83
+
+] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98]) (./references/bibliography.tex
 Underfull \hbox (badness 5460) in paragraph at lines 10--10
 [][][]\T1/lmr/m/it/12 Infrastrutture -- Ref-er-ence Ar-chi-tec-ture: Ar-chitet-tura di rifer-i-mento
  []
@@ -1662,6 +1664,11 @@ l.10 ...bibliography[heading=none, nottype=online]
 
 
 ]
+Underfull \hbox (badness 2302) in paragraph at lines 10--10
+\T1/lmr/m/it/12 in Ada\T1/lmr/m/n/12 . Cre-ateS-pace In-de-pen-dent Pub-lish-ing Plat-form, 2016. \T1/lmr/m/sc/12 isbn\T1/lmr/m/n/12 :
+ []
+
+
 Underfull \hbox (badness 1661) in paragraph at lines 10--10
 [][]\T1/lmr/m/n/12 Canal, Gre-go-rio and Mat-teo Cog-no-lato. \T1/lmr/m/it/12 Speci-fiche tec-niche -- Ges-tione
  []
@@ -1696,7 +1703,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.iv}) has 
 <to be read again> 
                    \relax 
 l.10 ...bibliography[heading=none, nottype=online]
-                                                   [4]) (./references/webliography.tex
+                                                   [4]
+Underfull \hbox (badness 3396) in paragraph at lines 10--10
+[][][]\T1/lmr/m/it/12 Software Ver-i-fi-ca-tion\T1/lmr/m/n/12 . Course syl-labus SCQ0089515. Aca-demic year
+ []
+
+) (./references/webliography.tex
 pdfTeX warning (ext4): destination with the same identifier (name{page.v}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1728,17 +1740,17 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53349 strings out of 476098
- 1007545 string characters out of 5793537
- 1947975 words of memory out of 5000000
- 74146 multiletter control sequences out of 15000+600000
- 684271 words of font info for 111 fonts, out of 8000000 for 9000
+ 53607 strings out of 476098
+ 1013457 string characters out of 5793537
+ 1951975 words of memory out of 5000000
+ 74346 multiletter control sequences out of 15000+600000
+ 713811 words of font info for 118 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  99i,16n,98p,2473b,3934s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (100 pages, 3739795 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx7.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (118 pages, 3882205 bytes).
 PDF statistics:
- 1648 PDF objects out of 1728 (max. 8388607)
- 318 named destinations out of 1000 (max. 500000)
- 580 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1902 PDF objects out of 2073 (max. 8388607)
+ 372 named destinations out of 1000 (max. 500000)
+ 660 words of extra memory for PDF output out of 10000 (max. 10000000)
 

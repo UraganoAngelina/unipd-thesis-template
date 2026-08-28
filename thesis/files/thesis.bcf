@@ -2413,8 +2413,22 @@
     <bcf:citekey order="40" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
     <bcf:citekey order="41" intorder="1">iorio-when-latency-matters</bcf:citekey>
     <bcf:citekey order="41" intorder="2">akram-numerical-latency</bcf:citekey>
-    <bcf:citekey order="42" intorder="1" nocite="1">*</bcf:citekey>
-    <bcf:citekey order="43" intorder="2" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">iorio-when-latency-matters</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">akram-numerical-latency</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">arsenal-anagrafe-zero-v26</bcf:citekey>
+    <bcf:citekey order="44" intorder="2">affinity-domain-italia-v263</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">scryba-sign-developer-guide-v16</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">unipd-runtimes-concurrency-syllabus</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">apache-jmeter-remote-testing</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">zhu-tbbt-trace-replay</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">eu-gdpr-2016-679</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">unipd-real-time-kernels-syllabus</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">liu-real-time-systems</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">burns-wellings-analysable-real-time</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">unipd-software-verification-syllabus</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">mine-numeric-invariants</bcf:citekey>
+    <bcf:citekey order="55" intorder="1" nocite="1">*</bcf:citekey>
+    <bcf:citekey order="56" intorder="2" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

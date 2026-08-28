@@ -1,6 +1,658 @@
 \chapter{Conclusions}
 \label{chap:conclusions}
 
+\begingroup
+\setlength{\emergencystretch}{2em}
 
+\noindent This chapter closes the traceability chain that begins with the healthcare
+interoperability problem in Chapter~\ref{chap:introduction}, acquires its
+analytical foundations in Chapter~\ref{chap:stateofart}, and produces empirical
+evidence in Chapter~\ref{chap:selected-approach}. Its objective is to synthesise
+the research contributions, reconcile the observations with the stochastic
+invariants that delimit their interpretation, assess the limitations of the
+available evidence, and derive a concrete engineering roadmap from the measured
+behaviour. The resulting synthesis treats performance as a joint property of
+latency distribution, useful completion, admission control, and workflow state:
+no single scalar replaces this joint view, and no client-side measurement is
+presented as an unsupported decomposition of a protected regional platform.
 
+\section{Connecting Objectives to Evidence}
+\label{sec:conclusions-objectives-evidence}
+\subsection{Overview}
+\noindent Chapter~\ref{chap:introduction} defines four objectives: interpret the
+selected standards and architectures, formalise the corresponding healthcare
+workflows, translate them into executable and observable workloads, and compare
+direct with gateway-mediated paths. The Request Dataset Generator (RDG) provides
+the artefact that connects these objectives. Its evidence chain preserves
+configuration, seed, timeline, occurrence identity, request and flow outcomes,
+and statistical population from workload construction to reporting. The three
+results below provide the principal closure: path-level displacement
+characterises the externally visible difference between the declared path
+populations, stochastic truncation explains the different completion behaviour
+of interrupted flows, and queueing saturation connects client-side delivery
+drift with the deformation of useful completion under extreme offered load.
+Table~\ref{tab:structural-reconciliation} provides the corresponding
+objective--model--evidence map.
+
+\colorlet{veryPeriLight}{veryPeri!18}
+\begin{table}[H]
+    \centering
+    \caption[Structural Reconciliation Matrix]{Structural reconciliation
+    matrix mapping the thesis objectives to the formal invariants of
+    Chapter~\ref{chap:stateofart} and the empirical findings of
+    Chapter~\ref{chap:selected-approach}. Source: Author's elaboration.}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{|
+            >{\raggedright\arraybackslash}p{3.5cm}|
+            >{\raggedright\arraybackslash}p{4.5cm}|
+            >{\raggedright\arraybackslash}p{4.5cm}|
+            >{\raggedright\arraybackslash}p{3.2cm}|}
+            \hline
+            \rowcolor{veryPeriLight}
+            \textbf{Research Objective} &
+            \textbf{Formal Invariant or Model} &
+            \textbf{Empirical Evidence} &
+            \textbf{System Status or Outcome} \\
+            \hline
+            \rowcolor{tableGray}
+            Interpret the selected standards and architectures. &
+            Occurrence-local dependency model and surrogate observability
+            boundary. &
+            Executable regional flow families preserve security, identity,
+            document, and signature prerequisites across 74 complete live
+            runs. &
+            Reconciled within the Veneto integration perimeter; external
+            validity remains scoped. \\
+            \hline
+            Formalise healthcare workflows. &
+            Sequential intra-flow states and stochastic truncation
+            $\mathcal{T}_{\tau}$ at the first unsuccessful transition. &
+            The failed mediated-minus-direct population has a median
+            differential of $+12.88$~ms; the invalid suffix receives no
+            dispatch. &
+            Fail-fast behaviour is supported; failed-flow tail dispersion
+            remains visible. \\
+            \hline
+            \rowcolor{tableGray}
+            Translate the workflows into executable and observable workloads. &
+            Evidence-chain identity, planned-versus-actual dispatch, and a
+            configured flow-concurrency bound. &
+            The final dataset contains 757{,}517 structured events and
+            158{,}449 flow completions; active flows plateau at 30 while drift
+            grows under saturation. &
+            Instrument validity holds below the admission boundary; overload
+            exposes client-side backpressure. \\
+            \hline
+            Compare direct and gateway-mediated paths. &
+            Path-level Overhead
+            $\Delta L(P_{50})=L_{\mathrm{mediated}}-L_{\mathrm{direct}}$. &
+            Successful-flow medians of $755.8$~ms and $571.1$~ms        
+            $\Delta L(P_{50})=184.7$~ms. &
+            The client-boundary displacement is quantified; mediation-only
+            and component-level attribution remain non-assessable. \\
+            \hline
+        \end{tabular}%
+    }
+    \label{tab:structural-reconciliation}
+\end{table}
+\newpage
+\subsection{Mediation Overhead and Path-Level Displacement}
+\label{subsec:conclusions-path-displacement}
+
+\noindent The fourth objective of Chapter~\ref{chap:introduction} requires a
+differential measurement because internal gateway telemetry lies outside the
+authorised observation perimeter. Chapter~\ref{chap:stateofart} consequently
+defines the Path-level Overhead for a declared statistic $q$ as
+\begin{equation}
+    \Delta L(q)
+    = L_{\mathrm{mediated}}(q)-L_{\mathrm{direct}}(q),
+\end{equation}
+subject to compatibility of transaction semantics, payload class, terminal
+outcome, connection policy, offered load, and observation window. This
+definition fixes the estimand before interpreting its magnitude.
+
+\noindent The distinction between network, transport, and application-level completion
+time developed by Iorio et al. determines the observation boundary. The client
+observes the complete path effect, whereas the available evidence does not
+isolate one internal processing stage\footcite{iorio-when-latency-matters}.
+
+\noindent Chapter~\ref{chap:selected-approach} instantiates this estimand at the median.
+For successful flows, the declared mediated population has a median completion
+time of $755.8$~ms and the declared direct comparison population has a median
+of $571.1$~ms. Their empirical displacement is
+\begin{equation}
+    \Delta L(P_{50})=755.8\,\mathrm{ms}-571.1\,\mathrm{ms}
+                   =184.7\,\mathrm{ms}.
+\end{equation}
+
+\noindent The principal quantitative finding is therefore
+\emph{a successful-flow median displacement of
+$\Delta L(P_{50})=184.7$~ms}. This value places the centre of the observed
+mediated distribution to the right of the direct comparison distribution. It
+does not imply that every request incurs the same displacement.
+
+\noindent The interpretation remains constrained by the implemented flow definitions.
+Chapter~\ref{chap:selected-approach} establishes that the direct patient paths
+contain two steps, whereas the mediated patient workflow contains five steps
+and different contracts. The subtraction consequently describes the declared
+campaign populations; it does not constitute a single-variable estimate of a
+semantically equivalent operation or an operational budget attributable only
+to gateway mediation.
+
+\noindent Network transit, connection and security handling, policy enforcement,
+transformation, routing, queueing, downstream execution, retries, and the
+different workflow compositions can all contribute to the aggregate
+difference. The result remains informative as a client-boundary path
+displacement while respecting the surrogate-observability invariant established
+in Chapter~\ref{chap:stateofart}.
+
+\noindent The positive median displacement also does not demonstrate execution
+instability or stability on its own. Those interpretations require joint
+inspection of centre, tail, success rate, and delivery drift within a specified
+flow mix and load regime. The thesis therefore retains the measured
+distributional difference while separating it from mediation-only and
+component-level causal attribution.
+
+\subsection{Asynchronous State Truncation and Fail-Fast Efficiency}
+\label{subsec:conclusions-state-truncation}
+
+\noindent The framework preserves a strict execution invariant: steps within one flow
+occurrence execute sequentially, while independent occurrences execute
+concurrently. Let an occurrence traverse the ordered states
+$X_0\rightarrow X_1\rightarrow\cdots\rightarrow X_m$, and let the random
+index $\tau$ identify the first unsuccessful transition. The execution engine
+implements the stochastic truncation operator
+\begin{equation}
+    \mathcal{T}_{\tau}(X_0,\ldots,X_m)
+      =(X_0,\ldots,X_{\tau}),
+\end{equation}
+so the realised workflow contains only the valid prefix.
+
+\noindent If $D_j$ denotes the service demand associated with downstream state $j$,
+the fail-fast rule suppresses
+\begin{equation}
+    W_{\mathrm{avoided}}(\tau)
+       =\sum_{j=\tau+1}^{m}D_j.
+\end{equation}
+The operator is stochastic because the position and cause of the first failure
+vary across occurrences. Once $\tau$ occurs, the stopping rule remains
+deterministic and the suffix receives no dispatch.
+
+\noindent The outcome-stratified path comparison supplies the empirical counterpart to
+this model. Successful mediated flows exhibit a median path displacement of
+$+184.7$~ms, whereas failed mediated flows exhibit
+\emph{a median differential of $+12.88$~ms} relative to failed direct flows.
+The mean and ninety-fifth-percentile failed-flow differentials, respectively
+$+62.18$~ms and $+284.30$~ms, preserve the non-negligible tail of the failure
+population.
+
+\noindent Figure~\ref{fig:stochastic-timed-automaton} condenses this
+outcome-conditioned contrast into the representative direct patient-query
+state progression.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.94,
+        transform shape,
+        >=Stealth,
+        node distance=22mm and 26mm,
+        every node/.style={align=center},
+        workflowstate/.style={circle, draw=veryPeri,
+            fill=veryPeriLight, thick, minimum size=19mm,
+            text width=17mm, font=\footnotesize},
+        terminalstate/.style={circle, draw=red!80,
+            fill=red!10, thick, minimum size=19mm,
+            text width=17mm, font=\footnotesize},
+        transition/.style={->, thick},
+        failure/.style={->, thick, red!80}
+    ]
+        \node[workflowstate] (s0) {$S_0$\\\textbf{Idle}};
+        \node[workflowstate, right=of s0] (s1)
+            {$S_1$\\\textbf{Assertion}\\\textbf{acquired}};
+        \node[workflowstate, right=of s1] (s2)
+            {$S_2$\\\textbf{Workflow}\\\textbf{complete}};
+        \node[terminalstate, below=15mm of s1] (sf)
+            {$S_{\mathit{fail}}$\\\textbf{Early}\\\textbf{exit}};
+
+        \draw[transition] ($(s0.west)+(-6mm,0)$) -- (s0.west);
+        \path[transition]
+            (s0) edge node[above, font=\scriptsize]
+                {[RVE-1.b]} (s1)
+            (s1) edge node[above, font=\scriptsize]
+                {[RVE-54]}
+                node[below, font=\scriptsize]
+                {$\Delta L(P_{50})=184.7\,\mathrm{ms}$} (s2);
+        \path[failure]
+            (s0) edge[bend right=15]
+                node[left, font=\scriptsize]
+                {Unsuccessful\\transition $\tau$} (sf)
+            (s1) edge node[right, font=\scriptsize]
+                {$\mathcal{T}_{\tau}$\\$W_{\mathrm{avoided}}$} (sf);
+
+        \node[draw=gray, dashed, rounded corners,
+            fit=(s1)(s2), inner sep=4mm,
+            label={[gray, font=\tiny]above:Protected downstream path}] {};
+        \node[red!80, font=\scriptsize, below=3mm of sf]
+            {Failed-population median differential: $+12.88\,\mathrm{ms}$};
+    \end{tikzpicture}
+    \caption[Stochastic timed automaton of workflow execution]{Empirically
+    annotated workflow automaton representing transaction-state progression,
+    stochastic truncation $\mathcal{T}_{\tau}$, and early execution
+    termination. Source: Author's elaboration.}
+    \label{fig:stochastic-timed-automaton}
+\end{figure}
+
+\noindent The contrast between $+12.88$~ms and $+184.7$~ms is consistent with a
+shorter realised prefix for at least half of the interrupted occurrences. It
+does not state that failure occurs within $12.88$~ms: the measured quantity is
+the median mediated-minus-direct differential within the failed-flow
+population.
+
+\noindent The normal branch in Figure~\ref{fig:stochastic-timed-automaton} advances
+from $S_0$ to $S_1$ when [RVE-1.b] produces the Security Assertion Markup
+Language assertion required by the protected call. A successful [RVE-54]
+transition then reaches $S_2$. Its $184.7$~ms annotation reports the median
+displacement of the successful path populations; it is neither a transition-time
+bound nor a probability attached to the automaton.
+
+\noindent An unsuccessful prerequisite instead reaches $S_{\mathit{fail}}$ and
+suppresses the remaining dependency suffix. For flow families that contain
+document transactions, this branch prevents semantically invalid Integrating
+the Healthcare Enterprise IT Infrastructure transaction 18 or transaction 43
+requests from entering the downstream path. When the security prerequisite
+already fails, those unexecuted requests also avoid the run-specific
+$45$-second step-timeout regime. The figure assigns no transition probability
+because the campaign reports outcome-conditioned populations rather than a
+fitted probability for one common automaton.
+
+\noindent Stochastic truncation connects the workflow state model to the load-state
+model through avoided demand without conflating their state spaces. The former
+describes dependency progression inside one healthcare occurrence; the latter,
+adapted from Akram et al., relates traffic intensity, latency, and the validity
+of distributed state under load\footnote{%
+\phantomsection\label{fn:akram-load-model}%
+\cite{akram-numerical-latency}.}.
+
+\noindent At the gateway boundary, suppression of an invalid suffix removes requests
+that would otherwise compete for admission, connection handling, parsing,
+validation, transformation, and routing. At the downstream boundary, services
+do not receive requests whose inputs depend on a failed state. This reduction
+in submitted work can weaken one path to queueing backpressure, but the
+campaign does not isolate its marginal effect on congestion. The mechanism
+therefore establishes fail-fast termination as an execution and correctness
+property; it neither reveals gateway capacity nor eliminates transfer in vain
+for requests that already enter a long queue or approach a timeout.
+
+\subsection[Queueing Saturation and Load-Sharing Window Closure]{Queueing Saturation and Load-Sharing Window}
+\label{subsec:conclusions-queueing-saturation}
+
+\noindent Chapter~\ref{chap:introduction} asks whether the experimental method exposes
+behaviour at extreme offered load rather than only nominal latency. The
+calibration evidence in Chapter~\ref{chap:selected-approach} locates the
+relevant transition at the client-side admission mechanism, when
+\emph{active flows reach the configured capacity $C_{\max}=30$ at approximately
+$60$~s}. The scheduling-drift envelope then passes approximately
+$60{,}000$~ms and approaches $67{,}000$~ms before the arrival stream drains.
+Flow occurrences continue to arrive, but the executor cannot admit them at
+their planned instants; delivery drift therefore accumulates outside the
+semaphore.
+
+\noindent The plateau identifies the generator's configured concurrency boundary, not
+a regional service capacity of $30$. Once the semaphore remains occupied, the
+planned arrival process $\lambda(t)$ no longer equals the workload delivered to
+the remote path. Request latency excludes the interval spent waiting for local
+admission, whereas scheduling drift records the difference between planned and
+actual dispatch. Reading the two measures together therefore separates offered
+work from admitted work and prevents late dispatches from being reclassified as
+normal arrivals.
+
+\begin{figure}[htpb]
+    \centering
+    \resizebox{0.70\textwidth}{!}{%
+    \begin{tikzpicture}[x=0.9cm, y=0.9cm, font=\footnotesize, >=Stealth]
+        \node[anchor=south west, yshift= 5mm, inner sep= 0pt, font=\footnotesize\bfseries] at (0.4,4.8)
+            {Planned stochastic arrivals $t_{\mathit{plan}}$};
+        \draw[->, thick] (0.4,4.3) -- (10.2,4.3);
+        \foreach \x/\lab in {1.3/1,3.0/2,4.7/3,6.4/4,8.1/5} {
+            \fill[veryPeri] (\x,4.3) circle (2pt);
+            \node[veryPeri, above=0.1mm] at (\x,4.3) {$\tau_{\lab}$};
+        }
+
+        \draw[->, thick] (0.4,2.4) -- (10.2,2.4);
+        \node[anchor=north west, font=\footnotesize\bfseries] at (0.4,2.25)
+            {Observed saturated asynchronous timeline $t_{\mathit{actual}}$};
+        \fill[teal] (1.4,2.4) circle (2pt);
+        \fill[teal] (3.8,2.4) circle (2pt);
+        \fill[teal] (6.8,2.4) circle (2pt);
+        \draw[->, thick, teal] (1.3,4.1) -- (1.4,2.6)
+            node[midway, right, font=\tiny] {$\delta_1$};
+        \draw[->, thick, teal] (3.0,4.1) -- (3.8,2.6)
+            node[midway, right, font=\tiny] {$\delta_2$};
+        \draw[->, thick, teal] (4.7,4.1) -- (6.8,2.6)
+            node[midway, right, align=left, font=\tiny]
+            {observed envelope\\$\approx60{,}000$--$67{,}000\,\mathrm{ms}$};
+
+        \node[anchor=west, font=\footnotesize\bfseries] at (0.4,1.1)
+            {Proposed bounded-release timeline $t_{\mathit{rt}}$};
+        \draw[->, thick] (0.4,0.6) -- (10.2,0.6);
+        \foreach \x in {1.34,3.04,4.74,6.44,8.14} {
+            \fill[red!80] (\x,0.6) circle (2pt);
+        }
+        \node[red!80, anchor=north] at (5.0,0.45)
+            {Proposed obligation: $J_i^{\mathit{dispatch}}\leq\epsilon_i$};
+    \end{tikzpicture}
+    }
+    \caption[Timing chronogram of queueing backpressure]{Comparative timing
+    chronogram separating the planned arrival timeline, observed delivery drift, and the bounded-release real-time dispatcher. Source: Author's
+    elaboration.}
+    \label{fig:scheduling-drift-chronogram}
+\end{figure}
+
+\noindent Figure~\ref{fig:scheduling-drift-chronogram} represents this distinction as a
+chronogram. The upper timeline contains the planned occurrences generated from
+$\lambda(t)$; the middle timeline shows their progressively delayed admission
+under cooperative event-loop saturation. The lower timeline states the proposed future obligation for a regulated real-time
+dispatcher: each release remains within a declared bound $\epsilon_i$.
+
+\noindent The extreme-stress scenario adds the remote-path and completion evidence needed
+for stochastic interpretation. Relative to the paired constant baseline, pooled
+successful Flow Completion Time rises by $13.45\%$ at the fiftieth percentile,
+$85.44\%$ at the ninety-fifth percentile, and $17.70\%$ at the ninety-ninth
+percentile, while flow success decreases by $3.63$ percentage points. This
+non-uniform movement produces a deformed, heavy-tailed distribution rather than
+a uniform location shift.
+
+\noindent The request population also develops a bimodal latency distribution with a
+secondary concentration near the run-specific $45$-second step timeout.
+Successful Integrating the Healthcare Enterprise IT Infrastructure transaction
+18 flows reach $37{,}869.5$~ms at the ninety-fifth percentile and
+$43{,}972.1$~ms at the ninety-ninth percentile. Their upper tail therefore lies
+in the same tens-of-seconds regime, although the flow and request populations
+remain distinct.
+
+\noindent Akram et al. define the Load-Sharing Window (LSW) as the stochastic interval
+within which state remains useful for distributed load transfer. As traffic
+intensity and communication delay rise, this window narrows until a transfer
+arrives too late to produce useful work, a condition termed Transfer in Vain
+(TIV)\footref{fn:akram-load-model}.
+
+\noindent The experiment does not observe a regional load-transfer protocol and does
+not claim literal identity with that topology. It observes the homologous
+application-level signature: admission stays saturated, delivery drift expands,
+the latency tail grows, and the proportion of useful terminal completions falls.
+These converging signals are consistent with a closing load-sharing window at
+the client boundary.
+
+\noindent The timeout-bound mode marks the practical transfer-in-vain risk boundary for
+this workload. An occurrence that retains a local task, connection, buffer, or
+semaphore position while its transaction approaches the configured $45$-second
+timeout consumes transport and execution resources without guaranteeing useful
+completion before the configured limit.
+
+\noindent Transaction 18 tail values close to this limit show how client resources
+remain committed to work that is at increasing risk of termination. The
+evidence supports this risk interpretation, rather than a claim that every
+timed-out request is provably futile at dispatch time. Taken together,
+semaphore occupancy, delivery drift, outcome-conditioned latency, and useful
+completion make the closing window empirically testable at the client boundary.
+
+\section{Limitations of the Empirical Evidence}
+\label{sec:conclusions-limitations}
+\subsection{Overview}
+\noindent The conclusions remain conditional on the observation perimeter, workload
+construction, and execution platform of the campaign. These boundaries do not
+invalidate the measurements; they define the population and causal claims to
+which those measurements apply. Four limitations are particularly important
+for interpreting the path-level overhead, the saturation signature, and the
+external validity of the method.
+
+\paragraph{Black-Box Observability Boundary}
+\noindent The regional integration path remains a black box to the experiment. Internal
+logs from the Application Profile Management System (APMS), gateway components,
+and downstream services are inaccessible within the authorised security and
+policy perimeter. The Request Dataset Generator (RDG) therefore measures the
+interval between client dispatch and client receipt and reconstructs state from
+client-visible outcomes.
+
+\noindent The method measures a declared path differential, but it cannot partition
+that differential among network transport, connection establishment, security
+processing, queue residence, transformation, routing, gateway computation, and
+downstream execution. Consequently, \emph{$\Delta L(P_{50})=184.7$~ms remains
+an aggregate surrogate displacement}, not a direct measurement of gateway
+service time.
+
+\noindent A causal decomposition requires aligned ingress, component-level,
+downstream, and egress timestamps under a common correlation identifier and a
+quantified clock-error bound. Without that instrumentation, any allocation of
+the displacement to one internal phase remains unsupported.
+
+\paragraph{Workload and Semantic Scope}
+\noindent The workload reflects the Veneto Sistema Informativo Territoriale (SI.Ter)
+integration perimeter represented in the available specifications and current
+implementation. It exercises Anagrafe Zero patient interactions, Simple Object
+Access Protocol (SOAP) document transactions including ITI-18 and ITI-43, and
+Scryba Sign operations governed by the available developer guide
+\footcites{arsenal-anagrafe-zero-v26,affinity-domain-italia-v263}
+{scryba-sign-developer-guide-v16}.
+
+\noindent These profiles make the experiment domain-specific at the level of the
+represented semantics: security prerequisites, patient identities, document
+references, and signature outputs remain ordered rather than collapsing into
+independent endpoint calls. They do not establish operational
+representativeness or define a universal healthcare workload.
+
+\noindent The measured stochastic distributions cannot be transferred without
+validation to purely Representational State Transfer (REST) systems, GraphQL
+interfaces, message-broker topologies, or fully decoupled event-driven
+microservices. Those architectures change connection reuse, synchronisation,
+backpressure, state ownership, and completion semantics.
+
+\paragraph{Local Client Ingestion Bottlenecks}
+\noindent The extreme campaign also profiles the limits of a single load-generator node.
+Once active flows occupy the semaphore, queued occurrences accumulate delivery
+drift and the realised input to the remote system diverges from the configured
+arrival process. The observed plateau and drift therefore demonstrate
+\emph{local admission saturation}, but they do not isolate one machine-level
+cause.
+
+\noindent Event-loop scheduling, operating-system context switching, socket
+availability, memory pressure, logging, and flow-level semaphore waiting can all
+contribute. This confounding effect limits the offered rate $\lambda$ that the
+experiment can attribute exclusively to the system under test.
+
+\noindent Above the local knee, an increase in scheduled traffic can increase
+client-side queueing without increasing remotely delivered traffic by the same
+amount. The extreme run consequently characterises the coupled generator--path
+system after local saturation rather than an isolated provider capacity.
+
+\paragraph{Replication and Population Balance}
+\noindent A cross-cutting sample limitation reinforces these three boundaries. The final
+evidence set contains $74$ complete live runs from a protocol that specifies
+$300$, and the number of complete repetitions differs across scenarios. The
+large number of request and flow occurrences improves descriptive precision for
+the observed populations, but it does not replace balanced independent
+replication.
+
+\noindent The campaign therefore supports empirical characterisation and model
+validation within its realised sample. It does not establish a universal
+capacity threshold, a service-level guarantee, or production-wide traffic
+representativeness.
+
+\section{Future Directions}
+\label{sec:conclusions-future-work}
+
+\subsection{Engineering Scalability and Platform Evolutions}
+\label{subsec:future-engineering-scalability}
+
+\noindent The engineering roadmap separates generator capacity from gateway
+capacity by scaling, controlling, and grounding the experimental instrument.
+The three evolutions below address, respectively, distributed workload
+generation, closed-loop load control, and trace-based workload construction.
+Each retains the thesis's evidence discipline by making calibration conditions,
+observation boundaries, and failure states explicit.
+
+\paragraph{Distributed Workload Generation}
+\noindent The first evolution replaces the single-node Request Dataset Generator
+(RDG) with a Kubernetes-orchestrated cluster whose workers execute disjoint
+partitions of one global occurrence space. A control plane assigns deterministic
+seed intervals, immutable configuration digests, globally unique occurrence
+identifiers, and a common experiment epoch. Each worker maintains a local
+asynchronous pool and publishes occurrence-scoped events to a partitioned
+collector. If worker $k$ delivers intensity $\lambda_k(t)$, the intended offered
+load is
+\[
+    \lambda(t)=\sum_{k=1}^{n}\lambda_k(t).
+\]
+This identity is accepted empirically only when per-worker scheduling drift
+remains below a calibration bound and remotely observed arrivals grow
+proportionally with $n$.
+
+\noindent A two-phase start barrier separates image and connection warm-up from
+timed execution. Monotonic clocks measure local durations, while a
+clock-synchronisation service supplies an uncertainty envelope for cross-node
+ordering. The manifest records worker placement, clock error, image version,
+seed range, and partial-failure state in addition to the present run metadata.
+The design removes the single event loop as the immediate offered-load
+bottleneck, supports geographically distinct entry points, and preserves the
+runtime-level distinction between concurrency, distribution, and cloud
+scalability\footcites{unipd-runtimes-concurrency-syllabus}
+{apache-jmeter-remote-testing}.
+
+\paragraph{Adaptive Closed-Loop Workload Control}
+\noindent The second evolution turns the open-loop scheduler into a constrained
+feedback experiment. At control instant $k$, the controller observes
+\[
+ y_k=\left(P_{95}^{\mathrm{drift}},P_{95}^{\mathrm{latency}},
+ e_k,X_k,C_k\right),
+\]
+where $e_k$ is the error rate, $X_k$ is useful-flow throughput, and $C_k$ is
+admitted concurrency. It manipulates either the next offered rate or the
+admission bound. A Proportional--Integral--Derivative (PID) law can compute
+\begin{equation}
+    u_k=K_p\varepsilon_k
+        +K_i\sum_{h=0}^{k}\varepsilon_h\Delta t
+        +K_d\frac{\varepsilon_k-\varepsilon_{k-1}}{\Delta t},
+\end{equation}
+with saturation, anti-windup, cool-down intervals, and explicit request and
+error budgets.
+
+\noindent Change-point logic marks a candidate stochastic knee when
+$\partial X/\partial\lambda$ approaches zero while the derivatives of tail
+latency, delivery drift, or failures remain positive. Repeated approaches from
+below, under independent seeds and a fixed semantic mix, produce a confidence
+region for that knee rather than an unsupported exact gateway threshold. A
+Reinforcement Learning agent can replace the fixed controller when the response
+surface is history-dependent, but it trains on mock or isolated traces and
+operates live only behind a safety shield that constrains its action space. The
+controller also checks per-worker headroom, because a feedback law that observes
+only end-to-end latency can misclassify generator saturation as remote
+saturation.
+
+\paragraph{Anonymised Real-World Trace Replay}
+\noindent The third evolution constructs an authorised trace-ingestion and replay
+pipeline for regional clinical traffic. Parsers map heterogeneous operational
+records to a canonical schema; privacy transformations remove unnecessary
+payloads, tokenise identifiers consistently within one authorised trace,
+generalise rare attributes, and shift absolute timestamps while preserving
+inter-arrival intervals. A dependency-reconstruction stage then recovers causal
+order, retries, flow mix, payload-size classes, and prerequisite relationships
+before compiling the trace into RDG occurrences and a non-stationary arrival
+timeline $\lambda(t)$.
+
+\noindent Replay fidelity is assessed through approved aggregate properties---
+including autocorrelation, burst duration, concurrency, and flow proportions---
+and not through access to identifying clinical content. A segment
+whose initial state or dependencies remain incomplete is rejected rather than
+converted into an independent request stream, because accurate scaling preserves
+both temporal and causal structure\footcite{zhu-tbbt-trace-replay}. The pipeline
+keeps the re-identification secret outside the experimental environment, records
+an auditable transformation manifest, and applies data minimisation and
+disclosure-risk review before any replay artefact enters the cluster
+\footcite{eu-gdpr-2016-679}.
+
+\subsection{Theoretical Computer Science Perspectives}
+\label{subsec:future-theoretical-perspectives}
+
+\noindent The theoretical roadmap converts observed regularities into proposed proof obligations. These directions extend the
+empirical contribution; they do not report proofs completed by this thesis.
+Each obligation therefore remains conditional on an explicit abstraction, an
+identified population, and a declared observation boundary.
+
+\paragraph{Predictable Dispatch and Release Jitter}
+\noindent The first proposed extension treats the divergence represented in
+Figure~\ref{fig:scheduling-drift-chronogram} as a local schedulability problem.
+The non-stationary Poisson generator admits arbitrarily short inter-arrival
+distances, so a regulator first maps each flow class to a sporadic task
+$\tau_i=(C_i,T_i,D_i,J_i)$ with worst-case local demand $C_i$, minimum
+inter-arrival time $T_i$, deadline $D_i$, and release jitter $J_i$. Under the
+classical independent, implicit-deadline assumptions, the sufficient
+utilisation bounds for Rate Monotonic and Earliest Deadline First scheduling on
+one processor are, respectively,
+\[
+ \sum_i\frac{C_i}{T_i}\leq n\left(2^{1/n}-1\right),
+ \qquad
+ \sum_i\frac{C_i}{T_i}\leq1.
+\]
+Shared resources require the response-time recurrence
+\begin{equation}
+ R_i=C_i+B_i+\sum_{j\in hp(i)}
+       \left\lceil\frac{R_i+J_j}{T_j}\right\rceil C_j,
+ \qquad R_i+J_i\leq D_i,
+\end{equation}
+where $B_i$ bounds local blocking and $hp(i)$ contains the higher-priority
+tasks.
+
+\noindent The analytical target for the lower chronogram is
+$J_i^{\mathit{dispatch}}=\max(0,s_i-r_i)\leq\epsilon_i$, with release time
+$r_i$, actual start $s_i$, and a declared engineering bound $\epsilon_i$; it is
+not a measured microsecond guarantee. A qualified hard real-time platform can host the timing-critical dispatcher, while
+the \texttt{PREEMPT\_RT} real-time-preemption configuration provides an
+intermediate Linux option. The Priority Ceiling Protocol can bound inversion in
+local credential stores, connection pools, and log buffers used by mutual
+Transport Layer Security and Security Assertion Markup Language processing.
+These mechanisms bound local scheduling effects, not the remote network
+itself\footcites{unipd-real-time-kernels-syllabus}
+{liu-real-time-systems}{burns-wellings-analysable-real-time}.
+
+\paragraph{Static Verification of Concurrency Bounds}
+\noindent The second proposed extension applies abstract interpretation to the
+asynchronous executor's lowered control-flow graph. Let $\Sigma$ be the concrete
+state space and let $F(X)=\Sigma_0\cup\operatorname{post}(X)$ be the monotone
+collecting transformer. Under the required $\omega$-continuity assumption, its
+concrete collecting semantics is
+\begin{equation}
+ \mathcal{S}_{\mathit{conc}}=\operatorname{lfp}(F)
+   =\bigcup_{n\in\mathbb{N}}F^n(\varnothing).
+\end{equation}
+A Galois connection
+\begin{equation}
+ \left\langle\mathcal{P}(\Sigma),\subseteq\right\rangle
+ \underset{\gamma}{\overset{\alpha}{\rightleftarrows}}
+ \left\langle D^{\sharp},\sqsubseteq\right\rangle
+\end{equation}
+maps concrete states to an interval domain
+$D_{\mathit{Int}}^{\sharp}$ and a relational octagon domain
+$D_{\mathit{Oct}}^{\sharp}$.
+
+\noindent A sound transformer $F^{\sharp}$ computes a
+post-fixpoint through widening,
+\begin{equation}
+ X_{k+1}^{\sharp}=X_k^{\sharp}\nabla F^{\sharp}(X_k^{\sharp}),
+\end{equation}
+and aims to infer, for active flows $a$, held permits $h$, and available permits
+$p$, the inductive invariant
+\begin{equation}
+ 0\leq a\leq h\leq30,\qquad 0\leq p\leq30,\qquad h+p=30.
+\end{equation}
+If the analyser establishes this invariant for normal completion, exceptions,
+and cancellation, soundness yields $a\leq30$ for every arrival trace.
+
+\noindent This proof remains future work. It also does not bound waiting tasks:
+the present scheduler can create an unbounded waiting population, so proving
+$0\leq q\leq Q$ additionally requires a bounded producer queue and an explicit
+block, shed, or defer policy
+\footcites{unipd-software-verification-syllabus}{mine-numeric-invariants}.
+
+\endgroup
 \newpage

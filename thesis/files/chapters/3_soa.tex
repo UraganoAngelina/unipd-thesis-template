@@ -29,6 +29,13 @@ does not measure the capacity of a live regional or industrial service.
 \subsection{Architectural Objectives and End-to-End Pipeline}
 \label{subsec:rdg-objectives-pipeline}
 
+\noindent To translate the high-level evaluation requirements into an executable
+platform, the Request Dataset Generator relies on a modular architecture
+divided into clear functional boundaries. This subsection defines the core
+technical objectives of the framework and describes the end-to-end processing
+pipeline that transforms raw input configurations into structured performance
+evidence.
+
 \paragraph{Technical objectives}
 \noindent The framework translates the methodological requirements of
 Section~\ref{sec:framework-implications} into five technical objectives. First,
@@ -75,7 +82,7 @@ core.
 
 \begin{table}[H]
     \centering
-    \caption[Pipeline artifacts transformation]{Each pipeline stage owns one transformation and emits an inspectable artefact, which prevents generation, execution, and analysis concerns from being conflated. Source: Author's elaboration based on the framework's source code.}
+    \caption[Pipeline artefact transformation]{Each pipeline stage owns one transformation and emits an inspectable artefact. Source: Author's elaboration based on the framework's source code.}
     \small
     \setlength{\tabcolsep}{3pt}
     \begin{tabular}{|p{3.4cm}|p{3.4cm}|p{5.8cm}|}
@@ -188,7 +195,7 @@ application response from the regional gateway.
         \draw[flow] (engine) -- node[note, above] {HTTPS\\+ mTLS} (gateway);
     \end{tikzpicture}
     }
-    \caption[Secure transport and mutual Transport Layer Security context management.]{Secure Transport and mutual Transport Layer Security (mTLS) Management Layer. The secure-transport layer keeps certificate material and password resolution outside generated workload steps, making channel-establishment failures distinguishable from application responses. Source: Author's elaboration based on the framework's source code.}
+    \caption[Secure transport and mutual Transport Layer Security context management.]{Secure Transport and mutual Transport Layer Security Management Layer. Source: Author's elaboration based on the framework's source code.}
     \label{fig:rdg-secure-transport}
 \end{figure}
 
@@ -198,11 +205,18 @@ application response from the regional gateway.
 \subsection{Synthetic Resources and Transaction Heterogeneity}
 \label{subsec:rdg-resources-transactions}
 
+\noindent The execution of stateful healthcare workflows requires generating rich
+synthetic payloads that conform to regional schemas while remaining completely
+decoupled from real patient records. This subsection details the demographic
+and clinical structures produced by the data generator and analyses the
+cryptographic and protocol heterogeneity that characterises the executable
+transactions of the campaign.
+
 \paragraph{Synthetic Patient resources}
 \noindent The data generator creates a FHIR Patient-shaped resource with synthetic
 identifiers, demographics, contact information, addresses, regional
 extensions, a contained practitioner, and a contained assistance contract.
-It can also construct the transaction Bundle used by the RVE-55 path and
+It can also construct the transaction Bundle used by the [RVE-55] path and
 serialise generated structures as JSON or Extensible Markup Language (XML).
 Random generation removes the
 need for real patient records, while an optional identifier and a declared seed
@@ -218,9 +232,9 @@ conformance.
 
 \paragraph{Workload population and correlation model}
 \noindent \texttt{build\_workload()} accepts the number of source flows, a weighted
-\texttt{flow\_mix}, an execution mode, the complete configuration,the number of patients and an
+\texttt{flow\_mix}, an execution mode, the complete configuration, the number of patients and an
 optional seed. Weights are normalised and sampled to choose a flow type; the number of
-synthetic patients are generated for each step of the source flow that needs that specific resource. The resulting flow carries
+synthetic patients is generated for each step of the source flow that needs that specific resource. The resulting flow carries
 a flow identifier, a type, and an ordered list of steps. Every step has its own
 request identifier and index, while the timeline generator later adds a distinct
 \texttt{flow\_occurrence\_id} whenever a source flow is scheduled. This last
@@ -240,17 +254,17 @@ Table~\ref{tab:implemented-flow-types}.
         \textbf{Flow type} & \textbf{Ordered transaction modules} & \textbf{Steps} \\
         \hline
         \rowcolor{tableGray}
-        \texttt{FLOW\_CONTEXT\_CALL} & RVE-1.b $\rightarrow$ RVE-121 $\rightarrow$ RVE-130 & 3 \\
+        \texttt{FLOW\_CONTEXT\_CALL} & [RVE-1.b] $\rightarrow$ [RVE-121] $\rightarrow$ [RVE-130] & 3 \\
         \hline
-        \texttt{FLOW\_PATIENT\_QUERY} & RVE-1.b $\rightarrow$ RVE-54 & 2 \\
-        \hline
-        \rowcolor{tableGray}
-        \texttt{FLOW\_PATIENT\_CREATE} & RVE-1.b $\rightarrow$ RVE-55 & 2 \\
-        \hline
-        \texttt{FLOW\_ITI\_18} & RVE-1.b $\rightarrow$ ITI-18 & 2 \\
+        \texttt{FLOW\_PATIENT\_QUERY} & R[VE-1.b] $\rightarrow$ [RVE-54] & 2 \\
         \hline
         \rowcolor{tableGray}
-        \texttt{FLOW\_ITI\_43} & RVE-1.b $\rightarrow$ ITI-43 & 2 \\
+        \texttt{FLOW\_PATIENT\_CREATE} & [RVE-1.b] $\rightarrow$ [RVE-55] & 2 \\
+        \hline
+        \texttt{FLOW\_ITI\_18} & [RVE-1.b] $\rightarrow$ ITI-18 & 2 \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{FLOW\_ITI\_43} & [RVE-1.b] $\rightarrow$ ITI-43 & 2 \\
         \hline
         \texttt{FLOW\_PATIENT\_QUERY\_}\allowbreak\texttt{MIDDLEWARE} & RVE token $\rightarrow$ gateway RVE-54 $\rightarrow$ gateway RVE-55 $\rightarrow$ gateway RVE-57 $\rightarrow$ gateway RVE-100 & 5 \\
         \hline
@@ -272,7 +286,7 @@ Table~\ref{tab:implemented-flow-types}.
         flow/.style={->, semithick},
         note/.style={font=\tiny, align=center}
     ]
-        \node[stage] (rve) {Step $N$\\RVE-1.b (SOAP)};
+        \node[stage] (rve) {Step $N$\\ RVE-1.b (SOAP)};
         \node[stage, right=18mm of rve] (extract)
             {Output Extraction\\required SAML Assertion};
         \node[context, right=of extract] (context)
@@ -296,14 +310,14 @@ Table~\ref{tab:implemented-flow-types}.
 with context, patient-registry, or document transactions. The two ITI flows use
 dedicated transaction modules after the initial integration step. The mediated
 patient path has a different structure: it obtains a middleware token and then
-executes the configured gateway scenarios for RVE-54, RVE-55, RVE-57, and
-RVE-100. This five-step path is therefore not a request-for-request replacement
+executes the configured gateway scenarios for [RVE-54], [RVE-55], [RVE-57], and
+[RVE-100]. This five-step path is therefore not a request-for-request replacement
 for the two-step direct patient query. Comparisons between their completion
 times must acknowledge the different step count and contracts.
 
-\noindent The code confirms that RVE-57 is present in the mediated flow, whereas the
+\noindent The code confirms that [RVE-57] is present in the mediated flow, whereas the
 permitted source corpus contains no authoritative specification that establishes
-its complete domain semantics. The chapter therefore treats RVE-57 as an
+its complete domain semantics. The chapter therefore treats [RVE-57] as an
 implemented transaction label and excludes it from claims of semantic
 equivalence with the direct path described in
 Section~\ref{sec:interoperability-transactions}.
@@ -327,14 +341,14 @@ surfaces.\footcite{scryba-sign-developer-guide-v16} The current flow map instant
 The workload model could represent the two interaction
 styles as distinct flow types, step sequences, and completion criteria, but an
 asynchronous signing experiment requires explicit enqueue, status, or
-notification modules that the source does not implement, Section~\ref{sec:rdg-results-discussion} retains that evidential boundary.
+notification modules that the source does not implement; Section~\ref{sec:rdg-results-discussion} retains that evidential boundary.
 
 \paragraph{Step dependencies and the mock/live boundary}
-\noindent A flow is more than a list of independent HTTP requests, a step may also declare that a field comes from an output of an earlier
+\noindent A flow is more than a list of independent HTTP requests; a step may also declare that a field comes from an output of an earlier
 step. In live mode, downstream headers, bodies, and URLs can contain scoped
 placeholders; the execution engine resolves them from the occurrence-local
 context only after processing the preceding response. Required outputs are
-validated before the chain continues, an unresolved placeholder or missing required output is logged as a failure. In mock mode, transaction builders attach synthetic responses and the
+validated before the chain continues; an unresolved placeholder or missing required output is logged as a failure. In mock mode, transaction builders attach synthetic responses and the
 orchestrator propagates their declared outputs while constructing the chain.
 Execution then consumes those responses without opening an HTTP session. This
 mode tests composition, scheduling, failure handling, logging, collection, and
@@ -346,6 +360,14 @@ gateway, provider, or production-system behaviour.
 
 \subsection{Temporal Scheduling and Stateful Execution}
 \label{subsec:rdg-scheduling-execution}
+\noindent The generation of reproducible and stochastically sound workloads requires a
+strict operational separation between planned execution timelines and the
+actual runtime orchestration of transactions. This section details the
+execution engine of the Request Dataset Generator, analysing how it enforces
+temporal scheduling under concurrency limits and how the structured evidence
+pipeline processes, normalises, and stores resulting system events. By
+establishing these mechanisms, the discussion validates the client-side
+instrumentation before assessing live remote performance profiles.
 
 \paragraph{Temporal model and occurrence generation}
 \noindent The timeline generator separates flow content from arrival time. It supports a
@@ -383,10 +405,9 @@ synthetic response attached to each step. A deterministic fault injector can
 apply declared error, timeout, or latency-spike rules by transaction, flow
 type, or step. These injected outcomes evaluate framework behaviour under
 controlled faults; they are not observations of provider reliability.
-
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \resizebox{0.75\textwidth}{!}{%
+    \resizebox{0.70\textwidth}{!}{%
     \begin{tikzpicture}[
         >=Stealth,
         every node/.style={font=\sffamily},
@@ -470,7 +491,7 @@ controlled faults; they are not observations of provider reliability.
             text=red!70!black] {targets Step 2} (b2);
     \end{tikzpicture}%
     }
-    \caption[Asynchronous flow execution and concurrency control]{Asynchronous flow-execution model Source: Author's elaboration based on the framework implementation.}
+    \caption[Asynchronous flow execution and concurrency control]{Asynchronous flow-execution model. Source: Author's elaboration based on the framework implementation.}
     \label{fig:exec_concurrency}
 \end{figure}
 
@@ -479,7 +500,7 @@ controlled faults; they are not observations of provider reliability.
 
 \begin{figure}[H]
     \centering
-    \resizebox{0.96\textwidth}{!}{%
+    \resizebox{0.92\textwidth}{!}{%
     \begin{tikzpicture}[
         node distance=10mm and 13mm,
         >=Latex,
@@ -516,7 +537,7 @@ controlled faults; they are not observations of provider reliability.
         \draw[flow] (pipeline) -- node[note, above] {results} (results);
     \end{tikzpicture}
     }
-    \caption[Experiment persistence and user-interface bridge architecture.]{Experiment persistence and user-interface bridge architecture; both invocation paths produce a run-specific resolved snapshot before the core pipeline executes. Source: Author's design based on the framework's source code.}
+    \caption[Experiment persistence and user-interface bridge architecture.]{Experiment persistence and user-interface bridge architecture. Source: Author's design based on the framework's source code.}
     \label{fig:rdg-ui-persistence-bridge}
 \end{figure}
 
@@ -617,7 +638,14 @@ contractual, or production acceptance criteria.
 
 \subsection{Evaluation Questions and Validity Construction}
 \label{subsec:rdg-questions-validity}
-
+\noindent Credible performance profiling within a constrained observation perimeter
+requires a rigorous evaluation protocol when the system remains a black box.
+This section delineates the concrete variables, controlled factors, and
+statistical treatments used to construct both internal and external validity.
+By matching scenarios across identical random seeds and isolating outcome
+populations, the experimental design ensures that the observed differentials
+between direct and mediated paths represent path-level displacements rather
+than being conflated with environmental noise.
 \paragraph{Evaluation questions}
 \noindent The implemented architecture and the live evidence lead to four
 evaluation questions:
@@ -646,7 +674,7 @@ performance. Path-level Overhead ($\Delta L$) is admissible as a performance
 measure only when direct and mediated populations contain comparable,
 successful flows.
 
-\noindent The execution semaphore applies to complete flows, this protects
+\noindent The execution semaphore applies to complete flows. This protects
 within-occurrence dependencies and makes the number of active flows explicit,
 but it also means that long or blocked flows retain a concurrency slot. This is
 part of the evaluated execution model and does not provide an unqualified model
@@ -679,6 +707,13 @@ compatible measurements.
 
 \subsection{Variables and Reproducibility Controls}
 \label{subsec:rdg-variables-reproducibility}
+
+\noindent Analysing the performance of distributed workflows requires separating the
+active workload drivers from the static environmental parameters that constrain
+the system. To guarantee execution reproducibility across independent runs,
+the experimental controls are partitioned into three primary categories:
+independent workload factors, dependent system indicators, and invariant
+execution constants.
 
 \paragraph{Variables and controlled factors}
 \noindent The independent variables exposed by the framework include execution mode,
@@ -720,6 +755,13 @@ different outcomes.
 
 \subsection{Scenario Evidence and Operational Populations}
 \label{subsec:rdg-scenarios-populations}
+\noindent The transition from controlled nominal execution to system saturation
+requires a structured set of test profiles and multidimensional performance
+indicators. This section maps the concrete experimental scenarios used during
+the campaign, defining the operational metrics and quality-control thresholds
+that determine whether a run is accepted into the final quantitative evidence
+set. This systematic screening establishes a clean dataset and safeguards the
+subsequent statistical interpretations from data-quality anomalies.
 
 \paragraph{Declared scenarios}
 \noindent The final inventory covers constant baselines, bursts, step-load ramps,
@@ -787,10 +829,17 @@ The two are reported together because flow types have different step counts.
 \noindent Reliability uses request errors, timeouts, and completed-flow outcomes. Failure
 at a step is associated with skipped downstream steps rather than fabricated
 requests. Scheduling fidelity uses the difference between planned and actual
-client dispatch together with queue delay and active-flow/step counts, finally burst analysis uses the explicit base/burst labels. Middleware breakdown, resource saturation, and retry or circuit-breaker measures are valid only for records actually enriched by a second source.
+client dispatch together with queue delay and active-flow/step counts; finally, burst analysis uses the explicit base/burst labels. Middleware breakdown, resource saturation, and retry or circuit-breaker measures are valid only for records actually enriched by a second source.
 
 \subsection{Quality Controls and Acceptance Boundary}
 \label{subsec:rdg-quality-acceptance}
+
+\noindent Before the captured event traces enter the statistical analysis, each
+completed run must pass a series of deterministic validation checks. These
+quality controls ensure that the network state, transaction integrity, and
+metadata records conform to the experimental configuration. The evaluation
+relies on a multistage validation pipeline that assesses the following
+criteria:
 
 \paragraph{Data-quality controls}
 \noindent Before interpretation, each run is checked for:
@@ -825,6 +874,30 @@ the thesis.
 
 \subsection{Outcome-Stratified Evidence}
 \label{subsec:rdg-functional-quantitative-evidence}
+\noindent This section presents the primary empirical findings collected during the
+$74$ accepted live runs of the campaign. The resulting distributions
+characterise the performance profile of the healthcare workflows under varying
+load conditions, exposing how tail latency, error rates, and scheduling drift
+behave as joint stochastic properties of the system. To guide the reader
+through this multidimensional analysis, the discussion is structured around
+three core perspectives:
+\begin{itemize}
+    \setlength{\emergencystretch}{2em}
+    \item \textbf{Outcome-Stratified Populations.}
+    Section~\ref{subsec:rdg-functional-quantitative-evidence} establishes the
+    baseline validation of the collected dataset and identifies the global
+    ratios between completed and failed flows across the campaign.
+    \item \textbf{Load Dynamics and Saturation Boundaries.}
+    Sections~\ref{subsec:rdg-load-scheduling-calibration}--
+    \ref{subsec:rdg-stochastic-saturation-response} analyse the onset of queue
+    backpressure and the resulting delivery drift under extreme stress, thereby
+    defining the physical limits of the cooperative event loop.
+    \item \textbf{Flow Heterogeneity and Path Displacement.}
+    Sections~\ref{subsec:rdg-domain-specific-flow-signatures}--
+    \ref{subsec:rdg-client-boundary-path-displacement} isolate the distinct
+    latency signatures of individual transaction families and quantify the
+    systematic apparent path-level overhead associated with regional mediation.
+\end{itemize}
 
 \paragraph{Empirical population and evidence-chain validity}
 \noindent The 74 accepted live runs instantiate the complete evidence chain from
@@ -857,7 +930,7 @@ path comparison yields a Path-level Overhead ($\Delta L$) of
         \rowcolor{tableGray}
         \texttt{burst} & 5 & 20{,}731 & 10{,}562 & 52.14 & 461.9 & 1{,}129.0 & 22{,}759.4 \\
         \hline
-        \texttt{direct\_vs\_middleware} & 14 & 1{,}590 & 1{,}590 & 15.63 & 755.8 & 1{,}658.8 & --- \\
+        \texttt{direct\_vs\_middleware} & 14 & 1{,}590 & 1{,}590 & 15.72 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
         \hline
         \rowcolor{tableGray}
         \texttt{error\_injection} & 6 & 1{,}722 & 868 & 58.87 & 543.5 & 2{,}840.0 & 21{,}547.8 \\
@@ -865,7 +938,7 @@ path comparison yields a Path-level Overhead ($\Delta L$) of
         \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_direct}} & 6 & 2{,}251 & 1{,}037 & 80.42 & 571.1 & 17{,}966.6 & 21{,}934.5 \\
         \hline
         \rowcolor{tableGray}
-        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & 1{,}687 & 1{,}687 & 15.63 & 755.8 & 1{,}658.8 & --- \\
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & 1{,}687 & 1{,}687 & 15.63 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
         \hline
         \texttt{live\_smoke\_small} & 8 & 196 & 122 & 42.62 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
         \hline
@@ -1002,7 +1075,7 @@ supports a family of conditional random variables $L\mid\text{flow type}$ rather
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.81\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png}
-    \caption[Client-observed completion time by healthcare flow type.]{Client-observed end-to-end completion time by flow type Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Client-observed completion time by healthcare flow type.]{Client-observed end-to-end completion time by flow type. Source: Author's elaboration based on the final experimental campaign.}
     \label{fig:flow-type-completion-signatures}
 \end{figure}
 
@@ -1065,8 +1138,8 @@ tail analysis while preserving the exact outcome semantics of each step.
 \label{subsec:rdg-client-boundary-path-displacement}
 
 \noindent Figure~\ref{fig:overhead-boxplot} separates the path distributions by
-terminal outcome. Both for successful and failed-path boxes pool the observed
-failed flows from all 14 complete direct-versus-mediated runs and retain their
+terminal outcome. The successful- and failed-path boxes pool the corresponding
+observed flows from all 14 complete direct-versus-mediated runs and retain their
 measured distributional shapes.
 
 \begin{figure}[H]
@@ -1119,8 +1192,16 @@ interpretation of Akram et al.; the surrogate observability invariants prevent
 either path displacement from being recast as an unsupported causal
 decomposition\footcite{iorio-when-latency-matters,akram-numerical-latency}.
 
-\subsection{Research Question Synthesis}
+\subsection{Synthesis of Answers to Research Questions}
 \label{subsec:rdg-interpretation-closure}
+
+\noindent The empirical distributions and path-level differentials quantified in the
+preceding sections provide the evidence required to resolve systematically the
+core research questions posed in Chapter~\ref{chap:introduction}. Rather than
+evaluating latency as an isolated, static scalar, this synthesis reconciles the
+measurement observations with the stochastically bounded theoretical invariants
+of the system, verifying how workflow dependencies and saturation boundaries
+manifest in the experimental campaign.
 
 \paragraph{Validation of the stochastic propositions}
 \noindent The quantitative evidence validates the methodological propositions of
@@ -1157,7 +1238,7 @@ conditions operationalise the surrogate observability invariants and preserve
 the distinction between a reproducible client-boundary characterisation and an
 unsupported causal decomposition.
 
-\paragraph{Concluding Remarks}
+\section{Summary}
 \noindent The framework translates documented healthcare workflows into configurable,
 stateful, and asynchronous workloads, connecting transaction semantics with an
 executable performance experiment. Its evidence chain retains resolved
