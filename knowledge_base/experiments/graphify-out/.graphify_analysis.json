@@ -1,0 +1,195 @@
+{
+  "communities": {
+    "0": [
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001",
+      "knowledge_base_experiments_20260727t185227_readme_alias_stabili",
+      "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale",
+      "knowledge_base_experiments_20260727t185227_readme_fonte_di_verita_successo_flussi_middleware",
+      "knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto",
+      "knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist"
+    ],
+    "1": [
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_correzione_del_successo_dei_flussi_middleware",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_scenario_flow_type_comparison_middleware",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso"
+    ],
+    "2": [
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_1424_flussi_non_riusciti",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_tasso_esatto_15_589804386_percento",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_valore_pubblicato_15_59_percento",
+      "knowledge_base_experiments_20260727t185227_flow_success_correction_vincolo_integrita_conteggio_intero"
+    ],
+    "3": [
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_output_extraction_failure",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_rvetoken_001",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome",
+      "knowledge_base_experiments_20260727t185227_readme_status_code_zero"
+    ],
+    "4": [
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_dependency_resolution_failure",
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227",
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_transport_timeout"
+    ],
+    "5": [
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_fault_injection_separation",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_fault_001",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_esperimento_20260727t185227"
+    ],
+    "6": [
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_rve121_001",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_rve_121_http_200_without_causal_transition"
+    ],
+    "7": [
+      "knowledge_base_experiments_20260727t185227_error_taxonomy_semantic_validation_failure",
+      "knowledge_base_experiments_20260727t185227_experiment_summary_e_rve55_001"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2857142857142857,
+    "1": 0.4,
+    "2": 0.4,
+    "3": 0.5,
+    "4": 0.6666666666666666,
+    "5": 0.6666666666666666,
+    "6": 0.6666666666666666,
+    "7": 1.0
+  },
+  "gods": [
+    {
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227",
+      "label": "Tassonomia degli errori 20260727T185227",
+      "degree": 6
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_experiment_summary_esperimento_20260727t185227",
+      "label": "Esperimento 20260727T185227",
+      "degree": 6
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "label": "E-FLOW-SUCCESS-001",
+      "degree": 6
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "label": "Dataset sperimentale sanitizzato 20260727T185227",
+      "degree": 5
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_rve121_001",
+      "label": "E-RVE121-001",
+      "degree": 3
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_rvetoken_001",
+      "label": "E-RVETOKEN-001",
+      "degree": 3
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
+      "label": "E-MIDDLEWARE-001",
+      "degree": 3
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome",
+      "label": "Separazione tra status code e outcome",
+      "degree": 3
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
+      "label": "Popolazione pooled di 1.687 flussi completati",
+      "degree": 3
+    },
+    {
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti",
+      "label": "263 flussi riusciti",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "E-FAULT-001",
+      "target": "Separazione dei fault iniettati dagli errori spontanei",
+      "source_files": [
+        "20260727T185227/experiment_summary.md",
+        "20260727T185227/error_taxonomy.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Fonte di verità del successo dei flussi middleware",
+      "target": "E-FLOW-SUCCESS-001",
+      "source_files": [
+        "20260727T185227/README.md",
+        "20260727T185227/flow_success_correction.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities; peripheral node `Fonte di verità del successo dei flussi middleware` unexpectedly reaches hub `E-FLOW-SUCCESS-001`"
+    },
+    {
+      "source": "Separazione tra esiti di richiesta e di flusso",
+      "target": "Separazione tra status code e outcome",
+      "source_files": [
+        "20260727T185227/flow_success_correction.md",
+        "20260727T185227/experiment_summary.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "Separazione tra esiti di richiesta e di flusso negli scenari middleware",
+      "target": "Separazione tra esiti di richiesta e di flusso",
+      "source_files": [
+        "20260727T185227/experiment_summary.md",
+        "20260727T185227/flow_success_correction.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "E-RVETOKEN-001",
+      "target": "Output extraction failure",
+      "source_files": [
+        "20260727T185227/experiment_summary.md",
+        "20260727T185227/error_taxonomy.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `E-FLOW-SUCCESS-001` connect `Community 1` to `Community 0`, `Community 2`?",
+      "why": "High betweenness centrality (0.458) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Esperimento 20260727T185227` connect `Community 5` to `Community 0`, `Community 1`, `Community 3`, `Community 6`, `Community 7`?",
+      "why": "High betweenness centrality (0.430) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `E-MIDDLEWARE-001` connect `Community 1` to `Community 5`?",
+      "why": "High betweenness centrality (0.279) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `Transport timeout`, `Dependency resolution failure`, `Alias stabili per valori sensibili` to the rest of the system?",
+      "why": "8 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

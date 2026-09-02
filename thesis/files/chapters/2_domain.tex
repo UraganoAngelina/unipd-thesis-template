@@ -382,7 +382,7 @@ pattern also omits the collective and asynchronous structures of real
 applications. In the healthcare case, an isolated endpoint call omits semantic
 validation, identity acquisition, branch selection, and failure propagation.
 RDG is consequently necessary as an orchestrator of dependent workflows, because
-the critical path exists only when each valid output enables the next step.
+the critical path exists only when each valid output enables the next step
 \footcite{dimitrov-latency-applications}.
 
 \noindent Figure~\ref{fig:dimitrov-communication-patterns} provides an explanatory
@@ -471,9 +471,8 @@ the authorised boundary unless a new evidence source enters the protocol.
 strategy. The inpatient unit identifies the patient, prepares assessment
 information, proposes a destination setting, and forwards the request to the
 Centrale Operativa Territoriale (COT). The COT evaluates the request and assigns
-the definitive setting \footcite[pp.~18--21]{rti-siter-relazione-tecnica}
-\footcite[pp.~35--36]{azienda-zero-siter-capitolato}. Each stage consumes
-information that a preceding stage makes available. The workflow is therefore a
+the definitive setting \footcites{rti-siter-relazione-tecnica}{azienda-zero-siter-capitolato}.
+Each stage consumes information that a preceding stage makes available. The workflow is therefore a
 chain of semantic prerequisites, not a bag of independent service calls.
 
 \noindent Patient identity illustrates the first dependency. The project documentation
@@ -492,7 +491,7 @@ concurrent occurrence. A failed query blocks the dependent branch, and a warning
 or application error remains distinguishable from transport success. A generic
 request-centric model can reproduce this behaviour only after the test author adds
 domain-specific state, extraction, validation, and branch rules. The profiling
-problem therefore resides in semantic continuity, not in the ability to send a
+problem therefore resides in semantic continuity, not in the ability to send an
 HL7-FHIR R4 request. Semantic FHIR R4 generation is therefore a condition of construct validity,
 not a convenience for producing payload volume. Anagrafe Zero interprets
 identifiers, demographic search parameters, resource structure, and transaction
@@ -941,10 +940,10 @@ application-level validation, and flow-level denominators. The Veneto use case
 belongs to the second class because security, identity, context, document, and
 signing transitions determine whether useful work completes.
 
-\subsection[Justification of the RDG framework]
-{Justification of the RDG framework}
+\subsection[Justification of the Framework]
+{Justification of the Framework}
 
-\noindent RDG is methodologically justified when five conditions hold: the target process
+\noindent RDG is methodologically justified when four conditions hold: the target process
 contains dependencies whose violation changes experimental meaning; synthetic
 data preserve contract structure without protected material; the research
 question concerns complete-flow behaviour and path differentials; and one

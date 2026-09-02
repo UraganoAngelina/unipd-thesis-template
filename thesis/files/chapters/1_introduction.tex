@@ -328,8 +328,8 @@ assertion; the Traffic Execution Engine extracts its required Base64 representat
 stores it in the context of the same flow occurrence, and resolves the corresponding placeholder in the
 \texttt{Authorization} header of [RVE-54] before sending the query. The resulting
 header carries the assertion with the \texttt{IHE-SAML} authentication scheme,
-as required by the regional security profile
-\footcite[Section~4.2]{arsenal-security-v214}\footcite[Section~1.7]{arsenal-anagrafe-zero-v26}.
+as required by the regional security profile \footcites{arsenal-security-v214}{arsenal-anagrafe-zero-v26}.
+% \footcite[Section~4.2]{arsenal-security-v214} \footcite[Section~1.7]{arsenal-anagrafe-zero-v26}.
 RDG therefore represents regional security-session state as explicit
 per-occurrence dependency data rather than reducing it to the state of the
 underlying HTTP connection. If [RVE-1.b] fails, or if the required assertion cannot be
@@ -470,7 +470,7 @@ observation perimeter?}
 \noindent RDG answers this question as the technical
 instrument of a \emph{Surrogate Observability Strategy}. The strategy translates
 documented healthcare interactions into synthetic and executable workloads,
-observes them at the client boundary, and compares controlled direct and
+observes them at the client boundary, and compares controlled direct paths with 
 paths mediated by the regional integration gateway. Its central differential mechanism is the
 \texttt{direct\_\allowbreak vs\_\allowbreak middleware} experiment. The current
 implementation groups direct patient-query and patient-creation flows, contrasts

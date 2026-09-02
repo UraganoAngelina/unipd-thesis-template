@@ -46,6 +46,97 @@
   },
   "nodes": [
     {
+      "label": "Tassonomia degli errori 20260727T185227",
+      "file_type": "document",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "tassonomia degli errori 20260727t185227",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227"
+    },
+    {
+      "label": "Output extraction failure",
+      "file_type": "concept",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 3,
+      "norm_label": "output extraction failure",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_output_extraction_failure"
+    },
+    {
+      "label": "Transport timeout",
+      "file_type": "concept",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "transport timeout",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_transport_timeout"
+    },
+    {
+      "label": "Semantic validation failure",
+      "file_type": "concept",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "semantic validation failure",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_semantic_validation_failure"
+    },
+    {
+      "label": "Dependency resolution failure",
+      "file_type": "concept",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "dependency resolution failure",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_dependency_resolution_failure"
+    },
+    {
+      "label": "Gateway timeout",
+      "file_type": "concept",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 6,
+      "norm_label": "gateway timeout",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout"
+    },
+    {
+      "label": "Separazione dei fault iniettati dagli errori spontanei",
+      "file_type": "rationale",
+      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 5,
+      "norm_label": "separazione dei fault iniettati dagli errori spontanei",
+      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_fault_injection_separation"
+    },
+    {
       "label": "Dataset sperimentale sanitizzato 20260727T185227",
       "file_type": "document",
       "source_file": "20260727T185227/README.md",
@@ -124,95 +215,17 @@
       "norm_label": "status code 0 come assenza di risposta http"
     },
     {
-      "label": "Tassonomia degli errori 20260727T185227",
-      "file_type": "document",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227",
-      "community": 1,
-      "norm_label": "tassonomia degli errori 20260727t185227"
-    },
-    {
-      "label": "Output extraction failure",
+      "label": "Fonte di verit\u00e0 del successo dei flussi middleware",
       "file_type": "concept",
-      "source_file": "20260727T185227/error_taxonomy.md",
+      "source_file": "20260727T185227/README.md",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_output_extraction_failure",
-      "community": 3,
-      "norm_label": "output extraction failure"
-    },
-    {
-      "label": "Transport timeout",
-      "file_type": "concept",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_transport_timeout",
-      "community": 1,
-      "norm_label": "transport timeout"
-    },
-    {
-      "label": "Semantic validation failure",
-      "file_type": "concept",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_semantic_validation_failure",
-      "community": 2,
-      "norm_label": "semantic validation failure"
-    },
-    {
-      "label": "Dependency resolution failure",
-      "file_type": "concept",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_dependency_resolution_failure",
-      "community": 1,
-      "norm_label": "dependency resolution failure"
-    },
-    {
-      "label": "Gateway timeout",
-      "file_type": "concept",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout",
-      "community": 4,
-      "norm_label": "gateway timeout"
-    },
-    {
-      "label": "Separazione dei fault iniettati dagli errori spontanei",
-      "file_type": "rationale",
-      "source_file": "20260727T185227/error_taxonomy.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "knowledge_base_experiments_20260727t185227_error_taxonomy_fault_injection_separation",
-      "community": 1,
-      "norm_label": "separazione dei fault iniettati dagli errori spontanei"
+      "id": "knowledge_base_experiments_20260727t185227_readme_fonte_di_verita_successo_flussi_middleware",
+      "community": 0,
+      "norm_label": "fonte di verita del successo dei flussi middleware"
     },
     {
       "label": "Esperimento 20260727T185227",
@@ -224,7 +237,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_esperimento_20260727t185227",
-      "community": 2,
+      "community": 5,
       "norm_label": "esperimento 20260727t185227"
     },
     {
@@ -250,7 +263,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_rve121_001",
-      "community": 4,
+      "community": 6,
       "norm_label": "e-rve121-001"
     },
     {
@@ -263,7 +276,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_rve55_001",
-      "community": 2,
+      "community": 7,
       "norm_label": "e-rve55-001"
     },
     {
@@ -289,7 +302,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_fault_001",
-      "community": 1,
+      "community": 5,
       "norm_label": "e-fault-001"
     },
     {
@@ -302,7 +315,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
-      "community": 2,
+      "community": 1,
       "norm_label": "e-middleware-001"
     },
     {
@@ -315,7 +328,7 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_rve_121_http_200_without_causal_transition",
-      "community": 4,
+      "community": 6,
       "norm_label": "rve-121 http 200 senza dimostrazione causale della transizione"
     },
     {
@@ -332,7 +345,7 @@
       "norm_label": "separazione tra status code e outcome"
     },
     {
-      "label": "Failure path degli scenari middleware",
+      "label": "Separazione tra esiti di richiesta e di flusso negli scenari middleware",
       "file_type": "concept",
       "source_file": "20260727T185227/experiment_summary.md",
       "source_location": null,
@@ -341,81 +354,141 @@
       "author": null,
       "contributor": null,
       "id": "knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware",
+      "community": 1,
+      "norm_label": "separazione tra esiti di richiesta e di flusso negli scenari middleware"
+    },
+    {
+      "label": "Correzione del successo dei flussi middleware",
+      "file_type": "document",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_correzione_del_successo_dei_flussi_middleware",
+      "community": 1,
+      "norm_label": "correzione del successo dei flussi middleware"
+    },
+    {
+      "label": "E-FLOW-SUCCESS-001",
+      "file_type": "rationale",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "community": 1,
+      "norm_label": "e-flow-success-001"
+    },
+    {
+      "label": "Scenario flow_type_comparison_middleware",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_scenario_flow_type_comparison_middleware",
+      "community": 1,
+      "norm_label": "scenario flow_type_comparison_middleware"
+    },
+    {
+      "label": "Popolazione pooled di 1.687 flussi completati",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
       "community": 2,
-      "norm_label": "failure path degli scenari middleware"
+      "norm_label": "popolazione pooled di 1.687 flussi completati"
+    },
+    {
+      "label": "263 flussi riusciti",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti",
+      "community": 2,
+      "norm_label": "263 flussi riusciti"
+    },
+    {
+      "label": "1.424 flussi non riusciti",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_1424_flussi_non_riusciti",
+      "community": 2,
+      "norm_label": "1.424 flussi non riusciti"
+    },
+    {
+      "label": "Tasso esatto 15,589804386...%",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_tasso_esatto_15_589804386_percento",
+      "community": 2,
+      "norm_label": "tasso esatto 15,589804386...%"
+    },
+    {
+      "label": "Valore pubblicato 15,59%",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_valore_pubblicato_15_59_percento",
+      "community": 2,
+      "norm_label": "valore pubblicato 15,59%"
+    },
+    {
+      "label": "Vincolo di integrit\u00e0 del conteggio intero",
+      "file_type": "rationale",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_vincolo_integrita_conteggio_intero",
+      "community": 2,
+      "norm_label": "vincolo di integrita del conteggio intero"
+    },
+    {
+      "label": "Separazione tra esiti di richiesta e di flusso",
+      "file_type": "concept",
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso",
+      "community": 1,
+      "norm_label": "separazione tra esiti di richiesta e di flusso"
     }
   ],
   "links": [
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
-      "target": "knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
-      "target": "knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto"
-    },
-    {
-      "relation": "implements",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
-      "target": "knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
-      "target": "knowledge_base_experiments_20260727t185227_readme_status_code_zero"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist",
-      "target": "knowledge_base_experiments_20260727t185227_readme_alias_stabili"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "20260727T185227/experiment_summary.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001",
-      "target": "knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "20260727T185227/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "knowledge_base_experiments_20260727t185227_readme_status_code_zero",
-      "target": "knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome"
-    },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
@@ -520,6 +593,96 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "target": "knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "target": "knowledge_base_experiments_20260727t185227_readme_fonte_di_verita_successo_flussi_middleware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "target": "knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "target": "knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "target": "knowledge_base_experiments_20260727t185227_readme_status_code_zero"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist",
+      "target": "knowledge_base_experiments_20260727t185227_readme_alias_stabili"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "20260727T185227/experiment_summary.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001",
+      "target": "knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_status_code_zero",
+      "target": "knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_readme_fonte_di_verita_successo_flussi_middleware",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "20260727T185227/experiment_summary.md",
       "source_location": null,
       "weight": 1.0,
@@ -605,6 +768,136 @@
       "weight": 1.0,
       "source": "knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
       "target": "knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/experiment_summary.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso",
+      "target": "knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "20260727T185227/experiment_summary.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_correzione_del_successo_dei_flussi_middleware",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_scenario_flow_type_comparison_middleware"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_1424_flussi_non_riusciti"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_tasso_esatto_15_589804386_percento"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_vincolo_integrita_conteggio_intero",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_tasso_esatto_15_589804386_percento",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_valore_pubblicato_15_59_percento"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "20260727T185227/flow_success_correction.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "knowledge_base_experiments_20260727t185227_flow_success_correction_vincolo_integrita_conteggio_intero",
+      "target": "knowledge_base_experiments_20260727t185227_flow_success_correction_valore_pubblicato_15_59_percento"
     }
   ],
   "hyperedges": [
@@ -648,5 +941,5 @@
       "source_file": "20260727T185227/experiment_summary.md"
     }
   ],
-  "built_at_commit": "05e5ef61a82c13d2f4ef8a0d2b5136a2f7d0a9aa"
+  "built_at_commit": "59b999846b1b7cfc12212a3d89263c91162505cf"
 }

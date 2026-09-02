@@ -83,6 +83,8 @@
     "1": [
       "Request-Dataset-Generator::fhir_patient_generator_to_json",
       "Request-Dataset-Generator::fhir_patient_generator_to_xml",
+      "Request-Dataset-Generator::log_collector_collect_logs",
+      "Request-Dataset-Generator::log_collector_rationale_591",
       "Request-Dataset-Generator::main",
       "Request-Dataset-Generator::main_annotate_dataset_flows",
       "Request-Dataset-Generator::main_append_json",
@@ -108,6 +110,8 @@
       "Request-Dataset-Generator::main_slug",
       "Request-Dataset-Generator::main_write_output",
       "Request-Dataset-Generator::main_write_resolved_config",
+      "Request-Dataset-Generator::metric_engine_rationale_1432",
+      "Request-Dataset-Generator::metric_engine_run_metric_engine",
       "Request-Dataset-Generator::namespace",
       "Request-Dataset-Generator::request_dataset_generator_build_workload",
       "Request-Dataset-Generator::request_dataset_generator_rationale_75",
@@ -256,7 +260,6 @@
       "Request-Dataset-Generator::metric_engine_rationale_112",
       "Request-Dataset-Generator::metric_engine_rationale_1288",
       "Request-Dataset-Generator::metric_engine_rationale_1304",
-      "Request-Dataset-Generator::metric_engine_rationale_1432",
       "Request-Dataset-Generator::metric_engine_rationale_172",
       "Request-Dataset-Generator::metric_engine_rationale_56",
       "Request-Dataset-Generator::metric_engine_rationale_60",
@@ -268,7 +271,6 @@
       "Request-Dataset-Generator::metric_engine_reportgenerator_to_json",
       "Request-Dataset-Generator::metric_engine_reportgenerator_to_markdown",
       "Request-Dataset-Generator::metric_engine_resolve_output_path",
-      "Request-Dataset-Generator::metric_engine_run_metric_engine",
       "Request-Dataset-Generator::metric_engine_statisticshelper",
       "Request-Dataset-Generator::metric_engine_statisticshelper_descriptive_stats",
       "Request-Dataset-Generator::metric_engine_statisticshelper_group_by",
@@ -283,46 +285,42 @@
       "Request-Dataset-Generator::metric_engine_write_reports"
     ],
     "5": [
-      "Request-Dataset-Generator::protocol",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator_build_flow",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_new_uuid",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_payload_size",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_112",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_153",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_46",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rvetransactionmodule",
-      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rvetransactionmodule_build_request",
-      "Request-Dataset-Generator::rve_transactions_iti_18",
-      "Request-Dataset-Generator::rve_transactions_iti_18_build_body",
-      "Request-Dataset-Generator::rve_transactions_iti_18_build_request",
-      "Request-Dataset-Generator::rve_transactions_iti_18_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_iti_43",
-      "Request-Dataset-Generator::rve_transactions_iti_43_build_body",
-      "Request-Dataset-Generator::rve_transactions_iti_43_build_request",
-      "Request-Dataset-Generator::rve_transactions_iti_43_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_rve_130",
-      "Request-Dataset-Generator::rve_transactions_rve_130_build_request",
-      "Request-Dataset-Generator::rve_transactions_rve_130_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_rve_130_rationale_34",
-      "Request-Dataset-Generator::rve_transactions_rve_token",
-      "Request-Dataset-Generator::rve_transactions_rve_token_build_request",
-      "Request-Dataset-Generator::rve_transactions_rve_token_build_step",
-      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_15",
-      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_74",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_common",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_common_endpoint_url",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_common_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_common_resolve_auth_header",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_common_resolve_mtls_profile",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info_build_request",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info_rationale_1",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc_build_request",
-      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc_rationale_1"
+      "graphify_kb::anagrafe_rve100_subscription",
+      "graphify_kb::anagrafe_rve54_patient_query",
+      "graphify_kb::anagrafe_rve55_patientid_assignment",
+      "graphify_kb::anagrafe_zero_specifiche",
+      "graphify_kb::analisi_anagrafe_zero",
+      "graphify_kb::analisi_apms",
+      "graphify_kb::analisi_co116117",
+      "graphify_kb::analisi_cot",
+      "graphify_kb::analisi_dimissione_protetta",
+      "graphify_kb::analisi_dm77",
+      "graphify_kb::analisi_epersonam",
+      "graphify_kb::analisi_fser_xds",
+      "graphify_kb::analisi_progetto_siter",
+      "graphify_kb::analisi_pua",
+      "graphify_kb::analisi_sister",
+      "graphify_kb::capitolato_interoperabilita",
+      "graphify_kb::context_call_specifiche",
+      "graphify_kb::context_jwt_token",
+      "graphify_kb::context_rve121_get_access_token",
+      "graphify_kb::context_rve130_chiamata_contesto",
+      "graphify_kb::context_saml_assertion",
+      "graphify_kb::governo_cabina_regia",
+      "graphify_kb::governo_siter",
+      "graphify_kb::pianificazione_apms_token_multitenancy",
+      "graphify_kb::protocollo_116117",
+      "graphify_kb::protocollo_parole_alert",
+      "graphify_kb::protocollo_schede_problema",
+      "graphify_kb::rti_anagrafica_gateway",
+      "graphify_kb::rti_anagrafica_specifiche",
+      "graphify_kb::rti_jwt_authentication",
+      "graphify_kb::siter_cabina_regia_presentazione",
+      "graphify_kb::siter_digitalizzazione_dm77",
+      "graphify_kb::subscription_fhir_rest_hook",
+      "graphify_kb::subscription_iua_saml",
+      "graphify_kb::subscription_rve100",
+      "graphify_kb::subscription_specifiche"
     ],
     "6": [
       "Request-Dataset-Generator::fhir_patient_generator",
@@ -362,9 +360,44 @@
       "Request-Dataset-Generator::rve_transactions_rve_55_rationale_39"
     ],
     "7": [
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_dependency_resolution_failure",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_fault_injection_separation",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_output_extraction_failure",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_semantic_validation_failure",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227",
+      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_transport_timeout",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_fault_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rve121_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rve55_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rvetoken_001",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_esperimento_20260727t185227",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_rve_121_http_200_without_causal_transition",
+      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_1424_flussi_non_riusciti",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_263_flussi_riusciti",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_correzione_del_successo_dei_flussi_middleware",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_e_flow_success_001",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_popolazione_pooled_1687_flussi",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_scenario_flow_type_comparison_middleware",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_separazione_esiti_richiesta_flusso",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_tasso_esatto_15_589804386_percento",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_valore_pubblicato_15_59_percento",
+      "experiments::knowledge_base_experiments_20260727t185227_flow_success_correction_vincolo_integrita_conteggio_intero",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_alias_stabili",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_fonte_di_verita_successo_flussi_middleware",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist",
+      "experiments::knowledge_base_experiments_20260727t185227_readme_status_code_zero"
+    ],
+    "8": [
       "Request-Dataset-Generator::log_collector",
       "Request-Dataset-Generator::log_collector_build_parser",
-      "Request-Dataset-Generator::log_collector_collect_logs",
       "Request-Dataset-Generator::log_collector_first_present",
       "Request-Dataset-Generator::log_collector_framework_event_key",
       "Request-Dataset-Generator::log_collector_frameworklogparser",
@@ -390,12 +423,11 @@
       "Request-Dataset-Generator::log_collector_rationale_482",
       "Request-Dataset-Generator::log_collector_rationale_498",
       "Request-Dataset-Generator::log_collector_rationale_54",
-      "Request-Dataset-Generator::log_collector_rationale_591",
       "Request-Dataset-Generator::log_collector_resolve_output_path",
       "Request-Dataset-Generator::log_collector_timeseriesaggregator",
       "Request-Dataset-Generator::log_collector_timeseriesaggregator_aggregate"
     ],
-    "8": [
+    "9": [
       "Request-Dataset-Generator::ui_tabs_run_tab_rationale_377",
       "Request-Dataset-Generator::ui_tabs_run_tab_rationale_43",
       "Request-Dataset-Generator::ui_tabs_run_tab_runtab",
@@ -425,7 +457,7 @@
       "Request-Dataset-Generator::ui_tabs_run_tab_runtab_ui_set_status",
       "Request-Dataset-Generator::ui_tabs_run_tab_runtab_write_mock_outputs"
     ],
-    "9": [
+    "10": [
       "Request-Dataset-Generator::readme_fhir_synthetic_patients",
       "Request-Dataset-Generator::readme_flow_context_call",
       "Request-Dataset-Generator::readme_flow_patient_create",
@@ -454,7 +486,7 @@
       "Request-Dataset-Generator::usage_request_dataset_generator_rve_guide",
       "Request-Dataset-Generator::usage_rve_flows"
     ],
-    "10": [
+    "11": [
       "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator",
       "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator_init",
       "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_127",
@@ -483,7 +515,7 @@
       "Request-Dataset-Generator::tests_test_core_maindispatchtest",
       "Request-Dataset-Generator::tests_test_core_maindispatchtest_test_dispatch_includes_liv3_commands"
     ],
-    "11": [
+    "12": [
       "Request-Dataset-Generator::rve_transactions_rve_gateway",
       "Request-Dataset-Generator::rve_transactions_rve_gateway_address_locality",
       "Request-Dataset-Generator::rve_transactions_rve_gateway_address_postal_code",
@@ -510,7 +542,7 @@
       "Request-Dataset-Generator::rve_transactions_rve_gateway_sex_code",
       "Request-Dataset-Generator::rve_transactions_rve_gateway_telecom_value"
     ],
-    "12": [
+    "13": [
       "Request-Dataset-Generator::mock_middleware_log",
       "Request-Dataset-Generator::mock_middleware_log_build_parser",
       "Request-Dataset-Generator::mock_middleware_log_main",
@@ -535,7 +567,7 @@
       "Request-Dataset-Generator::mock_middleware_log_rationale_90",
       "Request-Dataset-Generator::mock_middleware_log_rationale_98"
     ],
-    "13": [
+    "14": [
       "Request-Dataset-Generator::ui_tabs_config_tab_configtab",
       "Request-Dataset-Generator::ui_tabs_config_tab_configtab_as_float",
       "Request-Dataset-Generator::ui_tabs_config_tab_configtab_as_int",
@@ -554,127 +586,67 @@
       "Request-Dataset-Generator::ui_tabs_config_tab_configtab_toggle_flow",
       "Request-Dataset-Generator::ui_tabs_config_tab_rationale_29"
     ],
-    "14": [
-      "Request-Dataset-Generator::readme_live_mode",
-      "Request-Dataset-Generator::readme_saml_assertion_propagation"
-    ],
     "15": [
-      "Request-Dataset-Generator::ui_init",
-      "Request-Dataset-Generator::ui_init_rationale_1"
+      "Request-Dataset-Generator::protocol",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_floworchestrator_build_flow",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_new_uuid",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_payload_size",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_1",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_112",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_153",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rationale_46",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rvetransactionmodule",
+      "Request-Dataset-Generator::rve_transactions_flow_orchestrator_rvetransactionmodule_build_request",
+      "Request-Dataset-Generator::rve_transactions_iti_18",
+      "Request-Dataset-Generator::rve_transactions_iti_18_build_body",
+      "Request-Dataset-Generator::rve_transactions_iti_18_build_request",
+      "Request-Dataset-Generator::rve_transactions_iti_18_rationale_1"
     ],
     "16": [
-      "Request-Dataset-Generator::ui_tabs_init",
-      "Request-Dataset-Generator::ui_tabs_init_rationale_1"
-    ],
-    "17": [
-      "Request-Dataset-Generator::tests_init"
-    ],
-    "18": [
       "graphify_kb::scryba_sign_3_x_developer_s_guide_applicationutils_v1",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_async_session_chain",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_automatic_fea_enrolment",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_certificate_types",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_device_manager",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_digitalstamp_v1",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_document",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_document_status_lifecycle",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_enqueueonedoc",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_feafgmutils",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_getuserinfo4",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_graphometric_workflow",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_https_basic_authentication",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_identity_document_retrieval",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_integration_certification",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_large_file_transfer",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_notification_v1",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_otp_services",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_remote_digital_signature",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_scryba_sign_server",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_signature_formats",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_signature_validation_and_envelope_removal",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_signer_app",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_signer_configuration",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_signerutils_v1",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_signing_power_and_profile",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_signonedoc",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_soap_wsdl_integration",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_sync_session_chain",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_synchronous_workflow",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_syncsign_v3",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_synthetic_test_data",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_timestamp_v1",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_validationsutils_v1"
+    ],
+    "17": [
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_certificate_types",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_getuserinfo4",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_https_basic_authentication",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_otp_services",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_remote_digital_signature",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_signature_formats",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_signer_configuration",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_signing_power_and_profile",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_simplified_remote_signature",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_sync_session_chain",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_utils_v2",
-      "graphify_kb::scryba_sign_3_x_developer_s_guide_validationsutils_v1",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_verify_authentication"
     ],
+    "18": [
+      "Request-Dataset-Generator::rve_transactions_scrybasign_common",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_common_endpoint_url",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_common_rationale_1",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_common_resolve_auth_header",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_common_resolve_mtls_profile",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info_build_request",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_get_user_info_rationale_1",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc_build_request",
+      "Request-Dataset-Generator::rve_transactions_scrybasign_sign_one_doc_rationale_1"
+    ],
     "19": [
-      "graphify_kb::anagrafe_rve100_subscription",
-      "graphify_kb::anagrafe_rve54_patient_query",
-      "graphify_kb::anagrafe_rve55_patientid_assignment",
-      "graphify_kb::anagrafe_zero_specifiche",
-      "graphify_kb::analisi_anagrafe_zero",
-      "graphify_kb::analisi_apms",
-      "graphify_kb::analisi_co116117",
-      "graphify_kb::analisi_cot",
-      "graphify_kb::analisi_dimissione_protetta",
-      "graphify_kb::analisi_dm77",
-      "graphify_kb::analisi_epersonam",
-      "graphify_kb::analisi_fser_xds",
-      "graphify_kb::analisi_progetto_siter",
-      "graphify_kb::analisi_pua",
-      "graphify_kb::analisi_sister",
-      "graphify_kb::capitolato_interoperabilita",
-      "graphify_kb::context_call_specifiche",
-      "graphify_kb::context_jwt_token",
-      "graphify_kb::context_rve121_get_access_token",
-      "graphify_kb::context_rve130_chiamata_contesto",
-      "graphify_kb::context_saml_assertion",
-      "graphify_kb::governo_cabina_regia",
-      "graphify_kb::governo_siter",
-      "graphify_kb::pianificazione_apms_token_multitenancy",
-      "graphify_kb::protocollo_116117",
-      "graphify_kb::protocollo_parole_alert",
-      "graphify_kb::protocollo_schede_problema",
-      "graphify_kb::rti_anagrafica_gateway",
-      "graphify_kb::rti_anagrafica_specifiche",
-      "graphify_kb::rti_jwt_authentication",
-      "graphify_kb::siter_cabina_regia_presentazione",
-      "graphify_kb::siter_digitalizzazione_dm77",
-      "graphify_kb::subscription_fhir_rest_hook",
-      "graphify_kb::subscription_iua_saml",
-      "graphify_kb::subscription_rve100",
-      "graphify_kb::subscription_specifiche"
-    ],
-    "20": [
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_dependency_resolution_failure",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_fault_injection_separation",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_gateway_timeout",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_output_extraction_failure",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_semantic_validation_failure",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_tassonomia_degli_errori_20260727t185227",
-      "experiments::knowledge_base_experiments_20260727t185227_error_taxonomy_transport_timeout",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_fault_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_middleware_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_protocol_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rve121_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rve55_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_e_rvetoken_001",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_esperimento_20260727t185227",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_failure_path_middleware",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_rve_121_http_200_without_causal_transition",
-      "experiments::knowledge_base_experiments_20260727t185227_experiment_summary_separazione_status_code_outcome",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_alias_stabili",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_dataset_sperimentale_sanitizzato_20260727t185227",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_figure_come_evidenza_visuale",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_protocollo_live_incompleto",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_sanitizzazione_con_whitelist",
-      "experiments::knowledge_base_experiments_20260727t185227_readme_status_code_zero"
-    ],
-    "21": [
       "graphify_kb::apms_cognito_user_pool",
       "graphify_kb::apms_specifiche",
       "graphify_kb::infra_apms_integration",
@@ -686,7 +658,7 @@
       "graphify_kb::security_rve1_assertion",
       "graphify_kb::specifiche_iap_endpoint"
     ],
-    "22": [
+    "20": [
       "graphify_kb::capitolato_consultori",
       "graphify_kb::capitolato_cure_domiciliari",
       "graphify_kb::capitolato_requisiti_cot",
@@ -697,7 +669,33 @@
       "graphify_kb::rti_epersonam",
       "graphify_kb::rti_sister"
     ],
+    "21": [
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_async_session_chain",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_asyncsign_v2_2",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_device_manager",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_enqueueonedoc",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_feafgmenqueueonedoc",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_feafgmutils",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_graphometric_workflow"
+    ],
+    "22": [
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_asynchronous_workflow",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_document_status_lifecycle",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_large_file_transfer",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_notification_v1",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_signonedoc",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_synchronous_workflow",
+      "graphify_kb::scryba_sign_3_x_developer_s_guide_syncsign_v3"
+    ],
     "23": [
+      "Request-Dataset-Generator::rve_transactions_rve_token",
+      "Request-Dataset-Generator::rve_transactions_rve_token_build_request",
+      "Request-Dataset-Generator::rve_transactions_rve_token_build_step",
+      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_1",
+      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_15",
+      "Request-Dataset-Generator::rve_transactions_rve_token_rationale_74"
+    ],
+    "24": [
       "graphify_kb::affinity_domain_specifiche",
       "graphify_kb::affinity_fse",
       "graphify_kb::affinity_ini",
@@ -705,7 +703,7 @@
       "graphify_kb::affinity_xdsdocumententry_metadata",
       "graphify_kb::xvalue_xds_transactions"
     ],
-    "24": [
+    "25": [
       "graphify_kb::dm77_assistenza_domiciliare",
       "graphify_kb::dm77_casa_comunita",
       "graphify_kb::dm77_co116117_standard",
@@ -713,7 +711,7 @@
       "graphify_kb::dm77_decreto",
       "graphify_kb::dm77_distretto"
     ],
-    "25": [
+    "26": [
       "graphify_kb::latency_edge_computing_latency",
       "graphify_kb::latency_persistent_connections",
       "graphify_kb::latency_when_latency_matters",
@@ -721,107 +719,141 @@
       "graphify_kb::network_latency_throughput",
       "graphify_kb::network_load_sharing_window"
     ],
-    "26": [
+    "27": [
       "graphify_kb::paymed_advenias",
       "graphify_kb::paymed_get_accessi",
       "graphify_kb::paymed_integrazione",
       "graphify_kb::paymed_paymed",
       "graphify_kb::paymed_post_accessi"
     ],
-    "27": [
+    "28": [
+      "Request-Dataset-Generator::rve_transactions_iti_43",
+      "Request-Dataset-Generator::rve_transactions_iti_43_build_body",
+      "Request-Dataset-Generator::rve_transactions_iti_43_build_request",
+      "Request-Dataset-Generator::rve_transactions_iti_43_rationale_1"
+    ],
+    "29": [
+      "Request-Dataset-Generator::rve_transactions_rve_130",
+      "Request-Dataset-Generator::rve_transactions_rve_130_build_request",
+      "Request-Dataset-Generator::rve_transactions_rve_130_rationale_1",
+      "Request-Dataset-Generator::rve_transactions_rve_130_rationale_34"
+    ],
+    "30": [
       "graphify_kb::dimensionamento_accenture_dih",
       "graphify_kb::dimensionamento_almaviva_epersonam",
       "graphify_kb::dimensionamento_gpi_sister",
       "graphify_kb::dimensionamento_siter"
     ],
-    "28": [
+    "31": [
       "graphify_kb::pianificazione_camunda_bpmn_rules",
       "graphify_kb::pianificazione_dimissione_protetta_e2e",
       "graphify_kb::pianificazione_fser_xds_layer",
       "graphify_kb::pianificazione_rabbitmq_queues"
     ],
-    "29": [
+    "32": [
       "graphify_kb::srg_latency_performance",
       "graphify_kb::srg_mpi_pro",
       "graphify_kb::srg_ping_pong_tests",
       "graphify_kb::srg_point_to_point_latency"
     ],
-    "30": [
+    "33": [
       "graphify_kb::xvalue_document_source",
       "graphify_kb::xvalue_specifiche",
       "graphify_kb::xvalue_xds_registry",
       "graphify_kb::xvalue_xds_repository"
     ],
-    "31": [
+    "34": [
       "graphify_kb::data_governance",
       "graphify_kb::data_reference_architecture",
       "graphify_kb::data_virtualization"
     ],
-    "32": [
+    "35": [
       "graphify_kb::rti_camunda",
       "graphify_kb::rti_layer_interoperabilita",
       "graphify_kb::rti_rabbitmq"
     ],
-    "33": [
+    "36": [
+      "Request-Dataset-Generator::readme_live_mode",
+      "Request-Dataset-Generator::readme_saml_assertion_propagation"
+    ],
+    "37": [
+      "Request-Dataset-Generator::ui_init",
+      "Request-Dataset-Generator::ui_init_rationale_1"
+    ],
+    "38": [
+      "Request-Dataset-Generator::ui_tabs_init",
+      "Request-Dataset-Generator::ui_tabs_init_rationale_1"
+    ],
+    "39": [
       "graphify_kb::apms_authorization_code_flow",
       "graphify_kb::apms_id_token"
     ],
-    "34": [
+    "40": [
       "graphify_kb::eidas",
       "graphify_kb::eidas_signatures"
     ],
-    "35": [
+    "41": [
       "graphify_kb::feq",
       "graphify_kb::qtsp"
     ],
-    "36": [
+    "42": [
       "graphify_kb::percorsi_flussi_nsis",
       "graphify_kb::percorsi_flussi_sanitari"
     ],
-    "37": [
+    "43": [
       "graphify_kb::scryba_sign_3_x_developer_s_guide_electronic_seal",
       "graphify_kb::scryba_sign_3_x_developer_s_guide_interactive_and_automatic_signature"
+    ],
+    "44": [
+      "Request-Dataset-Generator::tests_init"
     ]
   },
   "cohesion": {
     "0": 0.052614052614052616,
-    "1": 0.08408953418027829,
+    "1": 0.08090957165520889,
     "2": 0.08233117483811286,
     "3": 0.08562367864693446,
-    "4": 0.07474747474747474,
-    "5": 0.07307692307692308,
+    "4": 0.07308970099667775,
+    "5": 0.05714285714285714,
     "6": 0.08739495798319327,
-    "7": 0.10483870967741936,
-    "8": 0.1455026455026455,
-    "9": 0.08262108262108261,
-    "10": 0.09116809116809117,
-    "11": 0.18,
-    "12": 0.12648221343873517,
-    "13": 0.22058823529411764,
-    "14": 1.0,
-    "15": 1.0,
-    "16": 1.0,
-    "17": 1.0,
-    "18": 0.06025641025641026,
-    "19": 0.05714285714285714,
-    "20": 0.10276679841897234,
-    "21": 0.2,
-    "22": 0.25,
-    "23": 0.3333333333333333,
+    "7": 0.07308377896613191,
+    "8": 0.09655172413793103,
+    "9": 0.1455026455026455,
+    "10": 0.08262108262108261,
+    "11": 0.09116809116809117,
+    "12": 0.18,
+    "13": 0.12648221343873517,
+    "14": 0.22058823529411764,
+    "15": 0.1619047619047619,
+    "16": 0.16483516483516483,
+    "17": 0.16666666666666666,
+    "18": 0.4,
+    "19": 0.2,
+    "20": 0.25,
+    "21": 0.2857142857142857,
+    "22": 0.2857142857142857,
+    "23": 0.4,
     "24": 0.3333333333333333,
     "25": 0.3333333333333333,
-    "26": 0.6,
-    "27": 0.5,
-    "28": 0.5,
+    "26": 0.3333333333333333,
+    "27": 0.6,
+    "28": 0.6666666666666666,
     "29": 0.5,
     "30": 0.5,
-    "31": 0.6666666666666666,
-    "32": 0.6666666666666666,
-    "33": 1.0,
-    "34": 1.0,
-    "35": 1.0,
+    "31": 0.5,
+    "32": 0.5,
+    "33": 0.5,
+    "34": 0.6666666666666666,
+    "35": 0.6666666666666666,
     "36": 1.0,
-    "37": 1.0
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0
   },
   "gods": [
     {
@@ -877,11 +909,11 @@
   ],
   "surprises": [
     {
-      "source": "RVE-54 Patient Query",
-      "target": "Anagrafe Zero",
+      "source": "Anagrafe Zero",
+      "target": "RVE-54 Patient Query",
       "source_files": [
-        "Specifiche tecniche - Anagrafe Zero v2.6.pdf",
-        "analisi_completa.md"
+        "analisi_completa.md",
+        "Specifiche tecniche - Anagrafe Zero v2.6.pdf"
       ],
       "confidence": "INFERRED",
       "relation": "semantically_similar_to",
@@ -899,26 +931,26 @@
       "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ paper); connects across different repos/directories; bridges separate communities"
     },
     {
-      "source": "E-RVE121-001",
-      "target": "RVE-121 GetAccessToken",
+      "source": "Progetto SI.Ter",
+      "target": "Digitalizzazione Elementi DM77",
       "source_files": [
-        "20260727T185227/experiment_summary.md",
-        "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "Digitalizzazione Elementi DM77",
-      "target": "Progetto SI.Ter",
-      "source_files": [
-        "SITER_presentazione alla Cabina di Regia_25 marzo 2026.pdf",
-        "analisi_completa.md"
+        "analisi_completa.md",
+        "SITER_presentazione alla Cabina di Regia_25 marzo 2026.pdf"
       ],
       "confidence": "INFERRED",
       "relation": "conceptually_related_to",
       "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories; peripheral node `Digitalizzazione Elementi DM77` unexpectedly reaches hub `Progetto SI.Ter`"
+    },
+    {
+      "source": "RVE-121 GetAccessToken",
+      "target": "E-RVE121-001",
+      "source_files": [
+        "Specifiche tecniche chiamata di contesto RVE v1.3_PC.pdf",
+        "20260727T185227/experiment_summary.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (paper ↔ doc); connects across different repos/directories; bridges separate communities"
     },
     {
       "source": "RVE Flows",
@@ -935,8 +967,13 @@
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `RVE-121 GetAccessToken` connect `Progetto SI.Ter` to `_common.py`, `Tassonomia degli errori 20260727T185227`?",
+      "question": "Why does `RVE-121 GetAccessToken` connect `Progetto SI.Ter` to `_common.py`, `Corrected Middleware Flow Outcomes`?",
       "why": "High betweenness centrality (0.064) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `E-RVE121-001` connect `Corrected Middleware Flow Outcomes` to `_common.py`, `Progetto SI.Ter`?",
+      "why": "High betweenness centrality (0.060) - this node is a cross-community bridge."
     },
     {
       "type": "verify_inferred",
@@ -946,7 +983,7 @@
     {
       "type": "isolated_nodes",
       "question": "What connects `FHIR Synthetic Patients`, `live Mode`, `Pipeline` to the rest of the system?",
-      "why": "76 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "78 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
@@ -956,17 +993,12 @@
     {
       "type": "low_cohesion",
       "question": "Should `main.py` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.08408953418027829 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.08090957165520889 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
       "question": "Should `_common.py` be split into smaller, more focused modules?",
       "why": "Cohesion score 0.08233117483811286 - nodes in this community are weakly interconnected."
-    },
-    {
-      "type": "low_cohesion",
-      "question": "Should `DashboardTab` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.08562367864693446 - nodes in this community are weakly interconnected."
     }
   ]
 }

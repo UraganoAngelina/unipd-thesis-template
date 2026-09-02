@@ -76,7 +76,7 @@ execution, normalisation, and analysis. The handler map in \texttt{main.py}
 forms a lightweight Command dispatcher. Transaction modules act as Builders of
 uniform steps, which \texttt{Flow\allowbreak Orchestrator} composes according to
 the \texttt{RveTransaction\allowbreak Module} protocol. Traffic-profile functions
-implement Strategy, whereas \texttt{MtlsContext\allowbreak Factory} applies
+implement Strategy, whereas \texttt{MtlsContextFactory} applies
 Factory with lazy caching to mTLS contexts. The configuration Bridge isolates graphical-interface persistence from the
 core.
 
@@ -147,7 +147,7 @@ chapter.
 
 \paragraph{Mutual Transport Layer Security context management}
 \noindent \texttt{MtlsContextFactory} separates cryptographic material from executable
-steps. A transaction declares only a named mutual-Transport Layer Security
+steps. A transaction declares only a named mutual Transport Layer Security
 (mTLS) profile in its transport metadata; the runtime configuration retains
 certificate paths, verification policy, and any environment-variable reference
 used to resolve a certificate password. On first use, the factory constructs a
@@ -195,7 +195,7 @@ application response from the regional integration gateway.
         \draw[flow] (engine) -- node[note, above] {HTTPS\\+ mTLS} (gateway);
     \end{tikzpicture}
     }
-    \caption[Secure transport and mutual Transport Layer Security context management.]{Secure Transport and mutual Transport Layer Security Management Layer. Source: Author's elaboration based on the framework's source code.}
+    \caption[Secure transport and mutual Transport Layer Security context management]{Secure Transport and mutual Transport Layer Security Management Layer. Source: Author's elaboration based on the framework's source code.}
     \label{fig:rdg-secure-transport}
 \end{figure}
 
@@ -233,7 +233,7 @@ conformance.
 \paragraph{Workload population and correlation model}
 \noindent \texttt{build\_workload()} accepts the number of source flows, a weighted
 \texttt{flow\_mix}, an execution mode, the complete configuration, the number of patients and an
-optional seed. Weights are normalised and sampled to choose a flow type; the number of
+optional seed. Weights are normalised and sampled to choose a flow type; a configured number of
 synthetic patients is generated for each step of the source flow that needs that specific resource. The resulting flow carries
 a flow identifier, a type, and an ordered list of steps. Every step has its own
 request identifier and index, while the Timeline Generator later adds a distinct
@@ -256,7 +256,7 @@ Table~\ref{tab:implemented-flow-types}.
         \rowcolor{tableGray}
         \texttt{FLOW\_CONTEXT\_CALL} & [RVE-1.b] $\rightarrow$ [RVE-121] $\rightarrow$ [RVE-130] & 3 \\
         \hline
-        \texttt{FLOW\_PATIENT\_QUERY} & R[VE-1.b] $\rightarrow$ [RVE-54] & 2 \\
+        \texttt{FLOW\_PATIENT\_QUERY} & [RVE-1.b] $\rightarrow$ [RVE-54] & 2 \\
         \hline
         \rowcolor{tableGray}
         \texttt{FLOW\_PATIENT\_CREATE} & [RVE-1.b] $\rightarrow$ [RVE-55] & 2 \\
@@ -269,7 +269,7 @@ Table~\ref{tab:implemented-flow-types}.
         \texttt{FLOW\_PATIENT\_QUERY\_}\allowbreak\texttt{MIDDLEWARE} & RVE token $\rightarrow$ regional integration gateway RVE-54 $\rightarrow$ regional integration gateway RVE-55 $\rightarrow$ regional integration gateway RVE-57 $\rightarrow$ regional integration gateway RVE-100 & 5 \\
         \hline
         \rowcolor{tableGray}
-        \texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} & GetUserInfo $\rightarrow$ SignOneDoc & 2 \\
+        \texttt{FLOW\_SCRYBASIGN\_}\allowbreak\texttt{SIGN} & GetUserInfo4 $\rightarrow$ SignOneDoc & 2 \\
         \hline
     \end{tabular}
     \label{tab:implemented-flow-types}
@@ -301,7 +301,7 @@ Table~\ref{tab:implemented-flow-types}.
         \draw[flow] (context) -- node[note, right] {lookup} (resolve);
         \draw[flow] (resolve) -- node[note, above] {resolved \\header} (iti);
     \end{tikzpicture}
-    \caption[Semantic transformation and placeholder resolution.]{Semantic transformation and placeholder resolution across dependent protocol steps. Source: Author's elaboration based on the framework's source code.}
+    \caption[Semantic transformation and placeholder resolution]{Semantic transformation and placeholder resolution across dependent protocol steps. Source: Author's elaboration based on the framework's source code.}
     \label{fig:rdg-semantic-dependency}
 \end{figure}
 
@@ -374,7 +374,7 @@ instrumentation before assessing live remote performance profiles.
 \noindent The Timeline Generator separates flow content from arrival time. It supports a
 constant rate, a configurable step profile, and a synthetic time-banded
 clinical profile. For a variable intensity $\lambda(t)$, arrivals are produced
-through Lewis--Shedler thinning: candidates are sampled from an upper-bound
+through Lewis-Shedler thinning: candidates are sampled from an upper-bound
 homogeneous process and retained according to
 $\lambda(t)/\lambda_{\max}$. Optional bursts add a configurable number of
 closely spaced occurrences around selected baseline arrivals. Every event
@@ -538,7 +538,7 @@ controlled faults; they are not observations of provider reliability.
         \draw[flow] (pipeline) -- node[note, above] {results} (results);
     \end{tikzpicture}
     }
-    \caption[Experiment persistence and user-interface bridge architecture.]{Experiment persistence and user-interface bridge architecture. Source: Author's design based on the framework's source code.}
+    \caption[Experiment persistence and user-interface bridge architecture]{Experiment persistence and user-interface bridge architecture. Source: Author's design based on the framework's source code.}
     \label{fig:rdg-ui-persistence-bridge}
 \end{figure}
 
@@ -774,7 +774,7 @@ compact live smoke profile. Every accepted resolved configuration declares
 live execution. The chapter therefore treats the inventory as \emph{Live
 Production-Like Scenarios}. The full flow mix includes context operations,
 direct patient query and creation, ITI-18 and ITI-43 transactions, the mediated patient path, and the Scryba Sign
-\texttt{GetUserInfo}/\texttt{SignOneDoc} sequence.
+\texttt{GetUserInfo4}/\texttt{SignOneDoc} sequence.
 
 \begin{table}[H]
     \centering
@@ -892,13 +892,11 @@ three core perspectives:
     baseline validation of the collected dataset and identifies the global
     ratios between completed and failed flows across the campaign.
     \item \textbf{Load Dynamics and Saturation Boundaries.}
-    Sections~\ref{subsec:rdg-load-scheduling-calibration}--
-    \ref{subsec:rdg-stochastic-saturation-response} analyse the onset of queue
+    Sections~\ref{subsec:rdg-load-scheduling-calibration}-\ref{subsec:rdg-stochastic-saturation-response} analyse the onset of queue
     backpressure and the resulting delivery drift under extreme stress, thereby
     defining the physical limits of the cooperative event loop.
     \item \textbf{Flow Heterogeneity and Path Displacement.}
-    Sections~\ref{subsec:rdg-domain-specific-flow-signatures}--
-    \ref{subsec:rdg-client-boundary-path-displacement} isolate the distinct
+    Sections~\ref{subsec:rdg-domain-specific-flow-signatures}-\ref{subsec:rdg-client-boundary-path-displacement} isolate the distinct
     latency signatures of individual transaction families and quantify the
     systematic apparent path-level overhead associated with regional mediation.
 \end{itemize}
@@ -908,8 +906,8 @@ three core perspectives:
 generation and timeline construction to asynchronous execution, structured
 collection, normalisation, and metric calculation. The resulting sample space
 contains 299{,}534 request occurrences, of which 219{,}906 succeed (73.416\%),
-and 158{,}449 flow occurrences, of which 78{,}821 reach a successful terminal
-state (49.745\%). These populations define outcome-conditioned random variables
+and 158{,}449 flow occurrences, of which 79{,}334 reach a successful terminal
+state (50.069\%). These populations define outcome-conditioned random variables
 rather than a test-coverage inventory: Flow Completion Time (FCT) is therefore
 characterised separately for successful and interrupted occurrences, and the
 path comparison yields a Path-level Overhead ($\Delta L$) of
@@ -917,39 +915,39 @@ path comparison yields a Path-level Overhead ($\Delta L$) of
 
 \begin{table}[H]
     \centering
-    \caption[Live scenario populations and Flow Completion Time]{Live scenario populations and successful-flow Flow Completion Time (FCT) quantiles at P50, P95, and P99. Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Live scenario populations and Flow Completion Time]{Live scenario populations and successful Flow Completion Time (FCT) quantiles at P50, P95, and P99. Source: Author's elaboration based on the final experimental campaign.}
     \scriptsize
     \setlength{\tabcolsep}{3.1pt}
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{|p{3.2cm}|r|r|r|r|r|r|r|}
         \hline
         \rowcolor{veryPeri!18}
-        \textbf{Scenario} & \textbf{Runs} & \textbf{Requests} & \textbf{Flows} & \textbf{Flow success \%} & \textbf{FCT P50 ms} & \textbf{FCT P95 ms} & \textbf{FCT P99 ms} \\
+        \textbf{Scenario} & \textbf{Runs} & \textbf{Requests} & \textbf{Successful / total flows} & \textbf{Flow success \%} & \textbf{FCT P50 ms} & \textbf{FCT P95 ms} & \textbf{FCT P99 ms} \\
         \hline
         \rowcolor{tableGray}
-        \texttt{baseline} & 5 & 594 & 307 & 54.07 & 559.7 & 1{,}211.8 & 18{,}892.6 \\
+        \texttt{baseline} & 5 & 594 & 166 / 307 & 54.07 & 559.7 & 1{,}211.8 & 18{,}892.6 \\
         \hline
-        \texttt{baseline\_constant} & 5 & 2{,}771 & 1{,}431 & 53.88 & 504.5 & 1{,}093.0 & 18{,}271.8 \\
-        \hline
-        \rowcolor{tableGray}
-        \texttt{burst} & 5 & 20{,}731 & 10{,}562 & 52.14 & 461.9 & 1{,}129.0 & 22{,}759.4 \\
-        \hline
-        \texttt{direct\_vs\_middleware} & 14 & 1{,}590 & 1{,}590 & 15.72 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
+        \texttt{baseline\_constant} & 5 & 2{,}771 & 771 / 1{,}431 & 53.88 & 504.5 & 1{,}093.0 & 18{,}271.8 \\
         \hline
         \rowcolor{tableGray}
-        \texttt{error\_injection} & 6 & 1{,}722 & 868 & 58.87 & 543.5 & 2{,}840.0 & 21{,}547.8 \\
+        \texttt{burst} & 5 & 20{,}731 & 5{,}507 / 10{,}562 & 52.14 & 461.9 & 1{,}129.0 & 22{,}759.4 \\
         \hline
-        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_direct}} & 6 & 2{,}251 & 1{,}037 & 80.42 & 571.1 & 17{,}966.6 & 21{,}934.5 \\
-        \hline
-        \rowcolor{tableGray}
-        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & 1{,}687 & 1{,}687 & 15.63 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
-        \hline
-        \texttt{live\_smoke\_small} & 8 & 196 & 122 & 42.62 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
+        \texttt{direct\_vs\_middleware} & 14 & 1{,}590 & 250 / 1{,}590 & 15.72 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
         \hline
         \rowcolor{tableGray}
-        \texttt{load\_ramp} & 5 & 11{,}750 & 6{,}066 & 53.58 & 456.0 & 948.4 & 23{,}174.6 \\
+        \texttt{error\_injection} & 6 & 1{,}722 & 511 / 868 & 58.87 & 543.5 & 2{,}840.0 & 21{,}547.8 \\
         \hline
-        \texttt{stress\_extreme} & 5 & 256{,}242 & 134{,}779 & 50.25 & 572.3 & 2{,}026.9 & 21{,}505.9 \\
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_direct}} & 6 & 2{,}251 & 834 / 1{,}037 & 80.42 & 571.1 & 17{,}966.6 & 21{,}934.5 \\
+        \hline
+        \rowcolor{tableGray}
+        \shortstack[l]{\texttt{flow\_type\_comparison}\\\texttt{\_middleware}} & 15 & 1{,}687 & 263 / 1{,}687 & 15.59 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
+        \hline
+        \texttt{live\_smoke\_small} & 8 & 196 & 52 / 122 & 42.62 & 755.8 & 1{,}658.8 & 17{,}988.0 \\
+        \hline
+        \rowcolor{tableGray}
+        \texttt{load\_ramp} & 5 & 11{,}750 & 3{,}250 / 6{,}066 & 53.58 & 456.0 & 948.4 & 23{,}174.6 \\
+        \hline
+        \texttt{stress\_extreme} & 5 & 256{,}242 & 67{,}730 / 134{,}779 & 50.25 & 572.3 & 2{,}026.9 & 21{,}505.9 \\
         \hline
     \end{tabular}
     }
@@ -969,7 +967,7 @@ delay.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/calibration_concurrency_drift.png}
-    \caption[Client-side calibration under a linear concurrency schedule.]{Client-observed concurrency and scheduling drift. Source: Author's elaboration based on the experimental campaign.}
+    \caption[Client-side calibration under a linear concurrency schedule]{Client-observed concurrency and scheduling drift. Source: Author's elaboration based on the experimental campaign.}
     \label{fig:load-ramp-calibration}
 \end{figure}
 
@@ -1025,14 +1023,14 @@ evidence therefore supports a timeout-bound mode.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/stress_saturation_timeline.png}
-    \caption[Operational timeline under stochastic queueing saturation.]{Three-panel operational timeline under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Operational timeline under stochastic queueing saturation]{Three-panel operational timeline under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
     \label{fig:stress-saturation-timeline}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/stress_latency_distribution.png}
-    \caption[Request-latency distribution under stochastic queueing saturation.]{Isolated client-observed request-latency distribution under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Request-latency distribution under stochastic queueing saturation]{Isolated client-observed request-latency distribution under stochastic queueing saturation. Source: Author's elaboration based on the final experimental campaign.}
     \label{fig:stress-latency-distribution}
 \end{figure}
 
@@ -1079,7 +1077,7 @@ supports a family of conditional random variables $L\mid\text{flow type}$ rather
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.81\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/flow_type_latency_log.png}
-    \caption[Client-observed completion time by healthcare flow type.]{Client-observed end-to-end completion time by flow type. Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Client-observed completion time by healthcare flow type]{Client-observed end-to-end completion time by flow type. Source: Author's elaboration based on the final experimental campaign.}
     \label{fig:flow-type-completion-signatures}
 \end{figure}
 
@@ -1110,7 +1108,7 @@ starts.
 \noindent ITI-18 contributes 21{,}722 transaction outcomes and a 15.63\% success
 rate; its successful FCT distribution also displays the longest P95 and P99
 tails. ITI-43 contributes 21{,}514 outcomes with 99.34\% transaction success.
-Scryba Sign records 17{,}838 successful \texttt{GetUserInfo} calls and 17{,}015
+Scryba Sign records 17{,}838 successful \texttt{GetUserInfo4} calls and 17{,}015
 successful \texttt{SignOneDoc} calls, which yields 17{,}015 successful complete
 signature flows. The values provide large empirical populations for FCT and
 tail analysis while preserving the exact outcome semantics of each step.
@@ -1131,7 +1129,7 @@ tail analysis while preserving the exact outcome semantics of each step.
         ITI-43 & 21{,}514 / 21{,}371 (99.34\%) & 21{,}371 & 579.7 & 1{,}559.2 & 3{,}992.1 \\
         \hline
         \rowcolor{tableGray}
-        Scryba Sign & \texttt{GetUserInfo}: 17{,}838 / 17{,}838; \quad  \texttt{SignOneDoc}: \quad 17{,}838 / 17{,}015 (95.39\%) & 17{,}015 & 819.6 & 2{,}472.0 & 13{,}006.9 \\
+        Scryba Sign & \texttt{GetUserInfo4}: 17{,}838 / 17{,}838; \quad  \texttt{SignOneDoc}: \quad 17{,}838 / 17{,}015 (95.39\%) & 17{,}015 & 819.6 & 2{,}472.0 & 13{,}006.9 \\
         \hline
     \end{tabular}
     }
@@ -1149,7 +1147,7 @@ measured distributional shapes.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{runs/batches/thesis_live_30r/chapter3_graphs/path_displacement_by_outcome.png}
-    \caption[Path-level displacement by terminal outcome.]{Client-observed path-level displacement stratified by successful completion and fail-fast termination. Source: Author's elaboration based on the final experimental campaign.}
+    \caption[Path-level displacement by terminal outcome]{Client-observed path-level displacement stratified by successful completion and fail-fast termination. Source: Author's elaboration based on the final experimental campaign.}
     \label{fig:overhead-boxplot}
 \end{figure}
 
@@ -1200,8 +1198,8 @@ decomposition\footcite{iorio-when-latency-matters,akram-numerical-latency}.
 \label{subsec:rdg-interpretation-closure}
 
 \noindent The empirical distributions and path-level differentials quantified in the
-preceding sections provide the evidence required to resolve systematically the
-core research questions posed in Chapter~\ref{chap:introduction}. Rather than
+preceding sections provide the evidence required to address systematically the
+core research questions posed in Chapter~\ref{chap:introduction} and \ref{subsec:rdg-questions-validity}. Rather than
 evaluating latency as an isolated, static scalar, this synthesis reconciles the
 measurement observations with the stochastically bounded theoretical invariants
 of the system, verifying how workflow dependencies and saturation boundaries
@@ -1254,7 +1252,7 @@ reproducibility and observability components of the research question.
 \noindent The final campaign comprises 74 runs, 299{,}534 request occurrences, and
 158{,}449 flow completions across ten live scenarios. Within this sample, the
 21{,}722 ITI-18 outcomes, 21{,}514 ITI-43 outcomes, 17{,}838 successful
-\texttt{GetUserInfo} calls, and 17{,}015 successful \texttt{SignOneDoc} calls
+\texttt{GetUserInfo4} calls, and 17{,}015 successful \texttt{SignOneDoc} calls
 form distinct transaction, flow, and outcome distributions. Their analytical
 value lies in the joint observation of Flow Completion Time (FCT), success,
 request and useful-flow activity, and P50, P95, and P99 rather than in volume

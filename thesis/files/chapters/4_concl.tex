@@ -237,7 +237,7 @@ state progression.
         \node[red!80, font=\scriptsize, below=3mm of sf]
             {Failed-population median differential: $+12.88\,\mathrm{ms}$};
     \end{tikzpicture}
-    \caption[Stochastic timed automaton of workflow execution]{Empirically
+    \caption[Empirically annotated workflow automaton]{Empirically
     annotated workflow automaton representing transaction-state progression,
     stochastic truncation $\mathcal{T}_{\tau}$, and early execution
     termination. Source: Author's elaboration.}
@@ -285,10 +285,10 @@ therefore establishes fail-fast termination as an execution and correctness
 property; it neither reveals regional integration gateway capacity nor eliminates transfer in vain
 for requests that already enter a long queue or approach a timeout.
 
-\subsection[Queueing Saturation and Load-Sharing Window Closure]{Queueing Saturation and Load-Sharing Window}
+\subsection[Queueing Saturation and Load-Sharing Window]{Queueing Saturation and Load-Sharing Window}
 \label{subsec:conclusions-queueing-saturation}
 
-\noindent Chapter~\ref{chap:introduction} asks whether the experimental method exposes
+\noindent The evaluation protocol asks whether the experimental method exposes
 behaviour at extreme offered load rather than only nominal latency. The
 calibration evidence in Chapter~\ref{chap:selected-approach} locates the
 relevant transition at the client-side admission mechanism, when
@@ -561,9 +561,8 @@ order, retries, flow mix, payload-size classes, and prerequisite relationships
 before compiling the trace into RDG occurrences and a non-stationary arrival
 timeline $\lambda(t)$.
 
-\noindent Replay fidelity is assessed through approved aggregate properties---
-including autocorrelation, burst duration, concurrency, and flow proportions---
-and not through access to identifying clinical content. A segment
+\noindent Replay fidelity is assessed through approved aggregate properties,
+including autocorrelation, burst duration, concurrency, and flow proportions, and not through access to identifying clinical content. A segment
 whose initial state or dependencies remain incomplete is rejected rather than
 converted into an independent request stream, because accurate scaling preserves
 both temporal and causal structure\footcite{zhu-tbbt-trace-replay}. The pipeline

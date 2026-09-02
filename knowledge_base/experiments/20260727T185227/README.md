@@ -36,6 +36,9 @@ Nessun valore originale associato agli alias è presente nel dataset.
 - `scenario_metrics.csv`: metriche aggregate sulle sole 74 run complete.
 - `transaction_outcomes.csv`: conteggi per scenario, transazione, codice,
   esito e presenza di fault.
+- `flow_success_correction.md`: correzione validata del conteggio pooled dei
+  flussi riusciti nello scenario `flow_type_comparison_middleware`; prevale
+  sul corrispondente valore storico di `scenario_metrics.csv`.
 - `experiment_summary.md`: conclusioni tracciabili e limiti inferenziali.
 - `error_taxonomy.md`: tassonomia derivata senza messaggi di errore grezzi.
 - `provenance.json`: commit osservato, hash e audit della scansione.
@@ -51,6 +54,9 @@ Nessun valore originale associato agli alias è presente nel dataset.
 - `max_observed_concurrency`: massimo osservato tra flussi e step attivi negli
   eventi `request_sent`.
 - `flow_success_rate_percent`: quota di eventi `flow_completed` con successo.
+- Per `flow_type_comparison_middleware`, la fonte di verita corrente e
+  `flow_success_correction.md`: 263 successi su 1.687 flussi, pari al
+  15,589804386...% e pubblicato come 15,59%.
 - `status_code=0`: nessuna risposta HTTP disponibile; non equivale a HTTP 000.
 
 ## Inventario figure

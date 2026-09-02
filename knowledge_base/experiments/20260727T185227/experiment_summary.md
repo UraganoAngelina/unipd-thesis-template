@@ -64,10 +64,18 @@
 
 - Transazione: flussi degli scenari `direct_vs_middleware` e `flow_type_comparison_middleware`.
 - Osservazione: entrambi gli scenari hanno un tasso di errore richiesta del 100% nelle run complete disponibili.
-- Classificazione: campione non valido per un confronto prestazionale tra percorsi riusciti.
-- Modifica: nessuna correzione verificata nel corpus.
-- Risultato: rispettivamente 1590 e 1687 richieste osservate senza successi.
-- Deduzione: le latenze di questi scenari descrivono failure path e non possono essere interpretate come overhead nominale del middleware.
-- Confidenza: alta sul limite metodologico.
-- Evidenza: `scenario_metrics.csv`.
-- Stato: aperta; richiede run corrette con richieste riuscite su entrambi i percorsi.
+- Classificazione: gli esiti a livello di richiesta e quelli a livello di flusso
+  costituiscono popolazioni distinte e non sono intercambiabili.
+- Modifica: il conteggio pooled dei flussi riusciti di
+  `flow_type_comparison_middleware` e corretto dalla fonte di verita validata
+  dall'operatore.
+- Risultato: `flow_type_comparison_middleware` contiene 263 flussi riusciti su
+  1687, pari al 15,589804386...% e pubblicato come 15,59%; il conteggio storico
+  delle richieste riuscite rimane invariato.
+- Deduzione: il successo terminale del flusso non deve essere ricostruito dal
+  solo esito aggregato delle richieste.
+- Confidenza: alta sul conteggio corretto e sul relativo calcolo aritmetico.
+- Evidenza: `flow_success_correction.md`, `scenario_metrics.csv`.
+- Stato: corretto per la metrica di successo dei flussi; resta distinto il
+  limite metodologico relativo al confronto dei percorsi e alla telemetria
+  middleware interna.
