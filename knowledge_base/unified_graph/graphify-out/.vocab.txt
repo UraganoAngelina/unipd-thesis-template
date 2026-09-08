@@ -131,9 +131,11 @@ come
 command
 commands
 common
+comparison
 compatibile
 compilati
 completa
+completati
 completed
 completo
 compone
@@ -165,6 +167,7 @@ consonanti
 constant
 consultori
 consumers
+conteggio
 contesto
 context
 contract
@@ -177,6 +180,7 @@ correlata
 correlation
 correlazione
 corretto
+correzione
 corrispondenti
 costante
 costanti
@@ -283,10 +287,12 @@ epoch
 error
 errore
 errori
+esatto
 esecuzione
 esegue
 esiste
 esistente
+esiti
 esperimento
 esplicito
 espone
@@ -342,6 +348,7 @@ flows
 flush
 flussi
 flusso
+fonte
 for
 form
 forma
@@ -423,6 +430,7 @@ integration
 integrations
 integrazione
 integrazioni
+integrit
 interactive
 intero
 interoperabilita
@@ -513,6 +521,7 @@ multitenancy
 name
 namespace
 nazionale
+negli
 nei
 nel
 nell
@@ -592,6 +601,8 @@ point
 poisson
 pong
 pool
+pooled
+popolazione
 populate
 post
 postal
@@ -631,6 +642,7 @@ protocollo
 provider
 proxy
 pua
+pubblicato
 punto
 pure
 python
@@ -702,6 +714,7 @@ rispetto
 risposta
 risultati
 ritorna
+riusciti
 rti
 rule
 rules
@@ -820,6 +833,7 @@ struttura
 strutturalmente
 style
 subscription
+success
 successo
 sufficient
 summary
@@ -839,6 +853,7 @@ tabs
 tabview
 tag
 tags
+tasso
 tassonomia
 team
 tecnica
@@ -883,6 +898,7 @@ trust
 tutte
 tutti
 two
+type
 types
 una
 unica
@@ -911,6 +927,7 @@ validate
 validation
 validations
 valido
+valore
 valori
 value
 values
@@ -919,7 +936,9 @@ variazione
 veneto
 verification
 verify
+verit
 via
+vincolo
 virtualization
 visuale
 visuali
